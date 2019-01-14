@@ -1,0 +1,59 @@
+.main__inner {
+  display: flex;
+  flex-wrap: nowrap;
+
+  @media (min-width: $mobile-navigation-breakpoint) {
+    width: 100%;
+  }
+}
+
+.main__sidebar {
+  min-width: 200px;
+  position: fixed;
+  z-index: 3;
+  transition: 300ms transform ease-in-out;
+
+  @media (min-width: $mobile-navigation-breakpoint) {
+    width: 200px;
+    z-index: auto;
+    position: relative;
+    display: block;
+  }
+
+  @media (min-width: breakpoint('extra-large')) {
+    min-width: 260px;
+    width: 260px;
+  }
+}
+
+.main__content {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.main__content::before {
+  @media (max-width: $mobile-navigation-breakpoint) {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    pointer-events: none;
+    z-index: 2;
+    transition: 200ms background ease-in-out;
+  }
+}
+
+.main__content-inner {
+  width: 100%;
+  margin: 0 auto;
+
+  @media (min-width: $mobile-navigation-breakpoint) {
+    width: 90%;
+  }
+}

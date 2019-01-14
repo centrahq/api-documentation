@@ -1,0 +1,18 @@
+@import 'variables';
+
+/**
+ * Get breakpoint value
+ */
+@function breakpoint($identifier) {
+  // If the identifier isn't a string, throw an error
+  @if type-of($identifier) != 'string' {
+    @error 'Non string passed to breakpoint function (#{$identifier})';
+  }
+
+  // If the breakpoint exists return it, else throw an error
+  @if map-has-key($breakpoints, $identifier) {
+    @return map-get($breakpoints, $identifier);
+  } @else {
+    @error 'Breakpoint `#{$identifier}` does not exist';
+  }
+}

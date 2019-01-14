@@ -1,0 +1,13 @@
+{% if pagename.startswith("reference/v1/") -%}
+ {%- include "sidebar-reference-v1.html" -%}
+{%- elif pagename.startswith("reference/old/") -%}
+ {%- include "sidebar-reference-old.html" -%}
+{%- elif pagename.startswith("changelog/v1/") -%}
+ {%- include "sidebar-changelog-v1.html" -%}
+{%- elif pagename.startswith("changelog/old/") -%}
+ {%- include "sidebar-changelog-old.html" -%}
+{%- elif pagename.startswith("guides/") -%}
+ {%- include "sidebar-guides.html" -%}
+{%- else -%}
+ {%- include "sidebar-overview.html" -%}
+{%- endif -%}

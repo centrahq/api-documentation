@@ -1,0 +1,6 @@
+{% macro sidebar_collapse_group(group_path) -%}
+	sidebar__group--collapsible
+	{%- if not pagename.startswith(group_path) %}
+		sidebar__group--collapse
+	{%- endif -%}
+{%- endmacro -%}

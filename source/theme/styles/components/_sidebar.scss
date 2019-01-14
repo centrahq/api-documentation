@@ -1,0 +1,172 @@
+.sidebar {
+  color: #000;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  position: fixed;
+  background-color: #fff;
+  z-index: 2;
+  height: auto;
+  overflow-y: auto;
+  pointer-events: none;
+  padding-left: 50px;
+  -webkit-overflow-scrolling: touch;
+  display: none;
+
+  @media (min-width: $mobile-navigation-breakpoint) {
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    pointer-events: auto;
+    overflow: visible;
+    left: auto;
+    top: 0;
+    right: auto;
+    bottom: auto;
+    z-index: 0;
+    display: block;
+  }
+}
+
+.sidebar.is-visible {
+  pointer-events: all;
+  display: block;
+}
+
+.sidebar__inner {
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+.sidebar__group {
+  margin-bottom: 20px;
+}
+
+.sidebar__group:last-child {
+  margin-bottom: 80px;
+}
+
+.sidebar__group a:hover,
+.sidebar__group a:focus {
+  text-decoration: none;
+}
+
+.sidebar__group > p {
+  font-size: 17px;
+  line-height: 19px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.sidebar__group > p > a {
+  color: #333333;
+}
+
+.sidebar__group > p > a:hover {
+  color: $brand-primary;
+}
+
+.sidebar__groupsection {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #bbb9b9;
+  border-bottom: 1px solid #dfdfdf;
+  line-height: 1;
+}
+
+.sidebar__group ul {
+  @include bare-list;
+  margin: 0;
+}
+
+.sidebar__group > ul {
+  margin-bottom: 40px;
+}
+
+.sidebar__group ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar__group ul li a {
+  color: #666666;
+  font-size: 14px;
+  line-height: 14px;
+
+  @media (max-width: breakpoint("<medium")) {
+    max-width: 80%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+  }
+}
+
+.sidebar__group ul li a:hover,
+.sidebar__group ul li a:focus {
+  color: $grey-darkest;
+}
+
+.sidebar__group ul li a > code, .sidebar__group > p code {
+  color: $grey-medium-light;
+  display: block;
+  font-size: 12px;
+  line-height: 10px;
+  font-weight: normal;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.sidebar__group code.sidebar__beta {
+  display: inline;
+  color: $brand-primary;
+}
+
+.sidebar__group > ul > li.current > a {
+  color: $brand-primary;
+}
+
+.sidebar__group > ul > li.current > ul > li > a {
+  display: none;
+}
+
+.sidebar__group > ul > li.current > ul ul {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.sidebar__group > ul > li.current > ul ul ul {
+  display: none;
+}
+
+.sidebar__group > ul > li.current > ul li {
+  margin: 0;
+}
+
+.sidebar__group > ul > li.current > ul a {
+  position: relative;
+  font-size: 12px;
+  padding-left: 15px;
+  display: inline;
+  line-height: 10px;
+}
+
+.sidebar__group > ul > li.current > ul a:before {
+  content: "";
+  height: 1px;
+  width: 8px;
+  background: #666;
+  position: absolute;
+  left: 0;
+  top: 8px;
+}
+
+.sidebar__group--collapse > ul {
+  display: none;
+}
+
+.sidebar__spacing {
+  padding-bottom: 20px;
+}

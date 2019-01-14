@@ -1,0 +1,37 @@
+{% from 'macros/sidebar-item.html' import sidebar_item with context -%}
+{% from 'macros/sidebar-collapse-group.html' import sidebar_collapse_group with context -%}
+
+{% include 'api-version-switcher.html' %}
+
+<div class="sidebar__group {{ sidebar_collapse_group('reference/v1/store-api/') }}">
+ <p><a href="javascript:void(0)">Store API <code class="sidebar__beta">Beta</code></a></p>
+
+ <ul>
+  {{ sidebar_item(
+   'reference/v1/store-api/index',
+   'Overview'
+  ) }}
+ </ul>
+</div>
+
+<div class="sidebar__spacing"></div>
+
+<div class="sidebar__group {{ sidebar_collapse_group('reference/v1/backend-api/') }}">
+  <p><a href="javascript:void(0)">Backend API <code class="sidebar__beta">Beta</code></a></p>
+
+ <ul>
+  {{ sidebar_item(
+   false,
+   'GraphQL'
+  ) }}
+  {{ sidebar_item(
+   'reference/v1/backend-api/graphql',
+   'GraphQL',
+   'POST /graphql'
+  ) }}
+  {{ sidebar_item(
+   false,
+   'REST API'
+  ) }}
+ </ul>
+</div>

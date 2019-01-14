@@ -1,0 +1,3 @@
+@function color-trans($color, $percentage) {
+  @return lighten($color, (1-$percentage)*5%);
+}

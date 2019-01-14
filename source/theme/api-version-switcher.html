@@ -1,0 +1,22 @@
+{%- set is_v1 = "/v1/" in pagename -%}
+{%- set is_v2 = "/v2/" in pagename -%}
+{%- set is_old = "/old/" in pagename -%}
+
+{%- set pagename_v1 = pagename.replace("/v2/", "/v1/").replace("/old/", "/v1/") -%}
+{%- set pagename_v2 = pagename.replace("/v1/", "/v2/").replace("/old/", "/v2/") -%}
+{%- set pagename_old = pagename.replace("/v1/", "/old/").replace("/v2/", "/old/") -%}
+
+{%- if not hasdoc(pagename_v1) -%}
+ {%- set pagename_v1 = "reference/v1/store-api/index" -%}
+{%- endif -%}
+
+{%- if not hasdoc(pagename_old) -%}
+ {%- set pagename_old = "reference/old/shop-api/index" -%}
+{%- endif -%}
+
+<div class="api-version-switcher">
+ <select class="link-dropdown" data-enhancer="link-dropdown">
+  <option value="{{ linkto(pagename_v1) }}"{% if is_v1 %} selected{% endif %}>API version 1 (Latest)</option>
+  <option value="{{ linkto(pagename_old) }}"{% if is_old %} selected{% endif %}>Old APIs</option>
+ </select>
+</div>

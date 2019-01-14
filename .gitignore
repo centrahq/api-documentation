@@ -1,0 +1,18 @@
+/.idea
+/.cache
+/build
+source/_static/style.css
+source/_static/
+!source/_static/html/*
+!source/_static/img/*
+!source/_static/fonts/*
+!source/_static/404.css
+.DS_Store
+.editorconfig
+
+# JavaScript
+/node_modules
+
+# Python
+__pycache__
+*.pyc

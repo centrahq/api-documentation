@@ -1,0 +1,21 @@
+.l-wrapper {
+  max-width: $site-width;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 25px;
+  padding-right: 25px;
+
+  @media (min-width: breakpoint("small")) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  @media (min-width: $mobile-navigation-breakpoint) {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+}
+
+.l-wrapper--content {
+  max-width: $content-width;
+}

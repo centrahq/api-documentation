@@ -1,0 +1,17 @@
+/**
+ * For converting pixels to ems
+ * Based on a 10px font-size on the html
+ * Usage:
+ * div { width: pxToEm(300); }
+ * Returns:
+ * div { width: 30em; }
+ */
+@function px-to-em($pixels) {
+  $value: $pixels;
+
+  @if type-of($pixels) == 'number' and not unitless($pixels) {
+    $value: $number / ($number * 0 + 1);
+  }
+
+  @return $value;
+}

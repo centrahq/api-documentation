@@ -1,0 +1,10 @@
+{% from 'macros/sidebar-item.html' import sidebar_item with context -%}
+
+{% include 'api-version-switcher.html' %}
+
+<div class="sidebar__group">
+    <p>Timeline</p>
+    <ul>
+        {{ sidebar_item('changelog/v1/changelog', '') }}
+    </ul>
+</div>

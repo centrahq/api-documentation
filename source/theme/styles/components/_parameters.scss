@@ -1,0 +1,128 @@
+.rst-content dl.docutils dd {
+  padding-bottom: 30px;
+  padding-top: 10px;
+}
+
+.rst-content table.docutils {
+  width: 100%;
+  font-size: 13px;
+}
+
+.rst-content table.docutils,
+.rst-content table.docutils th,
+.rst-content table.docutils tr,
+.rst-content table.docutils td {
+  border: 0;
+  border-collapse: collapse;
+}
+
+.rst-content table.docutils > thead > tr > th {
+  padding-bottom: 20px;
+}
+
+.rst-content table.docutils > tbody > tr > td {
+  border-top: 1px solid #e9edef;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.rst-content .section table > tbody > tr > td {
+  padding-bottom: 30px;
+}
+
+.rst-content .section table > tbody > tr:last-child > td {
+  padding-bottom: 0;
+}
+
+.rst-content .section table {
+  margin-top: 12px;
+}
+
+.rst-content .section > table.docutils {
+  margin-bottom: 60px;
+}
+
+.rst-content table.docutils p,
+.rst-content table.docutils ul,
+.rst-content table.docutils ol,
+.rst-content table.docutils div.admonition {
+  margin-bottom: 20px;
+}
+
+.rst-content table.docutils p:last-child,
+.rst-content table.docutils ul:last-child,
+.rst-content table.docutils ol:last-child,
+.rst-content table.docutils div.admonition:last-child {
+  margin-bottom: 0;
+}
+
+.rst-content .section table > tbody > tr > td:first-child {
+  max-width: 165px;
+  padding-right: 35px;
+  text-align: right;
+}
+
+.rst-content .section table > tbody > tr > td:first-child p {
+  margin-bottom: 0;
+}
+
+.rst-content .section > table.docutils tbody tr td:first-child .container {
+  margin-top: 6px;
+}
+
+.rst-content .section table > tbody > tr > td table + p {
+  margin-top: 20px;
+}
+
+@media (min-width: breakpoint('medium')) {
+  .rst-content .section > table.docutils > tbody > tr:last-child > td {
+    border-bottom: 1px solid #e9edef;
+    padding-bottom: 30px;
+  }
+}
+
+@media (max-width: breakpoint('<medium')) {
+  .rst-content .section table.docutils {
+    display: flex;
+  }
+
+  .rst-content .section table.docutils tbody {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rst-content .section table.docutils tbody tr {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rst-content .section table.docutils tbody tr td {
+    padding: 0;
+  }
+
+  .rst-content .section table.docutils tbody tr td:last-child {
+    border-top: 0;
+    padding-bottom: 30px;
+  }
+
+  .rst-content .section table.docutils tbody tr td:first-child {
+    max-width: 100%;
+    text-align: left;
+    padding-top: 30px;
+    display: flex;
+    padding-right: 0;
+    padding-bottom: 25px;
+  }
+
+  .rst-content .section table.docutils tbody tr td:first-child p.first {
+    width: auto;
+  }
+
+  .rst-content .section table.docutils tbody tr td:first-child > .type {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 0;
+    margin-left: 10px;
+  }
+}

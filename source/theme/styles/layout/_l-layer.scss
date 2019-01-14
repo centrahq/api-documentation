@@ -1,0 +1,77 @@
+@import 'variables';
+@import 'functions/breakpoint';
+@import 'functions/tint';
+
+.l-layer {
+  padding-top: 70px;
+  padding-bottom: 70px;
+
+  @media (min-width: breakpoint('small')) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  @media (min-width: breakpoint('medium')) {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  @media (min-width: breakpoint('large')) {
+    padding-top: 150px;
+    padding-bottom: 150px;
+  }
+}
+
+/**
+ * Spacing
+ */
+.l-layer--compact {
+  @media (min-width: breakpoint('medium')) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+.l-layer--compact-top {
+  @media (min-width: breakpoint('medium')) {
+    padding-top: 80px;
+  }
+}
+
+.l-layer--compact-bottom {
+  @media (min-width: breakpoint('medium')) {
+    padding-bottom: 80px;
+  }
+}
+
+.l-layer--small {
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  @media (min-width: breakpoint('medium')) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
+/**
+ * Themes
+ */
+.l-layer--theme-primary {
+  background-color: $brand-primary;
+  color: #fff;
+}
+
+.l-layer--theme-dark {
+  background-color: #000;
+  color: #fff;
+}
+
+.l-layer--theme-blackish {
+  background-color: tint(#000, 10%);
+  color: #fff;
+}
+
+.l-layer--theme-grey {
+  background-color: $grey-lightest;
+}
