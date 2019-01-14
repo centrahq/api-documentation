@@ -69,7 +69,7 @@ html-production: Makefile source/_static/style.css source/_static/index.js sourc
 	# Go thru all the files, and replace the snippet with the google tag manager code
 	@LC_CTYPE=C LANG=C find build/ -type f -name '*' -exec sed -i.bak 's/<!-- GOOGLE_TAG_MANAGER -->/<script type=\"text\/javascript\" src=\"\/_static\/gtm.js\" async><\/script>/g' {} \;
 	# Go thru all the files, and replace the paths from relative to an absolute CDN path
-	@LC_CTYPE=C LANG=C find build/ -type f -name '*' -exec sed -i.bak 's/\"[\.\/]*_images/\"https:\/\/docs-test.centra.systems\/_images/g' {} \;
-	@LC_CTYPE=C LANG=C find build/ -type f -name '*' -exec sed -i.bak 's/\"[\.\/]*_static/\"https:\/\/docs-test.centra.systems\/_static/g' {} \;
+	@LC_CTYPE=C LANG=C find build/ -type f -name '*' -exec sed -i.bak 's/\"[\.\/]*_images/\"https:\/\/docs.centra.com\/_images/g' {} \;
+	@LC_CTYPE=C LANG=C find build/ -type f -name '*' -exec sed -i.bak 's/\"[\.\/]*_static/\"https:\/\/docs.centra.com\/_static/g' {} \;
 	# Cleanup .bak files
 	@find build/ -type f -name '*.bak' -exec rm {} \;
