@@ -4,7 +4,7 @@ exports.handler = (event, context, callback) => {
 
     const response = event.Records[0].cf.response;
     const request = event.Records[0].cf.request;
-    const baseURI = 'https://docs-test.centra.systems'
+    const baseURI = 'https://docs.centra.com'
 
     function redirectTo(path) {
         response.status = 302;
