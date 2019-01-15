@@ -10,7 +10,6 @@
 
 /*used for the table with reaaally long parameter names, don't overflow the text but make a scroll on the output*/
 .rst-content tr td:nth-child(1) .first > code.docutils {
-  overflow: scroll;
   max-width: 160px;
   display: inline-block;
   line-height: 14px;

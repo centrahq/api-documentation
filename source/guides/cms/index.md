@@ -163,19 +163,6 @@ The following keys and API-fields correspond to the image above. The `key`-field
 ```eval_rst
 .. list-table::
    :widths: auto
-
-   * - ``art_title``
-     - Title field
-     - Title field
-
-   * - ``art_tags``
-     - Title field
-     - Title field
-```
-
-```eval_rst
-.. list-table::
-   :widths: auto
    :header-rows: 1
 
    * - Field

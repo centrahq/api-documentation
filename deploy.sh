@@ -2,7 +2,7 @@
 
 # The Cache-Control property sets the length of time that files should be cached in the Cloudfront Edge location _and_
 # the user browser.
-AWS_OPTIONS="--region ${AWS_REGION} --cache-control max-age=3600 --profile ${AWS_PROFILE}"
+AWS_OPTIONS="--region ${AWS_REGION} --cache-control max-age=3600"
 
 pip install awscli
 
