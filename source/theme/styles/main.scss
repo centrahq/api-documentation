@@ -94,32 +94,6 @@ a:not([class]):focus {
   text-decoration: underline;
 }
 
-a.headerlink {
-  font-size: 0;
-}
-
-h1:hover a.headerlink::before,
-h2:hover a.headerlink::before,
-h3:hover a.headerlink::before,
-h4:hover a.headerlink::before,
-h5:hover a.headerlink::before,
-h6:hover a.headerlink::before {
-  opacity: 1;
-}
-
-a.headerlink::before {
-  content: '';
-  position: absolute;
-  left: -22px;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 100%;
-  width: 15px;
-  background: transparent url('./../../_static/img/headerlink.svg') no-repeat center center;
-  opacity: 0;
-  padding-right: 22px;
-}
-
 /**
  * Main content wrapper
  */
