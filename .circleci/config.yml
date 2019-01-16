@@ -9,23 +9,25 @@ jobs:
     steps:
       - checkout
 
-      # Download and cache dependencies
       - restore_cache:
           keys:
-          - v4-dependencies-{{ checksum "requirements.txt" }}
-          - v4-dependencies-
+          - v5-python-dependencies-{{ checksum "requirements.txt" }}
+          - v5-python-dependencies-
           
-      # Download and cache npm dependencies
       - restore_cache:
           keys:
-          - v4-node-dependencies-{{ checksum "package-lock.json" }}
-          - v4-node-dependencies-
+          - v5-pip-dependencies-{{ checksum "requirements.txt" }}
+          - v5-pip-dependencies-
           
-      # Download and cache npm dependencies
       - restore_cache:
           keys:
-          - v4-npm-dependencies-{{ checksum "package-lock.json" }}
-          - v4-npm-dependencies-
+          - v5-node-dependencies-{{ checksum "package-lock.json" }}
+          - v5-node-dependencies-
+          
+      - restore_cache:
+          keys:
+          - v5-npm-dependencies-{{ checksum "package-lock.json" }}
+          - v5-npm-dependencies-
 
       - run:
           name: Install awscli
@@ -54,17 +56,22 @@ jobs:
       - save_cache:
           paths:
             - /home/circleci/.cache
-          key: v4-dependencies-{{ checksum "requirements.txt" }}
+          key: v5-python-dependencies-{{ checksum "requirements.txt" }}
+          
+      - save_cache:
+          paths:
+            - /home/circleci/.local
+          key: v5-pip-dependencies-{{ checksum "requirements.txt" }}
           
       - save_cache:
           paths:
             - /home/circleci/repo/node_modules
-          key: v4-node-dependencies-{{ checksum "package-lock.json" }}
+          key: v5-node-dependencies-{{ checksum "package-lock.json" }}
           
       - save_cache:
           paths:
             - /home/circleci/.npm/
-          key: v4-npm-dependencies-{{ checksum "package-lock.json" }}
+          key: v5-npm-dependencies-{{ checksum "package-lock.json" }}
         
       - store_artifacts:
           path: test-reports
