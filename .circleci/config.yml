@@ -24,7 +24,21 @@ jobs:
           name: install dependencies
           command: |
             make install
+            
+      - run:
+          name: build
+          command: |
             make html-production
+            
+      - run:
+          name: deploy
+          command: |
+            bash deploy.sh
+            
+      - run:
+          name: wipe cache
+          command: |
+            aws cloudfront create-invalidation --distribution-id "${CLOUDFRONT_DISTRIBUTION_ID}" --paths "/*"
 
       - save_cache:
           paths:
