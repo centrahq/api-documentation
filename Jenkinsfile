@@ -52,7 +52,7 @@ pipeline {
         AWS_REGION = credentials('api-docs-aws-region')
         AWS_ACCESS_KEY_ID = credentials('api-docs-aws-access-key-id')
         AWS_SECRET_ACCESS_KEY = credentials('api-docs-aws-secret-access-key')
-        AWS_OPTIONS = '--region ${AWS_REGION} --cache-control max-age=3600'
+        AWS_OPTIONS = "${'--region ' + env.AWS_REGION + ' --cache-control max-age=3600'}"
         DOCKER_CMD = 'docker run awscli aws'
     }
 }
