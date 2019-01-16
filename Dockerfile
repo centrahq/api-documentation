@@ -2,7 +2,7 @@ FROM python:alpine
 
 ARG CLI_VERSION=1.16.86
 
-COPY . /api-docs
+ADD ./ /api-docs
 
 WORKDIR /api-docs
 
