@@ -28,6 +28,7 @@ jobs:
 
       - save_cache:
           paths:
+            - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
         
       - store_artifacts:
