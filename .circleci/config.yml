@@ -13,6 +13,7 @@ jobs:
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "requirements.txt" }}
+          - v1-npm-dependencies-{{ checksum "package-lock.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
@@ -42,8 +43,13 @@ jobs:
 
       - save_cache:
           paths:
-            - ./venv
+            - .cache
           key: v1-dependencies-{{ checksum "requirements.txt" }}
+          
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-npm-dependencies-{{ checksum "package-lock.json" }}
         
       - store_artifacts:
           path: test-reports
