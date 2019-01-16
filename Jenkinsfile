@@ -9,6 +9,7 @@ pipeline {
         }
         stage('Build html') {
             steps {
+                sh 'docker run awscli make install'
                 sh 'docker run awscli make html-production'
             }
         }
