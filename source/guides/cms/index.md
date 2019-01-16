@@ -10,7 +10,7 @@ The Centra CMS is based on a structure divided into the following tree:
 
    * - **Sections**
 
-     - The different :ref:`section <sections>` contains a collection of articles. A section can be reused across stores but it's often preferred to have sections set up specific to one store.
+     - The different :ref:`sections <sections>` contain a collection of articles. A section can be reused across stores but it's often preferred to have sections set up specific to one store.
 
        .. list-table::
           :widths: auto
@@ -35,7 +35,7 @@ The Centra CMS is based on a structure divided into the following tree:
 
                           - A page template can have multiple :ref:`slots <slots>`.
 
-                            Each slot has different sorts of :doc:`Slot properties </guides/cms/slot-properties>`.
+                            Each slot has different :doc:`Slot properties </guides/cms/slot-properties>`.
 ```
 
 All these different levels are dynamic and can handle multiple properties.
@@ -43,10 +43,10 @@ All these different levels are dynamic and can handle multiple properties.
 The structure is based on this concept:
 
 * You can have multiple sections, and in each section you can have multiple articles.
-* You can have multiple pages in an article, each page has a template.
-* Each template can have multiple slots, and each slot have different settings depending on the slot type.
+* You can have multiple pages in an article, and each page has a template.
+* Each template can have multiple slots, and each slot has different settings depending on the slot type.
 
-Then, we have a few different type of slots:
+Then, we have a few different types of slots:
 
 * [articlerelation](cms-articlerelation-property)
 * [boolean](cms-boolean-property)
@@ -108,7 +108,7 @@ For each section, the `key` for each element (ex: `info` and `news`) is the ID o
 ```
 ### Section settings
 
-The section settings defines how the section should look like and behave. The following settings are possible to set per section:
+The section settings define how the section should look, like and behave. The following settings are possible to set per section:
 
 ```eval_rst
 .. list-table::
@@ -243,7 +243,7 @@ The following keys and API-fields correspond to the image above. The `key`-field
 ```
 ## Pages
 
-Pages in an article can each one have a status (being enabled or not), a sort and a template set. Each page looks like this in the API:
+Each page in an article can have a status (being enabled or not), a sort and a template set. Each page looks like this in the API:
 
 ```eval_rst
 .. code-block:: json
@@ -304,7 +304,7 @@ In this case, this template will look like this:
 
 ![](images/cms-info_item-template.png)
 
-And the API, the data will look like this:
+And in the API, the data will look like this:
 
 ```eval_rst
 .. code-block:: json
@@ -380,6 +380,6 @@ For example:
    ],
 ```
 
-Will create a simple text field, with the key `pre_content` and the description `Pre content` will show up as the title inside the Centra CMS.
+Will create a simple text field, and the key `pre_content` and the description `Pre content` will show up as the title inside the Centra CMS.
 
 You can select different types of [Slot properties](/guides/cms/slot-properties) for each slot.
