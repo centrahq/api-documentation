@@ -7,6 +7,12 @@ pipeline {
                 sh 'docker build . -t "awscli"'
             }
         }
+        stage('Build html') {
+            steps {
+                sh 'docker run awscli npm install'
+                sh 'docker run awscli make html-production'
+            }
+        }
         stage('Upload HTML files') {
             steps {
                 sh '${DOCKER_CMD} s3 cp build/html s3://${AWS_BUCKET}/ --recursive ${AWS_OPTIONS} \
