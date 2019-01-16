@@ -348,7 +348,7 @@ And this in the template:
 ```
 ## Type: handpicked
 
-Handpicked is used to select specific products that should be provided as a list to be used inside the article. If `variants` is set to `true`, the publisher will be able to select what variant that should be shown, else all variants in the product display will be listed.
+Handpicked is used to select specific products that should be provided as a list to be used inside the article. If `variants` is set to `true`, the publisher will be able to select what variant that should be shown, or else all variants in the product display will be listed.
 
 ### Example in config
 
@@ -469,7 +469,7 @@ The format of `slotDescription` using "Place Products" is:
 ```
 ## Type: file
 
-Great to use when there's a need for a file that should be downloaded. You can enable `title` and `text` if you need meta-data with the file. They are default not visible.
+Great to use when there's a need for a file that should be downloaded. You can enable `title` and `text` if you need meta-data with the file. They are by default not visible.
 
 ### Example in config
 
@@ -679,7 +679,7 @@ The ability to make a field that will contain one date, or one "from" and "to". 
 ```
 ## Type: campaign
 
-Be able to select a specific campaign that will be referenced in the slot. Good to use if you want to make a link to a campaign or a list based on the campaign products.
+Enables you to select a specific campaign that will be referenced in the slot. Good to use if you want to make a link to a campaign or a list based on the campaign products.
 
 ### Example in config
 
