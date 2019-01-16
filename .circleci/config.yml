@@ -23,14 +23,11 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            python3 -m venv venv
-            . venv/bin/activate
             make install
             make html-production
 
       - save_cache:
           paths:
-            - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
         
       - store_artifacts:
