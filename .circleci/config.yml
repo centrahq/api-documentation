@@ -11,23 +11,13 @@ jobs:
 
       - restore_cache:
           keys:
-          - v5-python-dependencies-{{ checksum "requirements.txt" }}
-          - v5-python-dependencies-
+          - v6-python-dependencies-{{ checksum "requirements.txt" }}
+          - v6-python-dependencies-
           
       - restore_cache:
           keys:
-          - v5-pip-dependencies-{{ checksum "requirements.txt" }}
-          - v5-pip-dependencies-
-          
-      - restore_cache:
-          keys:
-          - v5-node-dependencies-{{ checksum "package-lock.json" }}
-          - v5-node-dependencies-
-          
-      - restore_cache:
-          keys:
-          - v5-npm-dependencies-{{ checksum "package-lock.json" }}
-          - v5-npm-dependencies-
+          - v6-node-dependencies-{{ checksum "package-lock.json" }}
+          - v6-node-dependencies-
 
       - run:
           name: Install awscli
@@ -56,22 +46,14 @@ jobs:
       - save_cache:
           paths:
             - /home/circleci/.cache
-          key: v5-python-dependencies-{{ checksum "requirements.txt" }}
-          
-      - save_cache:
-          paths:
             - /home/circleci/.local
-          key: v5-pip-dependencies-{{ checksum "requirements.txt" }}
-          
-      - save_cache:
-          paths:
-            - /home/circleci/repo/node_modules
-          key: v5-node-dependencies-{{ checksum "package-lock.json" }}
+          key: v6-python-dependencies-{{ checksum "requirements.txt" }}
           
       - save_cache:
           paths:
             - /home/circleci/.npm/
-          key: v5-npm-dependencies-{{ checksum "package-lock.json" }}
+            - /home/circleci/repo/node_modules
+          key: v6-node-dependencies-{{ checksum "package-lock.json" }}
         
       - store_artifacts:
           path: test-reports
