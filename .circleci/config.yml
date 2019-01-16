@@ -11,17 +11,17 @@ jobs:
 
       - restore_cache:
           keys:
-          - v8-python-dependencies-{{ checksum "requirements.txt" }}
-          - v8-python-dependencies-
+          - v9-python-dependencies-{{ checksum "requirements.txt" }}
+          - v9-python-dependencies-
           
       - restore_cache:
           keys:
-          - v8-node-dependencies-{{ checksum "package-lock.json" }}
-          - v8-node-dependencies-
+          - v9-node-dependencies-{{ checksum "package-lock.json" }}
+          - v9-node-dependencies-
 
       - run:
           name: Install awscli
-          command: sudo pip install awscli
+          command: pip install awscli
 
       - run:
           name: install dependencies
@@ -45,16 +45,15 @@ jobs:
 
       - save_cache:
           paths:
-            - /usr/local/lib/python3.6/site-packages/
             - /home/circleci/.cache
             - /home/circleci/.local
-          key: v8-python-dependencies-{{ checksum "requirements.txt" }}
+          key: v9-python-dependencies-{{ checksum "requirements.txt" }}
           
       - save_cache:
           paths:
             - /home/circleci/.npm/
             - /home/circleci/repo/node_modules
-          key: v8-node-dependencies-{{ checksum "package-lock.json" }}
+          key: v9-node-dependencies-{{ checksum "package-lock.json" }}
         
       - store_artifacts:
           path: test-reports
