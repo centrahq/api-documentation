@@ -12,14 +12,20 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v3-dependencies-{{ checksum "requirements.txt" }}
-          - v3-dependencies-
+          - v4-dependencies-{{ checksum "requirements.txt" }}
+          - v4-dependencies-
           
       # Download and cache npm dependencies
       - restore_cache:
           keys:
-          - v3-npm-dependencies-{{ checksum "package-lock.json" }}
-          - v3-npm-dependencies-
+          - v4-node-dependencies-{{ checksum "package-lock.json" }}
+          - v4-node-dependencies-
+          
+      # Download and cache npm dependencies
+      - restore_cache:
+          keys:
+          - v4-npm-dependencies-{{ checksum "package-lock.json" }}
+          - v4-npm-dependencies-
 
       - run:
           name: Install awscli
@@ -47,13 +53,18 @@ jobs:
 
       - save_cache:
           paths:
-            - .cache
-          key: v3-dependencies-{{ checksum "requirements.txt" }}
+            - /home/circleci/.cache
+          key: v4-dependencies-{{ checksum "requirements.txt" }}
           
       - save_cache:
           paths:
-            - node_modules
-          key: v3-npm-dependencies-{{ checksum "package-lock.json" }}
+            - /home/circleci/repo/node_modules
+          key: v4-node-dependencies-{{ checksum "package-lock.json" }}
+          
+      - save_cache:
+          paths:
+            - /home/circleci/.npm/
+          key: v4-npm-dependencies-{{ checksum "package-lock.json" }}
         
       - store_artifacts:
           path: test-reports
