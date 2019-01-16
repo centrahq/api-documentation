@@ -12,10 +12,14 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v2-dependencies-{{ checksum "requirements.txt" }}
-          - v2-npm-dependencies-{{ checksum "package-lock.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v2-dependencies-
+          - v3-dependencies-{{ checksum "requirements.txt" }}
+          - v3-dependencies-
+          
+      # Download and cache npm dependencies
+      - restore_cache:
+          keys:
+          - v3-npm-dependencies-{{ checksum "package-lock.json" }}
+          - v3-npm-dependencies-
 
       - run:
           name: Install awscli
