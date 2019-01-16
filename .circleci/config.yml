@@ -6,9 +6,7 @@ jobs:
       
     working_directory: ~/repo
        
-    steps:
-      - run: echo 'export PATH=/home/circleci/.local/bin:$PATH' >> /home/circleci/.bashrc
-    
+    steps:    
       - checkout
 
       - restore_cache:
@@ -23,7 +21,7 @@ jobs:
 
       - run:
           name: Install awscli
-          command: pip install awscli --upgrade --user
+          command: sudo pip install awscli
 
       - run:
           name: install dependencies
