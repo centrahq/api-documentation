@@ -6,7 +6,12 @@ jobs:
       
     working_directory: ~/repo
 
+    environment:
+       BASH_ENV: ~/.bashrc
+       
     steps:
+      - run: echo 'export PATH=/home/circleci/.local/bin:$PATH' >> $BASH_ENV 
+    
       - checkout
 
       - restore_cache:
