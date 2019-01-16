@@ -1,0 +1,130 @@
+@import url("https://rsms.me/inter/inter-ui.css");
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+:after,
+:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Inter UI", sans-serif;
+  font-weight: 300;
+  line-height: 1.31579;
+}
+
+.c-heading {
+  color: #000;
+  font-weight: 700;
+  margin: 0 0 0.75em;
+}
+
+.c-heading--h1 {
+  font-size: 26px;
+}
+
+.c-not-found {
+  display: flex;
+  align-items: center;
+  max-width: 440px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 30px;
+  text-align: center;
+}
+
+.c-not-found svg {
+  margin-bottom: 20px;
+}
+
+.c-not-found__heading {
+  font-size: 32px;
+}
+
+.c-not-found p {
+  color: #737373;
+  font-size: 17px;
+}
+
+.c-button {
+  border: none;
+  padding: 0 10px;
+  min-width: 80px;
+  line-height: 30px;
+  border-radius: 5px;
+  background: #fff;
+  color: #262626;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  font-weight: normal;
+  font-size: 14px;
+  transition: all 0.05s ease-out;
+  display: inline-block;
+  text-align: center;
+  fill: currentColor;
+  user-select: none;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.c-button:hover,
+.c-button:focus {
+  outline: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (min-width: 540px) {
+  .c-button {
+      font-size: 15px;
+  }
+}
+
+@media (min-width: 960px) {
+  .c-button:hover,
+  .c-button:focus {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  .c-button:active {
+      transform: translateY(1px);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  }
+}
+
+.c-button--primary {
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+}
+
+.c-button--primary:hover,
+.c-button--primary:focus {
+  color: #fff;
+}
+
+.c-button--large {
+  min-width: 110px;
+  padding: 0 15px;
+  font-size: 16px;
+  line-height: 42px;
+  font-weight: bold;
+}
+
+@media (min-width: 540px) {
+  .c-button--large {
+      padding: 0 30px;
+  }
+}

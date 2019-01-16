@@ -10,6 +10,8 @@ pipeline {
         stage('Build html') {
             steps {
                 sh 'docker run -v $(pwd):/api-docs awscli make install'
+                sh 'docker run -v $(pwd):/api-docs awscli python -msphinx'
+                sh 'docker run -v $(pwd):/api-docs awscli echo 2'
                 sh 'docker run -v $(pwd):/api-docs awscli make html-production'
             }
         }
