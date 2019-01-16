@@ -10,7 +10,6 @@ pipeline {
         stage('Build html') {
             steps {
                 sh 'docker run awscli make install'
-		sh 'docker run awscli ls "./node_modules/.bin/parcel 2>/dev/null"'
 		sh 'docker run awscli ls "./api-docs/node_modules/.bin/parcel 2>/dev/null"'
                 sh 'docker run awscli make html-production'
             }
