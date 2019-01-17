@@ -19,7 +19,7 @@ These are some of the changes you need to know about when moving from v0 to v1. 
 ## Errors
 
 v1 has a consistent way of reporting errors. The response contains an "errors" object. If there are no "errors" in the JSON, there are no errors and everything went well.
-there's no need to check for "success" key in the response of the API v1. we need to only check if there's errors key. If errors key is missing in response, It means it was a success.
+There's no need to check for "success" key in the response of the API v1. We need to only check if there's errors key. If errors key is missing in response, it means it was a success.
 v1 also validates input, v0 does not. This means v1 will return an error when you send unknown fields in the request, while v0 would have just silently discarded them.
 
 Example:
