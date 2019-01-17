@@ -2,13 +2,13 @@
 
 This is how you set up the custom attributes for product, variants, orders and customers.
 
-The following structure is used in the `config.php` to define custom attributes on products, variants, accounts and orders. Attributes means that you can create arbitrary fields which will be available in the API and exports. There are different types of attributes.
+The following structure is used in the `config.php` to define custom attributes on products, variants, accounts and orders. Attributes allow you to create arbitrary fields that will be available in the API and exports. There are different types of attributes.
 
 The API-outputs defined below are using the Shop API, some differences might apply to other APIs, which will be defined in the corresponding API reference.
 
 ### Mapped attributes
 
-The normal attribute on a product or variant is one which is mapped to a attribute object which can contain meta-data. The reason for this is for example if you have a specific Color-attribute that contains the name, hex-code and image of the color. You do not want to upload these values every time, so one attribute is created, which you then link to the products that should have the color.
+The normal attribute on a product or variant is one which is mapped to an attribute object which can contain meta-data. There is a reason for this, for example: if you have a specific Color-attribute that contains the name, hex-code and image of the color. You do not want to upload these values every time, so an attribute is then created, which you then link to the products that should have the color.
 
 The structure looks something like this:
 
@@ -65,7 +65,7 @@ In the API, the values will come out like this:
 
 ### Dynamic attributes
 
-Dynamic attributes, compared to mapped attributes are not linked to any pre existing attribute, but have specific data for the specific product. This data needs to be set for each product instead of linking to an existing attribute. The difference between mapped and dynamic is that dynamic uses `"readonly": false` for the attribute.
+Dynamic attributes are in comparison to mapped attributes not linked to any pre existing attribute, but do have specific data for the specific products. This data needs to be set for each product instead of linking to an existing attribute. The difference between mapped and dynamic is that dynamic uses `"readonly": false` for the attribute.
 
 ```eval_rst
 .. note:: Please note that when you have ``"readonly": false`` on the attribute, only the element with the ``text`` key will be visible in the API for now. This means that if you need multiple elements you need multiple attributes as well.
@@ -110,7 +110,7 @@ And in the API, it will show up like this:
 
 ### Attribute groups
 
-The `group` on the attribute inside the `config.php` specifies where the attribute should be placed. The following groups exists today:
+The `group` on the attribute inside the `config.php` specifies where the attribute should be placed. The following groups exist today:
 
 ```eval_rst
 .. list-table::
@@ -137,7 +137,7 @@ The `group` on the attribute inside the `config.php` specifies where the attribu
 
 ### Attribute element types
 
-Element-type are inside the `elements`-property for the attribute `config.php`:
+Element-type is inside the `elements`-property for the attribute `config.php`:
 
 ```eval_rst
 .. code-block:: php
@@ -157,7 +157,7 @@ Element-type are inside the `elements`-property for the attribute `config.php`:
    ];
 ```
 
-The following element types exists today. Not all of them are supported for the Dynamic attributes (which are shown inline on each product/variant), so the support for the different options are listed below:
+The following element types exist today. Not all of them are supported for the Dynamic attributes (which are shown inline on each product/variant), so the support for the different options are listed below:
 
 ```eval_rst
 .. list-table::
