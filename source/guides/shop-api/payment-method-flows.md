@@ -1,10 +1,10 @@
 # Payment method flows
 
-Since all payment plugins works differently we have a few scenarios the website needs to handle to support all payment methods. These cases can occur when calling the `{selection}/payment`-endpoint.
+Since all payment plugins work differently we have a few scenarios when the website needs to handle to support all payment methods. These cases can occur when calling the `{selection}/payment`-endpoint.
 
 The basic logic for `{selection}/payment` should be built like this:
 
-1. Check if `errors` is set, if so, something failed, a `message`-property should be there, if not it's a generic error.
+1. Check if `errors` is set, if so, something failed and a `message`-property should be there. If not it's a generic error.
 2. If no `errors`, there should be an `action` with either `redirect`, `form` or `success`.
 3. If `success`, the order is completed directly.
 
@@ -149,8 +149,8 @@ We might also give a generic error, like this:
 Website is supposed to show the message field to the customer. We also append the code so they can use a fixed field to identify what type of error it was (for example to highlight the country-selector).
 
 #### 3. Special case: redirect back to payment
-This case was added lately when we noticed that one error we got just when we should complete the order in Paypal (Error 10486). They actually even wrote an article just about this error and how to recover from it.
-In this case, we are able to return a action with redirect even on `{selection}/payment-result`. We have made this an Opt-In on the Paypal plugin for now, since we know that most of our integration partners do not yet support this, and since it's really specific to the Paypal-API. (This might not be a problem in the new Express Checkout for Paypal).
+This case was added lately when we noticed an error we got just as we were completing the order in Paypal (Error 10486). They actually even wrote an article just about this error and how to recover from it.
+In this case, we are able to return an action with redirect even on `{selection}/payment-result`. We've made this an Opt-In on the Paypal plugin for now, since we know that most of our integration partners do not yet support this, and since it's really specific to the Paypal-API. (This might not be a problem in the new Express Checkout for Paypal).
 We send:
 
 ```json
