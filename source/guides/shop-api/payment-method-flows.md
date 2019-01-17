@@ -68,7 +68,7 @@ Website is either supposed to show the receipt directly (since all information i
 }
 ```
 
-The `affiliateHtml` is supposed to be injected for the customer for running Google Analytics tracking and other custom script the client needs to run on the receipt.
+The `affiliateHtml` is supposed to be injected for the customer to run Google Analytics tracking and other custom scripts that the client needs to run on the receipt.
 
 ### 4. Error
 
@@ -89,7 +89,7 @@ Website is supposed to show a failed payment page, and also, if we sent a messag
 
 ### Payment result types
 
-When the customer comes back to the website from the payment method, the website is supposed to send all variables it got to our API at `{selection}/payment-result`. Depending on the fields we get we will respond in different ways.
+When the customer comes back to the website from the payment method, the website is supposed to send all variables it got to our API at `{selection}/payment-result`. We will then respond in different ways depending on the fields we get.
 
 The basic logic for `{selection}/payment-result` should be built like this:
 
@@ -116,7 +116,7 @@ Website is supposed to show the receipt directly or redirect the user to a recei
 
 #### 2. Error
 
-This is when we for some reason will deny the payment before completing the order for some reason. For example, in Paypal, to streamline it nicely for the customer and to show the proper amount directly, we need to validate that the country we got from Paypal is the same one as we have on the order.
+This is when we for some reason deny the payment before completing the order for some reason. Take paypal as an example; in order to streamline it nicely for the customer and show the proper amount directly, we need to validate that the country we got from Paypal is the same one as we have on the order.
 We send:
 
 ```json
