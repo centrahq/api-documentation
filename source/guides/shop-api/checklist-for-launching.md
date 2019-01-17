@@ -1,6 +1,6 @@
 # Checklists for launching B2C
 
-Here is a list of things to consider and to make sure works when testing the site before going live using Shop API/Checkout API.
+Here is a list of things to consider and make sure work when testing the site before going live using Shop API/Checkout API.
 
 ## Needed from the Client
 
@@ -20,12 +20,12 @@ Here is a list of things to consider and to make sure works when testing the sit
 
        Are the payment plugins set up inside Centra?
 
-       Are the payment plugins prepared for the currencies the client want to sell with?
+       Are the payment plugins prepared for the currencies the client wants to sell with?
 
        Credentials for all payment plugins will be needed inside Centra.
 
    * - **Languages**
-     - Will the client translate their page from the start or will they do this later on, or use an external Partner for this such as Translate.com?
+     - Will the client translate their page from the start or later on? Or will they use an external Partner for this such as Translate.com?
 
    * - **Category structure**
      - What type of category structure will the client use?
@@ -88,9 +88,9 @@ Here is a list of things to consider and to make sure works when testing the sit
 
        See that it is changing the pricelist and the shipping country in the checkout.
 
-       Also verify that countries which are not present in the shipping lists is not present in the country selector.
+       Also verify that countries which are not present in the shipping lists are not present in the country selector.
 
-       Countries which do not exists in the shipping lists should not be possible to place orders to and does not need to show up in the country selector.
+       You should not be able to place orders to countries that don't exist in the shipping list and these contries don't need to show up in the country selector.
 
    * - **Checkout**
      - Verify that additional errors show up.
@@ -100,7 +100,7 @@ Here is a list of things to consider and to make sure works when testing the sit
      - Verify that the country selector works.
      - Verify that the shipping values and currency changes when switching country.
 
-       Also verify that the country selector is hiding countries which is not present in any active shipping list. If they are present anyway, the should be showing the customer an error message telling them that the country is not available to place orders for at the moment.
+       Also verify that the country selector is hiding countries that are not present in any active shipping list. If they are present anyway, they should be showing the customer an error message telling them that the country is not available to place orders for at the moment.
 
    * - **Checkout**
      - Verify that default payment plugin works.
@@ -112,11 +112,11 @@ Here is a list of things to consider and to make sure works when testing the sit
 
    * - **Checkout**
      - Selection listing removal check.
-     - If you press the Remove item-button for the last item in the order, you should be presented with an "You're about to clear your basket"-confirm popup.
+     - If you press the Remove item-button for the last item in the order, you should be presented with an "You're about to clear your basket"-confirmation popup.
 
    * - **Checkout**
      - Selection listing removal check.
-     - If you lower the items for the last products to 0, you should get an "You're about to clear your basket"-confirm popup.
+     - If you lower the items for the last products to 0, you should get an "You're about to clear your basket"-confirmation popup.
 
    * - **Checkout**
      - Selection listing linking.
@@ -126,7 +126,7 @@ Here is a list of things to consider and to make sure works when testing the sit
      - Payment option selection.
      - Verify that the customer can select different payment options, sometimes depending on the currency/country. Check in Centra under SYSTEM / STORES to verify what payment plugins that are available. Change the country in the checkout so you can see that the correct payment methods show up for that country.
 
-       Verify that you will be redirected correctly to each payment option and that correct payment methods is removed if a country which does not have them available is selected.
+       Verify that you will be redirected correctly to each payment option and that correct payment methods are removed if a country which does not have them available is selected.
 
    * - **Checkout**
      - Payment production settings.
@@ -190,18 +190,18 @@ Here is a list of things to consider and to make sure works when testing the sit
 
    * - **Product Page**
      - Selected size.
-     - Is there any visual indication what size is currently selected?
+     - Is there any visual indication of what size is currently selected?
 
    * - **Product Page**
      - Selected variant/color.
-     - Is there any visual indication what variant is currently selected?
+     - Is there any visual indication of what variant is currently selected?
 
    * - **Product Page**
      - Adding of products.
-     - When you've added a product, are you able to select another size and add that one as well for the same product?
+     - When you've added a product, are you able to select and add another size for the same product?
 
    * - **Product Page**
      - Adding of products.
-     - When you've added a product, are you able to select another color and add that one a swell for the same product?
+     - When you've added a product, are you able to select and add another color for the same product?
 
 ```
