@@ -2,7 +2,7 @@
 
 ```eval_rst
 .. api-name:: Order API
-   :version: soon deprecated
+   :version: 1
 ```
 
 The Order API is mostly used for pick & pack services to finalize already placed orders. It can create and fetch supplier orders. It supports inserting regular orders directly without working with an open cart, which means the order was settled outside of Centra.

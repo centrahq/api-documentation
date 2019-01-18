@@ -2,7 +2,7 @@
 
 ```eval_rst
 .. api-name:: Checkout API
-   :version: soon deprecated
+   :version: 1
 ```
 
 ```eval_rst

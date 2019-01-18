@@ -2,7 +2,7 @@
 
 ```eval_rst
 .. api-name:: Subscription API
-   :version: soon deprecated
+   :version: 1
 
 .. endpoint::
    :method: POST

@@ -6,7 +6,7 @@
 
 ```eval_rst
 .. api-name:: Order API
-   :version: soon deprecated
+   :version: 1
 
 .. endpoint::
    :method: POST

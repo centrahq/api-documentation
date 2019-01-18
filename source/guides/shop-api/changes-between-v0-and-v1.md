@@ -2,7 +2,7 @@
 
 ```eval_rst
 .. api-name:: Shop API
-   :version: soon deprecated
+   :version: 1
 ```
 
 This explains the current changes from Shop API v0 to v1.

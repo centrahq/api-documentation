@@ -2,7 +2,7 @@
 
 ```eval_rst
 .. api-name:: Subscription API
-   :version: soon deprecated
+   :version: 1
 ```
 
 The Subscription API is used for recurring sales where the orders are created automatically using a specified subscription period. Using the API you are able to create new subscriptions that will authorize the payment provider and enable orders to be created.

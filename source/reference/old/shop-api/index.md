@@ -2,7 +2,7 @@
 
 ```eval_rst
 .. api-name:: Shop API
-   :version: soon deprecated
+   :version: 1
 ```
 
 The following endpoints are documented:
