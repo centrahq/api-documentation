@@ -19,7 +19,7 @@ class ApiNameDirective(Directive):
             if str.isdigit(self.options["version"]):
                 api_version_str = "v" + self.options["version"]
             else:
-                api_version_str = self.options["version"]
+                api_version_str = "" #self.options["version"]
             api_version_line = nodes.inline(text=self.options["version"])
 
             api_version_line["classes"].append("api-name__version")
