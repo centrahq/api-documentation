@@ -21,7 +21,7 @@ class ApiNameDirective(Directive):
             else:
                 api_version_str = self.options["version"]
 
-            api_version_line = nodes.inline(text=self.options["version"])
+            api_version_line = nodes.inline(text=api_version_str)
 
             api_version_line["classes"].append("api-name__version")
 
