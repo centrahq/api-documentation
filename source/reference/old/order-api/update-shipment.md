@@ -34,6 +34,13 @@ If you need to remove the shipment, use the [Delete Shipment](delete-shipment) m
 .. list-table::
    :widths: auto
 
+   * - ``shipmentId``
+
+       .. type:: string
+          :required: true
+
+     - The ID from `shipment` when creating or updating a shipment.
+     
    * - ``gtg``
 
        .. type:: boolean
