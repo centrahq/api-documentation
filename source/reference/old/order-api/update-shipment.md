@@ -39,7 +39,7 @@ If you need to remove the shipment, use the [Delete Shipment](delete-shipment) m
        .. type:: string
           :required: true
 
-     - The ID from `shipment` when creating or updating a shipment.
+     - The ID from ``shipment`` when creating or updating a shipment.
      
    * - ``gtg``
 
