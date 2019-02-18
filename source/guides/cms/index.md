@@ -1,5 +1,7 @@
 # CMS overview
 
+Centra includes a lightweight CMS module that can be optionally activated. The CMS is fully headless and can be useful for applications when it is desirable to avoid having to integrate a full-scale CMS. The lightweight CMS is well-aligned to the e-commerce functionality in Centra and offers full multi-language support, but it does not support different editor roles or content version management.
+
 This is how you set up the CMS-settings for your store.
 
 The Centra CMS is based on a structure divided into the following tree:

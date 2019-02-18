@@ -5,7 +5,9 @@
    :version: 1
 ```
 
-The Store API is not yet released. We will soon post updates about the introduction of the Store API.
+```eval_rst
+.. note:: The Store API is not yet released. We will soon post updates about the introduction of the Store API.
+```
 
 ## Existing APIs
 

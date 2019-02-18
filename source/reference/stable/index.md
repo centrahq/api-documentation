@@ -1,6 +1,6 @@
-# Existing APIs
+# Stable APIs
 
-You can find API reference for our existing APIs here:
+This section contains API documentation for our production quality APIs:
 
 * [Order API](/reference/stable/order-api/index) - Used for backend implementations using a REST API to handle orders, customers and products.
 * [Shop API](/reference/stable/shop-api/index) - Used for server-side implementation of an e-commerce website.

@@ -5,10 +5,6 @@
    :version: 1
 ```
 
-```eval_rst
-.. note:: Please note that this part of the API is not available for everyone yet. It is still under development.
-```
-
 ## Overview
 
 A **product** has an array of **items**. An item is the thing you buy, what you add to a selection (also called cart, basket). For clothes, the items correspond to sizes of the product, and you would buy a sweater (product) in size M (item).
