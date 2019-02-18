@@ -25,7 +25,7 @@ This will complete the subscription. Often called when user comes back to `payme
        .. type:: string
           :required: true
 
-     - The subscription ID from :doc:`Create Subscription </reference/old/subscription-api/create-subscription>`.
+     - The subscription ID from :doc:`Create Subscription </reference/stable/subscription-api/create-subscription>`.
 
    * - ``payment``
 
@@ -36,7 +36,7 @@ This will complete the subscription. Often called when user comes back to `payme
 
    * - **[all GET/POST params sent by payment provider]**
 
-     - Attach all GET/POST parameters sent from the payment provider to the ``payment_url`` from :doc:`Create Subscription </reference/old/subscription-api/create-subscription>`. These will be used to validate if the payment was successful.
+     - Attach all GET/POST parameters sent from the payment provider to the ``payment_url`` from :doc:`Create Subscription </reference/stable/subscription-api/create-subscription>`. These will be used to validate if the payment was successful.
 
 ```
 

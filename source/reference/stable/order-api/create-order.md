@@ -370,7 +370,7 @@ Here are the parameters allowed to create an order. There are some fields specif
        .. type:: boolean
           :required: false
 
-     - Default ``false``. Only prepare the order with all data, can be finalized later using :doc:`completeOrder </reference/old/order-api/complete-order>`.
+     - Default ``false``. Only prepare the order with all data, can be finalized later using :doc:`completeOrder </reference/stable/order-api/complete-order>`.
 
    * - ``internalOrder``
 

@@ -3,12 +3,12 @@
 
 {% include 'api-version-switcher.html' %}
 
-<div class="sidebar__group {{ sidebar_collapse_group('reference/v1/store-api/') }}">
+<div class="sidebar__group {{ sidebar_collapse_group('reference/beta/store-api/') }}">
  <p><a href="javascript:void(0)">Store API <code class="sidebar__beta">Beta</code></a></p>
 
  <ul>
   {{ sidebar_item(
-   'reference/v1/store-api/index',
+   'reference/beta/store-api/index',
    'Overview'
   ) }}
  </ul>
@@ -16,7 +16,7 @@
 
 <div class="sidebar__spacing"></div>
 
-<div class="sidebar__group {{ sidebar_collapse_group('reference/v1/backend-api/') }}">
+<div class="sidebar__group {{ sidebar_collapse_group('reference/beta/backend-api/') }}">
   <p><a href="javascript:void(0)">Backend API <code class="sidebar__beta">Beta</code></a></p>
 
  <ul>
@@ -25,7 +25,7 @@
    'GraphQL'
   ) }}
   {{ sidebar_item(
-   'reference/v1/backend-api/graphql',
+   'reference/beta/backend-api/graphql',
    'GraphQL',
    'POST /graphql'
   ) }}

@@ -1,13 +1,5 @@
 {% from 'macros/sidebar-item.html' import sidebar_item with context -%}
 
-<div class="sidebar__group">
- <p>Store API <code class="sidebar__beta">Beta</code></p>
-
- <ul>
-  {{ sidebar_item('guides/store-api/index', 'Overview') }}
- </ul>
-</div>
-
 <!--<div class="sidebar__group">
  <p>Backend API <code class="sidebar__beta">Beta</code></p>
 
@@ -30,7 +22,7 @@
 </div>
 
 <div class="sidebar__group">
- <p>Shop API <code>Soon deprecated</code></p>
+ <p>Shop API <code>Stable release</code></p>
 
  <ul>
   {{ sidebar_item('guides/shop-api/index', 'Overview') }}
@@ -42,10 +34,18 @@
 </div>
 
 <div class="sidebar__group">
- <p>Checkout API <code>Soon deprecated</code></p>
+ <p>Checkout API <code>Stable release</code></p>
 
  <ul>
   {{ sidebar_item('guides/checkout-api/index', 'Overview') }}
   {{ sidebar_item('https://docs.centra.com/swagger-ui?api=CheckoutAPI', 'Swagger UI') }}
+ </ul>
+</div>
+
+<div class="sidebar__group">
+ <p>Store API <code class="sidebar__beta">Private Beta</code></p>
+
+ <ul>
+  {{ sidebar_item('guides/store-api/index', 'Overview') }}
  </ul>
 </div>

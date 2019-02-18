@@ -12,13 +12,13 @@
    :api_key: true
 ```
 
-If [Create Order](/reference/old/order-api/create-order) was used with `createOnly` set as `true`, the order will only be prepared but not finalized. By using the Complete Order-endpoint you can finalize the order to be placed properly as a second step from creating the order. This might be necessary if you first need to make sure the order can be placed (Create Order) and then finalize it after you've verified the payment (Complete Order).
+If [Create Order](/reference/stable/order-api/create-order) was used with `createOnly` set as `true`, the order will only be prepared but not finalized. By using the Complete Order-endpoint you can finalize the order to be placed properly as a second step from creating the order. This might be necessary if you first need to make sure the order can be placed (Create Order) and then finalize it after you've verified the payment (Complete Order).
 
 The Create Order call is the one validating that the products exists in stock, so if the Complete Order-call is made much later than the Create Order-call, there might be products back ordered inside the finalized order.
 
 ## Parameters
 
-The following parameters are explained in the [Create Order](/reference/old/order-api/create-order)-call, but are also supported when completing the order.
+The following parameters are explained in the [Create Order](/reference/stable/order-api/create-order)-call, but are also supported when completing the order.
 
 ```eval_rst
 .. list-table::
