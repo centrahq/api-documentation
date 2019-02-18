@@ -1,16 +1,8 @@
 {%- set is_v1 = "/beta/" in pagename -%}
 {%- set is_old = "/stable/" in pagename -%}
 
-{%- set pagename_v1 = pagename.replace("/v2/", "/beta/").replace("/old/", "/beta/") -%}
-{%- set pagename_old = pagename.replace("/v1/", "/stable/").replace("/v2/", "/stable/") -%}
-
-{%- if not hasdoc(pagename_v1) -%}
- {%- set pagename_v1 = "reference/beta/store-api/index" -%}
-{%- endif -%}
-
-{%- if not hasdoc(pagename_old) -%}
- {%- set pagename_old = "reference/stable/index" -%}
-{%- endif -%}
+{%- set pagename_v1 = "reference/beta/store-api/index" -%}
+{%- set pagename_old = "reference/stable/index" -%}
 
 <div class="api-version-switcher">
  <select class="link-dropdown" data-enhancer="link-dropdown">
