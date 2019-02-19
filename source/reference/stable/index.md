@@ -9,7 +9,7 @@ This section contains API documentation for our production quality APIs:
    :class: api-table
    
    ======================== ===================== ==================================================== ============================================================================================= ================
-    API                                                             Type        Security                                             Description                                                                                   Status
+    API                      Type                  Security                                             Description                                                                                   Status
    ======================== ===================== ==================================================== ============================================================================================= ================
    `Shop API`_               REST/JSON             Authentication mandatory                             Used for server-side implementation of an e-commerce website.                                 Stable release
    `Checkout API`_           REST/JSON             Directly callable from a JavaScript store frontend   Used for client-side implementation of an e-commerce website.                                 Stable release
