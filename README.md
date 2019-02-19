@@ -1,6 +1,6 @@
 # Centra public API documentation
 
-This project contains the source of Centra's public API documentation. The documentation is located at https://docs.centra.com.
+This project contains the source of Centra's public API documentation. The documentation is located at https://docs.centra.com. 
 
 ### Thanks
 
