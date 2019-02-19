@@ -7,6 +7,9 @@
 
 ## Overview
 
+```note:: There is no guaranteed performance for products and categories endpoints in Checkout API. For applications under the heavy load, please consider using Shop API equivalens with an addtional caching mechanism on top.
+```
+
 A **product** has an array of **items**. An item is the thing you buy, what you add to a selection (also called cart, basket). For clothes, the items correspond to sizes of the product, and you would buy a sweater (product) in size M (item).
 
 Products are organized into **categories**. Each category contains a list of products. A category can also contain categories. For example, one category could be "Clothes" and that could contain a category called "Sweaters".
