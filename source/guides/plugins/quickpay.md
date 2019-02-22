@@ -4,7 +4,10 @@ This is information about the plugin using QuickPay Payment Protocol v10. In Cen
 
 ## Gather information from QuickPay
 
-![](images/quickpay.png)
+```eval_rst
+.. image:: images/quickpay.png
+   :scale: 50 %
+```
 
 You need the following data:
 
@@ -15,17 +18,26 @@ You need the following data:
 
 In QuickPay, you will find this information under Settings / Integration:
 
-![](images/quickpay-menu.png)
+```eval_rst
+.. image:: images/quickpay-menu.png
+   :scale: 50 %
+```
 
 And you will see both Merchant ID and Agreement ID, clicking the buttons will reveal the Private Key and the API-key:
 
-![](images/quickpay-settings.png)
+```eval_rst
+.. image:: images/quickpay-settings.png
+   :scale: 50 %
+```
 
 ### Create the plugin in Centra
 
 Add `QuickPay v3` to your store you want to use it for. Insert the data gathered above and place it in the following fields:
 
-![](images/quickpay-centra-settings.png)
+```eval_rst
+.. image:: images/quickpay-centra-settings.png
+   :scale: 50 %
+```
 
 Select if you want to pricelist/market/country restrict the plugin, then save.
 
@@ -68,7 +80,10 @@ The customer will either be redirected to the `paymentReturnPage` or the `paymen
 
 To test the flow, you first need to enable "Allow Test transactions" in QuickPay:
 
-![](images/quickpay-test.png)
+```eval_rst
+.. image:: images/quickpay-test.png
+   :scale: 50 %
+```
 
 You also need enable Test Mode in the Centra-plugin. This is the only way to get test-payments approved.
 
