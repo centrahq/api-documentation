@@ -24,18 +24,18 @@ The Centra CMS is based on a structure divided into the following tree:
               .. list-table::
                  :widths: auto
 
-                 * - **Pages**
+                 * - **Parts**
 
-                   - Each article has multiple :ref:`pages <pages>`.
+                   - Each article has multiple :ref:`parts <parts>`.
 
-                     A page can have different sorts of :ref:`Page templates <page-templates>`.
+                     One part can have different sorts of :ref:`Part templates <part-templates>`.
 
                      .. list-table::
                         :widths: auto
 
                         * - **Slots**
 
-                          - A page template can have multiple :ref:`slots <slots>`.
+                          - A part template can have multiple :ref:`slots <slots>`.
 
                             Each slot has different :doc:`Slot properties </guides/cms/slot-properties>`.
 ```
@@ -45,7 +45,7 @@ All these different levels are dynamic and can handle multiple properties.
 The structure is based on this concept:
 
 * You can have multiple sections, and in each section you can have multiple articles.
-* You can have multiple pages in an article, and each page has a template.
+* You can have multiple parts in an article, and each part has a template.
 * Each template can have multiple slots, and each slot has different settings depending on the slot type.
 
 Then, we have a few different types of slots:
@@ -102,7 +102,7 @@ For each section, the `key` for each element (ex: `info` and `news`) is the ID o
 
    * - ``setting``
      - :ref:`Section settings <section-settings>` for this section.
-     - ``['template'=>'default_template', 'pages'=>1]``
+     - ``['template'=>'default_template', 'parts'=>1]``
 ```
 
 ```eval_rst
@@ -116,16 +116,16 @@ The section settings define how the section should look, like and behave. The fo
 .. list-table::
    :widths: auto
 
-   * - ``pages``
+   * - ``parts``
 
        .. type:: int/boolean
           :required: false
 
-     - Default ``true``. Max amount of pages allowed per article for this section.
+     - Default ``true``. Max amount of parts allowed per article for this section.
 
        * ``true`` means unlimited.
-       * ``2`` means two pages allowed.
-       * ``0`` means no pages at all.
+       * ``2`` means two parts allowed.
+       * ``0`` means no parts at all.
 
    * - ``template``
 
@@ -232,20 +232,20 @@ The following keys and API-fields correspond to the image above. The `key`-field
      - ``"relatedArticles": []``
      - List of articles related to this article.
 
-   * - **Pages**
+   * - **Parts**
      -
      - ``"parts": []``
-     - List of the pages for the article.
+     - List of the parts for the article.
 
 ```
 
 
 ```eval_rst
-.. _pages:
+.. _parts:
 ```
-## Pages
+## Parts
 
-Each page in an article can have a status (being enabled or not), a sort and a template set. Each page looks like this in the API:
+Each part in an article can have a status (being enabled or not), a sort and a template set. Each part looks like this in the API:
 
 ```eval_rst
 .. code-block:: json
@@ -259,11 +259,11 @@ Each page in an article can have a status (being enabled or not), a sort and a t
 ```
 
 ```eval_rst
-.. _page-templates:
+.. _part-templates:
 ```
-## Page Templates
+## Part Templates
 
-Page templates are set in the config using `['CMS_CONF']['TEMPLATES']` in `config.php`:
+Part templates are set in the config using `['CMS_CONF']['TEMPLATES']` in `config.php`:
 
 ```eval_rst
 .. code-block:: php
