@@ -158,7 +158,10 @@ The section settings define how the section should look, like and behave. The fo
 
 The default view when creating articles inside a section looks like this:
 
-![](images/create-view.png)
+```eval_rst
+.. image:: images/create-view.png
+   :scale: 50 %
+```
 
 The following keys and API-fields correspond to the image above. The `key`-field can be used for section settings to hide fields in the section. The API-field is what you get when querying the API.
 
@@ -304,7 +307,10 @@ Part templates are set in the config using `['CMS_CONF']['TEMPLATES']` in `confi
 
 In this case, this template will look like this:
 
-![](images/cms-info_item-template.png)
+```eval_rst
+.. image:: images/cms-info_item-template.png
+   :scale: 50 %
+```
 
 And in the API, the data will look like this:
 
