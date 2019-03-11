@@ -28,6 +28,7 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: pink;
 }
 
 *,
@@ -36,10 +37,6 @@ html {
   box-sizing: inherit;
   outline-width: thin;
   outline-color: $brand-primary;
-}
-
-body {
-  padding-top: 45px;
 }
 
 ul,
@@ -216,8 +213,9 @@ a.headerlink::before {
 @import 'components/products-navigation';
 @import 'components/products-navigation-items';
 @import 'components/sidebar';
-@import 'components/sub-navigation';
-@import 'components/sub-navigation-item';
+@import 'components/navigation-search';
+@import 'components/navigation';
+@import 'components/navigation-item';
 @import 'components/type';
 @import 'components/payment-method-switcher';
 

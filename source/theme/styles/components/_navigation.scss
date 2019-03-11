@@ -1,0 +1,104 @@
+$navigation-height: 100px;
+$navigation-height-collapsed: 80px;
+$menu-breakpoint: 715px;
+
+.navigation-wrapper {
+  position: relative;
+  background: #000;
+  z-index: 0;
+}
+
+.navigation {
+  height: 66px;
+  padding: 0 26px;
+  max-width: 100vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @media (min-width: $menu-breakpoint) {
+    overflow: hidden;
+  }
+}
+
+.navigation--small, .navigation--small .navigation__items {
+  @media (min-width: $menu-breakpoint) {
+    transform: translateY(0);
+  }
+}
+
+.navigation--small:hover {
+  transform: translateY(45px);
+}
+
+.navigation__items {
+  @include bare-list;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  margin-bottom: 0;
+  transition: transform 0.2s ease-out;
+
+  @media (min-width: $menu-breakpoint) {
+    justify-content: center;
+  }
+}
+
+.navigation__item {
+  margin-right: 60px;
+  white-space: nowrap;
+}
+
+.navigation__item:nth-last-child(2) {
+  margin-right: 30px;
+}
+
+.navigation__item:last-child {
+  margin-right: 0;
+  padding-left: 30px;
+}
+
+@media (max-width: breakpoint("medium")) {
+  .navigation__item:first-child {
+    margin-left: 30px;
+  }
+
+  .navigation__item:last-child a {
+    margin-right: 30px;
+  }
+}
+
+.navigation-background {
+  position: absolute;
+  width: 100%;
+  height: 261px;
+  top: 0;
+  left: 0;
+  z-index: -5;
+}
+
+.navigation-background__slider {
+  position: absolute;
+  top: 44px;
+  left: 14%;
+}
+
+.navigation-background__stack {
+  position: absolute;
+  top: 41px;
+  right: 27%;
+}
+
+.navigation-background__smile {
+  position: absolute;
+  top: 165px;
+  left: 10%;
+}
+
+.navigation-background__hand {
+  position: absolute;
+  top: 142px;
+  left: 10%;
+}
