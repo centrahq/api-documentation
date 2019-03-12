@@ -83,22 +83,43 @@ $menu-breakpoint: 715px;
   position: absolute;
   top: 44px;
   left: 14%;
+  width: 133px;
+  height: 101px;
+  background: transparent url('./../../_static/img/slider.svg') no-repeat center center;
 }
 
 .navigation-background__stack {
   position: absolute;
   top: 41px;
   right: 27%;
+  width: 137px;
+  height: 113px;
+  background: transparent url('./../../_static/img/stack.svg') no-repeat center center;
 }
 
 .navigation-background__smile {
   position: absolute;
   top: 165px;
   left: 10%;
+  width: 76px;
+  height: 60px;
+  background: transparent url('./../../_static/img/smile.svg') no-repeat center center;
 }
 
 .navigation-background__hand {
   position: absolute;
   top: 142px;
-  left: 10%;
+  right: 10%;
+  width: 189px;
+  height: 100px;
+  background: transparent url('./../../_static/img/hand.svg') no-repeat center center;
+}
+
+.navigation-background__circle-outlined {
+  position: absolute;
+  top: 219px;
+  right: 41%;
+  width: 97px;
+  height: 40px;
+  background: transparent url('./../../_static/img/circle-outlined.svg') no-repeat center center;
 }
