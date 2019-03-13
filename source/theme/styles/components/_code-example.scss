@@ -47,10 +47,38 @@
   margin-bottom: 40px;
 }
 
-.rst-content .highlighttable {
-  border: 1px solid $grey-medium;
+.rst-content [id$="-example"] h2 {
+  margin: 0;
+  padding: 17px 24px;
+  display: inline-block;
+  background: #F2F3F4;
+  border-radius: 4px 4px 0px 0px;
+  font-weight: 500;
+  font-size: 17px;
+  color: #3C3C3C;
+}
+
+.rst-content [id$="-example"] .highlight-http.notranslate {
+  position: relative;
+  display: flex;
+  background-color: #F2F3F4;
   border-radius: 4px;
   margin-bottom: 40px;
+}
+
+.rst-content [id$="-example"] .highlight-http.notranslate::after {
+  content: '';
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid #DFDFE4;
+}
+
+.rst-content [id$="-example"] .highlighttable {
+  margin-top: 0;
+  margin-bottom: 9px;
   display: block;
   padding-right: 30px;
   overflow: auto;
@@ -68,8 +96,6 @@
 
 .rst-content .section .highlighttable tr td.linenos {
   padding-right: 0;
-  background-color: #fcfcfc;
-  border-right: 1px solid $grey-medium;
 }
 
 .rst-content .section .highlighttable tr td.code {
@@ -77,12 +103,18 @@
 }
 
 .rst-content .highlight {
-  background: #fff;
+  background: transparent;
+}
+
+.rst-content .highlighttable .linenodiv {
+  color: #BDBDBD;
+  line-height: 30px;
+  font-size: 12px;
 }
 
 .rst-content .highlighttable pre {
   min-height: 0;
-  padding-bottom: 10px;
+  padding: 25px 0 25px 19px;
 }
 
 .rst-content .highlight pre {
