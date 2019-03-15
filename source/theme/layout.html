@@ -34,13 +34,15 @@
   {% include 'navigation.html' %}
 
   <div class="l-wrapper l-wrapper--fluid main">
+    <div class="l-wrapper__left-padding"></div>
     <div class="main__inner" data-enhancer="sidebar">
-      <nav class="main__sidebar">
-        <div class="sidebar js-mobile-sidebar">
+      <nav class="main__sidebar" id="main-sidebar">
+        <div class="sidebar js-mobile-sidebar" id="sidebar">
           <div class="sidebar__inner" role="navigation" aria-label="main navigation">
             {% include 'sidebar.html' %}
           </div>
         </div>
+        <a class="navigation__contact-us" id="contact-us" href="https://support.centra.com">Contact us</a>
       </nav>
 
       <section class="main__content">
@@ -59,6 +61,7 @@
         </div>
       </section>
     </div>
+    <div class="l-wrapper__right-padding"></div>
   </div>
   <footer class="footer">
     <!--

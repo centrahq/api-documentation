@@ -1,31 +1,14 @@
 .sidebar {
+  padding-right: 10px;
   color: #000;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  right: 0px;
-  position: fixed;
-  background-color: #fff;
-  z-index: 2;
-  height: auto;
   overflow-y: auto;
   pointer-events: none;
-  padding-left: 50px;
+  padding-left: 40px;
   -webkit-overflow-scrolling: touch;
-  display: none;
+  pointer-events: auto;
 
-  @media (min-width: $mobile-navigation-breakpoint) {
-    padding-left: 0;
-    padding-right: 0;
-    position: relative;
-    pointer-events: auto;
-    overflow: visible;
-    left: auto;
-    top: 0;
-    right: auto;
-    bottom: auto;
-    z-index: 0;
-    display: block;
+  @media (max-width: breakpoint("extra-large")) {
+    display: none;
   }
 }
 

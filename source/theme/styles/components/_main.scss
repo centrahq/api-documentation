@@ -1,28 +1,24 @@
+#contact-us {
+  display: none;
+}
+
 .main__inner {
   display: flex;
   flex-wrap: nowrap;
 
-  @media (min-width: $mobile-navigation-breakpoint) {
+  @media (max-width: breakpoint("extra-large")) {
     width: 100%;
   }
 }
 
 .main__sidebar {
-  min-width: 200px;
-  position: fixed;
-  z-index: 3;
+  min-width: 290px;
   transition: 300ms transform ease-in-out;
+  background-color: #F7F8FA;
 
-  @media (min-width: $mobile-navigation-breakpoint) {
-    width: 200px;
-    z-index: auto;
-    position: relative;
-    display: block;
-  }
-
-  @media (min-width: breakpoint('extra-large')) {
-    min-width: 260px;
-    width: 260px;
+  @media (max-width: breakpoint('extra-large')) {
+    width: 354px;
+    display: none;
   }
 }
 
@@ -32,20 +28,13 @@
   width: 100%;
   padding-left: 0;
   padding-right: 0;
-}
 
-.main__content::before {
+  @media (max-width: breakpoint('extra-large')) {
+    margin-top: 88px;
+  }
+
   @media (max-width: $mobile-navigation-breakpoint) {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: transparent;
-    pointer-events: none;
-    z-index: 2;
-    transition: 200ms background ease-in-out;
+    padding: 0 23px;
   }
 }
 
@@ -55,5 +44,51 @@
 
   @media (min-width: $mobile-navigation-breakpoint) {
     width: 90%;
+  }
+}
+
+@media (max-width: breakpoint('extra-large')) {
+  .sidebar.show-sidebar {
+    display: block;
+  }
+  
+  nav.show-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 10;
+    top: 88px;
+    height: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  nav.show-sidebar::after {
+    content: '';
+    position: absolute;
+    z-index: 9;
+    width: 100vw;
+    height: 100%;
+    background-color: #fff;
+    opacity: .28;
+    top: -88px;
+    left: 354px;
+  }
+
+  #contact-us.show-contact-us {
+    display: inline-block;
+    margin-right: 48px;
+    margin-left: auto;
+    margin-bottom: 130px;
+  }
+}
+
+@media (max-width: $mobile-navigation-breakpoint) {
+  nav.show-sidebar {
+    width: 290px;
+  }
+
+  nav.show-sidebar::after {
+    left: 290px;
   }
 }

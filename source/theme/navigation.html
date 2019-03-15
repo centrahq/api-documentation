@@ -8,56 +8,56 @@
         <a class="navigation__link navigation__link-developers is-active" href="https://docs.centra.com">Developers</a>
       </div>
     </div>
-    <ul class="navigation__items">
-      <li class="navigation-item navigation__item {% if not pagename.startswith("reference/") and not pagename.startswith("changelog/") and not pagename.startswith("guides/") -%} navigation-item--active {%- endif %} js-navigation-item">
-        <a href="{{ linkto('index') }}" class="navigation-item__link">
-          <span class="navigation-item__text">
-            Overview
-          </span>
-          <span class="navigation-item__dot"/>
-        </a>
-      </li>
-      <li class="navigation-item navigation__item {% if pagename.startswith("guides/") -%} navigation-item--active {%- endif %} js-navigation-item">
-        <a href="{{ linkto('guides/shop-api/index') }}" class="navigation-item__link">
-          <span class="navigation-item__text">
-            Guides
-          </span>
-          <span class="navigation-item__dot"/>
-        </a>
-      </li>
-      <li class="navigation-item navigation__item {%- if pagename.startswith("reference/") %} navigation-item--active {%- endif %} js-navigation-item">
-        <a href="{{ linkto('reference/stable/index') }}" class="navigation-item__link">
-          <span class="navigation-item__text">
-            API Reference
-          </span>
-          <span class="navigation-item__dot"/>
-        </a>
-      </li>
-      <li class="navigation-item navigation__item js-navigation-item navigation-item--github">
-        <a href="https://github.com/centrahq/api-documentation/tree/master/source/{{ sourcename|e }}" class="navigation-item__link"
-          target="_blank" rel="noopener nofollow">
-          <span class="navigation-item__text">
-            Edit on Github
-          </span>
-          <span class="navigation-item__dot"/>
-        </a>
-      </li>
-    </ul>
+    <div class="navigation__menu">
+      <button class="navigation__burger-menu" id="burger-menu" onclick="toggleBurgerMenu()"></button>
+      <ul class="navigation__items">
+        <li class="navigation-item navigation__item {% if not pagename.startswith("reference/") and not pagename.startswith("changelog/") and not pagename.startswith("guides/") -%} navigation-item--active {%- endif %} js-navigation-item">
+          <a href="{{ linkto('index') }}" class="navigation-item__link">
+            <span class="navigation-item__text">
+              Overview
+            </span>
+            <span class="navigation-item__dot"/>
+          </a>
+        </li>
+        <li class="navigation-item navigation__item {% if pagename.startswith("guides/") -%} navigation-item--active {%- endif %} js-navigation-item">
+          <a href="{{ linkto('guides/shop-api/index') }}" class="navigation-item__link">
+            <span class="navigation-item__text">
+              Guides
+            </span>
+            <span class="navigation-item__dot"/>
+          </a>
+        </li>
+        <li class="navigation-item navigation__item {%- if pagename.startswith("reference/") %} navigation-item--active {%- endif %} js-navigation-item">
+          <a href="{{ linkto('reference/stable/index') }}" class="navigation-item__link">
+            <span class="navigation-item__text">
+              API Reference
+            </span>
+            <span class="navigation-item__dot"/>
+          </a>
+        </li>
+        <li class="navigation-item navigation__item js-navigation-item navigation-item--github">
+          <a href="https://github.com/centrahq/api-documentation/tree/master/source/{{ sourcename|e }}" class="navigation-item__link"
+            target="_blank" rel="noopener nofollow">
+            <span class="navigation-item__text">
+              Edit on Github
+            </span>
+            <span class="navigation-item__dot"/>
+          </a>
+        </li>
+      </ul>
+    </div>
     <div class="navigation__right">
       <a class="navigation__contact-us" href="https://support.centra.com">Contact us</a>
     </div>
+    <button class="navigation-search-button" id="search-button" onclick="toggleSearch()" />
   </div>
-  <div class="navigation-search">
+  <div class="navigation-search" id="search">
     <forma class="navigation-search__form">
       <input class="navigation-search__input" type="search" id="site-search" name="q" placeholder="Search Centra Developers" >
-      <button class="navigation-search__submit-button" type="submit">
-        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M6.40413 10.4207C4.18586 10.4207 2.39348 8.62827 2.39348 6.40999C2.39348 4.19031 4.18586 2.39934 6.40413 2.39934C8.62382 2.39934 10.4148 4.19031 10.4148 6.40999C10.4148 8.62827 8.62382 10.4207 6.40413 10.4207ZM11.7517 10.4207H11.048L10.7984 10.1795C11.6713 9.16415 12.1973 7.84418 12.1973 6.40999C12.1973 3.21021 9.60533 0.616821 6.40413 0.616821C3.20435 0.616821 0.610962 3.21021 0.610962 6.40999C0.610962 9.60978 3.20435 12.2032 6.40413 12.2032C7.83974 12.2032 9.15829 11.6772 10.1751 10.8042L10.4148 11.0538V11.7575L14.8711 16.2054L16.1995 14.8769L11.7517 10.4207Z" fill="white"/>
-        </svg>
-      </button>
+      <button class="navigation-search__submit-button" type="submit" />
     </forma>
   </div>
-  <div class="navigation-background">
+  <div class="navigation-background" id="navigation-background">
     <div class="navigation-background__slider"></div>
     <div class="navigation-background__stack"></div>
     <div class="navigation-background__smile"></div>
@@ -65,3 +65,18 @@
     <div class="navigation-background__circle-outlined"></div>
   </div>
 </div>
+
+<script>
+  function toggleSearch() {
+    document.getElementById("search").classList.toggle("show");
+    document.getElementById("navigation-background").classList.toggle("show");
+    document.getElementById("search-button").classList.toggle("close");
+  }
+
+  function toggleBurgerMenu() {
+    document.getElementById("burger-menu").classList.toggle("close");
+    document.getElementById("main-sidebar").classList.toggle("show-sidebar");
+    document.getElementById("sidebar").classList.toggle("show-sidebar");
+    document.getElementById("contact-us").classList.toggle("show-contact-us");
+  }
+</script>

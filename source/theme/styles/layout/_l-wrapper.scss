@@ -1,21 +1,24 @@
 .l-wrapper {
-  max-width: $site-width;
   width: 100%;
-  margin: 0 auto;
-  padding-left: 25px;
-  padding-right: 25px;
+  display: flex;
+}
 
-  @media (min-width: breakpoint("small")) {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
+.l-wrapper__left-padding {
+  flex: 1;
+  background-color: #F7F8FA;
+}
 
-  @media (min-width: $mobile-navigation-breakpoint) {
-    padding-left: 120px;
-    padding-right: 120px;
-  }
+.l-wrapper__right-padding {
+  flex: 1;
 }
 
 .l-wrapper--content {
   max-width: $content-width;
+}
+
+@media (max-width: breakpoint("extra-large")) {
+  .l-wrapper__right-padding,
+  .l-wrapper__left-padding {
+    display: none;
+  }
 }
