@@ -42,7 +42,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: #4373DC;
+  background-color: $brand-primary;
   opacity: 0;
 }
 
@@ -67,10 +67,10 @@
 }
 
 .navigation__contact-us {
-  color: #3C3C3C;
+  color: #fff;
   font-size: 13px;
   border-radius: 6px;
-  border: 1px solid #000;
+  background-color: $blackish;
   margin-right: 24px;
   text-align: center;
   margin: 0;

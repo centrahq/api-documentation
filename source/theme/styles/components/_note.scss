@@ -1,7 +1,7 @@
 .admonition {
-  background-color: #F2F3F4;
+  background-color: $white-grey;
   padding: 27px 45px 20px 66px;
-  color: #3C3C3C;
+  color: $blackish-grey;
   line-height: 28px;
   font-size: 16px;
   border-radius: 4px;
@@ -56,7 +56,7 @@
 }
 
 .admonition.note::before {
-  background-color: #4373DC;
+  background-color: $brand-primary;
 }
 
 .admonition.note::after {
@@ -64,7 +64,7 @@
 }
 
 .admonition.warning::before {
-  background-color: #C0292C;
+  background-color: $color-error;
 }
 
 .admonition.warning::after {

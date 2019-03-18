@@ -39,7 +39,7 @@
 }
 
 .sidebar__group > p > a {
-  color: #333333;
+  color: $blackish-grey;
 }
 
 .sidebar__group > p > a:hover {
@@ -51,7 +51,7 @@
   font-weight: 500;
   text-transform: uppercase;
   color: #bbb9b9;
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid $grey-medium;
   line-height: 1;
 }
 
@@ -69,7 +69,7 @@
 }
 
 .sidebar__group ul li a {
-  color: #666666;
+  color: $grey-boulder;
   font-size: 14px;
   line-height: 14px;
 
@@ -137,7 +137,7 @@
   content: "";
   height: 1px;
   width: 8px;
-  background: #666;
+  background: $grey-boulder;
   position: absolute;
   left: 0;
   top: 8px;

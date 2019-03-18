@@ -14,7 +14,7 @@
 .main__sidebar {
   min-width: 290px;
   transition: 300ms transform ease-in-out;
-  background-color: #F7F8FA;
+  background-color: $white-grey;
 
   @media (max-width: breakpoint('extra-large')) {
     width: 354px;
@@ -85,6 +85,9 @@
     margin-right: 48px;
     margin-left: auto;
     margin-bottom: 130px;
+    color: $blackish-grey;
+    border: 1px solid #000;
+    background-color: transparent;
   }
 }
 

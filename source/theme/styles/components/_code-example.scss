@@ -48,7 +48,7 @@
 }
 
 .rst-content .highlighttable {
-  background: #F2F3F4;
+  background: $white-grey;
   border-radius: 4px;
   margin-bottom: 40px;
   display: block;
@@ -63,17 +63,17 @@
   margin: 0;
   padding: 17px 24px;
   display: inline-block;
-  background: #F2F3F4;
+  background: $white-grey;
   border-radius: 4px 4px 0px 0px;
   font-weight: 500;
   font-size: 17px;
-  color: #3C3C3C;
+  color: $blackish-grey;
 }
 
 .rst-content [id*="example"] .notranslate {
   position: relative;
   display: flex;
-  background-color: #F2F3F4;
+  background-color: $white-grey;
   border-radius: 4px;
   margin-bottom: 40px;
 }
@@ -130,7 +130,7 @@
 }
 
 .rst-content div > .highlight > pre {
-  background-color: #F2F3F4;
+  background-color: $white-grey;
   border-radius: 4px;
 }
 
@@ -183,7 +183,7 @@
 .rst-content .highlight-php .highlight .c1,
 .rst-content .highlight-php .highlight .o,
 .rst-content .highlight-php .highlight .na {
-  color: #005a9a;
+  color: $brand-primary-hover;
 }
 
 .rst-content .highlight-php .highlight .mi {

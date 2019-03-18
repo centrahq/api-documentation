@@ -4,13 +4,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid #373737;
+  border-top: 1px solid $blackish-grey;
 }
 
 .navigation-search__form {
   background: #111111;
   opacity: 0.92;
-  border: 1px solid #333333;
+  border: 1px solid $blackish-grey;
   border-radius: 6px;
   width: 600px;
   display: flex;
