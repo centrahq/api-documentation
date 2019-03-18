@@ -32,10 +32,9 @@
 }
 
 .sidebar__group > p {
-  font-size: 17px;
-  line-height: 19px;
+  font-size: 14px;
+  line-height: 14px;
   margin-bottom: 10px;
-  font-weight: 700;
 }
 
 .sidebar__group > p > a {
@@ -62,10 +61,12 @@
 
 .sidebar__group > ul {
   margin-bottom: 40px;
+  margin-left: 18px;
 }
 
 .sidebar__group ul li {
   margin-bottom: 10px;
+  position: relative;
 }
 
 .sidebar__group ul li a {
@@ -105,6 +106,17 @@
 
 .sidebar__group > ul > li.current > a {
   color: $brand-primary;
+}
+
+.sidebar__group > ul > li.current > a::after {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: -13px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: $brand-primary;
 }
 
 .sidebar__group > ul > li.current > ul > li > a {
