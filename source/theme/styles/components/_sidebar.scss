@@ -26,10 +26,6 @@
   margin-bottom: 20px;
 }
 
-.sidebar__group:last-child {
-  margin-bottom: 80px;
-}
-
 .sidebar__group a:hover,
 .sidebar__group a:focus {
   text-decoration: none;
@@ -134,6 +130,7 @@
   padding-left: 15px;
   display: inline;
   line-height: 10px;
+  white-space: normal;
 }
 
 .sidebar__group > ul > li.current > ul a:before {
@@ -165,7 +162,7 @@
   width: 100%;
 }
 
-.sidebar .navigation-item__main-link {
+.sidebar .navigation-item__link.main {
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -174,6 +171,7 @@
   line-height: 22px;
   padding: 9px 0;
   margin-bottom: 24px;
+  position: relative;
 }
 
 .sidebar .navigation-item__text {
@@ -197,8 +195,4 @@
 
 .navigation-item--active .sidebar__navigation-group {
   display: block;
-}
-
-.sidebar .navigation-item--active .navigation-item__main-link {
-  background-color: #F0F0F0;
 }

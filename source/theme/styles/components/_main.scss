@@ -24,13 +24,14 @@
 
 .main__content {
   position: relative;
-  max-width: 100%;
+  max-width: 700px;
   width: 100%;
   padding-left: 0;
   padding-right: 0;
 
   @media (max-width: breakpoint('extra-large')) {
     margin-top: 88px;
+    max-width: 100%;
   }
 
   @media (max-width: $mobile-navigation-breakpoint) {
@@ -73,6 +74,10 @@
     opacity: .28;
     top: -88px;
     left: 354px;
+  }
+
+  nav.show-sidebar .navigation__items {
+    display: flex;
   }
 
   #contact-us.show-contact-us {
