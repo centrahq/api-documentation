@@ -5,28 +5,25 @@
 
 .rst-content table.docutils {
   width: 100%;
-  line-height: 23px;
-  font-size: 17px;
-  color: $blackish-grey;
+  font-size: 13px;
 }
 
 .rst-content table.docutils,
 .rst-content table.docutils th,
 .rst-content table.docutils tr,
 .rst-content table.docutils td {
-  border: 1px solid $grey-medium;
+  border: 0;
   border-collapse: collapse;
-  text-align: start;
 }
 
 .rst-content table.docutils > thead > tr > th {
-  padding: 17px 15px 15px 20px;
-  background-color: $white-grey;
-  font-weight: 500;
+  padding-bottom: 20px;
 }
 
 .rst-content table.docutils > tbody > tr > td {
-  padding: 25px 15px 29px 20px;
+  border-top: 1px solid #e9edef;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .rst-content .section table > tbody > tr > td {
@@ -61,13 +58,8 @@
 
 .rst-content .section table > tbody > tr > td:first-child {
   max-width: 165px;
-  padding: 25px 15px 29px 20px;
-  font-weight: 500;
-  background-color: $white-grey;
-}
-
-.rst-content .section table tbody strong {
-  font-weight: 500;
+  padding-right: 35px;
+  text-align: right;
 }
 
 .rst-content .section table > tbody > tr > td:first-child p {

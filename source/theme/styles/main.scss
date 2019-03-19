@@ -35,7 +35,11 @@ html {
 *::after {
   box-sizing: inherit;
   outline-width: thin;
-  outline-color: #4373DC;
+  outline-color: $brand-primary;
+}
+
+body {
+  padding-top: 45px;
 }
 
 ul,
@@ -160,6 +164,12 @@ a.headerlink::before {
   padding: 0 10px;
 }
 
+.api-table td:first-child {
+  font-weight: bold;
+  text-align: center !important;
+  padding-right: 25px !important;
+}
+
 .api-table td:nth-child(2) {
   font-style: italic;
 }
@@ -200,14 +210,14 @@ a.headerlink::before {
 @import 'components/link-dropdown';
 @import 'components/main';
 @import 'components/main-navigation';
+@import 'components/mobile-navigation-button';
 @import 'components/note';
 @import 'components/parameters';
 @import 'components/products-navigation';
 @import 'components/products-navigation-items';
 @import 'components/sidebar';
-@import 'components/navigation-search';
-@import 'components/navigation';
-@import 'components/navigation-item';
+@import 'components/sub-navigation';
+@import 'components/sub-navigation-item';
 @import 'components/type';
 @import 'components/payment-method-switcher';
 
