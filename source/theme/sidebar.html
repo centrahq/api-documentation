@@ -1,13 +1,37 @@
-{% if pagename.startswith("reference/beta/") -%}
- {%- include "sidebar-reference-v1.html" -%}
-{%- elif pagename.startswith("reference/stable/") -%}
- {%- include "sidebar-reference-old.html" -%}
-{%- elif pagename.startswith("changelog/beta/") -%}
- {%- include "sidebar-changelog-v1.html" -%}
-{%- elif pagename.startswith("changelog/stable/") -%}
- {%- include "sidebar-changelog-old.html" -%}
-{%- elif pagename.startswith("guides/") -%}
- {%- include "sidebar-guides.html" -%}
-{%- else -%}
- {%- include "sidebar-overview.html" -%}
-{%- endif -%}
+<ul class="navigation__items">
+  <li class="navigation-item navigation__item {% if not pagename.startswith("reference/") and not pagename.startswith("changelog/") and not pagename.startswith("guides/") -%} navigation-item--active {%- endif %} js-navigation-item">
+    <a href="{{ linkto('index') }}" class="navigation-item__link main">
+      <span class="navigation-item__text">
+        Overview
+      </span>
+      <span class="navigation__item-arrow"></span>
+    </a>
+    <div class="sidebar__navigation-group">{%- include "sidebar-overview.html" -%}</div>
+  </li>
+  <li class="navigation-item navigation__item {% if pagename.startswith("guides/") -%} navigation-item--active {%- endif %} js-navigation-item">
+    <a href="{{ linkto('guides/shop-api/index') }}" class="navigation-item__link main">
+      <span class="navigation-item__text">
+        Guides
+      </span>
+      <span class="navigation__item-arrow"></span>
+    </a>
+    <div class="sidebar__navigation-group">{%- include "sidebar-guides.html" -%}</div>
+  </li>
+  <li class="navigation-item navigation__item {%- if pagename.startswith("reference/") %} navigation-item--active {%- endif %} js-navigation-item">
+    <a href="{{ linkto('reference/stable/index') }}" class="navigation-item__link main">
+      <span class="navigation-item__text">
+        API Reference
+      </span>
+      <span class="navigation__item-arrow"></span>
+    </a>
+    <div class="sidebar__navigation-group">{%- include "sidebar-reference-old.html" -%}</div>
+  </li>
+  <li class="navigation-item navigation__item js-navigation-item navigation-item--github">
+    <a href="https://github.com/centrahq/api-documentation/tree/master/source/{{ sourcename|e }}" class="navigation-item__link main"
+    target="_blank" rel="noopener nofollow">
+      <span class="navigation-item__text">
+        Edit on Github
+      </span>
+    </a>
+  </li>
+</ul>

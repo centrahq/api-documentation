@@ -34,13 +34,15 @@
   {% include 'navigation.html' %}
 
   <div class="l-wrapper l-wrapper--fluid main">
+    <div class="l-wrapper__left-padding"></div>
     <div class="main__inner" data-enhancer="sidebar">
-      <nav class="main__sidebar">
-        <div class="sidebar js-mobile-sidebar">
+      <nav class="main__sidebar" id="main-sidebar">
+        <div class="sidebar js-mobile-sidebar" id="sidebar">
           <div class="sidebar__inner" role="navigation" aria-label="main navigation">
             {% include 'sidebar.html' %}
           </div>
         </div>
+        <a class="navigation__contact-us" id="contact-us" href="https://support.centra.com">Contact us</a>
       </nav>
 
       <section class="main__content">
@@ -59,6 +61,7 @@
         </div>
       </section>
     </div>
+    <div class="l-wrapper__right-padding"></div>
   </div>
   <footer class="footer">
     <!--
@@ -81,9 +84,6 @@
        </div>
        <div class="footer__comment">Theme based on <a href="https://github.com/mollie/api-documentation/">Mollie's API Documentation</a> (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CCC BY-SA 4.0</a>, <a href="https://github.com/mollie/api-documentation/#license">License Ref</a>).</div>
   </footer>
-
-  {% include "mobile-navigation-button.html" %}
-
   <script type="text/javascript" src="{{ pathto('_static/index.js', 1) }}" async></script>
 
   <!-- GOOGLE_TAG_MANAGER -->

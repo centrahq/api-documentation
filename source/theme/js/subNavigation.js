@@ -16,9 +16,9 @@ const detectPassiveScrollSupport = () => {
   return supportsPassive;
 };
 
-export default enhance('sub-navigation', () => {
-  const subNavigation = document.querySelector('.js-sub-navigation');
-  const subNavigationItems = document.querySelectorAll('.js-sub-navigation-item');
+export default enhance('navigation', () => {
+  const subNavigation = document.querySelector('.js-navigation');
+  const subNavigationItems = document.querySelectorAll('.js-navigation-item');
   const supportsPassive = detectPassiveScrollSupport();
 
   window.addEventListener(
@@ -27,11 +27,11 @@ export default enhance('sub-navigation', () => {
       requestAnimationFrame(() => {
         const offsetY = window.pageYOffset;
         if (offsetY > 120) {
-          subNavigationItems.forEach(node => node.classList.add('sub-navigation-item--small'));
-          subNavigation.classList.add('sub-navigation--small');
+          subNavigationItems.forEach(node => node.classList.add('navigation-item--small'));
+          subNavigation.classList.add('navigation--small');
         } else {
-          subNavigation.classList.remove('sub-navigation--small');
-          subNavigationItems.forEach(node => node.classList.remove('sub-navigation-item--small'));
+          subNavigation.classList.remove('navigation--small');
+          subNavigationItems.forEach(node => node.classList.remove('navigation-item--small'));
         }
       });
     },
