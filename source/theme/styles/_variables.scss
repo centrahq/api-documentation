@@ -30,6 +30,7 @@ $content-width: 940px;
 /**
  * Colors
  */
+$white-grey: #F7F8FA;
 $grey-lightest: tint(#000, 98%);
 $grey-lighter: tint(#000, 90%);
 $grey-light: tint(#000, 80%);
@@ -40,7 +41,8 @@ $grey-dark: tint(#000, 35%);
 $grey-darkest: tint(#000, 20%);
 $grey-boulder: #777777;
 $grey-dusty: #999999;
-$blackish: #262626;
+$blackish-grey: #3C3C3C;
+$blackish: #282828;
 $orange-reno-sand: #a25d11;
 $orange-pancho: #efcca5;
 $orange-anzac: #e0994c;
@@ -48,14 +50,14 @@ $blue-cornflower: #7373ff;
 
 $text-color: $blackish;
 
-$brand-primary: #80a3b0;
+$brand-primary: #4373DC;
 $brand-primary-hover: #0056b3;
 $brand-warning: #ffb100;
 
 $store-b2b: #92b398;
 $store-b2c: #589fac;
 
-$color-error: #ff1d1d;
+$color-error: #C0292C;
 $color-success: #4cd964;
 
 $color-payments: #00acff;
