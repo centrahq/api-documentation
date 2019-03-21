@@ -178,6 +178,11 @@ The following element types exist today. Not all of them are supported for the D
      - Mapped/Dynamic
      - Set class of the textarea: ``'class' => 'double'``
 
+   * - ``readonly``
+     - .. figure:: images/attribute-readonly.png
+     - Dynamic
+     - Allows a field without the ability to edit it. Used for showing up IDs or things that should not be changed.
+
    * - ``boolean``
      - .. figure:: images/attribute-boolean.png
      - Mapped/Dynamic
