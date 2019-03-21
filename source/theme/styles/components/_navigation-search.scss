@@ -4,7 +4,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid $blackish-grey;
+  background-color: #000000;
+}
+
+.landing-page .navigation-search {
+  display: none;
 }
 
 .navigation-search__form {
@@ -15,6 +19,7 @@
   width: 600px;
   display: flex;
   justify-content: space-between;
+  z-index: 5;
 }
 
 .navigation-search__input {

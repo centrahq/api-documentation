@@ -31,8 +31,12 @@
   <link rel="preconnect" href="https://centra.com" />-->
 </head>
 <body>
+  {% if pagename.startswith("index") %}
+  {% include 'landing-page.html' %}
+  {% else %}
+  
   {% include 'navigation.html' %}
-
+  {% include 'navigation-search.html' %}
   <div class="l-wrapper l-wrapper--fluid main">
     <div class="l-wrapper__left-padding"></div>
     <div class="main__inner" data-enhancer="sidebar">
@@ -50,11 +54,11 @@
           <div class="wy-nav-content">
             <div class="rst-content">
               <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-                {%- block document %}
-                <div itemprop="articleBody">
-                  {% block body %}{% endblock %}
-                </div>
-                {%- endblock %}
+                  {%- block document %}
+                  <div itemprop="articleBody">
+                    {% block body %}{% endblock %}
+                  </div>
+                  {%- endblock %}
               </div>
             </div>
           </div>
@@ -63,27 +67,7 @@
     </div>
     <div class="l-wrapper__right-padding"></div>
   </div>
-  <footer class="footer">
-    <!--
-    <div class="footer__container">
-      <div class="footer__columns">
-        <section class="footer__column">
-          <h4 class="footer__heading">Test</h4>
-          <ul>
-            <li><a href="#">Ok</a></li>
-          </ul>
-        </section>
-     </div>
-     <hr class="footer__separator">-->
-       <div class="footer__legal">
-         <div class="footer__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168.18 178.44"><title>C-logo</title><circle cx="22.76" cy="155.68" r="22.76"/><path d="M119.81,123.34c17.41,0,30.78-11.61,35.58-23.21l22.7,14.63c-11.6,20.44-32.29,34.82-59.79,34.82-36.58,0-69.89-29-69.89-71.4,0-42.13,33.31-71.4,69.89-71.4,27.75,0,48.19,14.63,59.54,35.07L155.13,56.48c-4.54-11.6-17.66-23.21-35.32-23.21-27.75,0-42.89,20.44-42.89,45.16S92.06,123.34,119.81,123.34Z" transform="translate(-9.91 -6.78)"/></svg></div>
-        <ul class="footer__legal-links">
-          <li><a href="https://support.centra.com">Support</a></li>
-          <!--<li><a href="https://twitter.com/centrahq">Twitter</a></li>-->
-        </ul>
-       </div>
-       <div class="footer__comment">Theme based on <a href="https://github.com/mollie/api-documentation/">Mollie's API Documentation</a> (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CCC BY-SA 4.0</a>, <a href="https://github.com/mollie/api-documentation/#license">License Ref</a>).</div>
-  </footer>
+  {% endif %}
   <script type="text/javascript" src="{{ pathto('_static/index.js', 1) }}" async></script>
 
   <!-- GOOGLE_TAG_MANAGER -->

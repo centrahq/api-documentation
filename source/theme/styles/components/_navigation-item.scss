@@ -34,6 +34,10 @@
   opacity: 1;
 }
 
+.landing-page .navigation-item--active .navigation-item__text {
+  opacity: 0.7;
+}
+
 .navigation-item__link:hover .navigation-item__text {
   color: $grey-boulder;
 }
@@ -48,6 +52,10 @@
 
 .navigation-item--active .navigation-item__dot {
   opacity: 1;
+}
+
+.landing-page .navigation-item--active .navigation-item__dot {
+  opacity: 0;
 }
 
 .navigation-item--github {

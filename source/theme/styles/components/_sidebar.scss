@@ -11,6 +11,10 @@
   }
 }
 
+.landing-page .sidebar {
+  display: none;
+}
+
 .sidebar.is-visible {
   pointer-events: all;
   display: block;
