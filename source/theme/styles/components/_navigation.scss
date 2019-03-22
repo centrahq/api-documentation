@@ -215,6 +215,10 @@ $menu-breakpoint: 715px;
 }
 
 @media (max-width: breakpoint("medium")) {
+  .navigation {
+    padding: 0 5px;
+  }
+
   .navigation__item:first-child {
     margin-left: 30px;
   }
