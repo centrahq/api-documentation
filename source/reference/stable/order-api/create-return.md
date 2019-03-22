@@ -59,7 +59,35 @@ This will create return for given shipment and items. Return will be created eve
           :required: false
 
      - Insert returned items into stock. If not provided ``Default stock action on return`` setting on the store will be used.
+   
+   * - ``handlingCost``
 
+       .. type:: float | boolean
+          :required: false
+
+     - Handling cost. If the handling cost of the order should be included in the return or not. Supports either a value, or a boolean to specify it it should be included.
+
+   * - ``shippingCost``
+
+       .. type:: float | boolean
+          :required: false
+
+     - Shipping cost. If set to true the complete shipping cost will be included in the return.
+   
+   * - ``returnCost``
+
+       .. type:: float
+          :required: false
+
+     - Return cost. If the return itself should have a cost to it. Providing a value here will deduct the amount of money to refund.
+     
+   * - ``voucherValue``
+
+       .. type:: float | boolean
+          :required: false
+
+     - Voucher value, should always be positive value. If set true will be applied voucher from order.
+     
    * - ``comment``
 
        .. type:: string
@@ -73,6 +101,33 @@ This will create return for given shipment and items. Return will be created eve
           :required: false
 
      - Response in xml format instead of json.
+
+   * - ``refund``
+
+       .. type:: object
+          :required: false
+
+     - Refund object.
+
+       Example: ``{"refund":{"refundPayment": true}}`` will make refund from return.
+
+       .. list-table::
+          :widths: auto
+
+          * - ``refundPayment``
+
+              .. type:: boolean
+                 :required: false
+
+            - If this is set to true the payment provider will get a refund request to pay back the money to the customer. The amount that will be refunded is the amount for the products, the handling, shipping and return costs.
+
+          * - ``sendEmail``
+
+              .. type:: boolean
+                 :required: false
+
+            - Send refund email. Default value is ``false``.
+     
 ```
 
 ## Request example
