@@ -150,7 +150,7 @@ $menu-breakpoint: 715px;
   z-index: 2;
 }
 
-@media (max-width: breakpoint("extra-large")) {
+@media (max-width: $mobile-navigation-breakpoint) {
   .navigation-wrapper {
     position: fixed;
     width: 100%;
