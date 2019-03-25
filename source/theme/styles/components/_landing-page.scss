@@ -6,28 +6,28 @@
   letter-spacing: 0.12px;
   display: flex;
   align-items: center;
-}
 
-.landing-page__button.white {
-  color: #ffffff;
-}
+  .landing-page__button-arrow {
+    width: 20px;
+    height: 20px;
+    margin-left: 30px;
+  }
 
-.landing-page__button.black {
-  color: #000000;
-}
+  &.white {
+    color: #ffffff;
 
-.landing-page__button .landing-page__button-arrow {
-  width: 20px;
-  height: 20px;
-  margin-left: 30px;
-}
+    .landing-page__button-arrow {
+      background: url('./../../_static/img/vector-white.svg') no-repeat center center;
+    }
+  }
 
-.landing-page__button.white .landing-page__button-arrow {
-  background: transparent url('./../../_static/img/vector-white.svg') no-repeat center center;
-}
+  &.black {
+    color: #000000;
 
-.landing-page__button.black .landing-page__button-arrow {
-  background: transparent url('./../../_static/img/vector-black.svg') no-repeat center center;
+    .landing-page__button-arrow {
+      background: url('./../../_static/img/vector-black.svg') no-repeat center center;
+    }
+  }
 }
 
 .section-title {

@@ -28,7 +28,6 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: red;
 }
 
 *,
@@ -112,7 +111,7 @@ a.headerlink::before {
   transform: translateY(-50%);
   height: 100%;
   width: 15px;
-  background: transparent url('./../../_static/img/headerlink.svg') no-repeat center center;
+  background: url('./../../_static/img/headerlink.svg') no-repeat center center;
   opacity: 0;
   padding-right: 22px;
 }
