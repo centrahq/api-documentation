@@ -1,8 +1,6 @@
 .hero-section {
-  width: 100%;
   background-color: #000000;
   color: #ffffff;
-  padding: 230px 80px 280px 60px;
   box-shadow: 0px 2px 3px rgba(117, 117, 117, 0.5);
 }
 
@@ -29,10 +27,6 @@
 }
 
 .hero-section__wrapper {
-  display: flex;
-  justify-content: space-between;
-  max-width: 1265px;
-  margin: 0 auto;
   letter-spacing: 0.12px;
 }
 
@@ -140,10 +134,6 @@
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {
-  .hero-section {
-    padding: 80px 20px 5px;
-  }
-    
   .hero-section.white {
     padding-top: 12px;
 
@@ -166,8 +156,6 @@
     
   .hero-section__wrapper {
     flex-direction: column;
-    margin-top: 20px;
-    margin-bottom: 25px;
     align-items: center;
   }
     
