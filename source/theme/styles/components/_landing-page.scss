@@ -21,7 +21,7 @@
       height: 2px;
       position: absolute;
       top: 10px;
-      background-color: #fff;
+      background-color: #000000;
       display: block;
       left: 0;
     }
@@ -46,8 +46,11 @@
   &.white {
     color: #ffffff;
 
-    .landing-page__button-arrow::after,
     .landing-page__button-arrow::before {
+      background-color: #ffffff;
+    }
+
+    .landing-page__button-arrow::after {
       border-color: #ffffff;
     }
   }
