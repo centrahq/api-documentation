@@ -27,7 +27,6 @@ html {
   font-feature-settings: 'liga', 'kern';
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 *,
@@ -211,10 +210,11 @@ a.headerlink::before {
 @import 'components/type';
 @import 'components/payment-method-switcher';
 @import 'components/landing-page';
+@import 'components/request-access-bar';
 @import 'components/landing-page-hero-section';
 @import 'components/landing-page-docs-section';
 @import 'components/landing-page-get-started-section';
-
+@import 'components/developers-first-bar';
 
 /**
  * Utilities
