@@ -28,6 +28,7 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: red;
 }
 
 *,
@@ -212,6 +213,7 @@ a.headerlink::before {
 @import 'components/payment-method-switcher';
 @import 'components/landing-page';
 @import 'components/landing-page-hero-section';
+@import 'components/request-access-bar';
 
 /**
  * Utilities
