@@ -1,3 +1,16 @@
+.section {
+  width: 100%;
+  padding: 230px 80px 280px 60px;
+  position: relative;
+}
+
+.section-wrapper {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1265px;
+  margin: 0 auto;
+}
+
 .landing-page__button {
   background-color: transparent;
   border: none;
@@ -75,4 +88,26 @@
   font-size: 1.5em;
   line-height: 1.6em;
   margin-bottom: 45px;
+}
+
+.name-section {
+  text-transform: uppercase;
+  font-size: 24px;
+  line-height: 26px;
+  letter-spacing: 0.12px;
+}
+
+@media (max-width: $mobile-navigation-breakpoint) {
+  .section {
+    padding: 80px 20px 5px;
+  }
+
+  .section-wrapper {
+    margin-top: 20px;
+    margin-bottom: 25px;
+  }
+
+  .name-section {
+    font-size: 18px;
+  }
 }
