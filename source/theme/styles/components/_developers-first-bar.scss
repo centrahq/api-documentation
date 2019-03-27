@@ -13,10 +13,10 @@
 
   .ticker {
     display: inline-block;
-    line-height: 55px;
+    line-height: 36px;
     color: #000000;
     text-transform: uppercase;
-    font-size: 40px;
+    font-size: 24px;
     letter-spacing: 0.12px;
     white-space: nowrap;
     box-sizing: content-box;
@@ -24,14 +24,7 @@
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     animation-name: ticker;
-    animation-duration: 20s;
+    animation-duration: 50s;
     animation-play-state: running;
-  }
-}
-
-@media (max-width: $mobile-navigation-breakpoint) {
-  .developers-first-bar .ticker {
-    line-height: 36px;
-    font-size: 24px;
   }
 }
