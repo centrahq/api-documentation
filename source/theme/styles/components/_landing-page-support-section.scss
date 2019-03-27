@@ -1,0 +1,49 @@
+.support-section {
+  padding-right: 0;
+
+  .section-wrapper {
+    flex-direction: column;
+  }
+}
+
+.support-wrapper {
+  margin-top: 70px;
+  display: flex;
+}
+
+.support-section__content {
+  max-width: 550px;
+
+  .section-title {
+    margin-bottom: 180px;
+  }
+}
+
+.support-section__team-avatars {
+  margin-bottom: 40px;
+}
+
+.support-section__team {
+  width: 790px;
+  margin-left: 10px;
+  background: url('./../../_static/img/support-big.png') no-repeat 50% 0;
+}
+
+@media (max-width: $mobile-navigation-breakpoint) {
+  .support-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .support-section__content {
+    order: 2;
+    margin-bottom: 70px;
+  }
+
+  .support-section__team {
+    order: 1;
+    width: 370px;
+    height: 214px;
+    background-image: url('./../../_static/img/support-small.png');
+  }
+}
