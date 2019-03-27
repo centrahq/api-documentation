@@ -1,0 +1,21 @@
+.request-access-bar {
+  width: 100%;
+  background-color: #000000;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+
+  a {
+    color: #ffffff;
+    font-size: 26px;
+    line-height: 78px;
+    letter-spacing: 0.12px;
+  }
+}
+
+@media (max-width: $mobile-navigation-breakpoint) {
+  .request-access-bar {
+    font-size: 22px;
+    line-height: 50px;
+  }
+}
