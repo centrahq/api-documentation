@@ -111,7 +111,7 @@ a.headerlink::before {
   transform: translateY(-50%);
   height: 100%;
   width: 15px;
-  background: transparent url('./../../_static/img/headerlink.svg') no-repeat center center;
+  background: url('./../../_static/img/headerlink.svg') no-repeat center center;
   opacity: 0;
   padding-right: 22px;
 }
@@ -210,6 +210,8 @@ a.headerlink::before {
 @import 'components/navigation-item';
 @import 'components/type';
 @import 'components/payment-method-switcher';
+@import 'components/landing-page';
+@import 'components/landing-page-hero-section';
 
 /**
  * Utilities
