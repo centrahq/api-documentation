@@ -1,12 +1,9 @@
 .docs-section {
   flex-direction: column;
-
-  .name-section {
-    margin-left: 20px;
-  }
 }
 
 .docs__articles-wrapper {
+  margin-left: -20px;
   margin-top: 190px;
   display: flex;
   justify-content: space-between;
@@ -87,21 +84,21 @@
     width: 300px;
     font-size: 18px;
     line-height: 24px;
+    min-width: 220px;
   }
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {
-  .docs {
-    padding: 80px 37px 110px;
-  }
-
   .docs__articles-wrapper {
     overflow-x: auto;
     margin-top: 25px;
   }
 
+  .article__title {
+    margin-top: 10px;
+  }
+
   .docs-section {
-    min-width: 745px;
     padding: 25px 0;
     margin-bottom: 0; 
   }

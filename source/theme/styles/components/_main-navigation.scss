@@ -118,6 +118,12 @@ body.no-scroll {
   }
 }
 
+@media (max-width: $mobile-navigation-breakpoint) {
+  .navigation__link-developers {
+    font-size: 24px;
+  }
+}
+
 .cta-link {
   color: #07f;
   font-weight: 600;
