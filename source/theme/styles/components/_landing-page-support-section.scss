@@ -1,6 +1,4 @@
 .support-section {
-  padding-right: 0;
-
   .section-wrapper {
     flex-direction: column;
   }
@@ -29,6 +27,12 @@
 
 .support-section__team.team-small {
   display: none;
+}
+
+@media (max-width: 1325px) {
+  .support-section {
+    padding-right: 0;
+  }
 }
 
 @media (max-width: breakpoint('extra-large')) {
