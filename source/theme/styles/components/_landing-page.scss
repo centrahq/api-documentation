@@ -74,6 +74,10 @@
   }
 }
 
+.section-content {
+  max-width: 560px;
+}
+
 .section-title {
   font-size: 3em;
   border: none;
@@ -122,5 +126,9 @@
 
   .name-section {
     font-size: 18px;
+  }
+
+  .landing-page__button {
+    font-size: 13px;
   }
 }
