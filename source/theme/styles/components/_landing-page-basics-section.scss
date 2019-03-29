@@ -27,17 +27,23 @@
   padding: 66px 45px 110px;
   border: 2px solid #141414;
   box-sizing: border-box;
+  transition: background-color .5s ease-out;
 
   .landing-page__button-arrow {
-    display: none;
+    opacity: 0;
+  }
+
+  .landing-page__button-arrow {
+    margin-left: 22px;
   }
 
   &:hover {
     background-color: #141414;
+    transition: background-color .5s ease-out;
 
     .landing-page__button-arrow {
-      display: block;
-      margin-left: 22px;
+      opacity: 1;
+      transition: transform .5s ease-out;
     }
   }
 
@@ -109,7 +115,7 @@
     background-color: #141414;
 
     &:hover .landing-page__button-arrow {
-      display: none;
+      opacity: 0;
     }
 
     h3 {
