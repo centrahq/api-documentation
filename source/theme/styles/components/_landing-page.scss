@@ -2,7 +2,7 @@
   width: 100%;
   padding: 230px 80px 280px 60px;
   position: relative;
-  font-size: 16px;
+  font-size: 1em;
 }
 
 .section-wrapper {
@@ -92,7 +92,7 @@
 .section-text {
   font-size: 1.7em;
   margin-bottom: 45px;
-  line-height: 1em;
+  line-height: 1.2em;
 }
 
 .name-section {
@@ -104,7 +104,7 @@
 
 @media (max-width: breakpoint('extra-large')) {
   .section {
-    font-size: 13px;
+    font-size: 0.8em;
     padding-top: 130px;
     padding-bottom: 180px;
   }
@@ -117,7 +117,7 @@
 @media (max-width: $mobile-navigation-breakpoint) {
   .section {
     padding: 80px 37px 0;
-    font-size: 10px;
+    font-size: 0.6em;
   }
 
   .section-wrapper {
