@@ -1,10 +1,11 @@
+{% from 'content/hero.html' import hero_content -%}
 <section class="hero-section section">
   <div class="section-wrapper hero-section__wrapper">
     <div class="section-content">
-      <h1 class="section-title">Headless e&#x2011;commerce for developers, by developers.</h1>
-      <p class="section-text">Centra is an API-first e-commerce platform with powerful and intuitive APIs.</p>
+      <h1 class="section-title">{{hero_content.title}}</h1>
+      <p class="section-text">{{hero_content.text}}</p>
       <button class="landing-page__button white">
-        <span>Get access</span>
+        <span>{{hero_content.link}}</span>
         <div class="landing-page__button-arrow"></div>
         <div class="arrow "></div>
       </button>
