@@ -31,10 +31,8 @@
 
   .landing-page__button-arrow {
     opacity: 0;
-  }
-
-  .landing-page__button-arrow {
     margin-left: 22px;
+    transition: opacity .5s ease-out;
   }
 
   &:hover {
