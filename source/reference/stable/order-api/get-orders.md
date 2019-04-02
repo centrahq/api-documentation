@@ -118,7 +118,13 @@ This will fetch the orders allowed for the plugin being set up.
               .. type:: string
 
             - Id of the order.
+            
+          * - ``orderStatus``
 
+              .. type:: string
+
+            - Status of the order.
+            
           * - ``selectionId``
 
               .. type:: string

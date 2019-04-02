@@ -198,8 +198,12 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
          "billingVAT": "",
          "poNumber": "",
          "shippingList": "standard",
+         "shippingTerms": "null",
+         "paymentTerms": "null"
          "proforma": "http://.../proforma?shipment=83651-1",
          "deliveryNote": "http://../delnote?shipment=83651-1",
+         "defaultCarrier": "Delivery Carrier",
+         "deliveryService": "Delivery Service",
          "invoices": [
            "https://online.klarna.com/invoice_public_show.yaws/invoice.pdf?invno=&orgno="
          ],
