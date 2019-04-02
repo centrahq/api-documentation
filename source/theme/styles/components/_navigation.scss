@@ -157,7 +157,7 @@ $menu-breakpoint: 715px;
   }
 
   .navigation {
-    height: 88px;
+    height: 64px;
   }
 
   .navigation__burger-menu {
@@ -211,6 +211,10 @@ $menu-breakpoint: 715px;
   .landing-page .navigation-background.show,
   .navigation-background.show {
     top: 88px;
+  }
+
+  .landing-page .navigation-search-button {
+    margin-right: 7px;
   }
 }
 
