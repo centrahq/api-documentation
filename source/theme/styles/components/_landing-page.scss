@@ -2,6 +2,7 @@
   width: 100%;
   padding: 230px 80px 280px 60px;
   position: relative;
+  font-size: 1em;
 }
 
 .section-wrapper {
@@ -25,8 +26,8 @@
     width: 18px;
     height: 20px;
     margin-left: 10px;
-    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-    transition: transform 0.3s ease;
+    transform: scaleX(1);
+    transition: .5s ease-out;
 
     &::before {
       content: '';
@@ -89,9 +90,9 @@
 }
 
 .section-text {
-  font-size: 1.5em;
-  line-height: 1.6em;
+  font-size: 1.7em;
   margin-bottom: 45px;
+  line-height: 1.2em;
 }
 
 .name-section {
@@ -101,9 +102,22 @@
   letter-spacing: 0.12px;
 }
 
+@media (max-width: breakpoint('extra-large')) {
+  .section {
+    font-size: 0.8em;
+    padding-top: 130px;
+    padding-bottom: 180px;
+  }
+
+  .section-title {
+    margin-bottom: 30px;
+  }
+}
+
 @media (max-width: $mobile-navigation-breakpoint) {
   .section {
-    padding: 80px 20px 5px;
+    padding: 80px 37px 0;
+    font-size: 0.6em;
   }
 
   .section-wrapper {
