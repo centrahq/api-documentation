@@ -4,6 +4,7 @@
   position: fixed;
   bottom: 0;
   text-align: center;
+  z-index: 100;
 
   a {
     color: #ffffff;
@@ -14,7 +15,7 @@
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {
-  .request-access-bar {
+  .request-access-bar a {
     font-size: 22px;
     line-height: 50px;
   }
