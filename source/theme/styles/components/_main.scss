@@ -16,7 +16,7 @@
   transition: 300ms transform ease-in-out;
   background-color: $white-grey;
 
-  @media (max-width: breakpoint('extra-large')) {
+  @media (max-width: $mobile-navigation-breakpoint) {
     width: 354px;
     display: none;
   }
@@ -48,7 +48,7 @@
   }
 }
 
-@media (max-width: breakpoint('extra-large')) {
+@media (max-width: $mobile-navigation-breakpoint) {
   .sidebar.show-sidebar {
     display: block;
   }
@@ -62,7 +62,7 @@
     flex-direction: column;
     justify-content: space-between;
     position: fixed;
-    z-index: 10;
+    z-index: 200;
     top: 88px;
     height: 100%;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);

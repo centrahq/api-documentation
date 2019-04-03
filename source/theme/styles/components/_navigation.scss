@@ -42,8 +42,8 @@ $menu-breakpoint: 715px;
   background: url('./../../_static/img/search.svg') no-repeat center center;
 }
 
-.landing-page .navigation-search-button {
-  display: block;
+.navigation-search-button.search-link {
+  display: none;
   width: 36px;
   height: 36px;
   background-color: #1B1B1B;
@@ -51,6 +51,14 @@ $menu-breakpoint: 715px;
   margin-right: 15px;
   top: 0;
   left: 0;
+}
+
+.landing-page .navigation-search-button {
+  display: none;
+}
+
+.landing-page .navigation-search-button.search-link {
+  display: block;
 }
 
 .navigation-background {
@@ -213,7 +221,7 @@ $menu-breakpoint: 715px;
     top: 88px;
   }
 
-  .landing-page .navigation-search-button {
+  .navigation-search-button.search-link {
     margin-right: 7px;
   }
 }
@@ -229,5 +237,25 @@ $menu-breakpoint: 715px;
 
   .navigation__item:last-child a {
     margin-right: 30px;
+  }
+}
+
+@media (max-width: $main-mobile-navigation-breakpoint) {
+  .navigation-search.show {
+    height: 88px;
+    margin-top: 65px;
+  }
+
+  .navigation-background.show {
+    display: none;
+  }
+
+  .navigation-search__submit-button {
+    height: 44px;
+  }
+
+  .navigation-search__input {
+    font-size: 16px;
+    padding: 11px 23px;
   }
 }
