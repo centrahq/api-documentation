@@ -62,18 +62,34 @@ This will create return for given shipment and items. Return will be created eve
    
    * - ``handlingCost``
 
-       .. type:: float | boolean
+       .. type:: float
           :required: false
 
-     - Handling cost. If the handling cost of the order should be included in the return or not. Supports either a value, or a boolean to specify it it should be included.
+     - Handling cost.
+
+   * - ``handlingCostFromShipment``
+
+       .. type:: boolean
+          :required: false
+          :default: false
+
+     - Set to `true` to use Handling cost from Shipment.
 
    * - ``shippingCost``
 
-       .. type:: float | boolean
+       .. type:: float
           :required: false
 
-     - Shipping cost. If set to true the complete shipping cost will be included in the return.
-   
+     - Shipping cost.
+
+   * - ``shippingCostFromShipment``
+
+       .. type:: boolean
+          :required: false
+          :default: false
+
+     - Set to `true` to use Shipping cost from Shipment.
+        
    * - ``returnCost``
 
        .. type:: float
@@ -83,10 +99,18 @@ This will create return for given shipment and items. Return will be created eve
      
    * - ``voucherValue``
 
-       .. type:: float | boolean
+       .. type:: float
           :required: false
 
-     - Voucher value, should always be positive value. If set true will be applied voucher from order.
+     - Voucher value, should always be positive value.
+
+   * - ``voucherValueFromShipment``
+
+       .. type:: boolean
+          :required: false
+          :default: false
+
+     - Set to `true` to use Voucher value from Shipment.
      
    * - ``comment``
 
