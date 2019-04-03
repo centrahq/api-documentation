@@ -1,0 +1,9 @@
+{% macro docs_articles(docs_content=[]) -%}
+  {% for doc in docs_content -%}
+    <article class="docs__article">
+      <img src="{{doc.img}}" alt="Store API" class="article__graphics">
+      <h4 class="article__title">{{doc.title}}</h4>
+      <p class="article__text">{{doc.text}}</p>
+    </article>
+  {% endfor %}
+{%- endmacro %}
