@@ -22,11 +22,19 @@
 }
 
 .support-section__team.team-big {
-  margin-left: 10px;
+  margin-left: 50px;
 }
 
 .support-section__team.team-small {
   display: none;
+}
+
+@media (min-width: 1425px) {
+  .support-section {
+    .section-wrapper {
+      max-width: 1365px;
+    }
+  }
 }
 
 @media (max-width: 1325px) {

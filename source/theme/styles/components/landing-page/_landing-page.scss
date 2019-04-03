@@ -1,4 +1,4 @@
-.section {
+.landing-page-section {
   width: 100%;
   padding: 230px 80px 280px 60px;
   position: relative;
@@ -103,7 +103,7 @@
 }
 
 @media (max-width: breakpoint('extra-large')) {
-  .section {
+  .landing-page-section {
     font-size: 0.8em;
     padding-top: 130px;
     padding-bottom: 180px;
@@ -115,8 +115,8 @@
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {
-  .section {
-    padding: 80px 37px 0;
+  .landing-page-section {
+    padding: 80px 37px 1px;
     font-size: 0.6em;
   }
 

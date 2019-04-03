@@ -27,6 +27,7 @@ html {
   font-feature-settings: 'liga', 'kern';
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  color: red;
 }
 
 *,
@@ -209,17 +210,16 @@ a.headerlink::before {
 @import 'components/navigation-item';
 @import 'components/type';
 @import 'components/payment-method-switcher';
-@import 'components/landing-page';
-@import 'components/request-access-bar';
-@import 'components/developers-first-bar';
-@import 'components/landing-page-hero-section';
-@import 'components/landing-page-docs-section';
-@import 'components/landing-page-basics-section';
-@import 'components/landing-page-get-started-section';
-@import 'components/landing-page-support-section';
-@import 'components/developers-first-bar';
-@import 'components/landing-page-certification-section';
-@import 'components/landing-page-footer';
+@import 'components/landing-page/landing-page';
+@import 'components/landing-page/request-access-bar';
+@import 'components/landing-page/landing-page-hero-section';
+@import 'components/landing-page/landing-page-docs-section';
+@import 'components/landing-page/landing-page-basics-section';
+@import 'components/landing-page/landing-page-get-started-section';
+@import 'components/landing-page/landing-page-support-section';
+@import 'components/landing-page/developers-first-bar';
+@import 'components/landing-page/landing-page-certification-section';
+@import 'components/landing-page/landing-page-footer';
 
 /**
  * Utilities

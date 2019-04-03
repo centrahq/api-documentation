@@ -97,6 +97,7 @@
 @media (max-width: $mobile-navigation-breakpoint) {
   .docs__articles-wrapper {
     overflow-x: auto;
+    width: 100%;
     padding: 25px 10px 5px;
   }
 
