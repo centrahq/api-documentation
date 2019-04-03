@@ -6,7 +6,7 @@
   -webkit-overflow-scrolling: touch;
   pointer-events: auto;
 
-  @media (max-width: breakpoint("extra-large")) {
+  @media (max-width: $mobile-navigation-breakpoint) {
     display: none;
   }
 }
