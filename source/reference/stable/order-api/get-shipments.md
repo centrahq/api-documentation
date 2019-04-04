@@ -198,8 +198,8 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
          "billingVAT": "",
          "poNumber": "",
          "shippingList": "standard",
-         "shippingTerms": "null|ShippingTermString only for wholesale",
-         "paymentTerms": "null|PaymentTermString only for wholesale"
+         "shippingTerms": null|{id: 5, "name": "ShippingTermName", "description": "ShippingTermDescription"},
+         "paymentTerms": null|{id: 10, "name": "PaymentTermName", "description": "PaymentTermDescription"}
          "proforma": "http://.../proforma?shipment=83651-1",
          "deliveryNote": "http://../delnote?shipment=83651-1",
          "defaultCarrier": "Delivery Carrier",
