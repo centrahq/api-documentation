@@ -1,0 +1,131 @@
+.docs-section {
+  flex-direction: column;
+}
+
+.docs__articles-wrapper {
+  padding: 190px 80px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.docs__article {
+  box-shadow: 0px 0px 26px rgba(0, 0, 0, 0.05);
+  width: 354px;
+  padding: 55px 48px 70px 48px;
+  letter-spacing: 0.12px;
+  font-size: 22px;
+  margin: 20px;
+  transition: box-shadow 0.3s;
+
+  &:nth-child(2) {
+    margin: 20px 4px;
+  }
+
+  &:not(:last-child) {
+    margin-right: 24px;
+  }
+}
+
+.article__graphics {
+  display: block;
+  margin: 0 auto;
+}
+
+.article__title {
+  line-height: 24px;
+  margin-top: 125px;
+  font-size: 22px;
+}
+
+.article__text {
+  line-height: 28px;
+  margin: 0;
+}
+
+.docs__background {
+  position: absolute;
+
+  &.background-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 3px solid #231F20;
+    left: -8px;
+    bottom: 21%;
+  }
+
+  &.background-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #231F20;
+    right: 5%;
+    bottom: 40%;
+  }
+}
+
+@media (max-width: 1500px) {
+  .article__title {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: breakpoint('extra-large')) {
+  .docs-wrapper {
+    padding: 150px 125px;
+  }
+
+  .docs__articles-wrapper {
+    padding: 50px 50px 0;
+  }
+
+  .docs__article {
+    padding: 15px 14px;
+    width: 300px;
+    font-size: 18px;
+    line-height: 24px;
+    min-width: 220px;
+  }
+}
+
+@media (min-width: $mobile-navigation-breakpoint) {
+  .docs__article:hover {
+    box-shadow: 0px 0px 26px rgba(0, 0, 0, 0.16);
+  }
+}
+
+@media (max-width: $mobile-navigation-breakpoint) {
+  .docs__articles-wrapper {
+    overflow-x: auto;
+    width: 100%;
+    padding: 25px 10px 5px;
+  }
+
+  .docs__article {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+  }
+
+  .article__title {
+    margin-top: 10px;
+  }
+
+  .docs-section {
+    padding: 25px 0;
+    margin-bottom: 0; 
+  }
+
+  .docs__background {
+    &.background-circle {
+      width: 28px;
+      height: 28px;
+      bottom: 11%;
+      left: -12px;
+    }
+
+    &.background-dot {
+      top: 14%;
+      width: 13px;
+      height: 13px;
+    }
+  }
+}

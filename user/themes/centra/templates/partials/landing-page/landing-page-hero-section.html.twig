@@ -1,0 +1,21 @@
+{% from 'content/hero.html.twig' import hero_content -%}
+<section class="hero-section landing-page-section">
+  <div class="section-wrapper hero-section__wrapper">
+    <div class="section-content">
+      <h1 class="section-title">{{hero_content.title}}</h1>
+      <p class="section-text">{{hero_content.text}}</p>
+      <button class="landing-page__button white">
+        <span>{{hero_content.link}}</span>
+        <div class="landing-page__button-arrow"></div>
+      </button>
+    </div>
+    <div class="hero-section__graphics">
+      <div class="graphics__code-window"></div>
+      <div class="picture-layout__stack"></div>
+      <div class="picture-layout__screen-product"></div>
+      <div class="picture-layout__hand"></div>
+      <div class="picture-layout__slider"></div>
+      <div class="picture-layout__smile"></div>
+    </div>
+  </div>
+</section>

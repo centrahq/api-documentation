@@ -1,0 +1,15 @@
+.main-nav {
+    background-color: #000;
+     ul {
+        margin: 0;
+        list-style: none;
+        display: flex;
+        flex-flow: row nowrap;
+        padding: 20px;
+        justify-content: space-around;
+     }
+
+     a {
+         color: #fff;
+     }
+}

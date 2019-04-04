@@ -1,0 +1,7 @@
+{% embed 'partials/base.html.twig' %}
+    {% block content %}
+        {{ page.content }}
+
+        {% include 'partials/tntsearch.html.twig' with { limit: 10, snippet: 150, min: 3, search_type: 'auto', dropdown: false, placeholder:"Search Centra Developers" } %}
+    {% endblock %}
+{% endembed %}

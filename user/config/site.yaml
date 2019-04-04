@@ -1,0 +1,9 @@
+title: 'Centra Documentation'
+default_lang: en
+author:
+  name: 'Centra'
+taxonomies: [category,tag,author]
+metadata:
+  description: 'Centra Documentation'
+summary:
+  size: 300

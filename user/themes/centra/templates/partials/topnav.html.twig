@@ -1,0 +1,23 @@
+{% block topnav %}
+    <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+            <li>
+                <a href="{{ home_url }}">
+                    Home
+                </a>
+            </li>
+            {% for page in pages.children.visible %}
+                <li>
+                    <a href="{{ page.url }}">
+                        {{ page.menu }}
+                    </a>
+                </li>
+            {% endfor %}
+            <li>
+                <a href="/search">
+                    Search
+                </a>
+            </li>
+        </ul>
+    </nav>
+{% endblock %}

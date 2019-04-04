@@ -1,0 +1,45 @@
+.arrownav {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+
+    a {
+        text-decoration: none;
+
+        &:hover .arrow{
+            text-decoration: underline;
+        }
+
+        span {
+            display: block;
+        }
+
+        .arrow {
+            font-size: 1.5em;
+            position: relative;
+
+            &:after {
+                content: "";
+                display: block;
+                width: 0.75em;
+                height: 0.75em;
+                border: solid #ddd;
+                border-width: 2px 2px 0 0;
+                position: absolute;
+                
+            }
+        }
+
+        .arrow-next:after {
+            transform: rotate(45deg);
+            left: 100%;
+            top: 5px;
+        }
+
+        .arrow-prev:after {
+            transform: rotate(-135deg);
+            right: 100%;
+            top: 5px;
+        }
+    }
+}

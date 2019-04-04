@@ -1,0 +1,11 @@
+{% include 'partials/head.html.twig' %}
+<body>
+    {% include 'partials/topnav.html.twig' %}
+
+    <div class="main-container">
+        {% block beforecontent %}{% endblock %}
+        {% block content %}{% endblock %}
+        {% block aftercontent %}{% endblock %}
+    </div>
+</body>
+{% include 'partials/footer.html.twig' %}
