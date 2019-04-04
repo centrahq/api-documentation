@@ -1,13 +1,12 @@
-{% from 'content/certification.html.twig' import certification_content  -%}
 <section class="landing-page-section certification-section">
   <div class="section-wrapper">
     <div class="section-content">
-      <h1 class="section-title">{{certification_content.title}}</h1>
+      <h1 class="section-title">{{ grav.theme.config.certification.title }}</h1>
       <button class="landing-page__button black">
-        <span>{{certification_content.link}}</span>
+        <span>{{ grav.theme.config.certification.link }}</span>
         <div class="landing-page__button-arrow"></div>
       </button>
     </div>
-    <img src="./_static/img/team-collage.png" alt="Team" class="certification-section__team-avatars">
+    <img src="{{ url("theme://images/img/team-collage.png")}}" alt="Team" class="certification-section__team-avatars">
   </div>
 </section>

@@ -1,11 +1,10 @@
 {% from 'macros/basic-articles.html.twig' import basic_articles   -%}
-{% from 'content/basic.html.twig' import basic_content  -%}
 
 <section class="landing-page-section basic-section">
   <div class="section-wrapper">
     <h3 class="name-section">The basics</h3>
     <div class="basic-section__articles-wrapper">
-      {{basic_articles(basic_content)}}
+      {{basic_articles( grav.theme.config.basic_data )}}
     </div>
   </div>
 </section>

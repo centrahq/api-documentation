@@ -1,0 +1,51 @@
+basic_data: 
+ - 
+  icon: "icon-eye"
+  url: "#"
+  title: "Developer toolkits"
+  text: "Lorem ipsum dolor sit amet, conse righ tow ctetur adipiscing elit, sed do eiusmod tempo  olor sit amet, conse because ctetur enough  elit, sed do eiusmod temp oolor sit amet, consect without etur adipiscing elit, sed do eiusmod tem ent one two three ering po olor sit amet, conse ctetur right adipiscing elit, sed do eiusmod tem po mod tempoolor sit ame."
+ - 
+  icon: "icon-square"
+  url: "#"
+  title: "Reference applications"
+  text: "Ipsum dolor sit amet, conse righ tow ctetur adipiscing elit, sed do eiusmod tempo  olor sit amet, conse because ctetur enough  elit, sed do eiusmod temp oolor sit amet, consect without etur adipis cing elit, sed do eiusmod tem ent one two three ering po olor sit amet, conse ctetur right adipiscing elit, sed do eiusmod tem po mod tempoolor sit the last time."
+ - 
+  icon: "icon-sun"
+  url: "#"
+  title: Microservices
+  text: "Ipsum dolor sit amet, conse righ tow ctetur adipiscing elit, sed do eiusmod tempo  olor sit amet, conse because ctetur enough  elit, sed do eiusmod temp oolor sit amet, consect without etur adipis cing elit, sed do eiusmod tem ent one two three ering po olor sit amet, conse ctetur right adipiscing elit, sed do eiusmod tem po mod tempoolor sit the last time."
+ - 
+  icon: "icon-rhomb"
+  url: "#"
+  title: Integrations
+  text: "Ipsum dolor sit amet, conse righ tow ctetur adipiscing elit, sed do eiusmod tempo  olor sit amet, conse because ctetur enough  elit, sed do eiusmod temp oolor sit amet, consect without etur adipis cing elit, sed do eiusmod tem ent one two three ering po olor sit amet, conse ctetur right adipiscing elit, sed do eiusmod tem po mod tempoolor sit the last time."
+ - 
+  icon: "icon-people"
+  url: "#"
+  title: "Community and support"
+  text: "Ipsum dolor sit amet, conse righ tow ctetur adipiscing elit, sed do eiusmod tempo  olor sit amet, conse because ctetur enough  elit, sed do eiusmod temp oolor sit amet, consect without etur adipis cing elit, sed do eiusmod tem ent one two three ering po olor sit amet, conse ctetur right adipiscing elit, sed do eiusmod tem po mod tempoolor sit the last time."
+ - 
+  icon: "icon-rainbow"
+  url: "#"
+  title: Documentation
+  text: "Ipsum dolor sit amet, conse righ tow ctetur adipiscing elit, sed do eiusmod tempo  olor sit amet, conse because ctetur enough  elit, sed do eiusmod temp oolor sit amet, consect without etur adipis cing elit, sed do eiusmod tem ent one two three ering po olor sit amet, conse ctetur right adipiscing elit, sed do eiusmod tem po mod tempoolor sit the last time."
+certification: 
+ title: "Love the platform and want to get Centra Certified?"
+ link: "Here’s where to start"
+docs_content: 
+ - 
+  title: Guides
+  img: "images/img/guides.png"
+  text: "Hit the ground running with our step by step guides for developers. Built by developers, for developers."
+ - 
+  title: "Store API"
+  img: "images/img/store-api.png"
+  text: "Hit the ground running with our step by step guides for developers. Built by developers, for developers."
+ - 
+  title: "Order API"
+  img: "images/img/order-api.png"
+  text: "Hit the ground running with our step by step guides for developers. Built by developers, for developers."
+hero: 
+ title: "Headless e&#x2011;commerce for developers, by developers."
+ text: "Centra is an API-first e-commerce platform with powerful and intuitive APIs."
+ link: "Get access"

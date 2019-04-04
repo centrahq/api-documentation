@@ -1,11 +1,10 @@
-{% from 'content/hero.html.twig' import hero_content -%}
 <section class="hero-section landing-page-section">
   <div class="section-wrapper hero-section__wrapper">
     <div class="section-content">
-      <h1 class="section-title">{{hero_content.title}}</h1>
-      <p class="section-text">{{hero_content.text}}</p>
+      <h1 class="section-title">{{ grav.theme.config.hero.title }}</h1>
+      <p class="section-text">{{ grav.theme.config.hero.text }}</p>
       <button class="landing-page__button white">
-        <span>{{hero_content.link}}</span>
+        <span>{{ grav.theme.config.hero.link }}</span>
         <div class="landing-page__button-arrow"></div>
       </button>
     </div>
