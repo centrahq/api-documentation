@@ -13,7 +13,6 @@ services:
     build: sass
     volumes:
     - ./user:/var/www/html/user
-    command: sass --watch var/www/html/user/themes/centra/scss:var/www/html/user/themes/centra/css --style compressed
 volumes:
   user:
     external: false
