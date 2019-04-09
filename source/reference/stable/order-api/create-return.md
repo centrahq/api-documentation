@@ -71,9 +71,8 @@ This will create return for given shipment and items. Return will be created eve
 
        .. type:: boolean
           :required: false
-          :default: false
 
-     - Set to `true` to use Handling cost from Shipment. You cannot provide handlingCost at the same time this option is used.
+     - Default `false`. Set to `true` to use Handling cost from Shipment. You cannot provide handlingCost at the same time this option is used.
 
    * - ``shippingCost``
 
@@ -86,9 +85,8 @@ This will create return for given shipment and items. Return will be created eve
 
        .. type:: boolean
           :required: false
-          :default: false
 
-     - Set to `true` to use Shipping cost from Shipment. You cannot provide shippingCost at the same time this option is used.
+     - Default `false`. Set to `true` to use Shipping cost from Shipment. You cannot provide shippingCost at the same time this option is used.
         
    * - ``returnCost``
 
@@ -108,9 +106,8 @@ This will create return for given shipment and items. Return will be created eve
 
        .. type:: boolean
           :required: false
-          :default: false
 
-     - Set to `true` to use Voucher value from Shipment. You cannot provide voucherValue at the same time this option is used.
+     - Default `false`. Set to `true` to use Voucher value from Shipment. You cannot provide voucherValue at the same time this option is used.
      
    * - ``comment``
 
