@@ -55,6 +55,14 @@ Here are the parameters allowed to create an order. There are some fields specif
 
             - Customer name
 
+          * - ``tele`` ``cell``
+
+              .. type:: string
+                 :storetype: b2c
+                 :required: false
+
+            - Customer telephone / cellphone
+
           * - ``attn``
 
               .. type:: string
