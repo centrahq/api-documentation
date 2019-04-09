@@ -59,7 +59,59 @@ This will create return for given shipment and items. Return will be created eve
           :required: false
 
      - Insert returned items into stock. If not provided ``Default stock action on return`` setting on the store will be used.
+   
+   * - ``handlingCost``
 
+       .. type:: float
+          :required: false
+
+     - Handling cost.
+
+   * - ``handlingCostFromShipment``
+
+       .. type:: boolean
+          :required: false
+          :default: false
+
+     - Set to `true` to use Handling cost from Shipment. You cannot provide handlingCost at the same time this option is used.
+
+   * - ``shippingCost``
+
+       .. type:: float
+          :required: false
+
+     - Shipping cost.
+
+   * - ``shippingCostFromShipment``
+
+       .. type:: boolean
+          :required: false
+          :default: false
+
+     - Set to `true` to use Shipping cost from Shipment. You cannot provide shippingCost at the same time this option is used.
+        
+   * - ``returnCost``
+
+       .. type:: float
+          :required: false
+
+     - Return cost. If the return itself should have a cost to it. Providing a value here will deduct the amount of money to refund.
+     
+   * - ``voucherValue``
+
+       .. type:: float
+          :required: false
+
+     - Voucher value, should always be positive value.
+
+   * - ``voucherValueFromShipment``
+
+       .. type:: boolean
+          :required: false
+          :default: false
+
+     - Set to `true` to use Voucher value from Shipment. You cannot provide voucherValue at the same time this option is used.
+     
    * - ``comment``
 
        .. type:: string
@@ -73,6 +125,33 @@ This will create return for given shipment and items. Return will be created eve
           :required: false
 
      - Response in xml format instead of json.
+
+   * - ``refund``
+
+       .. type:: object
+          :required: false
+
+     - Refund object.
+
+       Example: ``{"refund":{"refundPayment": true}}`` will make refund from return.
+
+       .. list-table::
+          :widths: auto
+
+          * - ``refundPayment``
+
+              .. type:: boolean
+                 :required: false
+
+            - If this is set to true the payment provider will get a refund request to pay back the money to the customer. The amount that will be refunded is the amount for the products, the handling, shipping and return costs.
+
+          * - ``sendEmail``
+
+              .. type:: boolean
+                 :required: false
+
+            - Send refund email. Default value is ``false``.
+     
 ```
 
 ## Request example
