@@ -1,6 +1,6 @@
 .rst-content #example {
   max-width: 700px;
-   @media (min-width: breakpoint('extra-large')) {
+   @media (min-width: $main-extra-large-breakpoint) {
       max-width: 846px;
    }
   .examples-switcher {
@@ -91,7 +91,7 @@
   overflow: auto;
   width: 100%;
   max-width: 700px;
-   @media (min-width: breakpoint('extra-large')) {
+   @media (min-width: $main-extra-large-breakpoint) {
       max-width: 846px;
    }
 }

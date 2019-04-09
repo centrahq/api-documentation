@@ -70,7 +70,7 @@
   }
 }
 
-@media (max-width: breakpoint('extra-large')) {
+@media (max-width: $main-extra-large-breakpoint) {
   .docs-wrapper {
     padding: 150px 125px;
   }

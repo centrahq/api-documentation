@@ -27,6 +27,7 @@
   @import 'sidebar.scss';
   @import 'code-example.scss';
   @import 'navigation.scss';
+  @import 'navigation-item.scss';
   @import 'navigation-search.scss';
   
   /**
@@ -40,7 +41,6 @@
   */
 
 @import "_main";
-@import "_topnav";
 @import "_sidenav";
 @import "_content";
 @import "_toc";

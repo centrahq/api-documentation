@@ -24,13 +24,27 @@ $menu-breakpoint: 715px;
   }
 }
 
+.navigation__items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+}
+
+.navigation__centra-logo {
+  width: 83px;
+  height: 29px;
+}
+
 .navigation__burger-menu {
   display: none;
   outline: none;
   width: 40px;
   height: 40px;
   border: none;
-  background: url('./../../_static/img/burger-menu.svg') no-repeat center center;
+  background: url('../images/img/burger-menu.svg') no-repeat center center;
 }
 
 .navigation-search-button {
@@ -39,7 +53,7 @@ $menu-breakpoint: 715px;
   width: 40px;
   height: 40px;
   border: none;
-  background: url('./../../_static/img/search.svg') no-repeat center center;
+  background: url('../images/img/search.svg') no-repeat center center;
 }
 
 .navigation-search-button.search-link {
@@ -51,6 +65,20 @@ $menu-breakpoint: 715px;
   margin-right: 15px;
   top: 0;
   left: 0;
+}
+
+.navigation__link-developers {
+  color: #505050;
+  text-decoration: none;
+  font-size: 28px;
+  line-height: 32px;
+}
+
+.navigation-item__text {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 400;
+  opacity: 0.7;
 }
 
 .landing-page .navigation-search-button {
@@ -80,7 +108,7 @@ $menu-breakpoint: 715px;
   left: 14%;
   width: 133px;
   height: 101px;
-  background: url('./../../_static/img/slider.svg') no-repeat center center;
+  background: url('../images/img/slider.svg') no-repeat center center;
 }
 
 .navigation-background__stack {
@@ -89,7 +117,7 @@ $menu-breakpoint: 715px;
   right: 27%;
   width: 137px;
   height: 113px;
-  background: url('./../../_static/img/stack.svg') no-repeat center center;
+  background: url('../images/img/stack.svg') no-repeat center center;
 }
 
 .navigation-background__smile {
@@ -98,7 +126,7 @@ $menu-breakpoint: 715px;
   left: 10%;
   width: 76px;
   height: 60px;
-  background: url('./../../_static/img/smile.svg') no-repeat center center;
+  background: url('../images/img/smile.svg') no-repeat center center;
 }
 
 .navigation-background__hand {
@@ -107,7 +135,7 @@ $menu-breakpoint: 715px;
   right: 10%;
   width: 189px;
   height: 100px;
-  background: url('./../../_static/img/hand.svg') no-repeat center center;
+  background: url('../images/img/hand.svg') no-repeat center center;
 }
 
 .navigation-background__circle-outlined {
@@ -116,7 +144,7 @@ $menu-breakpoint: 715px;
   right: 41%;
   width: 97px;
   height: 40px;
-  background: url('./../../_static/img/circle-outlined.svg') no-repeat center center;
+  background: url('../images/img/circle-outlined.svg') no-repeat center center;
 }
 
 .navigation--small, .navigation--small .navigation__items {
@@ -130,17 +158,12 @@ $menu-breakpoint: 715px;
 }
 
 .navigation__items {
-  @include bare-list;
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: 8px;
   margin-bottom: 0;
   transition: transform 0.2s ease-out;
-
-  @media (min-width: $menu-breakpoint) {
-    justify-content: center;
-  }
 }
 
 .navigation__item {
@@ -178,7 +201,7 @@ $menu-breakpoint: 715px;
   }
 
   .navigation__burger-menu.close {
-    background-image: url('./../../_static/img/close-arrow.svg');
+    background-image: url('../images/img/close-arrow.svg');
   }
 
   .navigation-search,
@@ -188,14 +211,8 @@ $menu-breakpoint: 715px;
     display: none;
   }
 
-  .navigation__left {
-    order: 2;
-    justify-content: center;
-  }
-
-  .navigation .navigation__right {
-    order: 3;
-    flex: 0;
+  .navigation-search.show {
+    display: flex;
   }
 
   .navigation-search-button {
@@ -203,7 +220,7 @@ $menu-breakpoint: 715px;
   }
 
   .navigation-search-button.close {
-    background-image: url('./../../_static/img/close.svg');
+    background-image: url('../images/img/close.svg');
   }
 
   .landing-page .show,
@@ -213,12 +230,12 @@ $menu-breakpoint: 715px;
 
   .landing-page .navigation-search.show,
   .navigation-search.show {
-    margin-top: 88px;
+    margin-top: 64px;
   }
 
   .landing-page .navigation-background.show,
   .navigation-background.show {
-    top: 88px;
+    top: 64px;
   }
 
   .navigation-search-button.search-link {
@@ -241,6 +258,10 @@ $menu-breakpoint: 715px;
 }
 
 @media (max-width: $main-mobile-navigation-breakpoint) {
+  .navigation__link-developers {
+    font-size: 24px;
+  }
+
   .navigation-search.show {
     height: 88px;
     margin-top: 65px;

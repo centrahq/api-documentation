@@ -1,5 +1,6 @@
-{% extends 'partials/base.html.twig' %}
-
-{% block content %}
-    {% include 'partials/landing-page/landing-page.html.twig' %}
-{% endblock %}
+{% include 'partials/head.html.twig' %}
+<body>
+    {% include 'partials/topnav.html.twig' %}
+    {% block content %}
+    {% include 'partials/landing-page/landing-page.html.twig' %}{% endblock %}
+</body>

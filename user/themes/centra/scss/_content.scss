@@ -2,15 +2,15 @@
   position: relative;
   max-width: 700px;
   width: 100%;
-  padding-left: 0;
-  padding-right: 0;
-
-  @media (max-width: breakpoint('extra-large')) {
-    margin-top: 88px;
-    max-width: 100%;
-  }
+  padding: 35px 22px 45px 100px;
 
   @media (max-width: $mobile-navigation-breakpoint) {
     padding: 0 23px;
   }
+}
+
+.main__content-article {
+  width: 100%;
+  margin-top: 35px;
+  margin-bottom: 80px;
 }

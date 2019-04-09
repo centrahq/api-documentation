@@ -10,8 +10,8 @@
     {% set current_page = p.active ? ' active' : '' %}
     <li class="dd-item{{ parent_page }}{{ current_page }}" data-nav-id="{{ p.route }}">
         <a href="{{ p.url }}" {% if p.header.class %}class="{{ p.header.class }}"{% endif %}>
-            <i class="fa fa-check read-icon"></i>
-            <span><b>{% if data_level == 0 %}{{ loop.index }}. {% endif %}</b>{{ p.menu }}</span>
+            <span>{{ p.menu }}</span>
+            <span class="navigation__item-arrow"></span>
         </a>
         {% if p.children.count > 0 %}
         <ul>
@@ -22,7 +22,7 @@
 {% endfor %}
 {% endmacro %}
 
-<nav class="main__sidebar" id="main-sidebar" aria-label="Side navigation">
+<nav class="main__sidebar sidebar" id="main-sidebar" aria-label="Side navigation">
     <ul class="navigation__items">
         {% if theme_config.root_page %}
             {{ _self.loop(page.find(theme_config.root_page), '') }}

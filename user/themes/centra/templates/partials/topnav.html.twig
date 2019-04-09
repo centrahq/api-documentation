@@ -1,30 +1,30 @@
 {% block topnav %}
-    <nav class="main-nav" aria-label="Main navigation">
-        <ul>
-            <li>
-                <a href="{{ home_url }}" class="navigation-item__text">
-                    Home
+    <div class="navigation-wrapper">
+        <nav class="navigation" aria-label="Main navigation">
+            <div class="navigation__left">
+                <a href="{{ home_url }}" class="navigation__link-developers">
+                    <img src="{{ url("theme://images/img/centra-logo.png")}}" alt="Centra" class="navigation__centra-logo">
+                    <span>Developers</span>
                 </a>
-            </li>
-            {% for page in pages.children.visible %}
-                <li>
-                    <a href="{{ page.url }}" class="navigation-item__text">
-                        {{ page.menu }}
-                    </a>
-                    <span class="navigation-item__dot"/>
-                </li>
-            {% endfor %}
-            <li>
-                <a href="/search" class="navigation-item__text">
-                    Search
-                </a>
-            </li>
-            <li>
+            </div>
+            <div class="navigation__menu">
+                <button class="navigation__burger-menu" id="burger-menu" onclick="toggleBurgerMenu()"></button>
+                <ul class="navigation__items">
+                    {% for page in pages.children.visible %}
+                        <li>
+                            <a href="{{ page.url }}" class="navigation-item__link">
+                                {{ page.menu }}
+                            </a>
+                            <span class="navigation-item__dot"/>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="navigation__right">
+                <a class="navigation-search-button search-link" href="/search"></a>
                 <button class="navigation-search-button" id="search-button" onclick="toggleSearch()"></button>
-                <a class="navigation__contact-us" id="contact-us" href="https://support.centra.com">
-                    Contact us
-                </a>
-            </li>
-        </ul>
-    </nav>
+                <a class="navigation__contact-us" href="https://support.centra.com">Contact us</a>
+            </div>
+        </nav>
+    </div>
 {% endblock %}

@@ -1,6 +1,7 @@
 {% include 'partials/head.html.twig' %}
 <body>
     {% include 'partials/topnav.html.twig' %}
+    {% include 'partials/navigation_search.html.twig' %}
 
     <div class="l-wrapper l-wrapper--fluid main">
         <div class="l-wrapper__left-padding"></div>
@@ -9,6 +10,7 @@
             {% block content %}{% endblock %}
             {% block aftercontent %}{% endblock %}
         </div>
-        <div class="l-wrapper__right-padding"></div>
+        <div class="l-wrapper__right-padding">
+        </div>
     </div>
 </body>

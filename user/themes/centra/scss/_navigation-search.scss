@@ -50,9 +50,15 @@
   width: 64px;
   height: 64px;
   outline: none;
-  background: url('./../../_static/img/search.svg') no-repeat center center;
+  background: url('../images/img/search.svg') no-repeat center center;
 }
 
 .navigation-search__submit-button:focus {
   border: none;
+}
+
+@media (max-width: $mobile-navigation-breakpoint) {
+  .navigation-search {
+    display: none;
+  }
 }
