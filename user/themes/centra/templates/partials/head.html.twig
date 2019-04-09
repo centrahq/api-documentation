@@ -25,4 +25,18 @@
         {% endblock %}
 
     {% endblock %}
+    <script>
+        function toggleSearch() {
+            document.getElementById("search").classList.toggle("show");
+            document.getElementById("navigation-background").classList.toggle("show");
+            document.getElementById("search-button").classList.toggle("close");
+        }
+
+        function toggleBurgerMenu() {
+            document.getElementById("burger-menu").classList.toggle("close");
+            document.getElementById("main-sidebar").classList.toggle("show-sidebar");
+            document.getElementById("sidebar").classList.toggle("show-sidebar");
+            document.getElementById("contact-us").classList.toggle("show-contact-us");
+        }
+    </script>
 </head>

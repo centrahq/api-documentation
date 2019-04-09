@@ -1,5 +1,5 @@
 ---
-title: Intermediate
+title: Glossary
 taxonomy:
     category: docs
 child_type: docs
@@ -7,7 +7,7 @@ child_type: docs
 
 ## Chapter 2
 
-### Intermediate
+### Glossary
 
 Delve deeper into more **complex** topics
 

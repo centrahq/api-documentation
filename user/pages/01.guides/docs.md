@@ -1,5 +1,5 @@
 ---
-title: Basics
+title: Guides
 taxonomy:
     category: docs
 child_type: docs
@@ -7,6 +7,6 @@ child_type: docs
 
 ### Chapter 1
 
-# Basics
+# Guides
 
 Discover the **basic** principles

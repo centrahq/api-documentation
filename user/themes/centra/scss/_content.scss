@@ -1,4 +1,16 @@
-.article-content {
-    display: grid;
-    grid-template-columns: 7fr 3fr;
+.main__content {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+
+  @media (max-width: breakpoint('extra-large')) {
+    margin-top: 88px;
+    max-width: 100%;
+  }
+
+  @media (max-width: $mobile-navigation-breakpoint) {
+    padding: 0 23px;
+  }
 }

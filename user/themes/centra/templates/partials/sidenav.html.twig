@@ -22,12 +22,13 @@
 {% endfor %}
 {% endmacro %}
 
-<nav class="side-nav" aria-label="Side navigation">
-    <ul class="topics">
+<nav class="main__sidebar" id="main-sidebar" aria-label="Side navigation">
+    <ul class="navigation__items">
         {% if theme_config.root_page %}
             {{ _self.loop(page.find(theme_config.root_page), '') }}
         {% else %}
             {{ _self.loop(pages, '') }}
         {% endif %}
     </ul>
+    <a class="navigation__contact-us" id="contact-us" href="https://support.centra.com">Contact us</a>
 </nav>

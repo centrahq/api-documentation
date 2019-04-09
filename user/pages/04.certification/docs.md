@@ -1,5 +1,5 @@
 ---
-title: Centra API
+title: Certification
 taxonomy:
     category: docs
 child_type: docs
