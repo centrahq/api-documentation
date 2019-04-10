@@ -30,12 +30,13 @@ $menu-breakpoint: 715px;
   margin: 0;
   display: flex;
   justify-content: space-between;
-  width: 500px;
+  align-items: center;
+  width: 470px;
 }
 
 .navigation__centra-logo {
-  width: 83px;
-  height: 29px;
+  width: 80px;
+  height: 25px;
 }
 
 .navigation__burger-menu {
@@ -72,13 +73,8 @@ $menu-breakpoint: 715px;
   text-decoration: none;
   font-size: 28px;
   line-height: 32px;
-}
-
-.navigation-item__text {
-  font-size: 18px;
-  color: #fff;
-  font-weight: 400;
-  opacity: 0.7;
+  display: flex;
+  align-items: center;
 }
 
 .landing-page .navigation-search-button {
@@ -157,25 +153,6 @@ $menu-breakpoint: 715px;
   transform: translateY(45px);
 }
 
-.navigation__items {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 8px;
-  margin-bottom: 0;
-  transition: transform 0.2s ease-out;
-}
-
-.navigation__item {
-  margin-right: 50px;
-  white-space: nowrap;
-}
-
-.navigation__item:last-child {
-  margin-right: 0;
-  padding-left: 30px;
-}
-
 .landing-page .show {
   display: flex;
   z-index: 2;
@@ -246,14 +223,6 @@ $menu-breakpoint: 715px;
 @media (max-width: breakpoint("medium")) {
   .navigation {
     padding: 0 5px;
-  }
-
-  .navigation__item:first-child {
-    margin-left: 30px;
-  }
-
-  .navigation__item:last-child a {
-    margin-right: 30px;
   }
 }
 
