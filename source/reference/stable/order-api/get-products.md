@@ -69,7 +69,7 @@ This will return product data from Centra with categories.
 .. code-block:: http
    :linenos:
 
-   POST <base>/order HTTP/1.1
+   GET <base>/products HTTP/1.1
    Content-type: application/json
 
 ```
