@@ -1,8 +1,21 @@
+.main__inner {
+  display: flex;
+  flex-wrap: nowrap;
+
+  @media (max-width: $main-extra-large-breakpoint) {
+    width: 100%;
+  }
+}
+
 .main__content {
   position: relative;
-  max-width: 700px;
-  width: 100%;
+  width: 700px;
   padding: 35px 22px 45px 100px;
+
+  @media (max-width: $main-extra-large-breakpoint) {
+    margin: 0 auto;
+    padding: 35px 22px 35px 40px;
+  }
 
   @media (max-width: $mobile-navigation-breakpoint) {
     padding: 0 23px;

@@ -1,20 +1,24 @@
 #breadcrumbs {
-    height: 3rem;
-    line-height: 3rem;
+  display: flex;
+  align-items: center;
 }
+
 #breadcrumbs span {
-    display: inline-block;
-    padding: 0 1rem;
-    color: #3C3C3C;
+  padding: 0 1rem;
+  color: #3C3C3C;
 }
+
 #breadcrumbs span:first-child {
-    padding-left: 0;
-    color: #3764DA;
+  color: #3764DA;
 }
+
+#breadcrumbs a:first-child span {
+  padding-left: 0;
+}
+
 #breadcrumbs i {
-    text-align: center;
-    border: 1px solid #CCCCCC;
-    width: 2px;
-    height: 17px;
+  border: 1px solid #CCCCCC;
+  width: 2px;
+  height: 17px;
 }
 

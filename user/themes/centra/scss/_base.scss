@@ -3,15 +3,6 @@
 #contact-us {
   display: none;
 }
-  
-.main__inner {
-  display: flex;
-  flex-wrap: nowrap;
-
-  @media (max-width: breakpoint("extra-large")) {
-    width: 100%;
-  }
-}
 
 .main__sidebar {
   min-width: 290px;
@@ -21,15 +12,6 @@
   @media (max-width: $mobile-navigation-breakpoint) {
     width: 354px;
     display: none;
-  }
-}
-  
-.main__content-inner {
-  width: 100%;
-  margin: 0 auto;
-
-  @media (min-width: $mobile-navigation-breakpoint) {
-    width: 90%;
   }
 }
 
@@ -134,8 +116,7 @@
 
 @media (max-width: $mobile-navigation-breakpoint) {
   .l-wrapper {
-    margin-top: 64px;
-    padding-top: 15px;
+    margin-top: 80px;
   }
 
   .sidebar.show-sidebar {

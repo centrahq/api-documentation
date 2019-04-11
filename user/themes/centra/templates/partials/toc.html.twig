@@ -1,5 +1,5 @@
 {% if config.get('plugins.page-toc.active') or attribute(page.header, 'page-toc').active %}
-    <section class="page-toc">
+    <section class="page-toc" id="toc">
         <div class="toc-wrapper">            
             {% set table_of_contents = toc(page.content) %}
             {% if table_of_contents is not empty %}
