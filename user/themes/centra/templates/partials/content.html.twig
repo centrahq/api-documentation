@@ -1,5 +1,8 @@
 <article class="main__content-article">
-    <button class="page-toc__toggle"><img src="{{ url("theme://images/img/toc-icon.svg")}}"/></button>
+    <div id="toc-popup">
+        <button class="page-toc__toggle" onclick="togglePageSearch()"><img src="{{ url("theme://images/img/toc-icon.svg")}}"/></button>
+        {% include 'partials/toc.html.twig' %}
+    </div>
     <div class="main-article-content">
         <header>
             <h1>{{ page.title }}</h1>

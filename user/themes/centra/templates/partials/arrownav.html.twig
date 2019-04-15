@@ -9,15 +9,15 @@
 	<div class="arrownav">
     {% if not progress.isFirst(page.path) %}
 	    <a class="arrownav-prev" href="{{ progress.nextSibling(page.path).url }}">
-            <span>Previous article:</span>
-            <span class="arrow arrow-prev">{{progress.nextSibling(page.path).title}}</span>
+            <span class="arrownav__article prev-article">Previous article:</span>
+            <span class="arrownav__name name-prev">{{progress.nextSibling(page.path).title}}</span>
         </a>
 	{% endif %}
 
 	{% if not progress.isLast(page.path) %}
 	    <a class="arrownav-next" href="{{ progress.prevSibling(page.path).url }}">
-            <span>Next article:</span>
-            <span class="arrow arrow-next">{{progress.prevSibling(page.path).title}}</span>
+            <span class="arrownav__article next-article">Next article:</span>
+            <span class="arrownav__name name-next">{{progress.prevSibling(page.path).title}}</span>
         </a>
 	{% endif %}
 	</div>
