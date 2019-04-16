@@ -13,16 +13,16 @@
 
   .ticker {
     display: inline-block;
-    line-height: 36px;
+    line-height: 55px;
     color: #000000;
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 40px;
     white-space: nowrap;
     box-sizing: content-box;
 
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     animation-name: ticker;
-    animation-duration: 50s;
+    animation-duration: 25s;
   }
 }

@@ -8,6 +8,8 @@
 
   .name-section {
     text-align: center;
+    color: #ffffff;
+    margin-bottom: 100px;
   }
 }
 
@@ -28,7 +30,8 @@
   padding: 66px 45px 110px;
   border: 2px solid #141414;
   box-sizing: border-box;
-  transition: background-color .5s ease-out;
+  transition: background-color .2s ease-out;
+  cursor: pointer;
 
   .landing-page__button-arrow {
     opacity: 0;
@@ -37,6 +40,7 @@
 
   &:hover {
     background-color: #141414;
+    transform: translateY(-1px);
 
     .landing-page__button-arrow {
       opacity: 1;
@@ -46,6 +50,7 @@
   h3 {
     font-size: 24px;
     margin: 75px 0;
+    font-weight: normal;
   }
 
   p {
@@ -98,6 +103,10 @@
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {
+  .basic-section .name-section {
+    margin-bottom: 50px;
+  }
+
   .basic-section__articles-wrapper {
     overflow-x: auto;
     flex-wrap: nowrap;

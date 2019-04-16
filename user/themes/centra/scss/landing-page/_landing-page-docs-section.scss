@@ -1,5 +1,9 @@
 .docs-section {
   flex-direction: column;
+
+  .name-section {
+    text-align: center;
+  }
 }
 
 .docs__articles-wrapper {
@@ -23,6 +27,10 @@
 
   &:not(:last-child) {
     margin-right: 24px;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
   }
 }
 

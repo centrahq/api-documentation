@@ -64,7 +64,7 @@ a {
 
 a:not([class]):hover,
 a:not([class]):focus {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a.headerlink {
