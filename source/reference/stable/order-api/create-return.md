@@ -30,7 +30,7 @@ This will create return for given shipment and items. Return will be created eve
    * - ``products``
 
        .. type:: object
-          :required: true
+          :required: false
 
      - Key is ``lineID`` from the :ref:`Get shipments <order-api-get-shipments>` and value is the ``quantity``.
 
