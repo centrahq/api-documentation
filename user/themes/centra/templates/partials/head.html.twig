@@ -42,5 +42,31 @@
         function togglePageSearch() {
             document.getElementById("toc-popup").classList.toggle("show");
         }
+
+        function onScroll() {
+            var bar = document.getElementById("request-access")
+            var footer = document.getElementById("landing-page-footer");
+            var bounding = footer.getBoundingClientRect();
+
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                bar.className = "fadeInDown request-access-bar";
+              } else {
+                bar.className = "fadeOutUp request-access-bar";
+              }
+            
+            if (bounding.top < window.innerHeight) {
+                bar.className = "fadeOutUp request-access-bar hide";
+            }
+        }
+
+        function spinOnScroll() {
+            var circle = document.getElementById("centra-commerce");
+
+            window.addEventListener("scroll", function() {
+                circle.style.transform = "rotate("+(window.pageYOffset / 5)+"deg)";
+            });
+        }
+
+        window.onscroll = function() {onScroll(), spinOnScroll()};
     </script>
 </head>

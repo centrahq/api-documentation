@@ -1,15 +1,5 @@
-@keyframes spin {
-  from {
-    transform:rotate(0deg);
-  }
-
-  to {
-    transform:rotate(360deg);
-  }
-}
-
 .landing-page-footer {
-  padding-bottom: 0;
+  padding-top: 0;
   background-color: #000000;
 
   ul {
@@ -35,25 +25,21 @@
 
 .animation-wrapper {
   margin: 0 auto;
-  margin-top: 130px;
+  margin-bottom: 130px;
   position: relative;
   width: 734px;
-  height: 325px;
+  height: 368px;
   overflow: hidden;
 }
 
-.centra-commerce-animation {
+.centra-commerce {
   position: absolute;
-  bottom: -412px;
+  top: -368px;
   left: 0;
   width: 734px;
   height: 734px;
   background: url('../images/img/centra-commerce.svg') no-repeat 50% 0;
   background-size: contain;
-  animation-name: spin;
-  animation-duration: 80s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear; 
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {
