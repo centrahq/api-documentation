@@ -1,0 +1,63 @@
+.landing-page-footer {
+  padding-top: 0;
+  background-color: #000000;
+
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.footer__navigation-group {
+  margin: 0 20px;
+
+  ul {
+    margin: 0;
+    margin-top: 25px;
+  }
+}
+
+.footer__navigation-link {
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.animation-wrapper {
+  margin: 0 auto;
+  margin-bottom: 130px;
+  position: relative;
+  width: 734px;
+  height: 368px;
+  overflow: hidden;
+}
+
+.centra-commerce {
+  position: absolute;
+  top: -368px;
+  left: 0;
+  width: 734px;
+  height: 734px;
+  background: url('../images/img/centra-commerce.svg') no-repeat 50% 0;
+  background-size: contain;
+}
+
+@media (max-width: $mobile-navigation-breakpoint) {
+  .section-wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer__navigation-group {
+    margin-bottom: 35px;
+    min-width: 100px;
+  }
+
+  .footer__navigation-link {
+    font-size: 14px;
+  }
+
+  .animation-wrapper {
+    display: none;
+  }
+}

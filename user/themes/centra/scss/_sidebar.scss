@@ -1,0 +1,138 @@
+.sidebar {
+  padding-right: 18px;
+  color: #000;
+  pointer-events: none;
+  padding-left: 40px;
+  -webkit-overflow-scrolling: touch;
+  pointer-events: auto;
+
+  @media (max-width: $mobile-navigation-breakpoint) {
+    display: none;
+  }
+}
+
+.landing-page .sidebar {
+  display: none;
+}
+
+.sidebar__inner {
+  padding-top: 32px;
+  padding-bottom: 40px;
+}
+
+.sidebar .navigation__items {
+  flex-direction: column;
+  max-width: 232px;
+  margin-top: 32px;
+  position: sticky;
+  top: 29px;
+
+  a {
+    color: #3C3C3C;
+    font-size: 15px;
+    line-height: 19px;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  ul {
+    padding-left: 20px;
+  }
+
+  > .dd-item > a {
+    color: #222222;
+    font-size: 18px;
+    line-height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.navigation__item--active {
+  position: relative;
+}
+
+.sidebar .navigation__items > li.dd-item.active > .navigation__item--active,
+.sidebar .navigation__items > li.dd-item > .navigation__item--active {
+  margin-bottom: 23px;
+
+  span {
+    z-index: 1;
+    color: #222222;
+  }
+
+  &::before {
+    display: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10000px;
+    height: 40px;
+    background-color: #F0F0F0;
+    opacity: 0.5;
+    border-radius: 20px;
+    z-index: 0;
+  }
+}
+
+.sidebar .dd-item.active .navigation__item--active {
+  span {
+    color: #3764DA;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: calc(50% - 2px);
+    width: 5px;
+    height: 5px;
+    background-color: #4373DC;
+    border-radius: 50%;
+  }
+
+  &::after{
+    display: none;
+  }
+}
+
+.sidebar .navigation__items > li.dd-item.active > .navigation__item--active,
+.sidebar .navigation__items > li.dd-item > .navigation__item--active {
+  &::after {
+    display: block;
+  }
+}
+
+.sidebar .dd-item {
+  margin: 0;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.sidebar .navigation__item-arrow {
+  width: 12px;
+  height: 5px;
+  margin-right: 24px;
+  background: transparent url('../images/img/arrow-down.svg') no-repeat center center;
+}
+
+.sidebar .navigation__item-arrow--active {
+  background-image: url('../images/img/arrow-up.svg');
+}
+
+.main__sidebar-logo-dark {
+  font-size: 22px;
+  display: none;
+}
+
+.show-sidebar .main__sidebar-logo-dark {
+  display: flex;
+}

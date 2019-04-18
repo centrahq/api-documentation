@@ -1,0 +1,140 @@
+.docs-section {
+  flex-direction: column;
+
+  .name-section {
+    text-align: center;
+  }
+}
+
+.docs__articles-wrapper {
+  padding: 190px 80px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.docs__article {
+  box-shadow: 0px 0px 26px rgba(0, 0, 0, 0.05);
+  max-width: 386px;
+  padding: 66px 45px 110px;
+  letter-spacing: 0.12px;
+  font-size: 22px;
+  margin: 11px;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.article__graphics {
+  display: block;
+  margin: 0 auto;
+}
+
+.article__title {
+  margin-top: 125px;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.article__text {
+  font-size: 16px;
+  line-height: 1.8em;
+  margin: 0;
+}
+
+.docs__background {
+  position: absolute;
+
+  &.background-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 3px solid #231F20;
+    left: -8px;
+    bottom: 21%;
+  }
+
+  &.background-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #231F20;
+    right: 5%;
+    bottom: 40%;
+  }
+}
+
+@media (max-width: 1500px) {
+  .article__title {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: $main-extra-large-breakpoint) {
+  .docs-wrapper {
+    padding: 150px 125px;
+  }
+
+  .docs__articles-wrapper {
+    padding: 50px 70px 0;
+  }
+
+  .docs__article {
+    padding: 65px 30px;
+    width: 300px;
+    font-size: 18px;
+    line-height: 24px;
+    min-width: 240px;
+  }
+
+  .article__graphics {
+    width: 150px;
+  }
+}
+
+@media (min-width: $mobile-navigation-breakpoint) {
+  .docs__article:hover {
+    box-shadow: 0px 0px 26px rgba(0, 0, 0, 0.16);
+  }
+}
+
+@media (max-width: $mobile-navigation-breakpoint) {
+  .docs__articles-wrapper {
+    overflow-x: auto;
+    width: 100%;
+    padding: 25px 10px 5px;
+  }
+
+  .docs__article {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+  }
+
+  .article__title {
+    margin-top: 10px;
+  }
+
+  .docs-section {
+    padding: 25px 0;
+    margin-bottom: 0; 
+  }
+
+  .article__graphics {
+    width: 120px;
+  }
+
+  .docs__background {
+    &.background-circle {
+      width: 28px;
+      height: 28px;
+      bottom: 11%;
+      left: -12px;
+    }
+
+    &.background-dot {
+      top: 14%;
+      width: 13px;
+      height: 13px;
+    }
+  }
+}

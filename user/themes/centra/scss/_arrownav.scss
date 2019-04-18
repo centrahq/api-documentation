@@ -1,0 +1,65 @@
+.arrownav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  a {
+    text-decoration: none;
+
+    span {
+      display: block;
+    }
+
+    .arrownav__article {
+      color: #AAAAAA;
+      font-size: 13px;
+      line-height: 17px;
+    }
+
+    .arrownav__name {
+      position: relative;
+      font-size: 18px;
+      line-height: 22px;
+      color: #003272;
+      margin-top: 15px;
+
+      &:after {
+        content: "";
+        display: block;
+        width: 6px;
+        height: 6px;
+        border: solid #003272;
+        border-width: 1px 1px 0 0;
+        position: absolute;
+      }
+    }
+
+    .name-next {
+      margin-right: 40px;
+
+      &:after {
+        transform: rotate(45deg);
+        right: -20px;
+        top: 8px;
+      }
+    }
+
+    .name-prev {
+      margin-left: 40px;
+
+      &:after {
+        transform: rotate(-135deg);
+        left: -20px;
+        top: 8px;
+      }
+    }
+
+    .arrownav__name:hover {
+      color: #3764DA;
+
+      &:after {
+          border-color: #3764DA;
+      }
+    }
+  }
+}

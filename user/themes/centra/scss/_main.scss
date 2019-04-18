@@ -1,0 +1,142 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  line-height: 1.5;
+  font-feature-settings: 'liga', 'kern';
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  outline-width: thin;
+  outline-color: #4373DC;
+}
+
+ul,
+ol,
+dl {
+  margin-top: 0;
+  list-style: none;
+}
+
+button,
+input[type='submit'] {
+  cursor: url(../images/img/cursor-dot.png), default;
+}
+
+button,
+input,
+select,
+textarea {
+  color: #111;
+  font-family: $font-family-default;
+  font-weight: 300;
+  font-size: 21px;
+}
+
+img {
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+svg {
+  vertical-align: middle;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid $grey-light;
+  margin: 30px 0;
+}
+
+em {
+  font-style: normal;
+  font-weight: 600;
+}
+
+a {
+  color: $brand-primary;
+  text-decoration: none;
+}
+
+a:not([class]):hover,
+a:not([class]):focus {
+  text-decoration: none;
+}
+
+a.headerlink {
+  font-size: 0;
+}
+
+h1:hover a.headerlink::before,
+h2:hover a.headerlink::before,
+h3:hover a.headerlink::before,
+h4:hover a.headerlink::before,
+h5:hover a.headerlink::before,
+h6:hover a.headerlink::before {
+  opacity: 1;
+}
+
+a.headerlink::before {
+  content: '';
+  position: absolute;
+  left: -22px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100%;
+  width: 15px;
+  background: url('../images/img/headerlink.svg') no-repeat center center;
+  opacity: 0;
+  padding-right: 22px;
+}
+
+/**
+ * Main content wrapper
+ */
+[role='main'].document {
+  max-width: 100%;
+}
+
+.rst-content a:hover,
+.rst-content a:focus {
+  text-decoration: underline;
+}
+
+:target::before {
+  content: '';
+  display: block;
+  height: 150px;
+  margin: -130px 0 0;
+}
+
+/**
+ * Specific styles for currencies table
+ */
+#supported-currencies table tr th,
+#supported-currencies table tr td {
+  text-align: left;
+}
+
+/**
+ * Specific styles for payment method expiry times table
+ */
+#expiry-times-per-payment-method table tr th,
+#expiry-times-per-payment-method table tr td {
+  text-align: left;
+}
+
+#expiry-times-per-payment-method table ul {
+  list-style: none;
+  padding: 0;
+}
+
+.api-table td {
+  padding: 0 10px;
+}
+
+.api-table td:nth-child(2) {
+  font-style: italic;
+}

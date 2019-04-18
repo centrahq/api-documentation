@@ -1,0 +1,137 @@
+.landing-page-section {
+  width: 100%;
+  padding: 230px 80px 280px 60px;
+  position: relative;
+  font-size: 1em;
+}
+
+.section-wrapper {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1265px;
+  margin: 0 auto;
+}
+
+.landing-page__button {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.12px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+
+  .landing-page__button-arrow {
+    position: relative;
+    width: 18px;
+    height: 20px;
+    margin-left: 10px;
+    transform: scaleX(1);
+    transition: .5s ease-out;
+
+    &::before {
+      content: '';
+      width: 18px;
+      height: 2px;
+      position: absolute;
+      top: 10px;
+      background-color: #000000;
+      display: block;
+      left: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      border-bottom: 2px solid #000;
+      border-right: 2px solid #000;
+      width: 12px;
+      height: 12px;
+      transform: rotate(-45deg);
+      top: 5px;
+      right: 0;
+    }
+  }
+
+  &:hover .landing-page__button-arrow {
+    transform: translate3d(10px, 0, 0);
+  }
+
+  &.white {
+    color: #ffffff;
+
+    .landing-page__button-arrow::before {
+      background-color: #ffffff;
+    }
+
+    .landing-page__button-arrow::after {
+      border-color: #ffffff;
+    }
+  }
+
+  &.black {
+    color: #000000;
+  }
+}
+
+.section-content {
+  max-width: 560px;
+}
+
+.section-title {
+  font-size: 3em;
+  border: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.section-title::after {
+  display: none;
+}
+
+.section-text {
+  font-size: 1.4em;
+  margin-bottom: 45px;
+  line-height: 1.2em;
+}
+
+.name-section {
+  text-transform: uppercase;
+  font-size: 24px;
+  line-height: 26px;
+  font-weight: normal;
+  color: #000000;
+}
+
+@media (max-width: $main-extra-large-breakpoint) {
+  .landing-page-section {
+    font-size: 0.8em;
+    padding-top: 130px;
+    padding-bottom: 180px;
+  }
+
+  .section-title {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: $mobile-navigation-breakpoint) {
+  .landing-page-section {
+    padding: 80px 37px 1px;
+    font-size: 0.6em;
+  }
+
+  .section-wrapper {
+    margin-top: 20px;
+    margin-bottom: 25px;
+  }
+
+  .name-section {
+    font-size: 18px;
+  }
+
+  .landing-page__button {
+    font-size: 13px;
+  }
+}

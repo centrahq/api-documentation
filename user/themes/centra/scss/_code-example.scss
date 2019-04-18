@@ -1,0 +1,191 @@
+.rst-content #example {
+  max-width: 700px;
+   @media (min-width: $main-extra-large-breakpoint) {
+      max-width: 846px;
+   }
+  .examples-switcher {
+    .example-switch {
+      font-weight: 300;
+      font-size: 14px;
+      font-family: $font-family-monospace;
+      margin-right: 15px;
+      color: $brand-primary;
+      padding-bottom: 2px;
+      border-bottom: 1px solid $brand-primary;
+      text-decoration: none;
+      transform: translateY(-3px);
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        color: $brand-primary-hover;
+        text-decoration: none;
+        border-bottom: none;
+      }
+
+      &.is-selected {
+        font-weight: 600;
+        border-bottom: none;
+      }
+    }
+  }
+  .code-blocks > div {
+    &:not(.is-hidden) {
+      -webkit-transition: opacity 600ms, visibility 600ms;
+      transition: opacity 600ms, visibility 600ms;
+    }
+
+    &.is-hidden {
+      opacity: 0;
+      position: absolute;
+      width: 0;
+    }
+  }
+}
+
+.rst-content .section > div > .highlight > pre {
+  margin-bottom: 40px;
+}
+
+.rst-content .highlighttable {
+  background: $white-grey;
+  border-radius: 4px;
+  margin-bottom: 40px;
+  display: block;
+  padding-right: 30px;
+  overflow: auto;
+  width: 100%;
+  max-width: 700px;
+}
+
+.rst-content [id*="example"] > h2,
+.rst-content [id*="example"] > h3 {
+  margin: 0;
+  padding: 17px 24px;
+  display: inline-block;
+  background: $white-grey;
+  border-radius: 4px 4px 0px 0px;
+  font-weight: 500;
+  font-size: 17px;
+  color: $blackish-grey;
+}
+
+.rst-content [id*="example"] .notranslate {
+  position: relative;
+  display: flex;
+  background-color: $white-grey;
+  border-radius: 4px;
+  margin-bottom: 40px;
+}
+
+.rst-content [id*="example"] code.notranslate {
+  display: inline-block;
+  margin: 0;
+}
+
+.rst-content [id*="example"] .highlighttable {
+  margin-top: 0;
+  margin-bottom: 9px;
+  display: block;
+  padding-right: 30px;
+  overflow: auto;
+  width: 100%;
+  max-width: 700px;
+   @media (min-width: $main-extra-large-breakpoint) {
+      max-width: 846px;
+   }
+}
+
+.rst-content .section .highlighttable tbody > tr > td {
+  padding-bottom: 0;
+  color: $grey-dusty;
+}
+
+.rst-content .section .highlighttable tr td.linenos {
+  padding: 0 0 0 19px;
+}
+
+.rst-content .section .highlighttable tr td.code {
+  vertical-align: top;
+}
+
+.rst-content .highlight {
+  background: transparent;
+}
+
+.rst-content .highlighttable .linenodiv {
+  color: #BDBDBD;
+  line-height: 30px;
+  font-size: 12px;
+}
+
+.rst-content .highlighttable pre {
+  min-height: 0;
+  padding: 25px 0 25px 19px;
+}
+
+.rst-content .highlight pre {
+  font-family: $font-family-monospace;
+  color: $grey-dark;
+}
+
+.rst-content div > .highlight > pre {
+  background-color: $white-grey;
+  border-radius: 4px;
+}
+
+.rst-content .highlight .kc,
+.rst-content .highlight .p,
+.rst-content .highlight .l,
+.rst-content .highlight .mf,
+.rst-content .highlight .s2 {
+  color: $grey-dark;
+}
+
+.rst-content .highlight .nt,
+.rst-content .highlight .kr,
+.rst-content .highlight .na,
+.rst-content .highlight .m,
+.rst-content .highlight .o,
+.rst-content .highlight .ne {
+  color: $orange-anzac;
+}
+
+.rst-content .highlight .nt,
+.rst-content .highlight .ne,
+.rst-content .highlight .m {
+  font-weight: bold;
+}
+
+.rst-content .highlight .kc,
+.rst-content .highlight .p,
+.rst-content .highlight .s2,
+.rst-content .highlight .se,
+.rst-content .highlight .nt {
+  font-weight: 300;
+}
+
+.rst-content .highlight .err {
+  border: none;
+  color: $grey-dark;
+}
+
+.rst-content .highlight .mi {
+  color: $orange-anzac;
+}
+
+.rst-content .highlight-bash .highlight .s2,
+.rst-content .highlight-bash .highlight .se,
+.rst-content .highlight-php .highlight .cp,
+.rst-content .highlight-php .highlight .nv,
+.rst-content .highlight-php .highlight .k,
+.rst-content .highlight-php .highlight .nx,
+.rst-content .highlight-php .highlight .c1,
+.rst-content .highlight-php .highlight .o,
+.rst-content .highlight-php .highlight .na {
+  color: $brand-primary-hover;
+}
+
+.rst-content .highlight-php .highlight .mi {
+  color: $grey-dark;
+}

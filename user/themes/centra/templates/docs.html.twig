@@ -1,0 +1,19 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block beforecontent %}
+    {% include 'partials/sidenav.html.twig' %}
+{% endblock %}
+{% block content %}
+    <div class="main__content">
+        {% if config.get('plugins.breadcrumbs.enabled') %}
+            <nav aria-label="Breadcrumbs">
+                {% include 'partials/breadcrumbs.html.twig' %}
+            </nav>
+        {% endif %}
+        {% include 'partials/content.html.twig' %}
+        {% include 'partials/arrownav.html.twig' %}
+    </div>
+{% endblock %}
+{% block aftercontent %}
+    {% include 'partials/toc.html.twig' %}
+{% endblock %}

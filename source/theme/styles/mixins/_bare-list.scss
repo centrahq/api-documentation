@@ -1,9 +1,0 @@
-/*
- * Bare list
- *
- * Get rid of list-style and padding
- */
-@mixin bare-list() {
-  padding: 0;
-  list-style-type: none;
-}
