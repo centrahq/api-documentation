@@ -65,6 +65,10 @@
   padding: 9px 15px;
   line-height: 17px;
   white-space: nowrap;
+
+  &:hover {
+    background-color: $blackish-grey;
+  }
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {

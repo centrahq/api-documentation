@@ -67,6 +67,30 @@
             });
         }
 
+        function isSearchResults(event) {
+            var searchResults = document.getElementById("search-results");
+            var searchPageContent = document.getElementById("search-page-content");
+            var background = document.getElementById("search-navigation-background");
+            var searchWrapper = document.getElementById("tntsearch-wrapper")
+            var input = document.getElementById("input-search");
+            var isHidden = searchResults.style.display == "none";
+
+            if (event.target.value.length === 0) {
+                searchPageContent.classList.add("hide");
+                background.classList.add("big-screen");
+                searchWrapper.classList.remove("small-screen");
+            } else {
+                searchPageContent.classList.remove("hide");
+                background.classList.remove("big-screen");
+                searchWrapper.classList.add("small-screen");
+            }
+        }
+
         window.onscroll = function() {onScroll(), spinOnScroll()};
+        window.addEventListener('load', () => {
+            var input = document.getElementById("input-search");
+
+            input.addEventListener('change', (event) => isSearchResults(event), false);
+        }, false )
     </script>
 </head>

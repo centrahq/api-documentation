@@ -5,7 +5,10 @@
     </div>
     <div class="main-article-content">
         <header>
-            <h1>{{ page.title }}</h1>
+            <div>
+                <h1>{{ page.title }}</h1>
+                <date>Last updated {{ page.date | date(system.dateformat.short) }}</date>
+            </div>
         </header>
         <p>
             {{ page.content }}

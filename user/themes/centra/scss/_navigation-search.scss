@@ -51,6 +51,11 @@
   height: 64px;
   outline: none;
   background: url('../images/img/search.svg') no-repeat center center;
+  opacity: 1;
+}
+
+.navigation-search__submit-button:hover{
+  opacity: 0.6;
 }
 
 .navigation-search__submit-button:focus {
