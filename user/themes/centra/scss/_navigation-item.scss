@@ -31,7 +31,17 @@
 }
 
 .navigation-item__link:hover {
-  color: $grey-boulder;
+  opacity: 1;
+}
+
+.navigation-item__link:not(:hover) {
+  opacity: 0.7;
+}
+
+.navigation__items:not(:focus-within):not(:hover) {
+  .navigation-item__link  { 
+    opacity: 1;
+  }
 }
 
 .navigation-item__link--active{

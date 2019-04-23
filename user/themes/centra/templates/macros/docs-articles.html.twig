@@ -2,7 +2,12 @@
   {% for doc in docs_content %}
     <article class="docs__article">
       <img src="{{ url("theme://#{doc.img}")}}" alt="Store API" class="article__graphics">
-      <h4 class="article__title">{{doc.title}}</h4>
+      <h4 class="article__title">
+        {{doc.title}}
+          <div class="landing-page__button">
+            <div class="landing-page__button-arrow"></div>
+          </div>
+        </h4>
       <p class="article__text">{{doc.text}}</p>
     </article>
   {% endfor %}
