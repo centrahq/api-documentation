@@ -43,6 +43,10 @@
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {
+  .landing-page-footer {
+    padding-top: 80px;
+  }
+
   .section-wrapper {
     flex-wrap: wrap;
     justify-content: center;

@@ -30,7 +30,7 @@
 
     .navigation-background__stack{
       left: 5%;
-      top: 75%;
+      top: 62%;
     }
 
     .navigation-background__smile {
@@ -103,5 +103,41 @@
     line-height: 17px;
     font-weight: normal;
     color: #AAAAAA;
+  }
+}
+
+@media (max-width: $mobile-navigation-breakpoint) {
+  .search-page {
+    .navigation-search,
+    .navigation-background {
+      display: block;
+    }
+  }
+
+  #tntsearch-wrapper {
+    padding: 128px 0;
+    height: 100vh;
+  }
+}
+
+@media (max-width: $main-mobile-navigation-breakpoint) {
+  .search-page {
+    .navigation-wrapper {
+      border: none;
+    }
+
+    .navigation-search,
+    .navigation-background {
+        display: none;
+    }
+  }
+
+  #tntsearch-wrapper {
+    padding: 72px 0 0 0;
+  }
+
+  #tntsearch-wrapper.small-screen {
+    height: 133px;
+    align-items: center;
   }
 }

@@ -239,21 +239,7 @@ $menu-breakpoint: 715px;
     font-size: 24px;
   }
 
-  .navigation-search.show {
-    height: 88px;
-    margin-top: 65px;
-  }
-
-  .navigation-background.show {
-    display: none;
-  }
-
-  .navigation-search__submit-button {
-    height: 44px;
-  }
-
-  .navigation-search__input {
-    font-size: 16px;
-    padding: 11px 23px;
+  .navigation-wrapper.remove-border {
+    border: none;
   }
 }

@@ -67,3 +67,26 @@
     display: none;
   }
 }
+
+@media (max-width: $main-mobile-navigation-breakpoint) {
+  .navigation-search.show {
+    height: 61px;
+    margin-top: 64px;
+  }
+
+  .navigation-search__input {
+    padding: 6px;
+    line-height: 12px;
+    font-size: 12px;
+  }
+
+  .navigation-background.show {
+    display: none;
+  }
+
+  .navigation-search__submit-button {
+    width: 28px;
+    height: 28px;
+  }
+}
+
