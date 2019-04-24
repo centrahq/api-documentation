@@ -19,10 +19,18 @@
   letter-spacing: 0.12px;
   font-size: 22px;
   margin: 11px;
-  transition: box-shadow 0.3s;
+  transition: all 0.5s;
+
+  .landing-page__button {
+    opacity: 0;
+  }
 
   &:hover {
     transform: scale(1.02);
+
+    .landing-page__button {
+      opacity: 1;
+    }
   }
 }
 
@@ -35,6 +43,7 @@
   margin-top: 125px;
   font-size: 24px;
   font-weight: normal;
+  display: flex;
 }
 
 .article__text {

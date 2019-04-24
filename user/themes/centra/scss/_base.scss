@@ -91,6 +91,7 @@
 
 .l-wrapper {
   width: 100%;
+  min-height: calc(100vh - 258px);
   display: flex;
 }
 

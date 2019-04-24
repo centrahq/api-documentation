@@ -42,8 +42,8 @@ pages:
     - rss
     - atom
   expires: 604800
-  last_modified: false
-  etag: false
+  last_modified: true
+  etag: true
   vary_accept_encoding: false
   redirect_default_route: false
   redirect_default_code: '301'

@@ -27,6 +27,7 @@
     {% endblock %}
     <script>
         function toggleSearch() {
+            document.getElementById("navigation-wrapper").classList.toggle("remove-border");
             document.getElementById("search").classList.toggle("show");
             document.getElementById("navigation-background").classList.toggle("show");
             document.getElementById("search-button").classList.toggle("close");
@@ -36,17 +37,50 @@
             document.getElementById("navigation-link-developers").classList.toggle("hide");
             document.getElementById("burger-menu").classList.toggle("close");
             document.getElementById("main-sidebar").classList.toggle("show-sidebar");
-            document.getElementById("sidebar").classList.toggle("show-sidebar");
+            if (document.getElementById("sidebar")) {
+                document.getElementById("sidebar").classList.toggle("show-sidebar");
+            }
         }
 
         function togglePageSearch() {
             document.getElementById("toc-popup").classList.toggle("show");
         }
 
-        function onScroll() {
+        function backgroundOnScroll() {
+            var landingPage = document.getElementById("landing-page");
+            var boundingHeroSection = document.getElementById("hero-section").getBoundingClientRect();
+            var boundingBasicSection = document.getElementById("basic-section").getBoundingClientRect();
+            var boundingLandingPageFooter = document.getElementById("landing-page-footer").getBoundingClientRect();
+
+            if (boundingHeroSection.bottom < 200) {
+                landingPage.className = "landing-page white";
+            }
+
+            if (boundingHeroSection.bottom > 200) {
+                landingPage.className = "landing-page black";
+            }
+
+            if (boundingBasicSection.top < (window.innerHeight - 300)) {
+                landingPage.className = "landing-page black";
+            }
+
+            if (boundingBasicSection.bottom < 200) {
+                landingPage.className = "landing-page white";
+            }
+
+            if (boundingLandingPageFooter.top < (window.innerHeight - 100)) {
+                landingPage.className = "landing-page black";
+            }
+        }
+
+        function requestAccessOnScroll() {
             var bar = document.getElementById("request-access")
             var footer = document.getElementById("landing-page-footer");
             var bounding = footer.getBoundingClientRect();
+
+            if (!bar) {
+                return;
+            }
 
             if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
                 bar.className = "fadeInDown request-access-bar";
@@ -67,6 +101,54 @@
             });
         }
 
-        window.onscroll = function() {onScroll(), spinOnScroll()};
+        function showSearchResults(searchStringValue) {
+            var searchResults = document.getElementById("search-results");
+            var searchPageContent = document.getElementById("search-page-content");
+            var background = document.getElementById("search-navigation-background");
+            var searchWrapper = document.getElementById("tntsearch-wrapper")
+            var input = document.getElementById("input-search");
+            var isHidden = searchResults.style.display == "none";
+
+            if (searchStringValue.length === 0) {
+                searchPageContent.classList.add("hide");
+                background.classList.add("big-screen");
+                searchWrapper.classList.remove("small-screen");
+            } else {
+                searchPageContent.classList.remove("hide");
+                background.classList.remove("big-screen");
+                searchWrapper.classList.add("small-screen");
+            }
+        }
+
+        function redirectToSearchPage() {
+            var navigationSearchButton = document.getElementById("navigation-search-button");
+            var inputValue = document.getElementById("site-search").value;
+            var inputSearch = document.getElementById("input-search");
+
+            sessionStorage.setItem('searchValue', inputValue);
+            location.href = "/search?query=" + inputValue;
+        }
+
+        function initInput(input) {
+            var query = window.location.search.split('=')[1];
+
+            if (!query) {
+                return;
+            }
+
+            input.value = query || '';
+            input.dispatchEvent(new Event('input'));
+            
+        }
+
+        window.onscroll = function() {requestAccessOnScroll(), spinOnScroll(), backgroundOnScroll()};
+        window.addEventListener('load', () => {
+            var input = document.getElementById("input-search");
+            
+            if (input) {
+                input.addEventListener('input', (e) => showSearchResults(e.target.value), false);
+                initInput(input);
+            }
+        }, false )
     </script>
 </head>

@@ -12,6 +12,10 @@
   color: #3764DA;
 }
 
+#breadcrumbs > span:first-child {
+  padding-left: 0;
+}
+
 #breadcrumbs a:first-child span {
   padding-left: 0;
 }

@@ -61,11 +61,15 @@ $menu-breakpoint: 715px;
   display: none;
   width: 36px;
   height: 36px;
-  background-color: #1B1B1B;
+  background-color: $blackish;
   border-radius: 50%;
   margin-right: 15px;
   top: 0;
   left: 0;
+
+  &:hover {
+    background-color: $blackish-grey;
+  }
 }
 
 .navigation__link-developers {
@@ -235,21 +239,7 @@ $menu-breakpoint: 715px;
     font-size: 24px;
   }
 
-  .navigation-search.show {
-    height: 88px;
-    margin-top: 65px;
-  }
-
-  .navigation-background.show {
-    display: none;
-  }
-
-  .navigation-search__submit-button {
-    height: 44px;
-  }
-
-  .navigation-search__input {
-    font-size: 16px;
-    padding: 11px 23px;
+  .navigation-wrapper.remove-border {
+    border: none;
   }
 }

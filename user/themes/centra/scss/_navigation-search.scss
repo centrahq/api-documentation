@@ -51,6 +51,11 @@
   height: 64px;
   outline: none;
   background: url('../images/img/search.svg') no-repeat center center;
+  opacity: 1;
+}
+
+.navigation-search__submit-button:hover{
+  opacity: 0.6;
 }
 
 .navigation-search__submit-button:focus {
@@ -62,3 +67,26 @@
     display: none;
   }
 }
+
+@media (max-width: $main-mobile-navigation-breakpoint) {
+  .navigation-search.show {
+    height: 61px;
+    margin-top: 64px;
+  }
+
+  .navigation-search__input {
+    padding: 6px;
+    line-height: 12px;
+    font-size: 12px;
+  }
+
+  .navigation-background.show {
+    display: none;
+  }
+
+  .navigation-search__submit-button {
+    width: 28px;
+    height: 28px;
+  }
+}
+

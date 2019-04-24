@@ -1,6 +1,6 @@
 .landing-page-footer {
   padding-top: 0;
-  background-color: #000000;
+  padding-bottom: 200px;
 
   ul {
     padding: 0;
@@ -43,6 +43,10 @@
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {
+  .landing-page-footer {
+    padding-top: 80px;
+  }
+
   .section-wrapper {
     flex-wrap: wrap;
     justify-content: center;

@@ -1,0 +1,139 @@
+.search-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(100vh - 62px);
+
+  .l-wrapper.hide {
+    display: none;
+  }
+
+  footer {
+    padding-top: 100px;
+
+    .animation-wrapper {
+      display: none;
+    }
+  }
+
+  .navigation-background.big-screen {
+    height: 100vh;
+
+    .navigation-background__slider {
+      left: 10%;
+      top: 15%;
+    }
+
+    .navigation-background__stack{
+      left: 5%;
+      top: 62%;
+    }
+
+    .navigation-background__smile {
+      top: 80%;
+      left: 90%;
+    }
+
+    .navigation-background__hand {
+      left: 50%;
+      top: 40%;
+    }
+
+    .navigation-background__circle-outlined {
+      top: 40%;
+      left: 20%;
+    }
+  }
+}
+
+#tntsearch-wrapper {
+  width: 100%;
+  height: calc(100vh - 63px);
+  background-color: #000000;
+  border-bottom: 1px solid #3C3C3C;
+  padding: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#tntsearch-wrapper.small-screen {
+  height: 200px;
+}
+
+
+.tntsearch-results {
+  p {
+    font-size: 16.5px;
+    line-height: 30px;
+    color: #3C3C3C;
+  }
+
+  .info {
+    border-bottom: 1px solid #DFDFE4;
+    padding-bottom: 40px;
+
+    .hits {
+      padding-left: 25px;
+      font-size: 40px;
+      line-height: 48px;
+      color: #222222;
+      border-left: 2px solid #4373DC;
+    }
+  }
+
+  .title a {
+    font-size: 30px;
+    line-height: 34px;
+    color: #3764DA;
+    font-weight: normal;
+
+    em {
+      background-color: transparent;
+      font-weight: normal;
+    }
+  }
+
+  .route {
+    font-size: 13px;
+    line-height: 17px;
+    font-weight: normal;
+    color: #AAAAAA;
+  }
+}
+
+@media (max-width: $mobile-navigation-breakpoint) {
+  .search-page {
+    .navigation-search,
+    .navigation-background {
+      display: block;
+    }
+  }
+
+  #tntsearch-wrapper {
+    padding: 128px 0;
+    height: 100vh;
+  }
+}
+
+@media (max-width: $main-mobile-navigation-breakpoint) {
+  .search-page {
+    .navigation-wrapper {
+      border: none;
+    }
+
+    .navigation-search,
+    .navigation-background {
+        display: none;
+    }
+  }
+
+  #tntsearch-wrapper {
+    padding: 72px 0 0 0;
+  }
+
+  #tntsearch-wrapper.small-screen {
+    height: 133px;
+    align-items: center;
+  }
+}

@@ -3,7 +3,7 @@ search_route: /search
 query_route: /s
 built_in_css: true
 built_in_js: true
-built_in_search_page: true
+built_in_search_page: false
 enable_admin_page_events: false
 search_type: auto
 fuzzy: false
