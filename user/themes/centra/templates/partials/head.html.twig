@@ -46,7 +46,34 @@
             document.getElementById("toc-popup").classList.toggle("show");
         }
 
-        function onScroll() {
+        function backgroundOnScroll() {
+            var landingPage = document.getElementById("landing-page");
+            var boundingHeroSection = document.getElementById("hero-section").getBoundingClientRect();
+            var boundingBasicSection = document.getElementById("basic-section").getBoundingClientRect();
+            var boundingLandingPageFooter = document.getElementById("landing-page-footer").getBoundingClientRect();
+
+            if (boundingHeroSection.bottom < 200) {
+                landingPage.className = "landing-page white";
+            }
+
+            if (boundingHeroSection.bottom > 200) {
+                landingPage.className = "landing-page black";
+            }
+
+            if (boundingBasicSection.top < (window.innerHeight - 300)) {
+                landingPage.className = "landing-page black";
+            }
+
+            if (boundingBasicSection.bottom < 200) {
+                landingPage.className = "landing-page white";
+            }
+
+            if (boundingLandingPageFooter.top < (window.innerHeight - 100)) {
+                landingPage.className = "landing-page black";
+            }
+        }
+
+        function requestAccessOnScroll() {
             var bar = document.getElementById("request-access")
             var footer = document.getElementById("landing-page-footer");
             var bounding = footer.getBoundingClientRect();
@@ -114,7 +141,7 @@
             
         }
 
-        window.onscroll = function() {onScroll(), spinOnScroll()};
+        window.onscroll = function() {requestAccessOnScroll(), spinOnScroll(), backgroundOnScroll()};
         window.addEventListener('load', () => {
             var input = document.getElementById("input-search");
             

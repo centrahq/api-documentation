@@ -1,3 +1,15 @@
+.landing-page {
+  transition: all 1s;
+
+  &.black {
+    background-color: #000000;
+  }
+
+  &.white {
+    background-color: #ffffff;
+  }
+}
+
 .landing-page-section {
   width: 100%;
   padding: 230px 80px 280px 60px;
