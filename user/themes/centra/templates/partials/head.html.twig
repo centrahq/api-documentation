@@ -84,6 +84,8 @@
                 var boundingGetStartedSection = section.getBoundingClientRect();
                 if (boundingGetStartedSection.top < (window.innerHeight - 100)) {
                     section.classList.add("liftElement");
+                } else {
+                    section.classList.remove("liftElement");
                 }
             })
         }

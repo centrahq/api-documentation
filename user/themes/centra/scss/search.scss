@@ -10,9 +10,14 @@
 
   footer {
     padding-top: 100px;
+    background-color: #000000;
 
     .animation-wrapper {
       display: none;
+    }
+
+    .has-to-lift {
+      opacity: 1;
     }
   }
 
