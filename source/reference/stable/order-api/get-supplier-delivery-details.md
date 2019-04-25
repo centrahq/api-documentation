@@ -6,7 +6,7 @@
 
 .. endpoint::
    :method: GET
-   :url: *base*/supplier-delivery/*supplierDeliveryId*/details
+   :url: *base*/supplier-deliveries/*supplierDeliveryId*/details
 
 .. authentication::
    :api_key: true
@@ -42,7 +42,7 @@ Both `id` and `deliveryId` from [List supplier deliveries](list-supplier-deliver
 .. code-block:: http
    :linenos:
 
-   GET <base>/supplier-delivery/*supplierDeliveryId* HTTP/1.1
+   GET <base>/supplier-deliveries/*supplierDeliveryId* HTTP/1.1
 
 ```
 
