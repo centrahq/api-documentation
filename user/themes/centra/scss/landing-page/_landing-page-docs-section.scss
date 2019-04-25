@@ -8,6 +8,9 @@
 
 .docs__articles-wrapper {
   padding: 190px 80px 0;
+}
+
+.docs__articles {
   display: flex;
   justify-content: space-between;
 }
@@ -26,12 +29,24 @@
   }
 
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.02) translateY(-50px);
 
     .landing-page__button {
       opacity: 1;
     }
   }
+}
+
+#doc1 {
+  transition: all 0.5s;
+}
+
+#doc2 {
+  transition: all 1s;
+}
+
+#doc3 {
+  transition: all 1.5s;
 }
 
 .article__graphics {
@@ -112,7 +127,7 @@
   .docs__articles-wrapper {
     overflow-x: auto;
     width: 100%;
-    padding: 25px 10px 5px;
+    padding: 50px 10px 5px;
   }
 
   .docs__article {

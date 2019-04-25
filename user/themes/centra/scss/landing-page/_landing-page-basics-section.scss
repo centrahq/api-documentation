@@ -38,7 +38,7 @@
 
   &:hover {
     background-color: #141414;
-    transform: scale(1.02);
+    transform: scale(1.02) translateY(-50px);
 
     .landing-page__button-arrow {
       opacity: 1;
@@ -56,6 +56,30 @@
     line-height: 1.8em;
     margin: 0;
   }
+}
+
+#basic1 {
+  transition: all 0.5s;
+}
+
+#basic2 {
+  transition: all 1s;
+}
+
+#basic3 {
+  transition: all 1.5s;
+}
+
+#basic4 {
+  transition: all 0.5s;
+}
+
+#basic5 {
+  transition: all 1s;
+}
+
+#basic6 {
+  transition: all 1.5s;
 }
 
 .landing-page__button-icon {

@@ -51,12 +51,13 @@
             var boundingHeroSection = document.getElementById("hero-section").getBoundingClientRect();
             var boundingBasicSection = document.getElementById("basic-section").getBoundingClientRect();
             var boundingLandingPageFooter = document.getElementById("landing-page-footer").getBoundingClientRect();
+            var centraCommerce = document.getElementById("centra-commerce");
 
-            if (boundingHeroSection.bottom < 200) {
+            if (boundingHeroSection.bottom < 400) {
                 landingPage.className = "landing-page white";
             }
 
-            if (boundingHeroSection.bottom > 200) {
+            if (boundingHeroSection.bottom > 400) {
                 landingPage.className = "landing-page black";
             }
 
@@ -64,17 +65,31 @@
                 landingPage.className = "landing-page black";
             }
 
-            if (boundingBasicSection.bottom < 200) {
+            if (boundingBasicSection.bottom < 400) {
                 landingPage.className = "landing-page white";
             }
 
             if (boundingLandingPageFooter.top < (window.innerHeight - 100)) {
                 landingPage.className = "landing-page black";
+                centraCommerce.classList.add("centra-commerce");
+            } else {
+                centraCommerce.classList.remove("centra-commerce");
             }
         }
 
+        function liftElementsOnScroll() {
+            var getStartedSection = document.querySelectorAll(".has-to-lift");
+
+            getStartedSection.forEach(function(section) {
+                var boundingGetStartedSection = section.getBoundingClientRect();
+                if (boundingGetStartedSection.top < (window.innerHeight - 100)) {
+                    section.classList.add("liftElement");
+                }
+            })
+        }
+
         function requestAccessOnScroll() {
-            var bar = document.getElementById("request-access")
+            var bar = document.getElementById("request-access");
             var footer = document.getElementById("landing-page-footer");
             var bounding = footer.getBoundingClientRect();
 
@@ -141,7 +156,7 @@
             
         }
 
-        window.onscroll = function() {requestAccessOnScroll(), spinOnScroll(), backgroundOnScroll()};
+        window.onscroll = function() {requestAccessOnScroll(), spinOnScroll(), backgroundOnScroll(), liftElementsOnScroll()};
         window.addEventListener('load', () => {
             var input = document.getElementById("input-search");
             

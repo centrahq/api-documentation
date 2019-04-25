@@ -1,6 +1,6 @@
 {% macro docs_articles(docs_content=[]) %}
   {% for doc in docs_content %}
-    <article class="docs__article">
+    <article class="docs__article has-to-lift" id="{{ doc.id }}">
       <img src="{{ url("theme://#{doc.img}")}}" alt="Store API" class="article__graphics">
       <h4 class="article__title">
         {{doc.title}}

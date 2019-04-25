@@ -97,3 +97,13 @@
     flex: 0;
   }
 }
+
+@media (max-width: $main-mobile-navigation-breakpoint) {
+  .navigation {
+    padding: 0 15px;
+  }
+  
+  .navigation__link-developers {
+    align-items: center;
+  }
+}
