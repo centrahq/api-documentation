@@ -1,36 +1,30 @@
 basic_data: 
  - 
-  id: basic1
   icon: "icon-eye"
   url: "#"
   title: "Developer toolkits"
   text: "Lorem ipsum dolor sit amet, conse righ tow ctetur adipiscing elit, sed do eiusmod tempo  olor sit amet, conse because ctetur enough  elit, sed do eiusmod temp oolor sit amet, consect without etur adipiscing elit, sed do eiusmod tem ent one two three ering po olor sit amet, conse ctetur right adipiscing elit, sed do eiusmod tem po mod tempoolor sit ame."
  - 
-  id: basic2
   icon: "icon-square"
   url: "#"
   title: "Reference applications"
   text: "Ipsum dolor sit amet, conse righ tow ctetur adipiscing elit, sed do eiusmod tempo  olor sit amet, conse because ctetur enough  elit, sed do eiusmod temp oolor sit amet, consect without etur adipis cing elit, sed do eiusmod tem ent one two three ering po olor sit amet, conse ctetur right adipiscing elit, sed do eiusmod tem po mod tempoolor sit the last time."
  - 
-  id: basic3
   icon: "icon-sun"
   url: "#"
   title: "Microservices"
   text: "Ipsum dolor sit amet, conse righ tow ctetur adipiscing elit, sed do eiusmod tempo  olor sit amet, conse because ctetur enough  elit, sed do eiusmod temp oolor sit amet, consect without etur adipis cing elit, sed do eiusmod tem ent one two three ering po olor sit amet, conse ctetur right adipiscing elit, sed do eiusmod tem po mod tempoolor sit the last time."
  - 
-  id: basic4
   icon: "icon-rhomb"
   url: "#"
   title: "Integrations"
   text: "Ipsum dolor sit amet, conse righ tow ctetur adipiscing elit, sed do eiusmod tempo  olor sit amet, conse because ctetur enough  elit, sed do eiusmod temp oolor sit amet, consect without etur adipis cing elit, sed do eiusmod tem ent one two three ering po olor sit amet, conse ctetur right adipiscing elit, sed do eiusmod tem po mod tempoolor sit the last time."
  - 
-  id: basic5
   icon: "icon-people"
   url: "#"
   title: "Community and support"
   text: "Ipsum dolor sit amet, conse righ tow ctetur adipiscing elit, sed do eiusmod tempo  olor sit amet, conse because ctetur enough  elit, sed do eiusmod temp oolor sit amet, consect without etur adipis cing elit, sed do eiusmod tem ent one two three ering po olor sit amet, conse ctetur right adipiscing elit, sed do eiusmod tem po mod tempoolor sit the last time."
  - 
-  id: basic6
   icon: "icon-rainbow"
   url: "#"
   title: "Documentation"
@@ -40,17 +34,14 @@ certification:
  link: "Here’s where to start"
 docs_content: 
  - 
-  id: doc1
   title: Guides
   img: "images/img/guides.png"
   text: "Hit the ground running with our step by step guides for developers. Built by developers, for developers."
  - 
-  id: doc2
   title: "Store API"
   img: "images/img/store-api.jpg"
   text: "Hit the ground running with our step by step guides for developers. Built by developers, for developers."
  - 
-  id: doc3
   title: "Order API"
   img: "images/img/order-api.jpg"
   text: "Hit the ground running with our step by step guides for developers. Built by developers, for developers."

@@ -22,7 +22,7 @@
   letter-spacing: 0.12px;
   font-size: 22px;
   margin: 11px;
-  transition: all 0.5s;
+  @include transition(3);
 
   .landing-page__button {
     opacity: 0;
@@ -30,23 +30,12 @@
 
   &:hover {
     transform: scale(1.02) translateY(-50px);
+    transition: all 0.5s;
 
     .landing-page__button {
       opacity: 1;
     }
   }
-}
-
-#doc1 {
-  transition: all 0.5s;
-}
-
-#doc2 {
-  transition: all 1s;
-}
-
-#doc3 {
-  transition: all 1.5s;
 }
 
 .article__graphics {
