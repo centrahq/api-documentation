@@ -1,5 +1,5 @@
 .landing-page {
-  transition: all 1s;
+  transition: background-color 0.5s;
 
   &.black {
     background-color: #000000;
@@ -22,6 +22,16 @@
   justify-content: space-between;
   max-width: 1265px;
   margin: 0 auto;
+}
+
+.has-to-lift {
+  opacity: 0;
+}
+
+.liftElement {
+  transform: translateY(-50px);
+  transition: transform 0.4s;
+  opacity: 1;
 }
 
 .landing-page__button {

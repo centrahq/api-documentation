@@ -8,7 +8,7 @@
   color: #3C3C3C;
 }
 
-#breadcrumbs span:first-child {
+#breadcrumbs a:first-child span {
   color: #3764DA;
 }
 

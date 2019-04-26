@@ -10,6 +10,7 @@
 
 .footer__navigation-group {
   margin: 0 20px;
+  @include transition(5);
 
   ul {
     margin: 0;
@@ -45,6 +46,7 @@
 @media (max-width: $mobile-navigation-breakpoint) {
   .landing-page-footer {
     padding-top: 80px;
+    padding-bottom: 80px;
   }
 
   .section-wrapper {

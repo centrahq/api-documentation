@@ -1,5 +1,8 @@
 .get-started-section {
   color: #000000;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 
   .section-content {
     margin-top: 140px;
@@ -101,5 +104,11 @@
     left: 0;
     width: 10px;
     height: 10px;
+  }
+}
+
+@media (max-width: $main-mobile-navigation-breakpoint) {
+  .hero-section__graphics.stroke-background {
+    width: 100%;
   }
 }

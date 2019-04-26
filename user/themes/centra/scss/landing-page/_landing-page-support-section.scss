@@ -98,3 +98,9 @@
     width: 130px;
   }
 }
+
+@media (max-width: $main-mobile-navigation-breakpoint) {
+  .support-section__content {
+    padding: 0;
+  }
+}

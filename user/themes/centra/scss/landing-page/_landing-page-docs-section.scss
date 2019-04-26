@@ -8,6 +8,9 @@
 
 .docs__articles-wrapper {
   padding: 190px 80px 0;
+}
+
+.docs__articles {
   display: flex;
   justify-content: space-between;
 }
@@ -19,14 +22,15 @@
   letter-spacing: 0.12px;
   font-size: 22px;
   margin: 11px;
-  transition: all 0.5s;
+  @include transition(3);
 
   .landing-page__button {
     opacity: 0;
   }
 
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.02) translateY(-50px);
+    transition: all 0.5s;
 
     .landing-page__button {
       opacity: 1;
@@ -112,7 +116,7 @@
   .docs__articles-wrapper {
     overflow-x: auto;
     width: 100%;
-    padding: 25px 10px 5px;
+    padding: 50px 10px 5px;
   }
 
   .docs__article {

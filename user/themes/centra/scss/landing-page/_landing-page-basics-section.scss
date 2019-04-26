@@ -30,6 +30,7 @@
   border: 2px solid #141414;
   box-sizing: border-box;
   transition: all .3s ease-out;
+  @include transition(6);
 
   .landing-page__button-arrow {
     opacity: 0;
@@ -38,7 +39,7 @@
 
   &:hover {
     background-color: #141414;
-    transform: scale(1.02);
+    transform: scale(1.02) translateY(-50px);
 
     .landing-page__button-arrow {
       opacity: 1;

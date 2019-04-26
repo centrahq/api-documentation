@@ -36,6 +36,8 @@
   position: relative;
   width: 700px;
   padding: 35px 22px 45px 100px;
+  display: flex;
+  flex-direction: column;
 
   @media (max-width: $main-extra-large-breakpoint) {
     margin: 0 auto;

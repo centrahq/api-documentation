@@ -1,0 +1,7 @@
+@mixin transition($count) {
+  @for $i from 1 through $count {
+    &:nth-of-type(#{$i}) {
+      transition: all $i*0.4s
+    }
+  }
+}

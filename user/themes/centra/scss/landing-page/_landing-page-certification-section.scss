@@ -1,4 +1,8 @@
 .certification-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+
   .section-wrapper {
     align-items: center;
   }
@@ -15,18 +19,27 @@
     .section-wrapper {
       flex-direction: column;
     }
+
+    .section-title {
+      margin-bottom: 100px;
+    }
   }
 
   .certification-section__team-avatars {
-    width: 170px;
+    width: 330px;
     margin-left: auto;
-    margin-right: 30%;
+    margin-right: 10%;
     margin-top: -70px;
   }
 }
 
 @media (max-width: 510px) {
+  .certification-section .section-title {
+    margin-bottom: 30px;
+  }
+
   .certification-section__team-avatars {
     margin: 0;
+    width: 170px;
   }
 }
