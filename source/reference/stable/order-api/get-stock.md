@@ -52,6 +52,13 @@ This will return product data from Centra with stock info. The values of the sto
 
      - Get a product with specified EAN code.
 
+   * - ``productId``, ``variantId``, ``stockItemId``
+
+       .. type:: integer
+          :required: false
+
+     - Get a product with specified productId, variantId or stockItemId.
+
    * - ``limit``
 
        .. type:: int
@@ -117,17 +124,35 @@ This will return product data from Centra with stock info. The values of the sto
 
             - The internal name for this product.
 
+          * - ``productId``
+
+              .. type:: integer
+
+            - The ID for this product.
+
           * - ``variantSku``
 
               .. type:: string
 
             - SKU for this variant.
 
+          * - ``variantId``
+
+              .. type:: integer
+
+            - ID for this variant.
+
           * - ``sizeSku``
 
               .. type:: string
 
             - SKU for this size.
+
+          * - ``stockItemId``
+
+              .. type:: integer
+
+            - ID for this specific stock item.
 
           * - ``ean``
 
