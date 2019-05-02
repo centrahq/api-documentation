@@ -48,6 +48,13 @@ This will return product data from Centra with categories.
 
      - Get a product with specified EAN code.
 
+   * - ``productId``, ``variantId``, ``sizeID``
+
+       .. type:: string
+          :required: false
+
+     - Filter products based on product, variant and size IDs.
+
    * - ``limit``
 
        .. type:: int
@@ -110,6 +117,12 @@ This will return product data from Centra with categories.
 
             - The internal name for this product.
 
+          * - ``productId``
+
+              .. type:: integer
+
+            - ID for this product.
+
           * - ``name``
 
               .. type:: string
@@ -122,11 +135,23 @@ This will return product data from Centra with categories.
 
             - SKU for this variant.
 
+          * - ``variantId``
+
+              .. type:: integer
+
+            - ID for this variant.
+
           * - ``sizeSku``
 
               .. type:: string
 
             - SKU for this size.
+
+          * - ``stockItemId``
+
+              .. type:: integer
+
+            - ID for this specific stock item.
 
           * - ``ean``
 
