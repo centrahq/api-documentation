@@ -1,6 +1,6 @@
 .hero-section {
   color: #ffffff;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
 }
@@ -29,6 +29,8 @@
   min-width: 255px;
   margin-left: 80px;
   margin-right: 100px;
+  font-family: 'Andale Mono', Monospace;
+  font-size: 9px;
 }
   
 .picture-layout__slider {
@@ -38,6 +40,8 @@
   width: 133px;
   height: 101px;
   background: url('../images/img/slider.svg') no-repeat center center;
+  animation: swimming1 15s infinite;
+  animation-direction: alternate;
 }
   
 .picture-layout__stack {
@@ -47,6 +51,8 @@
   width: 137px;
   height: 113px;
   background: url('../images/img/stack.svg') no-repeat center center;
+  animation: swimming2 15s infinite;
+  animation-direction: alternate;
 }
   
 .picture-layout__smile {
@@ -56,6 +62,8 @@
   width: 76px;
   height: 60px;
   background: url('../images/img/smile.svg') no-repeat center center;
+  animation: swimming3 15s infinite;
+  animation-direction: alternate;
 }
   
 .picture-layout__hand {
@@ -65,6 +73,8 @@
   width: 189px;
   height: 100px;
   background: url('../images/img/hand.svg') no-repeat center center;
+  animation: swimming4 15s infinite;
+  animation-direction: alternate;
 }
   
 .picture-layout__screen-product {

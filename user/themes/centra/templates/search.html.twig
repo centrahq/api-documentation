@@ -9,7 +9,11 @@
 
 {% include 'partials/head.html.twig' %}
 <body>
-    <div class="search-page"> 
+    <div class="search-page">
+        <div id="loading">
+            <img src="{{ url("theme://images/img/centra-logo-dark.svg")}}" alt="Centra" class="navigation__centra-logo">
+            <span>Developers</span>
+        </div>
         {% include 'partials/topnav.html.twig' %}
         <form role="form" class="tntsearch-form">
             {% block tntsearch_input %}

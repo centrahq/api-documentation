@@ -1,6 +1,6 @@
 .get-started-section {
   color: #000000;
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
 
@@ -35,6 +35,8 @@
   height: 58px;
   border-radius: 50%;
   border: 3px solid #231F20;
+  animation: swimming4 15s infinite;
+  animation-direction: alternate;
 }
 
 .picture-layout__artboard {
@@ -55,6 +57,8 @@
   height: 21px;
   border-radius: 50%;
   background-color: #000000;
+  animation: swimming2 15s infinite;
+  animation-direction: alternate;
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {

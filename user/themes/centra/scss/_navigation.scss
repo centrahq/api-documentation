@@ -109,6 +109,8 @@ $menu-breakpoint: 715px;
   width: 133px;
   height: 101px;
   background: url('../images/img/slider.svg') no-repeat center center;
+  animation: swimming1 15s infinite;
+  animation-direction: alternate;
 }
 
 .navigation-background__stack {
@@ -118,6 +120,8 @@ $menu-breakpoint: 715px;
   width: 137px;
   height: 113px;
   background: url('../images/img/stack.svg') no-repeat center center;
+  animation: swimming2 15s infinite;
+  animation-direction: alternate;
 }
 
 .navigation-background__smile {
@@ -127,6 +131,8 @@ $menu-breakpoint: 715px;
   width: 76px;
   height: 60px;
   background: url('../images/img/smile.svg') no-repeat center center;
+  animation: swimming3 15s infinite;
+  animation-direction: alternate;
 }
 
 .navigation-background__hand {
@@ -136,15 +142,19 @@ $menu-breakpoint: 715px;
   width: 189px;
   height: 100px;
   background: url('../images/img/hand.svg') no-repeat center center;
+  animation: swimming4 12s infinite;
+  animation-direction: alternate;
 }
 
 .navigation-background__circle-outlined {
   position: absolute;
-  top: 154px;
+  top: 161px;
   right: 41%;
   width: 97px;
   height: 40px;
-  background: url('../images/img/circle-outlined.svg') no-repeat center center;
+  background: url('../images/img/circle-outlined.svg') no-repeat center top;
+  animation: swimming5 12s infinite;
+  animation-direction: alternate;
 }
 
 .navigation--small, .navigation--small .navigation__items {

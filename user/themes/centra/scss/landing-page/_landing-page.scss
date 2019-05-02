@@ -1,5 +1,5 @@
 .landing-page {
-  transition: background-color 0.5s;
+  transition: background-color 0.3s;
 
   &.black {
     background-color: #000000;
@@ -26,11 +26,30 @@
 
 .has-to-lift {
   opacity: 0;
+  visibility: hidden;
+}
+
+.hero-section__graphics.has-to-lift,
+img.has-to-lift,
+.picture-layout__dot.has-to-lift,
+.picture-layout__circle.has-to-lift {
+  transform: translateY(0) scale(0.9);
+}
+
+.hero-section__graphics.liftElement,
+img.liftElement,
+.picture-layout__dot.liftElement,
+.picture-layout__circle.liftElement {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0.5s, opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0.5s;
 }
 
 .liftElement {
+  visibility: visible;
   transform: translateY(-50px);
-  transition: transform 0.4s;
+  transition: transform 0.3s;
   opacity: 1;
 }
 

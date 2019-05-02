@@ -1,0 +1,50 @@
+@keyframes cardOnHover {
+    100% {
+        transform: scale(1.04) translateY(-50px);
+    }
+}
+
+@keyframes swimming1 {
+    0% {
+        transform: translate(0, 0);
+    }
+      100% {
+        transform: translate(5px, 20px);
+    }
+}
+
+@keyframes swimming2 {
+    0% {
+        transform: translate(5px, 15px);
+    }
+      100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes swimming3 {
+    0% {
+        transform: translate(0, 0);
+    }
+      100% {
+        transform: translate(25px, 5px);
+    }
+}
+
+@keyframes swimming4 {
+    0% {
+        transform: translate(20px, 10px);
+    }
+      100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes swimming5 {
+    0% {
+        transform: translate(0, 0);
+    }
+      100% {
+        transform: translate(20px, 0);
+    }
+}

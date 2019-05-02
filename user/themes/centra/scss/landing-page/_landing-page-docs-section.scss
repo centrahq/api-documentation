@@ -16,6 +16,7 @@
 }
 
 .docs__article {
+  cursor: pointer;
   box-shadow: 0px 0px 26px rgba(0, 0, 0, 0.05);
   max-width: 386px;
   padding: 66px 45px 110px;
@@ -29,8 +30,9 @@
   }
 
   &:hover {
-    transform: scale(1.02) translateY(-50px);
-    transition: all 0.5s;
+    animation-name: cardOnHover;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
 
     .landing-page__button {
       opacity: 1;

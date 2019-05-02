@@ -1,0 +1,223 @@
+.yellow {
+  color: #DCDCAA;
+}
+
+.orange {
+  color: #FFBA80;
+}
+
+.light-blue {
+  color: #a0cbfc;
+}
+
+.blue{ 
+  color: #3764A1;
+}
+
+.pink {
+  color: #a359aa;
+}
+
+.green {
+  color: #189327;
+}
+
+.code-animation{
+  padding: 35px;
+  display: flex;
+  color: #ffffff;
+
+  .lines {
+    margin-right: 15px;
+
+    p {
+      color: #aaaaaa;
+    }
+  }
+
+  .css-typing p {
+    border-right: .15em solid #aaaaaa;
+  }
+
+  p {
+    margin: 0;
+    font-family: "Courier";
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.hero-section {
+  .css-typing p:nth-child(1) {
+    width: 18em;
+    animation: type 4s steps(40, end);
+    animation-fill-mode: forwards;
+  }
+  
+  .css-typing p:nth-child(2) {
+    width: 12em;
+    opacity: 0;
+    animation: type2 3s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+  }
+  
+  .css-typing p:nth-child(3) {
+    width: 19em;
+    opacity: 0;
+    animation: type2 4s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 7s;
+    animation-fill-mode: forwards;
+  }
+  
+  .css-typing p:nth-child(4) {
+    width: 11em;
+    opacity: 0;
+    animation: type2 3s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 11s;
+    animation-fill-mode: forwards;
+  }
+  
+  .css-typing p:nth-child(5) {
+    width: 11em;
+    opacity: 0;
+    animation: type2 3s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 14s;
+    animation-fill-mode: forwards;
+  }
+  
+  .css-typing p:nth-child(6) {
+    width: 9em;
+    opacity: 0;
+    animation: type2 3s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 17s;
+    animation-fill-mode: forwards;
+  }
+  
+  .css-typing p:nth-child(7) {
+    width: 3.5em;
+    opacity: 0;
+    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 20s;
+    animation-fill-mode: forwards;
+  }
+  
+  .css-typing p:nth-child(8) {
+    width: 1.5em;
+    opacity: 0;
+    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 22s;
+    animation-fill-mode: forwards;
+  }
+  
+  .css-typing p:nth-child(9) {
+    width: 14em;
+    opacity: 0;
+    animation: type3 3s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 23s;
+    animation-fill-mode: forwards;
+  }
+}
+
+.get-started-section {
+  .css-typing p:nth-child(1) {
+    width: 19em;
+    animation: type 4s steps(40, end);
+    animation-fill-mode: forwards;
+  }
+  
+  .css-typing p:nth-child(2) {
+    width: 15em;
+    opacity: 0;
+    animation: type2 3s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+  }
+  
+  .css-typing p:nth-child(3) {
+    width: 8em;
+    opacity: 0;
+    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 7s;
+    animation-fill-mode: forwards;
+  }
+  
+  .css-typing p:nth-child(4) {
+    width: 6em;
+    opacity: 0;
+    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 9s;
+    animation-fill-mode: forwards;
+  }
+  
+  .css-typing p:nth-child(5) {
+    width: 13em;
+    opacity: 0;
+    animation: type2 3s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 11s;
+    animation-fill-mode: forwards;
+  }
+  
+  .css-typing p:nth-child(6) {
+    width: 3em;
+    opacity: 0;
+    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 14s;
+    animation-fill-mode: forwards;
+  }
+  
+  .css-typing p:nth-child(7) {
+    width: 1em;
+    opacity: 0;
+    animation: type3 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 15s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid #ffffff;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid #ffffff;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@-webkit-keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
