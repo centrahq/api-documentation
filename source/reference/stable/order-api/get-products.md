@@ -48,12 +48,12 @@ This will return product data from Centra with categories.
 
      - Get a product with specified EAN code.
 
-   * - ``productId``, ``variantId``, ``sizeID``
+   * - ``productId``, ``variantId``, ``stockItemID``
 
-       .. type:: string
+       .. type:: integer
           :required: false
 
-     - Filter products based on product, variant and size IDs.
+     - Filter products based on product, variant and stock item IDs.
 
    * - ``limit``
 
