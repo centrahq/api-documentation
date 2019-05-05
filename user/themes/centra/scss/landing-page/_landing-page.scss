@@ -24,9 +24,14 @@
   margin: 0 auto;
 }
 
-.has-to-lift {
+.landing-page .has-to-lift {
   opacity: 0;
   visibility: hidden;
+  margin-top: 80px;
+}
+
+.footer__navigation-group.has-to-lift {
+  margin-top: 0;
 }
 
 .hero-section__graphics.has-to-lift,
@@ -46,10 +51,15 @@ img.liftElement,
   transition: transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0.5s, opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0.5s;
 }
 
-.liftElement {
-  visibility: visible;
+.footer__navigation-group.liftElement {
   transform: translateY(-50px);
-  transition: transform 0.3s;
+  transition: transform 0.35s linear;
+}
+
+.landing-page .liftElement {
+  visibility: visible;
+  margin-top: 11px;
+  transition: margin-top 0.3s;
   opacity: 1;
 }
 

@@ -40,9 +40,8 @@
 
   &:hover {
     background-color: #141414;
-    animation-name: cardOnHover;
-    animation-duration: 0.2s;
-    animation-fill-mode: forwards;
+    transform: scale(1.05);
+    transition: transform 0.4s cubic-bezier(.165,.84,.44,1);
 
     .landing-page__button-arrow {
       opacity: 1;
