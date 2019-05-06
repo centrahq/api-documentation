@@ -21,6 +21,8 @@
     color: #3764DA;
 
     &:before {
+      visibility: visible;
+      opacity: 1;
       content: '';
       position: absolute;
       left: 10px;
@@ -136,11 +138,8 @@
       }
     }
 
-    a.active {
-  
-      &:before {
-        display: none;
-      }
+    a.active:before {
+      display: none;
     }
   }
 }

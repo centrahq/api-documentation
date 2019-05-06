@@ -33,10 +33,10 @@ html {
 }
 
 #loading.remove-block {
-  z-index: -200;
+  z-index: -100;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s ease-in-out,z-index 0.5s ease-in-out,visibility 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 } 
 
 ul,
@@ -54,6 +54,7 @@ textarea {
   font-family: $font-family-default;
   font-weight: 300;
   font-size: 21px;
+  cursor: pointer;
 }
 
 img {
@@ -79,6 +80,7 @@ em {
 a {
   color: $brand-primary;
   text-decoration: none;
+  cursor: pointer;
 }
 
 a:not([class]):hover,
