@@ -1,7 +1,7 @@
 @mixin transition($count) {
   @for $i from 1 through $count {
     &:nth-of-type(#{$i}) {
-      transition: all $i*0.4s
+      transition: margin-top $i*0.4s, transform 0.4s;
     }
   }
 }
