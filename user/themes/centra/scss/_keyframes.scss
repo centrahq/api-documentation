@@ -48,3 +48,12 @@
         transform: translate(20px, 0);
     }
 }
+
+@keyframes swimming6 {
+    0% {
+        transform: translate(-40px, -10px);
+    }
+      100% {
+        transform: translate(10px, -20px);
+    }
+}
