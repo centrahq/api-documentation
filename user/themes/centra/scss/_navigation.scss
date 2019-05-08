@@ -6,7 +6,7 @@ $menu-breakpoint: 715px;
   position: relative;
   background: #000;
   border-bottom: 1px solid $blackish-grey;
-  z-index: 1;
+  z-index: 10;
   top: 0;
 }
 
@@ -22,6 +22,19 @@ $menu-breakpoint: 715px;
   @media (min-width: $menu-breakpoint) {
     overflow: hidden;
   }
+}
+
+.navigation__menu,
+.navigation__right {
+  transform: translateY(-20%);
+  opacity: 0;
+}
+
+.navigation__menu.show,
+.navigation__right.show {
+  opacity: 1;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  transition: transform 0.6s linear, opacity 0.6s linear;
 }
 
 .navigation__items {
@@ -73,6 +86,8 @@ $menu-breakpoint: 715px;
 }
 
 .navigation__link-developers {
+  position: relative;
+  z-index: 30;
   color: #505050;
   text-decoration: none;
   font-size: 28px;
@@ -109,7 +124,7 @@ $menu-breakpoint: 715px;
   width: 133px;
   height: 101px;
   background: url('../images/img/slider.svg') no-repeat center center;
-  animation: swimming1 15s infinite;
+  animation: swimming1 12s infinite;
   animation-direction: alternate;
 }
 
@@ -117,10 +132,10 @@ $menu-breakpoint: 715px;
   position: absolute;
   top: -24px;
   right: 27%;
-  width: 137px;
-  height: 113px;
+  width: 210px;
+  height: 175px;
   background: url('../images/img/stack.svg') no-repeat center center;
-  animation: swimming2 15s infinite;
+  animation: swimming2 12s infinite;
   animation-direction: alternate;
 }
 
@@ -131,7 +146,7 @@ $menu-breakpoint: 715px;
   width: 76px;
   height: 60px;
   background: url('../images/img/smile.svg') no-repeat center center;
-  animation: swimming3 15s infinite;
+  animation: swimming3 12s infinite;
   animation-direction: alternate;
 }
 
@@ -142,7 +157,7 @@ $menu-breakpoint: 715px;
   width: 189px;
   height: 100px;
   background: url('../images/img/hand.svg') no-repeat center center;
-  animation: swimming4 12s infinite;
+  animation: swimming4 10s infinite;
   animation-direction: alternate;
 }
 
@@ -153,7 +168,7 @@ $menu-breakpoint: 715px;
   width: 97px;
   height: 40px;
   background: url('../images/img/circle-outlined.svg') no-repeat center top;
-  animation: swimming5 12s infinite;
+  animation: swimming5 10s infinite;
   animation-direction: alternate;
 }
 

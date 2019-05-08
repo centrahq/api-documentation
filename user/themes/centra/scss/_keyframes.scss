@@ -9,7 +9,7 @@
         transform: translate(0, 0);
     }
       100% {
-        transform: translate(5px, 20px);
+        transform: translate(15px, 20px);
     }
 }
 
@@ -49,11 +49,38 @@
     }
 }
 
-@keyframes swimming6 {
+@keyframes swimming-up {
     0% {
-        transform: translate(-40px, -10px);
+        transform: translate(5px, 0);
     }
       100% {
-        transform: translate(10px, -20px);
+        transform: translate(0, 25px);
+    }
+}
+
+@keyframes swimming-down {
+    0% {
+        transform: translate(0, 25px);
+    }
+      100% {
+        transform: translate(5px, 0);
+    }
+}
+
+@keyframes swimming-diagonal {
+    0% {
+        transform: translate(0, 0);
+    }
+      100% {
+        transform: translate(20px, -20px);
+    }
+}
+
+@keyframes swimming-diagonal-up {
+    0% {
+        transform: translate(20px, -20px);
+    }
+      100% {
+        transform: translate(0, 0);
     }
 }

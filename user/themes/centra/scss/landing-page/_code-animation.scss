@@ -44,28 +44,24 @@
   }
 }
 
-.yellow {
-  color: #DCDCAA;
-}
-
 .orange {
-  color: #FFBA80;
+  color: #FFD595;
 }
 
 .light-blue {
-  color: #a0cbfc;
+  color: #D0D4F0;
 }
 
 .blue{ 
-  color: #3764A1;
+  color: #3764DA;
 }
 
 .pink {
-  color: #a359aa;
+  color: #FFD3DA;
 }
 
 .green {
-  color: #189327;
+  color: #18AE1D;
 }
 
 .code-animation{
@@ -90,7 +86,7 @@
   p {
     margin: 0;
     font-family: "Courier";
-    font-size: 14px;
+    font-size: 15px;
     white-space: nowrap;
     overflow: hidden;
   }
@@ -100,63 +96,63 @@
   &:nth-child(1) {
     width: 18em;
     opacity: 1;
-    animation: type 4s steps(40, end);
+    animation: type 3s steps(40, end);
     animation-fill-mode: forwards;
   }
   
   &:nth-child(2) {
     width: 12em;
-    animation: type2 3s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 4s;
+    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 3s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(3) {
     width: 19em;
-    animation: type2 4s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 7s;
+    animation: type2 3s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 5s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(4) {
     width: 11em;
-    animation: type2 3s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 11s;
+    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 8s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(5) {
     width: 11em;
-    animation: type2 3s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 14s;
+    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 10s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(6) {
     width: 9em;
-    animation: type2 3s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 17s;
+    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 12s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(7) {
     width: 3.5em;
-    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 20s;
+    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 14s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(8) {
     width: 1.5em;
-    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 22s;
+    animation: type2 0.5s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 15s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(9) {
     width: 15em;
-    animation: type3 3s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 23s;
+    animation: type3 2s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 15.5s;
     animation-fill-mode: forwards;
   }
 }
@@ -165,56 +161,60 @@
   &:nth-child(1) {
     width: 19em;
     opacity: 1;
-    animation: type 4s steps(40, end);
+    animation: type 3s steps(40, end);
     animation-fill-mode: forwards;
   }
   
   &:nth-child(2) {
     width: 15em;
-    animation: type2 3s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 4s;
+    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 3s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(3) {
     width: 8em;
-    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 7s;
+    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 5s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(4) {
     width: 6em;
-    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 9s;
+    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 6s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(5) {
     width: 13em;
-    animation: type2 3s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 11s;
+    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 7s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(6) {
     width: 3em;
-    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 14s;
+    animation: type2 0.5s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 9s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(7) {
     width: 1em;
-    animation: type3 1s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 15s;
+    animation: type3 0.5s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 9.5s;
     animation-fill-mode: forwards;
   }
 }
 
 @media (max-width: $main-extra-large-breakpoint) {
-  .code-animation p {
-    font-size: 12px;
+  .code-animation {
+    min-width: 360px;
+  
+    p {
+      font-size: 14px;
+    }
   }
 }
 

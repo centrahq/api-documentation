@@ -153,7 +153,20 @@
             
         }
 
-        window.onload = function(){window.setTimeout(function(){ document.getElementById("loading").classList.add("remove-block") }, 500)};
+        function load() {
+            window.setTimeout(function() { 
+                var navigationMenu = document.getElementById("navigation-menu");
+                var navigationRight = document.getElementById("navigation-right");
+                var heroSection = document.getElementById("hero-section");
+
+                document.getElementById("loading").classList.add("remove-block");
+                navigationMenu.classList.add("show");
+                navigationRight.classList.add("show");
+                heroSection.classList.add("show");
+            }, 400);
+        };
+
+        window.onload = load();
         window.onscroll = function() {requestAccessOnScroll(), spinOnScroll(), backgroundOnScroll(), liftElementsOnScroll()};
         window.addEventListener('load', () => {
             var input = document.getElementById("input-search");

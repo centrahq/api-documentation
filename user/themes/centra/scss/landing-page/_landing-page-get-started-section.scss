@@ -35,14 +35,14 @@
   height: 58px;
   border-radius: 50%;
   border: 3px solid #231F20;
-  animation: swimming6 9s infinite;
+  animation: swimming-up 6s infinite;
   animation-direction: alternate;
 }
 
 .picture-layout__artboard {
   position: absolute;
   top: 115px;
-  right: 15px;
+  right: 0;
   width: 53%;
   height: 100%;
   background: url('../images/img/Artboard19@3x.png') no-repeat 50% 0%;
@@ -57,7 +57,7 @@
   height: 21px;
   border-radius: 50%;
   background-color: #000000;
-  animation: swimming3 5s infinite;
+  animation: swimming-down 6s infinite;
   animation-direction: alternate;
 }
 

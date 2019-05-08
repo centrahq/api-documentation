@@ -5,11 +5,74 @@
 
   .section-wrapper {
     align-items: center;
+    width: 1265px;
   }
 }
 
-.certification-section__team-avatars {
-  max-width: 520px;
+.certification-section__graphics {
+  position: relative;
+
+  .graphics-team-avatars {
+    max-width: 420px;
+  }
+
+  .graphic-dot {
+    position: absolute;
+    left: 90%;
+    top: 0;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background-color: #000000;
+    animation: swimming-diagonal-up 10s infinite;
+    animation-direction: alternate;
+  }
+
+  .graphics-team-avatars-small {
+    position: absolute;
+    left: -10%;
+    top: -7%;
+    width: 196px;
+    height: 196px;
+    animation: swimming1 10s infinite;
+    animation-direction: alternate;
+  }
+
+  .graphic-bricks {
+    position: absolute;
+    left: -14%;
+    top: 50%;
+    width: 184px;
+    height: 94px;
+    background: url('../images/img/bricks.png') no-repeat 50% 50%;
+    background-size: contain;
+    animation: swimming3 10s infinite;
+    animation-direction: alternate;
+  }
+
+  .graphic-circle {
+    position: absolute;
+    left: -26%;
+    top: 74%;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 3px solid #231F20;
+    animation: swimming-diagonal 10s infinite;
+    animation-direction: alternate;
+  }
+
+  .graphic-green-smile {
+    position: absolute;
+    left: 10%;
+    bottom: -10%;
+    width: 35px;
+    height: 35px;
+    background: url('../images/img/green-smile.svg') no-repeat 50% 50%;
+    background-size: contain;
+    animation: swimming-diagonal 10s infinite;
+    animation-direction: alternate;
+  }
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {
@@ -18,6 +81,8 @@
 
     .section-wrapper {
       flex-direction: column;
+      width: auto;
+      align-items: flex-end;
     }
 
     .section-title {
@@ -25,8 +90,35 @@
     }
   }
 
-  .certification-section__team-avatars {
-    width: 330px;
+  .certification-section__graphics {
+    .graphic-dot {
+      width: 10px;
+      height: 10px;
+    }
+  
+    .graphics-team-avatars-small {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .graphic-bricks {
+      width: 136px;
+      height: 72px;
+    }
+  
+    .graphic-circle {
+      width: 40px;
+      height: 40px;
+    }
+  
+    .graphic-green-smile {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  .graphics-team-avatars {
+    width: 270px;
     margin-left: auto;
     margin-right: 10%;
     margin-top: -70px;
@@ -38,8 +130,42 @@
     margin-bottom: 30px;
   }
 
-  .certification-section__team-avatars {
-    margin: 0;
-    width: 170px;
+  .certification-section__graphics {
+    .graphics-team-avatars {
+      margin: 0;
+      width: 170px;
+    }
+
+    .graphic-dot {
+      width: 5px;
+      height: 5px;
+    }
+  
+    .graphics-team-avatars-small {
+      width: 63px;
+      height: 63px;
+    }
+  
+    .graphic-bricks {
+      width: 68px;
+      height: 36px;
+    }
+  
+    .graphic-circle {
+      width: 20px;
+      height: 20px;
+    }
+  
+    .graphic-green-smile {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  .graphics-team-avatars {
+    width: 270px;
+    margin-left: auto;
+    margin-right: 10%;
+    margin-top: -70px;
   }
 }

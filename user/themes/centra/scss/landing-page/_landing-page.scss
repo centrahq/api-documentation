@@ -10,31 +10,9 @@
   }
 }
 
-#loading {
-  div {
-    position: relative;
-  }
-
-  .cursor {
-    border-right: 2px solid #aaaaaa;
-    animation: blink .5s step-end infinite alternate;
-    width: 2px;
-    height: 23px;
-    position: absolute;
-    right: 15px;
-    top: 5px;
-    display: inline-block;
-  }
-}
-
-.landing-page__centra-load {
-  width: 230px;
-  height: 30px;
-}
-
 .landing-page-section {
   width: 100%;
-  padding: 230px 80px 280px 60px;
+  padding: 130px 80px 100px 60px;
   position: relative;
   font-size: 1em;
 }
@@ -50,6 +28,12 @@
   opacity: 0;
   visibility: hidden;
   margin-top: 80px;
+}
+
+.landing-page .support-section__content.has-to-lift,
+.landing-page .section-content.has-to-lift {
+  padding-top: 140px;
+  opacity: 0;
 }
 
 .landing-page .hero-section__graphics.has-to-lift,
@@ -83,6 +67,13 @@
   opacity: 1;
 }
 
+.landing-page .support-section__content.liftElement,
+.landing-page .section-content.liftElement {
+  padding-top: 0px;
+  opacity: 1;
+  transition: padding-top 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
 .landing-page__button {
   background-color: transparent;
   border: none;
@@ -100,29 +91,7 @@
     margin-left: 10px;
     transform: scaleX(1);
     transition: .5s ease-out;
-
-    &::before {
-      content: '';
-      width: 18px;
-      height: 2px;
-      position: absolute;
-      top: 10px;
-      background-color: #000000;
-      display: block;
-      left: 0;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      border-bottom: 2px solid #000;
-      border-right: 2px solid #000;
-      width: 12px;
-      height: 12px;
-      transform: rotate(-45deg);
-      top: 5px;
-      right: 0;
-    }
+    background: url('../images/img/arrow-right-black.svg') no-repeat 50% 50%;
   }
 
   &:hover .landing-page__button-arrow {
@@ -132,12 +101,8 @@
   &.white {
     color: #ffffff;
 
-    .landing-page__button-arrow::before {
-      background-color: #ffffff;
-    }
-
-    .landing-page__button-arrow::after {
-      border-color: #ffffff;
+    .landing-page__button-arrow {
+      background: url('../images/img/arrow-right-white.svg') no-repeat 50% 50%s;
     }
   }
 
