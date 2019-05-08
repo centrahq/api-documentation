@@ -1,4 +1,5 @@
 {% from 'macros/sidebar-item.html' import sidebar_item with context -%}
+{% from 'macros/sidebar-collapse-group.html' import sidebar_collapse_group with context -%}
 
 <!--<div class="sidebar__group">
  <p>Backend API <code class="sidebar__beta">Beta</code></p>
@@ -47,5 +48,37 @@
   {{ sidebar_item('guides/cms/index', 'Overview') }}
   {{ sidebar_item('guides/cms/slot-properties', 'Slot properties') }}
   {{ sidebar_item('guides/cms/custom-attributes', 'Custom Attributes') }}
+ </ul>
+</div>
+
+<div class="sidebar__group {{ sidebar_collapse_group('guides/soap-api/') }}">
+ <p><a href="javascript:void(0)">SOAP API<br/><code>Stable release</code></a></p>
+ <ul>
+  {{ sidebar_item('guides/soap-api/index', 'Introduction') }}
+  {{ sidebar_item('guides/soap-api/centra-concepts', 'Centra Concepts') }}
+  {{ sidebar_item('guides/soap-api/the-centra-admin', 'The Centra Admin') }}
+  {{ sidebar_item(false, 'Cookbook') }}
+  {{ sidebar_item('guides/soap-api/cookbook/1-connection-test', 'Connection Test') }}
+  {{ sidebar_item('guides/soap-api/cookbook/2-markets', 'Markets') }}
+  {{ sidebar_item('guides/soap-api/cookbook/3-product-data-1-sizetables', 'Product Data 1 - Sizetables') }}
+  {{ sidebar_item('guides/soap-api/cookbook/3-product-data-2-a-sweater', 'Product Data 2 - A Sweater') }}
+  {{ sidebar_item('guides/soap-api/cookbook/3-product-data-3-a-chair', 'Product Data 3 - A Chair') }}
+  {{ sidebar_item('guides/soap-api/cookbook/4-product-stock-1-warehouses', 'Product Stock 1 - Warehouses') }}
+  {{ sidebar_item('guides/soap-api/cookbook/4-product-stock-2-stock-update', 'Product Stock 2 - Stock Update') }}
+  {{ sidebar_item('guides/soap-api/cookbook/5-pricelists', 'Pricelists') }}
+  {{ sidebar_item('guides/soap-api/cookbook/6-wholesale-accounts-1-payment-terms', 'Wholesale Accounts 1 - Payment Terms') }}
+  {{ sidebar_item('guides/soap-api/cookbook/6-wholesale-accounts-2-shipping-terms', 'Wholesale Accounts 2 - Shipping Terms') }}
+  {{ sidebar_item('guides/soap-api/cookbook/6-wholesale-accounts-3-account-data', 'Wholesale Accounts 3 - Account Data') }}
+  {{ sidebar_item('guides/soap-api/cookbook/7-orders-retail-1-event', 'Orders - Retail 1 - Event') }}
+  {{ sidebar_item('guides/soap-api/cookbook/7-orders-retail-2-event-done', 'Orders-  Retail 2 - Event Done') }}
+  {{ sidebar_item('guides/soap-api/cookbook/7-orders-retail-3-lock-order', 'Orders - Retail 3 - Lock Order') }}
+  {{ sidebar_item('guides/soap-api/cookbook/7-orders-retail-4-order-shipped', 'Orders - Retail 4 - Order Shipped') }}
+  {{ sidebar_item('guides/soap-api/cookbook/8-orders-wholesale-1-event-by-markets', 'Orders - Wholesale 1 - Event By Markets') }}
+  {{ sidebar_item('guides/soap-api/cookbook/8-orders-wholesale-2-event-done', 'Orders - Wholesale 2 - Event Done') }}
+  {{ sidebar_item('guides/soap-api/cookbook/8-orders-wholesale-3-confirm-and-lock-order', 'Orders - Wholesale 3 - Confirm And Lock Order') }}
+  {{ sidebar_item('guides/soap-api/cookbook/8-orders-wholesale-4-cancel-item', 'Orders - Wholesale 4 - Cancel Item') }}
+  {{ sidebar_item('guides/soap-api/cookbook/8-orders-wholesale-5-shipment-1', 'Orders - Wholesale 5 - Shipment 1') }}
+  {{ sidebar_item('guides/soap-api/cookbook/8-orders-wholesale-6-shipment-2', 'Orders - Wholesale 6 - Shipment 2') }}
+  {{ sidebar_item('guides/soap-api/cookbook/8-orders-wholesale-7-shipped', 'Orders - Wholesale 7 - Shipped') }}
  </ul>
 </div>
