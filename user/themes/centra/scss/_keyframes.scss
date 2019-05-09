@@ -5,82 +5,64 @@
 }
 
 @keyframes swimming1 {
-    0% {
+    0%, 15% {
         transform: translate(0, 0);
     }
-      100% {
+    95%, 100% {
         transform: translate(15px, 20px);
     }
 }
 
 @keyframes swimming2 {
-    0% {
+    0%, 15% {
         transform: translate(5px, 15px);
     }
-      100% {
+    95%, 100% {
         transform: translate(0, 0);
     }
 }
 
 @keyframes swimming3 {
-    0% {
+    0%, 15% {
         transform: translate(0, 0);
     }
-      100% {
+    95%, 100% {
         transform: translate(25px, 5px);
     }
 }
 
 @keyframes swimming4 {
-    0% {
+    0%, 15% {
         transform: translate(20px, 10px);
     }
-      100% {
+    95%, 100% {
         transform: translate(0, 0);
     }
 }
 
 @keyframes swimming5 {
-    0% {
+    0%, 15% {
         transform: translate(0, 0);
     }
-      100% {
+    95%, 100% {
         transform: translate(20px, 0);
     }
 }
 
-@keyframes swimming-up {
-    0% {
-        transform: translate(5px, 0);
-    }
-      100% {
-        transform: translate(0, 25px);
-    }
-}
-
-@keyframes swimming-down {
-    0% {
-        transform: translate(0, 25px);
-    }
-      100% {
-        transform: translate(5px, 0);
-    }
-}
-
 @keyframes swimming-diagonal {
-    0% {
-        transform: translate(0, 0);
+    0%, 15% {
+        transform: translate(35px, -35px);
     }
-      100% {
-        transform: translate(20px, -20px);
+    95%, 100% {
+        transform: translate(0, 0);
     }
 }
 
 @keyframes swimming-diagonal-up {
-    0% {
-        transform: translate(20px, -20px);
-    }
-      100% {
+    0%, 15% {
         transform: translate(0, 0);
+    }
+    95%, 100% {
+        transform: translate(35px, -35px);
     }
 }

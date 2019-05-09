@@ -24,35 +24,52 @@
   margin: 0 auto;
 }
 
-.landing-page .has-to-lift {
+.has-to-lift {
   opacity: 0;
+}
+
+.landing-page .has-to-lift {
   visibility: hidden;
   margin-top: 80px;
 }
 
-.landing-page .support-section__content.has-to-lift,
-.landing-page .section-content.has-to-lift {
-  padding-top: 140px;
-  opacity: 0;
+.landing-page .name-section.has-to-lift {
+  transform: translateY(100%);
 }
 
+.landing-page .support-section.has-to-lift,
+.landing-page .section-content.has-to-lift {
+  transform: translateY(8%);
+}
+
+.landing-page .support-section.has-to-lift{
+  transform: translateY(4%);
+}
+
+.landing-page .certification-section__graphics.has-to-lift,
 .landing-page .hero-section__graphics.has-to-lift,
 .landing-page img.has-to-lift,
 .landing-page .picture-layout__circle.has-to-lift {
-  transform: translateY(0) scale(0.9);
+  transform: translateY(2%);
 }
 
 .footer__navigation-group.has-to-lift {
   margin-top: 0;
 }
 
+.liftElement {
+  opacity: 1;
+}
+
+.landing-page .support-section.liftElement,
+.landing-page .section-content.liftElement,
+.landing-page .certification-section__graphics.liftElement,
 .landing-page .hero-section__graphics.liftElement,
 .landing-page img.liftElement,
 .landing-page .picture-layout__circle.liftElement {
   visibility: visible;
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition: transform 0.5s linear, opacity 0.5s linear, visibility 0.5s linear;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  transition: transform 1s linear, opacity 1s linear;
 }
 
 .footer__navigation-group.liftElement {
@@ -64,14 +81,11 @@
   visibility: visible;
   margin-top: 11px;
   transition: margin-top 0.3s;
-  opacity: 1;
 }
 
-.landing-page .support-section__content.liftElement,
-.landing-page .section-content.liftElement {
-  padding-top: 0px;
-  opacity: 1;
-  transition: padding-top 0.4s ease-in-out, opacity 0.4s ease-in-out;
+.landing-page .name-section.liftElement {
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  transition: transform 0.5s linear, opacity 0.5s linear;
 }
 
 .landing-page__button {
@@ -102,7 +116,7 @@
     color: #ffffff;
 
     .landing-page__button-arrow {
-      background: url('../images/img/arrow-right-white.svg') no-repeat 50% 50%s;
+      background: url('../images/img/arrow-right-white.svg') no-repeat 50% 50%;
     }
   }
 

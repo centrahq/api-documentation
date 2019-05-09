@@ -54,16 +54,19 @@
             }
 
             var boundingHeroSection = document.getElementById("hero-section").getBoundingClientRect();
+            var getStartedSection = document.getElementById("get-started-section");
             var boundingBasicSection = document.getElementById("basic-section").getBoundingClientRect();
             var boundingLandingPageFooter = document.getElementById("landing-page-footer").getBoundingClientRect();
             var centraCommerce = document.getElementById("centra-commerce");
 
             if (boundingHeroSection.bottom < 400) {
                 landingPage.className = "landing-page white";
+                getStartedSection.classList.add("show");
             }
 
             if (boundingHeroSection.bottom > 400) {
                 landingPage.className = "landing-page black";
+                getStartedSection.classList.remove("show");
             }
 
             if (boundingBasicSection.top < (window.innerHeight - 300)) {
@@ -162,8 +165,21 @@
                 document.getElementById("loading").classList.add("remove-block");
                 navigationMenu.classList.add("show");
                 navigationRight.classList.add("show");
+
+                if (!heroSection) {
+                    return;
+                }
                 heroSection.classList.add("show");
             }, 400);
+            window.setTimeout(function() { 
+                var screenProduct = document.getElementById("graphic-screen-product");
+
+                if (!screenProduct) {
+                    return;
+                }
+
+                screenProduct.classList.add("checked");
+            }, 5000);
         };
 
         window.onload = load();

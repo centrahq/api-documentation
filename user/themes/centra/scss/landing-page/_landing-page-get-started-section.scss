@@ -3,6 +3,8 @@
   min-height: 70vh;
   display: flex;
   align-items: center;
+  opacity: 0;
+  transform: translateY(5%);
 
   .section-content {
     margin-top: 140px;
@@ -21,6 +23,12 @@
   }
 }
 
+.get-started-section.show {
+  opacity: 1;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  transition: transform 1s linear, opacity 1s linear;
+}
+
 .hero-section__graphics.stroke-background {
   width: 645px;
   background: url('../images/img/stroke-background.svg') no-repeat 50% 25%;
@@ -29,13 +37,13 @@
 
 .picture-layout__circle {
   position: absolute;
-  top: 5px;
-  right: 23%;
+  top: 25px;
+  right: 25%;
   width: 58px;
   height: 58px;
   border-radius: 50%;
   border: 3px solid #231F20;
-  animation: swimming-up 6s infinite;
+  animation: swimming-diagonal-up 20s infinite;
   animation-direction: alternate;
 }
 
@@ -51,13 +59,13 @@
 
 .picture-layout__dot {
   position: absolute;
-  top: 650px;
+  top: 530px;
   left: 205px;
   width: 21px;
   height: 21px;
   border-radius: 50%;
   background-color: #000000;
-  animation: swimming-down 6s infinite;
+  animation: swimming-diagonal 20s infinite;
   animation-direction: alternate;
 }
 

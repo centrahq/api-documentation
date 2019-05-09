@@ -96,63 +96,63 @@
   &:nth-child(1) {
     width: 18em;
     opacity: 1;
-    animation: type 3s steps(40, end);
+    animation: type 2s steps(40, end);
     animation-fill-mode: forwards;
   }
   
   &:nth-child(2) {
     width: 12em;
-    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 3s;
+    animation: type2 1.5s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 2s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(3) {
     width: 19em;
-    animation: type2 3s steps(20, end), blink .5s step-end infinite alternate;
+    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
     animation-delay: 5s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(4) {
     width: 11em;
-    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 8s;
+    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 7s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(5) {
     width: 11em;
-    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 10s;
+    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 9s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(6) {
     width: 9em;
-    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 12s;
+    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 10s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(7) {
     width: 3.5em;
-    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 14s;
+    animation: type2 0.5s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 11s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(8) {
     width: 1.5em;
     animation: type2 0.5s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 15s;
+    animation-delay: 12s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(9) {
     width: 15em;
-    animation: type3 2s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 15.5s;
+    animation: type3 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 14s;
     animation-fill-mode: forwards;
   }
 }
@@ -161,34 +161,34 @@
   &:nth-child(1) {
     width: 19em;
     opacity: 1;
-    animation: type 3s steps(40, end);
+    animation: type 2s steps(40, end);
     animation-fill-mode: forwards;
   }
   
   &:nth-child(2) {
     width: 15em;
-    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 3s;
+    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 2s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(3) {
     width: 8em;
-    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 5s;
+    animation: type2 0.5s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 4.5s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(4) {
     width: 6em;
-    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 6s;
+    animation: type2 0.5s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 5s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(5) {
     width: 13em;
-    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
+    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
     animation-delay: 7s;
     animation-fill-mode: forwards;
   }
@@ -196,14 +196,14 @@
   &:nth-child(6) {
     width: 3em;
     animation: type2 0.5s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 9s;
+    animation-delay: 8s;
     animation-fill-mode: forwards;
   }
   
   &:nth-child(7) {
     width: 1em;
     animation: type3 0.5s steps(20, end), blink .5s step-end infinite alternate;
-    animation-delay: 9.5s;
+    animation-delay: 8.5s;
     animation-fill-mode: forwards;
   }
 }
