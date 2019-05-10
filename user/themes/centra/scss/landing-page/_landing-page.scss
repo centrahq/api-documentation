@@ -1,5 +1,5 @@
 .landing-page {
-  transition: background-color 0.3s;
+  transition: background-color 0.5s;
 
   &.black {
     background-color: #000000;
@@ -26,24 +26,20 @@
 
 .has-to-lift {
   opacity: 0;
+  visibility: hidden;
 }
 
 .landing-page .has-to-lift {
-  visibility: hidden;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 .landing-page .name-section.has-to-lift {
-  transform: translateY(100%);
+  transform: translateY(50%);
 }
 
-.landing-page .support-section.has-to-lift,
+.landing-page .support-section__content.has-to-lift,
 .landing-page .section-content.has-to-lift {
   transform: translateY(8%);
-}
-
-.landing-page .support-section.has-to-lift{
-  transform: translateY(4%);
 }
 
 .landing-page .certification-section__graphics.has-to-lift,
@@ -59,15 +55,19 @@
 
 .liftElement {
   opacity: 1;
+  visibility: visible;
 }
 
-.landing-page .support-section.liftElement,
-.landing-page .section-content.liftElement,
 .landing-page .certification-section__graphics.liftElement,
 .landing-page .hero-section__graphics.liftElement,
 .landing-page img.liftElement,
 .landing-page .picture-layout__circle.liftElement {
-  visibility: visible;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  transition: transform 1s linear, opacity 1s linear;
+}
+
+.landing-page .support-section__content.liftElement,
+.landing-page .section-content.liftElement {
   transform: matrix(1, 0, 0, 1, 0, 0);
   transition: transform 1s linear, opacity 1s linear;
 }
@@ -81,11 +81,12 @@
   visibility: visible;
   margin-top: 11px;
   transition: margin-top 0.3s;
+  opacity: 1;
 }
 
 .landing-page .name-section.liftElement {
   transform: matrix(1, 0, 0, 1, 0, 0);
-  transition: transform 0.5s linear, opacity 0.5s linear;
+  transition: transform 0.8s linear, opacity 0.8s linear;
 }
 
 .landing-page__button {

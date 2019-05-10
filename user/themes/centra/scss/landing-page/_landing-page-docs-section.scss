@@ -23,6 +23,7 @@
   letter-spacing: 0.12px;
   font-size: 22px;
   margin: 11px;
+  opacity: 0;
   @include transition(3);
 
   .landing-page__button {
@@ -30,7 +31,7 @@
   }
 
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.02) translateZ(0);
     transition: transform 0.2s cubic-bezier(.165,.84,.44,1);
 
     .landing-page__button {
@@ -65,9 +66,9 @@
     height: 64px;
     border-radius: 50%;
     border: 3px solid #231F20;
-    left: -8px;
+    left: 3%;
     bottom: 21%;
-    animation: swimming-diagonal 20s infinite;
+    animation: swimming-diagonal 18s infinite;
     animation-direction: alternate;
   }
 
@@ -76,9 +77,9 @@
     height: 22px;
     border-radius: 50%;
     background-color: #231F20;
-    right: 5%;
+    right: 10%;
     bottom: 40%;
-    animation: swimming-diagonal-up 20s infinite;
+    animation: swimming-diagonal-up 18s infinite;
     animation-direction: alternate;
   }
 }

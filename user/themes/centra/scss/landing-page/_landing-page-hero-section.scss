@@ -97,18 +97,17 @@
   &::before {
     content: '';
     position: absolute;
-    width: 38px;
-    height: 38px;
-    top: 12px;
-    right: 10px;
-    background: url('../images/img/checkbox_unchecked.svg') no-repeat center center;
-    background-size: 417%;
+    top: 0;
+    right: 0;
+    width: 230px;
+    height: 179px;
+    background: url('../images/img/screen-product-unchecked.svg') no-repeat center center;
   }
 }
 
 .picture-layout__screen-product.checked::before {
   opacity: 0;
-  transition: opacity 0.4s linear;
+  transition: opacity 0.8s ease-in-out;
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {

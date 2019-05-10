@@ -54,23 +54,42 @@
             }
 
             var boundingHeroSection = document.getElementById("hero-section").getBoundingClientRect();
-            var getStartedSection = document.getElementById("get-started-section");
+            var getStartedGraphics = document.getElementById("get-started-graphics");
+            var getStartedContent = document.getElementById("get-started-content");
             var boundingBasicSection = document.getElementById("basic-section").getBoundingClientRect();
             var boundingLandingPageFooter = document.getElementById("landing-page-footer").getBoundingClientRect();
             var centraCommerce = document.getElementById("centra-commerce");
 
-            if (boundingHeroSection.bottom < 400) {
+            if (boundingHeroSection.bottom < 500) {
                 landingPage.className = "landing-page white";
-                getStartedSection.classList.add("show");
+                getStartedGraphics.classList.add("lift");
+                getStartedContent.classList.add("lift");
             }
 
-            if (boundingHeroSection.bottom > 400) {
+            if (boundingHeroSection.bottom > 500) {
                 landingPage.className = "landing-page black";
-                getStartedSection.classList.remove("show");
+                getStartedGraphics.classList.remove("lift");
             }
 
             if (boundingBasicSection.top < (window.innerHeight - 300)) {
                 landingPage.className = "landing-page black";
+            }
+        }
+
+        function startCodeAnimationOnScroll() {
+            var landingPage = document.getElementById("landing-page");
+
+            if (!landingPage) {
+                return;
+            }
+
+            var boundingHeroSection = document.getElementById("hero-section").getBoundingClientRect();
+            var getStartedSectionCode = document.querySelectorAll(".get-started-section .css-typing p");
+
+            if (boundingHeroSection.bottom < 500) {
+                getStartedSectionCode.forEach(function(code) {
+                    code.classList.add("type");
+                })
             }
         }
 
@@ -183,7 +202,7 @@
         };
 
         window.onload = load();
-        window.onscroll = function() {requestAccessOnScroll(), spinOnScroll(), backgroundOnScroll(), liftElementsOnScroll()};
+        window.onscroll = function() {requestAccessOnScroll(), spinOnScroll(), backgroundOnScroll(), liftElementsOnScroll(), startCodeAnimationOnScroll()};
         window.addEventListener('load', () => {
             var input = document.getElementById("input-search");
             

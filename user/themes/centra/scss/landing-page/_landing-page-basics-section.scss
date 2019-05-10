@@ -30,7 +30,7 @@
   padding: 66px 45px 110px;
   border: 2px solid #141414;
   box-sizing: border-box;
-  transition: all .3s ease-out;
+  opacity: 0;
   @include transition(6);
 
   .landing-page__button-arrow {
@@ -40,8 +40,8 @@
 
   &:hover {
     background-color: #141414;
-    transform: scale(1.02);
-    transition: transform 0.2s cubic-bezier(.165,.84,.44,1);
+    transform: scale(1.02) translateZ(0);
+    transition: transform 0.2s cubic-bezier(0.01, 0.56, 0.44, 1), background-color 0.2s cubic-bezier(0.01, 0.56, 0.44, 1);
 
     .landing-page__button-arrow {
       opacity: 1;

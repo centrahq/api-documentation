@@ -1,3 +1,12 @@
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}
+
 .certification-section {
   display: flex;
   align-items: center;
@@ -11,9 +20,25 @@
 
 .certification-section__graphics {
   position: relative;
+  margin-right: 100px;
+  padding: 50px;
+
+  .gray-strokes {
+    position: absolute;
+    z-index: -1;
+    right: -50px;
+    top: -50px;
+    width: 445px;
+    height: 445px;
+    background: url('../images/img/gray-strokes.svg') no-repeat center center;
+    animation-name: spin;
+    animation-duration: 250s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
 
   .graphics-team-avatars {
-    max-width: 420px;
+    max-width: 295px;
   }
 
   .graphic-dot {
@@ -91,49 +116,81 @@
   }
 
   .certification-section__graphics {
+    margin-right: 38px;
+    padding: 69px 38px;
+
+    .gray-strokes {
+      width: 300px;
+      height: 300px;
+      right: -15px;
+      top: -38px;
+      background-size: contain;
+    }
+
+    .graphics-team-avatars {
+      width: 200px;
+      margin-left: auto;
+      margin-right: 10%;
+      margin-top: -70px;
+    }
+
     .graphic-dot {
       width: 10px;
       height: 10px;
+      animation-duration: 15s;
     }
   
     .graphics-team-avatars-small {
       width: 120px;
       height: 120px;
+      animation-duration: 15s;
     }
   
     .graphic-bricks {
       width: 136px;
       height: 72px;
+      animation-duration: 15s;
     }
   
     .graphic-circle {
       width: 40px;
       height: 40px;
+      animation-duration: 15s;
+      top: 80%;
     }
   
     .graphic-green-smile {
       width: 12px;
       height: 12px;
+      animation-duration: 15s;
     }
-  }
-
-  .graphics-team-avatars {
-    width: 270px;
-    margin-left: auto;
-    margin-right: 10%;
-    margin-top: -70px;
   }
 }
 
 @media (max-width: 510px) {
-  .certification-section .section-title {
-    margin-bottom: 30px;
+  .certification-section {
+    .section-content {
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      margin-bottom: 30px;
+    }
   }
 
   .certification-section__graphics {
+    padding: 8px;
+
     .graphics-team-avatars {
       margin: 0;
-      width: 170px;
+      width: 155px;
+    }
+
+    .gray-strokes {
+      width: 230px;
+      height: 230px;
+      right: -38px;
+      top: -27px;
     }
 
     .graphic-dot {
