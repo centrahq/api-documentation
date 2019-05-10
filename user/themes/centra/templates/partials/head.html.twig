@@ -69,6 +69,10 @@
                 getStartedGraphics.classList.remove("lift");
             }
 
+            if (boundingBasicSection.top > (window.innerHeight - 300)) {
+                landingPage.className = "landing-page white";
+            }
+
             if (boundingBasicSection.top < (window.innerHeight - 300)) {
                 landingPage.className = "landing-page black";
             }
