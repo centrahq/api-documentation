@@ -60,13 +60,13 @@
             var boundingLandingPageFooter = document.getElementById("landing-page-footer").getBoundingClientRect();
             var centraCommerce = document.getElementById("centra-commerce");
 
-            if (boundingHeroSection.bottom < 500) {
+            if (boundingHeroSection.bottom < 300) {
                 landingPage.className = "landing-page white";
                 getStartedGraphics.classList.add("lift");
                 getStartedContent.classList.add("lift");
             }
 
-            if (boundingHeroSection.bottom > 500) {
+            if (boundingHeroSection.bottom > 300) {
                 landingPage.className = "landing-page black";
                 getStartedGraphics.classList.remove("lift");
             }
