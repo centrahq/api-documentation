@@ -8,4 +8,45 @@
             {% endif %}
         </div>
     </section>
+    <script>
+        function pageNavigationSpy() {
+            var headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+            var headers = document.querySelectorAll(headings.join(','));
+
+            headers.forEach(function(head, index) {
+                var headBounding = head.getBoundingClientRect();
+                var headId = head.getAttribute('id');
+
+                if (!headId) {
+                    return;
+                }
+
+                var nextHeadingSelector = headings.map(function(h) {
+                    return "#" + headId + " ~ " + h;
+                }).join(',');
+                var nextHead = document.querySelector(nextHeadingSelector);
+                var element = document.querySelectorAll("a[href='#" + headId + "']")[0];
+                
+                if (!nextHead && headBounding.top < window.innerHeight / 3) {
+                    element.classList.add("active");
+                } else {
+                    element.classList.remove("active");
+                }
+                
+                if (!nextHead) {
+                    return;
+                }
+
+                var nextHeadBounding = nextHead.getBoundingClientRect();
+
+                if (nextHeadBounding.top > window.innerHeight / 3 && headBounding.top < window.innerHeight / 3) {
+                    element.classList.add("active");
+                } else {
+                    element.classList.remove("active");
+                }
+            })
+        }
+
+        window.onscroll = function(){pageNavigationSpy()};
+    </script>
 {% endif %}

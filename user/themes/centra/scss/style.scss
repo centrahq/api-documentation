@@ -4,7 +4,9 @@
  @import '_fonts';
  @import '_normalize';
  @import '_variables';
- @import 'mixins';
+ @import '_mixins';
+ @import '_keyframes';
+
  /**
   * Typography
   */
@@ -17,6 +19,7 @@
   @import 'landing-page/landing-page';
   @import 'landing-page/request-access-bar';
   @import 'landing-page/landing-page-hero-section';
+  @import 'landing-page/code-animation';
   @import 'landing-page/landing-page-docs-section';
   @import 'landing-page/landing-page-basics-section';
   @import 'landing-page/landing-page-get-started-section';

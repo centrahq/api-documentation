@@ -1,5 +1,6 @@
 .support-section {
   padding: 0;
+  background-color: #ffffff;
 
   .section-wrapper {
     flex-direction: column;
@@ -23,10 +24,11 @@
 }
 
 .support-section__content {
-  padding: 0 60px 50px 60px;
+  padding: 0 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 50px;
 }
 
 .support-section__team-avatars {
@@ -46,6 +48,14 @@
 @media (min-width: 1470px) {
   .support-section__content {
     padding-right: 200px;
+
+    .section-title {
+      font-size: 50px;
+    }
+
+    .section-text {
+      font-size: 30px;
+    }
   }
 }
 

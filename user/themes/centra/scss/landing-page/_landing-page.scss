@@ -12,7 +12,7 @@
 
 .landing-page-section {
   width: 100%;
-  padding: 230px 80px 280px 60px;
+  padding: 130px 80px 100px 60px;
   position: relative;
   font-size: 1em;
 }
@@ -26,12 +26,67 @@
 
 .has-to-lift {
   opacity: 0;
+  visibility: hidden;
+}
+
+.landing-page .has-to-lift {
+  margin-top: 40px;
+}
+
+.landing-page .name-section.has-to-lift {
+  transform: translateY(50%);
+}
+
+.landing-page .support-section__content.has-to-lift,
+.landing-page .section-content.has-to-lift {
+  transform: translateY(8%);
+}
+
+.landing-page .certification-section__graphics.has-to-lift,
+.landing-page .hero-section__graphics.has-to-lift,
+.landing-page img.has-to-lift,
+.landing-page .picture-layout__circle.has-to-lift {
+  transform: translateY(2%);
+}
+
+.footer__navigation-group.has-to-lift {
+  margin-top: 0;
 }
 
 .liftElement {
-  transform: translateY(-50px);
-  transition: transform 0.4s;
   opacity: 1;
+  visibility: visible;
+}
+
+.landing-page .certification-section__graphics.liftElement,
+.landing-page .hero-section__graphics.liftElement,
+.landing-page img.liftElement,
+.landing-page .picture-layout__circle.liftElement {
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  transition: transform 1s linear, opacity 1s linear;
+}
+
+.landing-page .support-section__content.liftElement,
+.landing-page .section-content.liftElement {
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  transition: transform 1s linear, opacity 1s linear;
+}
+
+.footer__navigation-group.liftElement {
+  transform: translateY(-50px);
+  transition: transform 0.35s linear;
+}
+
+.landing-page .liftElement {
+  visibility: visible;
+  margin-top: 11px;
+  transition: margin-top 0.3s;
+  opacity: 1;
+}
+
+.landing-page .name-section.liftElement {
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  transition: transform 0.8s linear, opacity 0.8s linear;
 }
 
 .landing-page__button {
@@ -51,29 +106,7 @@
     margin-left: 10px;
     transform: scaleX(1);
     transition: .5s ease-out;
-
-    &::before {
-      content: '';
-      width: 18px;
-      height: 2px;
-      position: absolute;
-      top: 10px;
-      background-color: #000000;
-      display: block;
-      left: 0;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      border-bottom: 2px solid #000;
-      border-right: 2px solid #000;
-      width: 12px;
-      height: 12px;
-      transform: rotate(-45deg);
-      top: 5px;
-      right: 0;
-    }
+    background: url('../images/img/arrow-right-black.svg') no-repeat 50% 50%;
   }
 
   &:hover .landing-page__button-arrow {
@@ -83,12 +116,8 @@
   &.white {
     color: #ffffff;
 
-    .landing-page__button-arrow::before {
-      background-color: #ffffff;
-    }
-
-    .landing-page__button-arrow::after {
-      border-color: #ffffff;
+    .landing-page__button-arrow {
+      background: url('../images/img/arrow-right-white.svg') no-repeat 50% 50%;
     }
   }
 

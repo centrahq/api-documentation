@@ -1,0 +1,228 @@
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid #ffffff;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid #ffffff;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.orange {
+  color: #FFD595;
+}
+
+.light-blue {
+  color: #D0D4F0;
+}
+
+.blue{ 
+  color: #3764DA;
+}
+
+.pink {
+  color: #FFD3DA;
+}
+
+.green {
+  color: #18AE1D;
+}
+
+.code-animation{
+  padding: 35px;
+  display: flex;
+  color: #ffffff;
+  user-select: none;
+
+  .lines {
+    margin-right: 15px;
+
+    p {
+      color: #aaaaaa;
+    }
+  }
+
+  .css-typing p {
+    border-right: .15em solid #aaaaaa;
+    opacity: 0;
+  }
+
+  p {
+    margin: 0;
+    font-family: "Courier";
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.hero-section .css-typing p {
+  &:nth-child(1) {
+    width: 18em;
+    opacity: 1;
+    animation: type 2s steps(40, end);
+    animation-fill-mode: forwards;
+  }
+  
+  &:nth-child(2) {
+    width: 12em;
+    animation: type2 1.5s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+  }
+  
+  &:nth-child(3) {
+    width: 19em;
+    animation: type2 2s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+  }
+  
+  &:nth-child(4) {
+    width: 11em;
+    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 7s;
+    animation-fill-mode: forwards;
+  }
+  
+  &:nth-child(5) {
+    width: 11em;
+    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 9s;
+    animation-fill-mode: forwards;
+  }
+  
+  &:nth-child(6) {
+    width: 9em;
+    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 10s;
+    animation-fill-mode: forwards;
+  }
+  
+  &:nth-child(7) {
+    width: 3.5em;
+    animation: type2 0.5s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 11s;
+    animation-fill-mode: forwards;
+  }
+  
+  &:nth-child(8) {
+    width: 1.5em;
+    animation: type2 0.5s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 12s;
+    animation-fill-mode: forwards;
+  }
+  
+  &:nth-child(9) {
+    width: 15em;
+    animation: type3 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 14s;
+    animation-fill-mode: forwards;
+  }
+}
+
+.get-started-section .css-typing p.type {
+  &:nth-child(1) {
+    width: 19em;
+    opacity: 1;
+    animation: type 2s steps(40, end);
+    animation-fill-mode: forwards;
+  }
+  
+  &:nth-child(2) {
+    width: 15em;
+    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+  }
+  
+  &:nth-child(3) {
+    width: 8em;
+    animation: type2 0.5s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 4.5s;
+    animation-fill-mode: forwards;
+  }
+  
+  &:nth-child(4) {
+    width: 6em;
+    animation: type2 0.5s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+  }
+  
+  &:nth-child(5) {
+    width: 13em;
+    animation: type2 1s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 7s;
+    animation-fill-mode: forwards;
+  }
+  
+  &:nth-child(6) {
+    width: 3em;
+    animation: type2 0.5s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 8s;
+    animation-fill-mode: forwards;
+  }
+  
+  &:nth-child(7) {
+    width: 1em;
+    animation: type3 0.5s steps(20, end), blink .5s step-end infinite alternate;
+    animation-delay: 8.5s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@media (max-width: $main-extra-large-breakpoint) {
+  .code-animation {
+    min-width: 360px;
+  
+    p {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: $mobile-navigation-breakpoint) {
+  .code-animation {
+    padding: 15px 30px;
+    p {
+      font-size: 10px;
+    }
+  }
+}

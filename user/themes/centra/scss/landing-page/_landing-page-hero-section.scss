@@ -1,8 +1,17 @@
 .hero-section {
   color: #ffffff;
-  min-height: 100vh;
+  background-color: #000000;
+  min-height: 80vh;
   display: flex;
   align-items: center;
+  transform: translateY(2%);
+  opacity: 0;
+}
+
+.hero-section.show {
+  opacity: 1;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  transition: transform 1s linear, opacity 1s linear;
 }
 
 .hero-section__wrapper {
@@ -29,6 +38,8 @@
   min-width: 255px;
   margin-left: 80px;
   margin-right: 100px;
+  font-family: 'Andale Mono', Monospace;
+  font-size: 9px;
 }
   
 .picture-layout__slider {
@@ -38,15 +49,19 @@
   width: 133px;
   height: 101px;
   background: url('../images/img/slider.svg') no-repeat center center;
+  animation: swimming1 10s infinite;
+  animation-direction: alternate;
 }
   
 .picture-layout__stack {
   position: absolute;
-  top: -140px;
-  left: 29%;
-  width: 137px;
-  height: 113px;
+  top: -170px;
+  left: 23%;
+  width: 210px;
+  height: 175px;
   background: url('../images/img/stack.svg') no-repeat center center;
+  animation: swimming2 10s infinite;
+  animation-direction: alternate;
 }
   
 .picture-layout__smile {
@@ -56,6 +71,8 @@
   width: 76px;
   height: 60px;
   background: url('../images/img/smile.svg') no-repeat center center;
+  animation: swimming3 10s infinite;
+  animation-direction: alternate;
 }
   
 .picture-layout__hand {
@@ -65,6 +82,8 @@
   width: 189px;
   height: 100px;
   background: url('../images/img/hand.svg') no-repeat center center;
+  animation: swimming4 10s infinite;
+  animation-direction: alternate;
 }
   
 .picture-layout__screen-product {
@@ -74,6 +93,21 @@
   width: 230px;
   height: 179px;
   background: url('../images/img/screen-product.svg') no-repeat center center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 230px;
+    height: 179px;
+    background: url('../images/img/screen-product-unchecked.svg') no-repeat center center;
+  }
+}
+
+.picture-layout__screen-product.checked::before {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {

@@ -1,15 +1,33 @@
 .get-started-section {
   color: #000000;
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
 
   .section-content {
     margin-top: 140px;
+    opacity: 0;
+    transform: translateY(10%);
+  }
+
+  .section-content.lift {
+    opacity: 1;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+    transition: transform 1s linear, opacity 1s linear;
+    transition-delay: 0.4s;
   }
 
   .hero-section__graphics {
     margin-right: 88px;
+    opacity: 0;
+    transform: translateY(2%);
+  }
+
+  .hero-section__graphics.lift {
+    opacity: 1;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+    transition: transform 0.9s linear, opacity 0.9s linear;
+    transition-delay: 0.3s;
   }
 
   .graphics__code-window {
@@ -29,18 +47,20 @@
 
 .picture-layout__circle {
   position: absolute;
-  top: 5px;
-  right: 23%;
+  top: 25px;
+  right: 25%;
   width: 58px;
   height: 58px;
   border-radius: 50%;
   border: 3px solid #231F20;
+  animation: swimming-diagonal-up 20s infinite;
+  animation-direction: alternate;
 }
 
 .picture-layout__artboard {
   position: absolute;
   top: 115px;
-  right: 15px;
+  right: 0;
   width: 53%;
   height: 100%;
   background: url('../images/img/Artboard19@3x.png') no-repeat 50% 0%;
@@ -49,12 +69,14 @@
 
 .picture-layout__dot {
   position: absolute;
-  top: 650px;
+  top: 530px;
   left: 205px;
   width: 21px;
   height: 21px;
   border-radius: 50%;
   background-color: #000000;
+  animation: swimming-diagonal 20s infinite;
+  animation-direction: alternate;
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {

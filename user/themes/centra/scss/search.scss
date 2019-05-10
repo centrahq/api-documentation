@@ -27,26 +27,32 @@
     .navigation-background__slider {
       left: 10%;
       top: 15%;
+      animation-duration: 7s;
     }
 
     .navigation-background__stack{
       left: 5%;
       top: 62%;
+      animation-duration: 7s;
     }
 
     .navigation-background__smile {
       top: 80%;
       left: 90%;
+      animation-duration: 7s;
     }
 
     .navigation-background__hand {
       left: 50%;
       top: 40%;
+      animation-duration: 7s;
     }
 
     .navigation-background__circle-outlined {
+      height: 100px;
       top: 40%;
       left: 20%;
+      animation-duration: 7s;
     }
   }
 }
@@ -63,7 +69,7 @@
 }
 
 #tntsearch-wrapper.small-screen {
-  height: 200px;
+  height: 195px;
 }
 
 

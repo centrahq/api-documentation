@@ -7,7 +7,7 @@
 }
 
 .docs__articles-wrapper {
-  padding: 190px 80px 0;
+  padding: 100px 80px 0;
 }
 
 .docs__articles {
@@ -16,12 +16,14 @@
 }
 
 .docs__article {
+  cursor: pointer;
   box-shadow: 0px 0px 26px rgba(0, 0, 0, 0.05);
   max-width: 386px;
   padding: 66px 45px 110px;
   letter-spacing: 0.12px;
   font-size: 22px;
   margin: 11px;
+  opacity: 0;
   @include transition(3);
 
   .landing-page__button {
@@ -29,8 +31,8 @@
   }
 
   &:hover {
-    transform: scale(1.02) translateY(-50px);
-    transition: all 0.5s;
+    transform: scale(1.02) translateZ(0);
+    transition: transform 0.2s cubic-bezier(.165,.84,.44,1);
 
     .landing-page__button {
       opacity: 1;
@@ -64,8 +66,10 @@
     height: 64px;
     border-radius: 50%;
     border: 3px solid #231F20;
-    left: -8px;
+    left: 3%;
     bottom: 21%;
+    animation: swimming-diagonal 18s infinite;
+    animation-direction: alternate;
   }
 
   &.background-dot {
@@ -73,8 +77,10 @@
     height: 22px;
     border-radius: 50%;
     background-color: #231F20;
-    right: 5%;
+    right: 10%;
     bottom: 40%;
+    animation: swimming-diagonal-up 18s infinite;
+    animation-direction: alternate;
   }
 }
 
