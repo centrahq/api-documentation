@@ -14,7 +14,6 @@
     opacity: 1;
     transform: matrix(1, 0, 0, 1, 0, 0);
     transition: transform 1s linear, opacity 1s linear;
-    transition-delay: 0.4s;
   }
 
   .hero-section__graphics {
@@ -27,7 +26,6 @@
     opacity: 1;
     transform: matrix(1, 0, 0, 1, 0, 0);
     transition: transform 0.9s linear, opacity 0.9s linear;
-    transition-delay: 0.3s;
   }
 
   .graphics__code-window {

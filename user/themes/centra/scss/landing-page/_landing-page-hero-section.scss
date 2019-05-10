@@ -4,14 +4,17 @@
   min-height: 80vh;
   display: flex;
   align-items: center;
-  transform: translateY(2%);
-  opacity: 0;
-}
+  
+  .hero-section__wrapper {
+    opacity: 0;
+    transform: translateY(2%);
+  }
 
-.hero-section.show {
-  opacity: 1;
-  transform: matrix(1, 0, 0, 1, 0, 0);
-  transition: transform 1s linear, opacity 1s linear;
+  .hero-section__wrapper.show {
+    opacity: 1;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+    transition: transform 1s linear, opacity 1s linear;
+  }
 }
 
 .hero-section__wrapper {

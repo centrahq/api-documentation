@@ -61,13 +61,11 @@
             var centraCommerce = document.getElementById("centra-commerce");
 
             if (boundingHeroSection.bottom < 300) {
-                landingPage.className = "landing-page white";
                 getStartedGraphics.classList.add("lift");
                 getStartedContent.classList.add("lift");
             }
 
             if (boundingHeroSection.bottom > 300) {
-                landingPage.className = "landing-page black";
                 getStartedGraphics.classList.remove("lift");
             }
 
@@ -179,7 +177,7 @@
             window.setTimeout(function() { 
                 var navigationMenu = document.getElementById("navigation-menu");
                 var navigationRight = document.getElementById("navigation-right");
-                var heroSection = document.getElementById("hero-section");
+                var heroSection = document.getElementById("hero-section-wrapper");
 
                 document.getElementById("loading").classList.add("remove-block");
                 navigationMenu.classList.add("show");
