@@ -30,8 +30,6 @@
   padding: 66px 45px 110px;
   border: 2px solid #141414;
   box-sizing: border-box;
-  opacity: 0;
-  @include transition(6);
 
   .landing-page__button-arrow {
     opacity: 0;
