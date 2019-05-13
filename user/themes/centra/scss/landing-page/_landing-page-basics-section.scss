@@ -25,7 +25,6 @@
   flex-direction: column;
   justify-content: space-between;
   max-width: 386px;
-  min-height: 600px;
   margin: 11px;
   padding: 66px 45px 110px;
   border: 2px solid #141414;
@@ -92,8 +91,6 @@
 
 @media (max-width: 1370px) {
   .basic-section__article {
-    padding: 23px 30px;
-    min-height: 500px;
     max-width: 310px;
 
     h3 {
@@ -116,7 +113,6 @@
 
   .basic-section__article {
     min-width: 270px;
-    min-height: 424px;
     margin: 6px;
     background-color: #141414;
 
