@@ -112,10 +112,18 @@
         function spinOnScroll() {
             var circle = document.getElementById("centra-commerce");
 
-            if (circle) {
-                window.addEventListener("scroll", function() {
-                    circle.style.transform = "rotate("+(window.pageYOffset / 5)+"deg)";
-                });
+            if (!circle) {
+                return;
+            }
+
+            function spinning() {
+                circle.style.transform = "rotate("+(window.pageYOffset / 5)+"deg)";
+            }
+
+            var circleBounding = circle.getBoundingClientRect();
+
+            if (circleBounding.top < window.innerHeight) {
+                window.addEventListener("scroll", spinning());
             }
         }
 
