@@ -1,5 +1,12 @@
 .basic-section {
   color: #ffffff;
+  background-color: $cream;
+  transition: background-color 0.5s;
+  background-color: #ffffff;
+  
+  &.black {
+    background-color: #000000;
+  }
 
   .section-wrapper {
     flex-direction: column;

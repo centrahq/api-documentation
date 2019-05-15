@@ -54,8 +54,11 @@
             }
 
             var boundingHeroSection = document.getElementById("hero-section").getBoundingClientRect();
-            var boundingBasicSection = document.getElementById("basic-section").getBoundingClientRect();
+            var basicSection = document.getElementById("basic-section");
+            var basicSectionWrapper = document.getElementById("basic-section-wrapper");
+            var boundingBasicSectionWrapper = basicSectionWrapper.getBoundingClientRect();
             var boundingLandingPageFooter = document.getElementById("landing-page-footer").getBoundingClientRect();
+            var boundingSupporSection = document.getElementById("support-section").getBoundingClientRect();
             var centraCommerce = document.getElementById("centra-commerce");
 
             if (boundingHeroSection.bottom < 300) {
@@ -66,8 +69,12 @@
                 landingPage.className = "landing-page black";
             }
 
-            if (boundingBasicSection.top < (window.innerHeight - 300)) {
-                landingPage.className = "landing-page black";
+            if (boundingBasicSectionWrapper.bottom > 50) {
+                basicSection.classList.add("black");
+            }
+
+            if (boundingBasicSectionWrapper.bottom < 50) {
+                basicSection.classList.remove("black");
             }
         }
 
