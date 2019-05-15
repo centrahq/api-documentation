@@ -118,14 +118,13 @@
 
   [data-aos="lift-footer-group"] {
     opacity: 0;
-    margin-top: 0;
+    transform: translateY(30px);
 
     &.aos-animate {
       margin-top: 15px;
       opacity: 1;
-      transform: translateY(-50px);
-      transition: transform 0.35s linear;
-      @include transition(5);
+      transform: translateY(0);
+      @include footer-cascade(5);
     }
   }
 }

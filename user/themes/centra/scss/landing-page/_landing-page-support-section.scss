@@ -29,6 +29,7 @@
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 50px;
+  flex: 1;
 }
 
 .support-section__team-avatars {
@@ -38,7 +39,8 @@
 
 .support-section__team.team-big {
   width: 50%;
-  height: 50%;
+  height: 100%;
+  flex: 1;
 }
 
 .support-section__team.team-small {
