@@ -1,5 +1,5 @@
 .landing-page {
-  transition: background-color 0.5s;
+  transition: background-color 0.3s;
 
   &.black {
     background-color: #000000;
@@ -27,12 +27,13 @@
 .landing-page {
   [data-aos="content-animation-get-started"] {
     opacity: 0;
-    transform: translateY(8%);
+    transform: translateY(7%);
 
     &.aos-animate {
       opacity: 1;
       transform: matrix(1, 0, 0, 1, 0, 0);
-      transition: transform 1s linear, opacity 1s linear;
+      transition: transform 0.6s linear, opacity 0.6s linear;
+      transition-delay: 0.6s;
     }
   }
 
@@ -43,7 +44,7 @@
     &.aos-animate {
       opacity: 1;
       transform: matrix(1, 0, 0, 1, 0, 0);
-      transition: transform 0.9s linear, opacity 0.9s linear;
+      transition: transform 0.6s linear, opacity 0.6s linear;
       transition-delay: 0.3s;
     }
   }
@@ -54,7 +55,7 @@
 
     &.aos-animate {
       margin-top: 11px;
-      transition: margin-top 0.3s;
+      transition: margin-top 0.2s;
       opacity: 1;
     }
   }
@@ -66,7 +67,7 @@
     &.aos-animate {
       opacity: 1;
       transform: matrix(1, 0, 0, 1, 0, 0);
-      transition: transform 0.8s linear, opacity 0.8s linear;
+      transition: transform 0.6s linear, opacity 0.6s linear;
     }
   }
 
@@ -77,18 +78,19 @@
     &.aos-animate {
       opacity: 1;
       transform: matrix(1, 0, 0, 1, 0, 0);
-      transition: transform 1s linear, opacity 1s linear;
+      transition: transform 0.6s linear, opacity 0.6s linear;
     }
   }
 
-  [data-aos="lift-8-percent"] {
+  [data-aos="lift-6-percent"] {
     opacity: 0;
-    transform: translateY(8%);
+    transform: translateY(5%);
 
     &.aos-animate {
       opacity: 1;
       transform: matrix(1, 0, 0, 1, 0, 0);
-      transition: transform 1s linear, opacity 1s linear;
+      transition: transform 0.6s linear, opacity 0.6s linear;
+      transition-delay: 0.3s;
     }
   }
 
@@ -211,11 +213,15 @@
   .landing-page-section {
     padding: 80px 37px 1px;
     font-size: 0.6em;
-  }
 
-  .section-wrapper {
-    margin-top: 20px;
-    margin-bottom: 25px;
+    .section-wrapper {
+      margin-top: 20px;
+      margin-bottom: 25px;
+
+      .section-content {
+        margin: 0;
+      }
+    }
   }
 
   .name-section {

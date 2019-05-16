@@ -43,10 +43,6 @@
   }
 
   &:hover {
-    background-color: #141414;
-    transform: scale(1.02) translateZ(0);
-    transition: transform 0.2s cubic-bezier(0.01, 0.56, 0.44, 1), background-color 0.2s cubic-bezier(0.01, 0.56, 0.44, 1);
-
     .landing-page__button-arrow {
       opacity: 1;
     }
@@ -63,6 +59,12 @@
     line-height: 1.8em;
     margin: 0;
   }
+}
+
+#basic-section .basic-section__article:hover {
+  background-color: #141414;
+    transform: scale(1.02) translateZ(0) translateY(-50px);
+    transition: transform 0.2s cubic-bezier(0.01, 0.56, 0.44, 1), background-color 0.2s cubic-bezier(0.01, 0.56, 0.44, 1);
 }
 
 .landing-page__button-icon {

@@ -31,13 +31,15 @@
   }
 
   &:hover {
-    transform: scale(1.02) translateZ(0);
-    transition: transform 0.2s cubic-bezier(.165,.84,.44,1);
-
     .landing-page__button {
       opacity: 1;
     }
   }
+}
+
+#docs-section .docs__article:hover {
+  transform: scale(1.02) translateZ(0) translateY(-50px);
+  transition: transform 0.2s cubic-bezier(.165,.84,.44,1);
 }
 
 .article__graphics {
@@ -131,6 +133,10 @@
 
   .article__title {
     margin-top: 10px;
+  }
+
+  .article__text {
+    font-size: 13px;
   }
 
   .docs-section {
