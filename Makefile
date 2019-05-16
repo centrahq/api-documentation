@@ -40,7 +40,7 @@ js-reload:
 	@./node_modules/.bin/parcel source/theme/js/index.js --out-dir build/_static --out-file index --no-hmr --port 8002
 
 html-reload:
-	sphinx-autobuild -b html "${SOURCEDIR}" "${BUILDDIR}" ${SPHINXOPTS} ${O}
+	python -m sphinx_autobuild -b html "${SOURCEDIR}" "${BUILDDIR}" ${SPHINXOPTS} ${O}
 
 start:
 	make html-reload & make css-reload & make js-reload
