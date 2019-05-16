@@ -68,7 +68,7 @@ The `Notification URL` is used for the Server Communication from Adyen.
    :scale: 50 %
 ```
 
-To add a new Service Communication URL in Adyen, go to `Account` and then select `Server Communication`. Make sure that you have a Merchant Account selected (You should see "No merchant selected" in the top right of Adyen if you have not selected on) before you click `Add` on the "Standard Notification".
+To add a new Service Communication URL in Adyen, go to `Account` and then select `Server Communication`. Make sure that you have a Merchant Account selected (You should see "No merchant selected" in the top right of Adyen if you have not selected one) before you click `Add` on the "Standard Notification".
 
 Enter the URL from the Adyen Checkout-plugin from Centra. If you are creating a new plugin, please save the plugin once and open it again to see the Notification URL.
 
@@ -84,7 +84,7 @@ Make sure that:
 2. It's using your `*.centra.com`-subdomain (To make sure we can guarantee that it works).
 3. It has a notification key that is complicated, use the auto generated one to make sure it's secure enough.
 
-Now, copy the Notification URL into Adyen:
+Now, copy the Notification URL into Adyen by selecting "Standard Notification":
 
 ```eval_rst
 .. image:: images/adyen-notification.png
@@ -100,7 +100,7 @@ Under "Authentication" you should write anything you like in "User Name" and "Pa
 
 Now, press "Test Configuration" to verify we respond successfully. After that you can press "Save Configuration".
 
-Repeat this step for the Merchant Accounts you use with Centra and make sure each Service Communication URL you use points to a plugin with the same Merchant Account set. Also make sure that your Server Communication URLs points to an active Adyen Checkout-plugin. If the plugin is disabled, the notification will not work.
+Repeat this step for the Merchant Accounts you use with Centra and make sure each "Service Communication URL" you use points to a plugin with the same Merchant Account set. Also make sure that your Server Communication URL points to an active Adyen Checkout-plugin in Centra. If the plugin is disabled, the notification will not work.
 
 #### Other configurations
 
@@ -113,11 +113,11 @@ You can decide other settings on the plugin as well:
 
 The `Default Locale` defines which language it should use. `Send Billing Address`, `Send Delivery Address` and `Send Invoice Items` defines if we should send the information to Adyen. This should help for fraud detection.
 
-You can also define if Adyen Checkout should be allowed for buying Gift Cards (if this is supported by the website). The gift cards are not being fulfilled by the warehouse, but directly issued and emailed to the customer if the payment goes through.
+You can also define if Adyen Checkout should be allowed for buying gift cards (if this is supported by the website). The gift cards are not being fulfilled by the warehouse, but directly issued and emailed to the customer if the payment goes through.
 
 #### Market/Pricelist/Country/Language restrictions
 
-You can also restrict the Adyen Checkout to only work for specified markets, pricelists, countries or languages. This is good if you want different Locales for the Adyen Checkout. You can use the same `uri` for the Adyen Checkout plugin using different restrictions.
+You can also restrict the Adyen Checkout to only work for specified markets, pricelists, countries or languages. This is good if you want to use different Locales for the Adyen Checkout. You can use the same `uri` for the Adyen Checkout plugin using different restrictions.
 
 ### API
 
@@ -257,14 +257,14 @@ This will make sure that:
 
 ### Configuration of Adyen Checkout
 
-As you see above, we use our own standard look of Adyen Checkout. If you like to have different settings, you can set the `window.adyenCheckoutConfig`-property in your DOM to override our suggested settings. [Here you can find information about what options you can set for Adyen Checkout Web SDK](https://docs.adyen.com/checkout/web-sdk/customization/).
+As you see above, we use our own standard look of Adyen Checkout. If you like to have other settings, you can set the `window.adyenCheckoutConfig`-property in your DOM to override our suggested settings. [Here you can find information about what options you can set for Adyen Checkout Web SDK](https://docs.adyen.com/checkout/web-sdk/customization/).
 
 ### Capturing with Adyen Checkout
 
 Capturing the payment with Adyen Checkout works a bit differently than the old Adyen plugin. Whenever you capture, the Payment Transaction-list in Centra will contain a `capture-request` instead. This is because Centra is actually waiting for the notification from Adyen to mark the order as captured successfully or not.
 
 ```eval_rst
-.. note:: Remember, if you have `Capture Delay` in Adyen set to `immediate`, capture will ALWAYS fail in Centra. Our recommendation is that Centra should capture the payment instead. Please change the Capture Delay setting in Adyen by going to `Account` then select `Configure->Settings` and make sure you select the Merchant Account. In the settings page you will see `Capture Delay`. Set it to `Manual` or `7 days` to make sure Centra will control the capture event.
+.. note:: Remember, if you have `Capture Delay` in Adyen set to `immediate`, capture will ALWAYS fail in Centra. Our recommendation is that Centra should capture the payment instead. Please change the Capture Delay setting in Adyen by going to `Account` then select "Configure->Settings" and make sure you select the Merchant Account. In the settings page you will see `Capture Delay`. Set it to `Manual` or `7 days` to make sure Centra will control the capture event.
 ```
 
 ### Testing
