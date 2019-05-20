@@ -36,15 +36,15 @@ certification:
 docs_content: 
  - 
   title: Documentation
-  img: "images/img/guides.png"
+  img: "images/img/Documentation.png"
   text: "Hit the ground running with our step-by-step guide. Written and built by developers, for developers."
  - 
   title: "Store API"
-  img: "images/img/store-api.jpg"
+  img: "images/img/Store-API.png"
   text: "Our Store API enables building a fully-featured, global direct-to-consumer e-commerce experience. The API supports all the advanced features of Centra, including multi-market, multi-currency, multi-warehouse and multi-display."
  - 
   title: "Order API"
-  img: "images/img/order-api.jpg"
+  img: "images/img/order-API.png"
   text: "Our order API is tailored for integrating WMS systems, pick-and-pack services and convenience methods for all standard operations. Can also be used for other applications."
 hero: 
  title: "Headless e&#x2011;commerce for developers by developers."

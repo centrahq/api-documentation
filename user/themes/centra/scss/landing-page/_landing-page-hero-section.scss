@@ -1,7 +1,7 @@
 .hero-section {
   color: #ffffff;
   background-color: #000000;
-  min-height: 80vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   transform: translateY(2%);
@@ -31,7 +31,7 @@
   width: 710px;
   position: relative;
   z-index: 0;
-  background: url(/user/themes/centra/images/img/stroke-background-dark.svg) no-repeat 50% 25%;
+  background: url('../images/img/stroke-background-hero.svg') no-repeat 50% 25%;
   background-size: contain;
 }
   
@@ -52,9 +52,10 @@
   position: absolute;
   bottom: -11px;
   right: 31%;
-  width: 133px;
-  height: 101px;
-  background: url('../images/img/slider.svg') no-repeat center center;
+  width: 70px;
+  height: 40px;
+  background: url('../images/img/toggle.png') no-repeat center center;
+  background-size: contain;
   animation: swimming1 10s infinite;
   animation-direction: alternate;
 }
@@ -140,45 +141,59 @@
   }
 
   .graphics__code-window {
-    height: 263px;
-    width: 255px;
+    height: 179px;
+    width: 314px;
     margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .picture-layout__slider {
-    display: none;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 25px;
   }
   
   .picture-layout__stack {
-    top: -28px;
-    left: -30px;
-    width: 75px;
-    height: 62px;
-    background-size: contain;
-    z-index: -2;
+    display: none;
   }
   
   .picture-layout__smile {
-    top: 144px;
-    left: -55px;
-    width: 41px;
-    height: 32px;
+    bottom: 41px;
+    right: 27px;
+    width: 76px;
+    height: 59px;
     background-size: contain;
   }
   
   .picture-layout__hand {
-    top: 200px;
-    left: -65px;
-    width: 104px;
-    height: 55px;
+    bottom: 0;
+    left: -17px;
+    width: 135px;
+    height: 78px;
     background-size: contain;
   }
   
   .picture-layout__screen-product {
-    top: -40px;
-    right: -22px;
+    top: 0px;
+    right: -1px;
     width: 146px;
     height: 114px;
     background-size: contain;
+
+    &::before {
+      top: 0px;
+      right: 0;
+      width: 146px;
+      height: 114px;
+      background-size: contain;
+    }
+  }
+}
+
+@media (max-width: $small-mobile-navigation-breakpoint) {
+  .graphics__code-window {
+    width: 280px;
   }
 }

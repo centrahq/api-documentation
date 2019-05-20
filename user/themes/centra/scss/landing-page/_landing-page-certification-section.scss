@@ -52,7 +52,7 @@
     top: 0;
     width: 184px;
     height: 94px;
-    background: url('../images/img/green-bricks.png') no-repeat 50% 50%;
+    background: url('../images/img/Info-lines.png') no-repeat 50% 50%;
     background-size: contain;
     animation: swimming3 10s infinite;
     animation-direction: alternate;
@@ -111,64 +111,72 @@
       flex-direction: column;
       width: auto;
       align-items: flex-end;
+      margin-top: 0;
+    }
+
+    .section-content {
+      min-width: 300px;
     }
 
     .certification-section__graphics {
       margin: 0 auto;
+      padding: 0;
+    }
+
+    .gray-strokes {
+      width: 320px;
+      height: 290px;
+      background-size: contain;
+    }
+
+    .graphics-team-avatars {
+      width: 320px;
+      margin-top: 48px;
+      margin-top: 65px;
+    }
+
+    .graphic-bricks {
+      width: 108px;
+      height: 47px;
+      top: 16px;
+    }
+
+    .graphic-black-smile {
+      width: 26px;
+      height: 26px;
+    }
+
+    .graphic-circle {
+      width: 36px;
+      height: 36px;
     }
   }
 }
 
-@media (max-width: 525px) {
+@media (max-width: $main-mobile-navigation-breakpoint) {
   .certification-section {
     .section-content {
-      margin-bottom: 28px;
+      min-width: 280px;
     }
-
-    .section-title {
-      margin-bottom: 30px;
-    }
-  }
-
-  .certification-section__graphics {
-    padding: 8px;
 
     .graphics-team-avatars {
-      margin: 0;
-      width: 300px;
+      width: 280px;
     }
 
     .gray-strokes {
-      width: 350px;
-      height: 280px;
-      right: 0;
-      top: -33px;
-    }
-  
-    .graphic-bricks {
-      width: 95px;
-      height: 60px;
-      top: -25px;
-      left: -33px;
-    }
-  
-    .graphic-circle {
-      width: 20px;
-      height: 20px;
-      bottom: -50px;
-    }
-  
-    .graphic-green-smile {
-      width: 12px;
-      height: 12px;
-      top: -10px;
+      width: 280px;
     }
   }
+}
 
-  .graphics-team-avatars {
-    width: 270px;
-    margin-left: auto;
-    margin-right: 10%;
-    margin-top: -70px;
+@media (max-width: $small-mobile-navigation-breakpoint) {
+  .certification-section {
+    .graphics-team-avatars {
+      width: 230px;
+    }
+
+    .gray-strokes {
+      width: 230px;
+    }
   }
 }

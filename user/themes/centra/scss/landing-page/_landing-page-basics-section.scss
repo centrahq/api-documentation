@@ -50,13 +50,13 @@
 
   h3 {
     font-size: 24px;
-    margin: 75px 0;
+    margin: 70px 0;
     font-weight: normal;
   }
 
   p {
-    font-size: 16px;
-    line-height: 1.8em;
+    font-size: 17px;
+    line-height: 1.9em;
     margin: 0;
   }
 }
@@ -121,7 +121,8 @@
   }
 
   .basic-section__article {
-    min-width: 270px;
+    padding: 48px 23px;
+    min-width: 214px;
     margin: 6px;
     background-color: #141414;
 

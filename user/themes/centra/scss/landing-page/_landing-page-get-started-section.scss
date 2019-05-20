@@ -63,40 +63,40 @@
 
 @media (max-width: $mobile-navigation-breakpoint) {
   .get-started-section {
-    padding-top: 12px;
-
     .section-content {
         margin: 0;
     }
 
     .hero-section__graphics {
         margin: 0;
+        margin-top: 20px;
         margin-bottom: 60px;
     }
 
     .graphics__code-window {
-        height: 196px;
-        width: 271px;
+        height: 179px;
+        width: 262px;
         margin: 0 auto;
-        margin-top: 85px;
+        margin-top: 55px;
     }
   }
 
   .hero-section__graphics.stroke-background {
-    height: 306px;
+    height: 250px;
     width: 316px;
     background-image: url('../images/img/stroke-background-small-grey.svg');
   }
 
   .picture-layout__circle {
-    top: -10px;
-    right: 75px;
+    border-width: 2px;
+    top: 23px;
+    left: 75px;
     width: 30px;
     height: 30px;
   }
 
   .picture-layout__artboard {
-    top: 45px;
+    top: -18px;
     right: 8px;
     width: 148px;
     height: 274px;
@@ -114,5 +114,9 @@
 @media (max-width: $main-mobile-navigation-breakpoint) {
   .hero-section__graphics.stroke-background {
     width: 100%;
+  }
+
+  .picture-layout__artboard {
+    right: 0;
   }
 }

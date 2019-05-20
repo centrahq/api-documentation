@@ -80,8 +80,23 @@
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {
-  .request-access-bar a {
-    font-size: 22px;
-    line-height: 50px;
+  .request-access-bar {
+    &.fadeOutUp {
+      animation-name: none;
+      opacity: 1;
+    }
+    
+    &.fadeInDown {
+      animation-name: none;
+    }
+
+    a {
+      font-size: 22px;
+      line-height: 50px;
+
+      .c-logo {
+        display: none;
+      }
+    }
   }
 }

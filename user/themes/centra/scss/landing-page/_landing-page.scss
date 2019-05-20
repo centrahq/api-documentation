@@ -216,7 +216,7 @@
 
     .section-wrapper {
       margin-top: 20px;
-      margin-bottom: 25px;
+      margin-bottom: 0;
 
       .section-content {
         margin: 0;
@@ -230,5 +230,18 @@
 
   .landing-page__button {
     font-size: 13px;
+  }
+}
+
+@media (max-width: $main-mobile-navigation-breakpoint) {
+  .landing-page-section {
+    padding: 40px 28px 1px 28px;
+  }
+}
+
+@media (max-width: $small-mobile-navigation-breakpoint) {
+  .landing-page-section {
+    padding-right: 20px;
+    padding-left: 20px;
   }
 }

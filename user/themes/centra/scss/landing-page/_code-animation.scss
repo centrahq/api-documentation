@@ -221,8 +221,17 @@
 @media (max-width: $mobile-navigation-breakpoint) {
   .code-animation {
     padding: 15px 30px;
+    line-height: 16px;
+    min-width: 310px;
+
     p {
       font-size: 10px;
     }
+  }
+}
+
+@media (max-width: $small-mobile-navigation-breakpoint) {
+  .code-animation {
+    min-width: 270px;
   }
 }
