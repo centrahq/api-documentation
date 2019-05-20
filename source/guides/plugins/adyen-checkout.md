@@ -13,7 +13,7 @@ The flow works like this:
 
 1. Customer fills in address information on the website.
 2. When the customer is done, they can select a payment option.
-3. If Adyen Checkout is selected (Most likely by showing the Credit Card-logos/Swish/Klarna or similar as the payment option) a call should be made to Centra using `POST /selection/payment`.
+3. If Adyen Checkout is selected (Most likely by showing the Credit Card-logos/Swish/Klarna or similar as the payment option) a call should be made to Centra using `POST /payment`.
 4. Centra will initiate a Adyen Checkout-session and give back a HTML-snippet together with an indication that you actually got `adyen-checkout` in the response.
 5. The website renders the HTML
 6. The customer fills in the information, or selects what payment method they want to use.
@@ -27,7 +27,7 @@ The flow works like this:
 
 The implementation requires Adyen Checkout only to be initiated after address information is collected by the website itself. The reason is the new [SCA (Strong Customer Authentication) ruling](https://stripe.com/docs/strong-customer-authentication) launching in September 2019.
 
-This means that the `POST /selection/payment` needs to happen after the address has been changed and after products have been decided. If the customer wants to modify their information or the cart, another `POST /selection/payment` must be made after this is done. The reason we cannot modify it from Centra's side whenever the cart is modified is because the session-data coming back from Adyen to launch the Adyen Checkout contains all payment information inside the session-data for launching the Adyen Checkout itself.
+This means that the `POST /payment` needs to happen after the address has been changed and after products have been decided. If the customer wants to modify their information or the cart, another `POST /payment` must be made after this is done. The reason we cannot modify it from Centra's side whenever the cart is modified is because the session-data coming back from Adyen to launch the Adyen Checkout contains all payment information inside the session-data for launching the Adyen Checkout itself.
 
 If the customer tries to trick the checkout, by opening another tab to modify the cart, as soon as Centra gets the server notification call from Adyen, it will mark the order as "Payment mismatch" and set the order to "Hold". This is to prevent the order from ever being fulfilled if the payment amount does not match between the order and the payment from Adyen.
 
@@ -51,7 +51,7 @@ The `API Username` and `API Password` should be for the Web Service user called 
 * Adyen Test: `https://ca-test.adyen.com/ca/ca/config/users.shtml`
 * Adyen Live: `https://ca-live.adyen.com/ca/ca/config/users.shtml`
 
-The `API key` is a new value from Adyen only used for Adyen Checkout. [There's an article in Adyen Docs](https://docs.adyen.com/user-management/how-to-get-the-api-key/) on how to get it. 
+The `API key` previously used for CSE (Client Side Encryption) is now also used for Adyen Checkout. [There's an article in Adyen Docs](https://docs.adyen.com/user-management/how-to-get-the-api-key/) on how to get it. 
 
 ```eval_rst
 .. note:: It will be the same user and API-key for all your merchant accounts if you have more than one.
@@ -224,13 +224,21 @@ The form will:
 
 You need to make sure you insert the HTML into your DOM, and also make sure you evaluate the javascript from the response. One solution to do this in React is to inject the HTML into the DOM, then run the following code on it:
 
+Insert HTML into DOM
+```js
+const checkoutContainer = document.getElementById('adyenCheckoutContainer'); // Reference to element already on page
+checkoutContainer.innerHTML = data.formHtml;
+evaluate($checkoutContainer);
+```
+
+Execute Javascript
 ```js
 export const evaluate = (subtree: any, context: {} = window) => {
   function getSnippetType(script: any) {
-    return (script.type || '');
+    return script.type || '';
   }
   function getRawSnippet(script: any) {
-    return (script.text || script.textContent || script.innerHTML || '');
+    return script.text || script.textContent || script.innerHTML || '';
   }
 
   if (subtree) {
