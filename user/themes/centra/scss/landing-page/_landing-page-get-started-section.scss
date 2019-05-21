@@ -18,6 +18,7 @@
     margin: 190px 45px 0 48px;
     max-width: 520px;
     height: 240px;
+    position: relative;
   }
 }
 
@@ -41,10 +42,10 @@
 
 .picture-layout__artboard {
   position: absolute;
-  top: 115px;
-  right: 0;
-  width: 53%;
-  height: 100%;
+  top: -115px;
+  right: -7%;
+  width: 62%;
+  height: 225%;
   background: url('../images/img/Artboard19@3x.png') no-repeat 50% 0%;
   background-size: contain;
 }
@@ -74,16 +75,16 @@
     }
 
     .graphics__code-window {
-        height: 179px;
-        width: 262px;
+        height: 216px;
+        width: 380px;
         margin: 0 auto;
         margin-top: 55px;
     }
   }
 
   .hero-section__graphics.stroke-background {
-    height: 250px;
-    width: 316px;
+    height: 300px;
+    width: 380px;
     background-image: url('../images/img/stroke-background-small-grey.svg');
   }
 
@@ -96,10 +97,10 @@
   }
 
   .picture-layout__artboard {
-    top: -18px;
-    right: 8px;
-    width: 148px;
-    height: 274px;
+    top: -80px;
+    right: -10px;
+    width: 195px;
+    height: 360px;
     background-size: contain;
   }
 
@@ -112,11 +113,22 @@
 }
 
 @media (max-width: $main-mobile-navigation-breakpoint) {
+  .get-started-section {
+    .graphics__code-window {
+      height: 179px;
+      width: 310px;
+    }
+  }
+
   .hero-section__graphics.stroke-background {
     width: 100%;
   }
 
   .picture-layout__artboard {
-    right: 0;
+    top: -73px;
+    right: -13px;
+    width: 148px;
+    height: 274px;
+    background-size: contain;
   }
 }

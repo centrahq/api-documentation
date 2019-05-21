@@ -221,6 +221,28 @@
 @media (max-width: $mobile-navigation-breakpoint) {
   .code-animation {
     padding: 15px 30px;
+    line-height: 18px;
+    min-width: 380px;
+
+    p {
+      font-size: 12px;
+    }
+  }
+
+  .get-started-section .code-animation {
+    padding: 30px 30px;
+    line-height: 19px;
+    min-width: 380px;
+
+    p {
+      font-size: 13px;
+    }
+  }
+}
+
+@media (max-width: $main-mobile-navigation-breakpoint) {
+  .code-animation {
+    padding: 15px 30px;
     line-height: 16px;
     min-width: 310px;
 

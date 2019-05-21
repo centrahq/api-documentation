@@ -155,22 +155,22 @@
 
 @media (max-width: $main-mobile-navigation-breakpoint) {
   .certification-section {
-    .section-content {
-      min-width: 280px;
-    }
-
     .graphics-team-avatars {
-      width: 280px;
+      width: 300px;
     }
 
     .gray-strokes {
-      width: 280px;
+      width: 300px;
     }
   }
 }
 
 @media (max-width: $small-mobile-navigation-breakpoint) {
   .certification-section {
+    .section-content {
+      min-width: 280px;
+    }
+
     .graphics-team-avatars {
       width: 230px;
     }

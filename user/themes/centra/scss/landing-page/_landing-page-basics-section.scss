@@ -109,12 +109,18 @@
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {
-  .basic-section .name-section {
-    margin-bottom: 50px;
+  .basic-section {
+    padding-left: 0;
+    padding-right: 0;
+
+    .name-section {
+      margin-bottom: 50px;
+    }
   }
 
   .basic-section__articles-wrapper {
     padding-top: 60px;
+    padding-left: 35px;
     overflow-x: auto;
     flex-wrap: nowrap;
     justify-content: flex-start;

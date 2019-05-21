@@ -116,6 +116,19 @@
             }
         }
 
+        var prevScrollpos = window.pageYOffset;
+
+        function navigationOnScroll() {
+            var navigation = document.getElementById("navigation-wrapper");
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                navigation.className = "navigation-wrapper showNavigation";
+            } else {
+                navigation.className = "navigation-wrapper hideNavigation";
+            }
+            prevScrollpos = currentScrollPos;
+        }
+
         function spinOnScroll() {
             var circle = document.getElementById("centra-commerce");
 
@@ -201,7 +214,7 @@
         };
 
         window.onload = load();
-        window.onscroll = function() {requestAccessOnScroll(), spinOnScroll(), backgroundOnScroll(), startCodeAnimationOnScroll()};
+        window.onscroll = function() {requestAccessOnScroll(), spinOnScroll(), backgroundOnScroll(), startCodeAnimationOnScroll(), navigationOnScroll()};
         window.addEventListener('load', () => {
             var input = document.getElementById("input-search");
             
