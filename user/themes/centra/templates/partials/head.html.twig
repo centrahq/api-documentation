@@ -60,20 +60,22 @@
             var boundingLandingPageFooter = document.getElementById("landing-page-footer").getBoundingClientRect();
             var boundingSupporSection = document.getElementById("support-section").getBoundingClientRect();
             var centraCommerce = document.getElementById("centra-commerce");
+            var SCROLL_300_PX = 300;
+            var SCROLL_50_PX = 50;
 
-            if (boundingGetStartedSection.top < (window.innerHeight - 300)) {
+            if (boundingGetStartedSection.top < (window.innerHeight - SCROLL_300_PX)) {
                 landingPage.className = "landing-page white";
             }
 
-            if (boundingGetStartedSection.top > (window.innerHeight - 300)) {
+            if (boundingGetStartedSection.top > (window.innerHeight - SCROLL_300_PX)) {
                 landingPage.className = "landing-page black";
             }
 
-            if (boundingBasicSectionWrapper.bottom > 50) {
+            if (boundingBasicSectionWrapper.bottom > SCROLL_50_PX) {
                 basicSection.classList.add("black");
             }
 
-            if (boundingBasicSectionWrapper.bottom < 50) {
+            if (boundingBasicSectionWrapper.bottom < SCROLL_50_PX) {
                 basicSection.classList.remove("black");
             }
         }
@@ -87,8 +89,9 @@
 
             var boundingHeroSection = document.getElementById("hero-section").getBoundingClientRect();
             var getStartedSectionCode = document.querySelectorAll(".get-started-section .css-typing p");
+            var SCROLL_500_PX = 500;
 
-            if (boundingHeroSection.bottom < 500) {
+            if (boundingHeroSection.bottom < SCROLL_500_PX) {
                 getStartedSectionCode.forEach(function(code) {
                     code.classList.add("type");
                 })
@@ -104,14 +107,16 @@
             }
 
             var bounding = footerNav.getBoundingClientRect();
+            var SCROLL_65_PX = 65;
+            var SCROLL_180_PX = 180;
 
-            if (document.body.scrollTop > 65 || document.documentElement.scrollTop > 65) {
+            if (document.body.scrollTop > SCROLL_65_PX || document.documentElement.scrollTop > SCROLL_65_PX) {
                 bar.className = "fadeInDown request-access-bar";
               } else {
                 bar.className = "fadeOutUp request-access-bar";
               }
             
-            if (bounding.top < (window.innerHeight - 180)) {
+            if (bounding.top < (window.innerHeight - SCROLL_180_PX)) {
                 bar.className = "fadeOutUp request-access-bar";
             }
         }
@@ -121,7 +126,8 @@
         function navigationOnScroll() {
             var navigation = document.getElementById("navigation-wrapper");
             var currentScrollPos = window.pageYOffset;
-            if (prevScrollpos > currentScrollPos) {
+
+            if (prevScrollpos > currentScrollPos || window.pageYOffset < 40) {
                 navigation.className = "navigation-wrapper showNavigation";
             } else {
                 navigation.className = "navigation-wrapper hideNavigation";
