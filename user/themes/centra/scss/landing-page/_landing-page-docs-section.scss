@@ -125,10 +125,20 @@
 
   .docs__article {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+    position: relative;
   }
 
   .docs__article:hover {
     box-shadow: 0px 0px 26px rgba(0, 0, 0, 0.16);
+  }
+
+  .docs__article:last-child::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: -35px;
+    width: 35px;
+    height: 1px;
   }
 
   .article__title {
