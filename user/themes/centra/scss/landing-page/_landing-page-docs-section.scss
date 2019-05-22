@@ -8,9 +8,6 @@
 
 .docs__articles-wrapper {
   padding: 100px 80px 0;
-}
-
-.docs__articles {
   display: flex;
   justify-content: space-between;
 }
@@ -19,7 +16,7 @@
   cursor: pointer;
   box-shadow: 0px 0px 26px rgba(0, 0, 0, 0.05);
   max-width: 386px;
-  padding: 66px 45px 110px;
+  padding: 50px 45px 80px;
   letter-spacing: 0.12px;
   font-size: 22px;
   margin: 11px;
@@ -31,18 +28,24 @@
   }
 
   &:hover {
-    transform: scale(1.02) translateZ(0);
-    transition: transform 0.2s cubic-bezier(.165,.84,.44,1);
-
     .landing-page__button {
       opacity: 1;
     }
   }
 }
 
+#docs-section .docs__article:hover {
+  transform: scale(1.02) translateZ(0) translateY(-50px);
+  transition: transform 0.2s cubic-bezier(.165,.84,.44,1);
+}
+
 .article__graphics {
   display: block;
   margin: 0 auto;
+}
+
+.docs__article:last-child .article__graphics{
+  padding-bottom: 15px;
 }
 
 .article__title {
@@ -53,8 +56,8 @@
 }
 
 .article__text {
-  font-size: 16px;
-  line-height: 1.8em;
+  font-size: 17px;
+  line-height: 1.9em;
   margin: 0;
 }
 
@@ -96,11 +99,11 @@
   }
 
   .docs__articles-wrapper {
-    padding: 50px 70px 0;
+    padding: 50px 20px 0;
   }
 
   .docs__article {
-    padding: 65px 30px;
+    padding: 50px 30px;
     width: 300px;
     font-size: 18px;
     line-height: 24px;
@@ -110,36 +113,53 @@
   .article__graphics {
     width: 150px;
   }
-}
 
-@media (min-width: $mobile-navigation-breakpoint) {
-  .docs__article:hover {
-    box-shadow: 0px 0px 26px rgba(0, 0, 0, 0.16);
+  .docs__article:last-child .article__graphics{
+    padding-bottom: 11px;
   }
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {
+  .landing-page-section.docs {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .docs__articles-wrapper {
     overflow-x: auto;
     width: 100%;
-    padding: 50px 10px 5px;
+    padding: 70px 35px 5px;
   }
 
   .docs__article {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+    position: relative;
+  }
+
+  .docs__article:hover {
+    box-shadow: 0px 0px 26px rgba(0, 0, 0, 0.16);
+  }
+
+  .docs__article:last-child::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: -35px;
+    width: 35px;
+    height: 1px;
   }
 
   .article__title {
     margin-top: 10px;
   }
 
+  .article__text {
+    font-size: 13px;
+  }
+
   .docs-section {
     padding: 25px 0;
     margin-bottom: 0; 
-  }
-
-  .article__graphics {
-    width: 120px;
   }
 
   .docs__background {
@@ -152,6 +172,7 @@
 
     &.background-dot {
       top: 14%;
+      right: 15%;
       width: 13px;
       height: 13px;
     }

@@ -1,12 +1,12 @@
 .landing-page {
-  transition: background-color 0.5s;
+  transition: background-color 0.3s;
 
   &.black {
-    background-color: #000000;
+    background-color: $black;
   }
 
   &.white {
-    background-color: #ffffff;
+    background-color: $cream;
   }
 }
 
@@ -27,12 +27,13 @@
 .landing-page {
   [data-aos="content-animation-get-started"] {
     opacity: 0;
-    transform: translateY(8%);
+    transform: translateY(7%);
 
     &.aos-animate {
       opacity: 1;
       transform: matrix(1, 0, 0, 1, 0, 0);
-      transition: transform 1s linear, opacity 1s linear;
+      transition: transform 0.6s linear, opacity 0.6s linear;
+      transition-delay: 0.6s;
     }
   }
 
@@ -43,7 +44,7 @@
     &.aos-animate {
       opacity: 1;
       transform: matrix(1, 0, 0, 1, 0, 0);
-      transition: transform 0.9s linear, opacity 0.9s linear;
+      transition: transform 0.6s linear, opacity 0.6s linear;
       transition-delay: 0.3s;
     }
   }
@@ -54,7 +55,7 @@
 
     &.aos-animate {
       margin-top: 11px;
-      transition: margin-top 0.3s;
+      transition: margin-top 0.2s;
       opacity: 1;
     }
   }
@@ -66,7 +67,7 @@
     &.aos-animate {
       opacity: 1;
       transform: matrix(1, 0, 0, 1, 0, 0);
-      transition: transform 0.8s linear, opacity 0.8s linear;
+      transition: transform 0.6s linear, opacity 0.6s linear;
     }
   }
 
@@ -77,18 +78,19 @@
     &.aos-animate {
       opacity: 1;
       transform: matrix(1, 0, 0, 1, 0, 0);
-      transition: transform 1s linear, opacity 1s linear;
+      transition: transform 0.6s linear, opacity 0.6s linear;
     }
   }
 
-  [data-aos="lift-8-percent"] {
+  [data-aos="lift-6-percent"] {
     opacity: 0;
-    transform: translateY(8%);
+    transform: translateY(5%);
 
     &.aos-animate {
       opacity: 1;
       transform: matrix(1, 0, 0, 1, 0, 0);
-      transition: transform 1s linear, opacity 1s linear;
+      transition: transform 0.6s linear, opacity 0.6s linear;
+      transition-delay: 0.3s;
     }
   }
 
@@ -154,7 +156,7 @@
   }
 
   &.white {
-    color: #ffffff;
+    color: $white;
 
     .landing-page__button-arrow {
       background: url('../images/img/arrow-right-white.svg') no-repeat 50% 50%;
@@ -162,7 +164,7 @@
   }
 
   &.black {
-    color: #000000;
+    color: $black;
   }
 }
 
@@ -192,7 +194,7 @@
   font-size: 24px;
   line-height: 26px;
   font-weight: normal;
-  color: #000000;
+  color: $black;
 }
 
 @media (max-width: $main-extra-large-breakpoint) {
@@ -211,11 +213,19 @@
   .landing-page-section {
     padding: 80px 37px 1px;
     font-size: 0.6em;
-  }
 
-  .section-wrapper {
-    margin-top: 20px;
-    margin-bottom: 25px;
+    .section-wrapper {
+      margin-top: 20px;
+      margin-bottom: 0;
+
+      .section-content {
+        margin: 0;
+      }
+    }
+
+    .section-text {
+      font-size: 1.8em;
+    }
   }
 
   .name-section {
@@ -223,6 +233,19 @@
   }
 
   .landing-page__button {
-    font-size: 13px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: $main-mobile-navigation-breakpoint) {
+  .landing-page-section {
+    padding: 40px 28px 1px 28px;
+  }
+}
+
+@media (max-width: $small-mobile-navigation-breakpoint) {
+  .landing-page-section {
+    padding-right: 20px;
+    padding-left: 20px;
   }
 }

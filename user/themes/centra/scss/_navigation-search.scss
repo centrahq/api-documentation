@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000000;
+  background-color: $black;
 }
 
 .landing-page .navigation-search {
@@ -24,7 +24,7 @@
 }
 
 .navigation-search__input {
-  color: #fff;
+  color: $white;
   line-height: 22px;
   font-size: 18px;
   letter-spacing: 0.12px;

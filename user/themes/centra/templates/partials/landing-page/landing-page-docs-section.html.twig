@@ -1,12 +1,10 @@
 {% from 'macros/docs-articles.html.twig' import docs_articles -%}
 
-<section class="landing-page-section docs">
+<section class="landing-page-section docs" id="docs-section">
   <div class="section-wrapper docs-section">
     <h3 class="name-section" data-aos="lift-name-section">Dig into the docs</h3>
     <div class="docs__articles-wrapper">
-      <div class="docs__articles">
         {{ docs_articles(grav.theme.config.docs_content) }}
-      </div>
     </div>
   </div>
   <div class="docs__background background-circle"></div>

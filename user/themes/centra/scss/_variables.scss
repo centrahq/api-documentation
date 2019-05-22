@@ -17,8 +17,9 @@ $breakpoints: (
 );
 
 $main-extra-large-breakpoint: 1280px;
-$main-mobile-navigation-breakpoint: 540px;
 $mobile-navigation-breakpoint: 980px;
+$main-mobile-navigation-breakpoint: 540px;
+$small-mobile-navigation-breakpoint: 320px;
 
 /**
  * Grid
@@ -31,6 +32,7 @@ $content-width: 940px;
 /**
  * Colors
  */
+$white: #ffffff;
 $white-grey: #F7F8FA;
 $grey-lightest: tint(#000, 98%);
 $grey-lighter: tint(#000, 90%);
@@ -44,6 +46,8 @@ $grey-boulder: #777777;
 $grey-dusty: #999999;
 $blackish-grey: #3C3C3C;
 $blackish: #1B1B1B;
+$black: #000000;
+$cream: #F8F6F1;
 $orange-reno-sand: #a25d11;
 $orange-pancho: #efcca5;
 $orange-anzac: #e0994c;

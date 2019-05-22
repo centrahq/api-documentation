@@ -54,20 +54,27 @@
             }
 
             var boundingHeroSection = document.getElementById("hero-section").getBoundingClientRect();
-            var boundingBasicSection = document.getElementById("basic-section").getBoundingClientRect();
+            var basicSection = document.getElementById("basic-section");
+            var basicSectionWrapper = document.getElementById("basic-section-wrapper");
+            var boundingBasicSectionWrapper = basicSectionWrapper.getBoundingClientRect();
             var boundingLandingPageFooter = document.getElementById("landing-page-footer").getBoundingClientRect();
+            var boundingSupporSection = document.getElementById("support-section").getBoundingClientRect();
             var centraCommerce = document.getElementById("centra-commerce");
 
-            if (boundingHeroSection.bottom < 300) {
+            if (boundingHeroSection.bottom < 550) {
                 landingPage.className = "landing-page white";
             }
 
-            if (boundingHeroSection.bottom > 300) {
+            if (boundingHeroSection.bottom > 550) {
                 landingPage.className = "landing-page black";
             }
 
-            if (boundingBasicSection.top < (window.innerHeight - 300)) {
-                landingPage.className = "landing-page black";
+            if (boundingBasicSectionWrapper.bottom > 50) {
+                basicSection.classList.add("black");
+            }
+
+            if (boundingBasicSectionWrapper.bottom < 50) {
+                basicSection.classList.remove("black");
             }
         }
 
@@ -90,23 +97,36 @@
 
         function requestAccessOnScroll() {
             var bar = document.getElementById("request-access");
-            var footer = document.getElementById("landing-page-footer");
+            var footerNav = document.getElementById("landing-page-footer-navigation");
             
-            if (!bar || !footer) {
+            if (!bar || !footerNav) {
                 return;
             }
 
-            var bounding = footer.getBoundingClientRect();
+            var bounding = footerNav.getBoundingClientRect();
 
-            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            if (document.body.scrollTop > 65 || document.documentElement.scrollTop > 65) {
                 bar.className = "fadeInDown request-access-bar";
               } else {
                 bar.className = "fadeOutUp request-access-bar";
               }
             
-            if (bounding.top < window.innerHeight) {
+            if (bounding.top < (window.innerHeight - 180)) {
                 bar.className = "fadeOutUp request-access-bar";
             }
+        }
+
+        var prevScrollpos = window.pageYOffset;
+
+        function navigationOnScroll() {
+            var navigation = document.getElementById("navigation-wrapper");
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                navigation.className = "navigation-wrapper showNavigation";
+            } else {
+                navigation.className = "navigation-wrapper hideNavigation";
+            }
+            prevScrollpos = currentScrollPos;
         }
 
         function spinOnScroll() {
@@ -190,11 +210,11 @@
                 }
 
                 screenProduct.classList.add("checked");
-            }, 5000);
+            }, 1000);
         };
 
         window.onload = load();
-        window.onscroll = function() {requestAccessOnScroll(), spinOnScroll(), backgroundOnScroll(), startCodeAnimationOnScroll()};
+        window.onscroll = function() {requestAccessOnScroll(), spinOnScroll(), backgroundOnScroll(), startCodeAnimationOnScroll(), navigationOnScroll()};
         window.addEventListener('load', () => {
             var input = document.getElementById("input-search");
             

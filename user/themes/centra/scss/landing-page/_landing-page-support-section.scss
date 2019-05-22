@@ -1,6 +1,6 @@
 .support-section {
   padding: 0;
-  background-color: #ffffff;
+  background-color: $white;
 
   .section-wrapper {
     flex-direction: column;
@@ -9,6 +9,7 @@
   }
 
   .name-section {
+    margin-top: 70px;
     margin-bottom: 45px;
   }
 
@@ -18,7 +19,6 @@
 }
 
 .support-wrapper {
-  margin-top: 70px;
   display: flex;
   justify-content: space-between;
 }
@@ -47,9 +47,9 @@
   display: none;
 }
 
-@media (min-width: 1470px) {
+@media (min-width: 1570px) {
   .support-section__content {
-    padding-right: 200px;
+    padding-right: 154px;
 
     .section-title {
       font-size: 50px;
@@ -67,7 +67,7 @@
   }
 }
 
-@media (max-width: $main-extra-large-breakpoint) {
+@media (max-width: 1360px) {
   .support-section__content {
     .name-section {
       margin-bottom: 30px;
@@ -79,14 +79,43 @@
     }
 
     .section-text {
-      font-size: 1.2em;
+      font-size: 1.4em;
+    }
+  }
+}
+
+@media (max-width: $main-extra-large-breakpoint) {
+  .support-section__content {
+    .name-section {
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+  
+    .section-title {
+      margin-bottom: 20px;
+    }
+
+    .support-section__team-avatars {
+      margin-bottom: 20px;
+    }
+
+    .section-text {
+      margin-bottom: 30px;
     }
   }
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {
   .support-section {
-    padding: 80px 37px 0;
+    padding: 13px 37px 0;
+
+    .name-section {
+      margin-top: 0;
+    }
+
+    .section-text {
+      font-size: 1.8em;
+    }
   }
 
   .support-wrapper {
@@ -96,10 +125,9 @@
   }
 
   .support-section__team.team-small {
-    width: 550px;
+    width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 25px;
   }
 
   .support-section__team.team-big {
@@ -107,7 +135,8 @@
   }
 
   .support-section__team-avatars {
-    width: 130px;
+    width: 230px;
+    margin-bottom: 25px;
   }
 }
 

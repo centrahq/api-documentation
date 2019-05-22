@@ -10,7 +10,7 @@
 
   footer {
     padding-top: 100px;
-    background-color: #000000;
+    background-color: $black;
 
     .animation-wrapper {
       display: none;
@@ -56,7 +56,7 @@
 #tntsearch-wrapper {
   width: 100%;
   height: calc(100vh - 63px);
-  background-color: #000000;
+  background-color: $black;
   border-bottom: 1px solid #3C3C3C;
   padding: 65px;
   display: flex;

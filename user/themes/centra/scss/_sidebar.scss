@@ -1,10 +1,15 @@
 .sidebar {
   padding-right: 18px;
-  color: #000;
+  color: $black;
   pointer-events: none;
   padding-left: 40px;
   -webkit-overflow-scrolling: touch;
   pointer-events: auto;
+
+  .navigation__centra-logo {
+    width: 175px;
+    height: 22px;
+  }
 
   @media (max-width: $mobile-navigation-breakpoint) {
     display: none;

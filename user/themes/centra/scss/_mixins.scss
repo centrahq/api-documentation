@@ -1,7 +1,7 @@
 @mixin transition($count) {
   @for $i from 1 through $count {
     &:nth-of-type(#{$i}) {
-      transition: margin-top $i*0.6s linear, opacity $i*0.6s linear;
+      transition: margin-top $i*0.2s linear, opacity $i*0.2s linear;
     }
   }
 }
@@ -9,7 +9,7 @@
 @mixin footer-cascade($count) {
   @for $i from 1 through $count {
     &:nth-of-type(#{$i}) {
-      transition: transform $i*0.3s ease-out, opacity $i*0.3s ease-out;
+      transition: transform $i*0.2s ease-out, opacity $i*0.2s ease-out;
     }
   }
 }

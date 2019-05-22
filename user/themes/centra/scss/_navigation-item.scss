@@ -1,6 +1,7 @@
 .navigation__left {
   display: flex;
   flex: 1;
+  padding-right: 10px;
 }
   
 .navigation__right {
@@ -21,7 +22,7 @@
   justify-content: flex-start;
   overflow: hidden;
   font-size: 18px;
-  color: #fff;
+  color: $white;
   font-weight: 400;
   opacity: 0.7;
 }
@@ -65,7 +66,7 @@
 }
 
 .navigation__contact-us {
-  color: #fff;
+  color: $white;
   font-size: 13px;
   border-radius: 6px;
   background-color: $blackish;

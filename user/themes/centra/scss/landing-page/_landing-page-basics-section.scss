@@ -1,5 +1,12 @@
 .basic-section {
-  color: #ffffff;
+  color: $white;
+  background-color: $cream;
+  transition: background-color 0.5s;
+  background-color: $white;
+  
+  &.black {
+    background-color: $black;
+  }
 
   .section-wrapper {
     flex-direction: column;
@@ -7,7 +14,7 @@
 
   .name-section {
     text-align: center;
-    color: #ffffff;
+    color: $white;
     margin-bottom: 100px;
   }
 }
@@ -36,10 +43,6 @@
   }
 
   &:hover {
-    background-color: #141414;
-    transform: scale(1.02) translateZ(0);
-    transition: transform 0.2s cubic-bezier(0.01, 0.56, 0.44, 1), background-color 0.2s cubic-bezier(0.01, 0.56, 0.44, 1);
-
     .landing-page__button-arrow {
       opacity: 1;
     }
@@ -47,15 +50,21 @@
 
   h3 {
     font-size: 24px;
-    margin: 75px 0;
+    margin: 70px 0;
     font-weight: normal;
   }
 
   p {
-    font-size: 16px;
-    line-height: 1.8em;
+    font-size: 17px;
+    line-height: 1.9em;
     margin: 0;
   }
+}
+
+#basic-section .basic-section__article:hover {
+  background-color: #141414;
+    transform: scale(1.02) translateZ(0) translateY(-50px);
+    transition: transform 0.2s cubic-bezier(0.01, 0.56, 0.44, 1), background-color 0.2s cubic-bezier(0.01, 0.56, 0.44, 1);
 }
 
 .landing-page__button-icon {
@@ -100,21 +109,29 @@
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {
-  .basic-section .name-section {
-    margin-bottom: 50px;
+  .basic-section {
+    padding-left: 0;
+    padding-right: 0;
+
+    .name-section {
+      margin-bottom: 50px;
+    }
   }
 
   .basic-section__articles-wrapper {
     padding-top: 60px;
+    padding-left: 35px;
     overflow-x: auto;
     flex-wrap: nowrap;
     justify-content: flex-start;
   }
 
   .basic-section__article {
-    min-width: 270px;
+    padding: 48px 23px;
+    min-width: 214px;
     margin: 6px;
     background-color: #141414;
+    position: relative;
 
     &:hover .landing-page__button-arrow {
       opacity: 0;
@@ -127,5 +144,14 @@
     p {
       font-size: 13px;
     }
+  }
+
+  .basic-section__article:last-child::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: -35px;
+    width: 35px;
+    height: 1px;
   }
 }

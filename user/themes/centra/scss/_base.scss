@@ -72,17 +72,17 @@
   */
 .l-layer--theme-primary {
   background-color: $brand-primary;
-  color: #fff;
+  color: $white;
 }
 
 .l-layer--theme-dark {
-  background-color: #000;
-  color: #fff;
+  background-color: $black;
+  color: $white;
 }
 
 .l-layer--theme-blackish {
-  background-color: tint(#000, 10%);
-  color: #fff;
+  background-color: tint($black, 10%);
+  color: $white;
 }
 
 .l-layer--theme-grey {
@@ -146,7 +146,7 @@
     z-index: 9;
     width: 100vw;
     height: 100%;
-    background-color: #fff;
+    background-color: $white;
     opacity: .28;
     top: -88px;
     left: 354px;
@@ -162,7 +162,7 @@
     margin-left: auto;
     margin-bottom: 130px;
     color: $blackish-grey;
-    border: 1px solid #000;
+    border: 1px solid $black;
     background-color: transparent;
   }
 }

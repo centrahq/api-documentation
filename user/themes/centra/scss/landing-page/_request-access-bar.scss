@@ -45,9 +45,9 @@
     align-items: center;
     width: 100%;
     height: 62px;
-    color: #ffffff;
-    background-color: #000000;
-    border-top: 1px solid #ffffff;
+    color: $white;
+    background-color: $black;
+    border-top: 1px solid $white;
     font-size: 22px;
     font-weight: bold;
 
@@ -67,9 +67,9 @@
     }
 
     &:hover {
-      color: #000000;
-      background-color: #ffffff;
-      border-top: 1px solid #000000;
+      color: $black;
+      background-color: $white;
+      border-top: 1px solid $black;
       transition: all .2s ease-in-out;
 
       .c-logo {
@@ -80,8 +80,14 @@
 }
 
 @media (max-width: $mobile-navigation-breakpoint) {
-  .request-access-bar a {
-    font-size: 22px;
-    line-height: 50px;
+  .request-access-bar {
+    a {
+      font-size: 22px;
+      line-height: 50px;
+
+      .c-logo {
+        display: none;
+      }
+    }
   }
 }

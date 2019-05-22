@@ -7,14 +7,14 @@
 .developers-first-bar {
   width: 100%;
   overflow: hidden;
-  background-color: #FDB984;
+  background-color: $white;
   box-sizing: content-box;
   transform: translate3d(0, 0, 0);
 
   .ticker {
     display: inline-block;
     line-height: 55px;
-    color: #000000;
+    color: $black;
     text-transform: uppercase;
     font-size: 40px;
     white-space: nowrap;
