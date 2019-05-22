@@ -1,6 +1,6 @@
 .hero-section {
-  color: #ffffff;
-  background-color: #000000;
+  color: $white;
+  background-color: $black;
   min-height: 90vh;
   display: flex;
   align-items: center;
@@ -28,7 +28,7 @@
 }
   
 .hero-section__graphics {
-  width: 710px;
+  width: 680px;
   position: relative;
   z-index: 0;
   background: url('../images/img/stroke-background-hero.svg') no-repeat 50% 25%;
@@ -36,8 +36,8 @@
 }
   
 .graphics__code-window {
-  border: 2px solid #FFFFFF;
-  background-color: #000000;
+  border: 2px solid $white;
+  background-color: $black;
   box-sizing: border-box;
   border-radius: 26px;
   height: 300px;
@@ -74,7 +74,7 @@
 .picture-layout__smile {
   position: absolute;
   bottom: 150px;
-  right: 0;
+  right: 17px;
   width: 76px;
   height: 60px;
   background: url('../images/img/smile.svg') no-repeat center center;

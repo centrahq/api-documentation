@@ -1,5 +1,5 @@
 .get-started-section {
-  color: #000000;
+  color: $black;
   min-height: 70vh;
   display: flex;
   align-items: center;
@@ -57,7 +57,7 @@
   width: 21px;
   height: 21px;
   border-radius: 50%;
-  background-color: #000000;
+  background-color: $black;
   animation: swimming-diagonal 20s infinite;
   animation-direction: alternate;
 }

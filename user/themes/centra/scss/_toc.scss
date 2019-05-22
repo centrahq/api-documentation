@@ -53,7 +53,7 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  background: #FFFFFF;
+  background: $white;
   border: 1px solid #DFDFE4;
   border-radius: 50%;
   box-sizing: border-box;
@@ -94,7 +94,7 @@
     top: 50px;
     margin: 0;
     padding: 20px;
-    background-color: #FFFFFF;
+    background-color: $white;
     border: 1px solid #DFDFE4;
     box-shadow: 0px 2px 6px rgba(223, 223, 228, 0.5);
     border-radius: 4px;
@@ -121,7 +121,7 @@
       height: 8px;
       border-left: 6px solid transparent;
       border-right: 6px solid transparent;
-      border-bottom: 6px solid #FFF;
+      border-bottom: 6px solid $white;
     }
 
     .toc-wrapper {

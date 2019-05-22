@@ -7,6 +7,6 @@
     @error '`#{$color}` is not a valid color for the `$color`'
       + 'argument in the `tint` function.';
   } @else {
-    @return mix(#fff, $color, $percent);
+    @return mix($white, $color, $percent);
   }
 }

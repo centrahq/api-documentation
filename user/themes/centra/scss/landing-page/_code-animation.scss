@@ -3,7 +3,7 @@
     width: 0;
   }
   99.9% {
-    border-right: .15em solid #ffffff;
+    border-right: .15em solid $white;
   }
   100% {
     border: none;
@@ -18,7 +18,7 @@
     opacity: 1;
   }
   99.9% {
-    border-right: .15em solid #ffffff;
+    border-right: .15em solid $white;
   }
   100% {
     opacity: 1;
@@ -67,7 +67,7 @@
 .code-animation{
   padding: 35px;
   display: flex;
-  color: #ffffff;
+  color: $white;
   user-select: none;
 
   .lines {

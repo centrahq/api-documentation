@@ -2,7 +2,7 @@
   transition: background-color 0.3s;
 
   &.black {
-    background-color: #000000;
+    background-color: $black;
   }
 
   &.white {
@@ -156,7 +156,7 @@
   }
 
   &.white {
-    color: #ffffff;
+    color: $white;
 
     .landing-page__button-arrow {
       background: url('../images/img/arrow-right-white.svg') no-repeat 50% 50%;
@@ -164,7 +164,7 @@
   }
 
   &.black {
-    color: #000000;
+    color: $black;
   }
 }
 
@@ -194,7 +194,7 @@
   font-size: 24px;
   line-height: 26px;
   font-weight: normal;
-  color: #000000;
+  color: $black;
 }
 
 @media (max-width: $main-extra-large-breakpoint) {

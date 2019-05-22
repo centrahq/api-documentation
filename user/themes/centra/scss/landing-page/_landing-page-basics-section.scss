@@ -1,11 +1,11 @@
 .basic-section {
-  color: #ffffff;
+  color: $white;
   background-color: $cream;
   transition: background-color 0.5s;
-  background-color: #ffffff;
+  background-color: $white;
   
   &.black {
-    background-color: #000000;
+    background-color: $black;
   }
 
   .section-wrapper {
@@ -14,7 +14,7 @@
 
   .name-section {
     text-align: center;
-    color: #ffffff;
+    color: $white;
     margin-bottom: 100px;
   }
 }

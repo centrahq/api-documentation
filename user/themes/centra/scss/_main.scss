@@ -22,7 +22,7 @@ html {
   left: 0px;
   position: fixed;
   z-index: 20;
-  background-color: #000000;
+  background-color: $black;
   will-change: opacity;
   transition: opacity .6s cubic-bezier(.55,0,.1,1);
 }

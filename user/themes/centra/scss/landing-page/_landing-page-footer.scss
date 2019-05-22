@@ -1,7 +1,7 @@
 .landing-page-footer {
   padding-top: 0;
   padding-bottom: 200px;
-  background-color: #000000;
+  background-color: $black;
 
   ul {
     padding: 0;
@@ -19,7 +19,7 @@
 }
 
 .footer__navigation-link {
-  color: #ffffff;
+  color: $white;
   font-size: 18px;
   line-height: 22px;
 }
