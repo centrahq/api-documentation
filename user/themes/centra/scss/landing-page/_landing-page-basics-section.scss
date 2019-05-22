@@ -131,6 +131,7 @@
     min-width: 214px;
     margin: 6px;
     background-color: #141414;
+    position: relative;
 
     &:hover .landing-page__button-arrow {
       opacity: 0;
@@ -143,5 +144,14 @@
     p {
       font-size: 13px;
     }
+  }
+
+  .basic-section__article:last-child::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: -35px;
+    width: 35px;
+    height: 1px;
   }
 }
