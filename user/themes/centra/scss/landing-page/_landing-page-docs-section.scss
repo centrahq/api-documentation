@@ -127,6 +127,7 @@
 
   .docs__articles-wrapper {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     width: 100%;
     padding: 70px 35px 5px;
   }

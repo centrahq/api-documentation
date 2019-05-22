@@ -132,3 +132,9 @@
     background-size: contain;
   }
 }
+
+@media (max-width: $small-mobile-navigation-breakpoint) {
+  .get-started-section .graphics__code-window {
+    width: 280px;
+  }
+}
