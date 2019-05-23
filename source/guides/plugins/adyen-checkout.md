@@ -114,6 +114,27 @@ Now, press "Test Configuration" to verify we respond successfully. After that yo
 
 Repeat this step for the Merchant Accounts you use with Centra and make sure each "Service Communication URL" you use points to a plugin with the same Merchant Account set. Also make sure that your Server Communication URL points to an active Adyen Checkout-plugin in Centra. If the plugin is disabled, the notification will not work.
 
+### Live endpoint
+
+Adyen Checkout uses unique domains for talking with their API both for the Checkout, but also for capturing, cancelling and refunding the payments, the format will be `[random]-[company name]`. [More info in Adyen Docs](https://docs.adyen.com/development-resources/live-endpoints/)
+
+The live endpoint prefix is something you get from Adyen and it will look something like this:
+
+```
+ab12cd45-centra
+```
+
+You will define this for both Checkout and the standard payments endpoints in the plugin. These does only affect when Test Mode is off, in Test-Mode, the domains are the same for all customers.
+
+```eval_rst
+.. image:: images/adyen-live-endpoints.png
+   :scale: 50 %
+```
+
+```eval_rst
+.. warning:: Going live with Adyen Checkout is not possible unless you have the Live endpoint prefix set up. Payments and Adyen Checkout initialization will always fail.
+```
+
 #### Other configurations
 
 You can decide other settings on the plugin as well:
