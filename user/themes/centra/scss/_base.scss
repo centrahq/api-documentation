@@ -127,7 +127,7 @@ body.no-scroll {
 
   .sidebar.show-sidebar {
     display: block;
-    overflow: auto;
+    overflow-y: auto;
   }
 
   .landing-page .sidebar.show-sidebar {
