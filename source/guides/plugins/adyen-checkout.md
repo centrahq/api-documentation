@@ -118,7 +118,14 @@ Repeat this step for the Merchant Accounts you use with Centra and make sure eac
 
 Adyen Checkout uses unique domains for talking with their API both for the Checkout, but also for capturing, cancelling and refunding the payments, the format will be `[random]-[company name]`. [More info in Adyen Docs](https://docs.adyen.com/development-resources/live-endpoints/)
 
-The live endpoint prefix is something you get from Adyen and it will look something like this:
+The live endpoint prefix is something you find inside your [Adyen-live account here](https://ca-live.adyen.com/ca/ca/config/accountapi.shtml):
+
+```eval_rst
+.. image:: images/adyen-urls.png
+   :scale: 30 %
+```
+
+And it will look something like this:
 
 ```
 ab12cd45-centra
