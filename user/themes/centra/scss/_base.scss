@@ -167,7 +167,7 @@
 
   body.sidebar-is-shown {
     overflow: hidden;
-    position: sticky;
+    position: fixed;
   
     &::after {
       content: '';
