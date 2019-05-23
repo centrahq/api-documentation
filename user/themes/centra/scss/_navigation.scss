@@ -274,13 +274,15 @@ $menu-breakpoint: 715px;
   }
 }
 
+@media (max-width: $mobile-navigation-breakpoint) {
+  .navigation__link-developers.hide {
+    display: none;
+  }
+}
+
 @media (max-width: $main-mobile-navigation-breakpoint) {
   .navigation__link-developers {
     font-size: 24px;
-  }
-
-  .navigation__link-developers.hide {
-    display: none;
   }
 
   .navigation-wrapper.remove-border {
