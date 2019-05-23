@@ -1,5 +1,9 @@
 @import 'variables';
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 #contact-us {
   display: none;
 }
@@ -125,6 +129,10 @@
   }
 
   .landing-page .sidebar.show-sidebar {
+    display: block;
+  }
+
+  .search-page .sidebar.show-sidebar {
     display: block;
   }
   
