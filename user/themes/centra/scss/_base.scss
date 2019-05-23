@@ -2,6 +2,7 @@
 
 body.no-scroll {
   overflow: hidden;
+  position: fixed;
 }
 
 #contact-us {
@@ -126,6 +127,7 @@ body.no-scroll {
 
   .sidebar.show-sidebar {
     display: block;
+    overflow: auto;
   }
 
   .landing-page .sidebar.show-sidebar {
