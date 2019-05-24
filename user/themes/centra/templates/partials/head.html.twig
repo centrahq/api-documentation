@@ -34,6 +34,7 @@
         }
 
         function toggleBurgerMenu() {
+            document.body.classList.toggle("sidebar-is-shown");
             document.getElementById("navigation-link-developers").classList.toggle("hide");
             document.getElementById("burger-menu").classList.toggle("close");
             document.getElementById("main-sidebar").classList.toggle("show-sidebar");
@@ -44,7 +45,7 @@
 
         function togglePageSearch() {
             document.getElementById("toc").classList.toggle("show");
-        }
+        }      
 
         function backgroundOnScroll() {
             var landingPage = document.getElementById("landing-page");
@@ -190,7 +191,6 @@
 
             input.value = query || '';
             input.dispatchEvent(new Event('input'));
-            
         }
 
         function load() {
@@ -228,6 +228,6 @@
                 input.addEventListener('input', (e) => showSearchResults(e.target.value), false);
                 initInput(input);
             }
-        }, false )
+        }, false );
     </script>
 </head>
