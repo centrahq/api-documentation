@@ -128,7 +128,7 @@ The live endpoint prefix is something you find inside your [Adyen-live account h
 And it will look something like this:
 
 ```
-ab12cd45-centra
+7ff08825ff786a90-CentraCompany
 ```
 
 You will define this for both Checkout and the standard payments endpoints in the plugin. These does only affect when Test Mode is off, in Test-Mode, the domains are the same for all customers.
