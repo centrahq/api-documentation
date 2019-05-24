@@ -45,7 +45,7 @@
 
         function togglePageSearch() {
             document.getElementById("toc").classList.toggle("show");
-        }
+        }      
 
         function backgroundOnScroll() {
             var landingPage = document.getElementById("landing-page");
@@ -191,7 +191,6 @@
 
             input.value = query || '';
             input.dispatchEvent(new Event('input'));
-            
         }
 
         function load() {
@@ -229,6 +228,6 @@
                 input.addEventListener('input', (e) => showSearchResults(e.target.value), false);
                 initInput(input);
             }
-        }, false )
+        }, false );
     </script>
 </head>

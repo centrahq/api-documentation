@@ -3,6 +3,7 @@
   width: 100%;
   justify-content: space-between;
   margin-top: auto;
+  margin-bottom: 100px;
 
   a {
     text-decoration: none;
@@ -15,6 +16,10 @@
       color: #AAAAAA;
       font-size: 13px;
       line-height: 17px;
+    }
+
+    .prev-article {
+      text-align: end;
     }
 
     .arrownav__name {
@@ -61,6 +66,18 @@
       &:after {
           border-color: #3764DA;
       }
+    }
+  }
+}
+
+@media (max-width: $mobile-navigation-breakpoint) {
+  .arrownav {
+    .arrownav__article {
+      font-size: 12px;
+    }
+
+    .arrownav__name {
+      font-size: 16px;
     }
   }
 }
