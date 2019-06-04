@@ -260,7 +260,7 @@ The form will:
 1. Load the same script from Adyen specified in `clientSide->externalScript`.
 2. When the script has loaded, launch the Adyen Checkout using settings from `window.adyenCheckoutConfig` or the predefined JSON.
 3. When the checkout is completed by the customer, it will post a FORM-object to the `paymentReturnPage` with the encrypted blob payload.
-4. The `paymentReturnPage` should always collect all URL-parameters from both the URL and POST-data and send it to Centra. This is the way to validate if the payment went through successfully or not.
+4. The `paymentReturnPage` should always collect all URL-parameters from both the query string in the URL and the POST-data and send it to Centra. This is the way to validate if the payment went through successfully or not.
 
 You need to make sure you insert the HTML into your DOM, and also make sure you evaluate the javascript from the response. One solution to do this in React is to inject the HTML into the DOM, then run the following code on it:
 
