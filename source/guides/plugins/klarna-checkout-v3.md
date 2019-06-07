@@ -89,3 +89,13 @@ To test the flow, you first need to make sure the `Test-Mode` is enabled and tha
 ```
 
 You can then use the [test-users provided by Klarna](https://developers.klarna.com/en/testing/invoice-and-account) to place test orders.
+
+
+### Required configuration
+
+To make sure that your Klarna Checkout v3 plugin will work, please make sure that the following configuration fields are filled:
+- E-Store ID
+- Secret 
+- Klarna Endpoint
+- Default Locale
+- Terms & Conditions-URL
