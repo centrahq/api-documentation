@@ -4,9 +4,9 @@
 
 Creates or updates warehouses in Centra.
 
-If Centra already has warehouses setup, you should probably not create new ones. Contact us so we can setup the existing ones in the ID conversion table instead.
+In most cases your shouldn't create new warehouses if Centra already has warehouses setup. Contact us directly so we can setup the existing ones in the ID conversion table instead.
 
-This is operation is optional. If you simply send stock numbers to a warehouse `<id>` in the next example without creating warehouses first, the warehouses will be created automatically.
+This operation is optional. If you simply send stock numbers to a warehouse `<id>` in the next example without creating warehouses first, the warehouses will be created automatically.
 
 ## Request
 
