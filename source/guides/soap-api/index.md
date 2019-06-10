@@ -1,6 +1,6 @@
 # SOAP API Introduction
 
-The SOAP API is built and tailored to integrate with ERP systems and communicates via XML.
+The SOAP API is built to integrate with ERP systems and communicates via XML.
 
 This link contains all operations and XML structures of the API, made from the WSDL definition:
 [https://docs.centra.com/soap/index.php](https://docs.centra.com/soap/index.php)
