@@ -4,7 +4,7 @@
 
 This example uses the events_Get operation to get order events. The response contains an order from the retail store, and examples after this one will update the order.
 
-Notice that order has a `<shipment>` on it. Sometimes Centra is configured to automatically create shipments for retail orders. It can also be configured to not do that, then you would need to create the shipment. (This is illustrated in the wholesale order examples).
+Notice that order has a `<shipment>` on it. Sometimes Centra is configured to automatically create shipments for retail orders. It can also be configured to not do that. In that case you would need to create the shipment. (This is illustrated in the wholesale order examples).
 
 ## Request
 
