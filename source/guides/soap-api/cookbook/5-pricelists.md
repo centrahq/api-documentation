@@ -10,12 +10,12 @@ Prices in Centra can be set at the product or variant level, but not on the size
 
 ## Information you need
 
-- IDs of the stores (1 and 2 in the example below). Ask someone from Centra to provide them for you. 
+- IDs of the stores (1 and 2 in the example below). Contact Centra directly to get provided with the correct IDs. 
 - Currencies in Centra matching the `<currency>` you send in the XML. Currencies are configured manually in Centra.
 
 ## Preconditions
 
-- Products must exist in Centra, see the product examples.
+- Products must exist in Centra. See the product examples.
 
 ## Fields
 
@@ -34,7 +34,7 @@ On the `<variation>` level
 
 - `<id>` is the variation ID (See the product examples)
 
-Notice that the wholesale prices have a `<priceb>` field, this is the recommended retail price. It is optional, and only used for wholesale.
+Notice that the wholesale prices have a `<priceb>` field. This is the recommended retail price. It is optional, and only used for wholesale.
 
 Also note that the T001 product has prices on the variant level (the blue one is more expensive than the red one). The PWC product has prices on the product level, so if it had multiple variants they would have the same price.
 
