@@ -10,7 +10,7 @@ The `<capture>yes</capture>` will instruct Centra to capture the payment for the
 
 In most cases retail orders will only reserve the payment until the order is shipped. When the order is shipped the payment must be "captured".
 
-The `<capture>yes</capture>` will capture if it's possible to performa a capture on this order. If its not possible or the order has already been captured it has no effect. This makes it possible for you to always send `<capture>yes</capture>` when a shipment has been shipped without having to figure out if this order has already been captured.
+The `<capture>yes</capture>` will capture if it's possible to perform a capture on this order. If its not possible or the order has already been captured it has no effect. This makes it possible for you to always send `<capture>yes</capture>` when a shipment has been shipped without having to figure out if this order has already been captured.
 
 ## Request
 
