@@ -46,7 +46,7 @@ start:
 	make html-reload & make css-reload & make js-reload
 
 install:
-	pip install --user -r requirements.txt --no-warn-script-location & make node_modules/.bin/parcel
+    make node_modules/.bin/parcel & pip install --user -r requirements.txt --no-warn-script-location
 
 lint-js:
 	npm run lint:js
