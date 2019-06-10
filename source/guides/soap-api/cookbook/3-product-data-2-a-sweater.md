@@ -2,7 +2,7 @@
 
 [https://docs.centra.com/soap/index.php?op=products_Update](https://docs.centra.com/soap/index.php?op=products_Update)
 
-This example creates or updates a product, a turtleneck sweater. It demonstrates Centra's product structure of product, variants and sizes. The product red and blue variants, and each variant is available in sizes S, M and L.
+This example creates or updates a product – in this case a turtleneck sweater. It demonstrates Centra's product structure of product, variants and sizes. The product comes in red and blue variants, and each variant is available in sizes S, M and L.
 
 On the `<product>` level:
 
