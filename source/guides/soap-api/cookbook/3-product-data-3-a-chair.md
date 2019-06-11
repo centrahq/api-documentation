@@ -2,9 +2,9 @@
 
 [https://docs.centra.com/soap/index.php?op=products_Update](https://docs.centra.com/soap/index.php?op=products_Update)
 
-This example creates or updates a product, a chair. The product does not have different variants or sizes. To fit Centra's product structure, it is created with a single variant and a single size.
+This example creates or updates a product. We will be using a chair for this example. The product does not have different variants or sizes. To fit Centra's product structure, it is created with a single variant and a single size.
 
-Notice that this example does not send a `<sku>` or `<ean>`, Centra does not require it. If your system has SKU and EAN codes, send them. This is just an example to illustrate that they are not required for the integration to work.
+Notice that this example does not send a `<sku>` or `<ean>` as Centra does not require it. If your system has SKU and EAN codes, please send them anyway. This is just an example to illustrate that they are not required for the integration to work.
 
 ## Information you need
 
