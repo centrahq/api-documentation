@@ -80,6 +80,21 @@ You can also make sure that Paypal does not show up as a separate payment, if it
 
 As with all payment plugins if you want to pricelist/market/country restrict the plugin you have the ability to select this in the bottom of the setup.
 
+### Customization of Klarna Checkout widget
+
+You are able to customize colors in Klarna Checkout widget - you are able to set colors of
+- background of a button - setting "Color Button"
+- text inside a button - setting "Color Button Text"
+- background of a checkbox - setting "Color Checkbox"
+- checkmark in a checkbox - setting "Color Checkbox Checkmark"
+- headers - setting "Color Header"
+- links - setting "Color Link"
+
+```eval_rst
+.. image:: images/klarna-colors-customization.png
+   :scale: 50 %
+```
+
 ### Testing
 
 To test the flow, you first need to make sure the `Test-Mode` is enabled and that the `Klarna Endpoint` points to either `EU TEST` or `NA TEST` based on your Klarna Region setup.
