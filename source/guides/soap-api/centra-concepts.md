@@ -2,27 +2,27 @@
 
 ## Store
 
-Centra can have multiple stores. The most common configuration is one retail store for the B2C webshop and one wholesale store for the Centra B2B showroom. Some of our clients have multiple retail stores where each store sells a specific brand.
+Centra is built to handle multiple stores. The most common configuration is one retail store for the B2C webshop and one wholesale store for the Centra B2B showroom. Some of our clients have multiple retail stores where each store sells a specific brand.
 
-Stores are created on the Centra side, and you need the IDs of the stores on your side to be able to send data to Centra. 
+Stores are created from Centra, and you need the store IDs on your side to be able to send data to Centra. 
 
 ## Markets
 
-Each store has one or more markets. A market is a segmentation tool. Each customer in a store is connected to a single market, and gets to see the products that are connected to that market. A product can be connected to many markets at the same time.
+Each store has one or more markets. A market is a segmentation tool. Each customer in a store is connected to a single market, and will only see the products that are connected to that individual market. A product can be connected to many markets at the same time.
 
-Markets can be created by your side or the Centra side. Depending on what the integration should do, you might not need to work with markets at all.
+Markets can be created by your side or from Centra's side. Depending on what the integration should do, you might not need to work with markets at all.
 
 ## Pricelist
 
-Each store has one or more pricelists. A pricelist is connected to a currency like EUR, and contains the prices of products. You can have many pricelists with the same currency, for example you can have two pricelists with EUR, one for Germany and one for France.
+Each store has one or more pricelists. A pricelist is connected to a currency like EUR, and contains the prices of products. You can have many pricelists with the same currency. For example; two pricelists with EUR, one for Germany and one for France.
 
-The pricelists for wholesale stores can also have a "recommended retail price" in addition to the price the wholesale customers would pay for a product.
+The pricelists for wholesale stores can also have a "recommended retail price" in addition to the price that wholesale customers would pay for a product.
 
 Pricelists are created by your side.
 
 ## Retail Customers
 
-Retail customers gets assigned to a market and pricelist based on their country when they visit the webshop, in the general case. Sometimes our clients use special campaign markets where some retail customers get access to specific products or lower prices.
+Generally, retail customers get assigned to a market and pricelist based on which country they're visiting the webshop from. Sometimes our clients use special campaign markets where some retail customers get access to specific products or lower prices.
 
 The customer data is created in Centra when the first order is placed. If the same customer (with the same email) has placed an order before, the order is connected to that customer.
 
