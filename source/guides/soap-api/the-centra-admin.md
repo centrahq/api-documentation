@@ -1,8 +1,8 @@
 # The Centra Admin
 
-When working with the SOAP API you will also need to look at things in the Centra admin. This is a very brief guide to get you started.
+When working with the SOAP API you will also need to look at the Centra admin. This is a very brief guide to get you started.
 
-Frist you need a username and password to log into the centra backend, and the link to where you log in. Ask someone from Centra to provide this for you. 
+First you need a username and password to log into the centra backend, along with the link to where you log in. Ask someone from Centra to provide this for you. 
 
 ## The Centra Admin
 
@@ -15,7 +15,7 @@ After you login to Centra you will see the dashboard:
    :scale: 75 %
 ```
 
-The tabs at the top (Dashboard, Catalog, Sales...) is the main navigaion that will take you to different sections of Centra. The row at the bottom has the *System* and *Modules* menus have links to other sections that are less frequently used.
+The tabs at the top (Dashboard, Catalog, Sales...) is the main navigaion that will take you to different sections of Centra. The row at the bottom has the *System* and *Modules* menus with links to other sections that are less frequently used.
 
 ## Catalog Tab
 
