@@ -92,7 +92,7 @@ Click "+ Add endpoint". In the popup, add the URL you copied from the Centra-plu
 Click "Add endpoint" to save it. The view you will see now is the settings of the webhook. Under the "Signing secret", reveal the value. This value is used so Centra knows the webhook-notification is coming from Stripe. Copy the value from this view:
 
 ```eval_rst
-.. image:: images/adyen-setup-signing.png
+.. image:: images/stripe-checkout-signing.png
    :scale: 30 %
 ```
 
