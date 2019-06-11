@@ -4,7 +4,7 @@
 
 Create or update shipping terms. The shipping terms are set on an account, so they should be created before the account data is sent to Centra.
 
-Notice that `<name>` is the name or title of the shipping term in the Centra admin, the `<description>` is a longer optional descriptive text. This is different form other data in the API where `<description>` is the name or title of something.
+Notice that `<name>` is the name or title of the shipping term in the Centra admin. The `<description>` is a longer optional descriptive text. This is different form other data in the API where `<description>` is the name or title of something.
 
 ## Request
 
