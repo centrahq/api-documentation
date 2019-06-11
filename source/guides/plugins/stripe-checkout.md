@@ -50,14 +50,14 @@ First, make sure you have created a validated business account in Stripe and tha
 
 ```eval_rst
 .. image:: images/stripe-checkout-test-data.png
-   :scale: 20 %
+   :scale: 40 %
 ```
 
 Then, go to [Checkout Settings](https://dashboard.stripe.com/account/checkout/settings) and make sure Stripe Checkout is set to "Enabled" in the top right corner:
 
 ```eval_rst
-.. image:: images/stripe-checkout-notifications-setup.png
-   :scale: 20 %
+.. image:: images/stripe-checkout-setup.png
+   :scale: 30 %
 ```
 
 Then, click the "Developers / API keys" in the menu. You will see two different keys. One called "Publishable key" and one called "Secret key". Centra needs both.
@@ -66,14 +66,14 @@ Copy those values into the plugin inside Centra. The publishable key always begi
 
 ```eval_rst
 .. image:: images/stripe-checkout-api-keys.png
-   :scale: 20 %
+   :scale: 40 %
 ```
 
 Save the Centra plugin, and open it again to get the proper Webhook-URL for it. You will see this in the Centra-plugin:
 
 ```eval_rst
 .. image:: images/stripe-checkout-notifications.png
-   :scale: 20 %
+   :scale: 40 %
 ```
 
 Copy the URL in this view (make sure that your QA-instance gives a `centraqa.com`-URL and that your live-instance gives a `centra.com`-URL) and go to [Developers / Webhooks in Stripe](https://dashboard.stripe.com/test/webhooks).
@@ -81,8 +81,8 @@ Copy the URL in this view (make sure that your QA-instance gives a `centraqa.com
 Click "+ Add endpoint". In the popup, add the URL you copied from the Centra-plugin, and select the events provided from the plugin. In the case of Stripe Checkout, **the only event** you should subscribe to is: `checkout.session.completed`. It should look like this:
 
 ```eval_rst
-.. image:: images/stripe-checkout-notifications.png
-   :scale: 20 %
+.. image:: images/stripe-checkout-notifications-setup.png
+   :scale: 30 %
 ```
 
 ```eval_rst
@@ -111,8 +111,8 @@ On this page, you are able to define what domains you will use for the live-mode
 Make sure Stripe Checkout is "Enabled" in the top right corner. Also add the domains you know will use the Stripe Checkout in live mode in the top:
 
 ```eval_rst
-.. image:: images/stripe-checkout-notifications-setup.png
-   :scale: 20 %
+.. image:: images/stripe-checkout-setup.png
+   :scale: 30 %
 ```
 
 Then, you need to set up a new webhook for the Centra-plugin you have set as "Test-Mode: No" to make sure we get webhooks from Stripe also in Live-mode. Follow the same description above under [Webhooks](#webhooks).
