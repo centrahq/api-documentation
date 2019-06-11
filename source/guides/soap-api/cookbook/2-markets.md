@@ -2,13 +2,13 @@
 
 [https://docs.centra.com/soap/index.php?op=markets_Update](https://docs.centra.com/soap/index.php?op=markets_Update)
 
-Creates new or updates existing markets in Centra. 
+Creates new, or updates existing markets in Centra. 
 
-If Centra already has markets setup, you should probably not create new ones. Contact us so we can setup the existing markets in the ID conversion table instead.
+If Centra already has markets setup, you shouldn't create new ones. Contact us directly so we can setup the existing markets in the ID conversion table instead.
 
 As long as you are not working against a Centra instance that is used in production, this operation is simple and might be a good one to start with.
 
-The `<id>` you send to Centra will be used to refer to that market in the future. For example, an order placed in the market `Retail-Global` will have that market `<id>` on it when you fetch the order data from Centra. It is only used for the integration between the systems, so it does not need to be readable. The ID `<id>` is added to the ID conversion table.
+The `<id>` you send to Centra will be used to refer to that market in the future. For example; an order placed in the market `Retail-Global` will have that market `<id>` on it when you fetch the order data from Centra. It is only used for the integration between the systems, so it does not need to be readable. The ID `<id>` is added to the ID conversion table.
 
 The `<description>` is the name of the market in Centra's admin interface. So this should be something people understand.
 
