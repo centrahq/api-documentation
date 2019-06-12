@@ -13,7 +13,7 @@ The flow works like this:
 5. Every product that is being added into a receipt will be added as a product in Mailchimp. However, due to the fact that a store is set to a single currency, the products we send over will not contain a price in the product catalog of Mailchimp.
 6. Two attributes will be added on orders in Centra. By providing the Mailchimp Campaign ID and the Mailchimp Landing Site when the `POST /payment` to Centra is made, the order will save these attributes and report them back to Mailchimp. This is the way to get information into Mailchimp what campaigns that convert the most.
 
-### Set up
+### Set up in Centra
 
 This is how the plugin looks like in Centra:
 
