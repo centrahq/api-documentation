@@ -52,6 +52,13 @@ This will return product data from Centra with stock info. The values of the sto
 
      - Get a product with specified EAN code.
 
+   * - ``productId``, ``variantId``, ``stockItemId``
+
+       .. type:: integer
+          :required: false
+
+     - Get a product with specified productId, variantId or stockItemId.
+
    * - ``limit``
 
        .. type:: int
@@ -117,17 +124,35 @@ This will return product data from Centra with stock info. The values of the sto
 
             - The internal name for this product.
 
+          * - ``productId``
+
+              .. type:: integer
+
+            - The ID for this product.
+
           * - ``variantSku``
 
               .. type:: string
 
             - SKU for this variant.
 
+          * - ``variantId``
+
+              .. type:: integer
+
+            - ID for this variant.
+
           * - ``sizeSku``
 
               .. type:: string
 
             - SKU for this size.
+
+          * - ``stockItemId``
+
+              .. type:: integer
+
+            - ID for this specific stock item.
 
           * - ``ean``
 
@@ -215,13 +240,16 @@ This will return product data from Centra with stock info. The values of the sto
      "products": [
        {
          "sku": "12019005",
+         "productId": 10,
          "variantSku": "A",
+         "variantId": 9,
          "sizeSku": "X",
          "brand": "Kronan",
          "collection": "ALL",
          "product": "Bike Lady 0 speed BLACK",
          "variant": "SVART",
          "size": "ONE SIZE",
+         "stockItemId": 3131,
          "ean": "1234567890123",
          "weight": 22,
          "weightUnit": "kg",
@@ -235,13 +263,16 @@ This will return product data from Centra with stock info. The values of the sto
        },
        {
          "sku": "12028008",
+         "productId": 11,
          "variantSku": "B",
+         "variantId": 10,
          "sizeSku": "Y",
          "brand": "Kronan",
          "collection": "ALL",
          "product": "Bike Man 0 speed BROWN",
          "variant": "BRUN",
          "size": "ONE SIZE",
+         "stockItemId": 3132,
          "ean": "9876543210123",
          "weight": 22,
          "weightUnit": "kg",

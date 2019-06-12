@@ -48,6 +48,13 @@ This will return product data from Centra with categories.
 
      - Get a product with specified EAN code.
 
+   * - ``productId``, ``variantId``, ``stockItemID``
+
+       .. type:: integer
+          :required: false
+
+     - Filter products based on product, variant and stock item IDs.
+
    * - ``limit``
 
        .. type:: int
@@ -110,6 +117,12 @@ This will return product data from Centra with categories.
 
             - The internal name for this product.
 
+          * - ``productId``
+
+              .. type:: integer
+
+            - ID for this product.
+
           * - ``name``
 
               .. type:: string
@@ -122,11 +135,23 @@ This will return product data from Centra with categories.
 
             - SKU for this variant.
 
+          * - ``variantId``
+
+              .. type:: integer
+
+            - ID for this variant.
+
           * - ``sizeSku``
 
               .. type:: string
 
             - SKU for this size.
+
+          * - ``stockItemId``
+
+              .. type:: integer
+
+            - ID for this specific stock item.
 
           * - ``ean``
 
@@ -270,13 +295,16 @@ This will return product data from Centra with categories.
      "products": [
        {
          "sku": "M411-740",
+         "productId": 232,
          "variantSku": "",
+         "variantId": 1211,
          "sizeSku": "",
          "brand": "Odd Molly",
          "collection": "Molly Prefall 2011",
          "product": "bakers cross 3\/4 blouse",
          "variant": "LITE ROSE",
          "size": "3",
+         "stockItemId": 3424,
          "ean": "",
          "weight": 0.17,
          "weightUnit": "kg",
@@ -328,13 +356,16 @@ This will return product data from Centra with categories.
        },
        {
          "sku": "M411-740",
+         "productId": 232,
          "variantSku": "",
+         "variantId": 1211,
          "sizeSku": "",
          "brand": "Odd Molly",
          "collection": "Molly Prefall 2011",
          "product": "bakers cross 3\/4 blouse",
          "variant": "LITE ROSE",
          "size": "4",
+         "stockItemId": 3425,
          "ean": "",
          "weight": 0.17,
          "weightUnit": "kg",
