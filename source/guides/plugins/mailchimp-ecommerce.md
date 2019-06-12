@@ -180,7 +180,7 @@ Authorization: Bearer X
 	},
 	"additionalFields": {
 	    "mailchimp_campaign_id": "abc12345",
-	    "mailchimp_landing_site": "https://ecommerce.centra.dev/nice-product",
+	    "mailchimp_landing_site": "https://ecommerce.centra.dev/nice-product"
 	}
 }
 ```
