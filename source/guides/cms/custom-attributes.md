@@ -22,10 +22,11 @@ The structure looks something like this:
    $usr_conf['ATTRIBUTE_TYPES'] = [
        'sh_swatch' => [
          'desc' => 'Showroom Color Swatch',
+         'readonly' => true,
          'group' => 'variation',
          'elements' => [
-             'color' => ['desc' => 'Image', 'type' => 'image', 'readonly' => true, 'size' => '60x60'],
-             'color_text' => ['desc' => 'Color', 'type' => 'textarea', 'readonly' => true]
+             'color' => ['desc' => 'Image', 'type' => 'image', 'size' => '60x60'],
+             'color_text' => ['desc' => 'Color', 'type' => 'textarea']
          ],
        ]
    ];
