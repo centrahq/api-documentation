@@ -557,9 +557,6 @@ The response will return an array of orders when the call was successful (unless
 ## Response examples
 
 ```json
-.. code-block:: http
-   :linenos:
-
    HTTP/1.1 200 OK
    Content-type: application/json
 
@@ -573,10 +570,7 @@ The response will return an array of orders when the call was successful (unless
 
 If `createOnly` is set to `true`, the response looks like this:
 
-```eval_rst
-.. code-block:: json
-   :linenos:
-
+```json
    {
      "status": "ok",
      "order": 1234
@@ -585,10 +579,7 @@ If `createOnly` is set to `true`, the response looks like this:
 
 ## Error example
 
-```eval_rst
-.. code-block:: json
-   :linenos:
-
+```json
    {
      "status": "no",
      "msg": "Message about why the order failed to be created."
