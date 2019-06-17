@@ -1,5 +1,5 @@
 ---
-title: Adyen
+title: Adyen checkout
 taxonomy:
     category: docs
 ---
@@ -7,19 +7,19 @@ taxonomy:
 The Adyen Checkout-plugin is a bit different from the existing Adyen-plugin in Centra.
 <br />Adyen Checkout looks like this:
 
-![adyen-preview.png](adyen-preview.png?cropZoom=30%,30%)
+![adyen-preview.png](adyen-preview.png)
 
 ### Flow
 
 The flow works like this:
 
 1. Customer fills in address information on the website.
-1. When the customer is done, they can select a payment option.
-1. If Adyen Checkout is selected (Most likely by showing the Credit Card-logos/Swish/Klarna or similar as the payment option) a call should be made to Centra using `POST /payment`.
-1. Centra will initiate a Adyen Checkout-session and give back a HTML-snippet together with an indication that you actually got `adyen-checkout` in the response.
-1. The website renders the HTML
-1. The customer fills in the information, or selects what payment method they want to use.
-1. Adyen Checkout will decide itself between the following scenarios:
+2. When the customer is done, they can select a payment option.
+3. If Adyen Checkout is selected (Most likely by showing the Credit Card-logos/Swish/Klarna or similar as the payment option) a call should be made to Centra using `POST /payment`.
+4. Centra will initiate a Adyen Checkout-session and give back a HTML-snippet together with an indication that you actually got `adyen-checkout` in the response.
+5. The website renders the HTML
+6. The customer fills in the information, or selects what payment method they want to use.
+7. Adyen Checkout will decide itself between the following scenarios:
   + Finalize the payment and send the customer directly to the `paymentReturnPage` with parameters in the URL.
 	+ Finalize the payment and send the customer directly to the `paymentReturnPage` with POST-parameters.
 	+ Fail the payment and redirect the user to `paymentFailedPage`
@@ -95,8 +95,8 @@ Now, copy the Notification URL into Adyen by selecting "Standard Notification":
 
 Make sure that:
 
-1. You set it to `Active`
-2. You select `HTTP POST`
++ You set it to `Active`
++ You select `HTTP POST`
 
 Under "Authentication" you should write anything you like in "User Name" and "Password". We're currently using the `Notification Key` as the shared secret. *NB: This might change in the future, we'll let you know.*
 
@@ -126,7 +126,7 @@ You will define this for both Checkout and the standard payments endpoints in th
 .. warning:: Going live with Adyen Checkout is not possible unless you have the Live endpoint prefix set up. Payments and Adyen Checkout initialization will always fail.
 ```
 
-### Other configurations
+#### Other configurations
 
 You can decide other settings on the plugin as well:
 
@@ -136,7 +136,7 @@ The `Default Locale` defines which language it should use. `Send Billing Address
 
 You can also define if Adyen Checkout should be allowed for buying gift cards (if this is supported by the website). The gift cards are not being fulfilled by the warehouse, but directly issued and emailed to the customer if the payment goes through.
 
-### Market/Pricelist/Country/Language restrictions
+#### Market/Pricelist/Country/Language restrictions
 
 You can also restrict the Adyen Checkout to only work for specified markets, pricelists, countries or languages. This is good if you want to use different Locales for the Adyen Checkout. You can use the same `uri` for the Adyen Checkout plugin using different restrictions.
 
