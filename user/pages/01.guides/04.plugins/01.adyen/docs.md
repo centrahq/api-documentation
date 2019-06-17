@@ -8,10 +8,7 @@ taxonomy:
 
 The Adyen Checkout-plugin is a bit different from the existing Adyen-plugin in Centra.
 <br />Adyen Checkout looks like this:
-```eval_rst
-.. image:: images/adyen-preview.png
-   :scale: 30 %
-```
+![adyen-preview.png](adyen-preview.png)
 
 ### Flow
 
@@ -47,20 +44,14 @@ The Adyen-Checkout needs its own Server Communication URL set up in Adyen. It wi
 
 To validate that you are able to use the Adyen Checkout, look at your user called `ws@Company.[YourCompanyAccount]` and make sure that this role is enabled:
 
-```eval_rst
-.. image:: images/adyen-role.png
-   :scale: 30 %
-```
+![adyen-role.png](adyen-role.png)
 
 If it's not in the list, you need to contact Adyen to make them enable it.
 
 
 First, create the plugin inside Centra. Select `Adyen Checkout` and set your own name for it. Also define a `uri`. This is the keyword used in the API to select it. You can have multiple plugins pointing to Adyen Checkout with the same `uri` if they are market/pricelist/country/language restricted for example, you can make sure you always use the same `uri` anyway.
 
-```eval_rst
-.. image:: images/adyen-setup.png
-   :scale: 30 %
-```
+![adyen-setup.png](adyen-setup.png)
 
 The `Merchant Account` should be set for the Merchant Account you want to use for this plugin.
 
@@ -81,10 +72,7 @@ The `Notification URL` is used for the Server Communication from Adyen.
 .. warning:: You should set a Server communication URL for each Merchant Account you have. Make sure you have selected a Merchant Account in Adyen before you add it on the "Server Communication"-page.
 ```
 
-```eval_rst
-.. image:: images/adyen-merchant.png
-   :scale: 50 %
-```
+![adyen-merchant.png](adyen-merchant.png)
 
 To add a new Service Communication URL in Adyen, go to `Account` and then select `Server Communication`. Make sure that you have a Merchant Account selected (You should see "No merchant selected" in the top right of Adyen if you have not selected one) before you click `Add` on the "Standard Notification".
 
@@ -104,10 +92,7 @@ Make sure that:
 
 Now, copy the Notification URL into Adyen by selecting "Standard Notification":
 
-```eval_rst
-.. image:: images/adyen-notification.png
-   :scale: 30 %
-```
+![adyen-notification.png](adyen-notification.png)
 
 Make sure that:
 
@@ -126,10 +111,7 @@ Adyen Checkout uses unique domains for talking with their API both for the Check
 
 The live endpoint prefix is something you find inside your [Adyen-live account here](https://ca-live.adyen.com/ca/ca/config/accountapi.shtml):
 
-```eval_rst
-.. image:: images/adyen-urls.png
-   :scale: 30 %
-```
+![adyen-urls.png](adyen-urls.png)
 
 And it will look something like this:
 
@@ -139,10 +121,7 @@ And it will look something like this:
 
 You will define this for both Checkout and the standard payments endpoints in the plugin. These does only affect when Test Mode is off, in Test-Mode, the domains are the same for all customers.
 
-```eval_rst
-.. image:: images/adyen-live-endpoints.png
-   :scale: 50 %
-```
+![adyen-live-endpoints.png](adyen-live-endpoints.png)
 
 ```eval_rst
 .. warning:: Going live with Adyen Checkout is not possible unless you have the Live endpoint prefix set up. Payments and Adyen Checkout initialization will always fail.
@@ -152,10 +131,7 @@ You will define this for both Checkout and the standard payments endpoints in th
 
 You can decide other settings on the plugin as well:
 
-```eval_rst
-.. image:: images/adyen-additional-settings.png
-   :scale: 30 %
-```
+![adyen-additional-settings.png](adyen-additional-settings.png)
 
 The `Default Locale` defines which language it should use. `Send Billing Address`, `Send Delivery Address` and `Send Invoice Items` defines if we should send the information to Adyen. This should help for fraud detection.
 
