@@ -98,7 +98,7 @@ This will insert back the tracking number and carrier information to Centra. An 
      "carrier": "Fedex",
      "service": "Express",
      "packages": 1,
-     "trackingNumber": "TRTTET5",
+     "tracking": "TRTTET5",
      "capture": 1
    }
 ```
