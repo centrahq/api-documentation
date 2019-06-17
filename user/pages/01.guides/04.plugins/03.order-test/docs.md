@@ -465,7 +465,7 @@ Here are the parameters allowed to create an order. There are some fields specif
 
 ## Request example
 
-```eval_rst
+```json
 .. code-block:: http
    :linenos:
 
@@ -556,7 +556,7 @@ The response will return an array of orders when the call was successful (unless
 
 ## Response examples
 
-```eval_rst
+```json
 .. code-block:: http
    :linenos:
 
