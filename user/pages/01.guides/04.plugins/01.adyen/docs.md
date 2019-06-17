@@ -15,15 +15,15 @@ The flow works like this:
 
 1. Customer fills in address information on the website.
 2. When the customer is done, they can select a payment option.
-3. If Adyen Checkout is selected (Most likely by showing the Credit Card-logos/Swish/Klarna or similar as the payment option) a call should be made to Centra using `POST /payment`.
-4. Centra will initiate a Adyen Checkout-session and give back a HTML-snippet together with an indication that you actually got `adyen-checkout` in the response.
+3. If Adyen Checkout is selected (Most likely by showing the Credit Card-logos/Swish/Klarna or similar as the payment option) a call should be made to Centra using ``POST /payment``.
+4. Centra will initiate a Adyen Checkout-session and give back a HTML-snippet together with an indication that you actually got ``adyen-checkout`` in the response.
 5. The website renders the HTML
 6. The customer fills in the information, or selects what payment method they want to use.
 7. Adyen Checkout will decide itself between the following scenarios:
-  + Finalize the payment and send the customer directly to the `paymentReturnPage` with parameters in the URL.
-	+ Finalize the payment and send the customer directly to the `paymentReturnPage` with POST-parameters.
-	+ Fail the payment and redirect the user to `paymentFailedPage`
-	+ Redirect to Adyen HPP (Hosted Payment Page) for payments that needs to be hosted on Adyen. After success, either redirected to `paymentReturnPage` or `paymentFailedPage` depending on the outcome. This includes any 3D-secure enabled payment methods.
+  + Finalize the payment and send the customer directly to the ``paymentReturnPage`` with parameters in the URL.
+	+ Finalize the payment and send the customer directly to the ``paymentReturnPage`` with POST-parameters.
+	+ Fail the payment and redirect the user to ``paymentFailedPage``
+	+ Redirect to Adyen HPP (Hosted Payment Page) for payments that needs to be hosted on Adyen. After success, either redirected to ``paymentReturnPage`` or ``paymentFailedPage`` depending on the outcome. This includes any 3D-secure enabled payment methods.
 
 ### Implementation
 
