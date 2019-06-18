@@ -28,7 +28,6 @@ Lorem ipsum
 > Request ID: 93ddb4320c3dea8741ad0b2ade4547c8
 
 Request:
-
 ```json
 {
     "selection": "ddff91abdd62069cc5fbf4cb23c6af68",
@@ -65,7 +64,6 @@ Request:
 ```
 
 Response:
-
 ```json
 {
     "action": "form",
@@ -79,7 +77,6 @@ Response:
 Request ID: 47524dc7f3623581a4dcd7c6d3e9f51c
 
 Request:
-
 ```json
 {
     "selection": "ddff91abdd62069cc5fbf4cb23c6af68",
@@ -91,7 +88,6 @@ Request:
 ```
 
 Response:
-
 ```json
 {
     "order": "588",
