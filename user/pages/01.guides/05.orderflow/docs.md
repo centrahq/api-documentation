@@ -8,7 +8,7 @@ taxonomy:
 
 Here's the basic order flow as seen in Centra backend. Click image to enlarge.
 
-<a rel="lightbox" data-width="600" href="./Order-flow.png"><img title="Order flow" alt="Order flow" src="./Order-flow.png.thumb.png" /></a>
+<a rel="lightbox" data-width="600" href="Order-flow.png"><img title="Order flow" alt="Order flow" src="Order-flow.png.thumb.png" /></a>
 
 #### Create selection
 
