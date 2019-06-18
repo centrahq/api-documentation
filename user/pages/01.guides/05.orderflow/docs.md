@@ -4,25 +4,49 @@ taxonomy:
     category: docs
 ---
 
-### Order flow in Centra
+## Order flow in Centra
 
 Here's the basic order flow as seen in Centra backend. Click image to enlarge.
 
-<a rel="lightbox" data-width="600" href="Order-flow.png"><img title="Order flow" alt="Order flow" src="Order-flow.png.thumb.png" /></a>
+<a rel="lightbox" data-width="600" href="user/pages/01.guides/05.orderflow/Order-flow.png"><img title="Order flow" alt="Order flow" src="user/pages/01.guides/05.orderflow/Order-flow.png.thumb.png" /></a>
 
-#### Create selection
+### Create selection
 
-Lorem ipsum
+> POST *base*/example/  
 
-#### Confirm order
+Request:
+```json
+{
+    "lorem": "ipsum"
+}
+```
 
-Lorem ipsum
+Response:
+```json
+{
+    "result": "ok",
+}
+```
 
-#### Expedite order
+### Confirm order
 
-Lorem ipsum
+> POST *base*/path/  
 
-#### Mark as paid
+Request:
+```json
+{
+    "lorem": "ipsum"
+}
+```
+
+Response:
+```json
+{
+    "result": "ok",
+}
+```
+
+### Mark as paid
 
 > POST /selections/ddff91abdd62069cc5fbf4cb23c6af68/payment  
 > Request ID: 93ddb4320c3dea8741ad0b2ade4547c8
@@ -71,7 +95,7 @@ Response:
 }
 ```
 
-#### Get payment results
+### Get payment results
 
 > POST /selections/payment-result  
 Request ID: 47524dc7f3623581a4dcd7c6d3e9f51c
@@ -212,4 +236,4 @@ Response:
 }
 ```
 
-#### The best is yet to come!
+### The best is yet to come!
