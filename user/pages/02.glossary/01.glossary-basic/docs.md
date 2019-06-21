@@ -8,7 +8,7 @@ process:
 
 Asterisk (*) means there are unresolved related comments to be addressed in [Google doc for developer.centra.com](https://docs.google.com/document/d/1HerK54L9ZsxuoTATE0sS3oIZpO0dc9V3I_2Knc-lXN0/)
 
-#### A
+### A
 
 **Account**  
 _B2B_  
@@ -30,7 +30,7 @@ Configuration of Custom Attribute values. End-User Accessible.
 _B2B/B2C_  
 Specific data field attached to a Product (“general attributes”) or Variant (“variant attributes”). There are standard, predefined and custom attributes. Custom attributes are set up in the Configuration and custom attribute values are set up in the Attribute Catalog.
 
-#### B
+### B
 
 **Back-order**  
 _B2B/B2C_  
@@ -53,7 +53,7 @@ Individual connected to a specific Account, who can log in to Centra Showroom an
 _B2B/B2C_  
 Bundle is a Product that was synthetically created by combining physical products within Centra. Important: stock updates on Bundle Product are triggered by updating stock of the corresponding physical Products.
 
-#### C
+### C
 
 **Campaign**  
 _B2B/B2C_  
@@ -94,7 +94,7 @@ This section will give you a list of customers that selected to sign up for news
 _B2C_  
 customer that decided to sing in (either during order process or through registration form).
 
-#### D
+### D
 
 **Demand**  
 _B2B/B2C_  
@@ -112,7 +112,7 @@ A discount is a setting to make a reduction off of the original value of a produ
 _B2B/B2C_  
 In a display you choose how and where a product should be displayed. You set which market it should be displayed, in which categories and in which variant. You’ll also set the storefront product -name in the “display name”. A product without display won’t appear in API responses.
 
-#### E
+### E
 
 **EAN**  
 _B2B/B2C_  
@@ -121,7 +121,7 @@ European Article Number. A field on size level which should be unique. Can also 
 **ERP**  
 Enterprise Resource Planning (system).
 
-#### F
+### F
 
 **Folder**  
 Folders are used to categorize your products internally in Centra. You can also filter in certain views based on this.
@@ -129,7 +129,7 @@ Folders are used to categorize your products internally in Centra. You can also 
 **FTA (free to allocate)**  
 Physical warehouse stock with allocated units removed
 
-#### G
+### G
 
 **Gift certificate**  
 _B2C_  
@@ -137,19 +137,19 @@ A gift certificate is a way to sell gift certs to your B2C customers. This will 
 
 **Google Merchant**  
 
-#### H
+### H
 
 **Handling cost**
 
 **Harm code** *  
 Harmonization code, also known as commodity code. Used for custom when exporting to certain countries.
 
-#### I
+### I
 
 **Item** *  
 ingen aning vad detta har för kontext 
 
-#### L
+### L
 
 **Locale** *  
 A parameter to define language
@@ -158,7 +158,7 @@ A parameter to define language
 _B2B_  
 Lookbook is a feature (in Showroom), to generate a link to a specific delivery window, to be displayed without prices in order to present products to potential customers.
 
-#### M
+### M
 
 **Market** *  
 _B2B/B2C_  
@@ -173,7 +173,7 @@ Used to display the measurements of your products. Will appear in showroom.
 **Merchant**  
 Oklart
 
-#### O
+### O
 
 **Omnichannel**  
 
@@ -185,7 +185,7 @@ An order sheet is the state of an order before it has been completed and checked
 **Order date** *  
 The date when the order is placed
 
-#### P
+### P
 
 **Packaging**
 
@@ -207,7 +207,7 @@ In Centra, Product is a top-level definition of an item for sale. Products are s
 **Product Catalog**  
 The product catalog contains all of your products Created in Centra. Whether or not they’re for B2C or B2B sales, or both. 
 
-#### R
+### R
 
 **Refund**  
 _B2C_  
@@ -236,7 +236,7 @@ Value left to re-use
 **RRP**  
 Recommended Retail Price
 
-#### S
+### S
 
 **Sales Rep**  
 The user responsible for a Wholesale B2B account
@@ -286,7 +286,7 @@ A supplier in Centra is from where your products are purchased/manufactured.
 
 **Swatch**
 
-#### T
+### T
 
 **Taxonomy**
 
@@ -294,13 +294,13 @@ A supplier in Centra is from where your products are purchased/manufactured.
 _B2B_  
 Terms is a section where you setup your incoterms and payment terms to be used for your customers
 
-#### U
+### U
 
 **Unit**
 
 **Upsell**
 
-#### V
+### V
 
 **Variant**  
 Every product in Centra has at least one variant. A variant is typically a color or material of a product
@@ -309,7 +309,7 @@ Every product in Centra has at least one variant. A variant is typically a color
 _B2B/B2C_  
 A voucher is used to give rebates, free shipping, free products etc to a customer. When a voucher is applied the selection will be updated to reflect changes made by the voucher. A voucher can be automatically applied based on certain rules, or a code can be entered
 
-#### W
+### W
 
 **Warehouse**  
 A warehouse in Centra is where stock is stored. There are no storage locations in Centra.
