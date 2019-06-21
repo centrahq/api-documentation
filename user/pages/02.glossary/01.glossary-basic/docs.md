@@ -6,7 +6,7 @@ process:
 	twig: true
 ---
 
-Asterisk (*) means there are unresolved related comments to be addressed in https://docs.google.com/document/d/1HerK54L9ZsxuoTATE0sS3oIZpO0dc9V3I_2Knc-lXN0/
+Asterisk (*) means there are unresolved related comments to be addressed in [Google doc for developer.centra.com](https://docs.google.com/document/d/1HerK54L9ZsxuoTATE0sS3oIZpO0dc9V3I_2Knc-lXN0/)
 
 #### A
 
