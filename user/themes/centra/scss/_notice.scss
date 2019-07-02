@@ -1,4 +1,4 @@
-.notice {
+.notice-box {
   background: #F2F3F4;
   border-radius: 4px;
   position: relative;
@@ -22,13 +22,14 @@
     position: absolute;
     width: 23px;
     height: 23px;
-    top: 25px;
+    top: 22px;
     left: 25px;
     background: no-repeat center center;
   }
 
-  & p {
+  & :first-child {
     margin: 0;
+    padding: 0;
   }
 }
 
