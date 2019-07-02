@@ -12,7 +12,7 @@ html {
 *::after {
   box-sizing: inherit;
   outline-width: thin;
-  outline-color: #4373DC;
+  outline-color: $brand-primary;
 }
 
 #loading {
