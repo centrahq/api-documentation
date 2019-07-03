@@ -8,6 +8,7 @@
       justify-content: space-between;
       flex-direction: column;
       border-left: 2px solid #4373DC;
+      font-weight: bold;
       padding: 3px 0 0 23px;
     }
 
@@ -20,6 +21,19 @@
       line-height: 13px;
       color: #AAAAAA;
     }
+  }
+
+  ul li::before {
+    content: '\2022';
+    color: $brand-primary;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
+
+  ol {
+    list-style: inherit;
+    list-style-type: decimal;
   }
 }
 
