@@ -3,9 +3,11 @@
   width: 100%;
   justify-content: space-between;
   margin-top: auto;
+  margin-bottom: 100px;
 
   a {
     text-decoration: none;
+    flex: 1;
 
     span {
       display: block;
@@ -15,6 +17,10 @@
       color: #AAAAAA;
       font-size: 13px;
       line-height: 17px;
+
+      &.next-article {
+        text-align: end;
+      }
     }
 
     .arrownav__name {
@@ -32,26 +38,26 @@
         border: solid #003272;
         border-width: 1px 1px 0 0;
         position: absolute;
+        top: 8px;
       }
     }
 
     .name-next {
-      margin-right: 40px;
+      margin-right: 22px;
+      text-align: end;
 
       &:after {
         transform: rotate(45deg);
         right: -20px;
-        top: 8px;
       }
     }
 
     .name-prev {
-      margin-left: 40px;
+      margin-left: 22px;
 
       &:after {
         transform: rotate(-135deg);
         left: -20px;
-        top: 8px;
       }
     }
 
@@ -59,7 +65,7 @@
       color: #3764DA;
 
       &:after {
-          border-color: #3764DA;
+        border-color: #3764DA;
       }
     }
   }

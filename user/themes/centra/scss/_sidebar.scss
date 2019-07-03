@@ -133,6 +133,10 @@
   background-image: url('../images/img/arrow-up.svg');
 }
 
+.sidebar ul ul .navigation__item-arrow {
+  display: none;
+}
+
 .main__sidebar-logo-dark {
   font-size: 22px;
   display: none;
