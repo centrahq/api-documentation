@@ -1,6 +1,5 @@
 {% block topnav %}
     <div class="navigation-wrapper" id="navigation-wrapper">
-        <div id="loading"></div>
         <nav class="navigation" aria-label="Main navigation">
             <div class="navigation__left">
                 <a href="{{ home_url }}" class="navigation__link-developers" id="navigation-link-developers">
@@ -13,7 +12,7 @@
                     {% for page in pages.children.visible %}
                         <li class="navigation__item">
                             <a href="{{ page.url }}" class="navigation-item__link {% if page.active or page.activeChild %} navigation-item__link--active {% endif %}">
-                                {{ page.menu }}
+                                {{ page.header.altTitle ? page.header.altTitle : page.menu }}
                             </a>
                             <span class="navigation-item__dot"/>         
                         </li>
