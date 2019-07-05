@@ -182,7 +182,7 @@
         }
 
         function initInput(input) {
-            var query = window.location.search.split('=')[1];
+            var query = decodeURI(window.location.search.match('query=([^&#]+)')[1])
 
             if (!query) {
                 return;
@@ -199,7 +199,6 @@
                 var navigationRight = document.getElementById("navigation-right");
                 var heroSection = document.getElementById("hero-section");
 
-                document.getElementById("loading").classList.add("remove-block");
                 navigationMenu.classList.add("show");
                 navigationRight.classList.add("show");
 
