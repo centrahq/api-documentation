@@ -78,17 +78,13 @@
     display: flex;
   }
 
-  .page-toc__toggle-wrapper {
+  #toc {
     position: sticky;
     top: 80px;
     right: 40px;
     margin-top: 95px;
     z-index: 5;
     height: 120vh;
-  }
-
-  #toc {
-    position: relative;
   }
 
   #toc.show .page-toc {

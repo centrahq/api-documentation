@@ -34,7 +34,6 @@
         }
 
         function toggleBurgerMenu() {
-            document.body.classList.toggle("sidebar-is-shown");
             document.getElementById("navigation-link-developers").classList.toggle("hide");
             document.getElementById("burger-menu").classList.toggle("close");
             document.getElementById("main-sidebar").classList.toggle("show-sidebar");
@@ -45,7 +44,7 @@
 
         function togglePageSearch() {
             document.getElementById("toc").classList.toggle("show");
-        }      
+        }
 
         function backgroundOnScroll() {
             var landingPage = document.getElementById("landing-page");
@@ -183,7 +182,7 @@
         }
 
         function initInput(input) {
-            var query = window.location.search.split('=')[1];
+            var query = decodeURI(window.location.search.match('query=([^&#]+)')[1])
 
             if (!query) {
                 return;
@@ -191,6 +190,7 @@
 
             input.value = query || '';
             input.dispatchEvent(new Event('input'));
+            
         }
 
         function load() {
@@ -199,7 +199,6 @@
                 var navigationRight = document.getElementById("navigation-right");
                 var heroSection = document.getElementById("hero-section");
 
-                document.getElementById("loading").classList.add("remove-block");
                 navigationMenu.classList.add("show");
                 navigationRight.classList.add("show");
 
@@ -228,6 +227,6 @@
                 input.addEventListener('input', (e) => showSearchResults(e.target.value), false);
                 initInput(input);
             }
-        }, false );
+        }, false )
     </script>
 </head>

@@ -20,10 +20,6 @@
   display: none;
 }
 
-.search-page .sidebar {
-  display: none;
-}
-
 .sidebar__inner {
   padding-top: 32px;
   padding-bottom: 40px;
@@ -135,6 +131,10 @@
 
 .sidebar .navigation__item-arrow--active {
   background-image: url('../images/img/arrow-up.svg');
+}
+
+.sidebar ul ul .navigation__item-arrow {
+  display: none;
 }
 
 .main__sidebar-logo-dark {

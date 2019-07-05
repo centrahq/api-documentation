@@ -70,7 +70,8 @@
 
 @media (max-width: $main-mobile-navigation-breakpoint) {
   .navigation-search.show {
-    height: 150px;
+    height: 61px;
+    margin-top: 64px;
   }
 
   .navigation-search__input {
