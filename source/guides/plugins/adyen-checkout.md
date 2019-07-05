@@ -39,7 +39,7 @@ The Adyen-Checkout needs its own Server Communication URL set up in Adyen. It wi
 
 **You need to contact Adyen Support at `support@adyen.com` to make sure they have activated Adyen Checkout for your Merchant Account before you begin.**
 
-To validate that you are able to use the Adyen Checkout, look at your user called `ws@Company.[YourCompanyAccount]` and make sure that this role is enabled:
+To validate that you are able to use the Adyen Checkout, go to Accounts -> Users, look at your user called `ws@Company.[YourCompanyAccount]` and make sure that this role is enabled:
 
 ```eval_rst
 .. image:: images/adyen-role.png
