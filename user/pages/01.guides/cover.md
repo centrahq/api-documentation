@@ -5,8 +5,4 @@ taxonomy:
 child_type: docs
 ---
 
-### Chapter 1
-
-# Guides
-
 Discover the **basic** principles
