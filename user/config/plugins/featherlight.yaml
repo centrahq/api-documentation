@@ -1,0 +1,8 @@
+enabled: true
+active: true
+openSpeed: 200
+closeSpeed: 200
+closeOnClick: background
+closeOnEsc: true
+root: body
+initTemplate: plugin://featherlight/js/featherlight.init.js
