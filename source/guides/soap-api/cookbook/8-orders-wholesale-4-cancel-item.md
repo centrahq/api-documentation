@@ -4,7 +4,7 @@
 
 Modifies the order by cancelling a single size of a product from the order. I will cancel 1 of the 4 red sweaters in size L.
 
-Notice the `<orderitem>` on the `<size>`. This is a unique ID for that row on the order, and you should always use it to modify the order. It is possible to have the same size twice or more in the same order, for example if one had a discounted price. The `<orderitem>` is always unique within the order, the `<product>` or `<variation>` or `<size>` is not.
+Notice the `<orderitem>` on the `<size>`. This is an unique ID for that row on the order, and you should always use it to modify the order. It is possible to have the same size twice or more in the same order, for example if one had a discounted price. The `<orderitem>` is always unique within the order, the `<product>` or `<variation>` or `<size>` is not.
 
 ## Request
 
