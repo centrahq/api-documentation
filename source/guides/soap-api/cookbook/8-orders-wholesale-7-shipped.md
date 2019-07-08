@@ -4,7 +4,7 @@
 
 Marks both shipments as shipped.
 
-Notice that the order is not seen as completed in Centra at this stage. It is seen as completed when it has been shipped and also paid for.
+Notice that the order is not seen as completed in Centra at this stage. It is seen as completed when it has been shipped and paid for.
 
 ## Request
 
