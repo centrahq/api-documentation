@@ -9,11 +9,15 @@
     {% set parent_page = p.activeChild ? ' parent' : '' %}
     {% set current_page = p.active ? ' active' : '' %}
     <li class="dd-item{{ parent_page }}{{ current_page }}" data-nav-id="{{ p.route }}">
+        {% if p.header.display == 'section' %}
+            <span class="navigation__section">{{ p.header.altTitle ? p.header.altTitle : p.menu }}</span>
+        {% else %}
         <a href="{{ p.url }}" {% if p.header.class %}class="{{ p.header.class }}"{% endif %} class="{% if p.active or p.activeChild %} navigation__item--active {% endif %}">
             <span>{{ p.header.altTitle ? p.header.altTitle : p.menu }}</span>
             <span class="navigation__item-arrow {% if p.active or p.activeChild %} navigation__item-arrow--active {% endif %}"></span>
         </a>
-        {% if p.activeChild or p.active %}
+        {% endif %}
+        {% if (p.activeChild or p.active ) or data_level != 0 %}
         <ul>
             {{ _self.loop(p, parent_loop|default(0)+loop.index, sort, dir) }}
         </ul>
