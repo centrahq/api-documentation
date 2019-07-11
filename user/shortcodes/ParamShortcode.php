@@ -23,10 +23,10 @@ class ParamShortcode extends Shortcode
             return 
               '<div class="param" style="'.$css_style.'">
                   <div class="param-tags">
-                    <div class="data-wrapper">' . ($data_arr ? $this->dataMapping($data_arr) : '') . '</div>' .
+                    <div class="wrapper data-wrapper">' . ($data_arr ? $this->dataMapping($data_arr) : '') . '</div>' .
                     ($param_datatype ? '<div class="datatype">'.$param_datatype.'</div>' : '') .
                     ($param_isRequired ==='true' ? '<div class="required">required</div>' : '<div class="optional">optional</div>') .
-                    ($param_storetype ? '<div class="storetype-wrapper">' . $this->dataMapping($storetype_arr) . '</div>' : '') .
+                    ($param_storetype ? '<div class="wrapper storetype-wrapper">' . $this->dataMapping($storetype_arr) . '</div>' : '') .
                   '</div>
                 <div class="description">'.$sc->getContent().'</div>
               </div>';

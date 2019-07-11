@@ -18,9 +18,24 @@
     }
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: normal;
+    line-height: 1em;
+  }
+
   h1 {
-    margin: 1em 0;
- }
+    font-size: 40px;
+    font-weight: 600;
+  }
+  
+  h2 {
+    font-size: 30px;
+  }
 
   ul li::before {
     content: '\2022';
