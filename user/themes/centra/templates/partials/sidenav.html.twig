@@ -1,11 +1,11 @@
 
-{% macro loop(page, parent_loop) %}
+{% macro loop(page, parent_loop, sort, dir) %}
 {% if parent_loop|length > 0 %}
     {% set data_level = parent_loop %}
 {% else %}
     {% set data_level = 0 %}
 {% endif %}
-{% for p in page.children.visible %}
+{% for p in page.children.visible.order(sort, dir) %}
     {% set parent_page = p.activeChild ? ' parent' : '' %}
     {% set current_page = p.active ? ' active' : '' %}
     <li class="dd-item{{ parent_page }}{{ current_page }}" data-nav-id="{{ p.route }}">
@@ -15,7 +15,7 @@
         </a>
         {% if p.activeChild or p.active %}
         <ul>
-            {{ _self.loop(p, parent_loop|default(0)+loop.index) }}
+            {{ _self.loop(p, parent_loop|default(0)+loop.index, sort, dir) }}
         </ul>
         {% endif %}
     </li>
@@ -28,10 +28,11 @@
     </a>
     <ul class="navigation__items">
         {% if theme_config.root_page %}
-            {{ _self.loop(page.find(theme_config.root_page), '') }}
+            {{ _self.loop(page.find(theme_config.root_page), '', 'default', 'asc') }}
         {% else %}
-            {{ _self.loop(pages, '') }}
+            {{ _self.loop(pages, '', 'default', 'asc') }}
         {% endif %}
+        {{ _self.loop(pages.find('/newsletter'), '', 'date', 'desc') }}
     </ul>
     <a class="navigation__contact-us" id="contact-us" href="https://support.centra.com">Contact us</a>
 </nav>
