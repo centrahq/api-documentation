@@ -10,7 +10,7 @@ class StepShortcode extends Shortcode
         $this->shortcode->getHandlers()->add('step', function(ShortcodeInterface $sc) {
             $this->shortcode->addAssets('css', 'theme://css/style.css');
             $step = $sc->getParameter('step', $this->getBbCode($sc));
-            return '<br/><span class="step">'.$step.'</span>';
+            return '<span class="step">'.$step.'</span>';
         });
     }
 }
