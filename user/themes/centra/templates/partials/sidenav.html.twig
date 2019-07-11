@@ -36,7 +36,9 @@
         {% else %}
             {{ _self.loop(pages, '', 'default', 'asc') }}
         {% endif %}
-        {{ _self.loop(pages.find('/newsletter'), '', 'date', 'desc') }}
+        {% for page in grav.theme.config.bulletins %}
+            {{ _self.loop(pages.find(page), '', 'date', 'desc') }}
+        {% endfor %}
     </ul>
     <a class="navigation__contact-us" id="contact-us" href="https://support.centra.com">Contact us</a>
 </nav>
