@@ -15,10 +15,8 @@
     </div>
 {% endblock %}
 {% block aftercontent %}
-    <div class="page-toc__toggle-wrapper">
-        <div id="toc">
-            <button class="page-toc__toggle" onclick="togglePageSearch()"><img src="{{ url("theme://images/img/toc-icon.svg")}}"/></button>
-            {% include 'partials/toc.html.twig' %}
-        </div>
+    <div id="toc">
+        <button class="page-toc__toggle" onclick="togglePageSearch()"><img src="{{ url("theme://images/img/toc-icon.svg")}}"/></button>
+        {% include 'partials/toc.html.twig' %}
     </div>
 {% endblock %}

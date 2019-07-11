@@ -96,10 +96,6 @@ $menu-breakpoint: 715px;
   align-items: flex-end;
 }
 
-.navigation__link-developers.hide {
-  display: block;
-}
-
 .landing-page .navigation-search-button {
   display: none;
 }
@@ -160,7 +156,8 @@ $menu-breakpoint: 715px;
   right: 10%;
   width: 189px;
   height: 100px;
-  background: url('../images/img/hand.svg') no-repeat center center;
+  background: url('../images/img/Hand-Illustration-7.png') no-repeat center center;
+  background-size: contain;
   animation: swimming4 10s infinite;
   animation-direction: alternate;
 }
@@ -221,10 +218,6 @@ $menu-breakpoint: 715px;
     display: block;
   }
 
-  .search-page .navigation-search-button {
-    display: none;
-  }
-
   .navigation__burger-menu.close {
     background-image: url('../images/img/close-arrow.svg');
   }
@@ -255,7 +248,7 @@ $menu-breakpoint: 715px;
 
   .landing-page .navigation-search.show,
   .navigation-search.show {
-    padding-top: 64px;
+    margin-top: 64px;
   }
 
   .landing-page .navigation-background.show,
@@ -268,15 +261,13 @@ $menu-breakpoint: 715px;
   }
 }
 
+.navigation__link-developers.hide {
+  display: none;
+}
+
 @media (max-width: breakpoint("medium")) {
   .navigation {
     padding: 0 5px;
-  }
-}
-
-@media (max-width: $mobile-navigation-breakpoint) {
-  .navigation__link-developers.hide {
-    display: none;
   }
 }
 

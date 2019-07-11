@@ -50,7 +50,7 @@ If it's not in the list, you need to contact Adyen to make them enable it.
 
 First, create the plugin inside Centra. Select `Adyen Checkout` and set your own name for it. Also define a `uri`. This is the keyword used in the API to select it. You can have multiple plugins pointing to Adyen Checkout with the same `uri` if they are market/pricelist/country/language restricted for example, you can make sure you always use the same `uri` anyway.
 
-![adyen-setup.png](adyen-setup.png)
+![adyen-setup.png](adyen-setup.png?lightbox=1200)
 
 The `Merchant Account` should be set for the Merchant Account you want to use for this plugin.
 

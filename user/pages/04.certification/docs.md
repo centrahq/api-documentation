@@ -1,5 +1,6 @@
 ---
 title: Certification
+altTitle: Get certified
 taxonomy:
     category: docs
 child_type: docs

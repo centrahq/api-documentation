@@ -1,28 +1,22 @@
 #breadcrumbs {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 #breadcrumbs span {
-  padding: 0 1rem;
   color: #3C3C3C;
+  padding-right: 1rem;
 }
 
 #breadcrumbs a:first-child span {
   color: #3764DA;
 }
 
-#breadcrumbs > span:first-child {
-  padding-left: 0;
-}
-
-#breadcrumbs a:first-child span {
-  padding-left: 0;
-}
-
 #breadcrumbs i {
-  border: 1px solid #CCCCCC;
+  border-left: 1px solid #CCCCCC;
   width: 2px;
   height: 17px;
+  padding-left: 1rem;
 }
 

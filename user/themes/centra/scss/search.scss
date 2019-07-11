@@ -85,7 +85,7 @@
       font-size: 40px;
       line-height: 48px;
       color: #222222;
-      border-left: 2px solid #4373DC;
+      border-left: 2px solid $brand-primary;
     }
   }
 
@@ -140,7 +140,7 @@
   }
 
   #tntsearch-wrapper.small-screen {
-    height: 150px;
+    height: 133px;
     align-items: center;
   }
 }

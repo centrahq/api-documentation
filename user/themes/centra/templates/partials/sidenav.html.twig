@@ -10,7 +10,7 @@
     {% set current_page = p.active ? ' active' : '' %}
     <li class="dd-item{{ parent_page }}{{ current_page }}" data-nav-id="{{ p.route }}">
         <a href="{{ p.url }}" {% if p.header.class %}class="{{ p.header.class }}"{% endif %} class="{% if p.active or p.activeChild %} navigation__item--active {% endif %}">
-            <span>{{ p.menu }}</span>
+            <span>{{ p.header.altTitle ? p.header.altTitle : p.menu }}</span>
             <span class="navigation__item-arrow {% if p.active or p.activeChild %} navigation__item-arrow--active {% endif %}"></span>
         </a>
         {% if p.activeChild or p.active %}

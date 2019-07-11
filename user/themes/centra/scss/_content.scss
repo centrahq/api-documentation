@@ -1,18 +1,14 @@
 .main-article-content {
   header {
-    padding-bottom: 45px;
+    padding-bottom: 15px;
     border-bottom: 1px solid #F3F3F3;
 
     div {
       display: flex;
       justify-content: space-between;
       flex-direction: column;
-      border-left: 2px solid #4373DC;
+      border-left: 2px solid $brand-primary;
       padding: 3px 0 0 23px;
-    }
-
-    h1 {
-      margin-bottom: 15px;
     }
 
     date {
@@ -20,6 +16,38 @@
       line-height: 13px;
       color: #AAAAAA;
     }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: normal;
+    line-height: 1em;
+  }
+
+  h1 {
+    font-size: 40px;
+    font-weight: 600;
+  }
+  
+  h2 {
+    font-size: 30px;
+  }
+
+  ul li::before {
+    content: '\2022';
+    color: $brand-primary;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
+
+  ol {
+    list-style: inherit;
+    list-style-type: decimal;
   }
 }
 
