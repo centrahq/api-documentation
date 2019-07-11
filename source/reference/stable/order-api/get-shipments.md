@@ -30,6 +30,7 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
           :required: false
 
      - Limit amount of shipments returned.
+     - For statuses inprogress and completed positive value between 1 and 100.
 
    * - ``order``
 
@@ -44,6 +45,20 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
           :required: false
 
      - Response in xml format instead of json.
+
+   * - ``offset``
+
+       .. type:: int
+          :required: false
+
+     - Offset how far in to start returning orders.     
+     
+   * - ``status``
+
+       .. type:: string
+          :required: false
+          :default value: goodtogo
+          :allowed values: inprogress, goodtogo, completed
 ```
 
 ## Request example
@@ -212,6 +227,9 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
          "deliveryNote": "http://../delnote?shipment=83651-1",
          "defaultCarrier": "Delivery Carrier",
          "deliveryService": "Delivery Service",
+         "shipmentDate": "2019-07-01 12:56:00",
+         "trackingNumber": "123456789",
+         "trackingUrl": "https://www.dhl.com.pl/exp-en/express/tracking.html?AWB=123456789",
          "invoices": [
            "https://online.klarna.com/invoice_public_show.yaws/invoice.pdf?invno=&orgno="
          ],
@@ -243,6 +261,12 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
              "countryOfOrigin": "DE",
              "harmCode": "12345",
              "comment": ""
+             "warehouses": [
+                {
+                    "name": "Default warehouse",
+                    "itemQty": "1"
+                }
+             ]
            },
            {
              "lineId": "43244",

@@ -216,6 +216,25 @@ This will fetch the orders allowed for the plugin being set up.
          "grandTotalTaxValue": 795.75,
          "internalComment": "",
          "otherComment": "",
+         "marketId": 1,
+         "pricelistId": 1,
+         "ipAddress": "127.0.0.1",
+         "paymentType": "free",
+         "paymentDescription": "",
+         "defaultCarrier": "",
+         "shipments": [
+            {
+                "shipmentId": "16-1",
+                "shippedDate": "0000-00-00 00:00:00",
+                "carrier": "",
+                "service": "",
+                "trackingId": "",
+                "trackingUrl": ""    
+            }
+         ],
+         "totalItemsPriceTax": -202.88,
+         "totalItemsPrice": 811.5,
+         "totalItemsWithoutTax": 608,62,
          "products": [
            {
              "lineId": "43243",
@@ -233,7 +252,21 @@ This will fetch the orders allowed for the plugin being set up.
              "weightUnit": "kg",
              "countryOfOrigin": "DE",
              "harmCode": "12345",
-             "comment": ""
+             "comment": "",
+             "taxPercent": 25,
+             "priceDiscount": 0,
+             "priceDiscountAsPercent": 0,
+             "taxValue": 112.63,
+             "totalPrice": 450.5,
+             "anyDiscount": false,
+             "priceEachWithoutTax": 337,87,
+             "priceEachReduction": 0,
+             "warehouses": [
+                {
+                    "name": "Default",
+                    "itemQty": 1
+                }
+             ]
            },
            {
              "lineId": "43244",
@@ -250,8 +283,38 @@ This will fetch the orders allowed for the plugin being set up.
              "weight": 1.5,
              "countryOfOrigin": "CI",
              "harmCode": "12345",
-             "comment": ""
+             "comment": "",
+             "taxPercent": 25,
+             "priceDiscount": 0,
+             "priceDiscountAsPercent": 0,
+             "taxValue": 90.25,
+             "totalPrice": 361,
+             "anyDiscount": false,
+             "priceEachWithoutTax": 270,75,
+             "priceEachReduction": 0,
+             "warehouses": [
+                {
+                    "name": "Default",
+                    "itemQty": 2
+                }
+             ]             
            }
+         ],
+         "totalItemsDiscounts": 0,
+         "discounts": [
+            {
+                "anyDiscount": false,
+                "discount": "0.00 SEK",
+                "discountAsNumber": 0,
+                "vouchers: [
+                    {
+                    }
+                ],
+                "automaticDiscounts": [
+                    {
+                    }
+                ]
+            }
          ]
        }
      ]
