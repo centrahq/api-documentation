@@ -265,6 +265,13 @@ $menu-breakpoint: 715px;
   display: none;
 }
 
+.navigation__section {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #949494
+}
+
 @media (max-width: breakpoint("medium")) {
   .navigation {
     padding: 0 5px;

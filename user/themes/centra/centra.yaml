@@ -50,3 +50,6 @@ hero:
  title: "Headless e&#x2011;commerce for developers by developers."
  text: "Centra is the API&#x2011;first e&#x2011;commerce platform for global brands."
  link: "Get access to sandbox"
+bulletins: 
+ - "/newsletter"
+ - "/changelog"
