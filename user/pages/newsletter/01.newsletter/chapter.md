@@ -2,4 +2,4 @@
 title: Newsletter
 ---
 
-# 2019 News
+2019 News

@@ -5,5 +5,3 @@ display: section
 ---
 
 # Wholesale
-
-d
