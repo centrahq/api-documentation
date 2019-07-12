@@ -8,6 +8,7 @@
         <div class="articles__listing">
             <h1>{{page.title}}</h1>
             <hr/>
+            {% if page.content %} <div class="articles__listing-content">{{page.content}}</div>{% endif %}
             {% for p in page.children.visible %}
                 <article>
                     <h2>{{ p.menu }}</h2>
