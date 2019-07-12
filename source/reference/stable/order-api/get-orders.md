@@ -241,10 +241,11 @@ This will fetch the orders allowed for the plugin being set up.
              "sku": "S123K345U1",
              "variantSku": "",
              "sizeSku": "",
+             "ean": "1234567890123",
              "name": "Product #1",
              "variant": "White",
+             "brand": "Brand",
              "size": "XS",
-             "ean": "1234567890123",
              "qty": 1,
              "originalPrice": 500.5,
              "price": 450.5,
@@ -253,8 +254,9 @@ This will fetch the orders allowed for the plugin being set up.
              "countryOfOrigin": "DE",
              "harmCode": "12345",
              "comment": "",
-             "taxPercent": 25,
-             "priceDiscount": 0,
+             "otherComment": "",
+             "taxPercent": 0,
+             "priceDiscount": 50.0,
              "priceDiscountAsPercent": 0,
              "taxValue": 112.63,
              "totalPrice": 450.5,
@@ -273,14 +275,16 @@ This will fetch the orders allowed for the plugin being set up.
              "sku": "S123K345U2",
              "variantSku": "",
              "sizeSku": "",
+             "ean": "1234567890124",
              "name": "Product #2",
              "variant": "Blue",
+             "brand": "Brand",
              "size": "XS",
-             "ean": "1234567890124",
              "qty": 2,
              "originalPrice": 200.5,
              "price": 180.5,
              "weight": 1.5,
+             "weightUnit": "kg",
              "countryOfOrigin": "CI",
              "harmCode": "12345",
              "comment": "",
@@ -300,22 +304,29 @@ This will fetch the orders allowed for the plugin being set up.
              ]             
            }
          ],
-         "totalItemsDiscounts": 0,
-         "discounts": [
-            {
-                "anyDiscount": false,
-                "discount": "0.00 SEK",
-                "discountAsNumber": 0,
-                "vouchers: [
-                    {
-                    }
-                ],
-                "automaticDiscounts": [
-                    {
-                    }
-                ]
-            }
-         ]
+         "totalItemsDiscount": 38.11,
+         "discounts": {
+            "anyDiscount": false,
+            "discount": "0.00 USD",
+            "discountAsNumber": 0,
+            "vouchers": [
+              {
+                "voucher": "vip123",
+                "name": "Some voucher",
+                "priceOff": "-150.00 USD",
+                "priceOffAsANumber": -150.0,
+                "description": "This is VIP code description"
+              }
+            ],
+            "automaticDiscounts": [
+              {
+                "automaticDiscount": "12345",
+                "name": "Some discount",
+                "priceOff": "0.00 USD",
+                "priceOffAsANumber": 0 
+              }
+            ]
+         }
        }
      ]
    }
