@@ -1,6 +1,7 @@
 ---
-title: Wholesale
+title: Orders
 taxonomy:
   category: docs
-display: section
 ---
+
+# Orders

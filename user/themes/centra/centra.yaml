@@ -53,4 +53,3 @@ hero:
 bulletins: 
  - "/newsletter"
  - "/changelog"
-isApiDoki: true
