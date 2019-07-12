@@ -29,8 +29,7 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
        .. type:: int
           :required: false
 
-     - Limit amount of shipments returned.
-     - For statuses inprogress and completed positive value between 1 and 100.
+     - Limit amount of shipments returned. For statuses `inprogress` and `completed` a positive value between 1 and 100.
 
    * - ``order``
 
