@@ -58,7 +58,7 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
        .. type:: string
           :required: false
 
-      - Default value: `goodtogo`. Allowed values: `inprogress`, `goodtogo`, `completed`
+     - Default value: `goodtogo`. Allowed values: `inprogress`, `goodtogo`, `completed`
 ```
 
 ## Request example
