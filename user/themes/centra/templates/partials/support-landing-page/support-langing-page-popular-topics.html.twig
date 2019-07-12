@@ -1,0 +1,10 @@
+<section class="landing-page-section support-section-topics">
+  <div class="section-wrapper">
+    <h1 class="section-title">Popular topics</h1>
+    <div class="support-topics-wrapper">
+      {% for topic in grav.theme.config.popular_topics %}
+        <a href={{grav.theme.config.topic.link}}>{{topic.title}}</a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

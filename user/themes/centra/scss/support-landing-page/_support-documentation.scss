@@ -1,0 +1,43 @@
+.support-documentation {
+  border-bottom: 1px solid #EBE9E5;
+
+  .docs-section {
+    align-items: center;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .docs__background.background-dot {
+    bottom: 75%;
+  }
+
+  .docs__background.background-circle {
+    bottom: 10%;
+  }
+}
+
+.support-documentation_showroom {
+  .docs__background.background-dot {
+    left: 5%;
+    bottom: 40%;
+  }
+
+  .docs__background.background-circle {
+    left: 75%;
+    bottom: 5%;
+  }
+}
+
+@media (min-width: $mobile-navigation-breakpoint) {
+  .support-documentation {
+    .docs__articles-wrapper {
+      flex-wrap: wrap;
+    }
+
+    .docs__article {
+      flex: 1 0 30%;
+    }
+  }
+}

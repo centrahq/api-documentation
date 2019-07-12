@@ -53,3 +53,93 @@ hero:
 bulletins: 
  - "/newsletter"
  - "/changelog"
+
+
+# Support
+
+centra_documentation_tutorials:
+ - 
+  title: "Getting started with your Centra"
+  img: "images/img/support/getting-started.png"
+  text: "Learn how to configure Centra, and the key things you need"
+ - 
+  title: "Searching in Centra"
+  img: "images/img/support/search-illustration.png"
+  text: "Learn all the hidden tricks and find the most efficient way to search in Centra"
+ - 
+  title: "How to configure your products"
+  img: "images/img/support/how-to-configure.png"
+  text: "Understand the core Centra structure for productsuide you through step by step."
+ - 
+  title: "How to import and update stock levels"
+  img: "images/img/support/how-to-import.png"
+  text: "Stock levels can be changed in many ways, this is one of them"
+ - 
+  title: "Creating a Voucher"
+  img: "images/img/support/creating-voucher.png"
+  text: "Discounts, free shipping, 3 for 2 - you name it!"
+ - 
+  title: "Creating Delivery Windows"
+  img: "images/img/support/creating-delivery-windows.png"
+  text: "Sell seasonal or preorder products with delivery windows"
+
+showroom_documentation_tutorials:
+ - 
+  title: "Login to Centra Showroom"
+  img: "images/img/support/getting-started.png"
+  text: "Log in to browse or order for your customers. A powerful overview"
+ - 
+  title: "Create & edit orders in Centra Showroom"
+  img: "images/img/support/create-edit-orders.png"
+  text: "Place and edit orders efficiently, here’s how..."
+ - 
+  title: "Generate a Lookbook"
+  img: "images/img/support/creating-delivery-windows.png"
+  text: "Learn how to create and share a lookbook with anyone you want."
+
+popular_topics:
+ -
+  title: "Searching in Centra"
+  link: "#"
+ -
+  title: "How to Localize in centra "
+  link: "#"
+ -
+  title: "Accepting an inbound delivery from your"
+  link: "#"
+ -
+  title: "How to integrate Google Merchant Feed with Centra"
+  link: "#"
+ -
+  title: "Adding currencies to the system "
+  link: "#"
+ -
+  title: "Connecting Centra with Afound "
+  link: "#"
+ -
+  title: "Creating a Warehouse"
+  link: "#"
+ -
+  title: "How to setup a Supplier in the Supplier Module"
+  link: "#"
+ -
+  title: "API Documentations"
+  link: "#"
+ -
+  title: "Connecting warehouses to markets through Warehouse Groups"
+  link: "#"
+ -
+  title: "Add products and prices to your Supplier "
+  link: "#"
+ -
+  title: "How to integrate your Instagram feed in Centra"
+  link: "#"
+ -
+  title: "How do I create a Tax Group?"
+  link: "#"
+ -
+  title: "Creating an order in your Supplier Module"
+  link: "#"
+ -
+  title: "Configure Fortnox with Centra"
+  link: "#"
