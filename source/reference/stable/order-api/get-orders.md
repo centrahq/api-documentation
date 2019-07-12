@@ -234,7 +234,7 @@ This will fetch the orders allowed for the plugin being set up.
          ],
          "totalItemsPriceTax": -202.88,
          "totalItemsPrice": 811.5,
-         "totalItemsWithoutTax": 608,62,
+         "totalItemsWithoutTax": 608.62,
          "products": [
            {
              "lineId": "43243",
@@ -294,7 +294,7 @@ This will fetch the orders allowed for the plugin being set up.
              "taxValue": 90.25,
              "totalPrice": 361,
              "anyDiscount": false,
-             "priceEachWithoutTax": 270,75,
+             "priceEachWithoutTax": 270.75,
              "priceEachReduction": 0,
              "warehouses": [
                 {
