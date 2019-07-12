@@ -77,7 +77,7 @@ This will fetch the orders allowed for the plugin being set up.
 ## Request example
 
 ```eval_rst
-.. code-block:: http
+.. code-block::
    :linenos:
 
    GET <base>/orders?newer_than=2019-01-01&limit=10 HTTP/1.1
