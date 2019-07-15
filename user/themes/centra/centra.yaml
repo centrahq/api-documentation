@@ -1,3 +1,8 @@
+site_version: "api-doc"
+#site_version: "support"
+
+# API Doc
+
 basic_data: 
  - 
   icon: "icon-eye"
@@ -76,25 +81,25 @@ centra_documentation_tutorials:
   text: "Stock levels can be changed in many ways, this is one of them"
  - 
   title: "Creating a Voucher"
-  img: "images/img/support/creating-voucher.png"
+  img: "images/img/support/creating-a-voucher.png"
   text: "Discounts, free shipping, 3 for 2 - you name it!"
  - 
   title: "Creating Delivery Windows"
-  img: "images/img/support/creating-delivery-windows.png"
+  img: "images/img/support/creating-delivery-window.png"
   text: "Sell seasonal or preorder products with delivery windows"
 
 showroom_documentation_tutorials:
  - 
   title: "Login to Centra Showroom"
-  img: "images/img/support/getting-started.png"
+  img: "images/img/support/login-to-showroom.png"
   text: "Log in to browse or order for your customers. A powerful overview"
  - 
   title: "Create & edit orders in Centra Showroom"
-  img: "images/img/support/create-edit-orders.png"
+  img: "images/img/support/create-orders-in-showroom.png"
   text: "Place and edit orders efficiently, here’s how..."
  - 
   title: "Generate a Lookbook"
-  img: "images/img/support/creating-delivery-windows.png"
+  img: "images/img/support/generate-lookbook.png"
   text: "Learn how to create and share a lookbook with anyone you want."
 
 popular_topics:
