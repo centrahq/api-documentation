@@ -17,7 +17,7 @@
             <span class="navigation__item-arrow {% if p.active or p.activeChild %} navigation__item-arrow--active {% endif %}"></span>
         </a>
         {% endif %}
-        {% if (p.activeChild or p.active ) or data_level != 0 %}
+        {% if (p.activeChild or p.active ) %}
         <ul>
             {{ _self.loop(p, parent_loop|default(0)+loop.index, sort, dir) }}
         </ul>
