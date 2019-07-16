@@ -31,6 +31,7 @@
 
   h1 {
     font-size: 40px;
+    margin-bottom: 14px;
     font-weight: 600;
     margin-bottom: 15px;
   }
@@ -39,7 +40,11 @@
     font-size: 30px;
   }
 
-  ul li::before {
+  ul {
+    padding-inline-start: 20px;
+  }
+
+  ul > li::before {
     content: '\2022';
     color: $brand-primary;
     display: inline-block;
@@ -48,8 +53,29 @@
   }
 
   ol {
-    list-style: inherit;
-    list-style-type: decimal;
+    counter-reset: item;
+    padding-inline-start: 30px;
+  }
+
+  ol > li {
+    display: block;
+  }
+
+  ol > li:before {
+    content: counter(item);
+    counter-increment: item;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    font-size: 11px;
+    background-color: $brand-primary;
+    color: #fff;
+    margin-left: -28px;
+    margin-top: 2px;
   }
 }
 
