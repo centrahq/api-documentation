@@ -1,0 +1,88 @@
+.support-navigation-background.support.navigation-background {
+  height: 260px;
+  background-color: $black;
+  top: 0;
+
+  div {
+    position: absolute;
+  }
+
+  .navigation-background__smile-blue {
+    top: 80px;
+    right: 5%;
+    width: 50px;
+    height: 50px;
+    background: url('../images/img/support/centra-smiley.png') no-repeat center center;
+    animation: swimming1 12s infinite;
+    animation-direction: alternate;
+    background-size: contain;
+  }
+
+  .navigation-background__hand {
+    top: -40px;
+    right: 0;
+    width: 590px;
+    height: 273px;
+    background: url('../images/img/support/hand.png') no-repeat center center;
+    animation: swimming3 12s infinite;
+    animation-direction: alternate;
+    background-size: cover;
+  }
+
+  .navigation-background__human {
+    top: 150px;
+    left: 5%;
+    width: 259px;
+    height: 71px;
+    background: url('../images/img/support/human.png') no-repeat center top;
+    animation: swimming5 10s infinite;
+    animation-direction: alternate;
+    background-size: contain;
+  }
+
+  .navigation-background__smile {
+    display: none;
+  }
+
+  .navigation-background__green-steps {
+    display: none;
+  }
+}
+
+.big-screen.support-navigation-background.support.navigation-background {
+  height: 100vh;
+
+  .navigation-background__smile-blue {
+    top: 40%;
+    right: 5%;
+  }
+
+  .navigation-background__smile {
+    display: block;
+    top: 30%;
+    left: 40%;
+    width: 70px;
+    height: 37px;
+    background: url('../images/img/support/centra-smiley2.png') no-repeat center center;
+    animation: swimming2 12s infinite;
+    animation-direction: alternate;
+    background-size: contain;
+  }
+
+  .navigation-background__green-steps {
+    display: block;
+    top: 80%;
+    right: 10%;
+    width: 177px;
+    height: 144px;
+    background: url('../images/img/support/green-step.png') no-repeat center center;
+    animation: swimming4 10s infinite;
+    animation-direction: alternate;
+    background-size: contain;
+  }
+
+  .navigation-background__human {
+    top: 50%;
+    left: 5%;
+  }
+}

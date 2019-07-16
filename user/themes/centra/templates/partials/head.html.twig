@@ -132,6 +132,11 @@
             } else {
                 navigation.className = "navigation-wrapper hideNavigation";
             }
+
+            if (currentScrollPos === 0) {
+                navigation.className = "navigation-wrapper";
+            }
+
             prevScrollpos = currentScrollPos;
         }
 

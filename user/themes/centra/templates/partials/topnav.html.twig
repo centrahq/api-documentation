@@ -3,7 +3,11 @@
         <nav class="navigation" aria-label="Main navigation">
             <div class="navigation__left">
                 <a href="{{ home_url }}" class="navigation__link-developers" id="navigation-link-developers">
-                    <img src="{{ url("theme://images/img/centra-developers-logo.svg")}}" alt="Centra" class="navigation__centra-logo">
+                    <img
+                      src="{{ grav.theme.config.site_version is same as("api-doc") ? url("theme://images/img/centra-developers-logo.svg") : url("theme://images/img/support/centra-support-logo.svg") }}"
+                      alt="Centra"
+                      class="navigation__centra-logo"
+                    >
                 </a>
             </div>
             <div class="navigation__menu" id="navigation-menu">

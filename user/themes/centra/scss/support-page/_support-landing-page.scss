@@ -8,6 +8,14 @@
     line-height: 27px;
   }
 
+  .name-section {
+    margin-bottom: 80px;
+  }
+
+  .section-title {
+    margin-bottom: 60px;
+  }
+
   .support-section-topics {
     padding-bottom: 150px;
 
@@ -25,12 +33,6 @@
       flex: 1 0 30%;
       padding: 7px 35px;
     }
-  }
-
-  .footer__centra-logo {
-    width: 98px;
-    height: auto;
-    margin: 0 0 100px 20px;
   }
 }
 
@@ -78,6 +80,12 @@
   & .social-icon {
     vertical-align: top;
   }
+
+  .footer__centra-logo {
+    width: 98px;
+    height: auto;
+    margin: 0 0 100px 20px;
+  }
 }
 
 .support-footer__bottom-list {
@@ -94,9 +102,17 @@
 
 @media (max-width: $main-extra-large-breakpoint) {
   .support-landing-page {
+    .section-title {
+      margin-bottom: 30px;
+    }
+
     a {
       font-size: 15px;
       line-height: 24px;
+    }
+
+    .name-section {
+      margin-bottom: 25px;
     }
   }
 }
@@ -107,9 +123,11 @@
       flex: 1 0 50%;
       padding: 0 15px;
     }
-  }
 
-  .support-landing-page {
+    .name-section {
+      margin-bottom: 0;
+    }
+
     .section-newsletter-updates {
       margin-bottom: 50px;
     }

@@ -20,13 +20,26 @@
                     </div>
                 </div>
             {% endblock %}
-            <div class="navigation-background big-screen" id="search-navigation-background">
-                <div class="navigation-background__slider"></div>
-                <div class="navigation-background__stack"></div>
-                <div class="navigation-background__smile"></div>
-                <div class="navigation-background__hand"></div>
-                <div class="navigation-background__circle-outlined"></div>
-            </div>
+
+            {% set dev_background =
+                '<div class="navigation-background big-screen" id="search-navigation-background">
+                    <div class="navigation-background__slider"></div>
+                    <div class="navigation-background__stack"></div>
+                    <div class="navigation-background__smile"></div>
+                    <div class="navigation-background__hand"></div>
+                    <div class="navigation-background__circle-outlined"></div>
+                </div>'
+            %}
+            {% set support_background =
+                '<div class="navigation-background big-screen support-navigation-background support" id="search-navigation-background">
+                    <div class="navigation-background__hand"></div>
+                    <div class="navigation-background__smile-blue"></div>
+                    <div class="navigation-background__smile"></div>
+                    <div class="navigation-background__green-steps"></div>
+                    <div class="navigation-background__human"></div>
+                </div>'
+            %}
+            {{ grav.theme.config.site_version is same as("api-doc") ? dev_background : support_background }}
 
             <div class="l-wrapper hide" id="search-page-content">
                 <div class="l-wrapper__left-padding"></div>
@@ -39,6 +52,6 @@
                 <div class="l-wrapper__right-padding"></div>
             </div>
         </form>
-        {% include 'partials/landing-page/landing-page-footer.html.twig' %}
+        {% include grav.theme.config.site_version is same as("api-doc") ? 'partials/landing-page/landing-page-footer.html.twig' : 'partials/support-landing-page/landing-page-footer.html.twig' %}
     </div>
 </body>
