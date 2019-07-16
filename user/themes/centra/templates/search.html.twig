@@ -15,7 +15,15 @@
             {% block tntsearch_input %}
                 <div id="tntsearch-wrapper" class="form-group{{ dropdown ? ' tntsearch-dropdown' : '' }}">
                     <div class="navigation-search__form">
-                        <input type="text" id="input-search" class="navigation-search__input form-control tntsearch-field{{ in_page ? ' tntsearch-field-inpage' : '' }}" data-tntsearch="{{ options|json_encode|e('html_attr') }}" placeholder="Search Centra Developers" value="{{ not dropdown ? query|e : '' }}" autofocus>
+                        <input
+                          type="text"
+                          id="input-search"
+                          class="navigation-search__input form-control tntsearch-field{{ in_page ? ' tntsearch-field-inpage' : '' }}"
+                          data-tntsearch="{{ options|json_encode|e('html_attr') }}"
+                          placeholder='{{ grav.theme.config.site_version is same as("api-doc") ? "Search Centra Developers" : "Search Centra Support" }}'
+                          value="{{ not dropdown ? query|e : '' }}"
+                          autofocus
+                        >
                         <button class="navigation-search__submit-button" type="submit" id="search-submit-button"/>
                     </div>
                 </div>

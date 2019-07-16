@@ -2,7 +2,13 @@
   <h1 class="section-title">What can we help<br />you find?</h1>
   <div class="navigation-search" id="search">
     <forma class="navigation-search__form">
-      <input class="navigation-search__input" type="search" id="site-search" name="q" placeholder="Search Centra Developers" onkeydown = "if (event.keyCode == 13) document.getElementById('navigation-search-button').click()">
+      <input
+        class="navigation-search__input"
+        type="search" id="site-search"
+        name="q"
+        placeholder='{{ grav.theme.config.site_version is same as("api-doc") ? "Search Centra Developers" : "Search Centra Support" }}'
+        onkeydown = "if (event.keyCode == 13) document.getElementById('navigation-search-button').click()"
+      >
       <button class="navigation-search__submit-button" type="submit" id="navigation-search-button" onclick="redirectToSearchPage()"/>
     </forma>
   </div>

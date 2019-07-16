@@ -17,8 +17,9 @@
       color: #AAAAAA;
     }
   }
+}
 
-  h1,
+.main__content {
   h2,
   h3,
   h4,
@@ -31,6 +32,7 @@
   h1 {
     font-size: 40px;
     font-weight: 600;
+    margin-bottom: 15px;
   }
   
   h2 {
