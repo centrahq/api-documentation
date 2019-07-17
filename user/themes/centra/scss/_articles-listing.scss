@@ -1,7 +1,10 @@
 .articles__listing {
-    margin-top: -80px;
+
+    &-content {
+        margin-bottom: 35px;
+    }
 
     article {
-        margin-bottom: 80px;
+        margin-bottom: 45px;
     }
 }

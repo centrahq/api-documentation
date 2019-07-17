@@ -5,11 +5,13 @@
 {% endblock %}
 {% block content %}
     <div class="main__content">
-        {% include 'partials/content.html.twig' %}
         <div class="articles__listing">
+            <h1>{{page.title}}</h1>
+            <hr/>
+            {% if page.content %} <div class="articles__listing-content">{{page.content}}</div>{% endif %}
             {% for p in page.children.visible %}
                 <article>
-                    <h2>{{ p.header.altTitle ? p.header.altTitle : p.menu }}</h2>
+                    <h2>{{ p.menu }}</h2>
                     <p>{{ p.header.excerpt ? p.header.excerpt : p.summary(230) }}</p>
                     <a href="{{ p.url }}">Browse article</a>
                 </article>
@@ -19,10 +21,6 @@
     </div>
 {% endblock %}
 {% block aftercontent %}
-    <div class="page-toc__toggle-wrapper">
-        <div id="toc">
-            <button class="page-toc__toggle" onclick="togglePageSearch()"><img src="{{ url("theme://images/img/toc-icon.svg")}}"/></button>
-            {% include 'partials/toc.html.twig' %}
-        </div>
+    <div class="page-toc">
     </div>
 {% endblock %}

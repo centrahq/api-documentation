@@ -1,5 +1,5 @@
 ---
-title: Wholesale
+title: Retail
 taxonomy:
   category: docs
 display: section
