@@ -67,4 +67,7 @@ RUN chmod a+rwx -R ./cache
 RUN mkdir user/themes/centra/css -p
 RUN sass user/themes/centra/scss/style.scss:user/themes/centra/css/style.css --style compressed
 
+RUN mkdir user/themes/support/css -p
+RUN sass user/themes/support/scss/style.scss:user/themes/support/css/style.css --style compressed
+
 CMD sed -i "s/80/$PORT/g" /etc/apache2/sites-enabled/000-default.conf /etc/apache2/ports.conf && docker-php-entrypoint apache2-foreground

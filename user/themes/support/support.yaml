@@ -1,0 +1,157 @@
+streams:
+ schemes:
+   theme:
+     type: ReadOnlyStream
+     prefixes:
+       '':
+         - user/themes/centra
+
+site_version: "api-doc"
+# site_version: "support"
+
+# API Doc
+
+basic_data: 
+ - 
+  icon: "icon-eye"
+  url: "#"
+  title: "World-class APIs"
+  text: "Centra is a headless, API&#x2011;first SaaS platform which enables you to create global e&#x2011;commerce websites with the technology of your choice. Rich integration APIs empower you to integrate any system."
+ - 
+  icon: "icon-square"
+  url: "#"
+  title: "Documentation"
+  text: "We put pride in offering self&#x2011;explanatory, version-controlled, APIs with clear&#x2011;cut error messages. Easy online access to API documentation, best&#x2011;practice guides, cookbooks and pre&#x2011;launch test checklists."
+ - 
+  icon: "icon-sun"
+  url: "#"
+  title: "Community and support"
+  text: "We offer real-time chat support from our developers and access to a vibrant community of practitioners to connect with on regular events, hosted both online and IRL. We also offer a regular schedule of training programs."
+ - 
+  icon: "icon-rhomb"
+  url: "#"
+  title: "Integrations"
+  text: "100’s of off-the-shelf integrations at your full disposal. Start plugging your e&#x2011;commerce ecosystem together from the get&#x2011;go. Enrich customer shopping experience with the best payment providers, backend systems and more."
+ - 
+  icon: "icon-people"
+  url: "#"
+  title: "Microservices"
+  text: "Quickly develop an agile microservice&#x2011;based architecture by extending Centra’s functionality with your own services if needed. Access and modify any piece of data and use Centra’s tools for logging and monitoring."
+ - 
+  icon: "icon-rainbow"
+  url: "#"
+  title: "Scalable cloud technology"
+  text: "Centra is true SaaS. Never worry about updates, upgrades or hosting. Built to scale horizontally for flash sales and peak loads to consistently deliver ultra&#x2011;fast response time and industry&#x2011;leading uptime."
+certification: 
+ title: "Stand out from the competition with Centra Certification"
+ text: "We encourage all ambitious Centra developers to validate their skills at our Centra Certification 1&#x2011;day training program."
+ link: "Learn more and get certified"
+docs_content: 
+ - 
+  title: Documentation
+  img: "images/img/Documentation.png"
+  text: "Hit the ground running with our step&#x2011;by&#x2011;step guide. Written and built by developers, for developers."
+ - 
+  title: "Store API"
+  img: "images/img/Store-API.png"
+  text: "Our Store API enables building a fully&#x2011;featured, global direct&#x2011;to&#x2011;consumer e&#x2011;commerce experience. The API supports all the advanced features of Centra, including multi&#x2011;market, multi&#x2011;currency, multi&#x2011;warehouse and multi&#x2011;display."
+ - 
+  title: "Order API"
+  img: "images/img/order-API.png"
+  text: "Our order API is tailored for integrating WMS systems, pick&#x2011;and&#x2011;pack services and convenience methods for all standard operations. Can also be used for other applications."
+hero: 
+ title: "Headless e&#x2011;commerce for developers by developers."
+ text: "Centra is the API&#x2011;first e&#x2011;commerce platform for global brands."
+ link: "Get access to sandbox"
+bulletins: 
+ - "/newsletter"
+ - "/changelog"
+
+# Support
+
+centra_documentation_tutorials:
+ - 
+  title: "Getting started with your Centra"
+  img: "images/img/support/getting-started.png"
+  text: "Learn how to configure Centra, and the key things you need"
+ - 
+  title: "Searching in Centra"
+  img: "images/img/support/search-illustration.png"
+  text: "Learn all the hidden tricks and find the most efficient way to search in Centra"
+ - 
+  title: "How to configure your products"
+  img: "images/img/support/how-to-configure.png"
+  text: "Understand the core Centra structure for productsuide you through step by step."
+ - 
+  title: "How to import and update stock levels"
+  img: "images/img/support/how-to-import.png"
+  text: "Stock levels can be changed in many ways, this is one of them"
+ - 
+  title: "Creating a Voucher"
+  img: "images/img/support/creating-a-voucher.png"
+  text: "Discounts, free shipping, 3 for 2 - you name it!"
+ - 
+  title: "Creating Delivery Windows"
+  img: "images/img/support/creating-delivery-window.png"
+  text: "Sell seasonal or preorder products with delivery windows"
+
+showroom_documentation_tutorials:
+ - 
+  title: "Login to Centra Showroom"
+  img: "images/img/support/login-to-showroom.png"
+  text: "Log in to browse or order for your customers. A powerful overview"
+ - 
+  title: "Create & edit orders in Centra Showroom"
+  img: "images/img/support/create-orders-in-showroom.png"
+  text: "Place and edit orders efficiently, here’s how..."
+ - 
+  title: "Generate a Lookbook"
+  img: "images/img/support/generate-lookbook.png"
+  text: "Learn how to create and share a lookbook with anyone you want."
+
+popular_topics:
+ -
+  title: "Searching in Centra"
+  link: "#"
+ -
+  title: "How to Localize in centra "
+  link: "#"
+ -
+  title: "Accepting an inbound delivery from your"
+  link: "#"
+ -
+  title: "How to integrate Google Merchant Feed with Centra"
+  link: "#"
+ -
+  title: "Adding currencies to the system "
+  link: "#"
+ -
+  title: "Connecting Centra with Afound "
+  link: "#"
+ -
+  title: "Creating a Warehouse"
+  link: "#"
+ -
+  title: "How to setup a Supplier in the Supplier Module"
+  link: "#"
+ -
+  title: "API Documentations"
+  link: "#"
+ -
+  title: "Connecting warehouses to markets through Warehouse Groups"
+  link: "#"
+ -
+  title: "Add products and prices to your Supplier "
+  link: "#"
+ -
+  title: "How to integrate your Instagram feed in Centra"
+  link: "#"
+ -
+  title: "How do I create a Tax Group?"
+  link: "#"
+ -
+  title: "Creating an order in your Supplier Module"
+  link: "#"
+ -
+  title: "Configure Fortnox with Centra"
+  link: "#"
