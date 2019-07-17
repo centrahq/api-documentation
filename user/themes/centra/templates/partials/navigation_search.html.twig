@@ -6,7 +6,7 @@
               type="search" id="site-search"
               name="q"
               placeholder='{{ grav.theme.config.site_version is same as("api-doc") ? "Search Centra Developers" : "Search Centra Support" }}'
-              onkeydown = "if (event.keyCode == 13) document.getElementById('navigation-search-button').click()"
+              onkeydown = "if (event.key == 'Enter') document.getElementById('navigation-search-button').click()"
             >
             <button class="navigation-search__submit-button" type="submit" id="navigation-search-button" onclick="redirectToSearchPage()"/>
         </forma>

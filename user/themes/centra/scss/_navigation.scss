@@ -195,16 +195,18 @@ $menu-breakpoint: 715px;
     background-color: $black;
   }
 
-  #navigation-wrapper.showNavigation {
-    top: 0;
-    opacity: 1;
-    background-color: $black;
-  }
+  #navigation-wrapper {
+    .showNavigation {
+      top: 0;
+      opacity: 1;
+      background-color: $black;
+    }
 
-  #navigation-wrapper.hideNavigation {
-    top: -80px;
-    opacity: 0;
-    background-color: $black;
+    .hideNavigation {
+      top: -80px;
+      opacity: 0;
+      background-color: $black;
+    }
   }
 
   .navigation {
