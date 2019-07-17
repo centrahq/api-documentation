@@ -1,29 +1,29 @@
-
 {% macro loop(page, parent_loop, sort, dir) %}
-{% if parent_loop|length > 0 %}
-    {% set data_level = parent_loop %}
-{% else %}
-    {% set data_level = 0 %}
-{% endif %}
-{% for p in page.children.visible.order(sort, dir) %}
-    {% set parent_page = p.activeChild ? ' parent' : '' %}
-    {% set current_page = p.active ? ' active' : '' %}
-    <li class="dd-item{{ parent_page }}{{ current_page }}" data-nav-id="{{ p.route }}">
-        {% if p.header.display == 'section' %}
-            <span class="navigation__section">{{ p.header.altTitle ? p.header.altTitle : p.menu }}</span>
-        {% else %}
-        <a href="{{ p.url }}" {% if p.header.class %}class="{{ p.header.class }}"{% endif %} class="{% if p.active or p.activeChild %} navigation__item--active {% endif %}">
-            <span>{{ p.header.altTitle ? p.header.altTitle : p.menu }}</span>
-            <span class="navigation__item-arrow {% if p.active or p.activeChild %} navigation__item-arrow--active {% endif %}"></span>
-        </a>
+    {% for p in page.children.visible.order(sort, dir) %}
+        {% set bulletins = grav.theme.config.bulletins %}
+        {% if p.topParent().menu in bulletins or p.menu in bulletins %}
+            {% set sort = 'date' %}
+            {% set dir = 'desc' %}
         {% endif %}
-        {% if (p.activeChild or p.active ) %}
-        <ul>
-            {{ _self.loop(p, parent_loop|default(0)+loop.index, sort, dir) }}
-        </ul>
-        {% endif %}
-    </li>
-{% endfor %}
+        
+        {% set parent_page = p.activeChild ? ' parent' : '' %}
+        {% set current_page = p.active ? ' active' : '' %}
+        <li class="dd-item{{ parent_page }}{{ current_page }}" data-nav-id="{{ p.route }}">
+            {% if p.header.display == 'section' %}
+                <span class="navigation__section">{{ p.header.altTitle ? p.header.altTitle : p.menu }}</span>
+            {% else %}
+            <a href="{{ p.url }}" {% if p.header.class %}class="{{ p.header.class }}"{% endif %} class="{% if p.active or p.activeChild %} navigation__item--active {% endif %}">
+                <span>{{ p.header.altTitle ? p.header.altTitle : p.menu }}</span>
+                <span class="navigation__item-arrow {% if p.active or p.activeChild %} navigation__item-arrow--active {% endif %}"></span>
+            </a>
+            {% endif %}
+            {% if p.activeChild or p.active %}
+            <ul>
+                {{ _self.loop(p, parent_loop|default(0) + loop.index, sort, dir) }}
+            </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
 {% endmacro %}
 
 <nav class="main__sidebar sidebar" id="main-sidebar" aria-label="Side navigation">
@@ -36,9 +36,6 @@
         {% else %}
             {{ _self.loop(pages, '', 'default', 'asc') }}
         {% endif %}
-        {% for page in grav.theme.config.bulletins %}
-            {{ _self.loop(pages.find(page), '', 'date', 'desc') }}
-        {% endfor %}
     </ul>
     <a class="navigation__contact-us" id="contact-us" href="https://support.centra.com">Contact us</a>
 </nav>
