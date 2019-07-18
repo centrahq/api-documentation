@@ -2,7 +2,8 @@
 <body>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     {% block content %}
-    {% include grav.theme.config.site_version is same as("api-doc") ? 'partials/landing-page/landing-page.html.twig' : 'partials/support-landing-page/support-landing-page.html.twig' %}{% endblock %}
+      {% include 'partials/landing-page/landing-page.html.twig' %}
+    {% endblock %}
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();

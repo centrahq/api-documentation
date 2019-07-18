@@ -1,7 +1,7 @@
-site_version: "api-doc"
-# site_version: "support"
 
 # API Doc
+
+search_placeholder: "Search Centra Developers"
 
 basic_data: 
  - 

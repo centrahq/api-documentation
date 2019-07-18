@@ -1,13 +1,11 @@
 streams:
- schemes:
-   theme:
-     type: ReadOnlyStream
-     prefixes:
-       '':
-         - user/themes/centra
-
-site_version: "api-doc"
-# site_version: "support"
+  schemes:
+    theme:
+      type: ReadOnlyStream
+      prefixes:
+        '':
+          - user/themes/support
+          - user/themes/centra
 
 # API Doc
 
@@ -68,6 +66,8 @@ bulletins:
  - "/changelog"
 
 # Support
+
+search_placeholder: "Search Centra Support"
 
 centra_documentation_tutorials:
  - 

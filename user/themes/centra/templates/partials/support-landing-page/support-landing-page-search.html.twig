@@ -6,7 +6,7 @@
         class="navigation-search__input"
         type="search" id="site-search"
         name="q"
-        placeholder='{{ grav.theme.config.site_version is same as("api-doc") ? "Search Centra Developers" : "Search Centra Support" }}'
+        placeholder='{{ grav.theme.config.search_placeholder }}'
         onkeydown = "if (event.key == 'Enter') document.getElementById('navigation-search-button').click()"
       >
       <button class="navigation-search__submit-button" type="submit" id="navigation-search-button" onclick="redirectToSearchPage()"/>
