@@ -27,14 +27,18 @@
   @import 'landing-page/developers-first-bar';
   @import 'landing-page/landing-page-certification-section';
   @import 'landing-page/landing-page-footer';
+  @import 'support-page/support-landing-page';
+  @import 'support-page/support-documentation';
   @import 'base.scss';
   @import 'code-example.scss';
   @import 'navigation.scss';
   @import 'navigation-item.scss';
   @import 'navigation-search.scss';
+  @import 'support-page/support-landing-page-search.scss';
   @import 'sidebar.scss';
   @import 'search.scss';
   @import 'articles-listing.scss';
+  @import 'support-page/support-search.scss';
   
   /**
    * Utilities

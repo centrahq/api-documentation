@@ -28,7 +28,11 @@
 
 <nav class="main__sidebar sidebar" id="main-sidebar" aria-label="Side navigation">
     <a href="{{ home_url }}" class="navigation__link-developers main__sidebar-logo-dark">
-        <img src="{{ url("theme://images/img/centra-developers-logo-dark.svg")}}" alt="Centra" class="navigation__centra-logo">
+        <img
+          src="{{ url("theme://images/img/centra-site-logo-dark.svg") }}"
+          alt="Centra"
+          class="navigation__centra-logo"
+        >
     </a>
     <ul class="navigation__items">
         {% if theme_config.root_page %}

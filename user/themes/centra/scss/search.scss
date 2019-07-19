@@ -17,6 +17,10 @@
     }
   }
 
+  .navigation-wrapper {
+    background-color: transparent;
+  }
+
   .navigation-background.big-screen {
     height: 100vh;
 
@@ -39,7 +43,7 @@
     }
 
     .navigation-background__hand {
-      left: 50%;
+      right: 50%;
       top: 40%;
       animation-duration: 7s;
     }
