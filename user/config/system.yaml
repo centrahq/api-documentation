@@ -7,7 +7,7 @@ home:
   hide_in_urls: false
   
 pages:
-  theme: centra
+  theme: support
   order:
     by: default
     dir: asc
