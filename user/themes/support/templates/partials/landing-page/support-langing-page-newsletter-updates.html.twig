@@ -4,7 +4,7 @@
       <h1 class="section-title">Newsletter archive</h1>
       <a>View all</a>
       <ul>
-        {% set newsletter = page.find('/newsletter/newsletter/2019').children.order('date', 'desc') %}
+        {% set set newsletter = page.find('/newsletters/2019').children.order('date', 'asc').slice(0, 4) %}
         {% for p in newsletter if p != page %}
           <li><a href="{{p.url}}">{{ p.title }}</a></li>
         {% endfor %}
@@ -14,7 +14,7 @@
         <h1 class="section-title">Product updates</h1>
         <a>View all</a>
         <ul>
-          {% set updates = page.find('/updates/2019').children.order('date', 'desc') %}
+          {% set set updates = page.find('/updates/2019').children.order('date', 'asc').slice(0, 4) %}
           {% for p in updates if p != page %}
             <li><a href="{{p.url}}">{{ p.title }}</a></li>
           {% endfor %}
