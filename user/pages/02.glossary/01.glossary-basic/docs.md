@@ -91,11 +91,7 @@ Taken from the world of fashion, color swatches allow the customer to compare co
 _B2B/B2C_  
 Basic configuration settings for Centra are stored in the config file. The config file differs per client and is only accessible for Centra’s front-end agency partners and Centra Support – not for end-users.
 
-**Newsletter**  
-_B2C_  
-This section will list registered customers for which “Receive newsletter” field is set to “Yes”.
-
-## D
+## **D**
 
 **Demand** *  
 _B2B/B2C_  
@@ -113,7 +109,7 @@ A Discount is a setting for making a reduction off the original price of a produ
 _B2B/B2C_  
 In a display you choose how and where a product should be presented in the front end. You set which market, categories and variant it should be displayed in. You’ll also set the storefront product name in the “display name”. A product without display won’t appear in API responses.
 
-## E
+## **E**
 
 **EAN**  
 _B2B/B2C_  
@@ -122,13 +118,13 @@ European Article Number. Like GTIN (Global Trade Item Number), it identifies a s
 **ERP**  
 Enterprise Resource Planning (system).
 
-## F
+## **F**
 
 **Folder**  
 _B2B/B2C_  
 Folders are used to categorize products internally in Centra. One product can belong to at most one folder. Folders are not exposed in the Front End.
 
-## G
+## **G**
 
 **General Attributes**  
 _B2B/B2C_  
@@ -142,7 +138,7 @@ A gift certificate is a way to sell gift certs to your B2C customers. This will 
 _B2B/B2C_  
 Google Merchant is a service used for advertising your products in Google’s search results. You can use Centra’s plugin to feed information about your products to Google.
 
-## H
+## **H**
 
 **Handling cost** *  
 _B2B/B2C_  
@@ -151,12 +147,12 @@ When creating an order, this is the cost of using a specific payment method. It�
 **Harm code** *  
 Harmonization code, also known as commodity code. Used for customs when exporting to certain countries.
 
-## I
+## **I**
 
 **Item** *   
 An API response for an order, for every element of the “items” table, item is presented as “X-Y”, where X is the product ID and Y is the variant ID.
 
-## L
+## **L**
 
 **Locale** *  
 A parameter to define language
@@ -165,7 +161,7 @@ A parameter to define language
 _B2B_  
 Lookbook is a feature in Showroom that allows you to generate a link to products offered in a specific delivery window and display them without prices in order to present products to potential customers.
 
-## M
+## **M**
 
 **Market** *  
 _B2B/B2C_  
@@ -175,7 +171,13 @@ Markets allow you to segment your store into logical entities. They control whic
 _B2B/B2C_  
 Used to display the measurements of your products. While Size Charts define product sizes (S, M, L, XL), measurement charts are used to define measurements, in specific units, for each size. For example, measuremement chart for trousers can consist of leg and waist size, defined in cm or inches, for each defined size. This data can be used when displaying products in Showroom.
 
-## O
+## **N**
+
+**Newsletter**  
+_B2C_  
+This section will list registered customers for which “Receive newsletter” field is set to “Yes”.
+
+## **O**
 
 **Order**  
 _B2B/B2C_  
@@ -201,7 +203,7 @@ The date when an order is placed. In B2C the order date is the date the customer
 * Hold (flag)
 * Checkout Requested
 
-## P
+## **P**
 
 **PIM**  
 _B2B/B2C_  
@@ -227,7 +229,7 @@ In Centra, Product is a top-level definition of an item for sale. Products are s
 _B2B/B2C_  
 The product catalog contains all of your Products stored in Centra.
 
-## R
+## **R**
 
 **Registered customers**  
 _B2C_  
@@ -248,7 +250,7 @@ Used to create reports to export. Like sales figures.
 _B2B/B2C_  
 Value of a voucher left to reuse.
 
-## S
+## **S**
 
 **Sales Rep**  
 The user responsible for a Wholesale B2B account.
@@ -310,13 +312,13 @@ Centra can have multiple stores in the same instance. The normal setup is to hav
 _B2B/B2C_  
 A Supplier in Centra is from where your products are purchased or manufactured.
 
-## T
+## **T**
 
 **Terms**  
 _B2B_  
 Terms is a section where you setup your incoterms and payment terms to be used for your customers. They are defined as store statics.
 
-## V
+## **V**
 
 **Variant**  
 _B2B/B2C_  
@@ -326,7 +328,7 @@ Every product in Centra has at least one Variant. A variant is typically a color
 _B2B/B2C_  
 A voucher is used to give rebates, free shipping, free products etc. to a customer. When a voucher is applied, the selection will be updated to reflect changes made by the voucher. A voucher can be automatically applied based on certain rules, or a code can be entered.
 
-## W
+## **W**
 
 **Warehouse**  
 _B2B/B2C_  
