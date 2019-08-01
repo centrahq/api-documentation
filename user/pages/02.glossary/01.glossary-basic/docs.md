@@ -192,6 +192,8 @@ _B2B/B2C_
 The date when an order is placed. In B2C the order date is the date the customer receives the receipt. In B2B, the Order Date is when either the Seller or the Buyer confirm an order.
 
 **Order status**  
+_B2B/B2C_  
+[Order flow in Centra](https://centra-api-documentation-demo.herokuapp.com/guides/orderflow)  
 
 * Incomplete (0)
 * Pending (1)
