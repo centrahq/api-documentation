@@ -1,59 +1,63 @@
 ---
 title: Basic Centra concepts and definitions
+altTitle: Basic concepts
 taxonomy:
     category: docs
-process:
-	twig: true
 ---
 
-Asterisk (*) means there are unresolved related comments to be addressed in [Google doc for developer.centra.com](https://docs.google.com/document/d/1HerK54L9ZsxuoTATE0sS3oIZpO0dc9V3I_2Knc-lXN0/)
+Asterisk (`*`) means there are unresolved related comments to be addressed in [Google doc for developer.centra.com](https://docs.google.com/document/d/1HerK54L9ZsxuoTATE0sS3oIZpO0dc9V3I_2Knc-lXN0/)
 
-## A
+
+## **A**
+
 
 **Account**  
 _B2B_  
-Account is a company or individual buying Wholesale, with a profile stored in Centra. An Account can be represented by several Buyers. Information about the Account is stored where customer information is stored. Examples are: customer number, buyers, addresses. There are also attributes for segmentation such as market, price list and warehouse group. Accounts are only used in the Wholesale module of Centra. The corresponding concept in the Direct-to-Consumer module is Customer.
+Account is a company or individual buying Wholesale with a profile stored in Centra. An Account can be represented by several Buyers. Information about the Account is stored where customer information is stored. Examples are: Customer Number, Buyers, Addresses. There are also attributes for segmentation such as Market, Price List and Warehouse Group. Accounts are only used in the Wholesale module of Centra. The corresponding concept in the Direct-to-Consumer module is Customer.
 
 **Affiliate** *  
 _B2C_  
-Tool for linking orders to different sources, typically to track sales from social channels. An Affiliate can use it by inserting either a pixel or a code snippet with a specific URL into their own channels. Each call of the URL will create a cookie that identifies the end user and matches with the Affiliate. You have a possibility to setup Affiliate URL in the way that it will include additional attributes and change the amount of days that cookie will be valid.
+Tool for linking orders to different sources, typically to track sales from social media channels. An Affiliate can use it by inserting a pixel or a code snippet with a specific URL into their own channels. Each call of the URL will create a cookie that identifies the end user and matches with the Affiliate. You have the option to setup the Affiliate URL to include additional attributes and change the amount of days that cookie will be valid.
 
 **Agent**  
 _B2B_  
-Specific user role in Centra for agents. The Agent can add Accounts and place orders for Accounts. Agent users have access to both Centra and Centra Showroom. Agents can have a commission percentage which is used to calculate a Commission. 
-
-**Attribute Catalog**  
-_B2B/B2C_  
-Configuration of Custom Attribute values. End-User Accessible.
+Specific user role in Centra for agents. The Agent can add Accounts and place orders for Accounts. Agent users have access to both Centra and Centra Showroom. Agents can be configured with a commission percentage which is used to calculate their Commission. 
 
 **Attribute**  
 _B2B/B2C_  
-Specific data field attached to a Product (“general attributes”) or Variant (“variant attributes”). There are standard, predefined and custom attributes. Custom attributes are set up in the Configuration and custom attribute values are set up in the Attribute Catalog.
+Specific data field attached to a Product (General Attributes) or Variant (Variant Attributes). There are standard, predefined and custom attributes. Custom attributes definitions are set up in the Configuration and their values are set up in the Attribute Catalog
 
-## B
+**Attribute Catalog**  
+_B2B/B2C_  
+This is where the static custom attributes defined in the client configuration are added to then be selectable on the products, variants, orders, customers or accounts. Attributes can be of type boolean, input, multi-line text, drop-down select, image, file or a readonly static. Please note that empty attribute values are not returned in API responses. Attribute catalog is shared by both B2B and B2C stores.
+
+
+## **B**
+
 
 **Back-order**  
 _B2B/B2C_  
-An order placed when there was no stock. Back-ordering is enabled/disabled for each Store separately and applies to all products in the store. When an Order is created with back-ordered items, Demand is created.  
-See also: Preorder B2B/B2C
+An order placed when there was no stock. Back-ordering is configured for each Store separately and applies to all products in the store. When an Order is created with back-ordered items, Demand is created.
+See also: Preorder.
 
 **Basket**  
-_B2B/B2C_  
-A basket is where products are held when selected for purchase. Naming convention of basket in Centra is Selection.
+_B2C_  
+See Selection.
 
 **Brand**  
 _B2B/B2C_  
-A brand is a general attribute on product level where you can store the product’s brand
-
-**Buyer**  
-_B2B_  
-Individual connected to a specific Account, who can log in to Centra Showroom and place orders. For example a purchaser at a specific store.
+A Brand is a general attribute on product level where you can store the product’s brand. Each product can only belong to a single brand.
 
 **Bundle Product**  
 _B2B/B2C_  
-Bundle is a Product that was synthetically created by combining physical products within Centra. Important: stock updates on Bundle Product are triggered by updating stock of the corresponding physical Products.
+A Bundle Product is a Product created by combining physical products within Centra. Once the Bundle Product is added to a selection, all items of that Bundle Product will be added automatically. Stock updates for Bundle Product are triggered by updating stock of the corresponding physical Products.
 
-## C
+**Buyer**  
+_B2B_  
+Individual connected to a specific Account who can log in to Centra Showroom and place orders. For example a purchaser at a specific store.
+
+
+## **C**
 
 **Campaign**  
 _B2B/B2C_  
