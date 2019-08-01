@@ -7,9 +7,7 @@ taxonomy:
 
 Asterisk (`*`) means there are unresolved related comments to be addressed in [Google doc for developer.centra.com](https://docs.google.com/document/d/1HerK54L9ZsxuoTATE0sS3oIZpO0dc9V3I_2Knc-lXN0/)
 
-
 ## **A**
-
 
 **Account**  
 _B2B_  
@@ -31,9 +29,7 @@ Specific data field attached to a Product (General Attributes) or Variant (Varia
 _B2B/B2C_  
 This is where the static custom attributes defined in the client configuration are added to then be selectable on the products, variants, orders, customers or accounts. Attributes can be of type boolean, input, multi-line text, drop-down select, image, file or a readonly static. Please note that empty attribute values are not returned in API responses. Attribute catalog is shared by both B2B and B2C stores.
 
-
 ## **B**
-
 
 **Back-order**  
 _B2B/B2C_  
@@ -56,71 +52,72 @@ A Bundle Product is a Product created by combining physical products within Cent
 _B2B_  
 Individual connected to a specific Account who can log in to Centra Showroom and place orders. For example a purchaser at a specific store.
 
-
 ## **C**
 
 **Campaign**  
 _B2B/B2C_  
-are used to set up store-wide price reductions or to set a manual “New in store” flag. It’s important to note that the original price will not be overwritten. This can be done on specific markets and/or price lists. Unlike Vouchers, this logic is applied before checkout process.
+Campaigns are used to set up store-wide price reductions or to set a manual “New in store” flag. It’s important to note that the original price will not be overwritten. Campaigns can be set-up on specific Markets and/or Price Lists. Unlike Vouchers, this logic is applied before checkout process.
 
 **Campaign site**  
 _B2C_  
-A campaign site is a way to give selected Customers access to a campaign prior to its launch. This is achieved by assigning the Customer to a Market which they cannot access without going through the campaign site (i.e. V.I.P. Market).
+A Campaign Site is a way to give selected Customers access to a campaign prior to its launch. This is achieved by assigning the Customer to a Market which they cannot access without going through the campaign site (like VIP Market).
 
-**Cancel Date** *  
+**Cancel Date**  
 _B2B_  
-Date after which orders are automatically cancelled unless confirmed. Set during the Wholesale checkout process. 
+A note on an order if the Account don’t want the order after a certain date. The order is not automatically cancelled on the Cancel Date, it is a note for sales staff.
 
 **Cart**  
+_B2C_  
 See Selection.
 
 **Category**  
-Mechanism for structuring how Displays are shown on frontend sites and in Centra Showroom to facilitate navigation. Categories are arranged in a hierarchical tree-structure with up to 3 levels. One product can have multiple categories.
+_B2B/B2C_    
+Mechanism for structuring how Displays are shown on front-end sites and in Centra Showroom to ease navigation. Categories are arranged in a hierarchical tree-structure with up to 3 levels. One product can have multiple categories.
 Also see: Folder. 
 
 **Charts**  
-see Measurement Chart, Size Chart
+_B2B/B2C_  
+See Measurement Chart, Size Chart.
 
 **Collection**  
-Part of a product’s general attributes. In fashion, this might for example be a spring-summer collection like SS20. If products aren’t set by season and you were selling other appliances, this could e.g. be “Kitchen”.
+_B2B/B2C_  
+Part of a product’s General Attributes. In fashion, this could be a spring-summer Collection like SS20. If products aren’t set by season and you were selling other appliances, this could e.g. be “Kitchen”.
+
+**Color Swatch**  
+_B2B/B2C_  
+Taken from the world of fashion, color swatches allow the customer to compare colors, gradients, textures or patterns in a simple manner. In Centra, color swatches can be defined as custom product or variant attributes, usually consisting of color description, hex value and/or small image to show the example texture or pattern.
 
 **Configuration**  
-Basic configuration settings for Centra are stored in config file that differs per client. Accessible for Centra front-end agency partners and Centra Support, not for end-users.
+_B2B/B2C_  
+Basic configuration settings for Centra are stored in the config file. The config file differs per client and is only accessible for Centra’s front-end agency partners and Centra Support – not for end-users.
 
-**CRUD**  
-Create, Read, Update, Delete
-
-**Customer, newsletter**  
+**Newsletter**  
 _B2C_  
-This section will give you a list of customers that selected to sign up for newsletters
-
-**Customer, registered**  
-_B2C_  
-customer that decided to sing in (either during order process or through registration form).
+This section will list registered customers for which “Receive newsletter” field is set to “Yes”.
 
 ## D
 
-**Demand**  
+**Demand** *  
 _B2B/B2C_  
-is used when having either “Allow backorders” or “Preorder” enabled, this will be the suggested amount to purchase from suppliers. 
+Demand is used with either “Allow backorders” or “Preorder” enabled, this will be the suggested amount to purchase from suppliers.
 
 **Delivery window**  
 _B2B_  
-(also known as DelWin) is used to manage when products should be expected to be delivered, all B2B orders in centra must belong to one or many Delivery Windows. Products are added to a delivery windows and when that delivery window is active, the products in that delivery window will be available for sale. Delivery window normally correspond with pars of “Order Type” logic in ERP systems. Products in a delivery window can have the stock availability based on “Stock”, “Link”, “Stock/Link”, or “Preorder”, depending on option the order will act differently in the way it allocates stock, links towards incoming supplier orders, or creates a demand. 
+Delivery Window (also known as DelWin) is used to manage when products are expected to be delivered. Every B2B order in Centra must belong to one or many Delivery Windows. Products are available for sale once the Delivery Window they belong to has been activated. The Delivery Window normally corresponds with pars of “Order Type” logic in ERP systems. Products in a Delivery Window have available  stock based on “Stock”, “Link”, “Stock/Link”, or “Preorder”. Depending on selected option the order will act differently in the way it allocates stock, links towards incoming supplier orders, or creates a demand.
 
 **Discount**  
 _B2B/B2C_  
-A discount is a setting to make a reduction off of the original value of a product.  (not sure how to describe this really, let me know what you would want here)
+A Discount is a setting for making a reduction off the original price of a product. It can be applied to the price of a single product or the entire order. It can also be configured as a fixed or percentage discount value.
 
 **Display**  
 _B2B/B2C_  
-In a display you choose how and where a product should be displayed. You set which market it should be displayed, in which categories and in which variant. You’ll also set the storefront product -name in the “display name”. A product without display won’t appear in API responses.
+In a display you choose how and where a product should be presented in the front end. You set which market, categories and variant it should be displayed in. You’ll also set the storefront product name in the “display name”. A product without display won’t appear in API responses.
 
 ## E
 
 **EAN**  
 _B2B/B2C_  
-European Article Number. A field on size level which should be unique. Can also be populated with a UPC.
+European Article Number. Like GTIN (Global Trade Item Number), it identifies a specific product, variant and size. Can be set as a field on size level which should be unique. Can also be populated with a UPC (Universal Product Code).
 
 **ERP**  
 Enterprise Resource Planning (system).
@@ -128,30 +125,36 @@ Enterprise Resource Planning (system).
 ## F
 
 **Folder**  
-Folders are used to categorize your products internally in Centra. You can also filter in certain views based on this.
-
-**FTA (free to allocate)**  
-Physical warehouse stock with allocated units removed
+_B2B/B2C_  
+Folders are used to categorize products internally in Centra. One product can belong to at most one folder. Folders are not exposed in the Front End.
 
 ## G
+
+**General Attributes**  
+_B2B/B2C_  
+See Attributes.
 
 **Gift certificate**  
 _B2C_  
 A gift certificate is a way to sell gift certs to your B2C customers. This will need its own separate checkout.
 
-**Google Merchant**  
+**Google Merchant Plugin**  
+_B2B/B2C_  
+Google Merchant is a service used for advertising your products in Google’s search results. You can use Centra’s plugin to feed information about your products to Google.
 
 ## H
 
-**Handling cost**
+**Handling cost** *  
+_B2B/B2C_  
+When creating an order, this is the cost of using a specific payment method. It’s configurable in the payment plugin. Handling Cost can also be added when creating a return. It will be added to the return value.
 
 **Harm code** *  
-Harmonization code, also known as commodity code. Used for custom when exporting to certain countries.
+Harmonization code, also known as commodity code. Used for customs when exporting to certain countries.
 
 ## I
 
-**Item** *  
-ingen aning vad detta har för kontext 
+**Item** *   
+An API response for an order, for every element of the “items” table, item is presented as “X-Y”, where X is the product ID and Y is the variant ID.
 
 ## L
 
@@ -160,166 +163,178 @@ A parameter to define language
 
 **Lookbook**  
 _B2B_  
-Lookbook is a feature (in Showroom), to generate a link to a specific delivery window, to be displayed without prices in order to present products to potential customers.
+Lookbook is a feature in Showroom that allows you to generate a link to products offered in a specific delivery window and display them without prices in order to present products to potential customers.
 
 ## M
 
 **Market** *  
 _B2B/B2C_  
-Markets in Centra behave differently in B2B and B2C. For B2C, it’s a geographical market based on GeoIP. In B2B, it’s used more as customer groups.
-
-**Marketplace**  
-A place where you can sell your goods. Amazon is a marketplace.
+Markets allow you to segment your store into logical entities. They control which products are available on the website, what campaigns and vouchers are active and which shipping options will be available. In B2C, Market is usually selected based on the end customer geo-location, or it can be set when the customer visits the store via a campaign URL. In B2B, markets can be configured as separate customer groups.
 
 **Measurement chart**  
-Used to display the measurements of your products. Will appear in showroom.
-
-**Merchant**  
-Oklart
+_B2B/B2C_  
+Used to display the measurements of your products. While Size Charts define product sizes (S, M, L, XL), measurement charts are used to define measurements, in specific units, for each size. For example, measuremement chart for trousers can consist of leg and waist size, defined in cm or inches, for each defined size. This data can be used when displaying products in Showroom.
 
 ## O
 
-**Omnichannel**  
-
-**Order**
+**Order**  
+_B2B/B2C_  
+A document containing information about the customer or account (name, shipping address, etc.) and a list of ordered items. Selection becomes an order when you do a checkout
 
 **Order sheet**  
-An order sheet is the state of an order before it has been completed and checked out. It can be seen as an order suggestion. As long as the order sheet is not checked out, it will not become a sales order.
+_B2B_  
+An order sheet is the state of an order before it has been completed and checked out. It can be seen as an order suggestion. The Order Sheet will not become a Sales Order until it has been checked out.
 
 **Order date** *  
-The date when the order is placed
+_B2B/B2C_  
+The date when an order is placed. In B2C the order date is the date the customer receives the receipt. In B2B, the Order Date is when either the Seller or the Buyer confirm an order.
+
+**Order status**  
+
+* Incomplete (0)
+* Pending (1)
+* Confirmed (2)
+* Processing (3)
+* Completed (4)
+* Archived (5)
+* Cancelled (6)
+* Hold (flag)
+* Checkout Requested
 
 ## P
 
-**Packaging**
-
 **PIM**  
-Product Information Management. See “Product Catalog”
+_B2B/B2C_  
+Product Information Management. See “Product Catalog”.
 
 **PO number**  
-Purchase Order number. Usually given by customer to mark their sales order with
+_B2B/B2C_  
+Purchase Order number. Usually given by a customer to mark their sales order.
 
 **Preorder**  
-A preorder is used to take orders before goods are available.
+_B2B/B2C_  
+Preorder function allows creating orders before goods are available.
 
 **Price list**  
-A list that contains prices for products to be sold. For B2B, you have Price A and B. Where A is RRP (Recommended Retail Price)
+_B2B/B2C_  
+A list that contains prices for available products. For each configured store, multiple pricelists can be defined, each using specific currency and default shipping method, and linked to one or more geo-locations. Only one pricelist can be selected as default for any country. For B2B, two prices - Price A and B - are defined for each product, where B is RRP (Recommended Retail Price).
 
 **Product**  
-In Centra, Product is a top-level definition of an item for sale. Products are split up into variants (i.e. by colour, by style), and each variant is split up into sizes according to the selected size chart. Each product variant needs to belong to at least one display in order to be searchable and purchasable.
+_B2B/B2C_  
+In Centra, Product is a top-level definition of an item for sale. Products are split up into variants (i.e. by colour, by style), and each variant is split up into sizes according to the selected size chart. Each Product Variant has to belong to at least one display in order to be searchable and purchasable.
 
 **Product Catalog**  
-The product catalog contains all of your products Created in Centra. Whether or not they’re for B2C or B2B sales, or both. 
+_B2B/B2C_  
+The product catalog contains all of your Products stored in Centra.
 
 ## R
+
+**Registered customers**  
+_B2C_  
+This section will give you a list of all customers that have signed in, either during order process or through registration form. When creating orders, they will be linked to a registered customer by matching on their e-mail address.
 
 **Refund**  
 _B2C_  
 A function to refund your customer in case of returns.
 
 **Related products**  
-Products can be related in different ways. This is used mainly for B2C stores to display things like “goes well with”. But it can also be used to display that a product is available in another material, as an example.
-
-**Reorder**  
-Finns detta i Centra? 
+_B2B/B2C_  
+Products can be related in different ways. This is used mainly for B2C stores to display things like “goes well with”. But it can also be used i.e. to display that a product is available in another material.
 
 **Report**  
 Used to create reports to export. Like sales figures.
 
-**Retailer**  
-
-**Return**  
-förklar hur retur fungerar icentra
-
-**Return date**  
-Date of return
-
 **Reuse value**  
-Value left to re-use
-
-**RRP**  
-Recommended Retail Price
+_B2B/B2C_  
+Value of a voucher left to reuse.
 
 ## S
 
 **Sales Rep**  
-The user responsible for a Wholesale B2B account
+The user responsible for a Wholesale B2B account.
 
 **Selection**  
 _B2B/B2C_  
-A selection is where products and quantity is stored together with customer data (see also: Basket). Typically in B2C we will call it Cart and in B2B an Ordersheet.
+A selection is where products are held when chosen for purchase. Once the selection is checked out, it becomes an Order. Typically in B2C we will call it Cart and in B2B an Order Sheet.
 
-**Seller**
+**Seller** *  
 
-**Sent date**
+**Sent date**  
+Timestamp for when a shipment was marked as “Shipped” and the shipment was completed.
 
 **Serializable product**  
-A function to use if products require s/n scanning
+_B2B/B2C_  
+A product is serializable if every item sold is unique, identified 1:1 by its serial number. For example, a red summer shirt size XL is not serializable, since it’s exactly the same as all other red summer XL shirts.
 
-**Shipment**  A shipment is generated from a sales order. One order can have multiple shipments. It’s the outbound delivery.
-
-**Shipment date**  
-Date of shipment
+**Shipment**  
+_B2B/B2C_  
+A Shipment is generated from a sales order. One order can have multiple shipments. It’s the outbound delivery.
 
 **Shipping cost**  
+_B2B/B2C_  
+The price of the freight of the order. It can be defined as a fixed price, or depend on the number and/or weight of items in order.
 
 **Size** *  
-The size of the product
+The size of the product.
 
 **Size chart**  
+_B2B/B2C_  
 A chart that contains multiple sizes. Each variant for a product must have a size chart selected
 
-**Size table**  
-This might be the above one. 
-
-**SKU**  
-Stock Keeping Unit. In Centra the full SKU is separated in three different places. Main product SKU, variant SKU and Size SKU. 
+**SKU** *  
+Stock Keeping Unit. In Centra the full SKU is built from three different values: main product SKU, variant SKU and size SKU.
 
 **Static** *  
-Statics are used for certain settings in Centra, like email copy for order and shipping confirmations. It can also be used for setting text for buttons in a storefront, if built that way.
+In Centra, statics are used to define some of the commonly used parts of the system. For example, e-mail statics can be used to define templates for order confirmations and cancellations. Other statics can define store terms and conditions, or items to be used in the Front End - a static button text or footer content. There are some pre-existing statics, and the customer has the option to add their own.
 
-**Stock**  
-
-**Stock unit**
+**Stock status**  
+_B2B/B2C_  
+* Physical
+* FTA
+* Physical warehouse stock with allocated units removed.
+* Allocated
+* Linked
+* Demand
+* Unshipped
+* Available now
+* Unlinked
+* Incoming
+* On delivery
+* Available
 
 **Store**  
-Centra can have multiple stores in the same instance. Normally, you have a B2C and a B2B store. But you can have more than one B2C store if needed.
+_B2B/B2C_  
+Centra can have multiple stores in the same instance. The normal setup is to have two stores - one for B2C and one for B2B. have a B2C and a B2B store. It is however possible to have more than one B2C store if needed.
 
 **Supplier**  
-A supplier in Centra is from where your products are purchased/manufactured. 
-
-**Swatch**
+_B2B/B2C_  
+A Supplier in Centra is from where your products are purchased or manufactured.
 
 ## T
 
-**Taxonomy**
-
 **Terms**  
 _B2B_  
-Terms is a section where you setup your incoterms and payment terms to be used for your customers
-
-## U
-
-**Unit**
-
-**Upsell**
+Terms is a section where you setup your incoterms and payment terms to be used for your customers. They are defined as store statics.
 
 ## V
 
 **Variant**  
-Every product in Centra has at least one variant. A variant is typically a color or material of a product
+_B2B/B2C_  
+Every product in Centra has at least one Variant. A variant is typically a color or material of a product.
 
 **Voucher**  
 _B2B/B2C_  
-A voucher is used to give rebates, free shipping, free products etc to a customer. When a voucher is applied the selection will be updated to reflect changes made by the voucher. A voucher can be automatically applied based on certain rules, or a code can be entered
+A voucher is used to give rebates, free shipping, free products etc. to a customer. When a voucher is applied, the selection will be updated to reflect changes made by the voucher. A voucher can be automatically applied based on certain rules, or a code can be entered.
 
 ## W
 
 **Warehouse**  
-A warehouse in Centra is where stock is stored. There are no storage locations in Centra.
+_B2B/B2C_  
+A warehouse in Centra is where stock is stored. Warehouse is defined by its name and priority. Each warehouse can belong to one or more warehouse groups. When stock is added, either by importing a CSV or via stock editor, it always needs to be added to one of the warehouses. There are no storage locations in Centra.
 
 **Warehouse group**  
-With the help of a warehouse group, you will set for which markets and stores specific warehouses is used for.
+_B2B/B2C_  
+Consists of one or more warehouses sorted by priority. One warehouse group can belong to multiple markets, but two groups cannot belong to the same market. With the help of a warehouse group, you will set for which markets and stores specific warehouses is used for. Each market has exactly one default warehouse group.
 
 **WMS**  
-Warehouse Management System
+Warehouse Management System.
