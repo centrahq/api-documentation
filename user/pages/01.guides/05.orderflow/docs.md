@@ -1,6 +1,6 @@
 ---
-title: Order flow
-excerpt: Check out the basic order flow as seen in Centra backend.
+title: Order flow in Centra
+altTitle: Order flow
 taxonomy:
     category: docs
 ---
