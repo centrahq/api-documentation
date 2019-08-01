@@ -193,6 +193,7 @@ The date when an order is placed. In B2C the order date is the date the customer
 
 **Order status**  
 _B2B/B2C_  
+
 [Order flow in Centra](https://centra-api-documentation-demo.herokuapp.com/guides/orderflow)  
 
 * Incomplete (0)
