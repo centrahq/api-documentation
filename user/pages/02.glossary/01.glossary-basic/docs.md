@@ -198,21 +198,21 @@ _B2B/B2C_
 ![OrderFlow](https://centra-api-documentation-demo.herokuapp.com/user/pages/01.guides/05.orderflow/order-flow.png?resize=400)  
 
 * Incomplete (0)  
-  This is a selection before it’s checked out. It contains the list of selected items, information about language and currency or discounts, plus a list of optional shipping methods.  
+  This is a selection before it’s checked out. It contains the list of selected items, information about language and currency or discounts, plus a list of optional shipping methods.
 * Pending (1)  
-  This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, shipping and payment.  
+  This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, shipping and payment.
 * Confirmed (2)  
-  This order has been manually confirmed in the Centra admin panel. Only confirmed orders can have a shipment created for them. This step can be skipped by enabling store option “Direct to Shipment”, in which case the checked out order will transfer to status Processing (3) with a shipment created and marked Good-To-Go.  
+  This order has been manually confirmed in the Centra admin panel. Only confirmed orders can have a shipment created for them. This step can be skipped by enabling store option “Direct to Shipment”, in which case the checked out order will transfer to status Processing (3) with a shipment created and marked Good-To-Go.
 * Processing (3)  
-  This order has at least one shipment related to it, and at least one of those shipments is not completed. Ordered items can be split into multiple shipments depending on availability or other factors.  
+  This order has at least one shipment related to it, and at least one of those shipments is not completed. Ordered items can be split into multiple shipments depending on availability or other factors.
 * Completed (4)  
-  This order has completed payment capture and expedited all related shipments. Additional information on shipping details and tracking number can be added when completing each shipment.  
+  This order has completed payment capture and expedited all related shipments. Additional information on shipping details and tracking number can be added when completing each shipment.
 * Archived (5)  
-  This order has been archived and will not show up in search results in Centra. Depending on API plugin configuration, it may also be hidden in API responses.  
+  This order has been archived and will not show up in search results in Centra. Depending on API plugin configuration, it may also be hidden in API responses.
 * Cancelled (6)  
-  This ordered has been cancelled at any stage before the payment was captured (once the payment has been successful, a refund should be made instead of cancelling the order). Cancelled orders have the option to be fully and irreversibly deleted from the database.  
+  This ordered has been cancelled at any stage before the payment was captured (once the payment has been successful, a refund should be made instead of cancelling the order). Cancelled orders have the option to be fully and irreversibly deleted from the database.
 * Hold (flag)  
-  This order is on hold by manual intervention in Centra backend. Its details can still be edited, but it cannot proceed with shipment or payment until resumed.  
+  This order is on hold by manual intervention in Centra backend. Its details can still be edited, but it cannot proceed with shipment or payment until resumed.
 * Checkout Requested  
 
 ## **P**
@@ -304,29 +304,28 @@ In Centra, statics are used to define some of the commonly used parts of the sys
 **Stock status**  
 _B2B/B2C_  
 
-* Physical  
-  
-* FTA  
-
-* Physical warehouse stock with allocated units removed.  
-
-* Allocated  
-
-* Linked  
-
-* Demand  
-
-* Unshipped  
-
-* Available now  
-
-* Unlinked  
-
-* Incoming  
-
-* On delivery  
-
-* Available  
+* **Physical** = FTA + Unshipped
+This is the quantity that you have on the shelf in the warehouse. If there are any differences, Centra wouldn’t know about.
+* FTA = Physical - Allocated
+Free to Allocate. This is the quantity of said product which is available to allocate on orders, or simply, this is the quantity available.
+* **Allocated** = Physical - FTA
+The number of said products that are allocated on orders or shipments which are not yet completed.
+* **Linked**
+The quantity of said product which is on order and linked towards a supplier order.
+* **Demand**
+The quantity of said product which is on order but not linked to a supplier order or allocated. All products in unshipped orders that are back ordered or on preorder.
+* **Unshipped**
+The quantity of said product which is allocated on order but not yet shipped.
+* **Available now** = FTA - Demand
+The quantity available right now of said product.
+* **Unlinked**
+The unlinked quantity of said product. This field is only used if you’re using the Supplier Module.
+* **Incoming**
+The incoming quantity of said product. This field is only populated if you’re using the Supplier Module and have supplier orders with products which are not yet delivered. The supplier order also need to have a preferred warehouse for this to show up correctly.
+* **On delivery**
+This field will be populated with data if said product is on a delivery created from a supplier order, which are not yet accepted.
+* **Available**
+The total of said product’s stock including incoming supplier orders. 
 
 
 **Store**  
