@@ -202,7 +202,7 @@ _B2B/B2C_
 * Pending (1)  
   This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, shipping and payment.
 * Confirmed (2)  
-  This order has been manually confirmed in the Centra admin panel. Only confirmed orders can have a shipment created for them. This step can be skipped by enabling store option “Direct to Shipment”, in which case the checked out order will transfer to status Processing (3) with a shipment created.
+  This order has been manually confirmed in the Centra admin panel. Only confirmed orders can have a shipment created for them. This step can be skipped by enabling store option “Direct to Shipment”, in which case the checked out order will transfer to status Processing (3) with a shipment created and marked Good-To-Go.
 * Processing (3)  
   This order has at least one shipment related to it, and at least one of those shipments is not completed. Ordered items can be split into multiple shipments depending on availability or other factors.
 * Completed (4)  
