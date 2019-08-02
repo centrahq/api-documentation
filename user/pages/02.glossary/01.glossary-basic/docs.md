@@ -307,7 +307,7 @@ _B2B/B2C_
 
 * **Physical** = FTA + Unshipped  
 This is the quantity that you have on the shelf in the warehouse. If there are any differences, Centra wouldn’t know about.
-* FTA = Physical - Allocated  
+* **FTA** = Physical - Allocated  
 Free to Allocate. This is the quantity of said product which is available to allocate on orders, or simply, this is the quantity available.
 * **Allocated** = Physical - FTA  
 The number of said products that are allocated on orders or shipments which are not yet completed.
