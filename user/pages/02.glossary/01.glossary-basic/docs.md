@@ -198,21 +198,21 @@ _B2B/B2C_
 ![OrderFlow](https://centra-api-documentation-demo.herokuapp.com/user/pages/01.guides/05.orderflow/order-flow.png?resize=400)  
 
 * Incomplete (0)  
-  This is a selection before it’s checked out. It contains the list of selected items, information about language and currency or discounts, plus a list of optional shipping methods.
+  This is a selection before it’s checked out. It contains the list of selected items, information about language and currency or discounts, plus a list of optional shipping methods.  
 * Pending (1)  
-  This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, shipping and payment.
+  This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, shipping and payment.  
 * Confirmed (2)  
-  This order has been manually confirmed in the Centra admin panel. Only confirmed orders can have a shipment created for them. This step can be skipped by enabling store option “Direct to Shipment”, in which case the checked out order will transfer to status Processing (3) with a shipment created and marked Good-To-Go.
+  This order has been manually confirmed in the Centra admin panel. Only confirmed orders can have a shipment created for them. This step can be skipped by enabling store option “Direct to Shipment”, in which case the checked out order will transfer to status Processing (3) with a shipment created and marked Good-To-Go.  
 * Processing (3)  
-  This order has at least one shipment related to it, and at least one of those shipments is not completed. Ordered items can be split into multiple shipments depending on availability or other factors.
+  This order has at least one shipment related to it, and at least one of those shipments is not completed. Ordered items can be split into multiple shipments depending on availability or other factors.  
 * Completed (4)  
-  This order has completed payment capture and expedited all related shipments. Additional information on shipping details and tracking number can be added when completing each shipment.
+  This order has completed payment capture and expedited all related shipments. Additional information on shipping details and tracking number can be added when completing each shipment.  
 * Archived (5)  
-  This order has been archived and will not show up in search results in Centra. Depending on API plugin configuration, it may also be hidden in API responses.
+  This order has been archived and will not show up in search results in Centra. Depending on API plugin configuration, it may also be hidden in API responses.  
 * Cancelled (6)  
-  This ordered has been cancelled at any stage before the payment was captured (once the payment has been successful, a refund should be made instead of cancelling the order). Cancelled orders have the option to be fully and irreversibly deleted from the database.
+  This ordered has been cancelled at any stage before the payment was captured (once the payment has been successful, a refund should be made instead of cancelling the order). Cancelled orders have the option to be fully and irreversibly deleted from the database.  
 * Hold (flag)  
-  This order is on hold by manual intervention in Centra backend. Its details can still be edited, but it cannot proceed with shipment or payment until resumed.
+  This order is on hold by manual intervention in Centra backend. Its details can still be edited, but it cannot proceed with shipment or payment until resumed.  
 * Checkout Requested  
 
 ## **P**
