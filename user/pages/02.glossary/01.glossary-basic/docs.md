@@ -303,6 +303,7 @@ In Centra, statics are used to define some of the commonly used parts of the sys
 
 **Stock status**  
 _B2B/B2C_  
+![OrderFlow](stock-status.png?resize=1200)  
 
 * **Physical** = FTA + Unshipped  
 This is the quantity that you have on the shelf in the warehouse. If there are any differences, Centra wouldn’t know about.
