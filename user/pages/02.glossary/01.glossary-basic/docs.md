@@ -325,9 +325,8 @@ The unlinked quantity of said product. This field is only used if you’re using
 The incoming quantity of said product. This field is only populated if you’re using the Supplier Module and have supplier orders with products which are not yet delivered. The supplier order also need to have a preferred warehouse for this to show up correctly.
 * **On delivery**  
 This field will be populated with data if said product is on a delivery created from a supplier order, which are not yet accepted.
-* **Available**  
-The total of said product’s stock including incoming supplier orders. 
-
+* **Available** = FTA - Demand + Incoming  
+The total of said product’s stock including incoming supplier orders.
 
 **Store**  
 _B2B/B2C_  
