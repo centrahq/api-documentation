@@ -5,15 +5,14 @@ taxonomy:
     category: docs
 ---
 
-Here's the basic order flow as seen in Centra backend. Click image to enlarge.
+Here's the basic order flow as seen in Centra backend.
 
-<!--<a rel="lightbox" data-width="600" href="../user/pages/01.guides/05.orderflow/Order-flow.png"><img title="Order flow" alt="Order flow" src="../user/pages/01.guides/05.orderflow/Order-flow-thumb.png" /></a>-->
 ![OrderFlow](order-flow.png?lightbox=3333x4000&resize=1200)
 
 ### Order statuses
 
 * Incomplete (0)  
-  This is a selection before it’s checked out. It contains the list of selected items, information about language and currency or discounts, plus a list of optional shipping methods.
+  This is a selection before it’s checked out. It contains the list of selected items, information about language and currency, discounts, plus a list of optional shipping methods.
 * Pending (1)  
   This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, selected shipping and payment.
 * Confirmed (2)  
@@ -25,7 +24,7 @@ Here's the basic order flow as seen in Centra backend. Click image to enlarge.
 * Archived (5)  
   This order has been archived and will not show up in search results in Centra. Depending on plugin configuration, it may also be hidden in API responses.
 * Cancelled (6)  
-  This ordered has been cancelled at any stage before the payment was captured (once the payment has been successful, a refund should be made instead of cancelling the order). Cancelled orders have the option to be fully and irreversibly deleted from the database.
+  This ordered has been cancelled at any stage before the payment was captured (once the payment capture has been successful, a refund should be made instead of cancelling the order). Cancelled orders have the option to be fully and irreversibly deleted from the database.
 * Hold (flag)  
   This order is on hold by manual intervention in Centra backend. Its details can still be edited, but it cannot proceed with shipment or payment until resumed.
 

@@ -21,6 +21,9 @@ Tool for linking orders to different sources, typically to track sales from soci
 _B2B_  
 Specific user role in Centra for agents. The Agent can add Accounts and place orders for Accounts. Agent users have access to both Centra and Centra Showroom. Agents can be configured with a commission percentage which is used to calculate their Commission. 
 
+**Allocated (stock)** = Physical - Free To Allocate  
+The number of said products that are allocated on orders or shipments which are not yet completed.
+
 **Attribute**  
 _B2B/B2C_  
 Specific data field attached to a Product (General Attributes) or Variant (Variant Attributes). There are standard, predefined and custom attributes. Custom attributes definitions are set up in the Configuration and their values are set up in the Attribute Catalog
@@ -31,6 +34,12 @@ This is where the static custom attributes defined in the client configuration a
 
 **Archived** (order status 5)  
 This order has been archived and will not show up in search results in Centra. Depending on API plugin configuration, it may also be hidden in API responses.
+
+**Available (stock)** = Free To Allocate - Demand + Incoming  
+The total of said product’s stock including incoming supplier orders.
+
+**Available now (stock)** = Free To Allocate - Demand  
+The quantity available right now of said product.
 
 ## **B**
 
@@ -112,6 +121,9 @@ This order has been manually confirmed in the Centra admin panel. Only confirmed
 _B2B/B2C_  
 Demand is used with either “Allow backorders” or “Preorder” enabled, this will be the suggested amount to purchase from suppliers.
 
+**Demand (stock)**  
+The quantity of said product which is on order but not linked to a supplier order or allocated. All products in unshipped orders that are back ordered or on preorder.
+
 **Delivery window**  
 _B2B_  
 Delivery Window (also known as DelWin) is used to manage when products are expected to be delivered. Every B2B order in Centra must belong to one or many Delivery Windows. Products are available for sale once the Delivery Window they belong to has been activated. The Delivery Window normally corresponds with pars of “Order Type” logic in ERP systems. Products in a Delivery Window have available  stock based on “Stock”, “Link”, “Stock/Link”, or “Preorder”. Depending on selected option the order will act differently in the way it allocates stock, links towards incoming supplier orders, or creates a demand.
@@ -138,6 +150,9 @@ Enterprise Resource Planning (system).
 **Folder**  
 _B2B/B2C_  
 Folders are used to categorize products internally in Centra. One product can belong to at most one folder. Folders are not exposed in the Front End.
+
+**Free To Allocate (stock)** = Physical - Allocated  
+Free to Allocate. This is the quantity of said product which is available to allocate on orders, or simply, this is the quantity available.
 
 ## **G**
 
@@ -167,6 +182,9 @@ This order is on hold by manual intervention in Centra backend. Its details can 
 
 ## **I**
 
+**Incoming (stock)**  
+The incoming quantity of said product. This field is only populated if you’re using the Supplier Module and have supplier orders with products which are not yet delivered. The supplier order also need to have a preferred warehouse for this to show up correctly.
+
 **Incomplete** (order status 0)  
 This is a selection before it’s checked out. It contains the list of selected items, information about language and currency or discounts, plus a list of optional shipping methods.
 
@@ -174,6 +192,9 @@ This is a selection before it’s checked out. It contains the list of selected 
 An API response for an order, for every element of the “items” table, item is presented as “X-Y”, where X is the product ID and Y is the variant ID.
 
 ## **L**
+
+**Linked (stock)**  
+The quantity of said product which is on order and linked towards a supplier order.
 
 **Locale** *  
 A parameter to define language
@@ -200,6 +221,9 @@ This section will list registered customers for which “Receive newsletter” f
 
 ## **O**
 
+**On delivery (stock)**  
+This field will be populated with data if said product is on a delivery created from a supplier order, which are not yet accepted.
+
 **Order**  
 _B2B/B2C_  
 A document containing information about the customer or account (name, shipping address, etc.) and a list of ordered items. Selection becomes an order when you do a checkout
@@ -220,6 +244,9 @@ See [Order flow in Centra](https://centra-api-documentation-demo.herokuapp.com/g
 
 **Pending** (order status 1)  
 This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, shipping and payment.
+
+**Physical (stock)** = Free To Allocate + Unshipped  
+This is the quantity that you have on the shelf in the warehouse. If there are any differences, Centra wouldn’t know about.
 
 **PIM**  
 _B2B/B2C_  
@@ -308,33 +335,6 @@ Stock Keeping Unit. In Centra the full SKU is built from three different values:
 **Static** *  
 In Centra, statics are used to define some of the commonly used parts of the system. For example, e-mail statics can be used to define templates for order confirmations and cancellations. Other statics can define store terms and conditions, or items to be used in the Front End - a static button text or footer content. There are some pre-existing statics, and the customer has the option to add their own.
 
-**Stock status**  
-_B2B/B2C_  
-![OrderFlow](stock-status.png?resize=1200)  
-
-* **Physical** = FTA + Unshipped  
-This is the quantity that you have on the shelf in the warehouse. If there are any differences, Centra wouldn’t know about.
-* **FTA** = Physical - Allocated  
-Free to Allocate. This is the quantity of said product which is available to allocate on orders, or simply, this is the quantity available.
-* **Allocated** = Physical - FTA  
-The number of said products that are allocated on orders or shipments which are not yet completed.
-* **Linked**  
-The quantity of said product which is on order and linked towards a supplier order.
-* **Demand**  
-The quantity of said product which is on order but not linked to a supplier order or allocated. All products in unshipped orders that are back ordered or on preorder.
-* **Unshipped**  
-The quantity of said product which is allocated on order but not yet shipped.
-* **Available now** = FTA - Demand  
-The quantity available right now of said product.
-* **Unlinked**  
-The unlinked quantity of said product. This field is only used if you’re using the Supplier Module.
-* **Incoming**  
-The incoming quantity of said product. This field is only populated if you’re using the Supplier Module and have supplier orders with products which are not yet delivered. The supplier order also need to have a preferred warehouse for this to show up correctly.
-* **On delivery**  
-This field will be populated with data if said product is on a delivery created from a supplier order, which are not yet accepted.
-* **Available** = FTA - Demand + Incoming  
-The total of said product’s stock including incoming supplier orders.
-
 **Store**  
 _B2B/B2C_  
 Centra can have multiple stores in the same instance. The normal setup is to have two stores - one for B2C and one for B2B. have a B2C and a B2B store. It is however possible to have more than one B2C store if needed.
@@ -348,6 +348,14 @@ A Supplier in Centra is from where your products are purchased or manufactured.
 **Terms**  
 _B2B_  
 Terms is a section where you setup your incoterms and payment terms to be used for your customers. They are defined as store statics.
+
+## **U**
+
+**Unlinked (stock)**  
+The unlinked quantity of said product. This field is only used if you’re using the Supplier Module.
+
+**Unshipped (stock)**  
+The quantity of said product which is allocated on order but not yet shipped.
 
 ## **V**
 
