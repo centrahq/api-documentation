@@ -29,6 +29,9 @@ Specific data field attached to a Product (General Attributes) or Variant (Varia
 _B2B/B2C_  
 This is where the static custom attributes defined in the client configuration are added to then be selectable on the products, variants, orders, customers or accounts. Attributes can be of type boolean, input, multi-line text, drop-down select, image, file or a readonly static. Please note that empty attribute values are not returned in API responses. Attribute catalog is shared by both B2B and B2C stores.
 
+**Archived** (order status 5)  
+This order has been archived and will not show up in search results in Centra. Depending on API plugin configuration, it may also be hidden in API responses.
+
 ## **B**
 
 **Back-order**  
@@ -66,6 +69,9 @@ A Campaign Site is a way to give selected Customers access to a campaign prior t
 _B2B_  
 A note on an order if the Account don’t want the order after a certain date. The order is not automatically cancelled on the Cancel Date, it is a note for sales staff.
 
+**Cancelled** (order status 6)  
+This ordered has been cancelled at any stage before the payment was captured (once the payment has been successful, a refund should be made instead of cancelling the order). Cancelled orders have the option to be fully and irreversibly deleted from the database.
+
 **Cart**  
 _B2C_  
 See Selection.
@@ -79,6 +85,9 @@ Also see: Folder.
 _B2B/B2C_  
 See Measurement Chart, Size Chart.
 
+**Checkout Requested** (order status)  
+Lorem ipsum.
+
 **Collection**  
 _B2B/B2C_  
 Part of a product’s General Attributes. In fashion, this could be a spring-summer Collection like SS20. If products aren’t set by season and you were selling other appliances, this could e.g. be “Kitchen”.
@@ -87,9 +96,15 @@ Part of a product’s General Attributes. In fashion, this could be a spring-sum
 _B2B/B2C_  
 Taken from the world of fashion, color swatches allow the customer to compare colors, gradients, textures or patterns in a simple manner. In Centra, color swatches can be defined as custom product or variant attributes, usually consisting of color description, hex value and/or small image to show the example texture or pattern.
 
+**Completed** (order status 4)  
+This order has completed payment capture and expedited all related shipments. Additional information on shipping details and tracking number can be added when completing each shipment.
+
 **Configuration**  
 _B2B/B2C_  
 Basic configuration settings for Centra are stored in the config file. The config file differs per client and is only accessible for Centra’s front-end agency partners and Centra Support – not for end-users.
+
+**Confirmed** (order status 2)  
+This order has been manually confirmed in the Centra admin panel. Only confirmed orders can have a shipment created for them. This step can be skipped by enabling store option “Direct to Shipment”, in which case the checked out order will transfer to status Processing (3) with a shipment created and marked Good-To-Go.
 
 ## **D**
 
@@ -113,7 +128,7 @@ In a display you choose how and where a product should be presented in the front
 
 **EAN**  
 _B2B/B2C_  
-European Article Number. Like GTIN (Global Trade Item Number), it identifies a specific product, variant and size. Can be set as a field on size level which should be unique. Can also be populated with a UPC (Universal Product Code).
+European Article Number, a type of GTIN (Global Trade Item Number). It identifies a specific product, variant and size. Can be set as a field on size level which should be unique. Can also be populated with a UPC (Universal Product Code).
 
 **ERP**  
 Enterprise Resource Planning (system).
@@ -147,7 +162,13 @@ When creating an order, this is the cost of using a specific payment method. It�
 **Harm code** *  
 Harmonization code, also known as commodity code. Used for customs when exporting to certain countries.
 
+**Hold** (order status flag)  
+This order is on hold by manual intervention in Centra backend. Its details can still be edited, but it cannot proceed with shipment or payment until resumed.
+
 ## **I**
+
+**Incomplete** (order status 0)  
+This is a selection before it’s checked out. It contains the list of selected items, information about language and currency or discounts, plus a list of optional shipping methods.
 
 **Item** *   
 An API response for an order, for every element of the “items” table, item is presented as “X-Y”, where X is the product ID and Y is the variant ID.
@@ -191,31 +212,14 @@ An order sheet is the state of an order before it has been completed and checked
 _B2B/B2C_  
 The date when an order is placed. In B2C the order date is the date the customer receives the receipt. In B2B, the Order Date is when either the Seller or the Buyer confirm an order.
 
-**Order status**  
+**Order statuses**  
 _B2B/B2C_  
-
-[Order flow in Centra](https://centra-api-documentation-demo.herokuapp.com/guides/orderflow)  
-![OrderFlow](https://centra-api-documentation-demo.herokuapp.com/user/pages/01.guides/05.orderflow/order-flow.png?resize=400)  
-
-* Incomplete (0)  
-  This is a selection before it’s checked out. It contains the list of selected items, information about language and currency or discounts, plus a list of optional shipping methods.
-* Pending (1)  
-  This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, shipping and payment.
-* Confirmed (2)  
-  This order has been manually confirmed in the Centra admin panel. Only confirmed orders can have a shipment created for them. This step can be skipped by enabling store option “Direct to Shipment”, in which case the checked out order will transfer to status Processing (3) with a shipment created and marked Good-To-Go.
-* Processing (3)  
-  This order has at least one shipment related to it, and at least one of those shipments is not completed. Ordered items can be split into multiple shipments depending on availability or other factors.
-* Completed (4)  
-  This order has completed payment capture and expedited all related shipments. Additional information on shipping details and tracking number can be added when completing each shipment.
-* Archived (5)  
-  This order has been archived and will not show up in search results in Centra. Depending on API plugin configuration, it may also be hidden in API responses.
-* Cancelled (6)  
-  This ordered has been cancelled at any stage before the payment was captured (once the payment has been successful, a refund should be made instead of cancelling the order). Cancelled orders have the option to be fully and irreversibly deleted from the database.
-* Hold (flag)  
-  This order is on hold by manual intervention in Centra backend. Its details can still be edited, but it cannot proceed with shipment or payment until resumed.
-* Checkout Requested  
+See [Order flow in Centra](https://centra-api-documentation-demo.herokuapp.com/guides/orderflow).  
 
 ## **P**
+
+**Pending** (order status 1)  
+This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, shipping and payment.
 
 **PIM**  
 _B2B/B2C_  
@@ -232,6 +236,9 @@ Preorder function allows creating orders before goods are available.
 **Price list**  
 _B2B/B2C_  
 A list that contains prices for available products. For each configured store, multiple pricelists can be defined, each using specific currency and default shipping method, and linked to one or more geo-locations. Only one pricelist can be selected as default for any country. For B2B, two prices - Price A and B - are defined for each product, where B is RRP (Recommended Retail Price).
+
+**Processing** (order status 3)  
+This order has at least one shipment related to it, and at least one of those shipments is not completed. Ordered items can be split into multiple shipments depending on availability or other factors.
 
 **Product**  
 _B2B/B2C_  
