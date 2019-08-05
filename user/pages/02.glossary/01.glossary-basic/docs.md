@@ -53,7 +53,7 @@ A Bundle Product is a Product created by combining physical products within Cent
 
 **Buyer**  
 _B2B_  
-Individual connected to a specific Account who can log in to Centra Showroom and place orders. For example a purchaser at a specific store.
+Individual connected to a specific Account who can log in to Centra Showroom and place orders. For example a purchaser at a specific Store.
 
 ## **C**
 
@@ -238,7 +238,7 @@ _B2B/B2C_
 A list that contains prices for available products. For each configured store, multiple pricelists can be defined, each using specific currency and default shipping method, and linked to one or more geo-locations. Only one pricelist can be selected as default for any country. For B2B, two prices - Price A and B - are defined for each product, where B is RRP (Recommended Retail Price).
 
 **Processing** (order status 3)  
-This order has at least one shipment related to it, and at least one of those shipments is not completed. Ordered items can be split into multiple shipments depending on availability or other factors.
+This order has at least one shipment related to it, and at least one of those shipments is not completed. Ordered items can be split into multiple shipments depending on availability and other factors.
 
 **Product**  
 _B2B/B2C_  
