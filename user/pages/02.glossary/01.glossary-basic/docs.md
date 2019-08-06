@@ -9,15 +9,15 @@ Asterisk (`*`) means there are unresolved related comments to be addressed in [G
 
 ## **A**
 
-####  **4 Account**  
+###  **3 Account**  
 _B2B_  
 Account is a company or individual buying Wholesale with a profile stored in Centra. An Account can be represented by several Buyers. Information about the Account is stored where customer information is stored. Examples are: Customer Number, Buyers, Addresses. There are also attributes for segmentation such as Market, Price List and Warehouse Group. Accounts are only used in the Wholesale module of Centra. The corresponding concept in the Direct-to-Consumer module is Customer.
 
-##### **5 Affiliate** *  
+#### **4 Affiliate** *  
 _B2C_  
 Tool for linking orders to different sources, typically to track sales from social media channels. An Affiliate can use it by inserting a pixel or a code snippet with a specific URL into their own channels. Each call of the URL will create a cookie that identifies the end user and matches with the Affiliate. You have the option to setup the Affiliate URL to include additional attributes and change the amount of days that cookie will be valid.
 
-###### **6 Agent**  
+##### **5 Agent**  
 _B2B_  
 Specific user role in Centra for agents. The Agent can add Accounts and place orders for Accounts. Agent users have access to both Centra and Centra Showroom. Agents can be configured with a commission percentage which is used to calculate their Commission. 
 
