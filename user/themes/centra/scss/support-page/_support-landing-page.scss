@@ -34,6 +34,19 @@
       padding: 7px 35px;
     }
   }
+
+  .docs__articles-wrapper {
+    padding: 100px 70px 0;
+  }
+
+  .article__graphics {
+    height: auto;
+    width: 100%;
+  }
+
+  .article__title {
+    height: 80px;
+  }
 }
 
 .section-newsletter-updates {
@@ -114,6 +127,19 @@
     .name-section {
       margin-bottom: 25px;
     }
+
+    .docs__article {
+      min-width: 260px;
+      max-width: 340px;
+    }
+
+    .article__title {
+      font-size: 22px;
+    }
+
+    .docs__articles-wrapper {
+      padding: 100px 30px 0;
+    }
   }
 }
 
@@ -130,6 +156,15 @@
 
     .section-newsletter-updates {
       margin-bottom: 50px;
+    }
+
+    .docs__article {
+      min-width: 270px;
+    }
+
+    .article__title {
+      font-size: 18px;
+      height: 36px;
     }
   }
 
