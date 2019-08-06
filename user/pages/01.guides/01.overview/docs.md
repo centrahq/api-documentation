@@ -1,10 +1,58 @@
 ---
-title: Overview
+title: Overview - Store logic and basic concepts
+altTitle: Centra overview
 taxonomy:
     category: docs
 ---
 
+Centra is a natively multi-market (different products or pricing to different customer segments), multi-currency, multi-pricelist and multi-language system. Combined, this flexibility of Centra enables serving a global market from a single Centra instance, and serving individual customer segments with tailored offers for both products and prices, including campaigns and discounts. It is also possible to control what products are visible and/or offered for sale in different markets, and implement local pricing strategies that are independent of language and currency selection. Non-geographical markets can also be defined, e.g., VIP customers, an affiliate influencer’s followers, or employees.
 
+![StoreLogic](store-logic.png?lightbox=3333x4000&resize=1200)
+
+### Store
+
+Store is the basic logical entity in Centra. By default, each Centra instance is created with two stores - Retail and Wholesale. It is possible to add more stores. This is useful for customers who want to serve multiple stores (for example, different brands and/or types of products) using a single Centra instance. Each Store contains a number of options controlling behaviour of orders, shipments, customers, invoices, stock, notification e-mails and payments.
+
+Defining a store requires specifying default Pricelist, default Market and selecting locales. Additionaly, each store should be tied to at least one Warehouse Group. Finally, Store can have multiple plugins enabled, which control functions like APIs, payment and shipping methods, data feeds (Facebook, Instagram, Google Merchant etc.) or e-mails.
+
+### Market
+
+Markets divide your store into logical entities, which can be based on Geo-locations (one market per each country the store goods are offered in), or business needs (e.g. "VIP" market offerring goods at limited prices to VIP customers). Products in each market can have different prices and use different currencies, they also can have completely separate Product Displays, resulting in a different ways the same Products are shown in each Market. Products stock levels are shown based on the configured Warehouse Group.
+
+### Currency
+
+Lorem ipsum.
+
+### Pricelist
+
+Lorem ipsum.
+
+### Brand
+
+LI.
+
+### Product
+
+asd
+
+### Product Display
+
+srgsercrxfcdzxf
+
+### Warehouse
+
+Something something dark side.
+
+### Warehouse Group
+
+Blah.
+
+### Plugin
+
+Link to [Plugins](https://centra-api-documentation-demo.herokuapp.com/guides/plugins/)
+
+
+<!-- REMOVE
 Let's face it: Writing content for the Web is tiresome. WYSIWYG editors help alleviate this task, but they generally result in horrible code, or worse yet, ugly web pages.
 
 **Markdown** is a better way to write **HTML**, without all the complexities and ugliness that usually accompanies it.
@@ -72,16 +120,18 @@ HTML:
 Comments should be HTML compatible
 
 ```html
+REMOVE -->
 <!--
 This is a comment
 -->
+<!-- REMOVE
 ```
 Comment below should **NOT** be seen:
-
+REMOVE -->
 <!--
 This is a comment
 -->
-
+<!-- REMOVE
 <br>
 <br>
 <br>
@@ -714,3 +764,4 @@ With a reference later in the document defining the URL location:
 
 
     [id]: http://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+REMOVE -->
