@@ -165,10 +165,6 @@ See Attributes.
 _B2C_  
 A gift certificate is a way to sell gift certs to your B2C customers. This will need its own separate checkout.
 
-### **Google Merchant Plugin**  
-_B2B/B2C_  
-Google Merchant is a service used for advertising your products in Google’s search results. You can use Centra’s plugin to feed information about your products to Google.
-
 ## **H**
 
 ### **Handling cost** *  

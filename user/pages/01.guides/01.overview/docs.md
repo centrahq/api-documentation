@@ -17,39 +17,49 @@ Defining a store requires specifying default Pricelist, default Market and selec
 
 ### Market
 
-Markets divide your store into logical entities, which can be based on Geo-locations (one market per each country the store goods are offered in), or business needs (e.g. "VIP" market offerring goods at limited prices to VIP customers). Products in each market can have different prices and use different currencies, they also can have completely separate Product Displays, resulting in a different ways the same Products are shown in each Market. Products stock levels are shown based on the configured Warehouse Group.
+Markets divide your store into logical entities, which can be based on Geo-locations (one market per each country the store goods are offered in), or business needs (e.g. "VIP" market offerring goods at limited prices to VIP customers). Products in each market can have different prices, discounts and use different currencies, they also can have completely separate Product Displays, resulting in a different ways the same Products are shown in each Market. Products stock levels are shown based on the configured Warehouse Group.
 
 ### Currency
 
-Lorem ipsum.
+Each currency used in the Store is defined by its ISO code, ISO number, number of decimals and decimal point. You can also specify a prefix, suffix and denominator. These settings are used for display purposes only, they do not affect how the prices are calculated.
 
 ### Pricelist
 
-Lorem ipsum.
+Pricelists control how much your products cost in each Currency and in each Store. Since Pricelists connects to a Product Display, and not the Product itself, Product price can be different in each configured store. Product without a price will be shown, but is not purchasable, which means it cannot be added to a selection.
+
+You can only configure one Pricelist per one Store per one geo-location. This means you cannot have two EUR pricelists selected for geo-location "Spain". However, you can still configure Pricelists using the same Currency for different Markets, for example one SEK Pricelist set for geo-location "Sweden" and one SEK Pricelist with no geo-location connected to Market "VIP clients".
 
 ### Brand
 
-LI.
+Since Centra was built mostly to support fashion, Brand is one of the basic (though not obligatory) property of a Product. Brand can be used to group products or to filter API results. Additionally, Brand can be selected as active in zero or more Stores. This will have impact on Showroom FrontEnd - Products without an activated Brand will not be shown.
 
 ### Product
 
-asd
+A Product is stored in a hierarchical structure, in which the Product is broken down into Variants and Sizes. The Product represents a certain design. Variants are different versions of the same product, typically different colors. Sizes are the different sizes you can buy the style in. This product structure enables very efficient product information management. 
+
+Most information is stored on the Product level, where you find the Folder, Collection and all basic information such as Country of Origin, HS Code and Material Composition. All products have at least one Variant and all Variants have at least one Size, even if it is a one-size product.
+
+The Variant level focuses on media (images) and a few attributes, notably color.
+
+Besides actual size, the Size level stores GTINs (UPC or EAN codes), weight and dimensions. Stock inventory is stored on the Size level, as the size represents the physical item that exists in a warehouse. 
 
 ### Product Display
 
-srgsercrxfcdzxf
+A Display is, just like a display in a brick-and-mortar store, one or more related items for sale that is arranged and presented in a way that might trigger a purchase. An item for sale might be included in more than one Display. You might for example have a unisex item included both in a Display in the Women’s and Men’s department. When you query the API for what to show on a category page, you will get a set of Displays back, and when you query the API for what to show on a product page, you will get a single Display.
 
 ### Warehouse
 
-Something something dark side.
+A warehouse in Centra is where stock is stored. Warehouse is defined by its name and priority. Each warehouse can belong to one or more warehouse groups. When stock is added, either by importing a CSV or via stock editor, it always needs to be added to one of the warehouses. There are no storage locations in Centra.
 
 ### Warehouse Group
 
-Blah.
+Consists of one or more warehouses sorted by priority. One warehouse group can belong to multiple markets, but two groups cannot belong to the same market. With the help of a warehouse group, you will set for which markets and stores specific warehouses is used for. Each market has exactly one default warehouse group.
 
 ### Plugin
 
-Link to [Plugins](https://centra-api-documentation-demo.herokuapp.com/guides/plugins/)
+Plugins are configured in each store separately, and enable additional functionality. For exaxmple: API plugins (Shop API, Checkout API, Showroom API, etc.) enable API access to a Store. Feed plugins (Facebook, Instagram, Google Merchant, etc.) enable data feeds integrations. Payment methods (Klarna, PayPal, Adyen) allow you to add multiple checkout and payment options. Shipping methods enable integrations with shipping and packing services. E-mail triggers (Voyado, MailChimp, Rulemailer) enable advanced e-mail handling, with customer groups, additional formatting and newsletters handling.
+
+Click to learn more about [Plugins](https://centra-api-documentation-demo.herokuapp.com/guides/plugins/)
 
 
 <!-- REMOVE
