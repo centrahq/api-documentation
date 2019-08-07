@@ -95,6 +95,15 @@
   display: flex;
   flex-direction: column;
   font-family: $font-family-content;
+  
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    font-family: $font-family-default;
+  }
 
   @media (max-width: $main-extra-large-breakpoint) {
     margin: 0 auto;
