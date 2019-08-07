@@ -1,16 +1,16 @@
 {% macro docs_articles(docs_content=[]) %}
   {% for doc in docs_content %}
     <article class="docs__article" data-aos="lift-docs-cards">
-      <div class="article__graphics-wrapper">
+      <a href={{doc.link}}>
         <img src="{{ url("theme://#{doc.img}")}}" alt="Store API" class="article__graphics">
-      </div>
-      <h4 class="article__title">
-        {{doc.title}}
-          <div class="landing-page__button">
-            <div class="landing-page__button-arrow"></div>
-          </div>
-        </h4>
-      <p class="article__text">{{doc.text}}</p>
+        <h4 class="article__title">
+          {{doc.title}}
+            <div class="landing-page__button">
+              <div class="landing-page__button-arrow"></div>
+            </div>
+          </h4>
+        <p class="article__text">{{doc.text}}</p>
+      </a>
     </article>
   {% endfor %}
 {% endmacro %}

@@ -1,9 +1,27 @@
+{% set popular_topics = [
+  { title: "Searching in Centra", link: "/intro/basics" },
+  { title: "How to Localize in centra ", link: "/centra-sections/settings/localize" },
+  { title: "Accepting an inbound delivery from your Supplier", link: "/centra-sections/modules/supplier-module/accepting-an-inbound-delivery-from-your-supplier"},
+  { title: "How to integrate Google Merchant Feed with Centra", link: "/centra-sections/settings/plugins/how-to-integrate-google-merchant-feed-with-centra" },
+  { title: "Adding currencies to the system", link: "/centra-sections/settings/currencies" },
+  { title: "Connecting Centra with Afound ", link: "/centra-sections/settings/plugins/connecting-centra-with-afound" },
+  { title: "Creating a Warehouse", link: "/centra-sections/settings/warehouses/creating-a-warehouse" },
+  { title: "How to setup a Supplier in the Supplier Module", link: "/centra-sections/modules/supplier-module/how-to-set-up-a-supplier-in-the-supplier-module" },
+  { title: "API Documentations", link: "/centra-sections/settings/plugins/api-documentations" },
+  { title: "Connecting warehouses to markets through Warehouse Groups", link: "/centra-sections/settings/warehouses/connecting-warehouses-to-markets-through-warehouse-groups" },
+  { title: "Add products and prices to your Supplier", link: "/centra-sections/modules/supplier-module/add-products-and-prices-to-your-supplieri" },
+  { title: "How to integrate your Instagram feed in Centra", link: "/centra-sections/settings/plugins/how-to-integrate-your-instagram-feed-in-centra" },
+  { title: "How do I create a Tax Group?", link: "/centra-sections/settings/tax-groups"},
+  { title: "Creating an order in your Supplier Module", link: "/centra-sections/modules/supplier-module/creating-an-order-in-your-supplier-module" },
+  { title: "Configure Fortnox with Centra", link: "/centra-sections/modules/fortnox" }
+] %}
+
 <section class="landing-page-section support-section-topics">
   <div class="section-wrapper" data-aos="lift-6-percent">
     <h1 class="section-title">Popular topics</h1>
     <div class="support-topics-wrapper">
-      {% for topic in grav.theme.config.popular_topics %}
-        <a href={{grav.theme.config.topic.link}}>{{topic.title}}</a>
+      {% for topic in popular_topics %}
+        <a href={{topic.link}}>{{topic.title}}</a>
       {% endfor %}
     </div>
   </div>
