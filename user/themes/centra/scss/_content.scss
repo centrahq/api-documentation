@@ -94,6 +94,7 @@
   padding: 35px 22px 45px 100px;
   display: flex;
   flex-direction: column;
+  font-family: $font-family-content;
 
   @media (max-width: $main-extra-large-breakpoint) {
     margin: 0 auto;
