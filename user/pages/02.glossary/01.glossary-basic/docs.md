@@ -53,7 +53,7 @@ See also: Preorder.
 
 ### **Basket**  
 _B2C_  
-See Selection.
+See [Selection](#selection).
 
 ### **Brand**  
 _B2B/B2C_  
@@ -86,7 +86,7 @@ This ordered has been cancelled at any stage before the payment was captured (on
 
 ### **Cart**  
 _B2C_  
-See Selection.
+See [Selection](#selection).
 
 ### **Category**  
 _B2B/B2C_    
