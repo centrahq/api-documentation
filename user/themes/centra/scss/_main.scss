@@ -100,13 +100,6 @@ a.headerlink::before {
   text-decoration: underline;
 }
 
-:target::before {
-  content: '';
-  display: block;
-  height: 150px;
-  margin: -130px 0 0;
-}
-
 /**
  * Specific styles for currencies table
  */
