@@ -49,7 +49,7 @@ The quantity available right now of said product.
 ### **Back-order**  
 _B2B/B2C_  
 An order placed when there was no stock. Back-ordering is configured for each Store separately and applies to all products in the store. When an Order is created with back-ordered items, Demand is created.
-See also: Preorder.
+See also: [Preorder](#preorder).
 
 ### **Basket**  
 _B2C_  
@@ -91,11 +91,11 @@ See [Selection](#selection).
 ### **Category**  
 _B2B/B2C_    
 Mechanism for structuring how Displays are shown on front-end sites and in Centra Showroom to ease navigation. Categories are arranged in a hierarchical tree-structure with up to 3 levels. One product can have multiple categories.
-Also see: Folder. 
+Also see: [Folder](#folder). 
 
 ### **Charts**  
 _B2B/B2C_  
-See Measurement Chart, Size Chart.
+See [Measurement Chart](#measurement-chart), [Size Chart](#size-chart).
 
 ### **Checkout Requested** (order status)  
 Lorem ipsum.
@@ -159,7 +159,7 @@ This is the quantity of said product which is available to allocate on orders, o
 
 ### **General Attributes**  
 _B2B/B2C_  
-See Attributes.
+See [Attributes](#attribute).
 
 ### **Gift certificate**  
 _B2C_  
@@ -248,7 +248,7 @@ This is the quantity that you have on the shelf in the warehouse. If there are a
 
 ### **PIM**  
 _B2B/B2C_  
-Product Information Management. See “Product Catalog”.
+Product Information Management. See [Product Catalog](#product-catalog).
 
 ### **PO number**  
 _B2B/B2C_  
