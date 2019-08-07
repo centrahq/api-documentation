@@ -39,13 +39,17 @@
     padding: 100px 70px 0;
   }
 
+  .article__graphics-wrapper {
+    height: auto;
+  }
+
   .article__graphics {
     height: auto;
     width: 100%;
   }
 
-  .article__title {
-    height: 80px;
+  .article__title  {
+    height: 4em;
   }
 }
 
@@ -135,6 +139,7 @@
 
     .article__title {
       font-size: 22px;
+      height: 4em;
     }
 
     .docs__articles-wrapper {
@@ -164,7 +169,7 @@
 
     .article__title {
       font-size: 18px;
-      height: 36px;
+      height: 3em;
     }
   }
 
