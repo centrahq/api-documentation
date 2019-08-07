@@ -91,7 +91,11 @@
   padding-bottom: 30px;
 
   & .section-wrapper {
-    justify-content: space-between;
+    justify-content: flex-start;
+
+    & li {
+      margin-right: 60px;
+    }
   }
 
   & .social-icon {
