@@ -11,6 +11,11 @@
     height: 22px;
   }
 
+  li a {
+    margin-bottom: 12px;
+    display: block;
+  }
+
   @media (max-width: $mobile-navigation-breakpoint) {
     display: none;
   }
@@ -29,7 +34,6 @@
   flex-direction: column;
   max-width: 232px;
   margin-top: 32px;
-  position: sticky;
   top: 29px;
 
   a {
@@ -117,8 +121,6 @@
 }
 
 .sidebar .dd-item {
-  margin: 0;
-  margin-bottom: 10px;
   width: 100%;
 }
 

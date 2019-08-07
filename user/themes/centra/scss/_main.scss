@@ -145,6 +145,8 @@ table {
   font-size: 17px;
   text-align: left;
   color: #3C3C3C;
+  display: block;
+  overflow-x: auto;
 }
 
 th:first-child {
