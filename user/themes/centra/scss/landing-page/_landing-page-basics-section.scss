@@ -30,7 +30,6 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   max-width: 386px;
   margin: 11px;
   padding: 66px 45px 110px;
@@ -52,6 +51,7 @@
     font-size: 24px;
     margin: 70px 0;
     font-weight: normal;
+    height: 48px;
   }
 
   p {
@@ -140,6 +140,7 @@
 
     h3 {
       font-size: 18px;
+      height: 36px;
     }
     
     p {

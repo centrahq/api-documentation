@@ -195,13 +195,13 @@ $menu-breakpoint: 715px;
   }
 
   #navigation-wrapper {
-    .showNavigation {
+    &.showNavigation {
       top: 0;
       opacity: 1;
       background-color: $black;
     }
 
-    .hideNavigation {
+    &.hideNavigation {
       top: -80px;
       opacity: 0;
       background-color: $black;

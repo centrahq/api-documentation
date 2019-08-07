@@ -1,7 +1,9 @@
 {% macro docs_articles(docs_content=[]) %}
   {% for doc in docs_content %}
     <article class="docs__article" data-aos="lift-docs-cards">
-      <img src="{{ url("theme://#{doc.img}")}}" alt="Store API" class="article__graphics">
+      <div class="article__graphics-wrapper">
+        <img src="{{ url("theme://#{doc.img}")}}" alt="Store API" class="article__graphics">
+      </div>
       <h4 class="article__title">
         {{doc.title}}
           <div class="landing-page__button">
