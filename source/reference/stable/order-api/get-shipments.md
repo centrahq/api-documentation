@@ -260,7 +260,7 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
              "weightUnit": "kg",
              "countryOfOrigin": "DE",
              "harmCode": "12345",
-             "comment": ""
+             "comment": "",
              "warehouses": [
                 {
                     "name": "Default warehouse",
