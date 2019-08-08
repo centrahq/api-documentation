@@ -11,7 +11,7 @@ Centra is a natively multi-market (different products or pricing to different cu
 
 ### Store
 
-Store is the basic logical entity in Centra. By default, each Centra instance is created with two stores - Retail and Wholesale. It is possible to add more stores. This is useful for customers who want to serve multiple stores (for example, different brands and/or types of products) using a single Centra instance. Each Store contains a number of options controlling behaviour of orders, shipments, customers, invoices, stock, notification e-mails and payments.
+Store is the basic logical entity in Centra. By default, each Centra instance is created with two stores, Retail and Wholesale, but it is possible to add more. This is useful for customers who want to serve multiple stores (for example, different brands and/or types of products) using a single Centra instance. Each Store contains a number of options controlling behaviour of orders, shipments, customers, invoices, stock, notification e-mails and payments.
 
 Defining a store requires specifying default Pricelist, default Market and selecting locales. Additionaly, each store should be tied to at least one Warehouse Group. Finally, Store can have multiple plugins enabled, which control functions like APIs, payment and shipping methods, data feeds (Facebook, Instagram, Google Merchant etc.) or e-mails.
 
