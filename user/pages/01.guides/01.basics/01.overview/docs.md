@@ -1,6 +1,7 @@
 ---
 title: How does it work: Store logic and basic concepts
 altTitle: Core concepts
+excerpt: Learn about Centra basics and how they work together: Stores, Markets, Locales, Currencies, Pricelists, Brands, Products, Displays, Warehouses and Plugins.
 taxonomy:
     category: docs
 ---

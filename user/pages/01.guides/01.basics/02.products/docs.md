@@ -1,6 +1,7 @@
 ---
 title: Showcase it: Products, variants, sizes and displays
 altTitle: Product model
+excerpt: Learn about Products, Variants, Sizes, Displays, Attributes, Relations, Bundles and Categories.
 taxonomy:
     category: docs
 ---

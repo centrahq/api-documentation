@@ -1,6 +1,7 @@
 ---
 title: From basket to shipment: Order flow in Centra
 altTitle: Order management
+excerpt: Learn about the difference between Selections and Orders, basic Order flow in Centra, and all statuses an Order can have.
 taxonomy:
     category: docs
 ---

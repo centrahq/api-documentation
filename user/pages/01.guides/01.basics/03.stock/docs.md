@@ -1,6 +1,7 @@
 ---
 title: Somewhere to store it: Warehouses and stock
 altTitle: Inventory management
+excerpt: Learn about how stock works in Centra: Warehouses, Warehouses Groups and stock level definitions.
 taxonomy:
     category: docs
 ---
