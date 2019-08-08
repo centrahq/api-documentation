@@ -229,7 +229,8 @@ This will fetch the orders allowed for the plugin being set up.
                 "carrier": "",
                 "service": "",
                 "trackingId": "",
-                "trackingUrl": ""    
+                "trackingUrl": "",
+                "returnSlipTracking": "",    
             }
          ],
          "totalItemsPriceTax": -202.88,
