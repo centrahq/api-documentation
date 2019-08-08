@@ -111,6 +111,13 @@ This will create a shipment and per default try to capture from the payment prov
           :required: false
 
      - Tracking number for shipment. Only used if ``shipped`` is ``true``.
+     
+   * - ``returnSlipTracking``
+
+       .. type:: string
+          :required: false
+
+     - Return slip tracking number for shipment. Only used if ``shipped`` is ``true``.
 
    * - ``xml``
 

@@ -68,6 +68,13 @@ This will insert back the tracking number and carrier information to Centra. An 
           :required: false
 
      - Tracking number for shipment.
+     
+   * - ``returnSlipTracking``
+
+       .. type:: string
+          :required: false
+
+     - Return slip tracking number for shipment.     
 
    * - ``internalComment``
 
@@ -99,6 +106,7 @@ This will insert back the tracking number and carrier information to Centra. An 
      "service": "Express",
      "packages": 1,
      "tracking": "TRTTET5",
+     "returnSlipTracking": "TRTTET6",
      "capture": 1
    }
 ```

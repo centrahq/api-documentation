@@ -229,6 +229,7 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
          "shipmentDate": "2019-07-01 12:56:00",
          "trackingNumber": "123456789",
          "trackingUrl": "https://www.dhl.com.pl/exp-en/express/tracking.html?AWB=123456789",
+         "returnSlipTracking": "123456789",
          "invoices": [
            "https://online.klarna.com/invoice_public_show.yaws/invoice.pdf?invno=&orgno="
          ],
