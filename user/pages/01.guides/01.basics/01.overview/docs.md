@@ -1,5 +1,5 @@
 ---
-title: Overview - Store logic and basic concepts
+title: How does it work: Store logic and basic concepts
 altTitle: Centra overview
 taxonomy:
     category: docs

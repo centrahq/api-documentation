@@ -1,6 +1,6 @@
 ---
-title: Order flow in Centra
-altTitle: Order flow
+title: From basket to shipment: Order flow in Centra
+altTitle: Order management
 taxonomy:
     category: docs
 ---
@@ -14,7 +14,7 @@ Here's the basic order flow as seen in Centra backend.
 * Incomplete (0)  
   This is a selection before it’s checked out. It contains the list of selected items, information about language and currency, discounts, plus a list of optional shipping methods.
 * Pending (1)  
-  This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, selected shipping and payment.
+  This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, selected shipping and payment. This step can be skipped by enabling the Store option "Autoconfirm Orders".
 * Confirmed (2)  
   This order has been manually confirmed in the Centra admin panel. Only confirmed orders can have a shipment created for them. This step can be skipped by enabling store option “Direct to Shipment”, in which case the checked out order will transfer to status Processing (3) with a shipment created and marked Good-To-Go.
 * Processing (3)  
