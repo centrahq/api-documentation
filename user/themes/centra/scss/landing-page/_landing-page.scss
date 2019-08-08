@@ -8,6 +8,11 @@
   &.white {
     background-color: $cream;
   }
+
+  & h1,
+  & h2 {
+    font-weight: 600;
+  }
 }
 
 .landing-page-section {

@@ -2,7 +2,7 @@
   <div class="section-wrapper section-newsletter-updates">
     <div class="support-section-list" data-aos="lift-docs-cards">
       <h1 class="section-title">Newsletter archive</h1>
-      <a>View all</a>
+      <a href="/newsletters">View all</a>
       <ul>
         {% set newsletter = page.find('/newsletters/2019').children.order('date', 'asc').slice(0, 4) %}
         {% for p in newsletter if p != page %}
@@ -12,7 +12,7 @@
     </div>
     <div class="support-section-list" data-aos="lift-docs-cards">
         <h1 class="section-title">Product updates</h1>
-        <a>View all</a>
+        <a href="/updates">View all</a>
         <ul>
           {% set updates = page.find('/updates/2019').children.order('date', 'asc').slice(0, 4) %}
           {% for p in updates if p != page %}

@@ -10,12 +10,12 @@
             <hr/>
             {% if page.content %} <div class="articles__listing-content">{{page.content}}</div>{% endif %}
             {% set bulletins = grav.theme.config.bulletins %}
-            {% set pages = page.topParent().menu in bulletins or page.menu in bulletins ? page.children.order('date', 'desc') : page.children.visible %}
+            {% set pages = page.topParent().menu in bulletins or page.menu in bulletins ? page.children.order('date', 'desc') : page.children %}
             {% for p in pages %}
                 <article>
                     <h2>{{ p.menu }}</h2>
                     <p>{{ p.header.excerpt ? p.header.excerpt : p.summary(230) }}</p>
-                    <a href="{{ p.url }}">Browse article</a>
+                    <a href="{{ p.url }}">Read more</a>
                 </article>
             {% endfor %}
         </div>

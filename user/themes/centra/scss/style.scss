@@ -39,6 +39,7 @@
   @import 'search.scss';
   @import 'articles-listing.scss';
   @import 'support-page/support-search.scss';
+  @import '_404.scss';
   
   /**
    * Utilities
@@ -51,7 +52,6 @@
   */
 
 @import "_main";
-@import "_sidenav";
 @import "_content";
 @import "_toc";
 @import "arrownav";

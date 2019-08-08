@@ -20,24 +20,18 @@
 }
 
 .main__content {
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: normal;
-    line-height: 1em;
-  }
-
   h1 {
     font-size: 40px;
-    margin-bottom: 14px;
     font-weight: 600;
+    line-height: 1.1;
     margin-bottom: 15px;
+    margin-top: 0;
   }
   
   h2 {
     font-size: 30px;
+    line-height: 1.15;
+    font-weight: normal;
   }
 
   ul {
@@ -47,9 +41,9 @@
   ul > li::before {
     content: '\2022';
     color: $brand-primary;
-    display: inline-block;
     width: 1em;
     margin-left: -1em;
+    float: left;
   }
 
   ol {
@@ -76,6 +70,7 @@
     color: #fff;
     margin-left: -28px;
     margin-top: 2px;
+    padding-bottom: 2px;
   }
 }
 
@@ -94,6 +89,16 @@
   padding: 35px 22px 45px 100px;
   display: flex;
   flex-direction: column;
+  font-family: $font-family-content;
+  
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    font-family: $font-family-default;
+  }
 
   @media (max-width: $main-extra-large-breakpoint) {
     margin: 0 auto;
