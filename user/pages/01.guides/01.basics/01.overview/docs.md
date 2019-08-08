@@ -1,6 +1,6 @@
 ---
 title: How does it work: Store logic and basic concepts
-altTitle: Centra overview
+altTitle: Core concepts
 taxonomy:
     category: docs
 ---
@@ -19,6 +19,23 @@ Defining a store requires specifying default Pricelist, default Market and selec
 
 Markets divide your store into logical entities, which can be based on Geo-locations (one market per each country the store goods are offered in), or business needs (e.g. "VIP" market offerring goods at limited prices to VIP customers). Products in each market can have different prices, discounts and use different currencies, they also can have completely separate Product Displays, resulting in a different ways the same Products are shown in each Market. Products stock levels are shown based on the configured Warehouse Group.
 
+Markets also control which campaigns and vouchers are available, which shipping options are available, and which Warehouse Group is used to display stock level.
+
+Market can be set by:
+* (Prio 1) Store API `PUT /markets/switch`
+* (Prio 2) Saved cookie
+* (Prio 3) Geo-IP based location
+* (Prio 4) Fallback to Store's default Market
+
+### Locale
+
+Locale defines the user's location (region) and language. Based on users' location Centra is able to serve them proper default Market with prices from a Pricelist appropriate for their country. For items that are translatable, like custom product attributes, locale controls which translation will be returned via API.
+
+Locale can be set by:
+* (Prio 1) Store API `PUT /languages/switch`
+* (Prio 2) Geo-IP based location
+* (Prio 3) Fallback to Store's default Locale
+
 ### Currency
 
 Each currency used in the Store is defined by its ISO code, ISO number, number of decimals and decimal point. You can also specify a prefix, suffix and denominator. These settings are used for display purposes only, they do not affect how the prices are calculated.
@@ -28,6 +45,11 @@ Each currency used in the Store is defined by its ISO code, ISO number, number o
 Pricelists control how much your products cost in each Currency and in each Store. Since Pricelists connects to a Product Display, and not the Product itself, Product price can be different in each configured store. Product without a price will be shown, but is not purchasable, which means it cannot be added to a selection.
 
 You can only configure one Pricelist per one Store per one geo-location. This means you cannot have two EUR pricelists selected for geo-location "Spain". However, you can still configure Pricelists using the same Currency for different Markets, for example one SEK Pricelist set for geo-location "Sweden" and one SEK Pricelist with no geo-location connected to Market "VIP clients".
+
+Pricelist can be set by:
+* (Prio 1) Store API `PUT /countries/switch`
+* (Prio 2) Geo-IP based location
+* (Prio 3) Fallback to Store's default Pricelist
 
 ### Brand
 

@@ -243,7 +243,7 @@ See [Order flow in Centra](https://centra-api-documentation-demo.herokuapp.com/g
 This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, shipping and payment.
 
 ### **Physical (stock)**
-Physical = Free To Allocate + Unshipped  
+Physical = Free To Allocate + Allocated  
 This is the quantity that you have on the shelf in the warehouse. If there are any differences, Centra wouldn’t know about.
 
 ### **PIM**  

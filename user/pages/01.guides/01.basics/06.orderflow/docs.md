@@ -5,6 +5,24 @@ taxonomy:
     category: docs
 ---
 
+### Selections
+
+In Centra, a list of chosen products that are not yet an order are referred to as a Selection. Selections work differently for Direct-To-Consumer and Wholesale, but the overall concept is the same.
+
+#### Direct-To-Consumer (B2C) Selections, also known as Carts
+
+Centra stores both temporary Selections for users not logged in and Selections for logged in users. By default, selections for anonymous users are stored 30 days. When a user logs in, any temporary Selection is merged with any Selection stored in the user’s account.
+
+#### Wholesale (B2B) Selections, also known as Order Sheets
+
+Wholesale Selections are stored for each account and can be viewed and manipulated through the Showroom by any Centra user with the appropriate access rights. This may include Buyers, Agents, Sellers and Centra Administrators. In addition, Selections can be viewed and modified by anonymous users with a magic link generated from the Showroom.
+
+#### Abandoned cart recovery 
+
+Centra automatically detects Selections that are not checked out and generates Abandoned Cart events that are transferred to marketing applications for retargeting applications.
+
+### Order flow
+
 Here's the basic order flow as seen in Centra backend.
 
 ![OrderFlow](order-flow.png?lightbox=3333x4000&resize=1200)
