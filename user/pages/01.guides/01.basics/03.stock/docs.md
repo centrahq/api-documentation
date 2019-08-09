@@ -6,19 +6,19 @@ taxonomy:
     category: docs
 ---
 
-Intro - lorem ipsum.
+As mentioned in the previous chapters, each Product has at least one Variant, and every Variant has at least one Size. In Centra, stock is defined on the Size level, which means we keep information about inventory for every Size of every Variant of every Product.
 
-### Warehouse
+### Warehouses and Warehouse Groups
 
-TBD (...)
+A warehouse in Centra is where stock information about every product size is stored. Warehouse is defined by its name and priority. Each Warehouse can belong to one or more Warehouse Groups. When stock is added, either by importing a CSV or via stock editor, it always needs to be added to one of the Warehouses. Warehouses in Centra don't hold any information about storage locations.
 
-Warehouses are grouped into Warehouse Groups. (...)
+Each Warehouse can belong to one or more Warehouse Groups. One Warehouse Group can belong to multiple Markets, but one Market can have only one Warehouse Group. This way Centra controls which Warehouses' stock will be displayed in each Market.
 
 ### Example stock levels and definitions
 
-| Physical | FTA | Allocated | Linked | Demand | Unshipped | Available Now | Unlinked | Incoming | On Delivery | Available |
-|----------|-----|-----------|--------|--------|-----------|---------------|----------|----------|-------------|-----------|
-| 38       | 18  | 20        | 2      | 1      | 4         | 17            | 8        | 10       | 0           | 27        |
+Physical | FTA | Allocated | Linked | Demand | Unshipped | Available Now | Unlinked | Incoming | On Delivery | Available
+---|---|---|---|---|---|---|---|---|---|---
+38 | 18 | 20 | 2 | 1 | 4 | 17 | 8 | 10 | 0 | 27
 
 * **Physical** = FTA + Allocated  
 This is the quantity that you have on the shelf in the warehouse. If there are any differences, Centra wouldn’t know about.
