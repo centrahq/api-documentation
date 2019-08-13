@@ -6,7 +6,7 @@ taxonomy:
   category: docs
 ---
 
-Connecting a WMS system with Centra, to handle pick and pack with an internal or external logistic center, is easy using Centra’s Order API. The API offers convenient endpoints optimized for this use case.
+Connecting a Warehouse Management System with Centra, to handle pick and pack with an internal or external logistic center, is easy using Centra’s Order API. The API offers convenient endpoints optimized for this use case.
 
 ## Prerequisites
 
