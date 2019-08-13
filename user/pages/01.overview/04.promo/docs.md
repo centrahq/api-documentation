@@ -39,4 +39,4 @@ Gift certificates of type "Free products" (...) [_Nobody I asked knows how this 
 
 ### Campaign
 
-Campaigns allow you to temporarily change the prices of selected products. You define it by providing the campaign name and selecting Store, Markets and Pricelists for which the Campaign is to be active. In B2B Campaigns you also need to select at least one Delivery Window. Then you select one or more products and set specific discounts for each of them, either by configuring a new, fixed price, or by specifying the percentage discount. Every product on the list has "Start" and "Stop" dates for when the discount is active.
+Campaigns allow the store admin to temporarily change the prices of selected products. Campaign is defined by its name, Store, Markets and Pricelists for which the Campaign should be active. In B2B Campaigns it's also required to select at least one Delivery Window. Then the user can select one or more products and set specific discounts for each of them, either by configuring a new, fixed price, or by specifying the percentage discount. Every product on the list has "Start" and "Stop" dates for when the discount is active.
