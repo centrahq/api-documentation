@@ -82,7 +82,7 @@ Consists of one or more warehouses sorted by priority. One warehouse group can b
 
 Plugins are configured in each store separately, and enable additional functionality. For exaxmple: API plugins (Shop API, Checkout API, Showroom API, etc.) enable API access to a Store. Feed plugins (Facebook, Instagram, Google Merchant, etc.) enable data feeds integrations. Payment methods (Klarna, PayPal, Adyen) allow you to add multiple checkout and payment options. Shipping methods enable integrations with shipping and packing services. E-mail triggers (Voyado, MailChimp, Rulemailer) enable advanced e-mail handling, with customer groups, additional formatting and newsletters handling.
 
-Click to learn more about [Plugins](https://centra-api-documentation-demo.herokuapp.com/guides/plugins/)
+Click to learn more about [Plugins](https://centra-api-documentation-demo.herokuapp.com/plugins/).
 
 
 <!-- REMOVE
