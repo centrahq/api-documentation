@@ -12,10 +12,6 @@ Two different concepts for modelling and storing items for sale are used in Cent
 
 ![ProductModel](product-model.png?lightbox=3333x4000&resize=1200)
 
-### Displays
-
-A Display is, just like a display in a brick-and-mortar store, one or more related items for sale that is arranged and presented in a way that might trigger a purchase. An item for sale might be included in more than one Display. You might for example have a unisex item included both in a Display in the Women’s and Men’s department. When you query the API for what to show on a category page, you will get a set of Displays back, and when you query the API for what to show on a product page, you will get a single Display.
-
 ### Products, Variants and Sizes
 
 A Product is stored in a hierarchical structure, in which the Product is broken down into Variants and Sizes. The Product represents a certain design. Variants are different versions of the same product, typically different colors. Sizes are the different sizes you can buy the style in. This product structure enables very efficient product information management.
@@ -25,6 +21,12 @@ Most information is stored on the Product level, where you find the Folder, Coll
 The Variant level focuses on media (images) and a few attributes, notably color. Campaigns can be set on the Variant level. Besides actual size, the Size level stores GTINs (UPC or EAN codes), weight and dimensions. Stock inventory is stored on the Size level, as the size represents the physical item that exists in a warehouse.
 
 All products have at least one Variant and all Variants have at least one Size, even if it is a one-size product.
+
+### Displays
+
+A Display is, just like a display in a brick-and-mortar store, one or more related items for sale that is arranged and presented in a way that might trigger a purchase. An item for sale might be included in more than one Display. You might for example have a unisex item included both in a Display in the Women’s and Men’s department. When you query the API for what to show on a category page, you will get a set of Displays back, and when you query the API for what to show on a product page, you will get a single Display.
+
+Displays can also be related to each other, which can be used in the front end to show off different variants of the same product, or suggest products that might go well together.
 
 ### Attributes
 
@@ -38,8 +40,6 @@ Centra has three Attribute Categories: Standard, Pre-Defined and Custom.
 | Standard | Default attributes, not possible for user to disable | Display Name (Display), GTIN (Item), HS Code (Product) |
 | Pre-defined | Pre-configured attributes, possible for user to turn on or off | Age limit (Product), Color (Variant), Length/Width/Depth (Item) |
 | Custom | Custom attributes, defined by user | N/A (user defined) |
-
-(Here comes a looong table explaining a lot of pre-defined attributes, I'm not so sure I want to copy it all here...)
 
 ### Relations
 
