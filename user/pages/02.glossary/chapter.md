@@ -1,6 +1,6 @@
 ---
 title: Basic concepts and definitions
-altTitle: Centra glossary
+altTitle: Glossary
 taxonomy:
   category: docs
 ---
