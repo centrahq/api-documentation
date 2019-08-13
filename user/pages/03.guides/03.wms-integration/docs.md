@@ -28,7 +28,7 @@ More information: <https://docs.centra.com/reference/stable/order-api/get-shipme
 
 Please note that you would need to auth with the secret key configured in the Centra Order API settings.
 
-Using this endpoint, you’ll get all the available shipments that are ready to be shipped (the default behavior of the endpoint is to only return shipments with status good-to-go in Centra). Note that this endpoint is not an event queue, meaning all shipments available to be shipped always show up, even if you have fetched them before. Store the shipment id to make sure that you skip shipments that you have already fetched. Once shipments are marked as completed, they are by default ignored by Order API and will hence not show up.
+Using this endpoint, you’ll get all the available shipments that are ready to be shipped (the default behavior of the endpoint is to only return shipments with status good-to-go in Centra). Note that this endpoint is not an event queue, meaning all shipments available to be shipped always show up, even if you have fetched them before. Store the shipment id to make sure that you skip shipments that you have already fetched. Once shipments are marked as completed, they are by default ignored by Order API and will therefore not show up in the `get-shipments` call results.
 
 ## Capturing payments
 
@@ -51,9 +51,9 @@ The node will also contain URLs to proforma invoices (if needed) and delivery no
 "deliveryNote": "http://../delnote?shipment=83651-1"
 ```
 
-More importantly, it will contain the products that was ordered. A shipment may, of course, contain several products and they will appear after each other.
+More importantly, it will contain the product that was ordered. A shipment may, of course, contain several products, in which case they will appear after each other.
 
-This is how the product object will look like, it will vary, of course, depending on the number of items ordered.
+This is how the product object will look like, it will vary depending on the number of items ordered.
 
 ```json
 "products": [
@@ -100,7 +100,7 @@ LineId is to identify the unique item row (hence the name). You’ll also get th
 
 ## Editing shipments
 
-You can also update shipments, if the quantity shipped was lower than on the order. This will allow subsequent creation of additional shipments with the remaining items that could not be shipped or refunding of items that could not be shipped.
+You can also update shipments, if the quantity shipped was lower than on the order. This will allow subsequent creation of additional shipments with the remaining items, or creating refunds for items that could not be shipped.
 
 More information: <https://docs.centra.com/reference/stable/order-api/update-shipment>
 
@@ -120,21 +120,19 @@ Keep in mind that you don’t need to send updates for every single stock moveme
 Warning: Don’t do full stock synchronization at times when the stock is changing rapidly, as that could add back units that were sold a fraction of a second earlier into Centra’s stock.
 [/notice-box]
 
-However, it’s always good practice to schedule a regular stock sync e.g., once a day. This will ensure the systems re-sync automatically if they would ever go out of sync for any reason.
+However, it’s always good practice to schedule a regular stock sync, e.g. once a day. This will ensure the systems re-sync automatically if they would ever go out of sync for any reason.
 
 More information: <https://docs.centra.com/reference/stable/order-api/update-stock>
 
 ## Fetching products
 
-In order to minimize work for the shared client, it is possible to fetch the products created in Centra, so that the client or you, won’t have to create them in the WMS system manually.
+In order to minimize work for the shared client, it is possible to fetch the products created in Centra, so that the client or you won’t have to create them in the WMS system manually.
 
-You’ll be able to fetch all products, and you can also with the API call, filter out products that are recently updated.
+You’ll be able to fetch all products, and you can also filter out products that are recently updated with the API call.
 
 More information: <https://docs.centra.com/reference/stable/order-api/get-products>
 
-The most important thing to think about here, is the sku fields. In Centra, a product can have multiple variants connected to the same main sku. Where as in most WMS’s this is not the case. While fetching a product, please make sure to create the products in the WMS, based on sku, variantSku and sizeSKU.
-
-These three concatenated would be the physical SKU on the shelf in the warehouse.
+The most important thing to think about here, is the SKU fields. In Centra, a product can have multiple variants connected to the same main SKU. Where as in most WMS systems this is not the case. While fetching a product, please make sure to create the products in the WMS, based on sku, variantSku and sizeSKU. These three concatenated would be the physical SKU on the shelf in the warehouse.
 
 In the example here, you can see that there are no variantSku nor sizeSku, and in this case the full sku is only M411-740, but it could’ve been a different scenario.
 
