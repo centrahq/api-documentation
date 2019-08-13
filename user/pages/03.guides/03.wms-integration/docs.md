@@ -100,7 +100,7 @@ LineId is to identify the unique item row (hence the name). You’ll also get th
 
 ## Editing shipments
 
-You can also update shipments, if the quantity shipped was lower than on the order. This will allow subsequent creation of additional shipments with the remaining items that could not be shipped or cancelling and refunding of items that could not be shipped.
+You can also update shipments, if the quantity shipped was lower than on the order. This will allow subsequent creation of additional shipments with the remaining items that could not be shipped or refunding of items that could not be shipped.
 
 More information: <https://docs.centra.com/reference/stable/order-api/update-shipment>
 
