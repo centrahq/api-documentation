@@ -7,6 +7,7 @@
     padding-top: 125px;
     margin-bottom: 40px;
     z-index: 5;
+    font-size: 62px;
   }
 
   #search {
@@ -52,12 +53,11 @@
     
     .navigation-background__hand {
       top: 0;
-      right: 25px;
+      right: 0;
       width: 590px;
       height: 273px;
       background: url('../images/img/support/hand.png') no-repeat center center;
-      animation: swimming3 12s infinite;
-      animation-direction: alternate;
+      animation: none;
       background-size: cover;
     }
     
@@ -92,7 +92,7 @@
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 40px;
     }
 
     .support-navigation-background {

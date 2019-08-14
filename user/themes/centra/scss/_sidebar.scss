@@ -5,14 +5,21 @@
   padding-left: 40px;
   -webkit-overflow-scrolling: touch;
   pointer-events: auto;
+  overflow-x: auto;
+  min-height: calc(100vh - 260px);
+  max-height: 100vh;
+  position: sticky;
+  top: 0px;
 
   .navigation__centra-logo {
     width: 175px;
     height: 22px;
+    margin: 0 auto;
+    display: none;
   }
 
   li a {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     display: block;
   }
 
@@ -34,7 +41,7 @@
   flex-direction: column;
   max-width: 232px;
   margin-top: 32px;
-  top: 29px;
+  margin-left: auto;
 
   a {
     color: #3C3C3C;
@@ -65,10 +72,10 @@
   position: relative;
 }
 
+
+.sidebar .navigation__items > .dd-item:hover > a,
 .sidebar .navigation__items > li.dd-item.active > .navigation__item--active,
 .sidebar .navigation__items > li.dd-item > .navigation__item--active {
-  margin-bottom: 23px;
-
   span {
     z-index: 1;
     color: #222222;
@@ -90,6 +97,10 @@
     border-radius: 20px;
     z-index: 0;
   }
+}
+
+.sidebar .dd-item a:hover {
+  color: #3764DA;
 }
 
 .sidebar .dd-item.active .navigation__item--active {
@@ -122,6 +133,12 @@
 
 .sidebar .dd-item {
   width: 100%;
+  display: inline-block;
+  position: relative;
+
+  & ul {
+    margin-bottom: 16px;
+  }
 }
 
 .sidebar .navigation__item-arrow {
@@ -147,4 +164,18 @@
 .show-sidebar .main__sidebar-logo-dark {
   display: flex;
   align-items: center;
+}
+
+@media (max-width: $mobile-navigation-breakpoint) {
+  .sidebar {
+    height: calc(100vh - 65px);
+    
+    .navigation__items {
+      position: static;
+    }
+
+    .navigation__centra-logo {
+      display: block;
+    }
+  }
 }

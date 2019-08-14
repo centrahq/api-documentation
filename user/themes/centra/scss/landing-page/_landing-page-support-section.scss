@@ -16,6 +16,10 @@
   .section-title {
     margin-bottom: auto;
   }
+
+  .section-text {
+    max-width: 430px;
+  }
 }
 
 .support-wrapper {
@@ -33,7 +37,8 @@
 }
 
 .support-section__team-avatars {
-  margin-bottom: 40px;
+  margin-top: auto;
+  margin-bottom: 20px;
   width: 180px;
 }
 

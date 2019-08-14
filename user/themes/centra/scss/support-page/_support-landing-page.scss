@@ -3,13 +3,13 @@
     background-color: transparent;
   }
 
-  a {
-    font-size: 20px;
-    line-height: 27px;
+  &.landing-page .navigation-search-button.search-link {
+    display: none;
   }
 
-  .name-section {
-    margin-bottom: 80px;
+  a:not(.navigation__contact-us) {
+    font-size: 20px;
+    line-height: 27px;
   }
 
   .section-title {
@@ -50,12 +50,21 @@
 
   .article__title  {
     height: 4em;
+    font-size: 26px;
+  }
+
+  .article__text {
+    font-size: 20px;
+  }
+
+  [data-aos="lift-docs-cards"].aos-animate {
+    @include transition(2);
   }
 }
 
 .section-newsletter-updates {
-  & h1 {
-    margin-bottom: 25px;
+  & .section-title {
+    margin-bottom: 15px;
   }
 
   ul {
@@ -87,15 +96,23 @@
   flex: 1;
 }
 
+.landing-page .support-footer [data-aos="lift-footer-group"].aos-animate {
+  margin-top: 0;
+}
+
 .support-footer {
   padding-top: 190px;
-  padding-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
 
   & .section-wrapper {
     justify-content: flex-start;
+    margin: 0;
 
     & li {
-      margin-right: 60px;
+      margin-right: 30px;
     }
   }
 
@@ -133,10 +150,6 @@
       line-height: 24px;
     }
 
-    .name-section {
-      margin-bottom: 25px;
-    }
-
     .docs__article {
       min-width: 260px;
       max-width: 340px;
@@ -150,6 +163,12 @@
     .docs__articles-wrapper {
       padding: 100px 30px 0;
     }
+
+    .section-newsletter-updates {
+      & .section-title {
+        margin-bottom: 15px;
+      }
+    }
   }
 }
 
@@ -160,12 +179,19 @@
       padding: 0 15px;
     }
 
-    .name-section {
-      margin-bottom: 0;
-    }
-
     .section-newsletter-updates {
       margin-bottom: 50px;
+      flex-wrap: wrap;
+
+      & .section-title {
+        margin-bottom: 15px;
+      }
+
+      & .support-section-list {
+        min-width: 335px;
+        max-width: fit-content;
+        margin: 0 auto;
+      }
     }
 
     .docs__article {
@@ -195,7 +221,15 @@
   .support-landing-page {
     .support-topics-wrapper a {
       flex: 1 0 100%;
-      padding: 0 15px;
+      padding: 10px 15px;
+    }
+
+    .section-newsletter-updates .support-section-list {
+      min-width: 200px;
+    }
+
+    .article__text {
+      font-size: 13px;
     }
   }
 
