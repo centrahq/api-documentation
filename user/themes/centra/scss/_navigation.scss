@@ -269,10 +269,12 @@ $menu-breakpoint: 715px;
 }
 
 .navigation__section {
+  display: inline-block;
   font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #949494
+  color: #949494;
+  margin: 25px 0 15px 0;
 }
 
 @media (max-width: breakpoint("medium")) {
