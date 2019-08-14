@@ -20,8 +20,12 @@
 
 .footer__navigation-link {
   color: $white;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 22px;
+}
+
+span.footer__navigation-link {
+  cursor: default;
 }
 
 .animation-wrapper {
@@ -57,10 +61,6 @@
   .footer__navigation-group {
     margin-bottom: 35px;
     min-width: 100px;
-  }
-
-  .footer__navigation-link {
-    font-size: 14px;
   }
 
   .animation-wrapper {

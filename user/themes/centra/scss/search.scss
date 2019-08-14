@@ -4,6 +4,11 @@
   justify-content: space-between;
   min-height: calc(100vh - 62px);
 
+  .main__content {
+    max-width: 1065px;
+    min-width: 1065px;
+  }
+
   .l-wrapper.hide {
     display: none;
   }
@@ -110,6 +115,15 @@
     line-height: 17px;
     font-weight: normal;
     color: #AAAAAA;
+  }
+}
+
+@media (max-width: $main-extra-large-breakpoint) {
+  .search-page {
+    .main__content {
+      max-width: 780px;
+      min-width: 400px;
+    }
   }
 }
 
