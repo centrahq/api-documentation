@@ -30,7 +30,9 @@ Centra Integration API can be configured with different access rights. For BI ap
 
 [notice-box=info]
 Ensure security is managed carefully when using Centra Integration API. The API offers access to virtually all data in Centra, including personal information and sensitive business information.
+[/notice-box]
 
+[notice-box=info]
 Ensure all applicable legislation and privacy agreements with customers are respected before using Centra Integration API to export data from Centra.
 [/notice-box]
 
