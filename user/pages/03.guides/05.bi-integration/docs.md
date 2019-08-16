@@ -6,8 +6,6 @@ taxonomy:
   category: docs
 ---
 
-### Background
-
 Centra is designed to make it as easy as possible to integrate powerful Business Intelligence (BI) tools and to make the integrations easy to maintain. By combining data from Centra and other systems, Business Intelligence specialists can create tailored dashboards and reports to analyze any business to any level of detail.
 
 While legacy BI integrations often rely on raw database exports, data from Centra is exported through an API with a clearly defined interface. This layer of abstraction between Centra’s data storage and the BI system provides 3 distinct advantages:
