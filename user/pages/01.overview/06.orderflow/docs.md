@@ -45,7 +45,7 @@ Here's the basic order flow as seen in Centra backend.
 * Cancelled (6)  
   This ordered has been cancelled at any stage before the payment was captured (once the payment capture has been successful, a refund should be made instead of cancelling the order). Cancelled orders have the option to be fully and irreversibly deleted from the database.
 * Hold (flag)  
-  This order is on hold by manual intervention in Centra backend. Its details can still be edited, but it cannot proceed with shipment or payment until resumed.
+  This order is on hold by manual intervention in Centra backend or by Payment methods where fraud is suspected or if the order is waiting for a notification from the Payment Service Provider. Its details can still be edited, but it cannot proceed with shipment or payment until resumed.
 
 
 <!--
