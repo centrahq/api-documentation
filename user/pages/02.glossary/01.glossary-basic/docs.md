@@ -6,8 +6,6 @@ taxonomy:
     category: docs
 ---
 
-Asterisk (`*`) means there are unresolved related comments to be addressed in [Google doc for developer.centra.com](https://docs.google.com/document/d/1HerK54L9ZsxuoTATE0sS3oIZpO0dc9V3I_2Knc-lXN0/)
-
 ## **A**
 
 ###  **Account**  
@@ -234,7 +232,7 @@ The date when an order is placed. In B2C the order date is the date the customer
 
 ### **Order statuses**  
 _B2B/B2C_  
-See [Order flow in Centra](https://centra-api-documentation-demo.herokuapp.com/guides/orderflow).  
+See [Order flow in Centra](/guides/orderflow).  
 
 ## **P**
 
@@ -266,7 +264,7 @@ This order has at least one shipment related to it, and at least one of those sh
 
 ### **Product**  
 _B2B/B2C_  
-In Centra, Product is a top-level definition of an item for sale. Products are split up into variants (i.e. by colour, by style), and each variant is split up into sizes according to the selected size chart. Each Product Variant has to belong to at least one display in order to be searchable and purchasable. One product can be visible in both B2B and B2C depending on how the Displays have been set up. For more details, see [Product Model](https://centra-api-documentation-demo.herokuapp.com/overview/products).
+In Centra, Product is a top-level definition of an item for sale. Products are split up into variants (i.e. by colour, by style), and each variant is split up into sizes according to the selected size chart. Each Product Variant has to belong to at least one display in order to be searchable and purchasable. One product can be visible in both B2B and B2C depending on how the Displays have been set up. For more details, see [Product Model](/overview/products).
 
 ### **Product Catalog**  
 _B2B/B2C_  
@@ -370,7 +368,7 @@ Every product in Centra has at least one Variant. A variant is typically a color
 
 ### **Voucher**  
 _B2B/B2C_  
-A voucher is used to give rebates, free shipping, free products etc. to a customer. When a voucher is applied, the selection will be updated to reflect changes made by the voucher. A voucher can be automatically applied based on certain rules, or a code can be entered. For more details, see [Vouchers](https://centra-api-documentation-demo.herokuapp.com/overview/promo#voucher).
+A voucher is used to give rebates, free shipping, free products etc. to a customer. When a voucher is applied, the selection will be updated to reflect changes made by the voucher. A voucher can be automatically applied based on certain rules, or a code can be entered. For more details, see [Vouchers](/overview/promo#voucher).
 
 ## **W**
 
