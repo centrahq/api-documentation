@@ -5,20 +5,33 @@
 {% endblock %}
 {% block content %}
     <div class="main__content">
-        <div class="articles__listing">
-            <h1>{{page.title}}</h1>
-            <hr/>
-            {% if page.content %} <div class="articles__listing-content">{{page.content}}</div>{% endif %}
-            {% set bulletins = grav.theme.config.bulletins %}
-            {% set pages = page.topParent().menu in bulletins or page.menu in bulletins ? page.children.order('date', 'desc') : page.children %}
-            {% for p in pages %}
-                <article>
-                    <h2>{{ p.menu }}</h2>
-                    <p>{{ p.header.excerpt ? p.header.excerpt : p.summary(230) }}</p>
-                    <a href="{{ p.url }}">Read more</a>
-                </article>
-            {% endfor %}
-        </div>
+        {% if config.get('plugins.breadcrumbs.enabled') %}
+            <nav aria-label="Breadcrumbs">
+                {% include 'partials/breadcrumbs.html.twig' %}
+            </nav>
+        {% endif %}
+        <article class="main__content-article">
+            <div class="main-article-content">
+                <header>
+                    <div>
+                        <h1>{{ page.title }}</h1>
+                        <span class="subheader">An overview</span>
+                    </div>
+                </header>
+            </div>
+            <div class="articles__listing">
+                {% if page.content %} <div class="articles__listing-content">{{page.content}}</div>{% endif %}
+                {% set bulletins = grav.theme.config.bulletins %}
+                {% set pages = page.topParent().menu in bulletins or page.menu in bulletins ? page.children.order('date', 'desc') : page.children %}
+                {% for p in pages %}
+                    <article>
+                        <h2>{{ p.menu }}</h2>
+                        <p>{{ p.header.excerpt ? p.header.excerpt : p.summary(230) }}</p>
+                        <a href="{{ p.url }}">Read more</a>
+                    </article>
+                {% endfor %}
+            </div>
+        </article>
         {% include 'partials/arrownav.html.twig' %}
     </div>
 {% endblock %}
