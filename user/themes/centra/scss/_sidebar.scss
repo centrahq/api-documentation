@@ -136,7 +136,7 @@
   display: inline-block;
   position: relative;
 
-  & ul {
+  & ul li:last-of-type {
     margin-bottom: 16px;
   }
 }
