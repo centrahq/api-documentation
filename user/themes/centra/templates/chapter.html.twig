@@ -13,7 +13,7 @@
             {% set pages = page.topParent().menu in bulletins or page.menu in bulletins ? page.children.order('date', 'desc') : page.children %}
             {% for p in pages %}
                 <article>
-                    <h2>{{ p.menu }}</h2>
+                    <h2><a href="{{ p.url }}">{{ p.menu }}</a></h2>
                     <p>{{ p.header.excerpt ? p.header.excerpt : p.summary(230) }}</p>
                     <a href="{{ p.url }}">Read more</a>
                 </article>
