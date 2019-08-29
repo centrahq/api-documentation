@@ -1,7 +1,6 @@
 .main-article-content {
   header {
-    padding-bottom: 40px;
-    margin-bottom: -30px;
+    padding-bottom: 30px;
     border-bottom: 1px solid #F3F3F3;
 
     div {
@@ -110,7 +109,7 @@
 
 .main__content {
   position: relative;
-  width: 780px;
+  max-width: 780px;
   padding: 35px 22px 45px 100px;
   display: flex;
   flex-direction: column;
