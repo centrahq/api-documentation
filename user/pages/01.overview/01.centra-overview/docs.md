@@ -30,7 +30,7 @@ Market can be set by:
 
 ### Locale
 
-Locale defines the user's location (region) and language. Based on users' location Centra is able to serve them proper default Market with prices from a Pricelist appropriate for their country. For items that are translatable, like custom product attributes, locale controls which translation will be returned via API.
+Locale defines the user's language. For items that are translatable, like custom product attributes, locale controls which translation will be returned via API.
 
 Locale can be set by:
 * (Prio 1) Store API `PUT /languages/switch`
