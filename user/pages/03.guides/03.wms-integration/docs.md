@@ -24,7 +24,7 @@ When an order is placed in Centra, it will need to be expedited to generate what
 
 In order to fetch shipments that should be picked and packed by your logistics center, you will use the shipments endpoint of the Order API.
 
-More information: <https://docs.centra.com/reference/stable/order-api/get-shipments>
+More information: [Order API - Get shipments](https://docs.centra.com/reference/stable/order-api/get-shipments)
 
 Please note that you would need to auth with the secret key configured in the Centra Order API settings.
 
@@ -34,7 +34,7 @@ Using this endpoint, you’ll get all the available shipments that are ready to 
 
 You need to make sure that you capture shipments associated payments. This will make sure that the payment is activated with the payment service provider.
 
-More information: <https://docs.centra.com/reference/stable/order-api/capture-shipment>
+More information: [Order API - Capture shipments](https://docs.centra.com/reference/stable/order-api/capture-shipment)
 
 [notice-box=alert]
 Warning: If you get an error response when trying to capture the shipment’s payment you should not proceed with sending the shipment. This is an indicator of potential fraud.
@@ -102,13 +102,13 @@ LineId is to identify the unique item row (hence the name). You’ll also get th
 
 You can also update shipments, if the quantity shipped was lower than on the order. This will allow subsequent creation of additional shipments with the remaining items, or creating refunds for items that could not be shipped.
 
-More information: <https://docs.centra.com/reference/stable/order-api/update-shipment>
+More information: [Order API - Update shipment](https://docs.centra.com/reference/stable/order-api/update-shipment)
 
 ### Marking shipments as complete
 
 The last step of finalizing an order is to complete the shipment. This is the step where you can send carrier info and tracking number to Centra.
 
-More information: <https://docs.centra.com/reference/stable/order-api/complete-shipment>
+More information: [Order API - Complete shipment](https://docs.centra.com/reference/stable/order-api/complete-shipment)
 
 ### Warehouse and stock figures
 
@@ -122,7 +122,7 @@ Warning: Don’t do full stock synchronization at times when the stock is changi
 
 However, it’s always good practice to schedule a regular stock sync, e.g. once a day. This will ensure the systems re-sync automatically if they would ever go out of sync for any reason.
 
-More information: <https://docs.centra.com/reference/stable/order-api/update-stock>
+More information: [Order API - Update stock](https://docs.centra.com/reference/stable/order-api/update-stock)
 
 ### Fetching products
 
@@ -130,11 +130,11 @@ In order to minimize work for the shared client, it is possible to fetch the pro
 
 You’ll be able to fetch all products, and you can also filter out products that are recently updated with the API call.
 
-More information: <https://docs.centra.com/reference/stable/order-api/get-products>
+More information: [Order API - Get products](https://docs.centra.com/reference/stable/order-api/get-products)
 
-The most important thing to think about here, is the SKU fields. In Centra, a product can have multiple variants connected to the same main SKU. Where as in most WMS systems this is not the case. While fetching a product, please make sure to create the products in the WMS, based on sku, variantSku and sizeSKU. These three concatenated would be the physical SKU on the shelf in the warehouse.
+The most important thing to think about here are the SKU fields. In Centra, a product can have multiple variants connected to the same main SKU, where as in most WMS systems this is not the case. While fetching a product, please make sure to create the products in the WMS, based on sku, variantSku and sizeSKU. These three concatenated would be the physical SKU on the shelf in the warehouse.
 
-In the example here, you can see that there are no variantSku nor sizeSku, and in this case the full sku is only M411-740, but it could’ve been a different scenario.
+In the example below, you can see that there are no variantSku nor sizeSku, and in this case the full sku is only M411-740, but it could’ve been a different scenario.
 
 ```json
 "sku": "M411-740",
