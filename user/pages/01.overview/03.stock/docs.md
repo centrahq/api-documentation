@@ -21,7 +21,7 @@ Physical | FTA | Allocated | Linked | Demand | Unshipped | Available Now | Unlin
 38 | 18 | 20 | 2 | 1 | 4 | 17 | 8 | 10 | 0 | 27
 
 * **Physical** = FTA + Allocated  
-This is the quantity that you have on the shelf in the warehouse. If there are any differences, Centra wouldn’t know about.
+This is the quantity that you have on the shelf in the warehouse. If there are any differences, Centra wouldn’t know about it.
 * **FTA** = Physical - Allocated  
 Free to Allocate. This is the quantity of said product which is available to allocate on orders, or simply, this is the quantity available.
 * **Allocated** = Physical - FTA  
