@@ -31,7 +31,7 @@ Here's the basic order flow as seen in Centra backend.
 ### Order statuses
 
 * **Incomplete** (0)  
-  This is a selection before it’s checked out. It contains the list of selected items, information about language and currency, discounts, plus a list of optional shipping methods.
+  This is a selection before the checkout is completed. It contains the list of selected items, information about language and currency, discounts, plus a list of optional shipping methods.
 * **Pending** (1)  
   This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, selected shipping and payment. This step can be skipped by enabling the Store option "Autoconfirm Orders".
 * **Confirmed** (2)  
