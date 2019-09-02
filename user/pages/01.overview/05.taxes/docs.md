@@ -31,7 +31,7 @@ When an order is created, for each order line (each item in the order) the follo
 1. Within this Tax Group, find the appropriate Tax Rule to apply by:
   1. Comparing the countries selected in the Tax Rule to the order shipping country, or
   1. Comparing the Tax Classes selected in the Tax Rule to the Tax Classes of the Customer / Account making the order.
-1. Selected Tax Rule is applied to the order line.
+1. Selected Tax Rule is applied to the order line and the process repeats for the next item in the order.
 
 
 
