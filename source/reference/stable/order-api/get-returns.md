@@ -66,6 +66,20 @@ Will list all returns, newest first.
 
      - Only fetch returns for a specific selection.
 
+   * - ``newer_than``
+
+       .. type:: date
+          :required: false
+
+     - Only fetch returns created after given date or datetime (inclusive).
+     
+   * - ``older_than``
+
+       .. type:: date
+          :required: false
+
+     - Only fetch returns created before given date or datetime (exclusive).
+     
    * - ``xml``
 
        .. type:: boolean
