@@ -16,21 +16,21 @@ Tax Group consists of one or more Tax Rules, which control what amount of tax sh
 
 ### Tax Rules
 
-Tax Rules control what amount of tax should be applied based on Country and Customer (B2C) or Account (B2B) Tax Classes. For example, Tax Rule "VAT" can consist of three rules: EU, with 25% tax, Australia, with 10% tax, and Japan, with 8% tax.
+Tax Rules control what amount of tax should be applied based on Country and Customer (B2C) or Account (B2B) Tax Classes. For example, if you're selling in EU, Australia and Japan and need to calculate VAT tax for those markets, you would create three Tax Rules: EU (with 25% tax), Australia (with 10% tax), and Japan (with 8% tax).
 
-For each Tax Rule you can also configure if the prices in your Store should be displayed with or without tax and whether or not to apply tax to the handling and shipping fees. Finally, for countries in which tax amount depends on the state (like US, Canada or Australia), you can select to apply tax per ship-to country *and* state, in which case you will need to create separate Rules for each of the tax rates and apply them to appropriate states.
+For each Tax Rule you can also configure if the prices in your Store should be displayed with or without tax and whether or not to apply tax to the handling and shipping fees (which is enabled by default). Finally, for countries in which tax amount depends on the state (like US, Canada or Australia), you can select to apply tax per ship-to country **and** state, in which case you will need to create separate Rules for each of the tax rates and apply them to appropriate states.
 
 ### Tax Class
 
-Tax Classes are assigned to the Customers (B2C) and Accounts (B2B) for which the same Tax Rules should be applied. One of the popular use case is to have a "Tax exempt" class for customers who are not paying VAT or Sales tax, and a separate Tax Rule with 0% tax rate, matching on this Tax Class.
+Tax Classes are assigned to the Customers (B2C) and Accounts (B2B) for which the same Tax Rules should be applied. One of the popular use case is to have a "Tax exempt" class for customers who are not paying VAT or Sales tax. This means that for each country in which you have VAT-exempt customers, you will need to have two Tax Rules - one with "Tax exempt" Tax Class selected and 0% tax rate, and one for other classes with appropriate tax rate.
 
 ### How are the order taxes calculated?
 
 When an order is created, for each order line (each item in the order) the following steps apply:
 1. Check Tax Group configured for this Product,
 1. Within this Tax Group, find the appropriate Tax Rule to apply by:
-  1. Comparing the countries selected in the Tax Rule to the order shipping country, or
-  1. Comparing the Tax Classes selected in the Tax Rule to the Tax Classes of the Customer / Account making the order.
+  1. Firstly, comparing the countries selected in the Tax Rule to the order shipping country, and
+  1. Secondly, comparing the Tax Classes selected in the Tax Rule to the Tax Classes of the Customer / Account making the order.
 1. Selected Tax Rule is applied to the order line and the process repeats for the next item in the order.
 
 
@@ -39,4 +39,4 @@ When an order is created, for each order line (each item in the order) the follo
 
 
 
-To learn more about configuring Taxes in Centra, see article [Tax groups](https://support.centra.com/centra-sections/settings/tax-groups) our Suppoprt site.
+To learn more about configuring Taxes in Centra, see article [Tax groups](https://support.centra.com/centra-sections/settings/tax-groups) on our Suppoprt site.
