@@ -136,12 +136,82 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
 
             - URL to a PDF delivery note for the shipment.
 
+          * - ``shippingTerms``
+
+              .. type:: object
+                 :required: false
+
+            - Shipping Terms object selected on this shipment.
+            
+              .. list-table::
+                 :widths: auto
+
+                 * - ``id``
+
+                     .. type:: int
+
+                   - Id of the specific shipping terms object.
+
+                 * - ``name``
+
+                     .. type:: string
+
+                   - Name of the specific shipping terms object.
+                   
+                 * - ``description``
+
+                     .. type:: string
+
+                   - Description of the specific shipping terms object.
+          
+          * - ``paymentTerms``
+
+              .. type:: object
+                 :required: false
+
+            - Payment Terms object selected on this shipment.
+            
+              .. list-table::
+                 :widths: auto
+
+                 * - ``id``
+
+                     .. type:: int
+
+                   - Id of the specific payment terms object.
+
+                 * - ``name``
+
+                     .. type:: string
+
+                   - Name of the specific payment terms object.
+                   
+                 * - ``description``
+
+                     .. type:: string
+
+                   - Description of the specific payment terms object.
+                      
           * - ``proforma``
 
               .. type:: string
                  :required: false
 
             - URL to a PDF proforma for the shipment.
+
+          * - ``defaultCarrier``
+
+              .. type:: string
+                 :required: false
+
+            - Name of the carrier for this shipment.
+
+          * - ``deliveryService``
+
+              .. type:: string
+                 :required: false
+
+            - Name of the delivery service for this shipment.
 
           * - ``invoices``
 
