@@ -128,7 +128,7 @@ This will create return for given shipment and items. Return will be created eve
        .. type:: date/datetime
           :required: false
 
-         - Additional datetime one of the format "YYYY-MM-DD" or "YYYY-MM-DD HH:ii:ss" like "2015-12-24 13:25:01"          
+     - Additional datetime one of the format "YYYY-MM-DD" or "YYYY-MM-DD HH:ii:ss" like "2015-12-24 13:25:01"          
 
    * - ``refund``
 
