@@ -148,6 +148,13 @@ This will create return for given shipment and items. Return will be created eve
                  :required: false
 
             - Send refund email. Default value is ``false``.
+            
+   * - ``createdAt``
+
+       .. type:: datetime
+          :required: false
+
+         - Additional datetime one of the format "YYYY-MM-DD" or "YYYY-MM-DD HH:ii:ss" like "2015-12-24 13:25:01"          
      
 ```
 
