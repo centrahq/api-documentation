@@ -186,6 +186,14 @@ This will return product data from Centra with categories.
 
             - If the product item is active or not.
 
+          * - ``folders``
+
+              .. type:: array
+
+            - Array with names of the folders the product belongs to.
+
+              Like this: ``["Collection", "Jackets", "Outerwear"]``.
+
           * - ``countryOfOrigin``
 
               .. type:: string
