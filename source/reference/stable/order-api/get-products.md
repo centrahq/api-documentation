@@ -188,11 +188,11 @@ This will return product data from Centra with categories.
 
           * - ``folders``
 
-              .. type:: array
+              .. type:: string
 
-            - Array with names of the folders the product belongs to.
+            - String with names of the folders the product belongs to.
 
-              Like this: ``["Collection", "Jackets", "Outerwear"]``.
+              Like this: ``Collection / Jackets``.
 
           * - ``countryOfOrigin``
 
@@ -320,10 +320,7 @@ This will return product data from Centra with categories.
          "harmCode": "6206300090",
          "harmDescription": "Cotton - blouse",
          "active": 0,
-         "folders": [
-            "Folder 1",
-            "Folder 2"
-         ],
+         "folders": "Folder 1 / Folder 2"
          "name": "Bakers Cross",
          "description": "",
          "shortDescription": "",
