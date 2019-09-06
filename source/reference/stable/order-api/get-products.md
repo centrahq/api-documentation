@@ -186,7 +186,7 @@ This will return product data from Centra with categories.
 
             - If the product item is active or not.
 
-          * - ``folders``
+          * - ``folder``
 
               .. type:: string
 
@@ -320,7 +320,7 @@ This will return product data from Centra with categories.
          "harmCode": "6206300090",
          "harmDescription": "Cotton - blouse",
          "active": 0,
-         "folders": "Folder 1 / Folder 2"
+         "folder": "Folder 1 / Folder 2"
          "name": "Bakers Cross",
          "description": "",
          "shortDescription": "",
