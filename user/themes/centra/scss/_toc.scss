@@ -70,7 +70,7 @@
   opacity: 1;
 }
 
-@media (max-width: $main-extra-large-breakpoint) {
+@media (max-width: $toc-breakpoint) {
   .page-toc {
     display: none;
   }
