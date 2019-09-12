@@ -35,7 +35,8 @@ On the `<event>` level
 On the `<order>` level
 
 - This data is the same as the data you can send to the [https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update)
-- `<id>` is the Centra order number
+- `<id>` is the Centra order number, or the converted ID that was used when inserting or updating the order
+- `<ordernumber>` is always the Centra order number
 
 
 ```
@@ -53,9 +54,11 @@ On the `<order>` level
           <ns1:data>
             <ns1:order>
               <ns1:id>30</ns1:id>
+              <ns1:ordernumber>30</ns1:id>
               <ns1:type>retail</ns1:type>
               <ns1:store>1</ns1:store>
               <ns1:status>processing</ns1:status>
+              <ns1:ordertotal>1135.00</ns1:ordertotal>
               <ns1:currency>EUR</ns1:currency>
               <ns1:currencyrate>10.43100</ns1:currencyrate>
               <ns1:basecurrency>SEK</ns1:basecurrency>
