@@ -8,11 +8,11 @@ taxonomy:
 
 Here's the basic happy-path order flow in Checkout API.
 
-### Create selection - add items to selection
+## Create selection - add items to selection
 
 `POST {{url}}/api/checkout/items/1-1`
 
-#### API response
+### API response
 
 ```json
 {
@@ -677,11 +677,11 @@ Here's the basic happy-path order flow in Checkout API.
 }
 ```
 
-### Add another product to selection
+## Add another product to selection
 
 `POST {{url}}/api/checkout/items/1-1`
 
-#### API response
+### API response
 
 ```json
 {
@@ -1346,11 +1346,11 @@ Here's the basic happy-path order flow in Checkout API.
 }
 ```
 
-### Show selection - checkout page
+## Show selection - checkout page
 
 `GET {{url}}/api/checkout/selection`
 
-#### API response
+### API response
 
 ```json
 {
@@ -2015,11 +2015,11 @@ Here's the basic happy-path order flow in Checkout API.
 }
 ```
 
-### Change country to US
+## Change country to US
 
 `PUT {{url}}/api/checkout/countries/US`
 
-#### API response
+### API response
 
 ```json
 {
@@ -2697,11 +2697,11 @@ Here's the basic happy-path order flow in Checkout API.
 }
 ```
 
-### Change country back to Sweden
+## Change country back to Sweden
 
 `PUT {{url}}/api/checkout/countries/SE`
 
-#### API response
+### API response
 
 ```json
 {
@@ -3373,7 +3373,7 @@ Here's the basic happy-path order flow in Checkout API.
 }
 ```
 
-### Inject payment details
+## Inject payment details
 
 `POST {{url}}/api/checkout/payment`
 
@@ -3408,7 +3408,7 @@ Here's the basic happy-path order flow in Checkout API.
 }
 ```
 
-#### API response
+### API response
 
 ```json
 {
@@ -3418,7 +3418,7 @@ Here's the basic happy-path order flow in Checkout API.
 }
 ```
 
-### Receipt - payment result
+## Receipt - payment result
 
 `POST {{url}}/api/checkout/payment-result`
 
@@ -3435,7 +3435,7 @@ Here's the basic happy-path order flow in Checkout API.
 }
 ```
 
-#### API response
+### API response
 
 ```json
 {
@@ -4071,7 +4071,7 @@ Here's the basic happy-path order flow in Checkout API.
 }
 ```
 
-### Order summary
+## Order summary
 
 `GET {{url}}/api/checkout/selection`
 
