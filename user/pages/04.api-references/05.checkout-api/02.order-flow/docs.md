@@ -12,6 +12,8 @@ Here's the basic happy-path order flow in Checkout API.
 
 `POST {{url}}/api/checkout/items/1-1`
 
+Creates a new selection (equivalent to a "basket") when a first item is added. `1-1` translates to `display ID 1`-`size ID 1`.
+
 ### API response
 
 ```json
@@ -681,6 +683,8 @@ Here's the basic happy-path order flow in Checkout API.
 
 `POST {{url}}/api/checkout/items/1-1`
 
+Adding another item to selection, because we can.
+
 ### API response
 
 ```json
@@ -1346,9 +1350,11 @@ Here's the basic happy-path order flow in Checkout API.
 }
 ```
 
-## Show selection - checkout page
+## Show selection
 
 `GET {{url}}/api/checkout/selection`
+
+View the selection, perhaps to review it on the Checkout page.
 
 ### API response
 
@@ -2018,6 +2024,8 @@ Here's the basic happy-path order flow in Checkout API.
 ## Change country to US
 
 `PUT {{url}}/api/checkout/countries/US`
+
+Customer can change shipping country, which would affect the shipping options and currency.
 
 ### API response
 
@@ -2701,6 +2709,8 @@ Here's the basic happy-path order flow in Checkout API.
 
 `PUT {{url}}/api/checkout/countries/SE`
 
+Changing the country back, because we can.
+
 ### API response
 
 ```json
@@ -3377,6 +3387,8 @@ Here's the basic happy-path order flow in Checkout API.
 
 `POST {{url}}/api/checkout/payment`
 
+Fill out the checkout fields, shipping details and select payment option.
+
 ```json
 {
 	"paymentMethod": "dummy",
@@ -3421,6 +3433,8 @@ Here's the basic happy-path order flow in Checkout API.
 ## Receipt - payment result
 
 `POST {{url}}/api/checkout/payment-result`
+
+Finalise the checkout, get order confirmation.
 
 ```json
 {
@@ -4074,6 +4088,8 @@ Here's the basic happy-path order flow in Checkout API.
 ## Order summary
 
 `GET {{url}}/api/checkout/selection`
+
+See? It's no longer a selection, now it's an order.
 
 ### API response
 
