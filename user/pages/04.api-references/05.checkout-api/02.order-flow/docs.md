@@ -1,7 +1,7 @@
 ---
-title: Checkout API (REST)
-altTitle: Checkout API
-excerpt: Details and usage of Centra's Checkout API
+title: Checkout API order flow
+altTitle: API order flow
+excerpt: Creating an order in Centra's Checkout API
 taxonomy:
   category: docs
 ---
