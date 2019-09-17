@@ -16,9 +16,11 @@ Each Warehouse can belong to one or more Warehouse Groups. One Warehouse Group c
 
 ### Example stock levels and definitions
 
+<div class="tableWrapper" markdown='1'>
 Physical | FTA | Allocated | Linked | Demand | Unshipped | Available Now | Unlinked | Incoming | On Delivery | Available
 ---|---|---|---|---|---|---|---|---|---|---
 38 | 18 | 20 | 2 | 1 | 4 | 17 | 8 | 10 | 0 | 27
+</div>
 
 * **Physical** = FTA + Allocated  
 This is the quantity that you have on the shelf in the warehouse. If there are any differences, Centra wouldn’t know about.
