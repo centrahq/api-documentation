@@ -134,6 +134,9 @@ The `group` on the attribute inside the `config.php` specifies where the attribu
 
    * - ``account``
      - Listed under each Account (B2B).
+
+   * - ``sizechart``
+     - Listed under each size in a sizechart.
 ```
 
 ### Attribute element types
