@@ -69,7 +69,7 @@ In the API, the values will come out like this:
 Dynamic attributes are in comparison to mapped attributes not linked to any pre existing attribute, but do have specific data for the specific products. This data needs to be set for each product instead of linking to an existing attribute. The difference between mapped and dynamic is that dynamic uses `"readonly": false` for the attribute.
 
 ```eval_rst
-.. note:: Please note that when you have ``"readonly": false`` on the attribute, only the element with the ``text`` key will be visible in the API for now. This means that if you need multiple elements you need multiple attributes as well.
+.. note:: It used to be that if you had ``"readonly": false`` on the attribute, only the element with the ``text`` key would be visible in the API. This meant that if you needed multiple elements you needed multiple attributes as well. To keep with the previous behavior, this is still the case for single-element attributes. For dynamic attributes with multiple elements, every ``element`` will now be returned in the API as ``[attribute-name]-[element-name]``.
 ```
 
 #### config.php
@@ -90,18 +90,31 @@ Dynamic attributes are in comparison to mapped attributes not linked to any pre 
              ],
          ],
        ],
+       'promo' => [
+         'desc' => 'Promotion',
+          'group' => 'product',
+          'readonly' => false,
+          'elements' => [
+              'sale' => ['desc' => 'Sale', 'type' => 'boolean',
+                  'options' => [[1,'Yes'],[0,'No']]],
+              'preorder' => ['desc' => 'Pre-order', 'type' => 'boolean',
+                  'options' => [[1,'Yes'],[0,'No']]]
+          ],
+        ],
    ];
 ```
 
-This will show up on the product directly with a `Yes / No`-option:
+These will show up on the product directly with a `Yes / No`-option:
 
-![](images/attribute-inline.png)
+![](images/attributes-dynamic-with-multiple-elements2.png)
 
 And in the API, it will show up like this:
 
 ```json
 ...
 "limited_edition": 1,
+"promo_sale": "1",
+"promo_preorder": "1",
 ...
 ```
 
