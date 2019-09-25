@@ -106,10 +106,7 @@ Dynamic attributes are in comparison to mapped attributes not linked to any pre 
 
 These will show up on the product directly with a `Yes / No`-option:
 
-```eval_rst
-.. image:: images/attributes-dynamic-with-multiple-elements.png
-   :scale: 40 %
-```
+![](images/attributes-dynamic-with-multiple-elements2.png)
 
 And in the API, it will show up like this:
 
