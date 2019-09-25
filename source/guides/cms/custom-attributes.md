@@ -112,7 +112,7 @@ And in the API, it will show up like this:
 
 ```json
 ...
-"limited_edition": 1,
+"limited_edition": "1",
 "promo_sale": "1",
 "promo_preorder": "1",
 ...
