@@ -1,5 +1,5 @@
 ---
-title: Integrating Centra with external ERP systems
+title: Integrating Centra with an ERP system
 altTitle: ERP integration
 excerpt: Learn how to integrate your Centra with your Enterprise Resource Planning system
 taxonomy:
@@ -8,13 +8,21 @@ taxonomy:
 
 # Introduction
 
-The SOAP API is built to integrate with ERP systems and communicates via XML.
+Centra is built to integrate with ERP systems. To facilitate this, Centra offers an API especially designed for the purpose, Centra's SOAP API. The API offers many conveniece functions to make it as easy as possible to integrate an ERP system. The API uses an XML protocal, the main standard in the ERP world. 
+
+[notice-box=info] This guide assumes product data is coming from an ERP system. If there is a Product Information Mangamement (PIM) system implemented, the product data can be fed from that system instead. [/notice-box]
+
+[notice-box=info] Centra can run in stand-alone mode without any ERP integaration. An alternative to an ERP integation is to use manual file exports and imports. [/notice-box]
+
+[notice-box=info] This guide can be followed to integrate an accounting/bookkeping system instead of an ERP system. In that case, skip the steps that are not applicable to the simpler system. [/notice-box]
 
 ## SOAP API introduction
 
-This link contains all operations and XML structures of the API, made from the WSDL definition: [https://docs.centra.com/soap/index.php](https://docs.centra.com/soap/index.php)
+All operations and XML structures of the API are documented as an WSDL definition: [https://docs.centra.com/soap/index.php](https://docs.centra.com/soap/index.php)
 
 ### ID Conversion Table
+
+For convenience, the SOAP API enables interactions based on IDs in the ERP system, meaning the ERP system only has to be aware of its own IDs and not of Centra's IDs. 
 
 IDs and the ID conversion table is a fundamental part of this API.
 
@@ -28,7 +36,7 @@ When data originates from your side, for example products, you can pick any uniq
 
 For example; you create a product with `<id>yourProductId</id>`. Once a product is created, you can update the product using that ID, and when you get an order from Centra containing that product, the XML data uses yourProductId for the product.
 
-You can view and edit the conversion table in the Centra admin.
+You can view and edit the conversion table in the Centra interface.
 
 ### Communication
 
@@ -38,11 +46,11 @@ You will need to send a username and password with each request.
 
 ### Events and the Event Queue
 
-When certain things change in Centra, an event is created in the SOAP API.
+When data that is relevant for the ERP integration changes in Centra, an event is created in the SOAP API.
 
 You need to fetch events from Centra regularly, and for each event you fetch you need to tell Centra to remove it from the queue.
 
-This is the only way data is sent from Centra to your side.
+This is the only way data is sent from Centra to the ERP system.
 
 Events are fetched using:
 
@@ -98,20 +106,9 @@ All updates return the same type of response. `<success>` can be true or false. 
 
 We only have one API version. We never change any existing fields in the specification, but we sometimes add new fields. Please make sure the implementation you build does not break if new fields are added to the XML.
 
-But we do have 3 different endpoints.
-
-If you are building a new integration, use the “SOAP API” endpoint. It looks something like this: [https://example.centra.com/ams/system/service/module/soap/api?wsdl](https://example.centra.com/ams/system/service/module/soap/api?wsdl)
+If you are building a new integration, use the “SOAP API” endpoint. It looks like this: [https://example.centra.com/ams/system/service/module/soap/api?wsdl](https://example.centra.com/ams/system/service/module/soap/api?wsdl)
 
 All examples in this documentation uses the “SOAP API” endpoint.
-
-If you are working on an older integration, it might use one of the two “navision” endpoints. They look like this: [https://example.centra.com/ams/system/service/module/navision/api?wsdl](https://example.centra.com/ams/system/service/module/navision/api?wsdl) or [https://example.centra.com/ams/system/service/module/navision/soap?wsdl](https://example.centra.com/ams/system/service/module/navision/soap?wsdl)
-
-The older “navision” endpoints use a different XML namespace name, and one of them has a different way to send the login username and password. Other than that they are identical. These links contains all operations and XML structures of the older endpoints, made from the WSDL definition:
-
-* [https://docs.centra.com/silksoap/index.php](https://docs.centra.com/silksoap/index.php)
-* [https://docs.centra.com/silkxml/index.php](https://docs.centra.com/silkxml/index.php)
-
-
 
 ***
 
@@ -124,6 +121,8 @@ The older “navision” endpoints use a different XML namespace name, and one o
 To test the connection, use the events_Get operation. This is a read only operation, nothing bad can happen.
 
 [https://docs.centra.com/soap/index.php?op=events_Get](https://docs.centra.com/soap/index.php?op=events_Get)
+
+[notice-box=alert] Warning: Never use the integration you build towards a production Centra environment before it is thoroughly tested and verified to be working as intended! [/notice-box] 
 
 ### Information you need
 
@@ -175,9 +174,9 @@ The response you get when you try this can contain a lot of data in the `<ns1:ev
 
 Creates new, or updates existing markets in Centra.
 
-If Centra already has markets setup, you shouldn’t create new ones. Contact us directly so we can setup the existing markets in the ID conversion table instead.
+[notice-box=info] If Centra already has markets set up, you shouldn’t create new ones using the API. Instead, consult the ID conversion table in Centra and set up the correct mappings. [/notice-box]
 
-As long as you are not working against a Centra instance that is used in production, this operation is simple and might be a good one to start with.
+As long as you are not working against a Centra instance that is used in production, this operation is simple and recommended to be a good one to start with.
 
 The `<id>` you send to Centra will be used to refer to that market in the future. For example; an order placed in the market Retail-Global will have that market `<id>` on it when you fetch the order data from Centra. It is only used for the integration between the systems, so it does not need to be readable. The ID `<id>` is added to the ID conversion table.
 
@@ -242,7 +241,7 @@ The `<description>` is the name of the market in Centra’s admin interface. So 
 
 [https://docs.centra.com/soap/index.php?op=sizes_Update](https://docs.centra.com/soap/index.php?op=sizes_Update)
 
-Before you can send product data to Centra you need to have sizetables in place.
+Before you can send product data to Centra you need to have size tables in place.
 
 This example creates two sizetables:
 
@@ -257,9 +256,7 @@ On the `<sizetable>` level, the `<id>` must be unique for all sizetables.
 
 Notice that the size with `<id>` OS has a blank `<description/>`. This is useful for products that do not have different sizes. The size is never mentioned in the webshop or wholesale showroom.
 
-### Important
-
-You cannot change a sizetable once it’s been created. This is because products are linked to the sizes in the sizetable, and this in turn connects to stock levels for the proucts and orders placed for these products.
+[notice-box=alert] You cannot change a sizetable once it’s been created. This is because products are linked to the sizes in the sizetable, and this in turn connects to stock levels for the proucts and orders placed for these products. [/notice-box]
 
 ### Request
 
