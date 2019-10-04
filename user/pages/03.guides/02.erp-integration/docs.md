@@ -6,6 +6,12 @@ taxonomy:
   category: docs
 ---
 
+
+
+***
+
+
+
 # Introduction
 
 The SOAP API is built to integrate with ERP systems and communicates via XML.
@@ -110,6 +116,12 @@ The older “navision” endpoints use a different XML namespace name, and one o
 
 * [https://docs.centra.com/silksoap/index.php](https://docs.centra.com/silksoap/index.php)
 * [https://docs.centra.com/silkxml/index.php](https://docs.centra.com/silkxml/index.php)
+
+
+
+***
+
+
 
 # Cookbook
 
