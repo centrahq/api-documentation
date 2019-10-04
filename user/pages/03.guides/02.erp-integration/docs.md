@@ -6,11 +6,13 @@ taxonomy:
   category: docs
 ---
 
+# Introduction
+
 The SOAP API is built to integrate with ERP systems and communicates via XML.
 
 ## SOAP API introduction
 
-This link contains all operations and XML structures of the API, made from the WSDL definition: (https://docs.centra.com/soap/index.php)
+This link contains all operations and XML structures of the API, made from the WSDL definition: [https://docs.centra.com/soap/index.php](https://docs.centra.com/soap/index.php)
 
 ### ID Conversion Table
 
@@ -44,28 +46,28 @@ This is the only way data is sent from Centra to your side.
 
 Events are fetched using:
 
-* events_Get (https://docs.centra.com/soap/index.php?op=events_Get)  
-* events_GetByMarkets (https://docs.centra.com/soap/index.php?op=events_GetByMarkets) (you can fetch events only for one or more markets)
+* events_Get [https://docs.centra.com/soap/index.php?op=events_Get](https://docs.centra.com/soap/index.php?op=events_Get)  
+* events_GetByMarkets [https://docs.centra.com/soap/index.php?op=events_GetByMarkets](https://docs.centra.com/soap/index.php?op=events_GetByMarkets) (you can fetch events only for one or more markets)
 
-Events are removed from the queue with events_Done https://docs.centra.com/soap/index.php?op=events_Done
+Events are removed from the queue with events_Done [https://docs.centra.com/soap/index.php?op=events_Done](https://docs.centra.com/soap/index.php?op=events_Done)
 
 You need to use events_Done on all events, even if they are of an unknown type that you don’t handle. The API returns the oldest events, up to a 100 in each events_Get. If you do not use events_Done on all events, all 100 events will eventually be old and you won’t see any new events.
 
 For example, if there are 234 events in the queue, events_Get will return the oldest 100. When you mark 10 of those as done with events_Done, they are removed from the queue. After that the queue will contain 224 events, events_Get will give you the 100 oldest again. This time 90 of those will be the same as the last time, 10 will be new.
 
-The data for each event depends on the type of the event. Events of type “order” contain an order. The structure is the same as for the corresponding “update” operation for that type of data. An order event contains the data structure from orders_Update https://docs.centra.com/soap/index.php?op=orders_Update .
+The data for each event depends on the type of the event. Events of type “order” contain an order. The structure is the same as for the corresponding “update” operation for that type of data. An order event contains the data structure from orders_Update [https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update).
 
 Each event contains the complete data for the thing that has changed. It does not contain any information about what has changed, you would need to compare it yourself to the data on your side to know that. This is a problem. Usually, this is solved by making rules for when the data is owned by one sytem or the other. For example, an order is owned by Centra until its imported into your system. From that point on, only your system can make changes to the order.
 
 ### Updates
 
-The different update operations in the API will update or create new data objects in Centra. There are many different fields in the update operations, for example the products_Update https://docs.centra.com/soap/index.php?op=products_Update. You do not need to send all fields, only the ones that are required to identify what object you want to update (the different `<id>` fields) and the fields with data that you want to change.
+The different update operations in the API will update or create new data objects in Centra. There are many different fields in the update operations, for example the products_Update [https://docs.centra.com/soap/index.php?op=products_Update](https://docs.centra.com/soap/index.php?op=products_Update). You do not need to send all fields, only the ones that are required to identify what object you want to update (the different `<id>` fields) and the fields with data that you want to change.
 
 The fields that you do not include in the update are not changed.
 
 If the data object you send does not exist in Centra, it will be created.
 
-For example the customers_Update lets you update or create retail customers. https://docs.centra.com/soap/index.php?op=customers_Update
+For example the customers_Update lets you update or create retail customers. [https://docs.centra.com/soap/index.php?op=customers_Update](https://docs.centra.com/soap/index.php?op=customers_Update)
 
 You need to send the `<id>` to identify what customer to update. If no customer with that ID exists, a new customer is created.
 
@@ -98,13 +100,135 @@ We only have one API version. We never change any existing fields in the specifi
 
 But we do have 3 different endpoints.
 
-If you are building a new integration, use the “SOAP API” endpoint. It looks something like this: https://example.centra.com/ams/system/service/module/soap/api?wsdl
+If you are building a new integration, use the “SOAP API” endpoint. It looks something like this: [https://example.centra.com/ams/system/service/module/soap/api?wsdl](https://example.centra.com/ams/system/service/module/soap/api?wsdl)
 
 All examples in this documentation uses the “SOAP API” endpoint.
 
-If you are working on an older integration, it might use one of the two “navision” endpoints. They look like this: https://example.centra.com/ams/system/service/module/navision/api?wsdl or https://example.centra.com/ams/system/service/module/navision/soap?wsdl
+If you are working on an older integration, it might use one of the two “navision” endpoints. They look like this: [https://example.centra.com/ams/system/service/module/navision/api?wsdl](https://example.centra.com/ams/system/service/module/navision/api?wsdl) or [https://example.centra.com/ams/system/service/module/navision/soap?wsdl](https://example.centra.com/ams/system/service/module/navision/soap?wsdl)
 
 The older “navision” endpoints use a different XML namespace name, and one of them has a different way to send the login username and password. Other than that they are identical. These links contains all operations and XML structures of the older endpoints, made from the WSDL definition:
 
-* https://docs.centra.com/silksoap/index.php
-* https://docs.centra.com/silkxml/index.php
+* [https://docs.centra.com/silksoap/index.php](https://docs.centra.com/silksoap/index.php)
+* [https://docs.centra.com/silkxml/index.php](https://docs.centra.com/silkxml/index.php)
+
+# Cookboox
+
+## Connection test
+
+To test the connection, use the events_Get operation. This is a read only operation, nothing bad can happen.
+
+[https://docs.centra.com/soap/index.php?op=events_Get](https://docs.centra.com/soap/index.php?op=events_Get)
+
+### Information you need
+
+    The API endpoint (and WSDL if you use the WSDL definition to build a client on your side)
+    Username
+    Password
+
+The API endpoint typically looks something like this: [http://example.centra.com/ams/system/service/module/soap/api](http://example.centra.com/ams/system/service/module/soap/api)
+
+The WSDL definition is the API endpoint with ?wsdl at the end: [http://example.centra.com/ams/system/service/module/soap/api?wsdl](http://example.centra.com/ams/system/service/module/soap/api?wsdl)
+
+### Request
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <events_GetRequest xmlns="http://www.centra.com/webservices/">
+      <login>
+        <username>example</username>
+        <password>???</password>
+      </login>
+      <type>all</type>
+    </events_GetRequest>
+  </soap:Body>
+</soap:Envelope>
+```
+
+### Response
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://www.centra.com/webservices/">
+  <SOAP-ENV:Body>
+    <ns1:events_Get>
+      <ns1:events/>
+    </ns1:events_Get>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+
+### Notes
+
+The response you get when you try this can contain a lot of data in the `<ns1:events>` if there are events in the event queue.
+
+## Markets
+
+[https://docs.centra.com/soap/index.php?op=markets_Update](https://docs.centra.com/soap/index.php?op=markets_Update)
+
+Creates new, or updates existing markets in Centra.
+
+If Centra already has markets setup, you shouldn’t create new ones. Contact us directly so we can setup the existing markets in the ID conversion table instead.
+
+As long as you are not working against a Centra instance that is used in production, this operation is simple and might be a good one to start with.
+
+The `<id>` you send to Centra will be used to refer to that market in the future. For example; an order placed in the market Retail-Global will have that market `<id>` on it when you fetch the order data from Centra. It is only used for the integration between the systems, so it does not need to be readable. The ID `<id>` is added to the ID conversion table.
+
+The `<description>` is the name of the market in Centra’s admin interface. So this should be something people understand.
+
+### Information you need
+
+IDs of the stores (1 and 2 in the example below) for the `<store>`, and if they are retail or wholesale stores for the `<type>`. Ask us to provide this information for you.
+
+### Request
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <markets_Update xmlns="http://www.centra.com/webservices/">
+      <login>
+        <username>example</username>
+        <password>???</password>
+      </login>
+      <markets>
+        <market>
+          <id>Retail-Global</id>
+          <store>1</store>
+          <type>retail</type>
+          <description>Global</description>
+        </market>
+        <market>
+          <id>Retail-Sweden</id>
+          <store>1</store>
+          <type>retail</type>
+          <description>Sweden</description>
+        </market>
+        <market>
+          <id>Wholesale-Market</id>
+          <store>2</store>
+          <type>wholesale</type>
+          <description>Global</description>
+        </market>
+      </markets>
+    </markets_Update>
+  </soap:Body>
+</soap:Envelope>
+```
+
+### Response
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://www.centra.com/webservices/">
+  <SOAP-ENV:Body>
+    <ns1:result>
+      <ns1:success>true</ns1:success>
+      <ns1:errors/>
+      <ns1:notices/>
+    </ns1:result>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+
