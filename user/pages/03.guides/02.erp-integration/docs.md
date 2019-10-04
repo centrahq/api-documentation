@@ -6,12 +6,6 @@ taxonomy:
   category: docs
 ---
 
-
-
-***
-
-
-
 # Introduction
 
 The SOAP API is built to integrate with ERP systems and communicates via XML.
