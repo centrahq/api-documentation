@@ -8,7 +8,7 @@ taxonomy:
 
 # Introduction
 
-Centra is built to integrate with ERP systems. To facilitate this, Centra offers an API especially designed for the purpose, Centra's SOAP API. The API offers many conveniece functions to make it as easy as possible to integrate an ERP system. The API uses an XML protocal, the main standard in the ERP world. 
+Centra is built to integrate with ERP systems. To facilitate this, Centra offers an API especially designed for the purpose, Centra's SOAP API. The API offers conveniece functions to make it as easy as possible to integrate an ERP system. The API uses an XML protocal, the main standard in ERP integrations. 
 
 [notice-box=info] This guide assumes product data is coming from an ERP system. If there is a Product Information Mangamement (PIM) system implemented, the product data can be fed from that system instead. [/notice-box]
 
@@ -22,17 +22,17 @@ All operations and XML structures of the API are documented as an WSDL definitio
 
 ### ID Conversion Table
 
-For convenience, the SOAP API enables interactions based on IDs in the ERP system, meaning the ERP system only has to be aware of its own IDs and not of Centra's IDs. 
+To make an integration as easy as possible to build and maintain, the SOAP API enables interactions with Centra based on IDs in the ERP system. This means the ERP system only has to be aware of its own IDs and not of Centra's IDs. 
 
-IDs and the ID conversion table is a fundamental part of this API.
+IDs and the ID conversion table is hence a fundamental part of this API.
 
-The ids are always in the `<id>` tag on the XML, and are used to uniquely identify orders, products, customers and other data objects.
+The ids are always in the `<id>` tag in the XML, and are used to uniquely identify orders, products, customers and other data objects.
 
-The ID conversion table translates back and forth between Centra’s internal database IDs and the IDs you chose on your side.
+The ID conversion table translates back and forth between Centra’s internal IDs and the IDs you chose on your side.
 
 When data originates from Centra; for example from orders, you will always get Centra’s internal numeric ID. For orders this is the order number.
 
-When data originates from your side, for example products, you can pick any unique `<id>` you prefer when you send the data to Centra. This is when the ID conversion table comes into effect; Centra will create a mapping from your ID to Centra’s internal numeric ID in the conversion table, and all data you see in the API will always use the ID you picked.
+When data originates from the ERP side, for example products, you can pick any unique `<id>` you prefer when you send the data to Centra. This is when the ID conversion table comes into effect; Centra will create a mapping from your ID to Centra’s internal numeric ID in the conversion table, and all data you see in the API will always use the ID you picked.
 
 For example; you create a product with `<id>yourProductId</id>`. Once a product is created, you can update the product using that ID, and when you get an order from Centra containing that product, the XML data uses yourProductId for the product.
 
@@ -63,9 +63,13 @@ You need to use events_Done on all events, even if they are of an unknown type t
 
 For example, if there are 234 events in the queue, events_Get will return the oldest 100. When you mark 10 of those as done with events_Done, they are removed from the queue. After that the queue will contain 224 events, events_Get will give you the 100 oldest again. This time 90 of those will be the same as the last time, 10 will be new.
 
+[notice-box=info] There is no timeout after which events disappear automatically. If the ERP system is unable to fetch events due to down time or high load, events will be permanently stored in Centra until fetched. [/notice-box]
+
 The data for each event depends on the type of the event. Events of type “order” contain an order. The structure is the same as for the corresponding “update” operation for that type of data. An order event contains the data structure from orders_Update [https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update).
 
-Each event contains the complete data for the thing that has changed. It does not contain any information about what has changed, you would need to compare it yourself to the data on your side to know that. This is a problem. Usually, this is solved by making rules for when the data is owned by one sytem or the other. For example, an order is owned by Centra until its imported into your system. From that point on, only your system can make changes to the order.
+Each event contains the complete data for the object that has changed. It does not contain historical data, i.e., to know what has changed, you would need to compare it yourself to the data on your side to know that. 
+
+[notice-box=info] Hand-over points between the systems should be decided. For example, an order is owned by Centra until its imported into your system. From that point on, only your system can make changes to the order. [/notice-box]
 
 ### Updates
 
@@ -75,7 +79,7 @@ The fields that you do not include in the update are not changed.
 
 If the data object you send does not exist in Centra, it will be created.
 
-For example the customers_Update lets you update or create retail customers. [https://docs.centra.com/soap/index.php?op=customers_Update](https://docs.centra.com/soap/index.php?op=customers_Update)
+For example the customers_Update lets you update or create retail/B2C customers. [https://docs.centra.com/soap/index.php?op=customers_Update](https://docs.centra.com/soap/index.php?op=customers_Update)
 
 You need to send the `<id>` to identify what customer to update. If no customer with that ID exists, a new customer is created.
 
@@ -83,7 +87,7 @@ If you send the `<firstname>` but not the `<lastname>` for an existing customer,
 
 ### Updates responses
 
-All updates return the same type of response. `<success>` can be true or false. If success is false, the `<errors>` might contain useful information why it failed. The `<notices>` sometimes contain information, but that is normal and does not mean something went wrong.
+All updates return the same type of response. `<success>` can be true or false. If success is false, `<errors>` contains useful information why it failed. `<notices>` may contain additional information, both for successful and failed information.
 
 ```xml
 <success>true</success>
@@ -104,7 +108,9 @@ All updates return the same type of response. `<success>` can be true or false. 
 
 ### API versions
 
-We only have one API version. We never change any existing fields in the specification, but we sometimes add new fields. Please make sure the implementation you build does not break if new fields are added to the XML.
+Version control is handled by adding new fields to the specification, rather than releasing new versions of the API, i.e., there i only one version in production at the same time. You will always be running that version. 
+
+[notice-box=info] Make sure the implementation you build does not break when new fields are added to the XML. [/notice-box]
 
 If you are building a new integration, use the “SOAP API” endpoint. It looks like this: [https://example.centra.com/ams/system/service/module/soap/api?wsdl](https://example.centra.com/ams/system/service/module/soap/api?wsdl)
 
@@ -122,7 +128,7 @@ To test the connection, use the events_Get operation. This is a read only operat
 
 [https://docs.centra.com/soap/index.php?op=events_Get](https://docs.centra.com/soap/index.php?op=events_Get)
 
-[notice-box=alert] Warning: Never use the integration you build towards a production Centra environment before it is thoroughly tested and verified to be working as intended! [/notice-box] 
+[notice-box=alert] Never use the integration you build towards a production Centra environment before it is thoroughly tested and verified to be working as intended! [/notice-box] 
 
 ### Information you need
 
@@ -164,9 +170,7 @@ The WSDL definition is the API endpoint with ?wsdl at the end: [http://example.c
 </SOAP-ENV:Envelope>
 ```
 
-### Notes
-
-The response you get when you try this can contain a lot of data in the `<ns1:events>` if there are events in the event queue.
+[notice-box=info] The response you get when you try this may contain a data payload in the `<ns1:events>` if there are events in the event queue. [/notice-box]
 
 ## Markets
 
@@ -180,11 +184,14 @@ As long as you are not working against a Centra instance that is used in product
 
 The `<id>` you send to Centra will be used to refer to that market in the future. For example; an order placed in the market Retail-Global will have that market `<id>` on it when you fetch the order data from Centra. It is only used for the integration between the systems, so it does not need to be readable. The ID `<id>` is added to the ID conversion table.
 
-The `<description>` is the name of the market in Centra’s admin interface. So this should be something people understand.
+The `<description>` is the name of the market in Centra’s admin interface. So this should be something administrators of the system can relate to.
 
 ### Information you need
 
-* IDs of the stores (1 and 2 in the example below) for the `<store>`, and if they are retail or wholesale stores for the `<type>`. Ask us to provide this information for you.
+* IDs of the stores (1 and 2 in the example below) for `<store>`
+* Type of each store, either direct-to-consumer or wholesale for `<type>`
+
+[notice-box=info] Centra supports sales directly to customers, "direct-to-consumer" or "B2C", and sales to retailers and distributors, "wholesale" or "B2B". Because the business logic involved is different, there are two different store types in Centra. Direct-to-consumer store types are called 'retail' in the API and wholesale store types are called 'wholesale'. [/notice-box]
 
 ### Request
 
@@ -237,7 +244,7 @@ The `<description>` is the name of the market in Centra’s admin interface. So 
 </SOAP-ENV:Envelope>
 ```
 
-## Product Data 1 - Sizetables
+## Product Data: Sizetables
 
 [https://docs.centra.com/soap/index.php?op=sizes_Update](https://docs.centra.com/soap/index.php?op=sizes_Update)
 
@@ -345,7 +352,7 @@ When you send the same sizes_Update again, nothing changes in Centra and you wil
 </SOAP-ENV:Envelope>
 ```
 
-## Product Data 2 - A Sweater
+## Product Data: A Sweater example
 
 [https://docs.centra.com/soap/index.php?op=products_Update](https://docs.centra.com/soap/index.php?op=products_Update)
 
@@ -360,6 +367,8 @@ On the`<product>` level:
 * `<folder>` is a way to organize products in the Centra admin (do not use an `<id>` for the folder). This is optional.
 * `<brand>` is the product’s brand. The `<id>` is used only in the API, the `<description>` is the brand name displayed in the Admin and in the Centra stores.
 * `<collection>` is the collection that this product is a part of. For example “Spring 2019”. This is optional.
+
+[notice-box=info] Folders are used for reporting. It is recommended to maintain the same folder structure in the ERP system and Centra, to ensure consistency between reports generated by both systems. Folders in Centra are unrelated to categories, used to structure items for sale when presented to customers. [/notice-box]
 
 On the `<variation>` level:
 
@@ -485,13 +494,13 @@ The `<sku>` field is not required by Centra itself, but if Centra connects to ot
 </SOAP-ENV:Envelope>
 ```
 
-## Product Data 3 - A Chair
+## Product Data: A Chair example
 
 [https://docs.centra.com/soap/index.php?op=products_Update](https://docs.centra.com/soap/index.php?op=products_Update)
 
 This example creates or updates a product. We will be using a chair for this example. The product does not have different variants or sizes. To fit Centra’s product structure, it is created with a single variant and a single size.
 
-Notice that this example does not send a `<sku>` or `<ean>` as Centra does not require it. If your system has SKU and EAN codes, please send them anyway. This is just an example to illustrate that they are not required for the integration to work.
+Notice that this example does not send a `<sku>` or `<ean>` as Centra does not require it. If you have SKU and EAN codes, do send them. This example illustrates that SKU/EAN are not required for the integration to work, which can be very useful when synchronizing data early on in a sales cycle.
 
 ### Information you need
 
@@ -547,13 +556,13 @@ Notice that this example does not send a `<sku>` or `<ean>` as Centra does not r
 </soap:Envelope>
 ```
 
-## Product Stock 1 - Warehouses
+## Product Stock: Warehouses
 
 [https://docs.centra.com/soap/index.php?op=warehouses_Update](https://docs.centra.com/soap/index.php?op=warehouses_Update)
 
 Creates or updates warehouses in Centra.
 
-In most cases your shouldn’t create new warehouses if Centra already has warehouses setup. Contact us directly so we can setup the existing ones in the ID conversion table instead.
+[notice-box=info] In most cases your shouldn’t create new warehouses if Centra already has warehouses setup. Consult the ID conversion table instead. [/notice-box]
 
 This operation is optional. If you simply send stock numbers to a warehouse `<id>` in the next example without creating warehouses first, the warehouses will be created automatically.
 
@@ -583,7 +592,7 @@ This operation is optional. If you simply send stock numbers to a warehouse `<id
 </soap:Envelope>
 ```
 
-## Product Stock 2 - Stock Update
+## Product Stock: Stock Update
 
 [https://docs.centra.com/soap/index.php?op=products_Update](https://docs.centra.com/soap/index.php?op=products_Update)
 
@@ -594,9 +603,8 @@ This uses the same products_Update operation as the “Product Data”, but with
 On the `<product>`, `<variation>` and `<size>` the different IDs remain from the “Product Data 3 - A Chair” example. These are required to identify what sizes to change.
 
 The `<warehouseitems>` is new in this example, this sets the stock quantities of that size in two different warehouses
-Important¶
 
-The stock `<qty>` is the number of items that are available for sale and has not been reserved for existing orders. It is not the number of items on the shelf in the warehouse.
+The stock `<qty>` is the number of items that are available for sale that has not been reserved for existing orders. It is not the number of items on the shelf in the warehouse.
 
 In Centra this is called FTA – free to allocate.
 
@@ -658,7 +666,7 @@ This also means you should fetch orders from Centra before sending stock updates
 
 Update or create pricelists. A pricelist contains prices for products in a specific currency.
 
-This example creates two pricelists. One for the retail store and one for the wholesale store. You can have multiple pricelists in each store, and even multiple pricelists in the same store with the same currency.
+This example creates two pricelists. One for a direct-to-consumer store and one for a wholesale store. You can have multiple pricelists in each store, and even multiple pricelists in the same store with the same currency.
 
 Prices in Centra can be set at the product or variant level, but not on the size level.
 
@@ -761,7 +769,7 @@ Also note that the T001 product has prices on the variant level (the blue one is
 </soap:Envelope>
 ```
 
-## Wholesale Accounts 1 - Payment Terms
+## Wholesale Accounts: Payment Terms
 
 [https://docs.centra.com/soap/index.php?op=paymentterms_Update](https://docs.centra.com/soap/index.php?op=paymentterms_Update)
 
@@ -793,7 +801,7 @@ Notice that `<name>` is the name or title of the payent term in the Centra admin
 </soap:Envelope>
 ```
 
-## Wholesale Accounts 2 - Shipping Terms
+## Wholesale Accounts: Shipping Terms
 
 [https://docs.centra.com/soap/index.php?op=shippingterms_Update](https://docs.centra.com/soap/index.php?op=shippingterms_Update)
 
@@ -824,11 +832,11 @@ Notice that `<name>` is the name or title of the shipping term in the Centra adm
 </soap:Envelope>
 ```
 
-## Wholesale Accounts 3 - Account Data
+## Wholesale Accounts: Account Data
 
 [https://docs.centra.com/soap/index.php?op=accounts_Update](https://docs.centra.com/soap/index.php?op=accounts_Update)
 
-Creates or updates an account. The account is the data for a wholesale customer, a company that can make purchases in Centra’s wholesale showroom.
+Creates or updates an account. The account is the data for a wholesale customer, a company that can make purchases in Centra Showroom or by entering or importing orders manually. 
 
 ### Information you need
 
@@ -846,7 +854,7 @@ Creates or updates an account. The account is the data for a wholesale customer,
 * `<accountaddress>` is the visiting address
 * `<buyers>` is a list of one or more buyers. They are users that can log into the wholesale showroom and make purchases for the account.
 
-Notice that you must send a `<buyer>` for the account to show in the Centra admin. Send one with blank name and email if you do not have this data in your system.
+[notice-box=info] An account in Centra must have at least one buyer to be active and show up in the Centra admin panel. Send one with blank name and email if you do not have this data in your system. [/notice-box]
 
 ### Request
 
@@ -932,13 +940,13 @@ Notice that you must send a `<buyer>` for the account to show in the Centra admi
 </soap:Envelope>
 ```
 
-## Orders - Retail 1 - Event
+## Direct-to-Consumer orders: Event
 
 [https://docs.centra.com/soap/index.php?op=events_Get](https://docs.centra.com/soap/index.php?op=events_Get)
 
-This example uses the events_Get operation to get order events. The response contains an order from the retail store, and examples after this one will update the order.
+This example uses the events_Get operation to get order events. The response contains an order from the direct-to-consumer store, and examples after this one will update the order.
 
-Notice that order has a `<shipment>` on it. Sometimes Centra is configured to automatically create shipments for retail orders. It can also be configured to not do that. In that case you would need to create the shipment. (This is illustrated in the wholesale order examples.)
+Notice that order has a `<shipment>` on it. Sometimes Centra is configured to automatically create shipments for direct-to-consumer orders. It can also be configured to not do that. In that case you would need to create the shipment. (This is illustrated in the wholesale order examples.)
 
 ### Request
 
@@ -1267,7 +1275,7 @@ On the `<order>` level
 </SOAP-ENV:Envelope>
 ```
 
-## Orders - Retail 2 - Event Done
+## Direct-to-Consumer orders: Event Done
 
 [https://docs.centra.com/soap/index.php?op=events_Done](https://docs.centra.com/soap/index.php?op=events_Done)
 
@@ -1292,11 +1300,13 @@ This marks the event from the previous example as done. That event had ID 115. T
 </soap:Envelope>
 ```
 
-## Orders - Retail 3 - Lock Order
+## Direct-to-consumer orders: Lock Order
 
 [https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update)
 
 Locking an order prevents most changes to the order in the Centra admin. This is a good idea if your side takes ownership of the order data after you have imported the order.
+
+[notice-box=info] Hand-over points between the systems should be clearly defined. [/notice-box]
 
 This orders_Update will only change the `<locked>` status. Nothing else on the order is changed.
 
@@ -1324,7 +1334,7 @@ This orders_Update will only change the `<locked>` status. Nothing else on the o
 </soap:Envelope>
 ```
 
-## Orders - Retail 4 - Order Shipped
+## Direct-to-Consumer orders: Order Shipped
 
 [https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update)
 
@@ -1334,7 +1344,7 @@ This marks the shipment of the order as shipped, and sets the tracking number fo
 
 The `<capture>yes</capture>` will instruct Centra to capture the payment for the shipment with the payment provider, to actually withdraw the money from the customer’s account.
 
-In most cases retail orders will only reserve the payment until the order is shipped. When the order is shipped the payment must be “captured”.
+In most cases direct-to-consumer orders will only reserve the payment until the order is shipped. When the order is shipped the payment must be “captured”.
 
 The `<capture>yes</capture>` will capture if it’s possible to perform a capture on this order. If its not possible or the order has already been captured it has no effect. This makes it possible for you to always send `<capture>yes</capture>` when a shipment has been shipped without having to figure out if this order has already been captured.
 
@@ -1374,15 +1384,17 @@ The `<capture>yes</capture>` will capture if it’s possible to perform a captur
 </soap:Envelope>
 ```
 
-## Orders - Wholesale 1 - Event By Markets
+[notice-box=alert] If capture fails, the order should not be shipped. This is an indication of a potential fraud attempt. [/notice-box]
+
+## Wholesale orders: Event By Markets
 
 [https://docs.centra.com/soap/index.php?op=events_GetByMarkets](https://docs.centra.com/soap/index.php?op=events_GetByMarkets)
 
 This example uses the events_GetByMarkets operation to get order events from a specific market. The response contains an order from the wholesale store, and examples after this one will update the order.
 
-Compared to the retail order event example, this uses events_GetByMarkets only to show an example of how it’s used. You could use events_Get instead, and get order events from all markets.
+Compared to the direct-to-consumer order event example, this uses events_GetByMarkets only to show an example of how it’s used. You could use events_Get instead, and get order events from all markets.
 
-Also compared to the retail order, this order does not have any shipment on it.
+Also compared to the direct-to-consumer order, this order does not have any shipment on it.
 
 ### Request
 
@@ -1677,11 +1689,11 @@ Also compared to the retail order, this order does not have any shipment on it.
 </SOAP-ENV:Envelope>
 ```
 
-## Orders - Wholesale 2 - Event Done
+## Wholesale orders: Event Done
 
 [https://docs.centra.com/soap/index.php?op=events_Done](https://docs.centra.com/soap/index.php?op=events_Done)
 
-This is exactly like the previous example for the retail order.
+This is exactly like the previous example for the direct-to-consumer order.
 
 ### Requests
 
@@ -1700,7 +1712,7 @@ This is exactly like the previous example for the retail order.
 </soap:Envelope>
 ```
 
-## Orders - Wholesale 3 - Confirm And Lock Order
+## Wholesale orders: Confirm And Lock Order
 
 [https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update)
 
@@ -1733,7 +1745,7 @@ For wholesale orders it is common that the order has status “pending” when i
 </soap:Envelope>
 ```
 
-## Orders - Wholesale 4 - Cancel Item
+## Wholesale orders: Cancel Item
 
 [https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update)
 
@@ -1782,7 +1794,7 @@ Notice the `<orderitem>` on the `<size>`. This is an unique ID for that row on t
 </soap:Envelope>
 ```
 
-## Orders - Wholesale 5 - Shipment 1
+## Wholesale orders: Shipment 1
 
 [https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update)
 
@@ -1863,7 +1875,7 @@ The `<shipping>` contains the shipping price, copied from the order event.
 </soap:Envelope>
 ```
 
-## Orders - Wholesale 6 - Shipment 2
+## Wholesale orders: Shipment 2
 
 [https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update)
 
@@ -1944,7 +1956,7 @@ Compared to the previous example, this one does not specify `<shipping>` so it w
 </soap:Envelope>
 ```
 
-## Orders - Wholesale 7 - Shipped
+## Wholesale orders: Shipped
 
 [https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update)
 
