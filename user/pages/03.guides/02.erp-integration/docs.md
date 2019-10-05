@@ -8,7 +8,7 @@ taxonomy:
 
 # Introduction
 
-Centra is built to integrate with ERP systems. To facilitate this, Centra offers an API especially designed for the purpose, Centra's SOAP API. The API offers conveniece functions to make it as easy as possible to integrate an ERP system. The API uses an XML protocal, the main standard in ERP integrations. 
+Centra is built to integrate with ERP systems. To facilitate this, Centra offers an API especially designed for the purpose, Centra's SOAP API. The API offers conveniece functions to make it as easy as possible to integrate an ERP system. Unlike Centra's other JSON-based API's this API uses an XML protocal, following the industry standard for ERP data exchange. 
 
 [notice-box=info] This guide assumes product data is coming from an ERP system. If there is a Product Information Mangamement (PIM) system implemented, the product data can be fed from that system instead. [/notice-box]
 
