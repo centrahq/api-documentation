@@ -8,13 +8,13 @@ taxonomy:
 
 # Introduction
 
-Centra is built to integrate with ERP systems. To facilitate this, Centra offers an API especially designed for the purpose, Centra's SOAP API. The API offers conveniece functions to make it as easy as possible to integrate an ERP system. Unlike Centra's other JSON-based API's this API uses an XML protocal, following the industry standard for ERP data exchange. 
+Centra is built to integrate with External Resource Planning systems. To facilitate this, Centra offers an API especially designed for the purpose, Centra's SOAP API. The API offers convenience functions to make it as easy as possible to integrate an ERP system. Unlike Centra's other JSON-based APIs this API uses an XML protocol, following the industry standard for ERP data exchange. 
 
-[notice-box=info] This guide assumes product data is coming from an ERP system. If there is a Product Information Mangamement (PIM) system implemented, the product data can be fed from that system instead. [/notice-box]
+[notice-box=info]This guide assumes product data is coming from an ERP system. If there is a Product Information Management (PIM) system implemented, the product data can be fed from that system instead.[/notice-box]
 
-[notice-box=info] Centra can run in stand-alone mode without any ERP integaration. An alternative to an ERP integation is to use manual file exports and imports. [/notice-box]
+[notice-box=info]Centra can run in stand-alone mode without any ERP integration. An alternative to an ERP integration is to use manual file exports and imports.[/notice-box]
 
-[notice-box=info] This guide can be followed to integrate an accounting/bookkeping system instead of an ERP system. In that case, skip the steps that are not applicable to the simpler system. [/notice-box]
+[notice-box=info]This guide can be followed to integrate an accounting/bookkeeping system instead of an ERP system. In that case, skip the steps that are not applicable to the simpler system.[/notice-box]
 
 ## SOAP API introduction
 
@@ -63,13 +63,13 @@ You need to use events_Done on all events, even if they are of an unknown type t
 
 For example, if there are 234 events in the queue, events_Get will return the oldest 100. When you mark 10 of those as done with events_Done, they are removed from the queue. After that the queue will contain 224 events, events_Get will give you the 100 oldest again. This time 90 of those will be the same as the last time, 10 will be new.
 
-[notice-box=info] There is no timeout after which events disappear automatically. If the ERP system is unable to fetch events due to down time or high load, events will be permanently stored in Centra until fetched. [/notice-box]
+[notice-box=info]There is no timeout after which events disappear automatically. If the ERP system is unable to fetch events due to down time or high load, events will be permanently stored in Centra until fetched.[/notice-box]
 
 The data for each event depends on the type of the event. Events of type “order” contain an order. The structure is the same as for the corresponding “update” operation for that type of data. An order event contains the data structure from orders_Update [https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update).
 
 Each event contains the complete data for the object that has changed. It does not contain historical data, i.e., to know what has changed, you would need to compare it yourself to the data on your side to know that. 
 
-[notice-box=info] Hand-over points between the systems should be decided. For example, an order is owned by Centra until its imported into your system. From that point on, only your system can make changes to the order. [/notice-box]
+[notice-box=info]Hand-over points between the systems should be decided. For example, an order is owned by Centra until its imported into your system. From that point on, only your system can make changes to the order.[/notice-box]
 
 ### Updates
 
@@ -110,7 +110,7 @@ All updates return the same type of response. `<success>` can be true or false. 
 
 Version control is handled by adding new fields to the specification, rather than releasing new versions of the API, i.e., there i only one version in production at the same time. You will always be running that version. 
 
-[notice-box=info] Make sure the implementation you build does not break when new fields are added to the XML. [/notice-box]
+[notice-box=info]Make sure the implementation you build does not break when new fields are added to the XML.[/notice-box]
 
 If you are building a new integration, use the “SOAP API” endpoint. It looks like this: [https://example.centra.com/ams/system/service/module/soap/api?wsdl](https://example.centra.com/ams/system/service/module/soap/api?wsdl)
 
@@ -128,7 +128,7 @@ To test the connection, use the events_Get operation. This is a read only operat
 
 [https://docs.centra.com/soap/index.php?op=events_Get](https://docs.centra.com/soap/index.php?op=events_Get)
 
-[notice-box=alert] Never use the integration you build towards a production Centra environment before it is thoroughly tested and verified to be working as intended! [/notice-box] 
+[notice-box=alert]Never use the integration you build towards a production Centra environment before it is thoroughly tested and verified to be working as intended![/notice-box]
 
 ### Information you need
 
@@ -170,7 +170,7 @@ The WSDL definition is the API endpoint with ?wsdl at the end: [http://example.c
 </SOAP-ENV:Envelope>
 ```
 
-[notice-box=info] The response you get when you try this may contain a data payload in the `<ns1:events>` if there are events in the event queue. [/notice-box]
+[notice-box=info]The response you get when you try this may contain a data payload in the `<ns1:events>` if there are events in the event queue.[/notice-box]
 
 ## Markets
 
@@ -178,7 +178,7 @@ The WSDL definition is the API endpoint with ?wsdl at the end: [http://example.c
 
 Creates new, or updates existing markets in Centra.
 
-[notice-box=info] If Centra already has markets set up, you shouldn’t create new ones using the API. Instead, consult the ID conversion table in Centra and set up the correct mappings. [/notice-box]
+[notice-box=info]If Centra already has markets set up, you shouldn’t create new ones using the API. Instead, consult the ID conversion table in Centra and set up the correct mappings.[/notice-box]
 
 As long as you are not working against a Centra instance that is used in production, this operation is simple and recommended to be a good one to start with.
 
@@ -191,7 +191,7 @@ The `<description>` is the name of the market in Centra’s admin interface. So 
 * IDs of the stores (1 and 2 in the example below) for `<store>`
 * Type of each store, either direct-to-consumer or wholesale for `<type>`
 
-[notice-box=info] Centra supports sales directly to customers, "direct-to-consumer" or "B2C", and sales to retailers and distributors, "wholesale" or "B2B". Because the business logic involved is different, there are two different store types in Centra. Direct-to-consumer store types are called 'retail' in the API and wholesale store types are called 'wholesale'. [/notice-box]
+[notice-box=info]Centra supports sales directly to customers, "direct-to-consumer" or "B2C", and sales to retailers and distributors, "wholesale" or "B2B". Because the business logic involved is different, there are two different store types in Centra. Direct-to-consumer store types are called 'retail' in the API and wholesale store types are called 'wholesale'.[/notice-box]
 
 ### Request
 
@@ -263,7 +263,7 @@ On the `<sizetable>` level, the `<id>` must be unique for all sizetables.
 
 Notice that the size with `<id>` OS has a blank `<description/>`. This is useful for products that do not have different sizes. The size is never mentioned in the webshop or wholesale showroom.
 
-[notice-box=alert] You cannot change a sizetable once it’s been created. This is because products are linked to the sizes in the sizetable, and this in turn connects to stock levels for the proucts and orders placed for these products. [/notice-box]
+[notice-box=alert]You cannot change a sizetable once it’s been created. This is because products are linked to the sizes in the sizetable, and this in turn connects to stock levels for the products and orders placed for these products.[/notice-box]
 
 ### Request
 
@@ -361,14 +361,14 @@ This example creates or updates a product – in this case a turtleneck sweater.
 On the`<product>` level:
 
 * `<id>` must be unique across all products
-* `<status>` is the products status. It can be inactive, active or cancelled. Only active products are shown in a Centra store.
+* `<status>` is the products status. It can be inactive, active or canceled. Only active products are shown in a Centra store.
 * `<sku>` see below
 * `<description>` is the product’s name that people see in the Centra admin.
 * `<folder>` is a way to organize products in the Centra admin (do not use an `<id>` for the folder). This is optional.
 * `<brand>` is the product’s brand. The `<id>` is used only in the API, the `<description>` is the brand name displayed in the Admin and in the Centra stores.
 * `<collection>` is the collection that this product is a part of. For example “Spring 2019”. This is optional.
 
-[notice-box=info] Folders are used for reporting. It is recommended to maintain the same folder structure in the ERP system and Centra, to ensure consistency between reports generated by both systems. Folders in Centra are unrelated to categories, used to structure items for sale when presented to customers. [/notice-box]
+[notice-box=info]Folders are used for reporting. It is recommended to maintain the same folder structure in the ERP system and Centra, to ensure consistency between reports generated by both systems. Folders in Centra are unrelated to categories, used to structure items for sale when presented to customers.[/notice-box]
 
 On the `<variation>` level:
 
@@ -562,7 +562,7 @@ Notice that this example does not send a `<sku>` or `<ean>` as Centra does not r
 
 Creates or updates warehouses in Centra.
 
-[notice-box=info] In most cases your shouldn’t create new warehouses if Centra already has warehouses setup. Consult the ID conversion table instead. [/notice-box]
+[notice-box=info]In most cases your shouldn’t create new warehouses if Centra already has warehouses setup. Consult the ID conversion table instead.[/notice-box]
 
 This operation is optional. If you simply send stock numbers to a warehouse `<id>` in the next example without creating warehouses first, the warehouses will be created automatically.
 
@@ -698,7 +698,7 @@ On the `<variation>` level
 
 Notice that the wholesale prices have a `<priceb>` field. This is the recommended retail price. It is optional, and only used for wholesale.
 
-Also note that the T001 product has prices on the variant level (the blue one is more expensive than the red one). The PWC product has prices on the product level, so if it had multiple variants they would have the same price.
+Also note that the `T001` product has prices on the variant level (the blue one is more expensive than the red one). The PWC product has prices on the product level, so if it had multiple variants they would have the same price.
 
 ### Request
 
@@ -775,7 +775,7 @@ Also note that the T001 product has prices on the variant level (the blue one is
 
 Create or update payment terms. The payment terms are set on an account, so they should be created before the account data is sent to Centra.
 
-Notice that `<name>` is the name or title of the payent term in the Centra admin, the `<description>` is a longer optional descriptive text. This is different form other data in the API where `<description>` is the name or title of something.
+Notice that `<name>` is the name or title of the payment term in the Centra admin, the `<description>` is a longer optional descriptive text. This is different form other data in the API where `<description>` is the name or title of something.
 
 ### Request
 
@@ -850,11 +850,11 @@ Creates or updates an account. The account is the data for a wholesale customer,
 
 ### Fields
 
-* `<status>` can be active, inactive or cancelled. Only active accounts can make purchases
+* `<status>` can be active, inactive or canceled. Only active accounts can make purchases
 * `<accountaddress>` is the visiting address
 * `<buyers>` is a list of one or more buyers. They are users that can log into the wholesale showroom and make purchases for the account.
 
-[notice-box=info] An account in Centra must have at least one buyer to be active and show up in the Centra admin panel. Send one with blank name and email if you do not have this data in your system. [/notice-box]
+[notice-box=info]An account in Centra must have at least one buyer to be active and show up in the Centra admin panel. Send one with blank name and email if you do not have this data in your system.[/notice-box]
 
 ### Request
 
@@ -1306,7 +1306,7 @@ This marks the event from the previous example as done. That event had ID 115. T
 
 Locking an order prevents most changes to the order in the Centra admin. This is a good idea if your side takes ownership of the order data after you have imported the order.
 
-[notice-box=info] Hand-over points between the systems should be clearly defined. [/notice-box]
+[notice-box=info]Hand-over points between the systems should be clearly defined.[/notice-box]
 
 This orders_Update will only change the `<locked>` status. Nothing else on the order is changed.
 
@@ -1384,7 +1384,7 @@ The `<capture>yes</capture>` will capture if it’s possible to perform a captur
 </soap:Envelope>
 ```
 
-[notice-box=alert] If capture fails, the order should not be shipped. This is an indication of a potential fraud attempt. [/notice-box]
+[notice-box=alert]If capture fails, the order should not be shipped. This is an indication of a potential fraud attempt.[/notice-box]
 
 ## Wholesale orders: Event By Markets
 
@@ -1749,7 +1749,7 @@ For wholesale orders it is common that the order has status “pending” when i
 
 [https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update)
 
-Modifies the order by cancelling a single size of a product from the order. I will cancel 1 of the 4 red sweaters in size L.
+Modifies the order by canceling a single size of a product from the order. I will cancel 1 of the 4 red sweaters in size L.
 
 Notice the `<orderitem>` on the `<size>`. This is an unique ID for that row on the order, and you should always use it to modify the order. It is possible to have the same size twice or more in the same order, for example if one had a discounted price. The `<orderitem>` is always unique within the order, the `<product>` or `<variation>` or `<size>` is not.
 
