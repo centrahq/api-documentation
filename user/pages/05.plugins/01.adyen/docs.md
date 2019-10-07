@@ -6,8 +6,8 @@ taxonomy:
     category: docs
 ---
 
-The Adyen Checkout-plugin is a bit different from the existing Adyen-plugin in Centra.
-<br />Adyen Checkout looks like this:
+The Adyen Checkout-plugin is a bit different from the existing Adyen-plugin in Centra.  
+Adyen Checkout looks like this:
 
 ![adyen-preview.png](adyen-preview.png)
 
