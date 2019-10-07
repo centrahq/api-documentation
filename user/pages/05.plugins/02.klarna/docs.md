@@ -1,12 +1,12 @@
 ---
-title: Klarna checkout
+title: Klarna checkout v3
 altTitle: Klarna checkout
 excerpt: Learn how to use Klarna payment plugin
 taxonomy:
     category: docs
 ---
 
-Here's all the information that you'll need to start using Klarna Checkout v3 plugin.
+Klarna is a popular payment provider which allows payments with credit and debit cards, as well as "Buy now, pay within 14 days" type of purchase. Here's all the information that you'll need to start using this plugin.
 
 ### Gather information from Klarna Checkout
 
