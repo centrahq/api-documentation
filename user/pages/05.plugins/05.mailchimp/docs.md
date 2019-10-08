@@ -6,8 +6,6 @@ taxonomy:
     category: docs
 ---
 
-# Mailchimp E-commerce
-
 The Mailchimp E-commerce plugin is a mailtrigger plugin in Centra. This means that the core functionality is to make sure proper receipt emails are being sent when an order is placed, shipped or returned. The additional benefit of using the Mailchimp E-commerce plugin is to be able to connect campaigns with sales, which allows you to track also inside Mailchimp the conversion of certain campaigns. This functionality needs some modifications to be made in the API-call to Centra in your checkout-flow on your website.
 
 ### Flow
@@ -26,8 +24,6 @@ The flow works like this:
 This is how the plugin looks like in Centra:
 
 ![mailchimp-plugin.png](mailchimp-plugin.png)
-
-Here's information on what to set in the fields:
 
 #### API-key
 
@@ -53,13 +49,13 @@ These fields are meta-data about the store that will be created in Mailchimp. Th
 
 Use this field if you want to prepend a URL for every product in the transactional emails. The structure for each product URL will look like this:
 
-```
+```text
 frontendPrefix + categoryURI + productURI
 ```
 
 So if the "Frontend prefix" is `https://ecommerce.centra.dev` and the category for Shirts has a URI called `shirts` and the product URI is `nice-shirt`, the URL for the product being sent to Mailchimp will become:
 
-```
+```text
 https://ecommerce.centra.dev/shirts/nice-shirt
 ```
 
@@ -104,9 +100,7 @@ You will now be able to select what emails that should be sent from Mailchimp:
 
 You can also edit the design on each template. 
 
-```eval_rst
-.. warning:: Every time you want to edit your templates, you will need to disable the automation. You must remember to re-enable the automation to make the emails trigger again after editing the design.
-```
+[notice-box=alert]Every time you want to edit your templates, you will need to disable the automation. You must remember to re-enable the automation to make the emails trigger again after editing the design.[/notice-box]
 
 #### Product Recommendations in E-mail templates
 
@@ -143,7 +137,7 @@ Later on, when submitting the payment information to Centra using `POST /payment
 
 The `POST /payment` could look something like this:
 
-```
+```json
 POST /payment
 Host: client.centra.com
 Content-type: application/json
