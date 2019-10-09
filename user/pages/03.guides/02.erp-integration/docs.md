@@ -118,8 +118,6 @@ All examples in this documentation uses the “SOAP API” endpoint.
 
 ***
 
-
-
 # Cookbook
 
 ## Connection test
@@ -1385,6 +1383,65 @@ The `<capture>yes</capture>` will capture if it’s possible to perform a captur
 ```
 
 [notice-box=alert]If capture fails, the order should not be shipped. This is an indication of a potential fraud attempt.[/notice-box]
+
+## Direct-to-Consumer orders: Create Return (Refund)
+
+[https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update)
+
+Create the return of the shipment and refund previously purchased items.
+
+### Important: Refund ID
+
+Return IDs are not based on Order IDs, like shipment IDs are. The `<id>12</id>` under `<refund>` needs to be globally unique.
+
+### Request
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <orders_Update>
+      <login>
+        <username>example</username>
+        <password>???</password>
+      </login>
+      <orders>
+        <order>
+          <id>30</id>
+          <type>retail</type>
+          <store>1</store>
+          <shipments>
+            <shipment>
+              <id>30-1</id>
+              <appendix>1</appendix>
+              <refunds>
+                <refund>
+                  <id>12</id>
+                  <status>confirmed</status>
+                  <products>
+                    <product>
+                      <id>T001</id>
+                      <variation>
+                        <id>T001_RED</id>
+                      </variation>
+                      <sizes>
+                        <size>
+                          <id>S</id>
+                          <qty>1</qty>
+                        </size>
+                      </sizes>
+                    </product>
+                  </products>
+                </refund>
+              </refunds>
+            </shipment>
+          </shipments>
+        </order>
+      </orders>
+    </orders_Update>
+  </soap:Body>
+</soap:Envelope>
+```
 
 ## Wholesale orders: Event By Markets
 
