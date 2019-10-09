@@ -1390,7 +1390,7 @@ The `<capture>yes</capture>` will capture if it’s possible to perform a captur
 
 Create the return of the shipment and refund previously purchased items.
 
-### Important: Refund ID
+### Important: Return ID
 
 Return IDs are not based on Order IDs, like shipment IDs are. The `<id>12</id>` under `<refund>` needs to be globally unique.
 
