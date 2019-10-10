@@ -1,7 +1,7 @@
 ---
 title: Integrating Centra with an ERP system
 altTitle: ERP integration
-excerpt: Learn how to integrate your Centra with your Enterprise Resource Planning system
+excerpt: Centra cen be configured to integrate with your Enterprise Resource Planning system using SOAP API. Click here to see how to perform most common operations on Products, Markets, Warehouses, Stock, Orders, Shipments and Returns in both B2B and B2C sales.
 taxonomy:
   category: docs
 ---

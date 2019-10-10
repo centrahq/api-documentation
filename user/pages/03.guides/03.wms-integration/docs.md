@@ -1,7 +1,7 @@
 ---
 title: Integrating Centra with external WMS systems using Order API
 altTitle: WMS integration
-excerpt: Learn how to integrate your Centra with your Warehouse Management System
+excerpt: Centra can be integrated with your Warehouse Management System in order to handle pick-and-pack services, manage stock in your Warehouses or take care of product returns. Click here to learn about the basic functionality of our Order API.
 taxonomy:
   category: docs
 ---

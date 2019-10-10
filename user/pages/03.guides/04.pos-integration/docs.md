@@ -1,7 +1,7 @@
 ---
 title: Integrating Centra with POS systems
 altTitle: POS integration
-excerpt: Learn how to integrate your Centra with your Point of Sales system
+excerpt: Would you like to make it possible for your customers to pick up their orders themselves? Click here to learn how to integrate Centra with your Point of Sales system
 taxonomy:
   category: docs
 ---
