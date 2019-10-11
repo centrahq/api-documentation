@@ -139,9 +139,9 @@ In the example below, you can see that neither `variantSku` nor `sizeSku` are co
 
 ### Creating returns
 
-If not all items in an order can be shipped, or if an order item has been returned by the customer, a proper Return with a refund should be created. When creating a Return, you will be able to specify (emong other options) if a refund should be made, whether or not the returned items should be put back into stock, or whether or not any handling cost should be added.
+If not all items in an order can be shipped, or if an order item has been returned by the customer, a proper Return with a refund should be created. When creating a Return, you will be able to specify (among other options) if a refund should be issued, whether or not the returned items should be put back into stock, or if any handling cost should be added.
 
-It's important to note that the list of returned `products` is not made up of the product IDs, but rather of the `lineId`s taken from the shipment, as described in the [Understanding shipment data](#understanding-shipment-data) section.
+It's important to note that the list of returned `products` is not made up of the product IDs, but rather of the `lineIds` taken from the shipment, as described in the [Understanding shipment data](#understanding-shipment-data) section.
 
 ```json
 {
@@ -158,6 +158,6 @@ More information: [Order API - Create return](https://docs.centra.com/reference/
 
 ### Fetching returns
 
-To get detailed information on existing returns, you can fetch returns for specific orders or shipments.
+To get detailed information on existing returns, you can fetch returns for specific orders or shipments, or all of them.
 
 More information: [Order API - Get returns](https://docs.centra.com/reference/stable/order-api/get-returns)
