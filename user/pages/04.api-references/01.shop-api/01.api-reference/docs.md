@@ -1,7 +1,7 @@
 ---
-title: Checkout API overview
-altTitle: API overview
-excerpt: Detailed overview of Centra's Checkout API
+title: Shop API reference
+altTitle: API reference
+excerpt: Detailed overview of Centra's Shop API
 taxonomy:
   category: docs
 ---

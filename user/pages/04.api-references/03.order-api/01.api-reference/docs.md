@@ -1,7 +1,7 @@
 ---
-title: Order API (REST)
-altTitle: Order API
-excerpt: Details and usage of Centra's Order API
+title: Order API reference
+altTitle: API reference
+excerpt: Order API reference
 taxonomy:
   category: docs
 ---
