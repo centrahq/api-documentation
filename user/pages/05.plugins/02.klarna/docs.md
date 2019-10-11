@@ -62,6 +62,8 @@ Since you can have multiple Klarna Checkout plugins based on different regions, 
 
 You can also make sure that Paypal does not show up as a separate payment, if it will be used inside Klarna Checkout.
 
+[notice-box=info]When using Klarna Checkout in test mode, you need to make sure the PayPal plugin you're using with it is configure as "Sandbox mode". Once your testing is done, you can disable test/sandbox mode on both plugins.[/notice-box]
+
 #### Geo-restrictions
 
 As with all payment plugins if you want to pricelist/market/country restrict the plugin you have the ability to select this in the bottom of the setup.
