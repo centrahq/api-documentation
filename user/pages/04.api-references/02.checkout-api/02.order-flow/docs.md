@@ -1,7 +1,7 @@
 ---
 title: Checkout API order flow
 altTitle: API order flow
-excerpt: Creating an order in Centra's Checkout API
+excerpt: See all API requests and responses that make up the process of creating an order in Centra's Checkout API
 taxonomy:
   category: docs
 ---
