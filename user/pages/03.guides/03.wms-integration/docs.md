@@ -1,28 +1,26 @@
 ---
 title: Integrating Centra with external WMS systems using Order API
 altTitle: WMS integration
-excerpt: Centra can be integrated with your Warehouse Management System in order to handle pick-and-pack services, manage stock in your Warehouses or take care of product returns. Click here to learn about the basic functionality of our Order API.
+excerpt: Centra can be integrated with your Warehouse Management System in order to handle pick-and-pack services, manage stock or take care of product returns. Click here to learn about the basic functionality of our Order API.
 taxonomy:
   category: docs
 ---
 
-Connecting a Warehouse Management System with Centra, to handle pick and pack with an internal or external logistic center, is easy using Centra’s Order API. The API offers convenient endpoints optimized for this use case.
+Connecting a Warehouse Management System with Centra, to handle pick and pack with an internal or external logistic center, is easy when you're using Centra’s Order API. The API offers convenient endpoints optimized for this use case.
 
 ### Prerequisites
 
-To implement a WMS integration using the Order API, you need access to Centra with a configured Order API endpoint. Always use a non-live environment when developing your integration.
+To implement a WMS integration using the Order API, you need access to Centra with a configured Order API endpoint. Always use the test environment when developing your integration.
 
-[notice-box=alert]
-Warning: Never use the integration you build towards a production Centra environment before it is thoroughly tested and verified to be working as intended!
-[/notice-box]
+[notice-box=alert]Warning: Never use the integration you build towards a production Centra environment before it is thoroughly tested and verified to be working as intended![/notice-box]
 
 ### Overview
 
-When an order is placed in Centra, it will need to be expedited to generate what in Centra is called “Shipment” (outbound delivery). The shipment is what the WMS reads from Centra. The process of fetching these shipments and sending back information when they’re actually physically shipped by your warehouse, is described in a few steps below.
+When an order is placed in Centra, it will need to be expedited to generate what in Centra is called “Shipment” (outbound delivery). The shipment is what the WMS reads from Centra. The process of fetching these shipments and sending back information when they’re actually physically shipped by your warehouse, is described in the steps below.
 
 ### Fetching good-to-go shipments
 
-In order to fetch shipments that should be picked and packed by your logistics center, you will use the shipments endpoint of the Order API.
+In order to fetch shipments that should be picked and packed by your logistics center, you should use the shipments endpoint of the Order API.
 
 More information: [Order API - Get shipments](https://docs.centra.com/reference/stable/order-api/get-shipments)
 
@@ -32,17 +30,15 @@ Using this endpoint, you’ll get all the available shipments that are ready to 
 
 ### Capturing payments
 
-You need to make sure that you capture shipments associated payments. This will make sure that the payment is activated with the payment service provider.
+You need to make sure that you capture payments associated with shipments. This will make sure that the payment is activated with the payment service provider.
 
 More information: [Order API - Capture shipments](https://docs.centra.com/reference/stable/order-api/capture-shipment)
 
-[notice-box=alert]
-Warning: If you get an error response when trying to capture the shipment’s payment you should not proceed with sending the shipment. This is an indicator of potential fraud.
-[/notice-box]
+[notice-box=alert]If you get an error response when trying to capture the shipment’s payment you should not proceed with sending the shipment. This is an indicator of potential fraud.[/notice-box]
 
 ### Understanding shipment data
 
-Each shipment node will contain all the data you need, delivery address, products and shipping information. shippingList will contain the data you would need to understand with which carrier and service the shipment should be sent. There is no standard here, so this needs to be aligned and well tested.
+Each shipment node will contain all the data you need, delivery address, products and shipping information. `shippingList` will contain the data you would need to understand with which carrier and service the shipment should be sent. There is no standard here, so this needs to be aligned and well tested.
 
 The node will also contain URLs to proforma invoices (if needed) and delivery notes that can be printed, if the WMS doesn’t already have its own that will be used.
 
@@ -96,7 +92,7 @@ This is how the product object will look like, it will vary depending on the num
 ]
 ```
 
-LineId is to identify the unique item row (hence the name). You’ll also get three different SKU nodes. Sku, variantSku and sizeSku, if more than just sku is populated with data, you need to concatenate these, to match them with the full product sku in the WMS, or match with EAN if applicable.
+`LineId` identifies the unique item row (hence the name). You’ll also get three different SKU nodes: `sku`, `variantSku` and `sizeSku`. To match them with the full product sku in the WMS you either need to concatenate these three fields or match with EAN, if applicable.
 
 ### Editing shipments
 
@@ -112,32 +108,56 @@ More information: [Order API - Complete shipment](https://docs.centra.com/refere
 
 ### Warehouse and stock figures
 
-In Centra, the user will configure for which warehouse stock values should be stored. As an integrator, you will simply send the value to Centra of each product. You should always send the physical value available, not any calculation of what’s available for sales. Centra calculates what is available for sale.
+In Centra, the user will configure for which warehouse stock values should be stored. As an integrator, you will simply send the value to Centra of each product. You should always send the physical value available, not any calculation of what’s available for sales. That calculation is done by Centra.
 
-Keep in mind that you don’t need to send updates for every single stock movement since Centra has the order data and knows how many items belong to each order. Simply update the full stock on inbound deliveries, if the stock is manually changed in for example a stock-take or if a different system is picking stock from the same warehouse (not recommended).
+Keep in mind that you don’t need to send updates for every single stock movement since Centra has the order data and knows how many items belong to each order. Simply update the full stock on inbound deliveries, if the stock is manually changed in for example a stock-take or if a different system is picking stock from the same warehouse (which is not recommended).
 
-[notice-box=alert]
-Warning: Don’t do full stock synchronization at times when the stock is changing rapidly, as that could add back units that were sold a fraction of a second earlier into Centra’s stock.
-[/notice-box]
+[notice-box=alert]Warning: Don’t do full stock synchronization at times when the stock is changing rapidly, as that could add back units that were sold a fraction of a second earlier into Centra’s stock.[/notice-box]
 
-However, it’s always good practice to schedule a regular stock sync, e.g. once a day. This will ensure the systems re-sync automatically if they would ever go out of sync for any reason.
+However, it’s always good practice to schedule a regular stock sync, e.g. once a day. This will ensure the systems re-sync automatically if they should go out of sync for any reason.
 
 More information: [Order API - Update stock](https://docs.centra.com/reference/stable/order-api/update-stock)
 
 ### Fetching products
 
-In order to minimize work for the shared client, it is possible to fetch the products created in Centra, so that the client or you won’t have to create them in the WMS system manually.
+In order to minimise work for the shared client, it is possible to fetch the products created in Centra, so that the client or you won’t have to create them in the WMS manually.
 
-You’ll be able to fetch all products, and you can also filter out products that are recently updated with the API call.
+You'll be able to fetch all products, and you can also filter out products that are recently updated with the API call.
 
 More information: [Order API - Get products](https://docs.centra.com/reference/stable/order-api/get-products)
 
-The most important thing to think about here are the SKU fields. In Centra, a product can have multiple variants connected to the same main SKU, where as in most WMS systems this is not the case. While fetching a product, please make sure to create the products in the WMS, based on sku, variantSku and sizeSKU. These three concatenated would be the physical SKU on the shelf in the warehouse.
+The most important thing to think about here are the SKU fields. In Centra, a product can have multiple variants connected to the same main SKU, where as in most WMS systems this is not the case. While fetching a product, please make sure to create the products in the WMS, based on `sku`, `variantSku` and `sizeSKU`. These three concatenated would be the physical SKU on the shelf in the warehouse.
 
-In the example below, you can see that there are no variantSku nor sizeSku, and in this case the full sku is only M411-740, but it could’ve been a different scenario.
+In the example below, you can see that neither `variantSku` nor `sizeSku` are configured, and in this case the full sku is only M411-740, which will not identify a specific item in the warehouse. If not all SKU values are available, you can use the EAN number instead.
 
 ```json
 "sku": "M411-740",
 "variantSku": "",
 "sizeSku": "",
+"ean": "57724280430011",
 ```
+
+### Creating returns
+
+If not all items in an order can be shipped, or if an order item has been returned by the customer, a proper Return with a refund should be created. When creating a Return, you will be able to specify (emong other options) if a refund should be made, whether or not the returned items should be put back into stock, or whether or not any handling cost should be added.
+
+It's important to note that the list of returned `products` is not made up of the product IDs, but rather of the `lineId`s taken from the shipment, as described in the [Understanding shipment data](#understanding-shipment-data) section.
+
+```json
+{
+  "shipment": "120276-1",
+  "returnStock": 1,
+  "products": {
+    "43243": "1",
+    "43244": "1"
+  }
+}
+```
+
+More information: [Order API - Create return](https://docs.centra.com/reference/stable/order-api/create-return)
+
+### Fetching returns
+
+To get detailed information on existing returns, you can fetch returns for specific orders or shipments.
+
+More information: [Order API - Get returns](https://docs.centra.com/reference/stable/order-api/get-returns)
