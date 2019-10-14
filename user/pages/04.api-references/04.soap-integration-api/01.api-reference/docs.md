@@ -12,8 +12,9 @@ Each operation contains a sample SOAP request and response. The `placeholders` s
 
 ## accounts_Update
 
-> Update/insert the specified accounts.  
-> Parameters: accounts: Array of account objects.
+Update/insert the specified accounts.
+
+> Parameters: `accounts`: Array of `account` objects.
 
 ### Request
 
@@ -214,8 +215,9 @@ Content-Security-Policy-Report-Only: default-src 'self'; style-src 'self' 'unsaf
 
 ## customers_Update
 
-> Update/insert the specified customers.  
-> Parameters: customers: Array of customer objects.
+Update/insert the specified customers.
+
+> Parameters: `customers`: Array of `customer` objects.
 
 ### Request
 
@@ -279,8 +281,9 @@ Content-Security-Policy-Report-Only: default-src 'self'; style-src 'self' 'unsaf
 
 ## deliverywindows_Update
 
-> Update/insert the specified delivery windows.  
-> Parameters: variations: Array of variations objects.
+Update/insert the specified delivery windows.
+
+> Parameters: `variations`: Array of `variation` objects.
 
 ### Request
 
@@ -352,8 +355,9 @@ Content-Security-Policy-Report-Only: default-src 'self'; style-src 'self' 'unsaf
 
 ## events_Done
 
-> Update the events so they not appear in event list again.  
-> Parameters: events: Array with event objects, only containing the event-numbers of the fetched events.
+Update the events so they not appear in event list again.
+
+> Parameters: `events`: Array of `event` objects, only containing the event-numbers of the fetched events.
 
 ### Request
 
@@ -400,8 +404,9 @@ Content-Security-Policy-Report-Only: default-src 'self'; style-src 'self' 'unsaf
 
 ## events_Get
 
-> Get new events by specific section. Will return the events in ascending order, oldest first.  
-> Parameters: section: Allowed sections are: all, account, customer, invoice, market, order, paymentterm, pricelist, salesrep, shippingterm, size, warehouse.
+Get new events by specific section. Will return the events in ascending order, oldest first.
+
+> Parameters: `type`: Allowed types are: `all`, `account`, `customer`, `invoice`, `market`, `order`, `paymentterm`, `pricelist`, `salesrep`, `shippingterm`, `size`, `warehouse`.
 
 ### Request
 
@@ -470,8 +475,9 @@ Content-Security-Policy-Report-Only: default-src 'self'; style-src 'self' 'unsaf
 
 ## events_GetByMarkets
 
-> Get new events by specific section. Will return the events in ascending order, oldest first.  
-> Parameters: section: Allowed sections are: all, account, customer, invoice, market, order, paymentterm, pricelist, salesrep, shippingterm, size, warehouse.
+Get new events by specific section. Will return the events in ascending order, oldest first.
+
+> Parameters: `type`: Allowed types are: `all`, `account`, `customer`, `invoice`, `market`, `order`, `paymentterm`, `pricelist`, `salesrep`, `shippingterm`, `size`, `warehouse`.
 
 ### Request
 
@@ -546,8 +552,9 @@ Content-Security-Policy-Report-Only: default-src 'self'; style-src 'self' 'unsaf
 
 ## invoices_Update
 
-> Update/insert the specified invoices.  
-> Parameters: invoices: Array of invoice objects.
+Update/insert the specified invoices.
+
+> Parameters: `invoices`: Array of `invoice` objects.
 
 ### Request
 
@@ -707,8 +714,9 @@ Content-Security-Policy-Report-Only: default-src 'self'; style-src 'self' 'unsaf
 
 ## markets_Update
 
-> Update/insert the specified markets.  
-> Parameters: markets: Array of market objects.
+Update/insert the specified markets.
+
+> Parameters: `markets`: Array of `market` objects.
 
 ### Request
 
@@ -762,8 +770,9 @@ Content-Security-Policy-Report-Only: default-src 'self'; style-src 'self' 'unsaf
 
 ## orders_Update
 
-> Update/insert the specified orders.  
-> Parameters: orders: Array of order objects.
+Update/insert the specified orders.
+
+> Parameters: `orders`: Array of `order` objects.
 
 ### Request
 
@@ -1282,8 +1291,9 @@ Content-Security-Policy-Report-Only: default-src 'self'; style-src 'self' 'unsaf
 
 ## paymentterms_Update
 
-> Update/insert the specified payment terms.  
-> Parameters: paymentterms: Array of payment term objects.
+Update/insert the specified payment terms.
+
+> Parameters: `paymentterms`: Array of `paymentterms` objects.
 
 ### Request
 
@@ -1337,8 +1347,9 @@ Content-Security-Policy-Report-Only: default-src 'self'; style-src 'self' 'unsaf
 
 ## pricelists_Update
 
-> Update/insert the specified pricelists.  
-> Parameters: pricelists: Array of pricelist objects.
+Update/insert the specified pricelists.
+
+> Parameters: `pricelists`: Array of `pricelist` objects.
 
 ### Request
 
@@ -1405,8 +1416,9 @@ Content-Security-Policy-Report-Only: default-src 'self'; style-src 'self' 'unsaf
 
 ## products_Update
 
-> Update/insert the specified products.  
-> Parameters: products: Array of product objects.
+Update/insert the specified products.
+
+> Parameters: `products`: Array of `product` objects.
 
 ### Request
 
@@ -1566,8 +1578,9 @@ Content-Security-Policy-Report-Only: default-src 'self'; style-src 'self' 'unsaf
 
 ## salesreps_Update
 
-> Update/insert the specified sales reps.  
-> Parameters: salesreps: Array of sales reps objects.
+Update/insert the specified sales reps.
+
+> Parameters: `salesreps`: Array of `salesrep` objects.
 
 ### Request
 
@@ -1627,8 +1640,9 @@ Content-Security-Policy-Report-Only: default-src 'self'; style-src 'self' 'unsaf
 
 ## shippingterms_Update
 
-> Update/insert the specified shipping terms.  
-> Parameters: shippingterms: Array of shipping term objects.
+Update/insert the specified shipping terms.
+
+> Parameters: `shippingterms`: Array of `shippingterms` objects.
 
 ### Request
 
@@ -1682,8 +1696,9 @@ Content-Security-Policy-Report-Only: default-src 'self'; style-src 'self' 'unsaf
 
 ## sizes_Update
 
-> Update/insert the specified sizes.  
-> Parameters: sizes: Array of size objects.
+Update/insert the specified sizes.
+
+> Parameters: `sizes`: Array of `size` objects.
 
 ### Request
 
@@ -1744,8 +1759,9 @@ Content-Security-Policy-Report-Only: default-src 'self'; style-src 'self' 'unsaf
 
 ## warehouses_Update
 
-> Update/insert the specified warehouses.  
-> Parameters: warehouses: Array of warehouse objects.
+Update/insert the specified warehouses.
+
+> Parameters: `warehouses`: Array of `warehouse` objects.
 
 ### Request
 
