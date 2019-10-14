@@ -1,7 +1,7 @@
 ---
 title: Shop API (REST)
 altTitle: Shop API
-excerpt: The Shop API makes it possible to connect to Centra by creating selections using an open cart. This selection can then be finalized into an order.
+excerpt: Shop API gives you a wide range of detail and control over your products base, as well as the basket functionality (called a "selection") with support of multiple payment and shipping methods
 taxonomy:
   category: docs
 ---
