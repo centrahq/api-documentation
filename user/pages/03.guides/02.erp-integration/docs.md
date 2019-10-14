@@ -16,11 +16,9 @@ Centra is built to integrate with External Resource Planning systems. To facilit
 
 [notice-box=info]This guide can be followed to integrate an accounting/bookkeeping system instead of an ERP system. In that case, skip the steps that are not applicable to the simpler system.[/notice-box]
 
-For more details on SOAP API, see [SOAP API reference](/api-references/soap-integration-api/api-reference).
-
 ## SOAP API introduction
 
-All operations and XML structures of the API are documented as an WSDL definition: [https://docs.centra.com/soap/index.php](https://docs.centra.com/soap/index.php)
+All operations and XML structures of the API are documented in [SOAP API reference](/api-references/soap-integration-api/api-reference).
 
 ### ID Conversion Table
 
