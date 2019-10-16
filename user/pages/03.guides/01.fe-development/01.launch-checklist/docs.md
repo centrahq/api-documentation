@@ -11,6 +11,7 @@ Here is a list of things to consider and make sure work when testing the site be
 ### Needed from the Client
 
 Where | What
+---:| ---
 Currencies | What currencies will the client use?
 Payment Plugins | What payment methods will the client use?
  | Are the payment plugins set up inside Centra?
@@ -20,7 +21,6 @@ Languages | Will the client translate their page from the start or later on? Or 
 Category structure | What type of category structure will the client use?
 Filtering in frontend | Will the client use product filtering in the frontend? What should it filter on?
 Modules | What modules will the client use? CMS? Google Map locator?
-
 Integrations | What type of integrations will be used by the client in frontend?
  | Customer loyalty (Abalon, Nosto etc)?
  | Newsletter subscription (Rulemailer, Apsis, Carma)?
@@ -29,12 +29,14 @@ Integrations | What type of integrations will be used by the client in frontend?
 ### Designs needed before launch
 
 Where | What
+---:| ---
 Design | Make sure there is design for error message handling and 404s
  | Any hosted payment pages that needs customization (Adyen, DIBS)?
 
 ### Tests needed before launch
 
 Where | What | How
+---:| --- | ---
 General | If a currency selector exists. | Verify that it works and that it is changing the currency.
 General | If a language selector exists. | Verify that it works and that it is changing the language properly. Depending on the setup this might also change the currency.
  | | Verify that it’s following the expected scenario for currency linking.
