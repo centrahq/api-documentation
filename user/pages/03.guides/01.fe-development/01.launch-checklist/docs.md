@@ -22,7 +22,7 @@ Here is a list of things to consider and make sure work when testing the site be
 | Filtering in frontend | Will the client use product filtering in the frontend? What should it filter on? |
 | Modules | What modules will the client use? CMS? Google Map locator? |
 | Integrations | What type of integrations will be used by the client in frontend? |
-| | Customer loyalty (Abalon, Nosto etc)? |
+| | Customer loyalty (Abalon, Nosto etc?) |
 | | Newsletter subscription (Rulemailer, Apsis, Carma?) |
 | | Social Media (Storify, Instagram etc?) |
 
@@ -31,7 +31,7 @@ Here is a list of things to consider and make sure work when testing the site be
 | Where | What |
 | ---:| --- |
 | Design | Make sure there is design for error message handling and 404s |
-| | Any hosted payment pages that needs customization (Adyen, DIBS)? |
+| | Any hosted payment pages that needs customization (Adyen, DIBS?) |
 
 ### Tests needed before launch
 
