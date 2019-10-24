@@ -1,7 +1,7 @@
 ---
 title: Introduction to Centra APIs
 altTitle: API introduction
-excerpt: General information common to all existing Centra APIs
+excerpt: General information common to all existing Centra APIs.
 taxonomy:
   category: docs
 ---

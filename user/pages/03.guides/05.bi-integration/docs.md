@@ -1,7 +1,7 @@
 ---
 title: Integrating Centra with Business Intelligence systems
 altTitle: BI integration
-excerpt: Integrate your Centra with your Business Intelligence systems to create rich and comprehensive dashboards and reports with the most up-to-date data
+excerpt: Integrate your Centra with your Business Intelligence systems to create rich and comprehensive dashboards and reports with the most up-to-date data.
 taxonomy:
   category: docs
 ---

@@ -1,7 +1,7 @@
 ---
 title: Klarna checkout v3
 altTitle: Klarna checkout
-excerpt: Learn how to use Klarna payment plugin
+excerpt: Learn how to use Klarna payment plugin.
 taxonomy:
     category: docs
 ---

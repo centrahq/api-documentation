@@ -1,7 +1,7 @@
 ---
 title: Store API (REST)
 altTitle: Store API
-excerpt: Details and usage of Centra's Store API
+excerpt: Details and usage of Centra's Store API.
 taxonomy:
   category: docs
 ---

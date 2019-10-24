@@ -1,7 +1,7 @@
 ---
 title: SOAP API reference
 altTitle: API reference
-excerpt: Click here to see the details of all available SOAP API calls
+excerpt: Click here to see the details of all available SOAP API calls, and learn how it's used to manipulate products, customers, invoices, warehouses, orders and more.
 taxonomy:
   category: docs
 ---

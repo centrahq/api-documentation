@@ -1,7 +1,7 @@
 ---
 title: Shop API payment flows
 altTitle: Payment flows
-excerpt: Learn how to properly implement payment flows in your webshop
+excerpt: Learn how to properly implement payment flows in your webshop.
 taxonomy:
   category: docs
 ---

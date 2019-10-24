@@ -1,7 +1,7 @@
 ---
 title: Shop API order flow
 altTitle: API order flow
-excerpt: See all API requests and responses that make up the process of creating an order in Centra's Shop API
+excerpt: See all API requests and responses that make up the process of creating an order in Centra's Shop API.
 taxonomy:
   category: docs
 ---

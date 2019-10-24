@@ -1,7 +1,7 @@
 ---
 title: Shop API changes between v0 and v1
 altTitle: v0 to v1 changes
-excerpt: Click here to learn about the changes between v0 and v1 versions of Shop API
+excerpt: Click here to learn about the changes between v0 and v1 versions of Shop API.
 taxonomy:
   category: docs
 ---

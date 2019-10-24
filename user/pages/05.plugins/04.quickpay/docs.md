@@ -1,7 +1,7 @@
 ---
 title: QuickPay
 altTitle: QuickPay
-excerpt: Learn how to use QuickPay payment plugin
+excerpt: Learn how to use QuickPay payment plugin.
 taxonomy:
     category: docs
 ---

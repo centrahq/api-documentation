@@ -1,7 +1,7 @@
 ---
 title: Integration API (GraphQL)
 altTitle: GraphQL Integration API
-excerpt: Details and usage of Centra's GraphQL Integration API
+excerpt: Details and usage of Centra's GraphQL Integration API.
 taxonomy:
   category: docs
 ---

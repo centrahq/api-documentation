@@ -1,7 +1,7 @@
 ---
 title: Stripe checkout
 altTitle: Stripe checkout
-excerpt: Learn how to use Stripe payment plugin
+excerpt: Learn how to use Stripe payment plugin in order to handle Apple Pay and credit card payments.
 taxonomy:
     category: docs
 ---

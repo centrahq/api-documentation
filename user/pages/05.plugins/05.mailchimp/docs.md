@@ -1,7 +1,7 @@
 ---
 title: Mailchimp E-commerce
 altTitle: Mailchimp
-excerpt: Learn all about the Mailchimp E-commerce plugin
+excerpt: Learn all about the Mailchimp E-commerce plugin.
 taxonomy:
     category: docs
 ---

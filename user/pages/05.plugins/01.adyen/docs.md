@@ -1,7 +1,7 @@
 ---
 title: Adyen checkout
 altTitle: Adyen checkout
-excerpt: Learn how to configure and test payments using Adyen Checkout plugin
+excerpt: Learn how to configure and test payments using Adyen Checkout plugin.
 taxonomy:
     category: docs
 ---
