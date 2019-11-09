@@ -1,14 +1,14 @@
 ---
 title: Integrating Centra with an ERP system
 altTitle: ERP integration
-excerpt: Centra cen be configured to integrate with your Enterprise Resource Planning system using SOAP API. Click here to see how to perform most common operations on Products, Markets, Warehouses, Stock, Orders, Shipments and Returns in both B2B and B2C sales.
+excerpt: Centra can be configured to integrate with your Enterprise Resource Planning system using SOAP API. Click here to see how to perform most common operations on Products, Markets, Warehouses, Stock, Orders, Shipments and Returns in both B2B and B2C sales.
 taxonomy:
   category: docs
 ---
 
 # Introduction
 
-Centra is built to integrate with External Resource Planning systems. To facilitate this, Centra offers an API especially designed for the purpose, Centra's SOAP API. The API offers convenience functions to make it as easy as possible to integrate an ERP system. Unlike Centra's other JSON-based APIs this API uses an XML protocol, following the industry standard for ERP data exchange. 
+Centra is built to integrate with Enterprise Resource Planning systems. To facilitate this, Centra offers an API especially designed for the purpose, Centra's SOAP API. The API offers convenience functions to make it as easy as possible to integrate an ERP system. Unlike Centra's other JSON-based APIs this API uses an XML protocol, following the industry standard for ERP data exchange. 
 
 [notice-box=info]This guide assumes product data is coming from an ERP system. If there is a Product Information Management (PIM) system implemented, the product data can be fed from that system instead.[/notice-box]
 
@@ -58,6 +58,8 @@ Events are fetched using:
 * events_GetByMarkets [https://docs.centra.com/soap/index.php?op=events_GetByMarkets](https://docs.centra.com/soap/index.php?op=events_GetByMarkets) (you can fetch events only for one or more markets)
 
 Events are removed from the queue with events_Done [https://docs.centra.com/soap/index.php?op=events_Done](https://docs.centra.com/soap/index.php?op=events_Done)
+
+[notice-box=alert]Do not call events_Done until you are certain the event is permantently stored in the receiving system. Calling events_Done before this is the case might cause the systems to go out of sync in case of disruptions.[/notice-box]
 
 You need to use events_Done on all events, even if they are of an unknown type that you don’t handle. The API returns the oldest events, up to a 100 in each events_Get. If you do not use events_Done on all events, all 100 events will eventually be old and you won’t see any new events.
 
