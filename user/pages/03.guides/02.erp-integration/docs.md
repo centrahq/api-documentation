@@ -969,16 +969,18 @@ Notice that order has a `<shipment>` on it. Sometimes Centra is configured to au
 
 ### Response
 
-On the `<event>` level
+On the `<event>` level:
 
 * `<id>` is the ID of the event itself. This is needed for the events_Done operation, the next example.
 * `<type>` is the event type, the type of data inside `<data>`
 
-On the `<order>` level
+On the `<order>` level:
 
 * This data is the same as the data you can send to the [https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update)
 * `<id>` is the Centra order number, or the converted ID that was used when inserting or updating the order
 * `<ordernumber>` is always the Centra order number
+
+[notice-box=alert]Since a single order can trigger events multiple times (when the order is created, when shipment or refund is added, etc.), it is important to always check if an order with the same ID already exists in your ERP. If it does, you should update existing order with the new data. Otherwise you risk creating unnecessary duplicates.[/notice-box]
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1479,6 +1481,8 @@ Also compared to the direct-to-consumer order, this order does not have any ship
 
 ### Response
 
+[notice-box=alert]Since a single order can trigger events multiple times (when the order is created, when shipment or refund is added, etc.), it is important to always check if an order with the same ID already exists in your ERP. If it does, you should update existing order with the new data. Otherwise you risk creating unnecessary duplicates.[/notice-box]
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://www.centra.com/webservices/">
@@ -1754,7 +1758,7 @@ Also compared to the direct-to-consumer order, this order does not have any ship
 
 This is exactly like the previous example for the direct-to-consumer order.
 
-### Requests
+### Request
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
