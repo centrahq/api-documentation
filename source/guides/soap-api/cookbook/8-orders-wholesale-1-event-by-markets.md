@@ -8,6 +8,10 @@ Compared to the retail order event example, this uses events_GetByMarkets only t
 
 Also compared to the retail order, this order does not have any shipment on it.
 
+```eval_rst
+.. warning:: Since a single order can trigger events multiple times (when the order is created, when shipment or refund is added, etc.), it is important to always check if an order with the same ID already exists in your ERP. If it does, you should update existing order with the new data. Otherwise you risk creating unnecessary duplicates.
+```
+
 ## Request
 
 ```
