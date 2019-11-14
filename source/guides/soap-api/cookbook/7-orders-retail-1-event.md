@@ -38,6 +38,9 @@ On the `<order>` level
 - `<id>` is the Centra order number, or the converted ID that was used when inserting or updating the order
 - `<ordernumber>` is always the Centra order number
 
+```eval_rst
+.. warning:: Since a single order can trigger events multiple times (when the order is created, when shipment or refund is added, etc.), it is important to always check if an order with the same ID already exists in your ERP. If it does, you should update existing order with the new data. Otherwise you risk creating unnecessary duplicates.
+```
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
