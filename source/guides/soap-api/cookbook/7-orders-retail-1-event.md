@@ -27,12 +27,12 @@ Notice that order has a `<shipment>` on it. Sometimes Centra is configured to au
 
 ## Response
 
-On the `<event>` level
+On the `<event>` level:
 
 - `<id>` is the ID of the event itself. This is needed for the `events_Done` operation, the next example.
 - `<type>` is the event type, the type of data inside `<data>`
 
-On the `<order>` level
+On the `<order>` level:
 
 - This data is the same as the data you can send to the [https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update)
 - `<id>` is the Centra order number, or the converted ID that was used when inserting or updating the order
