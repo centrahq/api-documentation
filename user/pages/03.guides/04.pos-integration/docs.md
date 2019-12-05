@@ -98,6 +98,7 @@ POST http://customer.centra.com/api/order-api/stock/
 
 TBD
 
+<!--
 ### [Optional] Creating an order
 
 [This chapter is work in progress]
@@ -128,7 +129,7 @@ POST http://customer.centra.com/api/order-api/order/
        "lastName": "Smith",
        "address": "Västra Rönneholmsvägen 62",
        "zipcode": "217 41",
-       "city": "Malmo"
+       "city": "Malmö"
    },
    "products": [
        {
@@ -142,3 +143,4 @@ POST http://customer.centra.com/api/order-api/order/
 #### Example response
 
 TBD
+-->
