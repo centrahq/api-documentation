@@ -12,15 +12,25 @@ Welcome to the store! Feel free to browse around.
 
 ### Category picker
 
+### Search and filtering
+
 ### Image galleries / carousels
 
 ### Size charts
 
-### Search and filtering
+### Measurement charts
 
 ## Country / language / market switcher
 
 Welcome! Välkommen! Witamy! ¡Bienvenida! Wilkommen! Üdvözöljük! Velkommen!
+
+## Consents
+
+Here are the terms and conditions.
+
+## My pages
+
+The usual?
 
 ## Newsletter sign-up form
 
