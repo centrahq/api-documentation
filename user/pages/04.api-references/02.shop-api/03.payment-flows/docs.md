@@ -13,7 +13,7 @@ The basic logic for `{selection}/payment` is as follows:
 * If no `errors`, there should be an `action` with either `redirect`, `form` or `success`.
 * If `success`, the order is completed directly.
 
-[notice-box=info]To make sure the proper user IP address is saved on the order, and to make the payment smoother in terms of fraud detection, it is highly recommended that you send your customer’s IPv4 address as ipAddress parameter in the `{selection}/payment` step. In case the end-user uses IPv6, but your store uses CloudFlare’s “Pseudo IPv4” functionality, you can instead use the IPv4 address provided by CloudFlare in `Cf-Pseudo-IPv4` header.[/notice-box]
+[notice-box=info]To make sure the proper user IP address is saved on the order, and to make the payment smoother in terms of fraud detection, it is highly recommended that you send your customer’s IPv4 address as ipAddress parameter in the `POST {selection}/payment` step. In case the end-user uses IPv6, but your store uses CloudFlare’s “Pseudo IPv4” functionality, you can instead use the IPv4 address provided by CloudFlare in `Cf-Pseudo-IPv4` header.[/notice-box]
 
 Here are the different methods and their properties depending on the type of payment method:
 
