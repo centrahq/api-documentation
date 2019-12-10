@@ -66,6 +66,13 @@ Will list all returns, newest first.
 
      - Only fetch returns for a specific selection.
 
+   * - ``customer_id``
+
+       .. type:: int
+          :required: false
+
+     - Only fetch returns for a specific customer.
+
    * - ``newer_than``
 
        .. type:: date
@@ -156,6 +163,12 @@ Will list all returns, newest first.
               .. type:: string
 
             - Selection ID of the order.
+
+          * - ``customerId``
+
+              .. type:: int
+
+            - Customer ID of the order.
 
           * - ``date``
 
