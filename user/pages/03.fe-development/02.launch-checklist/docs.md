@@ -1,7 +1,7 @@
 ---
 title: Webshop launch checklist
 altTitle: Launch checklist
-excerpt: Double-check the details and configs required (or recommended) when launching your webshop
+excerpt: Double-check the details and configs required (or recommended) when launching your webshop.
 taxonomy:
   category: docs
 ---

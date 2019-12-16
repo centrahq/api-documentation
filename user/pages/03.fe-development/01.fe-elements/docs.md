@@ -1,7 +1,7 @@
 ---
 title: Elements of a proper Centra Front End
 altTitle: Front End elements
-excerpt: Everything you need for a pleasant shopping and checkout experience
+excerpt: Everything you need for a pleasant shopping and checkout experience.
 taxonomy:
   category: docs
 ---
