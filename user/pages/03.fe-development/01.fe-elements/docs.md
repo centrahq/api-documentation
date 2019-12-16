@@ -30,13 +30,15 @@ Here are the terms and conditions.
 
 ## My pages
 
-The usual?
+Would you like your usual?
 
 ## Newsletter sign-up form
 
 Here's some cool stuff we'd love to show you.
 
 ### Sign-up voucher code
+
+Would you sign up if we offered you a discount?
 
 ## Basket / selection
 
@@ -48,7 +50,7 @@ How quickly you can get your stuff, and how much it would cost.
 
 ## Checkout
 
-Let us know everything we need to know to get you your stuff!
+Let us know everything we need to know to deliver your stuff to you!
 
 ### Newsletter sign-up 2
 
