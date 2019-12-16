@@ -12,6 +12,10 @@ The basic logic for `{selection}/payment` should be built like this:
 .. note:: To make sure the proper user IP address is saved on the order, and to make the payment smoother in terms of fraud detection, it is highly recommended that you send your customer's IPv4 address as `ipAddress` parameter in the `/payment` step. In case the end-user uses IPv6, but your store uses CloudFlare's "Pseudo IPv4" functionality, you can instead use the IPv4 address provided by CloudFlare in `Cf-Pseudo-IPv4` header.
 ```
 
+```eval_rst
+.. warning:: Some integrations, like DHL shipping, require that you format the zip code (postal code) in a format that is commonly used in the shipping country. If you pass the zip code in a different format, creating a shipment can fail. It is therefore important that you follow the zip code formatting recommendation for every country you intend to ship to. For example, Swedish codes are formatted as `NNN NN` (with a space), in Germany you have: `NNNNN`, in Poland: `NN-NNN`, in Denmark: `NNNN`. A full list of postal codes formats by country can be found on Wikipedia: https://en.wikipedia.org/wiki/List_of_postal_codes. If you encounter any problems after following these guidelines, we recommend to contact DHL support.
+```
+
 Here are the different methods and their properties depending on the type of payment method:
 
 ### 1. Redirect to URL
