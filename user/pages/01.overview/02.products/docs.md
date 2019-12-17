@@ -123,6 +123,6 @@ Same variant of the product can be sold in different sizes, for example Red Shir
 
 | | Shirts | Silver rings | Phone cases |
 |---|---|---|---|
-| Product | Specific model / cut. Similar shirts made of different material is are probably a different product. | Specific ring design / head stone. Similar ring with a different head is a different product. | Specific design and material of a case. Same design cases made of plastic and silicon should probably be different products. |
-| Variant | Different colors of the same model | Different sizes of the same ring. Price depends on the amount of material | Same design and material cases made for a different phone model. Can, but don't need to have different prices. |
+| Product | Specific model / cut. Similar shirt made of different material is probably a different product. | Specific ring design / head stone. Similar ring with a different head is a different product. | Specific design and material of a case. Same design cases made of plastic and silicon should probably be different products. |
+| Variant | Different colors of the same model | Different sizes of the same ring. Price depends on the amount of material | Same design and material cases made for a different phone model. Amount of material will differ, but due to its cheapness the prices can be the same. |
 | Size | Different sizes of the same color | | |
