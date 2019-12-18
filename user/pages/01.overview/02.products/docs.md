@@ -107,7 +107,7 @@ That is a design decision you should carefully consider when onboarding with Cen
 | | Shirts | Silver rings | Phone cases v1 | Phone cases v2 |
 |---|---|---|---|---|
 | Product | Specific model or cut. Similar shirt made of different material is probably a different product. | Specific ring design or head stone. Same ring with a different head is a different product. | Specific design and material of a case. Same design cases made of plastic and silicon could be different products. | Case made for a specific phone model. |
-| Variant | Different colors of the same model. | Different sizes of the same ring. Price depends on the amount of material used. | Same design and material cases made for a different phone model. Amount of material will differ, but due to its cheapness the prices can be the same. | Different designs cases for the same case model. They can have same or different prices. |
+| Variant | Different colors of the same model. | Different sizes of the same ring. Price depends on the amount of material used. | Same design and material cases made for a different phone model. Amount of material will differ, but due to its cheapness the prices can be the same. | Different designs cases for the same case model, including different materials. They can have same or different prices. |
 | Size | Different sizes of the same color. Same price for each. | Each variant should only have one size. |  |  |
 
 #### Product
