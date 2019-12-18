@@ -104,25 +104,23 @@ A Product belongs to one and only one Folder. Folders are used for reporting and
 
 That is a design decision you should carefully consider when onboarding with Centra. It may differ depending on the type of products you are selling and your business model. If you're selling clothes, your product structure will be different than if you're selling jewelery. 
 
+| | Shirts | Silver rings | Phone cases v1 | Phone cases v2 |
+|---|---|---|---|---|
+| Product | Specific model or cut. Similar shirt made of different material is probably a different product. | Specific ring design or head stone. Same ring with a different head is a different product. | Specific design and material of a case. Same design cases made of plastic and silicon could be different products. | Case made for a specific phone model. |
+| Variant | Different colors of the same model. | Different sizes of the same ring. Price depends on the amount of material used. | Same design and material cases made for a different phone model. Amount of material will differ, but due to its cheapness the prices can be the same. | Different designs cases for the same case model. They can have same or different prices. |
+| Size | Different sizes of the same color. Same price for each. | Each variant should only have one size. |  |  |
+
 #### Product
 
-Product level defines the basic details of the good for sale. Product has its name, brand and SKU (Stock Keeping Unit), it belongs to a specific collection and is obtained from specific suppliers.
+Product level defines the basic details of the good for sale. Each version of a product has common name, brand and SKU (Stock Keeping Unit), it belongs to a specific collection and is obtained from specific suppliers.
 
 #### Variant
 
 Variants are different variations of the same product. Depending on the product type, it can be split into variants based on such criteria as:
 * Colors: Standard distinction when dealing with fashion. For example, red shirt and a blue shirt are different variant of the same product, they have the same price and are likely made of the same material.
-* Sizes: In fashion, all sizes of the same product have the same price. This is not the case if you're selling suitcases or rings, where the price depends on the amount of material used for production.
+* Sizes: In fashion, all sizes of the same product usually have the same price. This is not the case if you're selling suitcases or rings, where the price depends on the amount of material used for production.
 * Minor differences: The same color shirt can be offered with different style of collar or cuffs. When they are defined as separate variants, they can be set with different prices, description or promotions.
 
 #### Size
 
 Same variant of the product can be sold in different sizes, for example Red Shirt size XL and Red Shirt size M. This is mostly meant for fashion, as the price is defined on a variant level, and therefore different sizes cannot be priced differently. If you're selling different sized silver rings, you will probably want to set them up as different variants in order to make the bigger ones more expensive.
-
-#### Examples
-
-| | Shirts | Silver rings | Phone cases |
-|---|---|---|---|
-| Product | Specific model or cut. Similar shirt made of different material is probably a different product. | Specific ring design or head stone. Same ring with a different head is a different product. | Specific design and material of a case. Same design cases made of plastic and silicon could be different products. |
-| Variant | Different colors of the same model. | Different sizes of the same ring. Price depends on the amount of material used. | Same design and material cases made for a different phone model. Amount of material will differ, but due to its cheapness the prices can be the same. |
-| Size | Different sizes of the same color. Same price for each. | | |
