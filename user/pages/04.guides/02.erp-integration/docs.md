@@ -377,6 +377,8 @@ On the `<variation>` level:
 * `<sizetable>` this is the sizetable that the variant has, and this determines what sizes it can have.
 * The other fields have the same functions as those on the product level
 
+[notice-box=alert]Make sure each variant of a product has a unique name.[/notice-box]
+
 On the `<size>` level:
 
 * `<id>` here is for a size id, connected to the sizetable.
@@ -505,6 +507,7 @@ Notice that this example does not send a `<sku>` or `<ean>` as Centra does not r
 ### Information you need
 
 * Sizetables must have been created in Centra
+* All variant names must be unique within one product.
 
 ### Request
 
@@ -562,7 +565,7 @@ Notice that this example does not send a `<sku>` or `<ean>` as Centra does not r
 
 Creates or updates warehouses in Centra.
 
-[notice-box=info]In most cases your shouldn’t create new warehouses if Centra already has warehouses setup. Consult the ID conversion table instead.[/notice-box]
+[notice-box=info]In most cases your shouldn’t create new warehouses if Centra already has warehouses set up. Consult the ID conversion table instead.[/notice-box]
 
 This operation is optional. If you simply send stock numbers to a warehouse `<id>` in the next example without creating warehouses first, the warehouses will be created automatically.
 
@@ -617,6 +620,7 @@ This also means you should fetch orders from Centra before sending stock updates
 ### Preconditions
 
 * The products must exist in Centra
+* All variant names must be unique within one product.
 
 ### Request
 
@@ -695,6 +699,7 @@ On the `<item>` level
 On the `<variation>` level
 
 * `<id>` is the variation ID (See the product examples)
+* All variant names must be unique within one product
 
 Notice that the wholesale prices have a `<priceb>` field. This is the recommended retail price. It is optional, and only used for wholesale.
 
