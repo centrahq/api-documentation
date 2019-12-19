@@ -104,11 +104,19 @@ A Product belongs to one and only one Folder. Folders are used for reporting and
 
 That is a design decision you should carefully consider when onboarding with Centra. It may differ depending on the type of products you are selling and your business model. If you're selling clothes, your product structure will be different than if you're selling jewelery. 
 
-| | Shirts | Silver rings | Phone cases v1 | Phone cases v2 |
-|---|---|---|---|---|
-| Product | Specific model or cut. Similar shirt made of different material is probably a different product. | Specific ring design or head stone. Same ring with a different head is a different product. | Specific design and material of a case. Same design cases made of plastic and silicon could be different products. | Case made for a specific phone model. |
-| Variant | Different colors of the same model. | Different sizes of the same ring. Price depends on the amount of material used. | Same design and material cases made for a different phone model. Amount of material will differ, but due to its cheapness the prices can be the same. | Different designs cases for the same case model, including different materials. They can have same or different prices. |
-| Size | Different sizes of the same color. Same price for each. | Each variant should only have one size. |  |  |
+| | Shirts | Phone cases v1 | Phone cases v2 |
+|---|---|---|---|
+| Product | Specific style or cut. Similar shirt made of different material is probably a different product. | Specific design and material of a case. Same design cases made of plastic and silicon could be different products. | Case made for a specific phone model. |
+| Variant | Different colors of the same style. | Same design and material cases made for a different phone model. Amount of material will differ, but due to its cheapness the prices can be the same. | Different designs cases for the same case model, including different materials. They can have same or different prices. |
+| Size | Different sizes of the same color. Same price for each. | Each variant should only have one size. | Each variant should only have one size. |
+| Display | You can display each variant separately, or create a single display for unisex products. | You can set up a single display for a specific case design and activate it for all phone model variants. | You can set up a single display for all designs variants made for the same phone model. |
+
+| | Jewelry | Bags | Cosmetics |
+|---|---|---|---|
+| Product | Specific ring design or head stone. Same ring with a different head is a different product. Same model of ring made of silver and gold are separate products. |  |  |  |
+| Variant | Different sizes of the same ring. Price depends on the amount of material used. |  |  |  |
+| Size | Each variant should only have one size. |  |  |  |
+| Display |  |  |  |
 
 #### Product
 
@@ -120,6 +128,8 @@ Variants are different variations of the same product. Depending on the product 
 * Colors: Standard distinction when dealing with fashion. For example, red shirt and a blue shirt are different variant of the same product, they have the same price and are likely made of the same material.
 * Sizes: In fashion, all sizes of the same product usually have the same price. This is not the case if you're selling suitcases or rings, where the price depends on the amount of material used for production.
 * Minor differences: The same color shirt can be offered with different style of collar or cuffs. When they are defined as separate variants, they can be set with different prices, description or promotions.
+
+Variants can also be a combination of criteria. For example, if you were selling bags that came in multiple colors and sizes, you would want to create a variant for each combination.
 
 #### Size
 
