@@ -38,6 +38,13 @@ This will return product data from Centra with stock info. The values of the sto
 
      - Get all products modified after a certain date.
 
+   * - ``stock_modified``
+
+       .. type:: date
+          :required: false
+
+     - Get all products which had stock changes after a certain date.
+
    * - ``created``
 
        .. type:: date
