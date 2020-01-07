@@ -1,22 +1,23 @@
 ```eval_rst
-.. _order-api-get-returns:
+.. _order-api-update-return:
 ```
 
-# Get returns
+# Update return
 
 ```eval_rst
 .. api-name:: Order API
    :version: 1
 
 .. endpoint::
-   :method: GET
-   :url: *base*/returns?[&limit=5][&page=2][&return=23]
+   :method: PUT
+   :url: *base*/returns/*returnId*
 
 .. authentication::
    :api_key: true
 ```
 
-Will list all returns, newest first.
+Update information on Return.
+
 
 ## Parameters
 
@@ -24,69 +25,20 @@ Will list all returns, newest first.
 .. list-table::
    :widths: auto
 
-   * - ``limit``
-
-       .. type:: int
-          :required: false
-
-     - Limit the number of returns returned.
-
-   * - ``page``
-
-       .. type:: int
-          :required: false
-
-     - Number of page of results to return.     
-
-   * - ``return``
-
-       .. type:: int
-          :required: false
-
-     - Only show a return with given ID.
-
-   * - ``shipment``
+   * - ``returnId``
 
        .. type:: string
-          :required: false
+          :required: true
 
-     - Only show a return with given shipment number.
-
-   * - ``order``
-
-       .. type:: int
-          :required: false
-
-     - Only fetch returns for a specific order.
-
-   * - ``selection``
-
-       .. type:: int
-          :required: false
-
-     - Only fetch returns for a specific selection.
-
-   * - ``customer_id``
-
-       .. type:: int
-          :required: false
-
-     - Only fetch returns for a specific customer.
-
-   * - ``newer_than``
-
-       .. type:: date
-          :required: false
-
-     - Only fetch returns created after given date or datetime (inclusive).
+     - The ID from ``return`` when creating or updating a return.
      
-   * - ``older_than``
+   * - ``completed``
 
-       .. type:: date
+       .. type:: boolean
           :required: false
 
-     - Only fetch returns created before given date or datetime (exclusive).
-     
+     - Set to `true`/`false` to change Return status to Complete/Pending.
+
    * - ``xml``
 
        .. type:: boolean
@@ -101,12 +53,10 @@ Will list all returns, newest first.
 .. code-block:: http
    :linenos:
 
-   GET <base>/returns?limit=2 HTTP/1.1
-
-```
-
-```eval_rst
-.. _get-returns-response:
+   PUT <base>/returns/2 HTTP/1.1
+   Content-type: application/json
+   
+   {"completed": true}
 ```
 
 ## Response
@@ -124,12 +74,12 @@ Will list all returns, newest first.
 
      - ``ok`` if success, else ``no``.
 
-   * - ``returns``
+   * - ``return``
 
-       .. type:: array
+       .. type:: object
           :required: true
 
-     - Array of fetched returns.
+     - Object of fetched return.
 
        .. list-table::
           :widths: auto
@@ -141,9 +91,9 @@ Will list all returns, newest first.
             - ID of the return.
             
           * - ``completed``
-        
+
               .. type:: boolean
-        
+
             - Whether the return was completed or not.   
 
           * - ``shipment``
@@ -366,87 +316,58 @@ Will list all returns, newest first.
 
    {
        "status": "ok",
-       "returns": [
-           {
-               "returnId": 385,
-               "shipment": "20059-1",
-               "shipmentId": 8039,
-               "orderId": 20059,
-               "selectionId": "8bf93dd57e9ebf9291c8c3a5f0cb63bf",
-               "customerId": 416715,
-               "date": "2019-07-11 14:34:32",
-               "returnCost": 0,
-               "shippingCost": 0,
-               "handlingCost": 0,
-               "voucherValue": 0,
-               "taxValue": 21.41,
-               "taxDeduction": 0,
-               "currency": "EUR",
-               "baseCurrency": "SEK",
-               "baseCurrencyRate": 10.6453,
-               "returnToStock": true,
-               "comment": "Godkänd retur",
-               "createdFrom": "Order API",
-               "products": [
-                   {
-                       "returnLineId": 555,
-                       "shipmentLineId": 30672,
-                       "orderLineId": 60288,
-                       "productId": 159,
-                       "variantId": 372,
-                       "productName": "Muffin man",
-                       "productBrand": "Handcrafted",
-                       "variantName": "Big cart",
-                       "size": "One Size",
-                       "sku": "MUF1042",
-                       "variantSku": "",
-                       "sizeSku": "",
-                       "ean": "7340112910426",
-                       "quantity": 1,
-                       "price": 124.1
-                   }
-               ]
-           },
-           {
-               "returnId": 384,
-               "shipment": "20179-1",
-               "shipmentId": 8094,
-               "orderId": 20179,
-               "selectionId": "ae6eb1befe5d6f850a016932ca4276dc",
-               "customerId": 734042,
-               "date": "2019-07-11 14:33:56",
-               "returnCost": 0,
-               "shippingCost": 0,
-               "handlingCost": 0,
-               "voucherValue": 0,
-               "taxValue": 9.08,
-               "taxDeduction": 0,
-               "currency": "GBP",
-               "baseCurrency": "SEK",
-               "baseCurrencyRate": 11.61479,
-               "returnToStock": true,
-               "comment": null,
-               "createdFrom": "Order API",
-               "products": [
-                   {
-                       "returnLineId": 553,
-                       "shipmentLineId": 30800,
-                       "orderLineId": 60669,
-                       "productId": 196,
-                       "variantId": 430,
-                       "productName": "Plush Guitar",
-                       "productBrand": "",
-                       "variantName": "Pink",
-                       "size": null,
-                       "sku": "PNKG8484",
-                       "variantSku": "",
-                       "sizeSku": "",
-                       "ean": "7340082321862",
-                       "quantity": 1,
-                       "price": 54.5
-                   }
-               ]
-           }
-       ]
+       "return": {
+           "returnId": 18,
+           "status": 1,
+           "shipment": "44-1",
+           "shipmentId": 1142,
+           "orderId": 44,
+           "selectionId": "be337d27e16564cadad0a340b8bc1fbe",
+           "customerId": 31,
+           "date": "2020-01-07 17:00:29",
+           "returnCost": 5,
+           "shippingCost": 5.55,
+           "handlingCost": 9,
+           "voucherValue": 0,
+           "taxValue": 21.91,
+           "taxDeduction": 0,
+           "currency": "SEK",
+           "baseCurrency": "SEK",
+           "baseCurrencyRate": 1,
+           "returnToStock": false,
+           "comment": null,
+           "createdFrom": "Order API",
+           "products": [
+               {
+                   "returnLineId": 17,
+                   "shipmentLineId": 2681,
+                   "orderLineId": 112,
+                   "productId": 7,
+                   "variantId": 2460,
+                   "productName": "Test Product STOCK",
+                   "productBrand": null,
+                   "variantName": null,
+                   "size": null,
+                   "sku": "TPSTOCK",
+                   "variantSku": "",
+                   "sizeSku": "",
+                   "ean": "StockTestEAN",
+                   "quantity": 1,
+                   "price": 100
+               }
+           ]
+       }
+   }
+```
+
+## Error example
+
+```eval_rst
+.. code-block:: json
+   :linenos:
+
+   {
+     "status": "no",
+     "msg": "Return with id=100500 does not exist"
    }
 ```
