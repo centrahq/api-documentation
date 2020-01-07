@@ -54,7 +54,9 @@ Update information on Return.
    :linenos:
 
    PUT <base>/returns/2 HTTP/1.1
-
+   Content-type: application/json
+   
+   {"completed": true}
 ```
 
 ## Response
