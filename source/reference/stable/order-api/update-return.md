@@ -318,7 +318,7 @@ Update information on Return.
        "status": "ok",
        "return": {
            "returnId": 18,
-           "status": 1,
+           "completed": false,
            "shipment": "44-1",
            "shipmentId": 1142,
            "orderId": 44,
