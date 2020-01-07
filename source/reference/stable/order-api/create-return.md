@@ -147,7 +147,7 @@ This will create return for given shipment and items. Return will be created eve
               .. type:: boolean
                  :required: false
 
-            - If this is set to true the payment provider will get a refund request to pay back the money to the customer. The amount that will be refunded is the amount for the products, the handling, shipping and return costs.
+            - If this is set to true the payment provider will get a refund request to pay back the money to the customer. The amount that will be refunded is the amount for the products, the handling, shipping and return costs. If the refund is successful against the payment provider, the ``returnCompleted`` will be ``true`` in the response.
 
           * - ``sendEmail``
 
@@ -174,6 +174,30 @@ This will create return for given shipment and items. Return will be created eve
      "products": {
        "268871": "1",
        "268870": "1"
+     }
+   }
+```
+
+## Request example including refund
+
+```eval_rst
+.. code-block:: http
+   :linenos:
+
+   POST <base>/return HTTP/1.1
+   Content-type: application/json
+
+   {
+     "shipment": "120276-1",
+     "returnStock": 1,
+     "comment": "Return created with Order Api",
+     "products": {
+       "268871": "1",
+       "268870": "1"
+     },
+     "refund": {
+       "refundPayment": true,
+       "sendEmail": true
      }
    }
 ```
@@ -240,6 +264,25 @@ This will create return for given shipment and items. Return will be created eve
      "returnedItems": [
        "268871"
      ]
+   }
+```
+
+## Response example including refund
+
+```eval_rst
+.. code-block:: json
+   :linenos:
+
+   {
+     "status": "ok",
+     "return": 5397,
+     "returnCompleted": true,
+     "returnedItems": [
+       "268871"
+     ],
+     "refund": {
+       "status": "ok"
+     }
    }
 ```
 
