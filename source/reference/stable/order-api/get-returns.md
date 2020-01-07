@@ -369,6 +369,7 @@ Will list all returns, newest first.
        "returns": [
            {
                "returnId": 385,
+               "completed": false,
                "shipment": "20059-1",
                "shipmentId": 8039,
                "orderId": 20059,
