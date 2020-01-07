@@ -205,6 +205,12 @@ This will create return for given shipment and items. Return will be created eve
 
      - Return ID that was created.
 
+   * - ``returnCompleted``
+
+       .. type:: boolean
+
+     - If the return was completed directly on creation, this can only happen if a successful refund was made when return was created. 
+
    * - ``returnedItems``
 
        .. type:: array of string
@@ -230,6 +236,7 @@ This will create return for given shipment and items. Return will be created eve
    {
      "status": "ok",
      "return": 5397,
+     "returnCompleted": false,
      "returnedItems": [
        "268871"
      ]
