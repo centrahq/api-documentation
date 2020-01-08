@@ -33,21 +33,21 @@ This will return product data from Centra with stock info. The values of the sto
 
    * - ``modified``
 
-       .. type:: datetime
+       .. type:: date/datetime
           :required: false
 
      - Get all products modified after a certain date. Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
 
    * - ``stock_modified``
 
-       .. type:: datetime
+       .. type:: date/datetime
           :required: false
 
      - Get all products which had stock changes after a certain date. Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
 
    * - ``created``
 
-       .. type:: datetime
+       .. type:: date/datetime
           :required: false
 
      - Get all products added after a certain date. Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
