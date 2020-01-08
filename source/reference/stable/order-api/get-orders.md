@@ -54,14 +54,14 @@ This will fetch the orders allowed for the plugin being set up.
 
    * - ``newer_than``
 
-       .. type:: datetime
+       .. type:: date/datetime
           :required: false
 
      - Return order newer than date.  Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
 
    * - ``older_than``
 
-       .. type:: date
+       .. type:: date/datetime
           :required: false
 
      - Return order newer than date. Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
