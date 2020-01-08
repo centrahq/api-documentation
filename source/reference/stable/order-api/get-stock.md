@@ -33,24 +33,24 @@ This will return product data from Centra with stock info. The values of the sto
 
    * - ``modified``
 
-       .. type:: date
+       .. type:: datetime
           :required: false
 
-     - Get all products modified after a certain date.
+     - Get all products modified after a certain date. Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``.
 
    * - ``stock_modified``
 
-       .. type:: date
+       .. type:: datetime
           :required: false
 
-     - Get all products which had stock changes after a certain date.
+     - Get all products which had stock changes after a certain date. Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``.
 
    * - ``created``
 
-       .. type:: date
+       .. type:: datetime
           :required: false
 
-     - Get all products added after a certain date.
+     - Get all products added after a certain date. Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``.
 
    * - ``ean``
 
@@ -87,7 +87,7 @@ This will return product data from Centra with stock info. The values of the sto
 .. code-block:: http
    :linenos:
 
-   GET <base>/stock?[&limit=2][&sku=DCG001][&modified=2016-01-01][&created=2011-01-01] HTTP/1.1
+   GET <base>/stock?[&limit=2][&sku=DCG001][&modified=2016-01-01+12:10:11][&created=2011-01-01] HTTP/1.1
 
 ```
 
