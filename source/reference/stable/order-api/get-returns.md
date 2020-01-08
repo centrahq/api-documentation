@@ -75,17 +75,17 @@ Will list all returns, newest first.
 
    * - ``newer_than``
 
-       .. type:: date
+       .. type:: datetime
           :required: false
 
-     - Only fetch returns created after given date or datetime (inclusive).
+     - Only fetch returns created after given date or datetime (inclusive). Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
      
    * - ``older_than``
 
-       .. type:: date
+       .. type:: datetime
           :required: false
 
-     - Only fetch returns created before given date or datetime (exclusive).
+     - Only fetch returns created before given date or datetime (exclusive). Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
      
    * - ``xml``
 
