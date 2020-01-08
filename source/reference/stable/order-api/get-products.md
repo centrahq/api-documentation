@@ -29,17 +29,17 @@ This will return product data from Centra with categories.
 
    * - ``modified``
 
-       .. type:: date
+       .. type:: datetime
           :required: false
 
-     - Get all products modified after a certain date.
+     - Get all products modified after a certain date. Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
 
    * - ``created``
 
-       .. type:: date
+       .. type:: datetime
           :required: false
 
-     - Get all products added after a certain date.
+     - Get all products added after a certain date. Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
 
    * - ``ean``
 
