@@ -54,17 +54,17 @@ This will fetch the orders allowed for the plugin being set up.
 
    * - ``newer_than``
 
-       .. type:: date
+       .. type:: datetime
           :required: false
 
-     - Return order newer than date (YYYY-MM-DD).
+     - Return order newer than date.  Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
 
    * - ``older_than``
 
        .. type:: date
           :required: false
 
-     - Return order newer than date (YYYY-MM-DD).
+     - Return order newer than date. Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
 
    * - ``xml``
 
@@ -80,7 +80,7 @@ This will fetch the orders allowed for the plugin being set up.
 .. code-block:: http
    :linenos:
 
-   GET <base>/orders?newer_than=2019-01-01&limit=10 HTTP/1.1
+   GET <base>/orders?newer_than=2019-01-01+12:11:39&limit=10 HTTP/1.1
 
 ```
 
