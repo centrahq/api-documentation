@@ -47,17 +47,17 @@ Return list of the customers.
 
    * - ``created``
 
-       .. type:: date
+       .. type:: datetime
           :required: false
 
-     - Get all customers added after a certain date.
+     - Get all customers added after a certain date. Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
 
    * - ``modified``
 
-       .. type:: date
+       .. type:: datetime
           :required: false
 
-     - Get all customers modified after a certain date.
+     - Get all customers modified after a certain date. Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
 
    * - ``xml``
 
