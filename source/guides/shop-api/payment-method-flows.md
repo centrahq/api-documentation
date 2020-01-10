@@ -158,9 +158,9 @@ Website is supposed to show the message field to the customer. We also append th
 
 #### 3. Special case: redirect back to payment
 
-This case was added when we noticed an error while completing the order. The error is called [Paypal (Error 10486)](https://developer.paypal.com/docs/classic/express-checkout/ht-ec-fundingfailure10486/#integration-details) (They actually even wrote an article just about this error and how to recover from it).
+This case happens rarely, for now only when using the PayPal plugin. The error is called [Paypal (Error 10486)](https://developer.paypal.com/docs/classic/express-checkout/ht-ec-fundingfailure10486/#integration-details) (They actually even wrote an article just about this error and how to recover from it). This error is recoverable, meaning PayPal actually gives us a URL to redirect the customer to for modifying their selected payment method in PayPal.
 
-In this case, we need to return an `action` with a redirect URL even in the response of `POST /payment-result`. If you can handle getting this response, you can enable support for Error 10486 inside the PayPal plugin. When this case occurs you will get the following response:
+In this case, we need to return an `action` with a redirect URL even in the response of `POST /payment-result`. If you can handle getting this response, you can enable support for this response on `/payment-result` by setting `API user can handle [error 10486]` to `Yes` inside the PayPal plugin. If this setting is set and when PayPal gives this error, we will respond like this:
 
 ```json
 {
