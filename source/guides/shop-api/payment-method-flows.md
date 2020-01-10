@@ -157,9 +157,10 @@ We might also give a generic error, like this:
 Website is supposed to show the message field to the customer. We also append the code so they can use a fixed field to identify what type of error it was (for example to highlight the country-selector).
 
 #### 3. Special case: redirect back to payment
-This case was added lately when we noticed an error we got just as we were completing the order in Paypal (Error 10486). They actually even wrote an article just about this error and how to recover from it.
-In this case, we are able to return an action with redirect even on `{selection}/payment-result`. We've made this an Opt-In on the Paypal plugin for now, since we know that most of our integration partners do not yet support this, and since it's really specific to the Paypal-API. (This might not be a problem in the new Express Checkout for Paypal).
-We send:
+
+This case was added when we noticed an error while completing the order. The error is called [Paypal (Error 10486)](https://developer.paypal.com/docs/classic/express-checkout/ht-ec-fundingfailure10486/#integration-details) (They actually even wrote an article just about this error and how to recover from it).
+
+In this case, we need to return an `action` with a redirect URL even in the response of `POST /payment-result`. If you can handle getting this response, you can enable support for Error 10486 inside the PayPal plugin. When this case occurs you will get the following response:
 
 ```json
 {
@@ -168,4 +169,4 @@ We send:
 }
 ```
 
-Website is supposed to redirect back to the URL, which will tell them they need to select a different payment method since the one they used did not work properly.
+You are then supposed to redirect the customer to the `url` we provided. PayPal will tell the customer that they need to select a different payment method since the one bein used did not work properly.
