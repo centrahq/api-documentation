@@ -270,6 +270,10 @@ In Centra, Product is a top-level definition of an item for sale. Products are s
 _B2B/B2C_  
 The product catalog contains all of your Products stored in Centra, used by both B2C and B2B stores.
 
+### **PSP**  
+_B2B/B2C_  
+Payment Service Provider, like Klarna or Stripe. Each PSP provides support for multiple payment methods, like credit cards, Swish, Apple Pay, bank transfers or "Buy now, pay later" agreements.
+
 ## **R**
 
 ### **Registered customers**  
