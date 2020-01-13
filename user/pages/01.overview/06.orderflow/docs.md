@@ -53,7 +53,7 @@ Here's the basic order flow as seen in Centra backend.
 
 Here's the basic return flow as seen in Centra backend.
 
-![ReturnFlow](return-flow.png?lightbox=1666x2000&resize=1200)
+![ReturnFlow](return-flow2.png)
 
 Returns in Centra are directly tied to order shipments. When browsing a shipment, you can select to return one, many or all items in that shipment.
 
