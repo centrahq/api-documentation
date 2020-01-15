@@ -10,7 +10,7 @@ Centra uses a predefined product model that is optimized to solve the complexiti
 
 Two different concepts for modelling and storing items for sale are used in Centra: Displays and Products. This includes Variants and Sizes of Products.
 
-![ProductModel](product-model.png?lightbox=3333x4000&resize=1200)
+![ProductModel](product-model.png)
 
 ### Products, Variants and Sizes
 

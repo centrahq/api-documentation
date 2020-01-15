@@ -8,7 +8,7 @@ taxonomy:
 
 There are three main concepts that govern how the Tax is applied in Centra: Tax Groups, Tax Rules and Tax Classes.
 
-![TaxLogic](tax-logic.png?lightbox=3333x4000&resize=1200)
+![TaxLogic](tax-logic.png)
 
 ### Tax Groups
 
@@ -33,10 +33,6 @@ When an order is created, for each order line (each item in the order) the follo
   1. Secondly, comparing the Tax Classes selected in the Tax Rule to the Tax Classes of the Customer / Account making the order.
 1. Selected Tax Rule is applied to the order line and the process repeats for the next item in the order.
 
-
-
 ***
-
-
 
 To learn more about configuring Taxes in Centra, see article [Tax groups](https://support.centra.com/centra-sections/settings/tax-groups) on our Suppoprt site.

@@ -8,7 +8,7 @@ taxonomy:
 
 Centra is a natively multi-market (different products or pricing to different customer segments), multi-currency, multi-pricelist and multi-language system. Combined, this flexibility of Centra enables serving a global market from a single Centra instance, and serving individual customer segments with tailored offers for both products and prices, including campaigns and discounts. It is also possible to control what products are visible and/or offered for sale in different markets, and implement local pricing strategies that are independent of language and currency selection. Non-geographical markets can also be defined, e.g., VIP customers, an affiliate influencer’s followers, or employees.
 
-![StoreLogic](store-logic.png?lightbox=3333x4000&resize=1200)
+![StoreLogic](store-logic.png)
 
 ### Store
 

@@ -28,7 +28,7 @@ Centra automatically detects Selections that are not checked out and generates A
 
 Here's the basic order flow as seen in Centra backend.
 
-![OrderFlow](order-flow.png?lightbox=3333x4000&resize=1200)
+![OrderFlow](order-flow.png)
 
 ### Order statuses
 
