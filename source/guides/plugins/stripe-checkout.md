@@ -21,9 +21,10 @@ The flow works like this:
 5. The website renders the HTML.
 6. The HTML-snippet will trigger a redirect to Stripe's own checkout page.
 7. This page will support 3D-secure enabled cards, Apple Pay and all supported credit cards enabled in your Stripe account.
-8. The customer will after finalizing be redirected back to the `paymentReturnPage` provided in the `POST /payment`-call. 
-9. The `paymentReturnPage` will then make a call to `POST /payment-result`.
-10. Centra will respond with either a success or a payment failed.
+8. Stripe will send a webhook to Centra confirming that the checkout was completed. Centra will handle this webhook and finalize the order if the webhook is saying so and that the signing secret is correct (the way we confirm that the webhook was sent by Stripe).
+9. The customer will after finalizing be redirected back to the `paymentReturnPage` provided in the `POST /payment`-call. 
+10. The `paymentReturnPage` will then make a call to `POST /payment-result`.
+11. Centra will respond with either a success or a payment failed.
 
 ### Implementation
 
@@ -32,10 +33,6 @@ The implementation requires Stripe Checkout only to be initiated after address i
 This means that the `POST /payment` needs to happen after the address has been inserted and after products have been decided. If the customer wants to modify their information or the cart, another `POST /payment` must be made after this is done. The reason we cannot modify it from Centra's side whenever the cart is modified is because the session-data coming back from Stripe to launch the Stripe Checkout contains all payment information inside the session-data for launching the Stripe Checkout itself.
 
 If the customer tries to trick the checkout, by opening another tab to modify the cart, as soon as Centra gets the server notification call from Stripe, it will mark the order as "Payment mismatch" and set the order to "Hold". This is to prevent the order from ever being fulfilled if the payment amount does not match between the order and the payment from Stripe.
-
-### Webhooks
-
-The Stripe-Checkout needs its own Webhook set up in Stripe. If the Webhook URL is not set up, no order will be completed when using Stripe Checkout.
 
 ### Set up
 
@@ -69,16 +66,24 @@ Copy those values into the plugin inside Centra. The publishable key always begi
    :scale: 40 %
 ```
 
-Save the Centra plugin, and open it again to get the proper Webhook-URL for it. You will see this in the Centra-plugin:
+Save the Centra plugin.
+
+### Webhooks
+
+```eval_rst
+.. warning:: The Stripe-Checkout needs its own Webhook set up in Stripe. If the Webhook URL is not set up, no order will be completed when using Stripe Checkout.
+```
+
+To set up webhooks, open the plugin in Centra again to get the proper Webhook-URL for the plugin. You will see this section in the Centra-plugin:
 
 ```eval_rst
 .. image:: images/stripe-checkout-notifications.png
    :scale: 40 %
 ```
 
-Copy the URL in this view (make sure that your QA-instance gives a `centraqa.com`-URL and that your live-instance gives a `centra.com`-URL) and go to [Developers / Webhooks in Stripe](https://dashboard.stripe.com/test/webhooks).
+Copy the URL in this view (make sure that your QA-instance gives a `centraqa.com`-URL and that your live-instance gives a `centra.com`-URL) and go to [Developers / Webhooks in Stripe for Test](https://dashboard.stripe.com/test/webhooks) or [Developers / Webhooks in Stripe for Live](https://dashboard.stripe.com/webhooks).
 
-Click "+ Add endpoint". In the popup, add the URL you copied from the Centra-plugin, and select the events provided from the plugin. In the case of Stripe Checkout, **the only event** you should subscribe to is: `checkout.session.completed`. It should look like this:
+Click "+ Add endpoint" in the section "Endpoints receiving events from your account". In the popup, add the URL you copied from the Centra-plugin, and select the events provided from the plugin. In the case of Stripe Checkout, **the only event** you should subscribe to is: `checkout.session.completed`. It should look like this:
 
 ```eval_rst
 .. image:: images/stripe-checkout-notifications-setup.png
@@ -100,6 +105,8 @@ Into the Centra-plugin under "Stripe Signing Key" (it always begins with `whsec_
 
 You can now save the plugin. Make sure that if you used Test-Mode in Stripe, that the plugin is also set as "Test-Mode: Yes".
 
+If you have multiple Stripe Checkout plugins for different regions or stores in Centra, but using the same Stripe Account, you only need one webhook to Centra to finalize orders in all the stores.
+
 ### Going live
 
 When going live, these are the things that needs to be done for it to work.
@@ -115,7 +122,9 @@ Make sure Stripe Checkout is "Enabled" in the top right corner. Also add the dom
    :scale: 30 %
 ```
 
-Then, you need to set up a new webhook for the Centra-plugin you have set as "Test-Mode: No" to make sure we get webhooks from Stripe also in Live-mode. Follow the same description above under [Webhooks](#webhooks).
+```eval_rst
+.. warning:: You need to set up a new webhook for the Centra-plugin you have in production, which should be set as "Test-Mode: No" to make sure we get webhooks from Stripe also in Live-mode. Follow the same description above under [Webhooks](#webhooks).
+```
 
 #### Market/Pricelist/Country/Language restrictions
 
