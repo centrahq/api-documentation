@@ -384,6 +384,7 @@ These should not have any breaking effect, but good for reference:
 * When removing an invalid voucher we responded with a combination of an error and the current selection. It now responds with `errors.voucher=not found` if the voucher could not be found. However, if the voucher existed and wasn't added to the selection, it will still give back a status 200 OK.
 * `PUT /selection/{selectionId}` before would return completed selections as order receipts. This is not possible anymore. Selection will be not found if it's converted into an order.
 
+* When order is completed using `POST /payment` or `POST /payment-result` or `GET /receipt`, the OrderCreatedModel contained an empty `order.shipments`. This array was always empty and is now removed. The old orders under `GET /orders` for a signed in customer still shows shipments like before in the OrderModel.
 * When order was completed, there was a static property called `order.message` that always said `Thank you for your order!` and nothing else. This field is removed.
 **Before:**
 
