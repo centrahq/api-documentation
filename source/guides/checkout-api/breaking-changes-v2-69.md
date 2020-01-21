@@ -4,7 +4,7 @@ This release makes some breaking changes due to bugs affecting multi-language st
 
 Below we describe the changes made. Most of them are properties moved into proper models. The biggest change has been introduced to partners already and was due to a bug in our language transformation: 
 
-[5. Category structure is now consolidated, category name is always an array](#5)
+[5. Category structure is now consolidated, category name is always an array](#category-structure-is-now-consolidated-category-name-is-always-an-array)
 
 ## 1. Moved plugin-specific fields into pluginFields-property
 
@@ -226,9 +226,8 @@ After:
 
 ### For `/products`
 
-Before:
 
-When not sending language, the proper structure was already set. When sending a language:
+When not sending language, the proper structure was already set. When sending a `language` in the request, before:
 
 ```json
 {
@@ -320,11 +319,15 @@ After:
         "item": "1-1",
         "product": {
           "...": "..."
-          "categoryName": "Shop",
+          "categoryName": [
+            "Shop"
+          ],
           "categoryUri": "shop",
           "categories": [
             {
-              "name": "Shop",
+              "name": [
+                "Shop"
+              ],
               "category": "1",
               "uri": "shop"
             }
