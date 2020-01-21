@@ -353,3 +353,7 @@ When listing items, the same logic now applies to the `selection.items[].product
 These should not have any breaking effect, but good for reference:
 
 * When changing to an invalid payment method we returned a 404 with `errors.paymentMethod=not found` but also the current selection. This only returns the `errors` property now. 
+* When changing to an invalid shipping method we never responded if it failed. It now responds with `errors.shippingMethod=not found` if the method could not be found.
+* When changing to an invalid voucher we responded with a combination of an error and the current selection. It now responds with `errors.voucher=not found` if the voucher could not be found.
+* When removing an invalid voucher we responded with a combination of an error and the current selection. It now responds with `errors.voucher=not found` if the voucher could not be found. However, if the voucher existed and wasn't added to the selection, it will still give back a status 200 OK.
+* `PUT /selection/{selectionId}` before would return completed selections as order receipts. This is not possible anymore. Selection will be not found if it's converted into an order.
