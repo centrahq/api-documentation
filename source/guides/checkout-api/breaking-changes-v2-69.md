@@ -348,12 +348,64 @@ When listing items, the same logic now applies to the `selection.items[].product
 }
 ```
 
+## 6. No : in error keys for POST /payment
+
+We had errors from `POST /payment` that responded with sub-sections with `:` as a separator. However, some others had `.`. We're now giving back all errors in the same format:
+
+**Before:**
+
+```json
+{
+  "errors": {
+    "address.email": "required",
+    "address:vatNumber": "Invalid VAT number"
+  }
+}
+``` 
+
+**After:**
+
+```json
+{
+  "errors": {
+    "address.email": "required",
+    "address.vatNumber": "Invalid VAT number"
+  }
+}
+``` 
+
 ### Additional corrections
 
 These should not have any breaking effect, but good for reference:
 
-* When changing to an invalid payment method we returned a 404 with `errors.paymentMethod=not found` but also the current selection. This only returns the `errors` property now. 
+* When changing to an invalid payment method we returned a 404 with `errors.paymentMethod=not found` but also the current selection. This only returns the `errors` property now, both for `POST /payment` and `POST /payment-methods/{paymentMethod}`.
 * When changing to an invalid shipping method we never responded if it failed. It now responds with `errors.shippingMethod=not found` if the method could not be found.
 * When changing to an invalid voucher we responded with a combination of an error and the current selection. It now responds with `errors.voucher=not found` if the voucher could not be found.
 * When removing an invalid voucher we responded with a combination of an error and the current selection. It now responds with `errors.voucher=not found` if the voucher could not be found. However, if the voucher existed and wasn't added to the selection, it will still give back a status 200 OK.
 * `PUT /selection/{selectionId}` before would return completed selections as order receipts. This is not possible anymore. Selection will be not found if it's converted into an order.
+
+* When order was completed, there was a static property called `order.message` that always said `Thank you for your order!` and nothing else. This field is removed.
+**Before:**
+
+```
+{
+  "order": {
+    "order": "123455",
+    "status": "untouched",
+    "message": "Thank you for your order!",
+    "date": "2020-01-21 23:57:18"
+  }
+}  
+```
+
+**After:**
+
+```
+{
+  "order": {
+    "order": "123455",
+    "status": "untouched",
+    "date": "2020-01-21 23:57:18"
+  }
+}  
+```
