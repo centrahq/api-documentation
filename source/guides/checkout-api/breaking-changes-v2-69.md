@@ -2,6 +2,8 @@
 
 This release makes some breaking changes due to bugs affecting multi-language structure. This release also adds extended documentation using OAS v3.0.2 to easier connect with the Checkout API. Due to this, some breaking changes are introduced.
 
+**If you're using Checkout API v3 or less you are not affected by these changes.**
+
 Below we describe the changes made. Most of them are properties moved into proper models. The biggest change has been introduced to partners already and was due to a bug in our language transformation: 
 
 [5. Category structure is now consolidated, category name is always an array](#category-structure-is-now-consolidated-category-name-is-always-an-array)
