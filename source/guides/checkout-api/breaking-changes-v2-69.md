@@ -12,7 +12,7 @@ The optional fields added by plugins, `selection.paymentHTML`, `selection.klarna
 
 Before:
 
-```
+```json
 {
   "selection": {
     "shippingMethodName": "SEK",
@@ -27,7 +27,7 @@ Before:
 
 After:
 
-```
+```json
 {
   "selection": {
     "shippingMethodName": "SEK",
@@ -48,7 +48,7 @@ After:
 
 Before:
 
-```
+```json
 {
   "selection": {
     "...": "..."
@@ -64,7 +64,7 @@ Before:
 
 After:
 
-```
+```json
 {
   "selection": {
     "...": "..."
@@ -85,7 +85,7 @@ After:
 
 Before:
 
-```
+```json
 {
   "selection": {
     "...": "..."
@@ -100,7 +100,7 @@ Before:
 
 After:
 
-```
+```json
 {
   "selection": {
     "...": "..."
@@ -119,7 +119,7 @@ The `location.language` is now an object with the description of the language as
 
 Before:
 
-```
+```json
 {
   "selection": {
     "...": "..."
@@ -132,7 +132,7 @@ Before:
 
 After:
 
-```
+```json
 {
   "selection": {
     "...": "..."
