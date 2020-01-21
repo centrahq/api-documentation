@@ -12,7 +12,7 @@ Below we describe the changes made. Most of them are properties moved into prope
 
 The optional fields added by plugins, `selection.paymentHTML`, `selection.klarnaReplaceSnippet` and `selection.shipwallet` has moved from `selection` into `selection.pluginFields` to be able to make better documentation in OAS/Swagger.
 
-Before:
+**Before:**
 
 ```json
 {
@@ -27,7 +27,7 @@ Before:
 }
 ```
 
-After:
+**After:**
 
 ```json
 {
@@ -48,7 +48,7 @@ After:
 
 `language` in the Selection Response containing the list of languages is now called `languages`. This is to make sure it looks similar to `GET /languages`:
 
-Before:
+**Before:**
 
 ```json
 {
@@ -65,7 +65,7 @@ Before:
 }
 ```
 
-After:
+**After:**
 
 ```json
 {
@@ -87,7 +87,7 @@ After:
 
 `market` and `pricelist` are now inside the `location`-model instead of direct inside the response, to fully keep all the current session values inside the LocationModel:
 
-Before:
+**Before:**
 
 ```json
 {
@@ -102,7 +102,7 @@ Before:
 }
 ```
 
-After:
+**After:**
 
 ```json
 {
@@ -121,7 +121,7 @@ After:
 
 The `location.language` is now an object with the description of the language as well. This is to make the `location.language` the same LanguageModel like `GET /languages`.
 
-Before:
+**Before:**
 
 ```json
 {
@@ -134,7 +134,7 @@ Before:
 }
 ```
 
-After:
+**After:**
 
 ```json
 {
@@ -160,7 +160,7 @@ We had a bug pre **v2.69** that depending on if you provided a language or not, 
 
 ### For `/uri`
 
-Before:
+**Before:**
 
 ```json
 {
@@ -188,7 +188,7 @@ Before:
 }
 ```
 
-After:
+**After:**
 
 ```json
 {
@@ -231,7 +231,11 @@ After:
 ### For `/products`
 
 
-When not sending language, the proper structure was already set. When sending a `language` in the request, before:
+When not sending language, the proper structure was already set. 
+
+When sending a `language` in the request the response has changed slightly.
+
+**Before:**
 
 ```json
 {
@@ -252,7 +256,7 @@ When not sending language, the proper structure was already set. When sending a 
 }
 ```
 
-After:
+**After:**
 
 ```json
 {
@@ -286,7 +290,7 @@ After:
 
 When listing items, the same logic now applies to the `selection.items[].product`:
 
-Before:
+**Before:**
 
 ```json
 {
@@ -313,7 +317,7 @@ Before:
 }
 ```
 
-After:
+**After:**
 
 ```json
 {
