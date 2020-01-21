@@ -18,7 +18,7 @@ Before:
 {
   "selection": {
     "shippingMethodName": "SEK",
-    "paymentHTML": ""
+    "paymentHTML": "",
     "shipwallet": {
       "...": "..."
     },
@@ -60,7 +60,8 @@ Before:
       "language": "en",
       "name": "English"
     },
-    "...": "..."
+    { "...": "..." }
+  ]
 }
 ```
 
@@ -77,7 +78,8 @@ After:
       "name": "English",
       "default": true
     },
-    "...": "..."
+    { "...": "..." }
+  ]
 }
 ```
 
