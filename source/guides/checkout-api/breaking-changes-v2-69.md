@@ -18,12 +18,13 @@ The optional fields added by plugins, `selection.paymentHTML`, `selection.klarna
 {
   "selection": {
     "shippingMethodName": "SEK",
-    "paymentHTML": "",
+    "paymentHTML": "xxx",
     "shipwallet": {
       "...": "..."
     },
     "centraCheckoutScript": "CentraCheckout...",
     "...": "..."
+  }
 }
 ```
 
@@ -34,14 +35,30 @@ The optional fields added by plugins, `selection.paymentHTML`, `selection.klarna
   "selection": {
     "shippingMethodName": "SEK",
     "pluginFields": {
-      "paymentHTML": "",
+      "paymentHTML": "xxx",
       "shipwallet": {
         "...": "..."
       },
     },
     "centraCheckoutScript": "CentraCheckout...",
     "...": "..."
+  }
 }
+```
+
+**Code to support both ways before and after correction:**
+
+```js
+let selection = response.selection;
+
+// temporary solution to support proper models
+let shipwalletObject = selection.pluginFields && 
+  selection.pluginFields.shipwallet ? 
+    selection.pluginFields.shipwallet : selection.shipwallet
+    
+let paymentHTML = selection.pluginFields && 
+  selection.pluginFields.paymentHTML ? 
+    selection.pluginFields.paymentHTML : selection.paymentHTML
 ```
 
 ## 2. Changed language to languages in Selection Response
@@ -83,6 +100,14 @@ The optional fields added by plugins, `selection.paymentHTML`, `selection.klarna
 }
 ```
 
+**Code to support both ways before and after correction:**
+
+```js
+// temporary solution to support proper models
+let languageList = response.languages ?
+  response.languages : response.language;
+```
+
 ## 3. Move market/pricelist inside the Location Model
 
 `market` and `pricelist` are now inside the `location`-model instead of direct inside the response, to fully keep all the current session values inside the LocationModel:
@@ -115,6 +140,17 @@ The optional fields added by plugins, `selection.paymentHTML`, `selection.klarna
     "...": "..."
   }
 }
+```
+
+**Code to support both ways before and after correction:**
+
+```js
+// temporary solution to support proper models
+let currentMarket = response.location.market ?
+  response.location.market : response.market;
+  
+let currentPricelist = response.location.pricelist ?
+  response.location.pricelist : response.pricelist;
 ```
 
 ## 4. Language is now a LanguageModel inside the LocationModel
@@ -150,6 +186,18 @@ The `location.language` is now an object with the description of the language as
     }
   }
 }
+```
+
+**Code to support both ways before and after correction:**
+
+```js
+// temporary solution to support proper models
+let currentLanguageCode = response.location && 
+  response.location.language && 
+  response.location.language.language ?
+  response.location.language.language
+  :
+  response.location.language;
 ```
 
 ## 5. Category structure is now consolidated, category name is always an array
@@ -350,7 +398,7 @@ When listing items, the same logic now applies to the `selection.items[].product
 
 ## 6. No : in error keys for POST /payment
 
-We had errors from `POST /payment` that responded with sub-sections with `:` as a separator. However, some others had `.`. We're now giving back all errors in the same format:
+We had errors from `POST /payment` that responded with sub-sections with `:` as a separator. However, some others had `.`. We're now giving back all errors in the same format. **This only happened on very specific errors, not the normal ones.**
 
 **Before:**
 
@@ -372,7 +420,7 @@ We had errors from `POST /payment` that responded with sub-sections with `:` as 
     "address.vatNumber": "Invalid VAT number"
   }
 }
-``` 
+```
 
 ### Additional corrections
 
