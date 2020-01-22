@@ -15,7 +15,7 @@ TBD, we need an account to get an idea of how that looks in Voyado panel.
 ### Setup Voyado plugin in Centra
 
 1. Log in to your Centra instance, then go to __'SYSTEM'__ > __'STORES'__ and select your store,
-2. Store settings: make sure that order confirmation or order receipt, shipment and refund mails that **turned on**,
+2. Store settings: make sure that order confirmation or order receipt, shipment and refund mails are all **turned on**,
 3. Add a new Plugin Method, activate it, set the name (e.g. "Voyado"). Select __Voyado__ from under "E-mail triggers". Fill in the following fields:
 
     * __Voyado instance domain__ - e.g. `https://company.staging.voyado.com`,
