@@ -1,12 +1,16 @@
 # Breaking changes in CheckoutAPI v4 v2.69
 
-This release makes some breaking changes due to bugs affecting multi-language structure. This release also adds extended documentation using OAS v3.0.2 to easier connect with the Checkout API. Due to this, some breaking changes are introduced.
+This release makes some breaking changes due to bugs affecting multi-language structure. This release also adds [extended CheckoutAPI documentation using OAS v3.0.2](https://docs.centra.com/swagger-ui/?api=CheckoutAPI) to easier connect with the Checkout API. Due to this, some breaking changes are introduced.
 
 **If you're using Checkout API v3 or less you are not affected by these changes.**
 
-Below we describe the changes made. Most of them are properties moved into proper models. The biggest change has been introduced to partners already and was due to a bug in our language transformation: 
+Below we describe the changes made. We also have code-snippets to be able to support both solutions, before and after this change. We're not planning to do any sort of modifications to existing models after this, since the documentation is now properly in place.
+
+Most of the changes are properties moved into proper models. The biggest change has been introduced to partners already and was due to a bug in our language transformation: 
 
 [5. Category structure is now consolidated, category name is always an array](#category-structure-is-now-consolidated-category-name-is-always-an-array)
+
+There's also a checklist below to use for testing.
 
 ## 1. Moved plugin-specific fields into pluginFields-property
 
@@ -458,3 +462,8 @@ These should not have any breaking effect, but good for reference:
   }
 }  
 ```
+
+## Checklist to make sure fixes are working
+
+1. If you're using Ingrid (Shipwallet), make sure it shows up in the checkout properly. If not, that means it's not finding the Ingrid snippet in `selection.pluginFields.shipwallet`, but instead looks inside `selection.shipwallet`. Remember that `pluginFields`-property is optional on the selection object.
+2. If you're using languages, make sure switching language works and that the correct language is picked up. If not, this might be because `response.language` is not the list of available languages anymore. It could also be because the current language code is now inside `location.language.language`, since the `location.language` is a LanguageObject.
