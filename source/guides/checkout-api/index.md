@@ -362,7 +362,7 @@ Webhooks whenever content changes can be really good if you're using any form of
 
 The first version of the Webhook plugin is a simplified version of the models in Centra based on what is exposed in the CheckoutAPI, this means that the events you get only contains the type of object and the unique identifier of what object that was modified. You are then supposed invalidate your cache for this object and fetch it again from the Checkout API.
 
-You can find the Webhook as a separate plugin, and how to set it up is explained under [Plugins / Centra Webhook]().
+You can find the Webhook as a separate plugin, and how to set it up is explained under Plugins / Centra Webhook.
 
 ## API as a routing mechanism
 
