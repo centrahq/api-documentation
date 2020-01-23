@@ -194,7 +194,7 @@ The `location.language` is now an object with the description of the language as
 // temporary solution to support proper models
 let currentLanguageCode = response.location && 
   response.location.language && 
-  response.location.language.language ?
+  typeof response.location.language == 'object' ?
   response.location.language.language
   :
   response.location.language;
