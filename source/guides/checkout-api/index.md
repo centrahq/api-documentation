@@ -27,7 +27,10 @@ An important part for deciding upon how you will use the Checkout API is to unde
 
 The Checkout API is a plugin that can be enabled on a B2C-store. You can select whatever URI (part of the URL) you want it located on. The URI set the plugin will enable the plugin under `/api/X` (Where `X` is the URI of the plugin).
 
-<img src="./plugin-setup.png" width="300" /> 
+```eval_rst
+.. image:: images/plugin-setup.png
+   :scale: 30 %
+```
 
 A plugin defined like this will be located at `/api/checkout/`.
 
@@ -35,7 +38,10 @@ A plugin defined like this will be located at `/api/checkout/`.
 
 Since plugins in Centra can share the same URI (for allowing the same URI to be used across different segments of customers by markets, languages, etc) you can also specify the Plugin ID as a part of the URL, this will make sure that even if you have multiple plugins with the same URI you will always know that you will access the correct one. This means that if you have a set up like this on a store:
 
-<img src="./plugin-list.png" width="300" />
+```eval_rst
+.. image:: images/plugin-list.png
+   :scale: 30 %
+```
 
 You can access this plugin also by the following path: `/api/checkout/52/`. This will make sure the URL does not suddenly use a different plugin if you would add multiple plugins with the same URI in the future. The "Absolute API Endpoint" will be shown in the plugin settings.
 
@@ -45,7 +51,10 @@ Our current version of the Checkout API is 4. The only difference between versio
 
 If you're using an older version of the Checkout API you can set "Enable Version Selection" to "Yes" in the plugin, this will allow you to use a later version of the API without changing the default version:
 
-<img src="./version-selection.png" width="300" />
+```eval_rst
+.. image:: images/version-selection.png
+   :scale: 30 %
+```
 
 This setting will now use version 3 at `/api/XXX/` and `/api/XXX/v3/` but version 4 at `/api/XXX/v4/`. If "Enable Version Selection" is set as "No", only the version defined in the plugin can be used.
 
@@ -55,13 +64,19 @@ Since Checkout API is a hybrid API, the authentication for Checkout API is divid
 
 The biggest difference is that the **Server-Side** API needs a Shared Secret that can be set inside the plugin settings:
 
-<img src="./server-side-auth.png" width="300" />
+```eval_rst
+.. image:: images/server-side-auth.png
+   :scale: 30 %
+```
 
 Using the Shared Secret header will enable endpoints and variables that can only be used when a valid secret is sent in the request.
 
 Also, CORS (Cross Origin Resource Sharing) prevents you from accidentially using the shared secret in the client-side communication through the browser. If the headers `Authorization` or `API-Authorization` are used in the browser, the request will fail:
 
-<img src="./preflight-error.png" width="600" />
+```eval_rst
+.. image:: images/preflight-error.png
+   :scale: 50 %
+```
 
 This is to prevent the secret from being used publicly when doing client-side communication.
 
@@ -69,7 +84,10 @@ This is to prevent the secret from being used publicly when doing client-side co
 
 When the API is used client-side, the authentication is making sure that the Origin is validated against the list of "Allowed Origins":
 
-<img src="./allowed-origins.png" width="300" />
+```eval_rst
+.. image:: images/allowed-origins.png
+   :scale: 30 %
+```
 
 To make sure that only the origins you allow can use the API, please make sure you add the endpoints that you're currently using to this list. When a non-allowed origin is used, the API will respond with a status `401 Unauthorized`.
 
@@ -186,7 +204,10 @@ fetch('https://example.centra.com/api/checkout/vouchers/'
 
 When doing cross domain client-side requests in the browser, the browser will make a pre-flight request (An OPTIONS request), to make sure that the actual request is allowed. This will now end up as two requests for any POST/PUT/DELETE-request you do, which will slow down the performance, for example when fetching the current selection:
 
-<img src="./pre-flight.png" width="300" />
+```eval_rst
+.. image:: images/pre-flight.png
+   :scale: 30 %
+```
 
 However, since Centra is validating the origin itself, you can prevent pre-flight requests on GET-requests by appending the `api-token=xxx` inside the `Accept`-header instead of using the `API-token`-header:
 
@@ -203,7 +224,10 @@ fetch('https://example.centraqa.com/api/checkout/selection',
 
 This will make sure GET-requests will not make an OPTIONS-request for each GET-request you do:
 
-<img src="./no-pre-flight.png" width="300" />
+```eval_rst
+.. image:: images/no-pre-flight.png
+   :scale: 30 %
+```
 
 (**2019-12-20**: Please note that Chrome will also do a pre-flight request if you use `Accept: */*; api-token:xxx`, but not when using `Accept: */*; api-token=xxx`)
 
@@ -219,7 +243,10 @@ It also enables you to fetch product catalog information based on a specified ma
 
 As an example of this, let's look at this set-up. First, we have two pricelists, one `SEK` and one `USD`:
 
-<img src="./pricelists.png" width="200" />
+```eval_rst
+.. image:: images/pricelists.png
+   :scale: 30 %
+```
 
 Now, let's use client-side communication to fetch products from the browser:
 
@@ -308,7 +335,7 @@ We might add new routes or properties to objects in the API without bumping the 
 
 All our API:s supports listening to a `X-Correlation-ID`-header in the request being sent to us. This will add traceability and allows you to track each request you make to Centra using the API-logs. The Correlation-ID will be reflected back in our response and will also be sent to the additional plugins that supports it:
 
-```js
+```javascript
 fetch('https://example.centra.com/api/checkout/selection',
   {
     headers: {
