@@ -29,7 +29,7 @@ The Checkout API is a plugin that can be enabled on a B2C-store. You can select 
 
 ```eval_rst
 .. image:: images/plugin-setup.png
-   :scale: 30 %
+   :scale: 50 %
 ```
 
 A plugin defined like this will be located at `/api/checkout/`.
@@ -53,7 +53,7 @@ If you're using an older version of the Checkout API you can set "Enable Version
 
 ```eval_rst
 .. image:: images/version-selection.png
-   :scale: 30 %
+   :scale: 50 %
 ```
 
 This setting will now use version 3 at `/api/XXX/` and `/api/XXX/v3/` but version 4 at `/api/XXX/v4/`. If "Enable Version Selection" is set as "No", only the version defined in the plugin can be used.
@@ -66,7 +66,7 @@ The biggest difference is that the **Server-Side** API needs a Shared Secret tha
 
 ```eval_rst
 .. image:: images/server-side-auth.png
-   :scale: 30 %
+   :scale: 50 %
 ```
 
 Using the Shared Secret header will enable endpoints and variables that can only be used when a valid secret is sent in the request.
@@ -86,7 +86,7 @@ When the API is used client-side, the authentication is making sure that the Ori
 
 ```eval_rst
 .. image:: images/allowed-origins.png
-   :scale: 30 %
+   :scale: 50 %
 ```
 
 To make sure that only the origins you allow can use the API, please make sure you add the endpoints that you're currently using to this list. When a non-allowed origin is used, the API will respond with a status `401 Unauthorized`.
@@ -206,7 +206,7 @@ When doing cross domain client-side requests in the browser, the browser will ma
 
 ```eval_rst
 .. image:: images/pre-flight.png
-   :scale: 30 %
+   :scale: 50 %
 ```
 
 However, since Centra is validating the origin itself, you can prevent pre-flight requests on GET-requests by appending the `api-token=xxx` inside the `Accept`-header instead of using the `API-token`-header:
@@ -226,7 +226,7 @@ This will make sure GET-requests will not make an OPTIONS-request for each GET-r
 
 ```eval_rst
 .. image:: images/no-pre-flight.png
-   :scale: 30 %
+   :scale: 50 %
 ```
 
 (**2019-12-20**: Please note that Chrome will also do a pre-flight request if you use `Accept: */*; api-token:xxx`, but not when using `Accept: */*; api-token=xxx`)
@@ -245,7 +245,7 @@ As an example of this, let's look at this set-up. First, we have two pricelists,
 
 ```eval_rst
 .. image:: images/pricelists.png
-   :scale: 30 %
+   :scale: 50 %
 ```
 
 Now, let's use client-side communication to fetch products from the browser:
@@ -362,7 +362,7 @@ Webhooks whenever content changes can be really good if you're using any form of
 
 The first version of the Webhook plugin is a simplified version of the models in Centra based on what is exposed in the CheckoutAPI, this means that the events you get only contains the type of object and the unique identifier of what object that was modified. You are then supposed invalidate your cache for this object and fetch it again from the Checkout API.
 
-You can find the Webhook as a separate plugin, and how to set it up is explained under Plugins / Centra Webhook.
+You can find the Webhook as a separate plugin, and how to set it up is explained under [Plugins / Centra Webhook](#).
 
 ## API as a routing mechanism
 
