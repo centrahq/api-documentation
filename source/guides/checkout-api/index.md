@@ -321,7 +321,7 @@ This request will respond with:
 
 ### Security
 
-**As mentioned above, a best practise if to make sure that the Server-Side communication secret is not publicly accessible**. To prevent a disaster if this would happen, we are still limiting the amount of data that can be accessed or modified.
+**As mentioned above, a best practise is to make sure that the Server-Side communication secret is not publicly accessible**. To prevent a disaster if this would happen, we are still limiting the amount of data that can be accessed or modified.
 
 1. Each selection uses a UUID (Universally unique identifier). The Server-Side secret can modify open selections, but needs to know every selection's UUID to be able to modify it.
 2. Any active pricelist inside the store can be listed and used by the party knowing the shared secret. However, Centra will only allow to ship to the countries having that currency enabled inside a shipping list. Using another country as the shipping country will still revert to the preferred currency for that country.
