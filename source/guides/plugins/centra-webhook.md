@@ -1,6 +1,6 @@
 # Centra Webhook
 
-The Centra Webhook plugin allows you to create webhooks for certain events whenever data changes in Centra. This allows you to be notified and fetch data only when it is actually added, modified or changed.
+The Centra Webhook plugin allows you to create webhooks for certain events whenever data changes in Centra. This allows you to be notified and fetch data only when it is actually added or modified.
 
 ## Setup
 
