@@ -84,7 +84,7 @@ The endpoint secret inside the webhook plugin settings is used to generate a sig
 
 This signature header contains two parameters, like this:
 
-```
+```text
 t=1579866370,v1=340a5be9321ad1b83dec05455650b6e174797a7267f48703ccdb7f251a8ba6c9
 ```
 
@@ -92,25 +92,25 @@ The timestamp is used to make sure a replay attack cannot be done, if someone wo
 
 You can parse this header value by splitting it on `,` and then splitting each value with `=`. The key `v1` contains the signature of the following values (with a dot `.` as the separator):
 
-```
+```text
 {timestamp}.{requestBody}
 ```
 
 This means, if your endpoint signature was: `test123`, the timestamp inside `t` was `12345678` and the request body would look like this:
 
-```
+```text
 payload=%7B%22x%22%3A%22test%22%7D
 ```
 
 The signature would be made of:
 
-```
+```text
 12345678.payload=%7B%22x%22%3A%22test%22%7D
 ```
 
 And the header would look like this:
 
-```
+```text
 X-Centra-Signature: t=12345678,
   v1=0b9cd84f5d583e5e1aadfb9f160aa8080b51d5b85ff85808d6b75bdac356c549
 ```
