@@ -14,7 +14,7 @@ There's also a checklist below to use for testing.
 
 ## 1. Moved plugin-specific fields into pluginFields-property
 
-The optional fields added by plugins, `selection.paymentHTML`, `selection.klarnaReplaceSnippet` and `selection.shipwallet` has moved from `selection` into `selection.pluginFields` to be able to make better documentation in OAS/Swagger.
+The optional fields added by plugins, `selection.paymentHTML`, `selection.klarnaReplaceSnippet`, `selection.shipwallet`, `selection.shipwallet_reload` has moved from `selection` into `selection.pluginFields` to be able to make better documentation in OAS/Swagger.
 
 **Before:**
 
@@ -26,6 +26,7 @@ The optional fields added by plugins, `selection.paymentHTML`, `selection.klarna
     "shipwallet": {
       "...": "..."
     },
+    "shipwallet_reload": true,
     "centraCheckoutScript": "CentraCheckout...",
     "...": "..."
   }
@@ -43,6 +44,7 @@ The optional fields added by plugins, `selection.paymentHTML`, `selection.klarna
       "shipwallet": {
         "...": "..."
       },
+      "shipwallet_reload": true
     },
     "centraCheckoutScript": "CentraCheckout...",
     "...": "..."
@@ -56,13 +58,25 @@ The optional fields added by plugins, `selection.paymentHTML`, `selection.klarna
 let selection = response.selection;
 
 // temporary solution to support proper models
-let shipwalletObject = selection.pluginFields && 
-  selection.pluginFields.shipwallet ? 
-    selection.pluginFields.shipwallet : selection.shipwallet
-    
-let paymentHTML = selection.pluginFields && 
-  selection.pluginFields.paymentHTML ? 
-    selection.pluginFields.paymentHTML : selection.paymentHTML
+let pluginFields = selection.pluginFields ? 
+    selection.pluginFields : selection
+
+let shipwalletObject = pluginFields.shipwallet
+let shipwalletReload = pluginFields.shipwallet_reload
+let paymentHTML = pluginFields.paymentHTML
+```
+
+**When release is done you can change to:**
+
+```js
+let selection = response.selection;
+
+let pluginFields = selection.pluginFields ? 
+    selection.pluginFields : {}
+
+let shipwalletObject = pluginFields.shipwallet
+let shipwalletReload = pluginFields.shipwallet_reload
+let paymentHTML = pluginFields.paymentHTML
 ```
 
 ## 2. Changed language to languages in Selection Response
