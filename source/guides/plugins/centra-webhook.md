@@ -88,7 +88,7 @@ This signature header contains two parameters, like this:
 t=1579866370,v1=340a5be9321ad1b83dec05455650b6e174797a7267f48703ccdb7f251a8ba6c9
 ```
 
-The timestamp is used to make sure a replay attack cannot be done, if someone would be able to get a valid signature.
+The timestamp is used to make sure a replay attack cannot be done, if someone would be able to get a valid signature. The `v1` contains a **HMAC-SHA256** based on the timestamp and the request body separated with a dot `.`.
 
 You can parse this header value by splitting it on `,` and then splitting each value with `=`. The key `v1` contains the signature of the following values (with a dot `.` as the separator):
 
