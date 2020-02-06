@@ -15,10 +15,12 @@ Key payment services providers supported by Centra are: Adyen, Klarna, PayPal an
 | Credit card - Mastercard | ✓ | ✓ | ✓ | ✓ |
 | Credit card - Visa | ✓ | ✓ | ✓ | ✓ |
 | Credit card - Maestro | ✓ | ✓ | ✓ | ✓ |
+| Credit card - Amex | ✓ | ✓ | ✓ | ✓ |
 | Bank transfer |  |  |  |  |
 | Apple Pay |  |  |  | ✓ |
 | Google Pay |  |  |  |  |
-| Swish |  | ✓ |  |  |
+| Swish | ✓ |  |  |  |
 | Buy now, pay later |  | ✓ |  |  |
 | BLIK |  |  |  |  |
-| Sofort |  |  |  |  |
+| Sofort | ✓ |  |  |  |
+| Ideal NL |  | ✓ |  |  |
