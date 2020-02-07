@@ -227,11 +227,31 @@ The following element types exist today. Not all of them are supported for the D
 
 #### Attributes with multi-select value
 
-Selectable mapped attributes can be configured so that multiple values can be selected at once. This is achieved by adding parameter `'multi' => true` to the attribute. For example, a multi-choice `Label` attribute can look like this:
+Selectable mapped attributes can be configured so that multiple values can be selected at once. This is achieved by adding parameter `'multi' => true` to the attribute. For example, a multi-choice `Label` attribute can be configured like this:
+
+```eval_rst
+.. code-block:: php
+   :linenos:
+
+    'label' => [
+        'desc' => 'Label',
+        'group' => 'variation',
+        'readonly' => true,
+        'multi' => true,
+        'elements' => [
+            'value' => [
+                'desc' => 'Label description',
+                'type' => 'text'
+            ],
+        ],
+    ],
+```
+
+In Centra, the attribute will look like this:
 
 ![](images/attribute-multi.png)
 
-This is how the response from the API looks like:
+Its values will be returned as an object in API response:
 
 ```json
  "label": {
