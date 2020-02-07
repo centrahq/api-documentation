@@ -225,6 +225,21 @@ The following element types exist today. Not all of them are supported for the D
      - No options available.
 ```
 
+#### Attributes with multi-select value
+
+Selectable mapped attributes can be configured so that multiple values can be selected at once. This is achieved by adding parameter `'multi' => true` to the attribute. For example, a multi-choice `Label` attribute can look like this:
+
+![](images/attribute-multi.png)
+
+This is how the response from the API looks like:
+
+```json
+ "label": {
+     "3": "Eco",
+     "1": "Bio"
+ },
+```
+
 ### API-output
 
 The API-output differs between Dynamic and Mapped attributes.
