@@ -1,6 +1,6 @@
 ---
 title: Elements of a proper Centra Front End
-altTitle: Front End building
+altTitle: Building a Front End
 excerpt: Everything you need for a pleasant shopping and checkout experience, with examples using Centra's Checkout API.
 taxonomy:
   category: docs
@@ -31,9 +31,9 @@ When using Checkout API, the end-user's session context is controlled by three m
 * **Language**, which affects whether or not product details and categories would be translated, with a fallback to default if no translation exists for a given language.
 
 In standard operation those three variables are set based on the end-customer's country, which can either be set based on GeoIP location, or explicitly chosen with a country selector in your webshop. Once the country is changed, following things will change as well:
-* Is there a Pricelist specific for this country? If so, change to it and update the prices in current selection.
-* Is there a Market specific for this country? If so, change to it and update the products in current selection, removing the unavailable ones.
-* Is there a Language specific for this country? If so, translate all available content to the proper language.
+* If there is a Pricelist specific for this country, change to it and update the prices in current selection.
+* If there is a Market specific for this country, change to it and update the products in current selection, removing the unavailable ones.
+* If there is a Language specific for this country, and content (descriptions, category names, etc.) translations for this language are available, return translated content. Otherwise, fallback to the default language.
 
 You can display the full list of countries to which your store can ship to by calling `GET /countries`. Alternatively, in authenticated server mode you can display a list of all countries using `GET /countries/all`, where shippable countries will be returned with `"shipTo": true` parameter. Shippable countries:
 * Have at least one active Pricelist,
@@ -79,11 +79,15 @@ If you switch to a country which is not shippable (`"shipTo": false`), you will 
 
 ### Consents
 
+```text
 Here are the terms and conditions.
+```
 
 ### My pages
 
+```text
 Would you like your usual?
+```
 
 ### Newsletter sign-up form
 
@@ -103,7 +107,7 @@ Be mindful to properly parse and encode the e-mail subscription field in your Fr
 Would you sign up if we offered you a discount?
 ```
 
-[Automatic voucher on newsletter signup]
+[Automatic voucher on newsletter signup?]
 
 ### Basket / selection
 
@@ -120,19 +124,27 @@ GET /selection
 
 ### Shipping options
 
+```text
 How quickly you can get your stuff, and how much it would cost.
+```
 
 ### Checkout
 
+```text
 Let us know everything we need to know to deliver your stuff to you!
+```
 
 #### Newsletter sign-up 2
 
+```text
 Now that you've entered your e-mail, sure you wouldn't like to sign up for some promos?
+```
 
 ### Payment
 
+```text
 Make it rain!
+```
 
 #### Payment plugins
 
@@ -142,4 +154,6 @@ Make it rain!
 
 ### Receipt page
 
+```text
 Thanks for your order!
+```
