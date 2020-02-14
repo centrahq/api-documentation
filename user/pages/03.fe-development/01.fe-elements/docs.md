@@ -17,7 +17,7 @@ Server mode API calls made from a web browser will be blocked. Be careful to nev
 You can further increase your store security by filtering allowed origins in the Checkout API plugin settings.
 [/notice-box]
 
-To read about and test the most commonly used endpoints, visit our [Swagger for Checkout API](https://docs.centra.com/swagger-ui/?api=CheckoutAPI).
+To read about and test the most commonly used endpoints, visit our [Swagger for Checkout API](https://docs.centra.com/swagger-ui/?api=CheckoutAPI). It also contains details of all data models used in Centra.
 
 [notice-box=readMore]
 Most of the concepts below are described in [Centra overview](/overview) chapters. It's worth reading before you dive into specifics of Checkout API implementation.
@@ -73,9 +73,9 @@ To fetch a list of shippable countries, you can call [GET /countries](https://do
 
 To switch the current selection to specific country, call [PUT /countries/{country}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/3.%20selection%20handling%2C%20modify%20selection/put_countries__country_). If the country requires specifying a state as well, you can call [PUT /countries/{country}/states/{state}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/3.%20selection%20handling%2C%20modify%20selection/put_countries__country__states__state_).
 
-[alert-box=alert]
+[notice-box=alert]
 If you switch to a country which is not shippable (`"shipTo": false`), you will still be able to browse products and add them to selection, but you won't be able to complete the checkout process.
-[/alert-box]
+[/notice-box]
 
 ### Consents
 
