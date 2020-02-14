@@ -11,7 +11,9 @@ taxonomy:
 Checkout API is a hybrid webshop API, built to operate both in client and server mode. In client mode it exposes all endpoints necessary to fetch products, filter categories, build a selection (a.k.a. cart) and complete checkout process with a number of supported payment methods. In server (authenticated) mode it allows you to fetch details about all Markets, Pricelists and Warehouses, or explicitly set Market, Pricelist, Country or Language for current selection.
 
 [notice-box=alert]
-Server mode API calls made from a web browser will be blocked. Be careful to never expose your shared secret.  
+Server mode API calls made from a web browser will be blocked. Be careful to never expose your shared secret.
+[/notice-box]
+[notice-box=info]
 You can further increase your store security by filtering allowed origins in the Checkout API plugin settings.
 [/notice-box]
 
@@ -46,8 +48,6 @@ Here is how you can achieve a pleasant shopping and checkout experience for your
 ```text
 Welcome to the store! Feel free to browse around.
 ```
-
-
 
 #### Category picker
 
@@ -93,13 +93,17 @@ We have some cool stuff we'd love to show you now and in the future!
 
 You can subscribe your customers for e-mail newsletter using [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint. In it, you can choose to send `country` and `language` parameters, which can be used to control the newsletter language and to filter newsletter updates on products available in customer's Market. Registered newsletter e-mails can be found in Centra backend under Retail -> Customers -> Newsletter.
 
-[alert-box=alert]
+[notice-box=alert]
 Be mindful to properly parse and encode the e-mail subscription field in your Front End. It's especially important characters like `@` and `+` are properly handled. Otherwise, for example, the plus `+` character can be wrongly replaced with a space, which can throw `Expected type e-mail` error.
-[/alert-box]
+[/notice-box]
 
 #### Sign-up voucher code
 
+```text
 Would you sign up if we offered you a discount?
+```
+
+[Automatic voucher on newsletter signup]
 
 ### Basket / selection
 
