@@ -115,12 +115,14 @@ Would you sign up if we offered you a discount?
 Sure you got everything you wanted?
 ```
 
+```text
 GET /selection  
 1. Available payment methods is based on Plugins (which can be restricted by pricelist/market/country)
 2. Available shipping methods
 3. Selection model
 4. Form fields
 5. Country list
+```
 
 ### Shipping options
 
@@ -151,6 +153,31 @@ Make it rain!
 #### Payment country
 
 #### Payment steps
+
+```text
+POST /payment REQUEST
+- paymentMethod: kco
+- address: {...}
+- shippingAddress: {...}
+- paymentReturnPage: URL
+- paymentFailedPage: URL
+
+POST /payment RESPONSE
+- action: redirect/success/failed
+- formHTML
+- formFields
+- URL (for redirect)
+
+POST /payment-results
+- 201 success
+  OrderCreatedModel
+
+POST /payment:
+- Checks payment methods
+- Checks stock
+- Checks shipping
+- Checkout details (addres, e-mail, phone)
+```
 
 ### Receipt page
 
