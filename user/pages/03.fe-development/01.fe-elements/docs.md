@@ -1,5 +1,5 @@
 ---
-title: Elements of a proper Centra Front End
+title: How to build a proper Centra Front End
 altTitle: Building a Front End
 excerpt: Everything you need for a pleasant shopping and checkout experience, with examples using Centra's Checkout API.
 taxonomy:
@@ -48,6 +48,58 @@ Here is how you can achieve a pleasant shopping and checkout experience for your
 ```text
 Welcome to the store! Feel free to browse around.
 ```
+
+[notice-box=info]
+Whenever you use Centra API to fetch products, the product IDs used are actually the display IDs of the products. Like described in the [Product model chapter](/overview/products), the displays act as a presentation layer for your products.
+[/notice-box]
+
+There are a few ways to fetch products using Checkout API. To fetch a specific product, you can use the [GET /products/{product}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/5.%20product%20catalog/get_products__product_) endpoint. The response object will contain the following data:
+
+```json
+{
+  "token": "esf1p3tgchfg5ggtpqdpgqjtt6",
+  "products": [...],
+  "productCount": 344,
+  "filter": [...]
+}
+```
+
+* Token: Your session token
+* Products: An array of products
+* ProductCount: Total number of products without paging. This way you can show “page 1 of 7” even if you only fetch 50 at a time
+* Filter: The filter values of the products you are viewing now, also without paging. This way you know there are for example 35 red and 12 blue ones
+
+Another method is the [POST /products](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/5.%20product%20catalog/post_products) endpoint. An request with an empty body will return all active products. Results can be filtered using the following parameters:
+
+```json
+{
+    "skipFirst": 5,
+    "limit": 10,
+    "categories": [1,2,3],
+    "collections": [1,2,3],
+    "silkProduct": 123,
+    "search": "hello world",
+    "products": [1,2,3],
+    "relatedProducts": true,
+    "brands": [1,2,3],
+    "swatch.desc": ["Red", "Blue", "Green"],
+    "items.name":["W24\/L30"],
+    "onlyAvailable":true,
+    "uri":{
+        "uri":"jeans\/black",
+        "for":["product", "category"]
+    }
+},
+```
+
+* `skipFirst` and `limit`: can be used for paging
+* categories: you want products in these categories
+* search: free text search
+* relatedProducts: when a product has relatedProducts and this is true, you get the complete data for those releated products. Otherwise you will get a small subset of the data back: only the media and product id.
+* swatch.desc: filtering based on the color swatch (This is a client specific field, and not all Centra instances will have this field)
+* items.name: filtering on specific item names
+* onlyAvailable: true means you only get back products that are in stock or available for preorder. If you also specify items.name, those items must be available.
+* uri: filter on a product or category with a specific URI
 
 #### Category picker
 
