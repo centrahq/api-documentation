@@ -162,8 +162,8 @@ If product which is out of stock shows "Notify me when back in stock", the custo
 To register products or specific product sizes for customer newsletter, you should call [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint with optional parameters:  
 * `country` - allows you to specify the country for the newsletter, which can affect the products availability you display based on the Market,
 * `language` - allows you to specify the language of the newsletter, which helps you send a correct translation to specific customers,
-* `product` - sent as `[display ID]`, same as in [POST /items/{item}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_).
-* `item` - sent as `[display ID]-[size ID]`, same as in [POST /items/{item}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_).
+* `product` - sent as `[display ID]` registers customer e-mail in the Newsletter list with a specific product,
+* `item` - sent as `[display ID]-[size ID]`, same as in [POST /items/{item}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_) or [POST /items/{item}/quantity/{quantity}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item__quantity__quantity_), registers customer e-mail in the Newsletter list with a specific product size.
 
 #### Sign-up voucher code
 
