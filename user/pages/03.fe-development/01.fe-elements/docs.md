@@ -8,7 +8,7 @@ taxonomy:
 
 ## Checkout API introduction
 
-Checkout API is a hybrid webshop API, built to operate both in client and server mode. In client mode it exposes all endpoints necessary to fetch products, filter categories, build a selection (a.k.a. cart) and complete checkout process with a number of supported payment methods. In server (authenticated) mode it allows you to fetch details about all Markets, Pricelists and Warehouses, or explicitly set Market, Pricelist, Country or Language for current selection.
+Checkout API is a hybrid webshop API, built to operate both in client and server mode. In client mode it exposes all endpoints necessary to fetch products, filter categories, build a [selection](/glossary/glossary-basic#selection) (a.k.a. cart) and complete checkout process with a number of supported payment and shipping methods. In server (authenticated) mode it allows you to fetch details about all Markets, Pricelists and Warehouses, or explicitly set Market, Pricelist, Country or Language for current selection.
 
 [notice-box=alert]
 Server mode API calls made from a web browser will be blocked. Be careful to never expose your shared secret.
