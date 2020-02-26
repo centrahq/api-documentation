@@ -73,6 +73,20 @@ This will return product data from Centra with stock info. The values of the sto
 
      - You will get this amount of products, and a "next" parameter in return if there are multiple pages. This will go a lot faster to fetch, instead of fetching all products at once.
 
+   * - ``include``
+
+       .. type:: string
+          :required: false
+
+     - ``include=attributes`` will also make the products include the custom attributes defined for each product and variant.
+
+   * - ``exclude``
+
+       .. type:: string
+          :required: false
+
+     - ``exclude=physicalStock`` will exclude fetching physical stock which will speed up the fetching of the stock values.
+
    * - ``xml``
 
        .. type:: boolean
