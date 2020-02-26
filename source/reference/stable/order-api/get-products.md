@@ -62,6 +62,13 @@ This will return product data from Centra with categories.
 
      - You will get this amount of products, and a "next" parameter in return if there are multiple pages. This will go a lot faster to fetch, instead of fetching all products at once.
 
+   * - ``include``
+
+       .. type:: string
+          :required: false
+
+     - ``include=attributes`` will also make the products include the custom attributes defined for each product and variant.
+
    * - ``xml``
 
        .. type:: boolean
