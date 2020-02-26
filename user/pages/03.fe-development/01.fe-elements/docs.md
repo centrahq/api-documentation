@@ -8,7 +8,7 @@ taxonomy:
 
 ## Checkout API introduction
 
-Checkout API is a hybrid webshop API, built to operate both in client and server mode. In client mode it exposes all endpoints necessary to fetch products, filter categories, build a [selection](/glossary/glossary-basic#selection) (a.k.a. cart) and complete checkout process with a number of supported payment and shipping methods. In server (authenticated) mode it allows you to fetch details about all Markets, Pricelists and Warehouses, or explicitly set Market, Pricelist, Country or Language for current selection.
+[Checkout API](/api-references/checkout-api) is a hybrid webshop API, built to operate both in client and server mode. In client mode it exposes all endpoints necessary to fetch products, filter categories, build a [selection](/glossary/glossary-basic#selection) (a.k.a. cart) and complete checkout process with a number of supported payment and shipping methods. In server (authenticated) mode it allows you to fetch details about all Markets, Pricelists and Warehouses, or explicitly set Market, Pricelist, Country or Language for current selection.
 
 [notice-box=alert]
 Server mode API calls made from a web browser will be blocked. Be careful to never expose your shared secret.
@@ -64,12 +64,12 @@ There are a few ways to fetch products using Checkout API. To fetch a specific p
 }
 ```
 
-* Token: Your session token
-* Products: An array of products
-* ProductCount: Total number of products without paging. This way you can show “page 1 of 7” even if you only fetch 50 at a time
-* Filter: The filter values of the products you are viewing now, also without paging. This way you know there are for example 35 red and 12 blue ones
+* `token` is your session token,
+* `products` is an array of products,
+* `productCount` is the total number of products without paging. This way you can show “page 1 of 7” even if you only fetch 50 products at a time,
+* `filter` are the filter values of the products you are viewing now, also without paging. This way you may know there are, for example, 35 red and 12 blue ones.
 
-Another method is the [POST /products](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/5.%20product%20catalog/post_products) endpoint. An request with an empty body will return all active products. Results can be filtered using the following parameters:
+Another method is the [POST /products](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/5.%20product%20catalog/post_products) endpoint. An request with an empty body will return all active products. Results can be filtered using the following optional parameters:
 
 ```json
 {
@@ -92,14 +92,88 @@ Another method is the [POST /products](https://docs.centra.com/swagger-ui/?api=C
 },
 ```
 
-* `skipFirst` and `limit`: can be used for paging
-* categories: you want products in these categories
-* search: free text search
-* relatedProducts: when a product has relatedProducts and this is true, you get the complete data for those releated products. Otherwise you will get a small subset of the data back: only the media and product id.
-* swatch.desc: filtering based on the color swatch (This is a client specific field, and not all Centra instances will have this field)
-* items.name: filtering on specific item names
-* onlyAvailable: true means you only get back products that are in stock or available for preorder. If you also specify items.name, those items must be available.
-* uri: filter on a product or category with a specific URI
+* `skipFirst` and `limit` can be used for paging.
+* `categories`, `collections` and `brands` returns products in specified categories, collections and brands.
+* `search` allows you to search for any text.
+* `relatedProducts` controls whether you get the complete data for those releated products. When `false`, you will only get a small subset of the data back: the media and related product ID, which is useful to present FE elements like "You may also like these products" or "".
+* `swatch.desc` enables filtering based on the color swatch or any other custom attribute. The name of the attribute is a client specific.
+* `items.name` filters on specific item names.
+* `onlyAvailable`, when true, only returns products that are in stock or available for preorder. If you also specify `items.name`, those items must be available.
+* `uri` filters on a product or category with a specific URI.
+
+##### Examples
+
+```json
+POST products?pretty
+{
+  "limit": 2,
+  "skipFirst": 5,
+  "search": "som",
+  "categories": [709],
+  "swatch.desc": ["Red","Blue"]
+}
+```
+
+This means return 2 products (while skipping first 5) which match:
+
+```text
+Free text search for "som" AND category = 709 AND swatch.desc = (Red OR Blue)
+```
+
+So how do you know about category 709? Or that swatch.desc can be Red or Blue? This is what the “filter” in the response is for. It contains all possible filtering values, and a count of how many products matches each filtering value in the current set of filtered products and for all products.
+
+Full example responses can be found in Swagger for [POST /products](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/5.%20product%20catalog/post_products).
+
+```json
+  (...)
+  "filter": [
+    {
+      "field": "swatch.desc",
+      "values": [
+        {
+          "value": "Red",
+          "count": 1,
+          "totalCount": 35,
+          "data": {
+            "desc": "Red",
+            "hex": "ff0000"
+          }
+        },
+        {
+          "value": "Blue",
+          "count": 6,
+          "totalCount": 12,
+          "data": {
+            "desc": "Blue",
+            "hex": "0000ff"
+          }
+        }
+      ]
+    }
+```
+
+The `filter` object has values for the `swatch.desc` field at the end of this JSON blob. At the end of it value “Blue” shows `“count”:6`, which means there are 6 blue products in the current filtered set of products, `“totalCount”:12` means there are 12 blue products in total without filtering. The  `“data"` object contains the data the front end should use to display `“Blue”`, it is the same data as the `“swatch”` on the product itself.
+
+In the filter object, the only thing that changes depending on what you filter on is the `“count”`. If you do not filter on anything, `count` will be equal to `totalCount`.
+
+Finally, you can search products and categories by URI when using the [POST /uri](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/8.%20routing%20mechanism/post_uri) endpoint. You post a URI, and what the URI is for. Just like `POST /products`:
+
+```json
+POST /uri
+{
+    "uri":"jeans/slim-5-pocket-jeans-white",
+    "for":["category", "product"],
+    "limit":2,
+    "skipFirst":0
+}
+```
+
+Where:
+* `uri` is the URI,
+* `for` is what the URI is for, which can be `“product”`, `“category”` or both,
+* `limit` + `skipFirst` are used for paging.
+
+The response changes depending on what was found. Details and examples can be found in Swagger for [POST /uri](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/8.%20routing%20mechanism/post_uri) endpoint.
 
 #### Category picker
 
