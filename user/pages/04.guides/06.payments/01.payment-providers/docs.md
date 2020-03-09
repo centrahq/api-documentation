@@ -46,7 +46,12 @@ Key payment services providers supported by Centra are: Adyen, Klarna, PayPal an
 | Apple Pay |  |  |  | ✓ |
 | Google Pay |  |  |  |  |
 | Swish | ✓ |  |  |  |
+| Alipay | ✓ |  |  |  |
+| UnionPay | ✓ |  |  |  |
+| WeChat Pay | ✓ |  |  |  |
+| Trustly | ✓ |  |  |  |
 | Buy now, pay later |  | ✓ |  |  |
 | BLIK |  |  |  |  |
 | Sofort | ✓ |  |  |  |
+| Open Banking | ✓ |  |  |  |
 | Ideal NL |  | ✓ |  |  |
