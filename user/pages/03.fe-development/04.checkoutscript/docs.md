@@ -1,14 +1,12 @@
 ---
 title: Using Centra CheckoutScript to update active KCO and Ingrid sessions
 altTitle: Centra CheckoutScript
-excerpt: Centra CheckoutScript, or an elegant way to handle event signalling between Centra and its plugins
+excerpt: Centra CheckoutScript, or an elegant way to handle event signalling between Centra and its plugins.
 taxonomy:
   category: docs
 ---
 
-Prequities: An active Ingrid or Klarna Checkout widget loaded from Centra.
-
-## Centra CheckoutScript
+## What is Centra CheckoutScript?
 
 In the selection response, if Klarna Checkout or Ingrid are active on the selection, Centra will return an element called `centraCheckoutScript`. It registers an event for events triggered by the widgets which need to be passed down to Centra, and convenience functions for suspension and resume of the widgets. If you get the `centraCheckoutScript` in the selection response, you should add it to your page so that it's picked up.
 
