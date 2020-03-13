@@ -92,7 +92,7 @@ A pre-pack refers to a set of items packaged together and sold as one item. A pr
 
 #### Buy X, pay for Y
 
-A discount logic that allows a customer to buy a number of products (with certain restrictions) but pay for fewer (e.g., buy 3, pay for 2) is not a bundle, it is a Voucher.
+A discount logic that allows a customer to buy a number of products (with certain restrictions) but pay for fewer (e.g., buy 3, pay for 2) is not a bundle, it is a [Voucher](/overview/promo#voucher).
 
 ### Categories and Folders
 
@@ -102,7 +102,7 @@ A Product belongs to one and only one Folder. Folders are used for reporting and
 
 ## How should I set up Product structure in my Centra?
 
-That is a design decision you should carefully consider when onboarding with Centra. It may differ depending on the type of products you are selling and your business model. If you're selling clothes, your product structure will be different than if you're selling jewelery. 
+This is a design decision you should carefully consider when onboarding with Centra. It may differ depending on the type of products you are selling and your business model. If you're selling clothes, your product structure will be different than if you're selling jewelery. 
 
 | | Shirts | Phone cases v1 | Phone cases v2 |
 |---|---|---|---|
