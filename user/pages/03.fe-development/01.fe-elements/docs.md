@@ -94,7 +94,7 @@ Another method is the [POST /products](https://docs.centra.com/swagger-ui/?api=C
 
 * `skipFirst` and `limit` can be used for paging.
 * `categories`, `collections` and `brands` returns products in specified categories, collections and brands.
-* `search` allows you to search for any text.
+* `search` allows you to search for any text, e.g. product SKU.
 * `relatedProducts` controls whether you get the complete data for those releated products. When `false`, you will only get a small subset of the data back: the media and related product ID, which is useful to present FE elements like "You may also like these products" or "".
 * `swatch.desc` enables filtering based on the color swatch or any other custom attribute. The name of the attribute is a client specific.
 * `items.name` filters on specific item names.
@@ -176,6 +176,53 @@ Where:
 The response changes depending on what was found. Details and examples can be found in Swagger for [POST /uri](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/8.%20routing%20mechanism/post_uri) endpoint.
 
 #### Category picker
+
+In a product listing (a category page), you would usually list only the main products and perhaps indicate that a product has more versions when `relatedProducts` table is not empty. When you view a single product, you would usually display all the related products along with it.
+
+`GET /categories` returns an array of categories like this:
+
+```json
+{
+  "token": "esf1p3tgchfg5ggtpqdpgqjtt6",
+  "categories": [
+    {
+      "category": "5",
+      "name": [
+        "Some category"
+      ],
+      "uri": "some_category"
+    },
+    {
+      "category": "3",
+      "name": [
+        "V\u00e4xt"
+      ],
+      "uri": "vaxt"
+    },
+    {
+      "category": "4",
+      "name": [
+        "V\u00e4xt",
+        "Buske"
+      ],
+      "uri": "vaxt\/buske",
+      "inCategory": "3"
+    },
+    {
+      "category": "2",
+      "name": [
+        "V\u00e4xt",
+        "Buske",
+        "Nypon"
+      ],
+      "uri": "vaxt\/buske\/nypon",
+      "inCategory": "4"
+    }
+  ]
+}
+```
+
+This array is sorted in the order you set in the Centra admin panel. Notice that some categories in the array are sub-categories of another category. You see this on last two that have the field `inCategory` with the category ID of the category they are a subcategory of. Also notice the name array and uri of these, they contain the full name and uri, of the main category and under-categories.
 
 #### Search and filtering
 
