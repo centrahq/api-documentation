@@ -1,7 +1,7 @@
 ---
 title: Centra Webhook
 altTitle: Centra Webhook
-excerpt: With the use of Centra Webhook you can be immediately notified of all changes to products, categories, pricelists or warehouses which can affect your store
+excerpt: With the use of Centra Webhook you can be immediately notified of all changes to products, categories, pricelists or warehouses which can affect your store.
 taxonomy:
     category: docs
 ---
