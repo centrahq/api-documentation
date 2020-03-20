@@ -124,6 +124,10 @@ The `paymentReturnPage` and `paymentFailedPage` in the request is where the visi
 
 You take the GET and POST variables that visitor had when it returned to the "paymentReturnPage" and send them to the API inside "paymentMethodFields".
 
+```eval_rst
+.. warning:: Be mindful to keep the original formatting of the parameters you receive from payment provider and pass on to Centra. Depending on the payment method they may be written in camelCase (like `orderRef` in Payex) or in snake_case (like `klarna_order` in Klarna). Sending wrong parameter names to Centra may cause problems with receiving order confirmation and prevent you from displaying a proper receipt.
+```
+
 Response (cut down):
 
 ```json
