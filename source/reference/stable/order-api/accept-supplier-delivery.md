@@ -60,7 +60,16 @@ In case of under delivery a new delivery containing the undelivered products wil
 
             - Quantity of the item that should be accepted.
 
+   * - ``insertStock``
 
+       .. type:: boolean
+          :required: false
+
+     -  Default ``true``. Flag that defines whether to insert items to warehouse stock.
+     
+        * ``"insertStock": true`` insert items to warehouse stock 
+        * ``"insertStock": false`` do not insert items to warehouse stock
+       
    * - ``xml``
 
        .. type:: boolean
@@ -84,7 +93,8 @@ Both `id` and `deliveryId` from [List supplier deliveries](list-supplier-deliver
      "products": {
        "73213213123": 32,
        "73213213124": 12,
-     }
+     },
+     "insertStock": false
    }
 ```
 
