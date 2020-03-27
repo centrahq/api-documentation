@@ -82,7 +82,7 @@ This will create a shipment and per default try to capture from the payment prov
        .. type:: boolean
           :required: false
 
-     - Default: ``true``. Mark the shipment as sent.
+     - Mark the shipment as sent. Default: ``false``.
 
    * - ``carrier``
 
