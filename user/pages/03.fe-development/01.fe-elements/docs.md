@@ -244,7 +244,7 @@ From now on you can use these filters in your `POST /products` calls. For exampl
 
 ```
 
-The precise filter name, `swatch.desc` in this example, depends on your custom attribute configuration. The attribute values will always be returned with the key `[attribute-name].[element-name]`, with the exception of elements called `text` - due to legacy reasons these will be returned just as `[attribute-name]`.
+The precise filter name, `swatch.desc` in this example, depends on your custom attribute configuration. The attribute values will always be returned with the key `[attribute-name].[element-name]`, with the exception of elements called `text` - due to legacy reasons this element name will be omitted, and the value will be returned just as `[attribute-name]`.
 
 #### Image galleries / carousels
 
@@ -252,11 +252,11 @@ To start with, in your Checkout API plugin configuration select all the image si
 
 ![ImageSizes](image-sizes.png)
 
-If you would like to display multiple images on a product page, those will be served in a table inside the returned product model. Please note that size `standard` is returned without any suffix.
+If you would like to display multiple images on a product page, those will be served in a table inside the returned product model. Please note that the `standard` size is returned without any suffix.
 
 ![MediaSingleVariant](media-single-variant.png)
 
-If you would like to build a gallery of images of multiple products, it's easiest if the products are related to each other. By default two standard variant relations exist: for multiple product variants activated on the same display, and for variants activated on separate displays of the same product. You can also define your own relation types and configure them as ties between different products, for example to connect products that "go well together". In the example below there is one product related with "Variant" relation and two with "Vision" custom relation:
+If you would like to build a gallery of images of multiple products, it's easiest if the products are related to each other, otherwise you will need to make multiple product calls. By default two standard variant relations exist: for multiple product variants activated on the same display, and for variants activated on separate displays of the same product. You can also define your own relation types and configure them as ties between different products, for example to connect products that "go well together". In the example below there is one product related with "Variant" relation and two with "Vision" custom relation:
 
 ![DisplayRelations](display-relations.png)
 
