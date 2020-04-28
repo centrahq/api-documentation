@@ -154,7 +154,7 @@ Here are the parameters allowed to create an order. There are some fields specif
               .. type:: int
                  :required: true
 
-            - ID of internal origin of the origin type. If Return #123 was used to create the order, ``id` should be ``123``.
+            - ID of internal origin of the origin type. If Return #123 was used to create the order, ``id`` should be ``123``.
 
    * - ``accountId``
 
