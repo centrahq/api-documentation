@@ -132,6 +132,30 @@ Here are the parameters allowed to create an order. There are some fields specif
 
      - Default ``false``. Will flag the customer so the customer will receive a password reset e-mail when they try to sign in. This can be used when migrating customers over from another system.
 
+   * - ``createdFromOrigin``
+
+       .. type:: object
+          :required: false
+
+     - Specifies the origin that the order was created from. If used, it needs to refer to an internal object in Centra.
+     
+       .. list-table::
+          :widths: auto
+
+          * - ``type``
+
+              .. type:: string
+                 :required: true
+
+            - Type of origin the order was created from. Allowed types: ``return``, ``order`` and ``plugin``
+
+          * - ``id``
+
+              .. type:: int
+                 :required: true
+
+            - ID of internal origin of the origin type. If Return #123 was used to create the order, ``id` should be ``123``.
+
    * - ``accountId``
 
        .. type:: int
