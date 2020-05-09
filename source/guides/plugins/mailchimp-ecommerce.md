@@ -188,7 +188,7 @@ Authorization: Bearer X
 * [`additionalFields` in ShopAPI](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_selections__selection__payment)
 * [`additionalFields` in CheckoutAPI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/default/post_payment)
 
-When these parameters are sent in when creating the shipment, the order will save these attributes:
+When these parameters are sent in when finalizing the payment, the order will save these attributes:
 
 ```eval_rst
 .. image:: images/mailchimp-fields.png
