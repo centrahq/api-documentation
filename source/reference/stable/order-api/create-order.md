@@ -92,19 +92,33 @@ Here are the parameters allowed to create an order. There are some fields specif
 
             - ISO-Alpha-2 (``SE``, ``US``, ``GB`` etc)
 
+   * - ``pricelistId``
+
+       .. type:: int
+          :required: false
+
+     - ID of pricelist to use for the order, if not provided, the pricelist for the current country will be used.
+
    * - ``pricelist``
 
        .. type:: string
           :required: false
 
-     - Name of pricelist being used for the order, if not provided, the pricelist for the current country will be used.
+     - Name of pricelist to use for the order. Will only be used if ``pricelistId`` is not provided. If not provided, the pricelist for the current country will be used.
+     
+   * - ``marketId``
 
+       .. type:: int
+          :required: false
+
+     - ID of the market to use for the order. If not provided, the market for the current country will be used.
+     
    * - ``market``
 
        .. type:: string
           :required: false
 
-     - Name of the market used for the order. If not provided, the market for the current country will be used.
+     - Name of the market to use for the order. Will only be used if ``marketId`` is not provided. If not provided, the market for the current country will be used.
 
    * - ``customerRegister``
 
