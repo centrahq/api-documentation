@@ -127,9 +127,9 @@ Whole flow for Shop API is really similar to Checkout API.
 
 | Event to handle  | Parameters | Response event  |
 |---|---|---|
-| centra_checkout_shipping_address_callback  |  shippingCountry <br> shippingState <br> shippingZipCode | 
+| centra_checkout_shipping_address_callback  |  shippingCountry <br> shippingState <br> shippingZipCode | centra_checkout_shipping_address_response |
 | centra_checkout_shipping_method_callback | shippingMethod  |  centra_checkout_shipping_method_response | 
-| centra_checkout_payment_callback  | responseEventRequired <br> paymentMethod <br> billingAddress <br> shippingAddress <br> paymentMethodSpecificFields  | \<\<only when responseEventRequired is true \>\><br> centra_checkout_payment_response |
+| centra_checkout_payment_callback  | responseEventRequired <br> paymentMethod <br> billingAddress <br> shippingAddress <br> paymentMethodSpecificFields  | *(use if responseEventRequired == true )*<br> centra_checkout_payment_response |
 
 Response events needs object like this to be provided:
 ```javascript
@@ -192,7 +192,7 @@ You will get back a snippet, like this:
 ```json
 {
     "action": "form",
-    "formHtml": "<script id="stripe_xrjiccsd3dxwbee7jgd...",
+    "formHtml": "<script id=\"stripe_xrjiccsd3dxwbee7jgd...\"",
     "formType": "stripe-payment-intents",
     "formFields": {
         "sessionId": "cs_test_eiCyjbKKhib0n7Bf8ymS",
