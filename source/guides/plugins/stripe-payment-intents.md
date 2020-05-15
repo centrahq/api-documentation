@@ -58,7 +58,8 @@ The Stripe Checkout plugin will show up in the API as a payment method:
     "paymentMethod": "stripe-payment-intents",
     "paymentMethodType": "stripe_payment_intents",
     "name": "Stripe Checkout",
-    "providesCustomerAddressAfterPayment": true
+    "supportsInitiateOnly": true,
+    "providesCustomerAddressAfterPayment": false
 },
 ```
 
