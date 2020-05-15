@@ -99,10 +99,10 @@ Make sure you have defined the Merchant-country in the Centra plugin which shoul
 The flow works like this:
 
 1. Customer adds products to their cart. The country is either selected by the customer or selected by Geo-IP (based on the IP-address of the customer).
-2. The website makes a `POST /payment` request with the country/state selected for the customer together with a `paymentInitiateOnly:true`-parameter. This tells Centra not to set the payment option as the selected one (since the payment button is selected opt-in but the customer by pressing it).
+2. The website makes a `POST /payment` request with the country/state selected for the customer together with a `paymentInitiateOnly:true`-parameter. This tells Centra not to set the payment option as the selected one (since the payment button is selected opt-in by the customer when pressing it).
 3. Centra will return a snippet that will try to launch the payment request button inside its own `<div>` provided in the snippet. You can also set the selector of the payment button by setting the `window.stripeRequestButtonSelector`-variable in the DOM.
-4. If the browser of the customer allows a Payment Request button to launch, the button will show up. There are a few reasons why the button would not show up, so the design of the checkout needs to support the button not being initiated.
-5. If the customer changes anything in the selection, such as the quantity for a product, the `POST /payment` call needs to rerun and reload the payment button snippet with the proper amount.
+4. If the browser of the customer allows a Payment Request button to launch, the button will show up. There are a few reasons why the button would not show up, so the design of the checkout needs to support the button not being initiated. When you're developing your checkout you can also see notifications in the developer-console in the browser why the payment button failed to launch.
+5. If the customer changes anything in their selection, such as the quantity for a product, the `POST /payment` call needs to rerun and reload the payment button snippet with the proper amount.
 6. If the customer clicks the button, there are certain selections the customer can do to modify the order. All of customer's actions trigger specific events that needs to be handled.
 
 ### Checkout API flow
