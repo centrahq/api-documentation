@@ -131,7 +131,7 @@ Whole flow for Shop API is really similar to Checkout API.
 | centra_checkout_shipping_method_callback | shippingMethod  |  centra_checkout_shipping_method_response | 
 | centra_checkout_payment_callback  | responseEventRequired <br> paymentMethod <br> billingAddress <br> shippingAddress <br> paymentMethodSpecificFields  | *(use if responseEventRequired == true )*<br> centra_checkout_payment_response |
 
-Response events needs object like this to be provided:
+Response event needs object like this to be provided:
 ```javascript
 {
     country: location.country,
@@ -172,7 +172,7 @@ In this call, you will see that the payment button is available as a payment met
     "providesCustomerAddressAfterPayment": true,
     "handlingCost": "0.00 SEK",
     "handlingCostAsNumber": 0
-  }
+}
 ```
 
 Because you found a payment method in the `paymentMethods`-list, you will need to make an additional request to `POST /payment` to get the payment button snippet, like this:
