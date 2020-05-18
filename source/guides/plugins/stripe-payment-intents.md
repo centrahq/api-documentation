@@ -329,8 +329,7 @@ This `formHtml` will:
 1. Initiate Stripe Payment Intents on the domain.
 2. Initiate DOM-events whenever the customer changes shipping address or shipping method inside the Payment Request flow when clicking on the button. These events are made for you to listen to and to make additional API-calls from. The events might also need you to respond with a new DOM-event for the Payment Request flow to be reloaded.
 
-If you will use the `formHtml`-snippet, you need to make sure you insert the HTML into your DOM, and also make sure you evaluate the javascript from the response. One solution to do this in React is to inject the HTML into the DOM, then run the following code on it:
-
+If you will use the `formHtml`-snippet, you need to make sure you insert the HTML into your DOM, and also make sure you evaluate the javascript from the response.
 Since we need to control the DOM in this case, the `dangerouslySetInnerHTML` needs to be used for you to render the DOM given by Centra properly (and to inject the scripts needed). In your `Widget`-component, you would do this:
 
 ```js
