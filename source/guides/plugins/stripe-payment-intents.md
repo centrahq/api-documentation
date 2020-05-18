@@ -1,6 +1,6 @@
 # Stripe Payment Intents
 
-The Stripe Payment Intents-plugin is allowing you to render payment components on the checkout page that will bypass the checkout and use the browser's own Payment Request API. This allows you to use a Apple Pay and Google Pay button on your website for fast checkout.
+The Stripe Payment Intents-plugin is allowing you to render payment components on the checkout page that will bypass the checkout and use the browser's own Payment Request API. This allows you to use the Apple Pay and Google Pay button on your website for fast checkout.
 
 Google Pay:
 
@@ -19,7 +19,7 @@ Apple Pay:
 
 ## Limitations
 
-The Payment Request API used for the payment buttons has a big limitation, when changing address information in the popup, it cannot switch the current currency of the order. This means that the code Centra uses to update the payment request will trigger a failure if the address and country selected in the browser popup results in a currency change.
+The Payment Request API used for the payment buttons has a big limitation when changing address information in the popup, it cannot switch the current currency of the order. This means that the code Centra uses to update the payment request will trigger a failure if the address and country selected in the browser popup result in a currency change.
 
 When the address is changed in the browser popup an event will still be sent to the website to update the country against Centra, but as soon as it results in a currency change, the customer will see this:
 
@@ -63,7 +63,7 @@ The Stripe Checkout plugin will show up in the API as a payment method:
 },
 ```
 
-If you're using it strictly for showing a Payment Button, you need to ignore showing this payment method in the list of payments you show to the customer. Since the complete payment flow is completed by clicking the button, there's no reason to select this payment method, you can just show the button directly above the other payment methods.
+If you're using it strictly for showing a Payment Button, you need to ignore showing this payment method in the list of payments you show to the customer. Since the complete payment flow is completed by clicking the button, there's no reason to select this payment method. You can just show the button directly above the other payment methods.
 
 ## Apple Pay
 
@@ -91,7 +91,7 @@ The flow works like this:
 3. Centra will return a snippet that will try to launch the payment request button inside its own `<div>` provided in the snippet. You can also set the selector of the payment button by setting the `window.stripeRequestButtonSelector`-variable in the DOM.
 4. If the browser of the customer allows a Payment Request button to launch, the button will show up. There are a few reasons why the button would not show up (not enabled by the customer, browser not supported), so the design of the checkout needs to support the button not being initiated. When you're developing your checkout you can also see notifications in the developer-console in the browser why the payment button failed to launch.
 5. If the customer changes anything in their selection, such as the quantity for a product, a similar `POST /payment` call as explained in #1 needs to run to reload the payment button snippet with the proper amount set.
-6. If the customer clicks the button, there are certain selections the customer can do in the payment popup to modify the order. All of the customer's actions trigger specific events that needs to be handled according to the flows below.
+6. If the customer clicks the button, there are certain selections the customer can do in the payment popup to modify the order. All of the customer's actions trigger specific events that need to be handled according to the flows below.
 
 ### Checkout API flow
 
@@ -103,7 +103,7 @@ The flow works like this:
 
 ### Shop API flow
 
-Whole flow for Shop API is really similar to Checkout API. The main difference is that it's your backend making the API-calls to Centra instead of the Frontend.
+The whole flow for Shop API is really similar to Checkout API. The main difference is that it's your backend making the API-calls to Centra instead of the Frontend.
 
 <img src="images/stripe-pi-shop-api.png" />
 ```eval_rst
@@ -113,7 +113,7 @@ Whole flow for Shop API is really similar to Checkout API. The main difference i
 
 ### Events
 
-Since Centra does not know how you make requests to the API, you need to listen to events from the payment button and trigger API-calls to Centra based on what they are used for. Stripe Payment Intents can trigger 3 different events. Changing shipping address, changing shipping method and completing the payment.
+Since Centra does not know how you make requests to the API, you need to listen to events from the payment button and trigger API-calls to Centra based on what they are used for. Stripe Payment Intents can trigger 3 different events. Changing shipping address, changing shipping method, and completing the payment.
 
 For changing the shipping address and shipping method, you need to receive the event and make API-requests to Centra to change these settings for the selection.
 
@@ -162,7 +162,7 @@ const returnObject = {
 | `shippingMethodsAvailable` | `shippingMethodsAvailable` |
 
 
-If error occurred while handling the event, response should be handled with following object, this will make sure the payment popup understands something went wrong:
+If an error occurred while handling the event, the response should be handled with the following object, this will make sure the payment popup understands something went wrong:
 
 ```javascript
 const returnObject = {
@@ -181,7 +181,7 @@ The payment button initialized will then update accordingly based on the content
 
 ## Testing
 
-Before you start testing make sure that you have `Test-Mode: Yes` set in plugin configuration.
+Before you start testing make sure that you have `Test-Mode: Yes` set in the plugin configuration.
 
 You can then use the [test-cards provided by Stripe](https://stripe.com/docs/testing#cards) to place test orders. For Apple Pay, you can use your regular card when making a purchase through the test-mode, but no charge will be made to your card. For Google Pay, you can add the test cards by going to `chrome://settings` and selecting `Payment Methods` and adding one of the test cards provided by Stripe. You should test both the regular flow and the 3D-secure flow.
 
@@ -249,7 +249,7 @@ The `fetchStripePaymentIntentsWidgetRequest` would trigger the `POST /payment` t
 }
 ```
 
-You need to provide the country to make sure Centra gives back a payment button with the proper currency, this is also why you need the country selector in the top of your checkout.
+You need to provide the country to make sure Centra gives back a payment button with the proper currency, this is also why you need the country selector at the top of your checkout.
 
 You will get back a snippet, like this:
 
@@ -279,7 +279,7 @@ You would then update your props, and run a widget inside the `render`-function.
   }
 ```
 
-You can decide here if you want either to initiate the Stripe Checkout by listening on the `formType`-field saying `stripe-payment-intents` and initiate your own Stripe Payment Button using the `formFields->externalScript` defined, or just render the `formHtml`. The `formHtml` will make it easy for you to get the proper events handled, and will support being reloaded multiple times.
+You can decide here if you want either to initiate the Stripe Checkout by listening on the `formType`-field saying `stripe-payment-intents` and initiate [your own Stripe Payment Button](https://stripe.com/docs/stripe-js/elements/payment-request-button)  using the `formFields->externalScript` defined, or just render the `formHtml`. The `formHtml` will make it easy for you to get the proper events handled, and will support being reloaded multiple times.
 
 The `formHTML` looks similar to this:
 
@@ -327,7 +327,7 @@ loadStripe();
 This `formHtml` will:
 
 1. Initiate Stripe Payment Intents on the domain.
-2. Initiate DOM-events whenever the customer changes shipping address or shipping method inside the Payment Request flow when clicking on the button. These events are made for you to listen to and to make additional API-calls from. The events might also need you to respond with a new DOM-event for the Payment Request flow to be reloaded.
+2. Initiate DOM-events whenever the customer changes shipping address or shipping method inside the Payment Request flow when clicking on the button. These events are made for you to listen to and to make additional API-calls. The events might also need you to respond with a new DOM-event for the Payment Request flow to be reloaded.
 
 If you will use the `formHtml`-snippet, you need to make sure you insert the HTML into your DOM, and also make sure you evaluate the javascript from the response.
 Since we need to control the DOM in this case, the `dangerouslySetInnerHTML` needs to be used for you to render the DOM given by Centra properly (and to inject the scripts needed). In your `Widget`-component, you would do this:
@@ -381,7 +381,7 @@ This will make sure that:
 
 ### Adding the additional events
 
-The code now supports you launching the button. But we also need to make sure the events triggered by the interactions by the customer when using the button are handled. We already registered the events in the `componentDidMount`, but we should also make sure they are handled, and also triggers responses.
+The code now supports you in launching the button. But we also need to make sure the events triggered by the interactions by the customer when using the button are handled. We already registered the events in the `componentDidMount`, but we should also make sure they are handled, and also triggers responses.
 
 First, we make sure "Changing shipping country" and "Changing shipping method" works. Let's add these two to the `componentDidMount` of the `StripePaymentIntents`-component
 
@@ -396,7 +396,7 @@ updateShippingAddress = (event: any) => {
 }
 ```
 
-We then start to handle the `updateShippingAddress`. We know that we will get `shippingCountry` and an optional `shippingState` to the event provided. We should also expose two different request we can do. One when state is selected and required by Centra, and one with only changing country.
+We then start to handle the `updateShippingAddress`. We know that we will get `shippingCountry` and an optional `shippingState` to the event provided. We should also expose two different requests we can do. One when a state is selected and required by Centra, and one with only changing country.
 
 ```js
 // in StripePaymentIntents-component:
@@ -425,13 +425,13 @@ We can then run these two different requests based on if the `shippingState` was
   }
 ```
 
-We also add a `onComplete` here for the response action to directly give us a callback when the response is back. This could be done using additional actions also, but this is to simplify the flow.
+We also add the `onComplete` here for the response action to directly give us a callback when the response is back. This could be done using additional actions also, but this is to simplify the flow.
 
 When the `countryChange`-action is triggered, we run an API-call to Centra to change the country. We will run the `onComplete` here.
 
-Also note that this `countryChange`-action could be used elsewhere, so it will also trigger the `fetchStripePaymentIntentsWidgetRequest`-action, which makes the `POST /payment`-flow to re-initalize the payment button in the DOM.
+Also, note that this `countryChange`-action could be used elsewhere, so it will also trigger the `fetchStripePaymentIntentsWidgetRequest`-action, which makes the `POST /payment`-flow to re-initalize the payment button in the DOM.
 
-This has no effect of the running payment request, and this will just make sure that if the customer closes the payment request, the payment button will contain proper data if it's clicked once again. The similar kind of functionality should also be added to the actions changing quantity of items in the checkout, changing shipping method, or adding and removing vouchers.
+This has no effect on the running payment request, and this will just make sure that if the customer closes the payment request, the payment button will contain proper data if it's clicked once again. A similar kind of functionality should also be added to the actions changing the quantity of items in the checkout, changing shipping method, or adding and removing vouchers.
 
 ```js
 fromPromise$(rest.httpPut(`/countries/${action.payload.countryCode}`))
@@ -507,7 +507,7 @@ The `onComplete: thischangeShippingMethodCompleted` would run with the payload p
   }
 ```
 
-You should now be able to launch the payment button, change address inside it and select the different shipping options available. This should also reload the total amount of the request:
+You should now be able to launch the payment button, change the address inside it, and select the different shipping options available. This should also reload the total amount of the request:
 
 <img src="images/stripe-pi-change-method.png" />
 ```eval_rst
@@ -517,7 +517,7 @@ You should now be able to launch the payment button, change address inside it an
 
 ### Payment finalization
 
-We will now handle the final event happening when payment is completed in the popup by the customer. The customer has selected shipping address, shipping method and payment option. They now click confirm for the payment to finalize. We previously registered the following handler:
+We will now handle the final event happening when payment is completed in the popup by the customer. The customer has selected the shipping address, shipping method, and payment option. They now click confirm for the payment to finalize. We previously registered the following handler:
 
 ```js
     document.addEventListener('centra_checkout_payment_callback', this.paymentSelected);
@@ -573,4 +573,4 @@ We would take the event data, and create a `checkoutRequest` based on the data p
   }
 ```
 
-This request would then result in the common [`PaymentActionResponse`, explained in the Swagger UI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) and in [Payment Method flows](https://docs.centra.com/guides/shop-api/payment-method-flows) and does not differ anything for Stripe specifically.
+This request would then result in the common [`PaymentActionResponse`, explained in the Swagger UI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) and in [Payment Method flows](https://docs.centra.com/guides/shop-api/payment-method-flows) and does not differ for Stripe specifically.
