@@ -200,7 +200,7 @@ In the response, you might see that the payment button is available as a payment
     "paymentMethod": "your-uri-of-payment-plugin",
     "name": "Stripe Payments",
     "paymentMethodType": "stripe_payment_intents",
-    "providesCustomerAddressAfterPayment": true,
+    "providesCustomerAddressAfterPayment": false,
     "handlingCost": "0.00 SEK",
     "handlingCostAsNumber": 0
 }
