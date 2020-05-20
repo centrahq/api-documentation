@@ -22,6 +22,14 @@ Creates or updates an account. The account is the data for a wholesale customer,
 
 Notice that you **must** send a `<buyer>` for the account to show in the Centra admin. Send one with blank name and email if you do not have this data in your system.
 
+### Account ID
+
+When sending a request with the external account `<id>`, there are some rules governing how these IDs will be handled internally. If the ID is numeric (consists of digits and does not begin with '0'), Centra will treat this external ID as an internal account ID. Unless a SOAP mapping already exists, it will be created and linked to the existing internal account ID.
+
+If the sent account `<id>` is not numeric (contains non-digits or begins with a '0'), Centra will search for it in the mapping table and if not found, create a new account with automatically generated internal account ID.
+
+If you would like to change this behaviour and never have the external IDs mapped 1:1 to Centra internal account IDs, there is a custom setting that will disable it, generating new internal IDs and mapping them even when a numeric external ID is used. Please reach out to our Success Team in order to change this behaviour.
+
 ## Request
 
 ```
