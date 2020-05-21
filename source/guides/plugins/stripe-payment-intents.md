@@ -266,6 +266,7 @@ You will get back a snippet, like this:
     }
 }
 ```
+*According to stripe documentation: `clientSecret` needs to be protected. Do not log it, embed it in URLs, or expose it to anyone but the customer.*
 
 You would then update your props, and run a widget inside the `render`-function.
 
