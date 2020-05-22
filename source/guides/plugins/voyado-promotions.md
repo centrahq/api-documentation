@@ -32,11 +32,11 @@ You can present active promotions from Voyado to your customer.
 Remember to query Voyado with additional header `apikey`.
 
 If you don't have your customer's Voyado ID
-1. Query `https://{{yourVoyadoDomain}}/api/v2/contactoverview?contactType={type}}&email={email}`
+1. Query `https://{{yourVoyadoDomain}}/api/v2/contactoverview?contactType={{type}}&email={{email}}`
 1. In the response you'll get `promotions` list.
 
 
-If you have your customer's Voyado ID use `https://{{yourVoyadoDomain}}/api/v2/contacts/{customerVoyadoId}/promotions` which will return with list of promotions.
+If you have your customer's Voyado ID use `https://{{yourVoyadoDomain}}/api/v2/contacts/{{customerVoyadoId}}/promotions?redemptionChannelType=ECOM` which will return list of promotions for this user.
 
 Single promotion looks like this
 ```json
@@ -63,7 +63,7 @@ Single promotion looks like this
   }
 ```
 
-You can use it to present available promotions to customer. Remember to show only promotions that has redemption channel with type `ECOM` and value type `EXTERNALOFFER` and was not redeemed yet. As you can see in example above - your voucher code is in this redemption channel under `value` key.
+You can use it to present available promotions to customer. Remember to show only promotions that have redemption channel with  value type `EXTERNALOFFER` and were not redeemed yet. As you can see in example above - your voucher code is in redemption channel under `value` key.
 When customer selects the promotion, you should apply this code to the active selection.
 
 When paying for an order remember to redeem Voyado's promotion so it won't be shown again.
