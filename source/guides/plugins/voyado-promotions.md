@@ -26,7 +26,7 @@ It's time to add new promotion in Voyado.
    :scale: 30 %
 ```
 
-## On your shop
+## Front End
 You can present active promotions from Voyado to your customer. 
 
 Remember to query Voyado with additional header `apikey`.
