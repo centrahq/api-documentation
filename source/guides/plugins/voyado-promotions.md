@@ -1,12 +1,12 @@
-#How to use vouchers witch Voyado promotions?
+# How to use vouchers witch Voyado promotions?
 
-##Prerequisites
+## Prerequisites
 In this scenario we assume that you already have an account in Voyado and configured `Voyado v2` in Centra.
 
-##In Centra
+## In Centra
 First thing you need to do is add a new voucher to your store. The only thing that is required for this scenario is `Method: code`, `Max usage: 0` and `Start/stop date` set accordingly to your needs.
 
-##In Voyado
+## In Voyado
 It's time to add new promotion in Voyado.
 
 1. Login to your account in Voyado
@@ -26,7 +26,7 @@ It's time to add new promotion in Voyado.
    :scale: 30 %
 ```
 
-##On your shop
+## On your shop
 You can present active promotions from Voyado to your customer. 
 
 Remember to query Voyado with additional header `apikey`.
@@ -82,7 +82,7 @@ Example payment query body:
 ```
 
 
-##Security
+## Security
 Remember that you shouldn't reveal your Voyado's `apikey` to public. These queries should be done on backend.
 
 Creating voucher like this will allow to use it for everyone, not only customers assigned in Voyado. 
