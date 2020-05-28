@@ -317,7 +317,7 @@ Capturing the payment with Adyen Checkout works a bit differently than the old A
 
 #### Capturing Swish payments
 
-Due to the way Adyen APIs communicate with ours, you may encounter an issue of Swish payments not being correctly captured. In this scenario we send a capture request to Adyen, they respond with a message saying "Please reserve the order", but then never send us a message about the order being successfully completed. As a result, the order ends up in Centra with a "Waiting for payment" status.
+Due to the way Adyen API communicates with ours, you may encounter an issue of Swish payments not being correctly captured. In this scenario we send a capture request to Adyen, they respond with a message saying "Please reserve the order", but then never send us a message about the order being successfully completed. As a result, the order ends up in Centra with a "Waiting for payment" status.
 
 ```eval_rst
 .. image:: images/order-wfp.png
@@ -328,7 +328,7 @@ Due to the way Adyen APIs communicate with ours, you may encounter an issue of S
 .. warning:: You should never process orders with status "Waiting for payment"!
 ```
 
-These incomplete orders will likely never be properly captured. If they stay this way for a while, or a day, they should be manually cancelled in Centra.
+These incomplete orders will likely never be properly captured. If they stay this way for a few hours, or a day, they should be manually cancelled in Centra. Centra admin should then decide on the follow-up action with the store user.
 
 ### Testing
 
