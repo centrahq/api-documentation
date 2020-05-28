@@ -288,7 +288,7 @@ If you switch to a country which is not shippable (`"shipTo": false`), you will 
 Here are the terms and conditions.
 ```
 
-Don't forget that for a proper payment you need to add a Front End consent check-box (or or check-boxes). This needs to be verified by sending a boolean `"termsAndConditions": true` in your [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) call. Otherwise, you will receive the below error, which you should handle by displaying a message abount consents being required for checkout process to complete.
+Don't forget that for a proper payment you need to add a Front End consent checkbox (or checkboxes). This needs to be verified by sending a boolean `"termsAndConditions": true` in your [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) call. Otherwise, you will receive the below error, which you should handle by displaying a message abount consents being required for checkout process to complete.
 
 ```json
 {
