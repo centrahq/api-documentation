@@ -315,6 +315,21 @@ Capturing the payment with Adyen Checkout works a bit differently than the old A
 .. note:: Remember, if you have `Capture Delay` in Adyen set to `immediate`, capture will ALWAYS fail in Centra. Our recommendation is that Centra should capture the payment instead. Please change the Capture Delay setting in Adyen by going to `Account` then select "Configure->Settings" and make sure you select the Merchant Account. In the settings page you will see `Capture Delay`. Set it to `Manual` or `7 days` to make sure Centra will control the capture event.
 ```
 
+#### Capturing Swish payments
+
+Due to the way Adyen APIs communicate with ours, you may encounter an issue of Swish payments not being correctly captured. In this scenario we send a capture request to Adyen, they respond with a message saying "Please reserve the order", but then never send us a message about the order being successfully completed. As a result, the order ends up in Centra with a "Waiting for payment" status.
+
+```eval_rst
+.. image:: images/order-wfp.png
+   :scale: 30 %
+```
+
+```eval_rst
+.. warning:: You should never process orders with status "Waiting for payment"!
+```
+
+These incomplete orders will likely never be properly captured. If they stay this way for a while, or a day, they should be manually cancelled in Centra.
+
 ### Testing
 
 To test the flow, you first need to make sure the `Test-Mode` is enabled and that the credentials inside the Centra plugin are taken from `ca-test.adyen.com` instead of `ca-live.adyen.com`.
