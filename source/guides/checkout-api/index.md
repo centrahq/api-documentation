@@ -91,7 +91,9 @@ When the API is used client-side, the authentication is making sure that the Ori
 
 To make sure that only the origins you allow can use the API, please make sure you add the endpoints that you're currently using to this list. When a non-allowed origin is used, the API will respond with a status `401 Unauthorized`.
 
-There's no authentication key used when the API is used client-side, however, there's a `token`-parameter inside the response JSON that will be used to maintain the current client-session:
+## Token
+
+To maintain a state of a selection for a customer, regardless if server-side or client-side, there's a `token`-parameter inside the response JSON that will be used to maintain the current client-session:
 
 ```json
 {
@@ -176,6 +178,16 @@ The cart and the session for the customer is now based on Canada instead of the 
     "name": "Canada",
     "...": "..."
   }
+}
+```
+
+### Token expiration
+
+The current token being used for a customer can expire. In the case of an expired token, the request you will make will give you back a new value in the `token`-property for any request being made. To make sure you support token-expiration, make sure you check if the token in the response matches your current token, and update yours if it has changed. Depending if you're using cookies or local storage, the update of the token might differ. An example of what to do could look like this:
+
+```js
+if (response.token != currentTokenInYourState) {
+  updateCurrentTokenInYourState(response.token)
 }
 ```
 
