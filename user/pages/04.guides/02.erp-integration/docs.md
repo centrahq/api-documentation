@@ -561,7 +561,7 @@ Notice that this example does not send a `<sku>` or `<ean>` as Centra does not r
 
 ## Product Data: Bundle product example
 
-Starting with Centra version v2.77 we introduced a new design of product bundles. These bundles behave like real products in terms of adding them to a selection, applying discounts and creating shipments. They do not exist in reality in the warehouse, but consist of multiple "real" products, which needs to be taken into consideration by the pick-and-pack staff.
+Bundles behave like real products in terms of adding them to a selection, applying discounts and creating shipments. They do not exist in reality in the warehouse, but consist of multiple "real" products, which needs to be taken into consideration by the pick-and-pack staff.
 
 Non-bundle products look exactly the same as they used to: they include SKU, quantity, specific variant and size, price, warehouse etc. For bundles (and bundled products) a new section called `<bundleinfo>` was introduced. For example, here's a snippet from an order including a bundle consisting of two actual products:
 
@@ -668,6 +668,8 @@ To sum up, there are 3 types of products:
 1. Standard, non-bundle products with no `<bundleinfo>` tag,  
 2. Virtual bundle product, recognised by `<isbundle>true</isbundle>` - not a product in a warehouse, but a collection of bundled products,  
 3. Bundled product - part of a bundle - tagged `<isbundle>false</isbundle>` and including the ID of the parent bundle product. These are the real warehouse products that need to be picked and packed as part of the order.
+
+[notice-box=alert]The minimum required handling of bundles for a working integration is to inspect the products for the `isbundle` tag and ignore those products. You should instruct your team to only pick and pack the bundled products.[/notice-box]
 
 ## Product Stock: Warehouses
 
