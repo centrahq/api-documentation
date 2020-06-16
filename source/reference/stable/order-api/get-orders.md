@@ -158,6 +158,33 @@ This will fetch the orders allowed for the plugin being set up.
 
                    - Quantity of this specific product item.
 
+          * - ``taxBreakdown``
+
+              .. type:: array
+
+            - Lists all tax rules applied to the order.
+
+              .. list-table::
+                 :widths: auto
+
+                 * - ``description``
+
+                     .. type:: string
+
+                   - Text description of tax rule. ex: VAT
+
+                 * - ``taxPercent``
+
+                     .. type:: float
+
+                   - Percentage of tax. ex 25
+
+                 * - ``value``
+
+                     .. type:: float
+
+                   - How much tax. ex 20
+
 ```
 
 ## Response example
@@ -214,6 +241,8 @@ This will fetch the orders allowed for the plugin being set up.
          "voucherValue": 0,
          "grandTotalValue": 3978.75,
          "grandTotalTaxValue": 795.75,
+         "taxAdded": 0,
+         "taxDeducted": 0,
          "internalComment": "",
          "otherComment": "",
          "marketId": 1,
@@ -236,6 +265,13 @@ This will fetch the orders allowed for the plugin being set up.
          "totalItemsPriceTax": -202.88,
          "totalItemsPrice": 811.5,
          "totalItemsWithoutTax": 608.62,
+         "taxBreakdown": [
+           {
+             "description": "VAT",
+             "taxPercent": 25,
+             "value": 795.75
+           }
+         ],
          "products": [
            {
              "lineId": "43243",
