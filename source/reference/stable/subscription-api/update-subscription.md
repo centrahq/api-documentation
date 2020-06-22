@@ -1,18 +1,18 @@
-# Register payment
+# Update subscription
 
 ```eval_rst
 .. api-name:: Subscription API
    :version: 1
 
 .. endpoint::
-   :method: POST
-   :url: *base*/subscription/payment
+   :method: PUT
+   :url: *base*/subscription/*id*
 
 .. authentication::
    :api_key: true
 ```
 
-This will complete the subscription. Often called when user comes back to `payment_url` from `/subscription/order`. All GET/POST-params sent by the payment plugin needs to be attached to this call.
+Update a subscription.
 
 ## Parameters
 
@@ -20,24 +20,16 @@ This will complete the subscription. Often called when user comes back to `payme
 .. list-table::
    :widths: auto
 
-   * - ``id``
+   * - ``status``
 
-       .. type:: string
-          :required: true
+       .. type:: enum
+          :required: false
 
-     - The subscription ID from :doc:`Create Subscription </reference/stable/subscription-api/create-subscription>`.
+     - Subscription status
 
-   * - ``payment``
-
-       .. type:: string
-          :required: true
-
-     - URI of payment plugin to be used. Needs to be set up before as a payment plugin for the store.
-
-   * - **[all GET/POST params sent by payment provider]**
-
-     - Attach all GET/POST parameters sent from the payment provider to the ``payment_url`` from :doc:`Create Subscription </reference/stable/subscription-api/create-subscription>`. These will be used to validate if the payment was successful.
-
+       * ``ok`` Subscription is active.
+       * ``hold`` Subscription is paused.
+       * ``failed`` Subscription is cancelled.
 ```
 
 ## Request examples
@@ -46,10 +38,10 @@ This will complete the subscription. Often called when user comes back to `payme
 .. code-block:: http
    :linenos:
 
-   POST <base>/subscription/payment HTTP/1.1
+   POST <base>/subscription/1 HTTP/1.1
    Content-Type: application/x-www-form-urlencoded
 
-   id=3&payment=nets&[+all GET/POST params sent by payment provider]
+   status=ok
 
 ```
 
@@ -66,15 +58,15 @@ This will complete the subscription. Often called when user comes back to `payme
        .. type:: string
           :required: true
 
-     - ``ok`` if success, else a message explaining what went wrong.
+     - The status of the subscription.
 
    * - ``id``
 
        .. type:: int
           :required: true
 
-     - The ID of the subscription that was created.
-
+     - The ID of the subscription.
+    
    * - ``amount``
 
        .. type:: decimal2 (0.00)
@@ -87,7 +79,7 @@ This will complete the subscription. Often called when user comes back to `payme
        .. type:: decimal2 (0.00)
           :required: true
 
-     - The shipping value for the first order of the subscription.
+     - The shipping value of the subscription.
 
    * - ``itemCount``
 
@@ -130,44 +122,44 @@ This will complete the subscription. Often called when user comes back to `payme
             - The country of the customer. ISO-Alpha-2 (``SE``, ``US``, ``GB`` etc)
 
    * - ``createdAt``
-
+   
        .. type:: string
-
+   
      - The date in ``Y-m-d H-i-s`` format when the subscription was created.
 
    * - ``startDate``
-
+   
        .. type:: string
-
+   
      - The date in ``Y-m-d`` format when the subscription starts.
 
    * - ``nextShip``
-
+   
        .. type:: string
-
+   
      - The date in ``Y-m-d`` format when the subscription has next shipping.
 
    * - ``interval``
-
+   
        .. type:: string
-
+   
      - The interval between each subscription. Depending on `intervaltype` it will be months or days.
 
    * - ``intervalType``
-
+   
        .. type:: string
-
+   
      - The type of interval for the subscription.
-
+          
        * ``Month`` interval is in months.
        * ``Day`` interval is in days.
 
    * - ``error``
 
        .. type:: boolean
-           :required: false
+          :required: false
 
-     - If ``true``, the payment was not successful. The ``status`` should contain information on why.
+     - If ``true``, the subscription update was not successful. The ``status`` should contain information on why.
 
 ```
 
@@ -203,14 +195,40 @@ This will complete the subscription. Often called when user comes back to `payme
    }
 ```
 
-## Error example
+## Error examples
+
+Subscription not found:
 
 ```eval_rst
 .. code-block:: json
    :linenos:
 
    {
-     "status": "Could not register customer",
+     "status": "Subscription not found",
+     "error": true
+   }
+```
+
+Invalid subscription status:
+
+```eval_rst
+.. code-block:: json
+   :linenos:
+
+   {
+     "status": "Invalid status provided",
+     "error": true
+   }
+```
+
+Restore cancelled subscription error:
+
+```eval_rst
+.. code-block:: json
+   :linenos:
+
+   {
+     "status": "Cannot restore cancelled subscription",
      "error": true
    }
 ```
