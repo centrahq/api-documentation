@@ -6,7 +6,7 @@
 
 .. endpoint::
    :method: PUT
-   :url: *base*/subscription/*id*
+   :url: *base*/subscription/subscription/*id*
 
 .. authentication::
    :api_key: true
