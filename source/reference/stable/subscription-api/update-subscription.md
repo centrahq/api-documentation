@@ -209,7 +209,7 @@ Update a subscription.
          },
          "createdAt": "2020-05-05 15:00:00",
          "startDate": "2020-05-05",
-         "nextShip": "2020-05-06",
+         "nextOrderDate": "2020-05-06",
          "interval": "14",
          "intervalType": "Day"
        }
