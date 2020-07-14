@@ -141,7 +141,7 @@ This will complete the subscription. Often called when user comes back to `payme
 
      - The date in ``Y-m-d`` format when the subscription starts.
 
-   * - ``nextShip``
+   * - ``nextOrderDate``
 
        .. type:: string
 
@@ -197,7 +197,7 @@ This will complete the subscription. Often called when user comes back to `payme
      },
      "createdAt": "2020-05-05 15:00:00",
      "startDate": "2020-05-05",
-     "nextShip": "2020-05-06",
+     "nextOrderDate": "2020-05-06",
      "interval": "14",
      "intervalType": "Day"
    }

@@ -46,6 +46,13 @@ Receive a list of all subscriptions for the customer.
 .. list-table::
    :widths: auto
 
+   * - ``status``
+
+       .. type:: string
+          :required: true
+
+     - ``ok`` if success, else ``no``.
+
    * - ``subscriptions``
    
        .. type:: array
@@ -136,7 +143,7 @@ Receive a list of all subscriptions for the customer.
           
             - The date in ``Y-m-d`` format when the subscription starts.
 
-          * - ``nextShip``
+          * - ``nextOrderDate``
           
               .. type:: string
           
@@ -173,9 +180,10 @@ Receive a list of all subscriptions for the customer.
    :linenos:
 
    {
+     "status": "ok",
      "subscriptions": [
        {
-         "status": "ok",
+         "status": "active",
          "id": 3,
          "amount": "900.00",
          "shipping": "20.00",
@@ -194,12 +202,12 @@ Receive a list of all subscriptions for the customer.
          },
          "createdAt": "2020-05-05 15:00:00",
          "startDate": "2020-05-05",
-         "nextShip": "2020-05-06",
+         "nextOrderDate": "2020-05-06",
          "interval": "14",
          "intervalType": "Day"
        },
        {
-         "status": "hold",
+         "status": "paused",
          "id": 4,
          "amount": "500.00",
          "shipping": "20.00",
@@ -218,7 +226,7 @@ Receive a list of all subscriptions for the customer.
          },
          "createdAt": "2020-04-03 12:00:00",
          "startDate": "2020-04-03",
-         "nextShip": "2020-04-04",
+         "nextOrderDate": "2020-04-04",
          "interval": "14",
          "intervalType": "Day"
        }

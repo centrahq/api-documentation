@@ -27,9 +27,9 @@ Update a subscription.
 
      - Subscription status
 
-       * ``ok`` Subscription is active.
-       * ``hold`` Subscription is paused.
-       * ``failed`` Subscription is cancelled.
+       * ``active`` Subscription is active.
+       * ``paused`` Subscription is paused.
+       * ``cancelled`` Subscription is cancelled.
 ```
 
 ## Request examples
@@ -41,7 +41,7 @@ Update a subscription.
    POST <base>/subscription/1 HTTP/1.1
    Content-Type: application/x-www-form-urlencoded
 
-   status=ok
+   status=active
 
 ```
 
@@ -58,109 +58,126 @@ Update a subscription.
        .. type:: string
           :required: true
 
-     - The status of the subscription.
+     - ``ok`` if success, else ``no``.
 
-   * - ``id``
 
-       .. type:: int
+   * - ``subscriptions``
+   
+       .. type:: array
           :required: true
-
-     - The ID of the subscription.
-    
-   * - ``amount``
-
-       .. type:: decimal2 (0.00)
-          :required: true
-
-     - The total value of the subscription.
-
-   * - ``shipping``
-
-       .. type:: decimal2 (0.00)
-          :required: true
-
-     - The shipping value of the subscription.
-
-   * - ``itemCount``
-
-       .. type:: int
-          :required: true
-
-     - The total amount of products in the subscription.
-
-   * - ``currency``
-
-       .. type:: string
-
-     - The currency that the subscription was registered with, ``SEK``, ``USD``, ``EUR``, etc.
-
-   * - ``address``
-
-       .. type:: object
-
-     - An address object with the customer information.
+   
+     - List of subscriptions.
 
        .. list-table::
           :widths: auto
 
-          * - ``firstName`` ``lastName``
+          * - ``status``
+
+              .. type:: string
+                 :required: true
+
+            - The status of the subscription.
+
+          * - ``id``
+
+              .. type:: int
+                 :required: true
+
+            - The ID of the subscription.
+           
+          * - ``amount``
+
+              .. type:: decimal2 (0.00)
+                :required: true
+
+            - The total value of the subscription.
+
+          * - ``shipping``
+
+              .. type:: decimal2 (0.00)
+                :required: true
+
+            - The shipping value of the subscription.
+
+          * - ``itemCount``
+
+              .. type:: int
+                :required: true
+
+            - The total amount of products in the subscription.
+
+          * - ``currency``
 
               .. type:: string
 
-            - The name of the customer.
+            - The currency that the subscription was registered with, ``SEK``, ``USD``, ``EUR``, etc.
 
-          * - ``address`` ``coaddress`` ``city`` ``state`` ``zipcode`` ``phoneNumber``
+          * - ``address``
 
-              .. type:: string
+              .. type:: object
 
-            - The customer's address information.
+            - An address object with the customer information.
 
-          * - ``country``
+              .. list-table::
+                 :widths: auto
 
-              .. type:: string
+                 * - ``firstName`` ``lastName``
 
-            - The country of the customer. ISO-Alpha-2 (``SE``, ``US``, ``GB`` etc)
+                     .. type:: string
 
-   * - ``createdAt``
-   
-       .. type:: string
-   
-     - The date in ``Y-m-d H-i-s`` format when the subscription was created.
+                   - The name of the customer.
 
-   * - ``startDate``
-   
-       .. type:: string
-   
-     - The date in ``Y-m-d`` format when the subscription starts.
+                 * - ``address`` ``coaddress`` ``city`` ``state`` ``zipcode`` ``phoneNumber``
 
-   * - ``nextShip``
-   
-       .. type:: string
-   
-     - The date in ``Y-m-d`` format when the subscription has next shipping.
+                     .. type:: string
 
-   * - ``interval``
-   
-       .. type:: string
-   
-     - The interval between each subscription. Depending on `intervaltype` it will be months or days.
+                   - The customer's address information.
 
-   * - ``intervalType``
-   
-       .. type:: string
-   
-     - The type of interval for the subscription.
+                 * - ``country``
+
+                     .. type:: string
+
+                   - The country of the customer. ISO-Alpha-2 (``SE``, ``US``, ``GB`` etc)
+
+          * - ``createdAt``
           
-       * ``Month`` interval is in months.
-       * ``Day`` interval is in days.
+              .. type:: string
+          
+            - The date in ``Y-m-d H-i-s`` format when the subscription was created.
 
-   * - ``error``
+          * - ``startDate``
+          
+              .. type:: string
+          
+            - The date in ``Y-m-d`` format when the subscription starts.
 
-       .. type:: boolean
-          :required: false
+          * - ``nextOrderDate``
+          
+              .. type:: string
+          
+            - The date in ``Y-m-d`` format when the subscription has next shipping.
 
-     - If ``true``, the subscription update was not successful. The ``status`` should contain information on why.
+          * - ``interval``
+          
+              .. type:: string
+          
+            - The interval between each subscription. Depending on `intervaltype` it will be months or days.
 
+          * - ``intervalType``
+          
+              .. type:: string
+          
+            - The type of interval for the subscription.
+          
+              * ``Month`` interval is in months.
+              * ``Day`` interval is in days.
+
+          * - ``error``
+
+              .. type:: boolean
+                 :required: false
+
+            - If ``true``, the subscription update was not successful. The ``status`` should contain information on why.
 ```
 
 ## Response example
@@ -171,27 +188,32 @@ Update a subscription.
 
    {
      "status": "ok",
-     "id": 3,
-     "amount": "900.00",
-     "shipping": "20.00",
-     "itemCount": 2,
-     "currency": "SEK",
-     "address": {
-       "firstName": "Kalle",
-       "lastName": "Anka",
-       "phoneNumber": "+4687203333",
-       "address1": "Malarvarvsbacken 8",
-       "address2": "c/o Young Skilled AB",
-       "zipCode": "11733",
-       "city": "Stockholm",
-       "state": "",
-       "country": "SE"
-     },
-     "createdAt": "2020-05-05 15:00:00",
-     "startDate": "2020-05-05",
-     "nextShip": "2020-05-06",
-     "interval": "14",
-     "intervalType": "Day"
+     "subscriptions": [
+       {
+         "status": "active",
+         "id": 3,
+         "amount": "900.00",
+         "shipping": "20.00",
+         "itemCount": 2,
+         "currency": "SEK",
+         "address": {
+           "firstName": "Kalle",
+           "lastName": "Anka",
+           "phoneNumber": "+4687203333",
+           "address1": "Malarvarvsbacken 8",
+           "address2": "c/o Young Skilled AB",
+           "zipCode": "11733",
+           "city": "Stockholm",
+           "state": "",
+           "country": "SE"
+         },
+         "createdAt": "2020-05-05 15:00:00",
+         "startDate": "2020-05-05",
+         "nextShip": "2020-05-06",
+         "interval": "14",
+         "intervalType": "Day"
+       }
+     ]  
    }
 ```
 
