@@ -203,7 +203,7 @@
   color: $black;
 }
 
-@media (max-width: $main-extra-large-breakpoint) {
+@media screen and (max-width: $main-extra-large-breakpoint) {
   .landing-page-section {
     font-size: 0.8em;
     padding-top: 130px;
@@ -215,7 +215,7 @@
   }
 }
 
-@media (max-width: $mobile-navigation-breakpoint) {
+@media screen and (max-width: $mobile-navigation-breakpoint) {
   .landing-page-section {
     padding: 80px 37px 1px;
     font-size: 0.6em;
@@ -243,7 +243,7 @@
   }
 }
 
-@media (max-width: $main-mobile-navigation-breakpoint) {
+@media screen and (max-width: $main-mobile-navigation-breakpoint) {
   .landing-page-section {
     padding: 40px 28px 1px 28px;
   }
@@ -257,7 +257,7 @@
   }
 }
 
-@media (max-width: $small-mobile-navigation-breakpoint) {
+@media screen and (max-width: $small-mobile-navigation-breakpoint) {
   .landing-page-section {
     padding-right: 20px;
     padding-left: 20px;

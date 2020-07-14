@@ -74,9 +74,8 @@
 }
 
 #tntsearch-wrapper.small-screen {
-  height: 195px;
+  height: 197px;
 }
-
 
 .tntsearch-results {
   p {
@@ -118,7 +117,7 @@
   }
 }
 
-@media (max-width: $main-extra-large-breakpoint) {
+@media screen and (max-width: $main-extra-large-breakpoint) {
   .search-page {
     .main__content {
       max-width: 780px;
@@ -127,7 +126,7 @@
   }
 }
 
-@media (max-width: $mobile-navigation-breakpoint) {
+@media screen and (max-width: $mobile-navigation-breakpoint) {
   .search-page {
     .navigation-search,
     .navigation-background {
@@ -141,7 +140,7 @@
   }
 }
 
-@media (max-width: $main-mobile-navigation-breakpoint) {
+@media screen and (max-width: $main-mobile-navigation-breakpoint) {
   .search-page {
     .navigation-wrapper {
       border: none;

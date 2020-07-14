@@ -62,13 +62,13 @@
   border: none;
 }
 
-@media (max-width: $mobile-navigation-breakpoint) {
+@media screen and (max-width: $mobile-navigation-breakpoint) {
   .navigation-search {
     display: none;
   }
 }
 
-@media (max-width: $main-mobile-navigation-breakpoint) {
+@media screen and (max-width: $main-mobile-navigation-breakpoint) {
   .navigation-search.show {
     height: 61px;
     margin-top: 64px;
@@ -90,3 +90,8 @@
   }
 }
 
+@media print {
+  .navigation-search {
+    display: none;
+  }
+}

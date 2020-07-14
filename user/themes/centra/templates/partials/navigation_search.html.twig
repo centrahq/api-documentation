@@ -1,15 +1,15 @@
 {% block navigation_search %}
     <div class="navigation-search" id="search">
-        <forma class="navigation-search__form">
+        <form class="navigation-search__form" action="/search">
             <input
               class="navigation-search__input"
-              type="search" id="site-search"
+              type="search"
+              id="site-search"
               name="q"
-              placeholder='{{ grav.theme.config.search_placeholder }}'
-              onkeydown = "if (event.key == 'Enter') document.getElementById('navigation-search-button').click()"
+              placeholder="{{ grav.theme.config.search_placeholder }}"
             >
-            <button class="navigation-search__submit-button" type="submit" id="navigation-search-button" onclick="redirectToSearchPage()"/>
-        </forma>
+            <button class="navigation-search__submit-button" type="submit" id="navigation-search-button"/>
+        </form>
     </div>
     {% include 'partials/navigation-background.html.twig' %}
 {% endblock %}

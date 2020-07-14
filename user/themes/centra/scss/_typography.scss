@@ -75,17 +75,17 @@ pre {
   line-height: 1;
   margin-bottom: 20px;
 
-  @media (min-width: breakpoint('small')) {
+  @media screen and (min-width: breakpoint('small')) {
     font-size: 65px;
   }
 
-  @media (min-width: breakpoint('medium')) {
+  @media screen and (min-width: breakpoint('medium')) {
     margin-bottom: 20px;
     font-size: 80px;
     line-height: 1;
   }
 
-  @media (min-width: breakpoint('huge')) {
+  @media screen and (min-width: breakpoint('huge')) {
     margin-bottom: 40px;
     font-size: 95px;
     line-height: (110 / 120);
@@ -96,17 +96,17 @@ pre {
   font-size: 22px;
   line-height: 32px;
 
-  @media (min-width: breakpoint('medium')) {
+  @media screen and (min-width: breakpoint('medium')) {
     font-size: 32px;
     line-height: 42px;
   }
 
-  @media (min-width: breakpoint('large')) {
+  @media screen and (min-width: breakpoint('large')) {
     font-size: 42px;
     line-height: (48 / 42);
   }
 
-  @media (min-width: breakpoint('huge')) {
+  @media screen and (min-width: breakpoint('huge')) {
     font-size: 48px;
   }
 }
@@ -115,7 +115,7 @@ pre {
   font-size: 22px;
   line-height: 1.333333333;
 
-  @media (min-width: breakpoint('medium')) {
+  @media screen and (min-width: breakpoint('medium')) {
     font-size: 24px;
   }
 }
@@ -123,7 +123,7 @@ pre {
 .type-small {
   font-size: 17px;
 
-  @media (min-width: breakpoint('small')) {
+  @media screen and (min-width: breakpoint('small')) {
     font-size: 18px;
   }
 }

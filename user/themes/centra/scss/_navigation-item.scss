@@ -83,7 +83,7 @@
   }
 }
 
-@media (max-width: $mobile-navigation-breakpoint) {
+@media screen and (max-width: $mobile-navigation-breakpoint) {
   .navigation__burger-menu {
     order: 1;
     display: block;
@@ -100,7 +100,7 @@
   }
 }
 
-@media (max-width: $main-mobile-navigation-breakpoint) {
+@media screen and (max-width: $main-mobile-navigation-breakpoint) {
   .navigation {
     padding: 0 15px;
   }

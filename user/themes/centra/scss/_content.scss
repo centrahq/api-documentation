@@ -102,7 +102,7 @@
   position: relative;
   height: 100%;
 
-  @media (max-width: $main-extra-large-breakpoint) {
+  @media screen and (max-width: $main-extra-large-breakpoint) {
     width: 100%;
   }
 }
@@ -125,12 +125,12 @@
     color: #000;
   }
 
-  @media (max-width: $main-extra-large-breakpoint) {
+  @media screen and (max-width: $main-extra-large-breakpoint) {
     margin: 0 auto;
     padding: 35px 22px 35px 40px;
   }
 
-  @media (max-width: $mobile-navigation-breakpoint) {
+  @media screen and (max-width: $mobile-navigation-breakpoint) {
     padding: 0 23px;
   }
 }
@@ -139,4 +139,10 @@
   width: 100%;
   margin-top: 35px;
   margin-bottom: 80px;
+}
+
+@media print {
+  .main__content {
+    padding: 0;
+  }
 }

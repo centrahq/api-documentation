@@ -47,7 +47,7 @@ span.footer__navigation-link {
   background-size: contain;
 }
 
-@media (max-width: $mobile-navigation-breakpoint) {
+@media screen and (max-width: $mobile-navigation-breakpoint) {
   .landing-page-footer {
     padding-top: 80px;
     padding-bottom: 80px;

@@ -98,7 +98,7 @@
   }
 }
 
-@media (max-width: 1370px) {
+@media screen and (max-width: 1370px) {
   .basic-section__article {
     max-width: 310px;
 
@@ -108,7 +108,7 @@
   }
 }
 
-@media (max-width: $mobile-navigation-breakpoint) {
+@media screen and (max-width: $mobile-navigation-breakpoint) {
   .basic-section {
     padding-left: 0;
     padding-right: 0;

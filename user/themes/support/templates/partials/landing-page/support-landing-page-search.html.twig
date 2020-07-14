@@ -1,16 +1,16 @@
 <section class="support-landing-page-search">
   <h1 class="section-title">What can we help<br />you find?</h1>
   <div class="navigation-search" id="search">
-    <forma class="navigation-search__form">
+    <form class="navigation-search__form" action="/search">
       <input
         class="navigation-search__input"
-        type="search" id="site-search"
+        type="search"
+        id="site-search"
         name="q"
         placeholder="Search Centra Support"
-        onkeydown = "if (event.key == 'Enter') document.getElementById('navigation-search-button').click()"
       >
-      <button class="navigation-search__submit-button" type="submit" id="navigation-search-button" onclick="redirectToSearchPage()"/>
-    </forma>
+      <button class="navigation-search__submit-button" type="submit" id="navigation-search-button" />
+    </form>
   </div>
   <div class="navigation-background support-navigation-background" id="navigation-background">
     <div class="navigation-background__hand"></div>

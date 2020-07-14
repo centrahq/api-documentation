@@ -56,12 +56,14 @@
   }
 
   .article__title  {
-    height: 4em;
+    height: auto;
     font-size: 26px;
+    margin-bottom: 1.5em;
   }
 
   .article__text {
     font-size: 20px;
+    line-height: 1.25;
   }
 
   [data-aos="lift-docs-cards"].aos-animate {
@@ -147,7 +149,7 @@
   }
 }
 
-@media (max-width: $main-extra-large-breakpoint) {
+@media screen and (max-width: $main-extra-large-breakpoint) {
   .support-landing-page {
     .section-title {
       margin-bottom: 30px;
@@ -180,7 +182,7 @@
   }
 }
 
-@media (max-width: $mobile-navigation-breakpoint) {
+@media screen and (max-width: $mobile-navigation-breakpoint) {
   .support-landing-page {
     .support-topics-wrapper a {
       flex: 1 0 50%;
@@ -225,7 +227,7 @@
   }
 }
 
-@media (max-width: $main-mobile-navigation-breakpoint) {
+@media screen and (max-width: $main-mobile-navigation-breakpoint) {
   .support-landing-page {
     .support-topics-wrapper a {
       flex: 1 0 100%;
