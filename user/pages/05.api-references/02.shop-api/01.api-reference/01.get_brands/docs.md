@@ -101,16 +101,16 @@ Brand ID as integer.
 The brandId for the brand object.  
 `"14": {"name": "Brand X"}` for brand ID 14.
 [/parameter]
-[parameter data="name" datatype="string" storetype="b2b b2c" sublevel=2]
+[parameter data="name" datatype="string" sublevel=2]
 The name of the brand.
 [/parameter]
-[parameter data="brand" datatype="string" storetype="b2b b2c" sublevel=2]
+[parameter data="brand" datatype="string" sublevel=2]
 The ID of the brand.
 [/parameter]
-[parameter data="uri" datatype="string" storetype="b2b b2c" sublevel=2]
+[parameter data="uri" datatype="string" sublevel=2]
 The URI of the brand.
 [/parameter]
-[parameter data="metaKeywords metaDescription metaTitle" datatype="string" storetype="b2b b2c" sublevel=2]
+[parameter data="metaKeywords metaDescription metaTitle" datatype="string" sublevel=2]
 Meta data about the brand.
 [/parameter]
 
