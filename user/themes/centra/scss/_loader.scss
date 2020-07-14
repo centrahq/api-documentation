@@ -1,0 +1,15 @@
+@import "./variables";
+
+#search-results-loader {
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: calc(50% - 30px);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px transparent solid;
+    border-top-color: $brand-primary;
+    pointer-events: none;
+    animation: spin 1s linear infinite;
+}

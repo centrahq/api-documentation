@@ -62,7 +62,7 @@
   animation-direction: alternate;
 }
 
-@media (max-width: $mobile-navigation-breakpoint) {
+@media screen and (max-width: $mobile-navigation-breakpoint) {
   .get-started-section {
     .section-content {
         margin: 0;
@@ -112,7 +112,7 @@
   }
 }
 
-@media (max-width: $main-mobile-navigation-breakpoint) {
+@media screen and (max-width: $main-mobile-navigation-breakpoint) {
   .get-started-section {
     .graphics__code-window {
       height: 179px;
@@ -133,7 +133,7 @@
   }
 }
 
-@media (max-width: $small-mobile-navigation-breakpoint) {
+@media screen and (max-width: $small-mobile-navigation-breakpoint) {
   .get-started-section .graphics__code-window {
     width: 280px;
   }

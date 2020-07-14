@@ -118,7 +118,7 @@
   transition: opacity 0.8s ease-in-out;
 }
 
-@media (max-width: $mobile-navigation-breakpoint) {
+@media screen and (max-width: $mobile-navigation-breakpoint) {
   .hero-section {
     padding: 80px 20px 5px;
   }
@@ -192,7 +192,7 @@
   }
 }
 
-@media (max-width: $main-mobile-navigation-breakpoint) {
+@media screen and (max-width: $main-mobile-navigation-breakpoint) {
   .graphics__code-window {
     height: 179px;
     width: 314px;
@@ -245,7 +245,7 @@
   }
 }
 
-@media (max-width: $small-mobile-navigation-breakpoint) {
+@media screen and (max-width: $small-mobile-navigation-breakpoint) {
   .graphics__code-window {
     width: 280px;
   }

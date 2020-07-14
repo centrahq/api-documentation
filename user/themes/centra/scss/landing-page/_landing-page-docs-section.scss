@@ -99,7 +99,7 @@
   }
 }
 
-@media (max-width: $main-extra-large-breakpoint) {
+@media screen and (max-width: $main-extra-large-breakpoint) {
   .docs-wrapper {
     padding: 150px 125px;
   }
@@ -121,7 +121,7 @@
   }
 }
 
-@media (max-width: $mobile-navigation-breakpoint) {
+@media screen and (max-width: $mobile-navigation-breakpoint) {
   .landing-page-section.docs {
     padding-left: 0;
     padding-right: 0;

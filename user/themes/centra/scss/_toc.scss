@@ -70,7 +70,7 @@
   opacity: 1;
 }
 
-@media (max-width: $toc-breakpoint) {
+@media screen and (max-width: $toc-breakpoint) {
   .page-toc {
     display: none;
   }
@@ -146,5 +146,11 @@
     a.active:before {
       display: none;
     }
+  }
+}
+
+@media print {
+  #toc {
+    display: none;
   }
 }

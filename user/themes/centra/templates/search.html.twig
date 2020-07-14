@@ -1,17 +1,12 @@
 {% set url = url|default(base_url|rtrim('/') ~ '/' ~ config.get('plugins.tntsearch.query_route', 's')|trim('/')) %}
-{% set limit = limit|default(config.get('plugins.tntsearch.limit', 20)) %}
-{% set snippet = snippet|default(config.get('plugins.tntsearch.snippet', 300)) %}
-{% set min = min|default(config.get('plugins.tntsearch.min', 3)) %}
-{% set search_type = search_type|default(config.get('plugins.tntsearch.search_type', 'auto')) %}
-{% set live_update = in_page ? live_update|default(config.get('plugins.tntsearch.live_uri_update', 1)) : 0 %}
 
-{% set options = { uri: url, limit: limit, snippet: snippet, min: min, in_page: in_page, live_update: live_update, search_type: search_type } %}
+{% set options = { uri: url, limit: 50 } %}
 
 {% include 'partials/head.html.twig' %}
 <body>
     <div class="search-page">
         {% include 'partials/topnav.html.twig' %}
-        <form role="form" class="tntsearch-form">
+        <form class="tntsearch-form">
             {% block tntsearch_input %}
                 <div id="tntsearch-wrapper" class="form-group{{ dropdown ? ' tntsearch-dropdown' : '' }}">
                     <div class="navigation-search__form">
@@ -20,9 +15,8 @@
                           id="input-search"
                           class="navigation-search__input form-control tntsearch-field{{ in_page ? ' tntsearch-field-inpage' : '' }}"
                           data-tntsearch="{{ options|json_encode|e('html_attr') }}"
-                          placeholder='{{ grav.theme.config.search_placeholder }}'
+                          placeholder="{{ grav.theme.config.search_placeholder }}"
                           value="{{ not dropdown ? query|e : '' }}"
-                          autofocus
                         >
                         <button class="navigation-search__submit-button" type="submit" id="search-submit-button"/>
                     </div>
@@ -37,6 +31,7 @@
                     {% include 'partials/sidenav.html.twig' %}
                     <div class="main__content">
                         <div class="tntsearch-results" id="search-results"></div>
+                        <div id="search-results-loader"></div>
                     </div>
                 </div>
                 <div class="l-wrapper__right-padding"></div>

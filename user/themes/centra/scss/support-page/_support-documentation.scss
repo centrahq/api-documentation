@@ -30,7 +30,7 @@
   }
 }
 
-@media (min-width: $mobile-navigation-breakpoint) {
+@media screen and (min-width: $mobile-navigation-breakpoint) {
   .support-documentation {
     .docs__articles-wrapper {
       flex-wrap: wrap;

@@ -85,7 +85,7 @@
   }
 }
 
-@media (max-width: $mobile-navigation-breakpoint) {
+@media screen and (max-width: $mobile-navigation-breakpoint) {
   .support-landing-page-search {
     #search {
       padding-bottom: 100px;

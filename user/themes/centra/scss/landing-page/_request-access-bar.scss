@@ -79,7 +79,7 @@
   }
 }
 
-@media (max-width: $mobile-navigation-breakpoint) {
+@media screen and (max-width: $mobile-navigation-breakpoint) {
   .request-access-bar {
     a {
       font-size: 22px;

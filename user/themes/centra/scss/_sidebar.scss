@@ -23,7 +23,7 @@
     display: block;
   }
 
-  @media (max-width: $mobile-navigation-breakpoint) {
+  @media screen and (max-width: $mobile-navigation-breakpoint) {
     display: none;
   }
 }
@@ -166,7 +166,7 @@
   align-items: center;
 }
 
-@media (max-width: $mobile-navigation-breakpoint) {
+@media screen and (max-width: $mobile-navigation-breakpoint) {
   .sidebar {
     height: calc(100vh - 65px);
     
@@ -177,5 +177,11 @@
     .navigation__centra-logo {
       display: block;
     }
+  }
+}
+
+@media print {
+  .sidebar {
+    display: none;
   }
 }
