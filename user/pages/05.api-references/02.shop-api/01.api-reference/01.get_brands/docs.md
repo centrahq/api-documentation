@@ -110,7 +110,7 @@ The ID of the brand.
 [parameter data="uri" datatype="string" storetype="b2b b2c" sublevel=2]
 The URI of the brand.
 [/parameter]
-[parameter data=metaKeywords metaDescription metaTitle" datatype="string" storetype="b2b b2c" sublevel=2]
+[parameter data="metaKeywords metaDescription metaTitle" datatype="string" storetype="b2b b2c" sublevel=2]
 Meta data about the brand.
 [/parameter]
 
