@@ -132,6 +132,11 @@
 
   @media screen and (max-width: $mobile-navigation-breakpoint) {
     padding: 0 23px;
+    width: 100%;
+  }
+
+  @media screen and (max-width: breakpoint('medium')) {
+    width: 100%;
   }
 }
 
