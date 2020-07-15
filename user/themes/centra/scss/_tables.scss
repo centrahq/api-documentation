@@ -6,6 +6,10 @@
   overflow-x: auto;
   margin-bottom: 64px;
   margin-top: 25px;
+
+  table {
+    margin: 0;
+  }
 }
 
 table {
@@ -16,6 +20,8 @@ table {
   text-align: left;
   color: #222;
   width: 100%;
+  margin-top: 25px;
+  margin-bottom: 64px;
 
   tr {
     td,
