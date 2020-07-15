@@ -159,7 +159,7 @@ Update a subscription.
 
           * - ``interval``
           
-              .. type:: string
+              .. type:: int
           
             - The interval between each subscription. Depending on `intervaltype` it will be months or days.
 
@@ -210,7 +210,7 @@ Update a subscription.
          "createdAt": "2020-05-05 15:00:00",
          "startDate": "2020-05-05",
          "nextOrderDate": "2020-05-06",
-         "interval": "14",
+         "interval": 14,
          "intervalType": "Day"
        }
      ]  

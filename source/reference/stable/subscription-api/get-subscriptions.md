@@ -34,7 +34,7 @@ Receive a list of all subscriptions for the customer.
 .. code-block:: http
    :linenos:
 
-   GET <base>/subscription?cuustomerEmail=example@centra.com HTTP/1.1
+   GET <base>/subscription?customerEmail=example@centra.com HTTP/1.1
 
 ```
 
@@ -151,7 +151,7 @@ Receive a list of all subscriptions for the customer.
 
           * - ``interval``
           
-              .. type:: string
+              .. type:: int
           
             - The interval between each subscription. Depending on `intervaltype` it will be months or days.
 
@@ -203,7 +203,7 @@ Receive a list of all subscriptions for the customer.
          "createdAt": "2020-05-05 15:00:00",
          "startDate": "2020-05-05",
          "nextOrderDate": "2020-05-06",
-         "interval": "14",
+         "interval": 14,
          "intervalType": "Day"
        },
        {
@@ -227,7 +227,7 @@ Receive a list of all subscriptions for the customer.
          "createdAt": "2020-04-03 12:00:00",
          "startDate": "2020-04-03",
          "nextOrderDate": "2020-04-04",
-         "interval": "14",
+         "interval": 14,
          "intervalType": "Day"
        }
      ]
