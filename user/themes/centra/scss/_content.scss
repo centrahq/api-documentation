@@ -144,5 +144,10 @@
 @media print {
   .main__content {
     padding: 0;
+    display: block !important;
+  }
+
+  .main__inner {
+    display: block !important;
   }
 }
