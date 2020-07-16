@@ -164,13 +164,6 @@ Receive a list of all subscriptions for the customer.
               * ``Month`` interval is in months.
               * ``Day`` interval is in days.
 
-          * - ``error``
-
-              .. type:: boolean
-                 :required: false
-
-            - If ``true``, the subscription update was not successful. The ``status`` should contain information on why.
-
 ```
 
 ## Response example
