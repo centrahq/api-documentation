@@ -8,6 +8,16 @@ taxonomy:
 
 # Get brands
 
+Endpoints:
+
+```text
+GET  *base*/brands
+```
+
+```text
+GET  *base*/brands/*brandId
+```
+
 <!--
 ```eval_rst
 .. api-name:: Shop API
