@@ -6,13 +6,13 @@
 
 .. endpoint::
    :method: GET
-   :url: *base*/subscription/subscription?customerEmail=*email*
+   :url: *base*/subscription/subscription/*id*
 
 .. authentication::
    :api_key: true
 ```
 
-Receive a list of all subscriptions for the customer.
+Return subscription by specified id.
 
 ## Parameters
 
@@ -20,12 +20,12 @@ Receive a list of all subscriptions for the customer.
 .. list-table::
    :widths: auto
 
-   * - ``customerEmail``
+   * - ``customerId``
 
        .. type:: string
           :required: true
 
-     - Customer email address.
+     - Customer id.
 ```
 
 ## Request example
@@ -34,7 +34,7 @@ Receive a list of all subscriptions for the customer.
 .. code-block:: http
    :linenos:
 
-   GET <base>/subscription?customerEmail=example@centra.com HTTP/1.1
+   GET <base>/subscription/1 HTTP/1.1
 
 ```
 
@@ -58,7 +58,7 @@ Receive a list of all subscriptions for the customer.
        .. type:: array
           :required: true
    
-     - List of all customer subscriptions.
+     - List of subscriptions.
 
        .. list-table::
           :widths: auto
@@ -217,35 +217,19 @@ Receive a list of all subscriptions for the customer.
            "state": "",
            "country": "SE"
          },
-         "customer": "132"
-       },
-       {
-         "status": "paused",
-         "id": 4,
-         "amount": "500.00",
-         "shipping": "20.00",
-         "itemCount": 1,
-         "currency": "SEK",
-         "createdAt": "2020-04-03 12:00:00",
-         "startDate": "2020-04-03",
-         "nextOrderDate": "2020-04-04",
-         "interval": 14,
-         "intervalType": "Day",
-         "pricelist": "19",
-         "packages": ["1"],
-         "address": {
-           "firstName": "Kalle",
-           "lastName": "Anka",
-           "phoneNumber": "+4687203333",
-           "address1": "Malarvarvsbacken 8",
-           "address2": "c/o Young Skilled AB",
-           "zipCode": "11733",
-           "city": "Stockholm",
-           "state": "",
-           "country": "SE"
-         },
-         "customer": "132"
+         "customer": "132",
        }
      ]
+   }
+```
+## Error examples
+
+```eval_rst
+.. code-block:: json
+   :linenos:
+
+   {
+     "status": "Subscription not found",
+     "error": true
    }
 ```

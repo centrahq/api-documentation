@@ -171,13 +171,31 @@ Update a subscription.
           
               * ``Month`` interval is in months.
               * ``Day`` interval is in days.
+        
+          * - ``pricelist``
+          
+              .. type:: string
+          
+            - Subscription price list id.
 
-          * - ``error``
+          * - ``packages``
 
-              .. type:: boolean
-                 :required: false
+              .. type:: array
 
-            - If ``true``, the subscription update was not successful. The ``status`` should contain information on why.
+            - List of subscription packages. Contains packages IDs.
+
+          * - ``customer``
+          
+              .. type:: string
+          
+            - Subscription customer id.
+
+   * - ``error``
+
+       .. type:: boolean
+          :required: false
+
+     - If ``true``, the subscription update was not successful. The ``status`` should contain information on why.
 ```
 
 ## Response example
@@ -196,6 +214,13 @@ Update a subscription.
          "shipping": "20.00",
          "itemCount": 2,
          "currency": "SEK",
+         "createdAt": "2020-05-05 15:00:00",
+         "startDate": "2020-05-05",
+         "nextOrderDate": "2020-05-06",
+         "interval": 14,
+         "intervalType": "Day",
+         "pricelist": "19",
+         "packages": ["1"],
          "address": {
            "firstName": "Kalle",
            "lastName": "Anka",
@@ -207,11 +232,7 @@ Update a subscription.
            "state": "",
            "country": "SE"
          },
-         "createdAt": "2020-05-05 15:00:00",
-         "startDate": "2020-05-05",
-         "nextOrderDate": "2020-05-06",
-         "interval": 14,
-         "intervalType": "Day"
+         "customer": "132"
        }
      ]  
    }
