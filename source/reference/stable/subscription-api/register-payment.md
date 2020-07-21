@@ -129,10 +129,43 @@ This will complete the subscription. Often called when user comes back to `payme
 
             - The country of the customer. ISO-Alpha-2 (``SE``, ``US``, ``GB`` etc)
 
+   * - ``createdAt``
+
+       .. type:: string
+
+     - The date in ``Y-m-d H-i-s`` format when the subscription was created.
+
+   * - ``startDate``
+
+       .. type:: string
+
+     - The date in ``Y-m-d`` format when the subscription starts.
+
+   * - ``nextOrderDate``
+
+       .. type:: string
+
+     - The date in ``Y-m-d`` format when the subscription has next shipping.
+
+   * - ``interval``
+
+       .. type:: int
+
+     - The interval between each subscription. Depending on `intervaltype` it will be months or days.
+
+   * - ``intervalType``
+
+       .. type:: string
+
+     - The type of interval for the subscription.
+
+       * ``Month`` interval is in months.
+       * ``Day`` interval is in days.
+
    * - ``error``
 
        .. type:: boolean
-          :required: false
+           :required: false
 
      - If ``true``, the payment was not successful. The ``status`` should contain information on why.
 
@@ -147,8 +180,8 @@ This will complete the subscription. Often called when user comes back to `payme
    {
      "status": "ok",
      "id": 3,
-     "amount": 900,
-     "shipping": 20,
+     "amount": "900.00",
+     "shipping": "20.00",
      "itemCount": 2,
      "currency": "SEK",
      "address": {
@@ -161,7 +194,12 @@ This will complete the subscription. Often called when user comes back to `payme
        "city": "Stockholm",
        "state": "",
        "country": "SE"
-     }
+     },
+     "createdAt": "2020-05-05 15:00:00",
+     "startDate": "2020-05-05",
+     "nextOrderDate": "2020-05-06",
+     "interval": 14,
+     "intervalType": "Day"
    }
 ```
 
