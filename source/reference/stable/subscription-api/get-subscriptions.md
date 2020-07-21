@@ -6,7 +6,7 @@
 
 .. endpoint::
    :method: GET
-   :url: *base*/subscription/subscription?customerEmail=*email*
+   :url: *base*/subscription/subscriptions?customerEmail=*email*
 
 .. authentication::
    :api_key: true

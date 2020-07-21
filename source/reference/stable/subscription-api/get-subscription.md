@@ -6,7 +6,7 @@
 
 .. endpoint::
    :method: GET
-   :url: *base*/subscription/subscription/*id*
+   :url: *base*/subscription/subscriptions/*id*
 
 .. authentication::
    :api_key: true
