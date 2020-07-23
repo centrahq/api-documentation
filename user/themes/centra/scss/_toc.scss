@@ -80,10 +80,11 @@
   }
 
   #toc {
-    position: fixed;
+    position: sticky;
     top: 80px;
     right: 40px;
-    margin-right: 25px;
+    margin-top: 95px;
+    margin-left: -32px;
     z-index: 5;
     height: 120vh;
   }
