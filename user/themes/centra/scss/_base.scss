@@ -190,3 +190,9 @@
     left: 290px;
   }
 }
+
+@media print {
+  .l-wrapper {
+    display: block !important;
+  }
+}

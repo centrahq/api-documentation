@@ -132,6 +132,7 @@
 
   @media screen and (max-width: $mobile-navigation-breakpoint) {
     padding: 0 23px;
+    width: 100%;
   }
 }
 
@@ -144,5 +145,10 @@
 @media print {
   .main__content {
     padding: 0;
+    display: block !important;
+  }
+
+  .main__inner {
+    display: block !important;
   }
 }
