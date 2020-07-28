@@ -324,8 +324,8 @@ If product which is out of stock shows "Notify me when back in stock", the custo
 To register products or specific product sizes for customer newsletter, you should call [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint with optional parameters:  
 * `country` - allows you to specify the country for the newsletter, which can affect the products availability you display based on the Market,
 * `language` - allows you to specify the language of the newsletter, which helps you send a correct translation to specific customers,
-* `product` - sent as `[display ID]` registers customer e-mail in the Newsletter list with a specific product,
-* `item` - sent as `[display ID]`-`[size ID]`, same as in [POST /items/{item}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_) or [POST /items/{item}/quantity/{quantity}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item__quantity__quantity_), registers customer e-mail in the Newsletter list with a specific product size.
+* `product` - sent as `[displayID]` registers customer e-mail in the Newsletter list with a specific product,
+* `item` - sent as `[displayID]-[sizeID]`, same as in [POST /items/{item}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_) or [POST /items/{item}/quantity/{quantity}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item__quantity__quantity_), registers customer e-mail in the Newsletter list with a specific product size.
 
 #### Sign-up voucher code
 
@@ -341,14 +341,21 @@ Would you sign up if we offered you a discount?
 Sure you got everything you wanted?
 ```
 
-```text
-GET /selection  
-1. Available payment methods is based on Plugins (which can be restricted by pricelist/market/country)
-2. Available shipping methods
-3. Selection model
-4. Form fields
-5. Country list
-```
+At any point when you modify the selection (by adding items, changing payment method or filling address details), Centra will return the fully updated selection in the response. This way, unless you receive an error message, you can always make sure your changes were applied. You can also fetch the current selection at any time by calling `GET /selection`.
+
+You can add products to the selection using one of the following API endpoints:
+* [POST /items/{item}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_), where `{item}` is the same as in `items.item` returned by the `/products` endpoint,
+* [POST /items/{item}/quantity/{quantity}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item__quantity__quantity_), which allows you to add more items at once,
+* [POST /items/bundles/{item}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items_bundles__item_), which is used to add a flexible bundle to the selection.
+
+Remember, `item` specifies a product variant together with a specific size. Once an item is added to a selection, in the API reponse you will find a new **line ID**, under `selection.items.item.line`, e.g. `"line": "0416151f70083fe08677a929394a0351"`. A line ID defines a specific product variant in a specific size **for a specific selection/order**. This allows you to later remove the specific item from a selection using one of the API endpoints:
+* [POST /lines/{line}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_lines__line_)
+* [POST /lines/{line}/quantity/{quantity}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_lines__line__quantity__quantity_) to increase the quantity
+* [PUT /lines/{line}/quantity/{quantity}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_lines__line__quantity__quantity_) to set specific quantity
+* [DELETE /lines/{line}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/delete_lines__line_)
+* [DELETE /lines/{line}/quantity/{quantity}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/delete_lines__line__quantity__quantity_)
+
+The line ID is also necessary for creating returns for completed orders - you will need to specify exactly which order line should be added to the return.
 
 ### Shipping options
 
@@ -356,11 +363,27 @@ GET /selection
 How quickly you can get your stuff, and how much it would cost.
 ```
 
+With every selection response, the API will include a `shippingMethods` table. In it you will receive all available shipping methods based on the current country of the selection. You can choose any of them using the `PUT /shipping-methods/{shippingMethod}` call.
+
+#### 'shipTo' parameter
+
+While working on Centra setup, you may sometimes encounter an error saying the current country is not "shippable". You will see this in the API selection model, under `location.shipTo`. If this param is `false`, you will not be able to complete an order for this country. You should make sure this country is included in at least one active shipping in Centra -> Setup -> Shipping.
+
+You can find out which countries are shippable with:
+* `GET /countries` - returns all shippable countries,
+* `GET /countries/all` (authorized mode) - returns all countries, each with a `shipTo` boolean.
+
 ### Checkout
 
 ```text
 Let us know everything we need to know to deliver your stuff to you!
 ```
+
+Your Checkout API plugin configuration allows you to specify which checkout fields (other than country) are required:
+
+![CheckoutFilters](checkout-filters.png)
+
+Even before completing the checkout and proceeding to payment, you can set some (or all) checkout fields using the [PUT /payment-fields](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields) endpoint. This endpoint can also be used to specify the checkout fields required for the [Cart Abandonment feature](/plugins/cartabandonment).
 
 #### Newsletter sign-up 2
 

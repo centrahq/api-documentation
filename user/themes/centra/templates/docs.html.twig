@@ -19,4 +19,16 @@
         <button class="page-toc__toggle" onclick="togglePageSearch()"><img src="{{ url("theme://images/img/toc-icon.svg")}}"/></button>
         {% include 'partials/toc.html.twig' %}
     </div>
+    <script>
+        function removeTocIfEmpty () {
+            var headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+            var headers = document.querySelectorAll(headings.join(','));
+
+            if (headers.length === 1) {
+                const tocElement = document.getElementById('toc');
+                tocElement.style.display = 'none';
+            }
+        }
+        removeTocIfEmpty();
+    </script>
 {% endblock %}

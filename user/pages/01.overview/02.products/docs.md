@@ -111,8 +111,6 @@ This is a design decision you should carefully consider when onboarding with Cen
 | Size | Different sizes of the same color. Same price for each. | Each variant should only have one size. | Each variant should only have one size. |
 | Display | You can display each variant separately, or create a single display for unisex products. | You can set up a single display for a specific case design and activate it for all phone model variants. | You can set up a single display for all designs variants made for the same phone model. |
 
-***
-
 | | Jewelry | Bags | Cosmetics |
 |---|---|---|---|
 | Product | Specific ring design or head stone. Same ring with a different head is a different product. Same model of ring made of silver and gold are separate products. | Specific model and design of a bag. | Specific type of cosmetic (cream, shampoo, perfumes or other). |
