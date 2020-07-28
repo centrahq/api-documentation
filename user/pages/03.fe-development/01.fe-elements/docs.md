@@ -379,7 +379,11 @@ You can find out which countries are shippable with:
 Let us know everything we need to know to deliver your stuff to you!
 ```
 
-- Required checkout fields - Checkout API configuration
+Your Checkout API plugin configuration allows you to specify which checkout fields (other than country) are required:
+
+![CheckoutFilters](checkout-filters.png)
+
+Even before completing the checkout and proceeding to payment, you can set some (or all) checkout fields using the [PUT /payment-fields](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields) endpoint. This endpoint can also be used to specify the checkout fields required for the [Cart Abandonment feature](/plugins/cartabandonment).
 
 #### Newsletter sign-up 2
 
