@@ -22,7 +22,7 @@ Wholesale Selections are stored for each account and can be viewed and manipulat
 
 #### Abandoned cart recovery 
 
-Centra automatically detects Selections that are not checked out and generates Abandoned Cart events that are transferred to marketing applications for retargeting applications.
+Centra automatically detects Selections that are not checked out and generates Abandoned Cart events that are transferred to marketing applications for retargeting applications. Click here to read more about the [Cart Abandonment feature](/plugins/cartabandonment).
 
 ### Order flow
 
@@ -35,7 +35,7 @@ Here's the basic order flow as seen in Centra backend.
 * **Incomplete** (0)  
   This is a selection before the checkout is completed. It contains the list of selected items, information about language and currency, discounts, plus a list of optional shipping methods.
 * **Pending** (1)  
-  This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, selected shipping and payment. This step can be skipped by enabling the Store option "Autoconfirm Orders".
+  This order has been checked out, with payment authorization being completed. Depending on the Store settings, payment capture attempt may follow immediately, otherwise capture will be done on order shipment. In addition to the incomplete order, it contains information on customer, selected shipping and payment. This step can be skipped by enabling the Store option "Autoconfirm Orders".
 * **Confirmed** (2)  
   This order has been manually confirmed in the Centra admin panel, or confirmed automatically by appropriate Store setting. Only confirmed orders can have shipments created. This step can be skipped by enabling store option “Direct to Shipment”, in which case the checked out order will transfer to status Processing (3) with a shipment created and marked Good-To-Go.
 * **Processing** (3)  
@@ -43,7 +43,7 @@ Here's the basic order flow as seen in Centra backend.
 * **Completed** (4)  
   This order has completed payment capture and expedited all related shipments. Additional information on shipping details and tracking number can be added when completing each shipment.
 * **Archived** (5)  
-  This order has been archived and will not show up in search results in Centra. Depending on API plugin configuration, it may also be hidden in API responses.
+  This order has been archived and will not show up in search results in Centra by default. Depending on API plugin configuration, it may also be hidden in API responses.
 * **Cancelled** (6)  
   This ordered has been cancelled at any stage before the payment was captured (once the payment capture has been successful, a refund should be made instead of cancelling the order). Cancelled orders have the option to be fully and irreversibly deleted from the database.
 * **Hold** (flag)  
@@ -59,4 +59,4 @@ Returns in Centra are directly tied to order shipments. When browsing a shipment
 
 After selecting items to return, you need to decide if you want to put them back into stock or remove them. This depends on your business logic and the state of the returned goods. If you choose to insert the items back into stock, you can either re-add it to the warehouse it was originally allocated from, or select to which warehouse to return the items into.
 
-Once the return is created, it will have "Pending" status which in API will show as `"completed": false`. From this point the return can be completed without a refund, or completed with sending a refund request to a PSP (Payment Service Provider). Additionally, at any point (both before and after completing the return) you can create selection based on that return, which can be used to easily create an exchange order.
+Once the return is created, it will have "Pending" status which in API will show as `"completed": false`. From this point the return can be completed without a refund, or completed with sending a refund request to the Payment Service Provider. Additionally, at any point (both before and after completing the return) you can create selection based on that return, which can be used to easily create an exchange order.
