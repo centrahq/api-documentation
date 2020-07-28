@@ -6,7 +6,7 @@
 
 .. endpoint::
    :method: GET
-   :url: *base*/subscription/subscription?customerEmail=*email*
+   :url: *base*/subscription/subscriptions?customerEmail=*email*
 
 .. authentication::
    :api_key: true
@@ -163,7 +163,24 @@ Receive a list of all subscriptions for the customer.
           
               * ``Month`` interval is in months.
               * ``Day`` interval is in days.
+        
+          * - ``pricelist``
+          
+              .. type:: string
+          
+            - Subscription price list id.
 
+          * - ``packages``
+
+              .. type:: array
+
+            - List of subscription packages. Contains packages IDs.
+
+          * - ``customer``
+          
+              .. type:: string
+          
+            - Subscription customer id.
 ```
 
 ## Response example
@@ -182,6 +199,13 @@ Receive a list of all subscriptions for the customer.
          "shipping": "20.00",
          "itemCount": 2,
          "currency": "SEK",
+         "createdAt": "2020-05-05 15:00:00",
+         "startDate": "2020-05-05",
+         "nextOrderDate": "2020-05-06",
+         "interval": 14,
+         "intervalType": "Day",
+         "pricelist": "19",
+         "packages": ["1"],
          "address": {
            "firstName": "Kalle",
            "lastName": "Anka",
@@ -193,11 +217,7 @@ Receive a list of all subscriptions for the customer.
            "state": "",
            "country": "SE"
          },
-         "createdAt": "2020-05-05 15:00:00",
-         "startDate": "2020-05-05",
-         "nextOrderDate": "2020-05-06",
-         "interval": 14,
-         "intervalType": "Day"
+         "customer": "132"
        },
        {
          "status": "paused",
@@ -206,6 +226,13 @@ Receive a list of all subscriptions for the customer.
          "shipping": "20.00",
          "itemCount": 1,
          "currency": "SEK",
+         "createdAt": "2020-04-03 12:00:00",
+         "startDate": "2020-04-03",
+         "nextOrderDate": "2020-04-04",
+         "interval": 14,
+         "intervalType": "Day",
+         "pricelist": "19",
+         "packages": ["1"],
          "address": {
            "firstName": "Kalle",
            "lastName": "Anka",
@@ -217,11 +244,7 @@ Receive a list of all subscriptions for the customer.
            "state": "",
            "country": "SE"
          },
-         "createdAt": "2020-04-03 12:00:00",
-         "startDate": "2020-04-03",
-         "nextOrderDate": "2020-04-04",
-         "interval": 14,
-         "intervalType": "Day"
+         "customer": "132"
        }
      ]
    }

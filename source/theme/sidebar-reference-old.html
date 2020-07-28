@@ -255,6 +255,10 @@
    'POST /supplier-deliveries/*id*'
   ) }}
   {{ sidebar_item(
+  false,
+  'Vouchers',
+  ) }}
+  {{ sidebar_item(
    'reference/stable/order-api/create-voucher',
    'Create voucher',
    'POST /voucher'
@@ -293,7 +297,12 @@
   {{ sidebar_item(
    'reference/stable/subscription-api/get-subscriptions',
    'Get customer subscriptions',
-   'GET /subscription/subscription?customerEmail=*email*'
+   'GET /subscription/subscriptions?customerEmail=*email*'
+  ) }}
+  {{ sidebar_item(
+  'reference/stable/subscription-api/get-subscription',
+  'Get subscription',
+  'GET /subscription/subscriptions/*id*'
   ) }}
   {{ sidebar_item(
    'reference/stable/subscription-api/register-payment',

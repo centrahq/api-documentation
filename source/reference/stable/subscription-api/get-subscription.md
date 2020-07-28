@@ -1,18 +1,18 @@
-# Update subscription
+# Get subscriptions
 
 ```eval_rst
 .. api-name:: Subscription API
    :version: 1
 
 .. endpoint::
-   :method: PUT
-   :url: *base*/subscription/subscription/*id*
+   :method: GET
+   :url: *base*/subscription/subscriptions/*id*
 
 .. authentication::
    :api_key: true
 ```
 
-Update a subscription.
+Return subscription by specified id.
 
 ## Parameters
 
@@ -20,28 +20,21 @@ Update a subscription.
 .. list-table::
    :widths: auto
 
-   * - ``status``
+   * - ``customerId``
 
-       .. type:: enum
-          :required: false
+       .. type:: string
+          :required: true
 
-     - Subscription status
-
-       * ``active`` Subscription is active.
-       * ``paused`` Subscription is paused.
-       * ``cancelled`` Subscription is cancelled.
+     - Customer id.
 ```
 
-## Request examples
+## Request example
 
 ```eval_rst
 .. code-block:: http
    :linenos:
 
-   POST <base>/subscription/1 HTTP/1.1
-   Content-Type: application/x-www-form-urlencoded
-
-   status=active
+   GET <base>/subscription/1 HTTP/1.1
 
 ```
 
@@ -59,7 +52,6 @@ Update a subscription.
           :required: true
 
      - ``ok`` if success, else ``no``.
-
 
    * - ``subscriptions``
    
@@ -189,13 +181,6 @@ Update a subscription.
               .. type:: string
           
             - Subscription customer id.
-
-   * - ``error``
-
-       .. type:: boolean
-          :required: false
-
-     - If ``true``, the subscription update was not successful. The ``status`` should contain information on why.
 ```
 
 ## Response example
@@ -232,15 +217,12 @@ Update a subscription.
            "state": "",
            "country": "SE"
          },
-         "customer": "132"
+         "customer": "132",
        }
-     ]  
+     ]
    }
 ```
-
 ## Error examples
-
-Subscription not found:
 
 ```eval_rst
 .. code-block:: json
@@ -248,30 +230,6 @@ Subscription not found:
 
    {
      "status": "Subscription not found",
-     "error": true
-   }
-```
-
-Invalid subscription status:
-
-```eval_rst
-.. code-block:: json
-   :linenos:
-
-   {
-     "status": "Invalid status provided",
-     "error": true
-   }
-```
-
-Restore cancelled subscription error:
-
-```eval_rst
-.. code-block:: json
-   :linenos:
-
-   {
-     "status": "Cannot restore cancelled subscription",
      "error": true
    }
 ```
