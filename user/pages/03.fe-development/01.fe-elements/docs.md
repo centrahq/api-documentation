@@ -341,7 +341,7 @@ Would you sign up if we offered you a discount?
 Sure you got everything you wanted?
 ```
 
-At any point when you modify the selection (by adding items, changing payment method or filling address details), Centra will return the fully updated selection in the response. This way, unless you receive an error message, you can always make sure your changes were applied. You can also fetch the current selection at any time by calling `GET /selection`.
+At any point when you modify the selection (by adding items, changing payment method or filling address details), Centra will return the fully updated selection in the response. This way, unless you receive an error message, you can always make sure your changes were applied. You can also fetch the current selection at any time by calling [GET /selection](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/get_selection).
 
 You can add products to the selection using one of the following API endpoints:
 * [POST /items/{item}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_), where `{item}` is the same as in `items.item` returned by the `/products` endpoint,
@@ -363,15 +363,15 @@ The line ID is also necessary for creating returns for completed orders - you wi
 How quickly you can get your stuff, and how much it would cost.
 ```
 
-With every selection response, the API will include a `shippingMethods` table. In it you will receive all available shipping methods based on the current country of the selection. You can choose any of them using the `PUT /shipping-methods/{shippingMethod}` call.
+With every selection response, the API will include a `shippingMethods` table. In it you will receive all available shipping methods based on the current country of the selection. You can choose any of them using the [PUT /shipping-methods/{shippingMethod}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/3.%20selection%20handling%2C%20modify%20selection/put_shipping_methods__shippingMethod_) call.
 
 #### 'shipTo' parameter
 
 While working on Centra setup, you may sometimes encounter an error saying the current country is not "shippable". You will see this in the API selection model, under `location.shipTo`. If this param is `false`, you will not be able to complete an order for this country. You should make sure this country is included in at least one active shipping in Centra -> Setup -> Shipping.
 
 You can find out which countries are shippable with:
-* `GET /countries` - returns all shippable countries,
-* `GET /countries/all` (authorized mode) - returns all countries, each with a `shipTo` boolean.
+* [GET /countries](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/get_countries) - returns all shippable countries,
+* [GET /countries/all](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/get_countries_all) (authorized mode) - returns all countries, each with a `shipTo` boolean.
 
 ### Checkout
 
@@ -381,7 +381,7 @@ Let us know everything we need to know to deliver your stuff to you!
 
 Your Checkout API plugin configuration allows you to specify which checkout fields (other than country) are required:
 
-![CheckoutFilters](checkout-filters.png)
+![CheckoutFilters](checkout-required-fields.png)
 
 Even before completing the checkout and proceeding to payment, you can set some (or all) checkout fields using the [PUT /payment-fields](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields) endpoint. This endpoint can also be used to specify the checkout fields required for the [Cart Abandonment feature](/plugins/cartabandonment).
 
