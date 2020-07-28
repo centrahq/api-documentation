@@ -341,14 +341,21 @@ Would you sign up if we offered you a discount?
 Sure you got everything you wanted?
 ```
 
-```text
-GET /selection  
-1. Available payment methods is based on Plugins (which can be restricted by pricelist/market/country)
-2. Available shipping methods
-3. Selection model
-4. Form fields
-5. Country list
-```
+At any point when you modify the selection (by adding items, changing payment method or filling address details), Centra will return the fully updated selection in the response. This way, unless you receive an error message, you can always make sure your changes were applied. You can also fetch the current selection at any time by calling `GET /selection`.
+
+You can add products to the selection using one of the following API endpoints:
+* `POST /items/{item}`, where `{item}` is the same as in `items.item` returned by the `/products` endpoint,
+* `POST /items/{item}/quantity/{quantity}`, which allows you to add more items at once,
+* `POST /items/bundles/{item}`, which is used to add a flexible bundle to the selection.
+
+Remember, `item` specifies a product variant together with a specific size. Once an item is added to a selection, in the API reponse you will find a new **line ID**, under `selection.items.item.line`, e.g. `"line": "0416151f70083fe08677a929394a0351"`. A line ID defines a specific product variant in a specific size **for a specific selection/order**. This allows you to later remove the specific item from a selection using one of the API endpoints:
+* `POST /lines/{line}`
+* `POST /lines/{line}/quantity/{quantity}` to increase the quantity
+* `PUT /lines/{line}/quantity/{quantity}` to set specific quantity
+* `DELETE /lines/{line}`
+* `DELETE /lines/{line}/quantity/{quantity}`
+
+The line ID is also necessary for creating returns for completed orders - you will need to specify exactly which order line should be added to the return.
 
 ### Shipping options
 
@@ -356,11 +363,23 @@ GET /selection
 How quickly you can get your stuff, and how much it would cost.
 ```
 
+With every selection response, the API will include a `shippingMethods` table. In it you will receive all available shipping methods based on the current country of the selection. You can choose any of them using the `PUT /shipping-methods/{shippingMethod}` call.
+
+#### 'shipTo' parameter
+
+While working on Centra setup, you may sometimes encounter an error saying the current country is not "shippable". You will see this in the API selection model, under `location.shipTo`. If this param is `false`, you will not be able to complete an order for this country. You should make sure this country is included in at least one active shipping in Centra -> Setup -> Shipping.
+
+You can find out which countries are shippable with:
+* `GET /countries` - returns all shippable countries,
+* `GET /countries/all` (authorized mode) - returns all countries, each with a `shipTo` boolean.
+
 ### Checkout
 
 ```text
 Let us know everything we need to know to deliver your stuff to you!
 ```
+
+- Required checkout fields - Checkout API configuration
 
 #### Newsletter sign-up 2
 
