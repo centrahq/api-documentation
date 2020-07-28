@@ -361,7 +361,7 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
          "grandTotalValue": 3978.75,
          "grandTotalTaxValue": 795.75,
          "taxAdded": 0,
-         "TaxDeducted": 0,
+         "taxDeducted": 0,
          "internalComment": "",
          "otherComment": "",
          "taxBreakdown": [
