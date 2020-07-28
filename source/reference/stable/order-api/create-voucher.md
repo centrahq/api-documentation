@@ -55,14 +55,14 @@ This will create a simple voucher of `percentoff` or `priceoff` type
 
      - Type of the voucher. One of `percentoff` or `priceoff`
 
-   * - ``valueByPricelist``
+   * - ``value``
 
        .. type:: float
           :required: false
 
      - Value of the voucher. Is required if `percentoff` is a voucher type
 
-   * - ``value``
+   * - ``valueByPricelist``
 
        .. type:: object
           :required: false
@@ -117,7 +117,7 @@ This will create a simple voucher of `percentoff` or `priceoff` type
    {
       "name": "Welcome 10%",
       "stopDate": "2020-07-09",
-      "type": "percentOff",
+      "type": "percentoff",
       "value": 10,
       "store": 1,
       "markets": 1,
