@@ -14,7 +14,7 @@ taxonomy:
 Server mode API calls made from a web browser will be blocked. Be careful to never expose your shared secret.
 [/notice-box]
 [notice-box=info]
-You can further increase your store security by filtering allowed origins in the Checkout API plugin settings.
+You can further increase your store security by filtering allowed origins in the Checkout API plugin settings. This is highly recommended in Production environment, once you're done with testing and go live.
 [/notice-box]
 
 To read about and test the most commonly used endpoints, visit our [Swagger for Checkout API](https://docs.centra.com/swagger-ui/?api=CheckoutAPI). It also contains details of all data models used in Centra.
@@ -34,10 +34,6 @@ In standard operation those three variables are set based on the end-customer's 
 * If there is a Pricelist specific for this country, change to it and update the prices in current selection.
 * If there is a Market specific for this country, change to it and update the products in current selection, removing the unavailable ones.
 * If there is a Language specific for this country, and content (descriptions, category names, etc.) translations for this language are available, return translated content. Otherwise, fallback to the default language.
-
-You can display the full list of countries to which your store can ship to by calling `GET /countries`. Alternatively, in authenticated server mode you can display a list of all countries using `GET /countries/all`, where shippable countries will be returned with `"shipTo": true` parameter. Shippable countries:
-* Have at least one active Pricelist,
-* Have at least one active Shipping list.
 
 ## Elements of the webshop
 
@@ -367,7 +363,9 @@ With every selection response, the API will include a `shippingMethods` table. I
 
 #### 'shipTo' parameter
 
-While working on Centra setup, you may sometimes encounter an error saying the current country is not "shippable". You will see this in the API selection model, under `location.shipTo`. If this param is `false`, you will not be able to complete an order for this country. You should make sure this country is included in at least one active shipping in Centra -> Setup -> Shipping.
+While working on Centra setup, you may sometimes encounter an error saying the current country is not "shippable". You will see this in the API selection model, under `location.shipTo`. If this param is `false`, you will not be able to complete an order for this country. You should make sure this country is included in at least one active shipping in Centra -> Setup -> Shipping. Shippable countries:
+* Belong to at least one active Pricelist,
+* Belong to at least one active Shipping list.
 
 You can find out which countries are shippable with:
 * [GET /countries](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/get_countries) - returns all shippable countries,
