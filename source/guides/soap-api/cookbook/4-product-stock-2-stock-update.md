@@ -24,7 +24,7 @@ This also means you should fetch orders from Centra before sending stock updates
 
 ## Preconditions
 
-- The products must exist in Centra
+- You probably want to update stock on products already existing in Centra. Remember, if a product does not exist, it will be created
 
 ## Request
 

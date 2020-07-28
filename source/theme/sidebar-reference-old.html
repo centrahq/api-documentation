@@ -254,6 +254,16 @@
    'Accept supplier delivery',
    'POST /supplier-deliveries/*id*'
   ) }}
+  {{ sidebar_item(
+   'reference/stable/order-api/create-voucher',
+   'Create voucher',
+   'POST /voucher'
+  ) }}
+  {{ sidebar_item(
+   'reference/stable/order-api/get-voucher',
+   'Get voucher',
+   'GET /vouchers/*id*'
+  ) }}
  </ul>
 </div>
 
@@ -274,6 +284,16 @@
    'reference/stable/subscription-api/create-subscription',
    'Create subscription',
    'POST /subscription/order'
+  ) }}
+  {{ sidebar_item(
+   'reference/stable/subscription-api/update-subscription',
+   'Update subscription',
+   'PUT /subscription/subscription/*id*'
+  ) }}
+  {{ sidebar_item(
+   'reference/stable/subscription-api/get-subscriptions',
+   'Get customer subscriptions',
+   'GET /subscription/subscription?customerEmail=*email*'
   ) }}
   {{ sidebar_item(
    'reference/stable/subscription-api/register-payment',
