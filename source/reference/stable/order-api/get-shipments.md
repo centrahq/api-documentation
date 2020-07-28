@@ -271,6 +271,33 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
                      .. type:: array
 
                    - Array of containing items for bundle
+          * - ``taxBreakdown``
+
+              .. type:: array
+
+            - Lists all tax rules applied to the order.
+
+              .. list-table::
+                 :widths: auto
+
+                 * - ``description``
+
+                     .. type:: string
+
+                   - Text description of tax rule. ex: VAT
+
+                 * - ``taxPercent``
+
+                     .. type:: float
+
+                   - Percentage of tax. ex 25
+
+                 * - ``value``
+
+                     .. type:: float
+
+                   - How much tax. ex 20
+
 ```
 
 ## Response example
@@ -350,8 +377,17 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
          "voucherValue": 0,
          "grandTotalValue": 3978.75,
          "grandTotalTaxValue": 795.75,
+         "taxAdded": 0,
+         "taxDeducted": 0,
          "internalComment": "",
          "otherComment": "",
+         "taxBreakdown": [
+           {
+             "description": "VAT",
+             "taxPercent": 25,
+             "value": 795.75
+           }
+         ],
          "products": [
            {
              "lineId": "43243",
