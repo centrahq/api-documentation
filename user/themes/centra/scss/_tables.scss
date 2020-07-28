@@ -72,3 +72,14 @@ table {
     }
   }
 }
+
+@media screen and (max-width: $main-mobile-navigation-breakpoint) {
+  table {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  td {
+    padding: 9px;
+  }
+}
