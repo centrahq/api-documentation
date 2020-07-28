@@ -254,6 +254,23 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
 
                    - Quantity of this specific product item.
 
+                 * - ``isBundle``
+
+                     .. type:: bool
+
+                   - Flag showing if product is bundle
+
+                 * - ``isPartOfBundle``
+
+                     .. type:: int
+
+                   - Bundle id 
+
+                 * - ``bundle``
+
+                     .. type:: array
+
+                   - Array of containing items for bundle
 ```
 
 ## Response example
@@ -358,7 +375,9 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
                     "name": "Default warehouse",
                     "itemQty": "1"
                 }
-             ]
+             ],
+            "isBundle": false,
+            "isPartOfBundle": "217"
            },
            {
              "lineId": "43244",
@@ -376,7 +395,36 @@ Will list all Good to Go-shipments that are not sent. Oldest first.
              "weightUnit": "kg",
              "countryOfOrigin": "CI",
              "harmCode": "12345",
-             "comment": ""
+             "comment": "",
+             "isBundle": true,
+             "bundle": [
+               {
+                 "lineId": "43243",
+                 "sku": "S123K456U1",
+                 "variantSku": "",
+                 "sizeSku": "",
+                 "name": "Product #1",
+                 "variant": "White",
+                 "size": "XS",
+                 "ean": "1234567890123",
+                 "qty": 1,
+                 "originalPrice": 500.5,
+                 "price": 450.5,
+                 "weight": 2,
+                 "weightUnit": "kg",
+                 "countryOfOrigin": "DE",
+                 "harmCode": "12345",
+                 "comment": "",
+                 "warehouses": [
+                    {
+                        "name": "Default warehouse",
+                        "itemQty": "1"
+                    }
+                 ],
+                "isBundle": false,
+                "isPartOfBundle": "217"
+               },
+            ]
            }
          ]
        }

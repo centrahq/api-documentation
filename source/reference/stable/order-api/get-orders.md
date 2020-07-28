@@ -158,6 +158,23 @@ This will fetch the orders allowed for the plugin being set up.
 
                    - Quantity of this specific product item.
 
+                 * - ``isBundle``
+
+                     .. type:: bool
+
+                   - Flag showing if product is bundle
+
+                 * - ``isPartOfBundle``
+
+                     .. type:: int
+
+                   - Bundle id 
+
+                 * - ``bundle``
+
+                     .. type:: array
+
+                   - Array of containing items for bundle
 ```
 
 ## Response example
@@ -269,7 +286,9 @@ This will fetch the orders allowed for the plugin being set up.
                     "name": "Default",
                     "itemQty": 1
                 }
-             ]
+             ],
+            "isBundle": false,
+            "isPartOfBundle": "217"
            },
            {
              "lineId": "43244",
@@ -302,7 +321,46 @@ This will fetch the orders allowed for the plugin being set up.
                     "name": "Default",
                     "itemQty": 2
                 }
-             ]             
+             ],
+             "isBundle": true,
+             "bundle": [
+               {
+                 "lineId": "43243",
+                 "sku": "S123K345U1",
+                 "variantSku": "",
+                 "sizeSku": "",
+                 "ean": "1234567890123",
+                 "name": "Product #1",
+                 "variant": "White",
+                 "brand": "Brand",
+                 "size": "XS",
+                 "qty": 1,
+                 "originalPrice": 500.5,
+                 "price": 450.5,
+                 "weight": 2,
+                 "weightUnit": "kg",
+                 "countryOfOrigin": "DE",
+                 "harmCode": "12345",
+                 "comment": "",
+                 "otherComment": "",
+                 "taxPercent": 0,
+                 "priceDiscount": 50.0,
+                 "priceDiscountAsPercent": 0,
+                 "taxValue": 112.63,
+                 "totalPrice": 450.5,
+                 "anyDiscount": false,
+                 "priceEachWithoutTax": 337.87,
+                 "priceEachReduction": 0,
+                 "warehouses": [
+                    {
+                        "name": "Default",
+                        "itemQty": 1
+                    }
+                 ],
+                "isBundle": false,
+                "isPartOfBundle": "217"
+               },
+            ]
            }
          ],
          "totalItemsDiscount": 38.11,
