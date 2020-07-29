@@ -402,6 +402,7 @@ Lorem ipsum.
 See the implementation details for:
 * [Stripe Checkout](/plugins/stripe)
 * [Klarna Checkout v3](/plugins/klarna)
+* [PayPal](/plugins/paypal)
 * [Adyen Checkout beta](/plugins/adyen)
 
 #### Payment country
