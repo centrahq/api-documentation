@@ -284,7 +284,7 @@ If you switch to a country which is not shippable (`"shipTo": false`), you will 
 Here are the terms and conditions.
 ```
 
-Don't forget that for a proper payment you need to add a Front End consent checkbox (or checkboxes). This needs to be verified by sending a boolean `"termsAndConditions": true` in your [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) call. Otherwise, you will receive the below error, which you should handle by displaying a message abount consents being required for checkout process to complete.
+Don't forget that for a proper payment you need to add a Front End consent checkbox (or checkboxes). This needs to be verified by sending a boolean `"termsAndConditions": true` in your [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) call. Otherwise, you will receive the below error, which you should handle by displaying a message about consents being required for checkout process to complete.
 
 ```json
 {
@@ -295,11 +295,19 @@ Don't forget that for a proper payment you need to add a Front End consent check
 }
 ```
 
-### My pages
+### Customer registration and login
 
 ```text
 Would you like your usual?
 ```
+
+Depending on your business design, you may want to allow your customers to register and log in on your website. This is not a requirement in Centra, though. By default, when an order with an unique e-mail address is completed, Centra will create a Customer with a property `Registered user: No`.
+
+If you prefer to register and sign up your customers on your website and in Centra, you can do that by calling [POST /register](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_register) endpoint. You need to at least specify user e-mail and password. In addition, you can add their name and address details, plus any `consents` or `customerClubFields` you need. You can also specify if this customer registered to receive a newsletter or not.
+
+Once the customer is registered, you can log them in using [POST /login/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_login__email_). Once logged in, you can call [PUT /customer/update](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/put_customer_update), [PUT /email](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/put_email), [PUT /address](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/put_address) or [PUT /password](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/put_password) to modify details of currently logged in user.
+
+To fetch details of currently logged user, call [GET /customer](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/get_customer). You can reset their password by calling [POST /password-reset-email/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_password_reset_email__email_). Once done, they can [POST /logout](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_logout) from your website.
 
 ### Newsletter sign-up form
 
@@ -307,7 +315,7 @@ Would you like your usual?
 We have some cool stuff we'd love to show you now and in the future!
 ```
 
-You can subscribe your customers for e-mail newsletter using [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint. In it, you can choose to send `country` and `language` parameters, which can be used to control the newsletter language and to filter newsletter updates on products available in customer's Market. Registered newsletter e-mails can be found in Centra backend under Retail -> Customers -> Newsletter.
+You can subscribe your customers for e-mail newsletter using [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint. In it, you can choose to send `country` and `language` parameters, which can be used to control the newsletter language and to filter newsletter updates on products available in customer's Market. Registered newsletter e-mails can be found in Centra back end under Retail -> Customers -> Newsletter.
 
 [notice-box=alert]
 Be mindful to properly parse and encode the e-mail subscription field in your Front End. It's especially important characters like `@` and `+` are properly handled. Otherwise, for example, the plus `+` character can be wrongly replaced with a space, which can throw `Expected type e-mail` error.
@@ -329,7 +337,7 @@ To register products or specific product sizes for customer newsletter, you shou
 Would you sign up if we offered you a discount?
 ```
 
-[Automatic voucher on newsletter signup?]
+[Automatic voucher on newsletter sign-up - is it possible in Centra?]
 
 ### Basket / selection
 
@@ -344,7 +352,7 @@ You can add products to the selection using one of the following API endpoints:
 * [POST /items/{item}/quantity/{quantity}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item__quantity__quantity_), which allows you to add more items at once,
 * [POST /items/bundles/{item}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items_bundles__item_), which is used to add a flexible bundle to the selection.
 
-Remember, `item` specifies a product variant together with a specific size. Once an item is added to a selection, in the API reponse you will find a new **line ID**, under `selection.items.item.line`, e.g. `"line": "0416151f70083fe08677a929394a0351"`. A line ID defines a specific product variant in a specific size **for a specific selection/order**. This allows you to later remove the specific item from a selection using one of the API endpoints:
+Remember, `item` specifies a product variant together with a specific size. Once an item is added to a selection, in the API response you will find a new **line ID**, under `selection.items.item.line`, e.g. `"line": "0416151f70083fe08677a929394a0351"`. A line ID defines a specific product variant in a specific size **for a specific selection/order**. This allows you to later remove the specific item from a selection using one of the API endpoints:
 * [POST /lines/{line}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_lines__line_)
 * [POST /lines/{line}/quantity/{quantity}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_lines__line__quantity__quantity_) to increase the quantity
 * [PUT /lines/{line}/quantity/{quantity}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_lines__line__quantity__quantity_) to set specific quantity
@@ -363,7 +371,7 @@ With every selection response, the API will include a `shippingMethods` table. I
 
 #### 'shipTo' parameter
 
-While working on Centra setup, you may sometimes encounter an error saying the current country is not "shippable". You will see this in the API selection model, under `location.shipTo`. If this param is `false`, you will not be able to complete an order for this country. You should make sure this country is included in at least one active shipping in Centra -> Setup -> Shipping. Shippable countries:
+While working on Centra setup, you may sometimes encounter an error saying the current country is not "shippable". You will see this in the API selection model, under `location.shipTo`. If this parameter is `false`, you will not be able to complete an order for this country. You should make sure this country is included in at least one active shipping in Centra -> Setup -> Shipping. Shippable countries:
 * Belong to at least one active Pricelist,
 * Belong to at least one active Shipping list.
 
@@ -457,3 +465,5 @@ POST /payment:
 ```text
 Thanks for your order!
 ```
+
+Once you have successfully called [POST /payment-result](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment_result), the selection will become an Order in Centra, and a proper receipt will be generated. Please note that you should only call `payment-result` once per each order. If you need to retrieve the order receipt later on your website, you can fetch it using the [GET /receipt](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/get_receipt) endpoint.
