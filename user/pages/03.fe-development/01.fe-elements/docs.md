@@ -218,11 +218,11 @@ In a product listing (a category page), you would usually list only the main pro
 }
 ```
 
-This array is sorted in the order you set in the Centra admin panel. Notice that some categories in the array are sub-categories of another category. You see this on last two that have the field `inCategory` with the category ID of the category they are a subcategory of. Also notice the name array and uri of these, they contain the full name and uri, of the main category and under-categories.
+This array is sorted in the order you set in the Centra admin panel. Notice that some categories in the array are sub-categories of another category. You see this on last two that have the field `inCategory` with the category ID of the category they are a subcategory of. Also notice the name array and URI of these, they contain the full name and URI, of the main category and under-categories.
 
 #### Search and filtering
 
-Checkout API allows you to filter on any of the pre-existing and custom product attributes. To do that, you need to select them in the Checkout API plugin configuration:
+Checkout API allows you to filter on any of the preexisting and custom product attributes. To do that, you need to select them in the Checkout API plugin configuration:
 
 ![CheckoutFilters](checkout-filters.png)
 
@@ -294,6 +294,10 @@ Don't forget that for a proper payment you need to add a Front End consent check
     }
 }
 ```
+
+[notice-box=info]
+You can configure the Checkout API plugin to *not* require terms and conditions in checkout, but we recommend you change this before your store goes live.
+[/notice-box]
 
 ### Customer registration and login
 
