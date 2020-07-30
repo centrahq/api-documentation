@@ -401,6 +401,8 @@ Even before completing the checkout and proceeding to payment, you can set some 
 Now that you've entered your e-mail, sure you wouldn't like to sign up for some promos?
 ```
 
+Now that your customer has entered their e-mail might be a good moment to suggest a newsletter subscription. You can do it at any time by sending [PUT /payment-fields](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields) with `newsletter: true`, or add this parameter to the [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) call.
+
 ### Payment
 
 ```text
