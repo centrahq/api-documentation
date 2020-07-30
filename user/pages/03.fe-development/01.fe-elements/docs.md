@@ -407,7 +407,16 @@ Now that you've entered your e-mail, sure you wouldn't like to sign up for some 
 Pay up!
 ```
 
-Lorem ipsum.
+Once the selection is finalized, shipping and payments methods selected, it's time to finalize the order by completing the payment. This is initiated by calling [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment).
+
+The following parameters are required to complete the payment step. They can either be provided in the `POST /payment` call, or be pre-entered using the [PUT /payment-fields](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields) endpoint:
+* `shippingMethod` - needs to be selected,
+* `paymentMethod`, `paymentReturnPage` and `paymentFailedPage` - required by all payment methods,
+* `termsAndConditions` - if required in Checkout API plugin, which is recommended,
+* `address` - if both billing and shipping address are the same, or you can also add `shippingAddress` if they are not,
+* `consents` table - optional.
+
+See our Swagger for detailed examples of [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) usage. Once this endpoint is called, Centra will perform the final stock check (and return an error in case the stock has ran out in the meantime), verify if all required checkout fields were filled out, and send a payment request to the selected payment provider, awaiting the results.
 
 #### Payment plugins
 
@@ -437,32 +446,77 @@ If the zip code is in a different format, Centra will return an error:
 
 [notice-box=info]If you did not enable taxes per zip code in your Centra Tax Rules, for now any zip code will be accepted with US orders. However, please beware that this behavior will change in the near future, so implementing US zip code validation will soon be a must.[/notice-box]
 
-#### Payment steps
+### Payment results
 
-```text
-POST /payment REQUEST
-- paymentMethod: kco
-- address: {...}
-- shippingAddress: {...}
-- paymentReturnPage: URL
-- paymentFailedPage: URL
+After [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) call, Centra will await a status response from the Payment Service Provider. See the Swagger for examples. Depending on the results, Centra will return a response with one of the actions: `redirect`, `form`, `success` or `failed`.
 
-POST /payment RESPONSE
-- action: redirect/success/failed
-- formHTML
-- formFields
-- URL (for redirect)
+#### Example response: `redirect`
 
-POST /payment-results
-- 201 success
-  OrderCreatedModel
-
-POST /payment:
-- Checks payment methods
-- Checks stock
-- Checks shipping
-- Checkout details (addres, e-mail, phone)
+[POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) response:
+```json
+{
+  "token": "0ms3rnl09a4i4brtbitt1o0cu1",
+  "action": "redirect",
+  "url": "https:\/\/ecommerce.externaltest.payex.com\/CreditCard\/Pay?orderRef=45bf8288461fa82be9014758f341f1b930"
+}
 ```
+
+This means you should redirect the visitor to the URL provided, the payment page of Payex. The `paymentReturnPage` and `paymentFailedPage` in the request is where the visitor will return after the payment at Payex. You must have these pages in your front end.
+
+When the customer ends up on `paymentFailedPage`, you know that payment failed. When the customer ends up on `paymentReturnPage`, you **must** ask the API if the payment was a success, because it can still fail. You do this by forwarding the GET and POST variables that the visitor had when it accessed the paymentReturnPage to the API:
+
+[POST /payment-result](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment_result) request:
+```json
+{
+    "paymentMethodFields": {
+        "orderNum": "1114",
+        "paymentMethod": "payex",
+        "orderRef": "ad0eccd6a1e9402facf09f6ac49e848f"
+    }
+}
+```
+
+[notice-box=alert]
+Be mindful to keep the original formatting of the parameters you receive from payment provider and pass on to Centra. Depending on the payment method they may be written in camelCase (like orderRef in Payex) or in snake_case (like klarna_order in Klarna). Sending wrong parameter names to Centra may cause problems with receiving order confirmation and prevent you from displaying a proper receipt.
+[/notice-box]
+
+Response (fragment):
+```json
+HTTP/1.1 200 OK
+{
+    "token": "dacdi99cb9q3vv5gl5lac6gmj6",
+    "order": "1114",
+    "status": "untouched",
+    "..."
+}
+```
+
+#### Example response: `form`
+
+[POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) request:
+```json
+{
+    "paymentReturnPage":"https://example.com/payment-return-page",
+    "paymentFailedPage":"https://example.com/payment-failed-page",
+    "termsAndConditions":true,
+    "address":{
+        "country":"SE"
+    }
+}
+```
+
+[POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) response:
+```json
+{
+"token":"0ms3rnl09a4i4brtbitt1o0cu1",
+"action":"form",
+"formHtml":"<div id=\"klarna-checkout-container\" style=\"overflow-x: hidden;\">\n    <script type=\"text\/javascript\">\n    \/* <![CDATA[ *\/\n        (function(w,k,i,d,n,c,l,p){\n            w[k]=w[k]||function(){(w[k].q=w[k].q||[]).push(arguments)};\n            w[k].config={\n                container:w.document.getElementById(i),\n                ORDER_URL:'https:\/\/checkout.testdrive.klarna.com\/checkout\/orders\/FZKBVVGD7PIIFMOOOE5N61Y5TKY',\n                AUTH_HEADER:'KlarnaCheckout MsmS7sUBsXVCIzo80FlZ',\n                LAYOUT:'desktop',\n                LOCALE:'sv-se',\n                ORDER_STATUS:'checkout_incomplete',\n                MERCHANT_TAC_URI:'http:\/\/example.com\/terms.html',\n                MERCHANT_TAC_TITLE:'Young Skilled',\n                MERCHANT_NAME:'Young Skilled',\n                MERCHANT_COLOR:'',\n                GUI_OPTIONS:[],\n                ALLOW_SEPARATE_SHIPPING_ADDRESS:\n                false,\n                PURCHASE_COUNTRY:'swe',\n                PURCHASE_CURRENCY:'sek',\n                NATIONAL_IDENTIFICATION_NUMBER_MANDATORY:\n                false,\n                ANALYTICS:'UA-36053137-1',\n                TESTDRIVE:true,\n                PHONE_MANDATORY:true,\n                PACKSTATION_ENABLED:false,\n                BOOTSTRAP_SRC:'https:\/\/checkout.testdrive.klarna.com\/170312-6cde26c\/checkout.bootstrap.js',\n                PREFILLED: false\n            };\n            n=d.createElement('script');\n            c=d.getElementById(i);\n            n.async=!0;\n            n.src=w[k].config.BOOTSTRAP_SRC;\n            c.appendChild(n);\n            try{\n                p = w[k].config.BOOTSTRAP_SRC.split('\/');\n                p = p.slice(0, p.length - 1);\n                l = p.join('\/') +\n                    '\/api\/_t\/v1\/snippet\/load?order_url=' +\n                    w.encodeURIComponent(w[k].config.ORDER_URL) + '&order_status=' +\n                    w.encodeURIComponent(w[k].config.ORDER_STATUS) + '&timestamp=' +\n                    (new Date).getTime();\n                ((w.Image && (new w.Image))||(d.createElement&&d.createElement('img'))||{}).src=l;\n            }catch(e){}\n        })(this,'_klarnaCheckout','klarna-checkout-container',document);\n    \/* ]]> *\/\n    <\/script>\n    <noscript>\n        Please <a href=\"http:\/\/enable-javascript.com\">enable JavaScript<\/a>.\n    <\/noscript>\n<\/div>\n"
+}
+```
+
+Klarna checkout behaves slightly different, as it renders its own checkout form which is presented to the customer. This response has action `form`, and a `formHtml`. You need to display this `formHtml` in the front end. Later, Klarna should redirect the visitor to the `paymentReturnPage` or `paymentFailedPage` after payment. Klarna checkout gives us the customer's address after the payment is done, so you only need to send the country to the API. We need the country to calculate prices and taxes correctly.
+
+After payment is completed, you should finalize the order in the same manner as in previous example, by sending all fields returned by Klarna to [POST /payment-result](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment_result) endpoint.
 
 ### Receipt page
 
