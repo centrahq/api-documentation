@@ -9,7 +9,8 @@
   max-height: 100vh;
   position: sticky;
   top: 0px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   .navigation__centra-logo {
     width: 175px;
