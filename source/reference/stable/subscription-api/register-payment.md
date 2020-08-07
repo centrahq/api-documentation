@@ -162,6 +162,12 @@ This will complete the subscription. Often called when user comes back to `payme
        * ``Month`` interval is in months.
        * ``Day`` interval is in days.
 
+   * - ``receipt``
+
+       .. type:: string
+
+     - Html snippet that contains a receipt for a subscription payment. Is not null for Klarna payments.
+
    * - ``error``
 
        .. type:: boolean
@@ -199,7 +205,8 @@ This will complete the subscription. Often called when user comes back to `payme
      "startDate": "2020-05-05",
      "nextOrderDate": "2020-05-06",
      "interval": 14,
-     "intervalType": "Day"
+     "intervalType": "Day",
+     "receipt": "<div>...</div>"
    }
 ```
 
