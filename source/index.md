@@ -4,7 +4,7 @@ Centra has a few different APIs used for different purposes. This documentation 
 
 ## From one developer to another, we’re here to help you
 
-Building an experience on Centra’s APIs? [E-mail partner support](https://support.centra.com/customer/portal/emails/new) to get setup with real-time Slack support, or sign up for Centra Certified Developer Training. 
+Building an experience on Centra’s APIs? [E-mail partner support](mailto:support@centra.com) to get setup with real-time Slack support, or sign up for Centra Certified Developer Training. 
 
 ## Get access now
 
