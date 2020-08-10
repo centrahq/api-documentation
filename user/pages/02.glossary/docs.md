@@ -358,6 +358,9 @@ Terms is a section where you setup your incoterms and payment terms to be used f
 
 ## **U**
 
+### **Unallocated (stock)**  
+See [Demand](#demand-stock).
+
 ### **Unlinked (stock)**  
 The unlinked quantity of said product. This field is only used if you’re using the Supplier Module.
 
