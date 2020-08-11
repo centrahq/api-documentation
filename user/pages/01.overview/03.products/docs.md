@@ -72,7 +72,7 @@ Fixed bundles consist of a pre-defined number of sections, in each of which the 
 Flexible bundles can consist of different numbers of sections. For example, a bundle can be a custom set of dinner dishes - a selectable soup vase, two bowls and any number of dinner plates - for 1, 2 or 4 persons, each separately selectable. Because the number of sections is not absolute, these are not possible to be defined as a fixed bundle.
 
 [notice-box=info]
-Implementing flexible bundles is technically more difficult to implement, and requires custom adjustments to your front end to support them. They should also be enabled in the Checkout API plugin configuration. If you're interested in implementing flexible bundles, please contact Centra Success team.
+Implementing flexible bundles is technically more difficult, and requires custom adjustments to your front end to support them. They should also be enabled in the Checkout API plugin configuration. If you're interested in implementing flexible bundles, please contact Centra Success team.
 [/notice-box]
 
 #### Pre-packs
