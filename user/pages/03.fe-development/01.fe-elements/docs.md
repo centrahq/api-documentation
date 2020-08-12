@@ -226,8 +226,6 @@ Checkout API allows you to filter on any of the preexisting and custom product a
 
 ![CheckoutFilters](checkout-filters.png)
 
-Remember to trigger ElasticSearch re-cache if you change the selected filters.
-
 From now on you can use these filters in your `POST /products` calls. For example, if you're looking for a product with SKU "BB7112" and with swatch color "Red", simply run:
 
 ```
