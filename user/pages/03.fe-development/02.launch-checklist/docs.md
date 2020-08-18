@@ -32,7 +32,7 @@ Here is a list of things to consider and make sure work when testing the site be
 | --- | --- |
 | Design | Make sure there is design for error message handling and 404s |
 | | Any hosted payment pages that needs customization (Adyen, DIBS?) |
-| Design | Will you offer 100% discounts? Does your payment setup support [payments with 0 total](/fe-development/payments/handling-0-payments)? Have you tested it? |
+| | Will you offer 100% discounts? Does your payment setup support [payments with 0 total](/fe-development/payments/handling-0-payments)? Have you tested it? |
 
 ### Tests needed before launch
 
