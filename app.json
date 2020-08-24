@@ -1,19 +1,18 @@
 {
-    "addons": [
-  
-    ],
-    "buildpacks": [
-  
-    ],
-    "env": {
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
     },
-    "formation": {
-      "web": {
-        "quantity": 1
-      }
+    {
+      "url": "heroku/php"
     },
-    "name": "api-documentation",
-    "scripts": {
-    },
-    "stack": "container"
+    {
+      "url": "https://github.com/centrahq/heroku-buildpack-run"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  }
 }
