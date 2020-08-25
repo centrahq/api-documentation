@@ -24,8 +24,10 @@ Physical | FTA | Allocated | Linked | Demand | Unshipped | Available Now | Unlin
 
 * **Physical** = FTA + Allocated  
 This is the quantity that you have on the shelf in the warehouse. If there are any differences, Centra wouldn’t know about it.
-* **FTA** = Physical - Allocated  
-Free to Allocate. This is the quantity of said product which is available to allocate on orders, or simply, this is the quantity available.
+* **FTA** = Physical - Allocated - Warehouse Threshold/Product Variant offset  
+Free to Allocate. This is the quantity of said product which is available to allocate on orders, or simply, this is the quantity available. 
+Quantity might be protected from being sold by "Warehouse Threshold" or "Product variant offset" setting. 
+If product offset is greater than 0, it overrides warehouse threshold settings.
 * **Allocated** = Physical - FTA  
 The number of said products that are allocated on orders or shipments which are not yet completed.
 * **Linked**  
@@ -44,3 +46,9 @@ The incoming quantity of said product. This field is only populated if you’re 
 This field will be populated with data if said product is on a delivery created from a supplier order, which are not yet accepted.
 * **Available** = FTA - Demand + Incoming  
 The total of said product’s stock including incoming supplier orders.
+
+Available options to set threshold or offset are available in AMS:  
+* Warehouse threshold setting: Setup -> Warehouses -> Add threshold  
+* Product variant offset: Edit stock settings -> Offset
+
+It's worth mentioning that those options does not apply to AMS full admin, that selection will not be blocked by the settings.
