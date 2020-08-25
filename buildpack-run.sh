@@ -51,3 +51,4 @@ chmod a+rwx -R ./cache
 
 mkdir user/themes/centra/css -p
 sass user/themes/centra/scss/style.scss:user/themes/centra/css/style.css --style compressed
+postcss user/themes/centra/css/style.css --use=autoprefixer --map=false --output=user/themes/centra/css/style.css
