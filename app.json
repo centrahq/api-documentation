@@ -1,19 +1,25 @@
 {
-    "addons": [
-  
-    ],
-    "buildpacks": [
-  
-    ],
-    "env": {
+  "stack": "heroku-18",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
     },
-    "formation": {
-      "web": {
-        "quantity": 1
-      }
+    {
+      "url": "heroku/php"
     },
-    "name": "api-documentation",
-    "scripts": {
-    },
-    "stack": "container"
+    {
+      "url": "https://github.com/centrahq/heroku-buildpack-run"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "env": {
+    "GITHUB_AUTH_TOKEN": {	
+      "required": true,	
+      "description": "Inherited from parent app"	
+    }
+  }
 }
