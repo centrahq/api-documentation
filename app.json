@@ -15,5 +15,11 @@
     "web": {
       "quantity": 1
     }
+  },
+  "env": {
+    "GITHUB_AUTH_TOKEN": {	
+      "required": true,	
+      "description": "Inherited from parent app"	
+    }
   }
 }
