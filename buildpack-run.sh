@@ -28,7 +28,7 @@ mv ../pages ./user/pages
 rm -rf ./user/themes
 
 mkdir temp && \
-curl -H "Authorization: token $GITHUB_AUTH_TOKEN" -OL https://api.github.com/repos/centrahq/centra-grav-themes/tarball/master | \
+curl -H "Authorization: token $GITHUB_AUTH_TOKEN" -L https://api.github.com/repos/centrahq/centra-grav-themes/tarball/master | \
 tar -xz --strip-components=1 -C temp && \
 mv ./temp/themes ./user/themes && \
 mv ./temp/shortcodes ./user/shortcodes && \
@@ -49,5 +49,5 @@ bin/gpm install tntsearch
 bin/plugin tntsearch index
 chmod a+rwx -R ./cache
 
-RUN mkdir user/themes/centra/css -p
-RUN sass user/themes/centra/scss/style.scss:user/themes/centra/css/style.css --style compressed
+mkdir user/themes/centra/css -p
+sass user/themes/centra/scss/style.scss:user/themes/centra/css/style.css --style compressed
