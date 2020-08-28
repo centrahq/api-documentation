@@ -11,6 +11,7 @@ excerpt: It is possible to set up the Cart Abandonment feature to e-mail your cu
 If you're using Klarna Checkout for payment, you will need to configure the following items:
 * [Klarna Checkout v3 plugin](/centra-sections/settings/plugins/klarnacheckoutv3),
 * Rulemailer mailing plugin,
+* CA automation in Rule app,
 * Additional Front End changes to support event signalling between your webshop, Klarna plugin and Centra CheckoutScript,
 * Additional Front End change to support recovering cart based on selection ID.
 
@@ -21,6 +22,8 @@ For any payment method other than Klarna Checkout, you will only need to configu
 ## How does Cart Abandonment feature work?
 
 In short, you need to have CA enabled in the Rulemailer plugin (see [Rulemailer plugin configuration](#rulemailer-plugin-configuration)), and you need to send a proper payload when submitting the payment - with customer's e-mail and `"cartAbandonmentEmail": true` parameter.
+
+In Rule, you should create an automation that will trigger when a subscriber with `cartAbandonmentEmail` is received. This automation should wait the pre-defined period of time (much longer than it usually takes to complete a payment) and then trigger a Cart Abandonment e-mail to your subscriber, based on the pre-defined template. If the order is completed before the timer is up, the CA tag will be removed from the subscriber, and so the e-mail will not be triggered.
 
 ### Using Klarna Checkout
 
@@ -61,9 +64,15 @@ The only additional configuration required for `Rulemailer v4` is to:
 * Enable Cart Abandonment (tag `orderCreated`): should be set to `Yes`,
 * Cart link: should be set to the URL your webshop uses for cart abandonment, e.g. `https://example.com/abandoned-cart/{selection}`.
 
-![](rule-config.png)
+![](rule-plugin-config.png)
 
-Additionally, in your Rule configuration panel you should set the time interval it takes for CA e-mail to be triggered after receiving `orderCreated` tag, if `orderCompleted` is not received. Make sure this interval is not "immediate", but the specific time is up to you - it might be one hour, six hours or even one day.
+Additionally, in your Rule configuration panel you should set the time interval it takes for CA e-mail to be triggered after receiving `orderCreated` tag, if `orderCompleted` is not received. Make sure this interval is not immediate, but the specific time is up to you - it might be one hour, six hours or even one day.
+
+## Rule app configuration
+
+In your account in Rule, you need to add a simple automation which will trigger on the order tag `orderCreated` and start the timer until sending the CA e-mail. You can attach this automation to any e-mail or SMS template in Rule. You don't need to act on receiving `orderCompleted` tag, which is sent when the payment was successful and order was completed. Rule will automatically remove the `orderCreated` tag from the subscriber when that happens, so the CA e-mail countdown will be stopped. Finally, you should decide how quickly you will trigger the Cart Abandonment e-mails.
+
+![](rule-automation-config.png)
 
 ## Klarna Checkout v3 configuration
 
