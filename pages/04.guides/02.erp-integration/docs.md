@@ -108,6 +108,10 @@ All updates return the same type of response. `<success>` can be true or false. 
 <notices/>
 ```
 
+### Special characters and checkout fields limitations
+
+Depending on your ERP, there might be some limitations when it comes to the allowed types of characters, or to the allowed number of characters per field. Centra Admin backend will accept any characters set, and the fields lengths are designed to not be a limiting factor. If your ERP has known limits, e.g. allowing only 20 characters each for the customer's first and last name, you should make sure your front end partner is aware of this and ask them to introduce those limits in the checkout fields. Similarily, if your ERP only accepts ASCII characters, you would probably want to strip them in checkout, so that (for example) "Michael Ständer" is sent as "Michael Stander" into Centra.
+
 ### API versions
 
 Version control is handled by adding new fields to the specification, rather than releasing new versions of the API, i.e., there i only one version in production at the same time. You will always be running that version. 
