@@ -76,7 +76,7 @@ In your account in Rule, you need to add a simple automation which will trigger 
 
 ## Klarna Checkout v3 configuration
 
-KCOv3 plugin should be configured according to the instructions found in [Configure Klarna Checkout](/centra-sections/settings/plugins/klarnacheckoutv3).
+KCOv3 plugin should be configured according to the instructions found in [Klarna Checkout configuration guide](https://support.centra.com/centra-sections/settings/plugins/klarnacheckoutv3).
 
 ## Additional Front End configuration
 
