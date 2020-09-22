@@ -121,33 +121,6 @@ Please note that when the option you've selected is `0/false` the property will 
 
 The `group` on the attribute inside the `config.php` specifies where the attribute should be placed. The following groups exist today:
 
-<!--
-```eval_rst
-.. list-table::
-   :header-rows: 1
-
-   * - Group
-     - Description
-
-   * - ``product``
-     - Listed under General Attributes on all Products.
-
-   * - ``variation``
-     - Listed under each Variant on all Products.
-
-   * - ``order``
-     - Listed on each Order.
-
-   * - ``customer``
-     - Listed under each Customer.
-
-   * - ``account``
-     - Listed under each Account (B2B).
-
-   * - ``sizechart``
-     - Listed under each size in a sizechart.
-```
--->
 | **Group** | **Description** |
 | --- | --- |
 | `product` | Listed under General Attributes on all Products. |
@@ -178,54 +151,15 @@ Element-type is inside the `elements`-property for the attribute `config.php`:
 
 The following element types exist today. Not all of them are supported for the Dynamic attributes (which are shown inline on each product/variant), so the support for the different options are listed below:
 
-```eval_rst
-.. list-table::
-   :header-rows: 1
-
-   * - Type
-     - Description
-     - Support
-     - Options
-
-   * - ``input``
-     - .. figure:: images/attribute-input.png
-     - Mapped/Dynamic
-     - Set class of the input (double the size of the input): ``'class' => 'double'``
-
-   * - ``textarea``
-     - .. figure:: images/attribute-textarea.png
-     - Mapped/Dynamic
-     - Set class of the textarea: ``'class' => 'double'``
-
-   * - ``readonly``
-     - .. figure:: images/attribute-readonly.png
-     - Dynamic
-     - Allows a field without the ability to edit it. Used for showing up IDs or things that should not be changed.
-
-   * - ``boolean``
-     - .. figure:: images/attribute-boolean.png
-     - Mapped/Dynamic
-     - Options for the radio inputs (default is always 0): ``'options' => [[1,'Yes'],[0,'No']]``
-
-   * - ``select``
-     - .. figure:: images/attribute-select.png
-     - Mapped/Dynamic
-     - Default selected is always first option, so keep it as ``[0,'Select']``.
-
-       Like this: ``'options' => [[0,'Select'],['1','AAA'],['2','BBB']]``
-
-   * - ``image``
-     - .. figure:: images/attribute-image.png
-     - Mapped
-     - Size of the image: ``'size' => '600x400'``
-
-       Allowed image formats: ``'jpg','jpeg','png','gif','svg'``
-
-   * - ``file``
-     - .. figure:: images/attribute-file.png
-     - Mapped
-     - No options available.
-```
+| **Type** | **Look** | **Support** | **Options** |
+| --- | --- | --- | --- |
+| `input` | ![](attribute-input.png) | Mapped/Dynamic | Set class of the input (double the size of the input): `'class' => 'double'` |
+| `textarea` | ![](attribute-textarea.png) | Mapped/Dynamic | Set class of the textarea: `'class' => 'double'` |
+| `readonly` | ![](attribute-readonly.png) | Dynamic | Allows a field without the ability to edit it. Used for showing up IDs or things that should not be changed. |
+| `boolean` | ![](attribute-boolean.png) | Mapped/Dynamic | Options for the radio inputs (default is always 0): `'options' => [[0,'No'],[1,'Yes']]` |
+| `select` | ![](attribute-select.png) | Mapped/Dynamic | Default selected is always first option, so keep it as `[0,'Select']` |
+| `image` | ![](attribute-image.png) | Mapped | Size of the image: `'size' => '600x400'`. Allowed image formats: JPG, JPEG, PNG, GIF, SVG |
+| `file` | ![](attribute-file.png) | Mapped | No options available |
 
 #### Attributes with multi-select value
 
