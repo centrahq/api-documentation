@@ -20,8 +20,6 @@ The normal attribute on a product or variant is one which is mapped to an attrib
 
 The structure looks something like this:
 
-#### config.php
-
 ```php
    <?php
    $usr_conf['ATTRIBUTE_TYPES'] = [
@@ -47,7 +45,7 @@ When this attribute is saved, this attribute option will be listed under the `Sh
 
 In the API, the values will come out like this:
 
-```php
+```json
    {
       "countryOfOriginName": "",
       "sh_swatch": {
@@ -73,8 +71,6 @@ Dynamic attributes are in comparison to mapped attributes not linked to any pre 
 [notice-box=info]
 It used to be that if you had `"readonly": false` on the attribute, only the element with the `text` key would be visible in the API. This meant that if you needed multiple elements you needed multiple attributes as well. To keep with the previous behavior, this is still the case for single-element attributes. For dynamic attributes with multiple elements, every `element` will now be returned in the API as `[attribute-name]-[element-name]`.
 [/notice-box]
-
-#### config.php
 
 ```php
    <?php
@@ -125,6 +121,7 @@ Please note that when the option you've selected is `0/false` the property will 
 
 The `group` on the attribute inside the `config.php` specifies where the attribute should be placed. The following groups exist today:
 
+<!--
 ```eval_rst
 .. list-table::
    :header-rows: 1
@@ -150,6 +147,15 @@ The `group` on the attribute inside the `config.php` specifies where the attribu
    * - ``sizechart``
      - Listed under each size in a sizechart.
 ```
+-->
+| **Group** | **Description** |
+| --- | --- |
+| `product` | Listed under General Attributes on all Products. |
+| `variation` | Listed under each Variant on all Products. |
+| `order` | Listed on each Order. |
+| `customer` | Listed under each Customer. |
+| `account` | Listed under each Account (B2B). |
+| `sizechart` | Listed under each size in a sizechart. |
 
 ### Attribute element types
 
@@ -259,8 +265,6 @@ The API-output differs between Dynamic and Mapped attributes.
 
 **Mapped attributes** will always have a parent element named as the attribute-key. This is how the elements look like from the mapped attributes:
 
-#### config.php
-
 ```php
    <?php
    $usr_conf['ATTRIBUTE_TYPES'] = [
@@ -315,8 +319,6 @@ This is how the response from the API looks like:
 [notice-box=info]
 Remember that only the element with the key `text` will be shown and only if the value is not `0/false`.
 [/notice-box]
-
-#### config.php
 
 ```php
    <?php
