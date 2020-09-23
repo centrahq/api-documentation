@@ -1,7 +1,7 @@
 ---
 title: Add more details: Custom Attributes
 altTitle: Custom Attributes
-excerpt: See how products, variants or orders can be expanded by defining Custom Attributes
+excerpt: See how products, variants or orders can be expanded by defining Custom Attributes.
 taxonomy:
     category: docs
 ---

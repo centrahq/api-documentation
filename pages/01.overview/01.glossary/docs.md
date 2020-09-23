@@ -1,5 +1,5 @@
 ---
-title: Basic Centra concepts and definitions
+title: What is that: Basic Centra concepts and definitions
 altTitle: Centra A-Z
 excerpt: Learn the basic glossary of terms used in Centra.
 taxonomy:
