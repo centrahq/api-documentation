@@ -146,7 +146,7 @@ The following parameters are explained in the [Create Order](/reference/stable/o
        .. type:: string
           :required: false
 
-     - Used to define what warehouse group it should use. Default will use the one set for the market.
+     - Used to define which allocation rule (previously known as "warehouse group") it should use. Default will use the one set for the market.
 
    * - ``xml``
 
