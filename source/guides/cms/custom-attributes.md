@@ -211,6 +211,8 @@ The following element types exist today. Not all of them are supported for the D
      - Default selected is always first option, so keep it as ``[0,'Select']``.
 
        Like this: ``'options' => [[0,'Select'],['1','AAA'],['2','BBB']]``
+       
+       Option to allow selecting multiple options in the select element: ``'multi' => true``
 
    * - ``image``
      - .. figure:: images/attribute-image.png
@@ -225,9 +227,9 @@ The following element types exist today. Not all of them are supported for the D
      - No options available.
 ```
 
-#### Attributes with multi-select value
+#### Connecting to multiple attributes using multi-select
 
-Selectable mapped attributes can be configured so that multiple values can be selected at once. This is achieved by adding parameter `'multi' => true` to the attribute. For example, a multi-choice `Label` attribute can be configured like this:
+Mapped attributes can be configured so that multiple attributes can be selected at once. This is achieved by adding parameter `'multi' => true` to the attribute (not on the elements inside the attribute). This only works for mapped attributes (where `'readonly' => true`). For example, a multi-choice `Label` attribute can be configured like this:
 
 ```eval_rst
 .. code-block:: php
