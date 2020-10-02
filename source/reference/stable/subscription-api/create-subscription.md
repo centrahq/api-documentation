@@ -41,6 +41,13 @@ Add a subscription with payment details, will not be completed/registered as a c
 
      - Address information for the customer.
 
+   * - ``language``
+
+       .. type:: string
+          :required: false
+
+     - The language code for created customer.
+
    * - ``country``
 
        .. type:: string
@@ -161,7 +168,8 @@ Add a subscription with payment details, will not be completed/registered as a c
    name=Kalle&sname=Anka&address=Paradisäppelvägen+9&
    coaddress=&city=Ankeborg&state=&zipcode=12345&
    country=SE&email=kalle.anka@example.com&package[]=1&package[]=3&
-   payment=nets[&pnr=880101-7845]
+   payment=nets[&pnr=880101-7845]&
+   language=SV
 
 ```
 
@@ -178,6 +186,7 @@ Example Request with consents:
    city=Ankeborg&state=&zipcode=12345&country=SE&
    email=kalle.anka@example.com&package[]=1&package[]=3&
    payment=nets[&payment_url=https://...][&pnr=880101-7845]&
+   language=SV&
    consent[direct_marketing]=1&
    consent_name[direct_marketing]=Direct%20Marketing&
    consent_version[direct_marketing]=1.1&
