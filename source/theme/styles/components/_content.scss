@@ -13,6 +13,10 @@
   max-width: auto;
 }
 
+.content .section table.small-table.stripe-pi-command-list td:nth-child(1) {
+  text-align: right !important;
+}
+
 .rst-content .highlight {
   max-width: 650px !important;
 }
