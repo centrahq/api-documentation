@@ -9,4 +9,10 @@
 
 .content .section table.small-table td {
   text-align: left !important;
+  padding: 5px;
+  max-width: auto;
+}
+
+.rst-content .highlight {
+  max-width: 650px !important;
 }
