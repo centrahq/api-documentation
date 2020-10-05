@@ -4,14 +4,13 @@ The Stripe Payment Intents-plugin is allowing you to render payment components o
 
 Google Pay:
 
-<img src="images/stripe-pi-google-pay.png">
 ```eval_rst
 .. image:: images/stripe-pi-google-pay.png
    :scale: 30 %
 ```
 
 Apple Pay:
-<img src="images/stripe-pi-apple-pay.png">
+
 ```eval_rst
 .. image:: images/stripe-pi-apple-pay.png
    :scale: 30 %
@@ -23,7 +22,6 @@ The Payment Request API used for the payment buttons has a big limitation when c
 
 When the address is changed in the browser popup an event will still be sent to the website to update the country against Centra, but as soon as it results in a currency change, the customer will see this:
 
-<img src="images/stripe-pi-currency-change.png" />
 ```eval_rst
 .. image:: images/stripe-pi-currency-change.png
    :scale: 30 %
@@ -37,7 +35,6 @@ This restriction might change in the future if the Payment Request API will supp
 
 To configure Stripe Payment Intents plugin in Centra go to store plugins, select desirable plugin and you should see similar screen to the screenshot below.
 
-<img src="images/stripe-payment-intents-setup.png" width="300" />
 ```eval_rst
 .. image:: images/stripe-payment-intents-setup.png
    :scale: 30 %
@@ -95,7 +92,6 @@ The flow works like this:
 
 ### Checkout API flow
 
-<img src="images/stripe-pi-checkout-api.png" />
 ```eval_rst
 .. image:: images/stripe-pi-checkout-api.png
    :scale: 30 %
@@ -105,7 +101,6 @@ The flow works like this:
 
 The whole flow for Shop API is really similar to Checkout API. The main difference is that it's your backend making the API-calls to Centra instead of the Frontend.
 
-<img src="images/stripe-pi-shop-api.png" />
 ```eval_rst
 .. image:: images/stripe-pi-shop-api.png
    :scale: 30 %
@@ -510,7 +505,6 @@ The `onComplete: thischangeShippingMethodCompleted` would run with the payload p
 
 You should now be able to launch the payment button, change the address inside it, and select the different shipping options available. This should also reload the total amount of the request:
 
-<img src="images/stripe-pi-change-method.png" />
 ```eval_rst
 .. image:: images/stripe-pi-change-method.png
    :scale: 30 %
