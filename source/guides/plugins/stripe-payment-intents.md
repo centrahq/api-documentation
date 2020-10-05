@@ -125,7 +125,9 @@ For completing the payment, you post it just like a regular `POST /payment` to f
      - Response event needed
    * - ``centra_checkout_shipping_address_callback``
      - ``shippingCountry``
+       
        ``shippingState``
+       
        ``shippingZipCode``
      - ``centra_checkout_shipping_address_response``
    * - ``centra_checkout_shipping_method_callback``
@@ -133,9 +135,13 @@ For completing the payment, you post it just like a regular `POST /payment` to f
      - ``centra_checkout_shipping_method_response``
    * - ``centra_checkout_payment_callback``
      - ``responseEventRequired:false``
+       
        ``paymentMethod``
+       
        ``billingAddress``
+       
        ``shippingAddress``
+       
        ``paymentMethodSpecificFields``
      - Make a regular ``POST /payment``,
        similar to when checkout is submitted,
@@ -581,8 +587,11 @@ The following data is returned in this event:
      - Comment
    * - ``responseEventRequired``
      - boolean
-     - Always ``false`` for Stripe. Set to ``true`` when the 
+     - Always ``false`` for Stripe.
+     
+       Set to ``true`` when the 
        payment callback needs a response.
+       
        Stripe does not use this.
    * - ``paymentMethodSpecificFields``
      - object
