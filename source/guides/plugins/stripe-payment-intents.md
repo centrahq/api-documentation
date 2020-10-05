@@ -117,6 +117,7 @@ For completing the payment, you post it just like a regular `POST /payment` to f
 ```eval_rst
 .. list-table::
    :widths: auto
+   :class small-table
    :header-rows: 1
 
    * - Event to handle
@@ -157,25 +158,51 @@ const returnObject = {
 
 ### Fields from Selection-model in CheckoutAPI
 
-| Return Object field | Field inside Selection-response |
-|---------------------|---------------------------------|
-| `country` | `location.country` |
-| `currency` | `selection.currency` |
-| `currencyDenominator` | `selection.currencyFormat.denominator` |
-| `grandTotalPriceAsNumber` | `selection.totals.grandTotalPriceAsNumber` |
-| `shippingMethod` | `selection.shippingMethod` |
-| `shippingMethodsAvailable` | `shippingMethods` |
+```eval_rst
+.. list-table::
+   :widths: auto
+   :class small-table
+   :header-rows: 1
+
+   * - Return Object field
+     - Field inside Selection-response
+   * - ``country``
+     - ``location.country``
+   * - ``currency``
+     - ``selection.currency``
+   * - ``currencyDenominator``
+     - ``selection.currencyFormat.denominator``
+   * - ``grandTotalPriceAsNumber``
+     - ``selection.totals.grandTotalPriceAsNumber``
+   * - ``shippingMethod``
+     - ``selection.shippingMethod``
+   * - ``shippingMethodsAvailable``
+     - ``shippingMethods``
+```
 
 ### Fields from Selection-model in ShopAPI
 
-| Return Object field | Field inside Selection-response |
-|---------------------|---------------------------------|
-| `country` | `country` |
-| `currency` | `currency` |
-| `currencyDenominator` | `currencyFormat.denominator` |
-| `grandTotalPriceAsNumber` | `totals.grandTotalPriceAsNumber` |
-| `shippingMethod` | `shippingMethod` |
-| `shippingMethodsAvailable` | `shippingMethodsAvailable` |
+```eval_rst
+.. list-table::
+   :widths: auto
+   :class small-table
+   :header-rows: 1
+
+   * - Return Object field
+     - Field inside Selection-response
+   * - ``country``
+     - ``country``
+   * - ``currency``
+     - ``currency``
+   * - ``currencyDenominator``
+     - ``currencyFormat.denominator``
+   * - ``grandTotalPriceAsNumber``
+     - ``totals.grandTotalPriceAsNumber``
+   * - ``shippingMethod``
+     - ``shippingMethod``
+   * - ``shippingMethodsAvailable``
+     - ``shippingMethodsAvailable``
+```
 
 
 If an error occurred while handling the event, the response should be handled with the following object, this will make sure the payment popup understands something went wrong:
@@ -542,6 +569,29 @@ We will now handle the final event happening when payment is completed in the po
 Which is the one that will trigger now.
 
 The following data is returned in this event:
+
+```eval_rst
+.. list-table::
+   :widths: auto
+   :class small-table
+   :header-rows: 1
+
+   * - Field
+     - Type
+     - Comment
+   * - ``responseEventRequired``
+     - boolean
+     - Always ``false`` for Stripe. Set to ``true`` when the 
+       payment callback needs a response.
+       Stripe does not use this.
+   * - ``paymentMethodSpecificFields``
+     - object
+     - This data should be sent to the ``POST /payment`` call
+       in Centra for the payment to be validated.
+   * - ``paymentMethod``
+     - string
+     - The selected payment method used.
+```
 
 | Field | Type | Comment |
 |-------|------|---------|
