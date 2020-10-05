@@ -591,35 +591,73 @@ The following data is returned in this event:
    * - ``paymentMethod``
      - string
      - The selected payment method used.
+   * - ``billingAddress``
+     - object
+     - Data containing the address for billing.
+   * - ``billingAddress.firstName``
+     - string
+     -
+   * - ``billingAddress.lastName``
+     - string
+     -
+   * - ``billingAddress.address1``
+     - string
+     -
+   * - ``billingAddress.address2``
+     - string
+     -
+   * - ``billingAddress.zipCode``
+     - string
+     -
+   * - ``billingAddress.state``
+     - string
+     - Optional, might be empty for countries not supporting states.
+   * - ``billingAddress.city``
+     - string
+     -
+   * - ``billingAddress.country``
+     - string
+     - Country code
+   * - ``billingAddress.phoneNumber``
+     - string
+     -
+   * - ``billingAddress.email``
+     - string
+     -
+   * - ``shippingAddress``
+     - object
+     - Data containing the address for shipping.
+   * - ``shippingAddress.firstName``
+     - string
+     -
+   * - ``shippingAddress.lastName``
+     - string
+     -
+   * - ``shippingAddress.address1``
+     - string
+     -
+   * - ``shippingAddress.address2``
+     - string
+     -
+   * - ``shippingAddress.zipCode``
+     - string
+     -
+   * - ``shippingAddress.state``
+     - string
+     - Optional, might be empty for countries not supporting states.
+   * - ``shippingAddress.city``
+     - string
+     -
+   * - ``shippingAddress.country``
+     - string
+     - Country code
+   * - ``shippingAddress.phoneNumber``
+     - string
+     -
+   * - ``shippingAddress.email``
+     - string
+     -
 ```
-
-| Field | Type | Comment |
-|-------|------|---------|
-| `responseEventRequired` | boolean | Always `false` for Stripe. Set to `true` when the payment callback needs a response. Stripe does not need this |
-| `paymentMethodSpecificFields` | object | This data should be sent to the `POST /payment` call in Centra for the payment to be validated. |
-| `paymentMethod` | string | The selected payment method used. |
-| `billingAddress` | object | Data containing the address for billing |
-| `billingAddress.firstName` | string |
-| `billingAddress.lastName` | string |
-| `billingAddress.address1` | string |
-| `billingAddress.address2` | string |
-| `billingAddress.zipCode` | string |
-| `billingAddress.state` | string | Optional, might be empty for countries not supporting states |
-| `billingAddress.city` | string |
-| `billingAddress.country` | string | Country code |
-| `billingAddress.phoneNumber` | string |
-| `billingAddress.email` | string |
-| `shippingAddress` | object | Data containing the address for shipping |
-| `shippingAddress.firstName` | string |
-| `shippingAddress.lastName` | string |
-| `shippingAddress.address1` | string |
-| `shippingAddress.address2` | string |
-| `shippingAddress.zipCode` | string |
-| `shippingAddress.state` | string | Optional, might be empty for countries not supporting states |
-| `shippingAddress.city` | string |
-| `shippingAddress.country` | string | Country code |
-| `shippingAddress.phoneNumber` | string |
-| `shippingAddress.email` | string |
 
 We would take the event data, and create a `checkoutRequest` based on the data provided. This data would then be sent to the `POST /payment` in the Centra API.
 
