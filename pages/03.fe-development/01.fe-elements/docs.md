@@ -442,7 +442,7 @@ See the implementation details for:
 
 #### Payment country
 
-Since so much depends on the billing country, like prices, shipping costs, taxes and product availability, `address.country` is the only checkout field that is required by default. Furthermore, some countries will additionally require `address.state` to apply appropriate taxes.
+Since so much depends on the shipping country, like prices, shipping costs, taxes and product availability, `address.country` is the only checkout field that is required by default. Furthermore, some countries will additionally require `address.state` to apply appropriate taxes.
 
 [notice-box=alert]Some integrations, like DHL shipping, require that you format the zip code (postal code) in a format that is commonly used in the shipping country. If you pass the zip code in a different format, creating a shipment can fail. It is therefore important that you follow the zip code formatting recommendation for every country you intend to ship to. For example, Swedish codes are formatted as NNN NN (with a space), in Germany you have: NNNNN, in Poland: NN-NNN, in Denmark: NNNN. [A full list of postal codes formats by country can be found on Wikipedia](https://en.wikipedia.org/wiki/List_of_postal_codes). If you encounter any problems after following these guidelines, we recommend to contact DHL support.[/notice-box]
 
