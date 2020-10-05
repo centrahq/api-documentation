@@ -114,6 +114,14 @@ For changing the shipping address and shipping method, you need to receive the e
 
 For completing the payment, you post it just like a regular `POST /payment` to finalize the order by using the parameters provided, including the `billingAddress` and `shippingAddress`. The important one is the `paymentMethodSpecificFields` that contain the data to finalize the order.
 
+```eval_rst
+.. csv-table:: a title
+   :header: "Event to handle", "Parameters", "Response event needed"
+   :widths: 20, 20, 10
+
+   "``centra_checkout_shipping_address_callback``", "``shippingCountry`` <br> ``shippingState`` <br> ``shippingZipCode``", "``centra_checkout_shipping_address_response``"
+```
+
 | Event to handle | Parameters | Response event needed |
 |-----------------|------------|-----------------------|
 | `centra_checkout_shipping_address_callback` | `shippingCountry` <br> `shippingState` <br> `shippingZipCode` | `centra_checkout_shipping_address_response` |
