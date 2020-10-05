@@ -66,6 +66,12 @@ Here is a list of things to consider and make sure work when testing the site be
 | | | Is there a country in multiple shipping lists for multiple currencies? A country should mostly only be present in one shipping list since you want to control what currency a country can buy from. |
 | | Do all of the active pricelists have a shipping list connected to them? | Is there a country in multiple shipping lists for multiple currencies? A country should mostly only be present in one shipping list since you want to control what currency a country can buy from. |
 | | Saving data in fields when posting. | Is the address information inside the checkout still there when you go to a payment plugin and cancel that payment which redirects you back to the checkout? |
+| | Payment widgets. | Is the total the same in Klarna Checkout / Adyen Checkout as the summary from API? |
+| | Payment widgets. | Does total in Klarna Checkout / Adyen Checkout update accordingly when adding voucher, changing quantity of product, removing product, adding upsell product, changing shipping? |
+| | Shipping widgets. | Does total in Ingrid update accordingly when adding voucher, changing quantity of product, removing product, adding upsell product, changing shipping, does price / options change on country change as expected? |
+| | Vouchers. | Can voucher be added? |
+| | Vouchers. | Can voucher be removed? |
+| | Multiple vouchers. | Does checkout support multiple vouchers? Can they be removed one by one? |
 | | Google analytics and/or GTM + conversion are installed. | Make sure that conversions are registered in the analytics when orders are placed. |
 | Product Page | Color select size memory. | Make sure that if a size is selected and you change color, that the selected size is remembered, but only if that size exists in the new color, else select none. |
 | | Don’t need to select size on one-size-products. | If there’s only one size, remove the size selector completely, or make it selected per default. |
