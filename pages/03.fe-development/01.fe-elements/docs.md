@@ -158,7 +158,13 @@ The `filter` object has values for the `swatch.desc` field at the end of this JS
 
 In the filter object, the only thing that changes depending on what you filter on is the `“count”`. If you do not filter on anything, `count` will be equal to `totalCount`.
 
-Finally, you can search products and categories by URI when using the [POST /uri](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/8.%20routing%20mechanism/post_uri) endpoint. You post a URI, and what the URI is for. Just like `POST /products`:
+#### Using POST /uri endpoint
+
+[notice-box=info]
+This is the simplest solution if you're looking for a client-side only implementation, without using any middleware servers or caches.
+[/notice-box]
+
+You can search products and categories by URI when using the [POST /uri](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/8.%20routing%20mechanism/post_uri) endpoint. You post a URI, and what the URI is for. Just like `POST /products`:
 
 ```json
 POST /uri
