@@ -117,7 +117,7 @@ For completing the payment, you post it just like a regular `POST /payment` to f
 ```eval_rst
 .. list-table::
    :widths: auto
-   :class: small-table
+   :class: small-table stripe-pi-command-list
    :header-rows: 1
 
    * - Event to handle
