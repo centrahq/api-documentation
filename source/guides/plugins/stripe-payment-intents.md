@@ -124,11 +124,9 @@ For completing the payment, you post it just like a regular `POST /payment` to f
      - Parameters
      - Response event needed
    * - ``centra_checkout_shipping_address_callback``
-     - ``shippingCountry``
-       
-       ``shippingState``
-       
-       ``shippingZipCode``
+     - | ``shippingCountry``
+       | ``shippingState``
+       | ``shippingZipCode``
      - ``centra_checkout_shipping_address_response``
    * - ``centra_checkout_shipping_method_callback``
      - ``shippingMethod``
@@ -143,9 +141,9 @@ For completing the payment, you post it just like a regular `POST /payment` to f
        ``shippingAddress``
        
        ``paymentMethodSpecificFields``
-     - Make a regular ``POST /payment``,
-       similar to when checkout is submitted,
-       but with the params provided from the event.
+     - | Make a regular ``POST /payment``,
+       | similar to when checkout is submitted,
+       | but with the params provided from the event.
 ```
 
 For changing shipping address and shipping method, you also need to respond back with parts of the Selection-model that Centra gave back on those requests. All data needed for the event exists inside the response, and you can reuse the same event trigger for both events.
@@ -587,16 +585,13 @@ The following data is returned in this event:
      - Comment
    * - ``responseEventRequired``
      - boolean
-     - Always ``false`` for Stripe.
-     
-       Set to ``true`` when the 
-       payment callback needs a response.
-       
-       Stripe does not use this.
+     - | Always ``false`` for Stripe.
+       | Set to ``true`` when the payment callback needs a response.
+       | Stripe does not use this.
    * - ``paymentMethodSpecificFields``
      - object
-     - This data should be sent to the ``POST /payment`` call
-       in Centra for the payment to be validated.
+     - | This data should be sent to the ``POST /payment`` call
+       | in Centra for the payment to be validated.
    * - ``paymentMethod``
      - string
      - The selected payment method used.
