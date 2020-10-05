@@ -3,10 +3,10 @@
   padding-bottom: 40px;
 }
 
-.content .section table.small-table {
+.content .section table.small-table, .content .section table.small-table code.docutils {
   font-size: 9px !important;
 }
 
 .content .section table.small-table td {
-  text-align: left;
+  text-align: left !important;
 }
