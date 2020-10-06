@@ -135,7 +135,7 @@ For completing the payment, you post it just like a regular `POST /payment` to f
      - ``centra_checkout_shipping_method_response``
    * - ``centra_checkout_payment_callback``
      - | ``responseEventRequired:false``
-     - | ``addressIncluded:true``
+       | ``addressIncluded:true``
        | ``paymentMethod``
        | ``billingAddress``
        | ``shippingAddress``
