@@ -455,7 +455,7 @@ For completing the payment, you post the data from the event just like a regular
 ```eval_rst
 .. list-table::
    :widths: auto
-   :class: small-table stripe-pi-command-list
+   :class: small-table api-command-list
    :header-rows: 1
 
    * - Event to handle
