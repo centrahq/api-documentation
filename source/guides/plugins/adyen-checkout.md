@@ -15,7 +15,7 @@ The flow works like this:
 2. When the customer is done, they can select a payment option.
 3. If Adyen Checkout is selected (Most likely by showing the Credit Card-logos/Swish/Klarna or similar as the payment option) a call should be made to Centra using `POST /payment`.
 4. Centra will initiate a Adyen Checkout-session and give back a HTML-snippet together with an indication that you actually got `adyen-checkout` in the response.
-5. The website renders the HTML
+5. The website renders the HTML.
 6. The customer fills in the information, or selects what payment method they want to use.
 7. Adyen Checkout will decide itself between the following scenarios:
 	* Finalize the payment and send the customer directly to the `paymentReturnPage` with parameters in the URL.
@@ -33,13 +33,13 @@ If the customer tries to trick the checkout, by opening another tab to modify th
 
 ### Server communication
 
-The Adyen-Checkout needs its own Server Communication URL set up in Adyen. It will not use the same one as the old Adyen. If you use multiple Merchant Accounts in Adyen, you need one per Merchant Account pointing to one of the Adyen Checkout plugins inside Centra. If the Server Communication URL is not set up, all orders in Centra will never go out of "Waiting for Payment"-status and will be set as "Hold".
+The Adyen Checkout needs its own Server Communication URL set up in Adyen. It will not use the same one as the old Adyen. If you use multiple Merchant Accounts in Adyen, you need one per Merchant Account pointing to one of the Adyen Checkout plugins inside Centra. If the Server Communication URL is not set up, all orders in Centra will never go out of "Waiting for Payment"-status and will be set as "Hold".
 
 ### Set up
 
 **You need to contact Adyen Support at `support@adyen.com` to make sure they have activated Adyen Checkout for your Merchant Account before you begin.**
 
-To validate that you are able to use the Adyen Checkout, go to Accounts -> Users, look at your user called `ws@Company.[YourCompanyAccount]` and make sure that this role is enabled:
+To validate that you are able to use the Adyen Checkout, go to Accounts -> API Credentials, look at your user called `ws@Company.[YourCompanyAccount]` and make sure that this role is enabled:
 
 ```eval_rst
 .. image:: images/adyen-role.png
@@ -60,8 +60,8 @@ The `Merchant Account` should be set for the Merchant Account you want to use fo
 
 The `API Username` and `API Password` should be for the Web Service user called `ws@Company.[YourCompanyAccount]` at:
 
-* Adyen Test: `https://ca-test.adyen.com/ca/ca/config/users.shtml`
-* Adyen Live: `https://ca-live.adyen.com/ca/ca/config/users.shtml`
+* Adyen Test: `https://ca-test.adyen.com/ca/ca/config/api_credentials.shtml`
+* Adyen Live: `https://ca-live.adyen.com/ca/ca/config/api_credentials.shtml`
 
 The `API key` previously used for CSE (Client Side Encryption) is now also used for Adyen Checkout. [There's an article in Adyen Docs](https://docs.adyen.com/user-management/how-to-get-the-api-key/) on how to get it. 
 
@@ -112,7 +112,7 @@ Under "Authentication" you should write anything you like in "User Name" and "Pa
 
 Now, press "Test Configuration" to verify we respond successfully. After that you can press "Save Configuration".
 
-Repeat this step for the Merchant Accounts you use with Centra and make sure each "Service Communication URL" you use points to a plugin with the same Merchant Account set. Also make sure that your Server Communication URL points to an active Adyen Checkout-plugin in Centra. If the plugin is disabled, the notification will not work.
+Repeat this step for the Merchant Accounts you use with Centra and make sure each "Service Communication URL" you use points to a plugin with the same Merchant Account set. Also make sure that your Server Communication URL points to an active or inactive Adyen Checkout-plugin in Centra. If the plugin is disabled (red), the notification will not work.
 
 ### Live endpoint
 
@@ -205,22 +205,22 @@ You can decide here if you want either to initiate the Adyen Checkout by listeni
 The `formHTML` looks similar to this:
 
 ```html
-<div id="adyen-checkout-container-{$randomId}" class="adyen-checkout-container"></div>
-<script id="adyen-session-{$randomId}" data-return-url="{$returnUrl}" type="application/json">{$sessionData}</script>
+<div id="adyen-checkout-container-RANDOM" class="adyen-checkout-container"></div>
+<script id="adyen-session-RANDOM" data-return-url="RETURN-URL" type="application/json">SESSIONDATA</script>
 <script>
 function loadAdyenCheckout() {
     var newScript = document.createElement('script');
     newScript.async = true;
-    newScript.src = '{$this->getCheckoutJS()}';
+    newScript.src = 'https://checkoutshopper-test.adyen.com/...';
     newScript.onload = adyenCheckoutInit;
     document.children[0].appendChild(newScript);
 }
 function adyenCheckoutInit() {
-    var randomId = '{$randomId}';
+    var randomId = 'RANDOM';
     var configurationObject = window.adyenCheckoutConfig || {
         autoFocusOnLoad: true,
         consolidateCards: true,
-        context: '{$context}',
+        context: 'test',
         initialPMCount: 5,
         paymentMethods: {
             card: {
@@ -235,7 +235,7 @@ function adyenCheckoutInit() {
     var scriptObject = document.getElementById('adyen-session-' + randomId);
     var data = JSON.parse(scriptObject.textContent);
     var returnUrl = scriptObject.dataset.returnUrl;
-    var checkout = chckt.checkout(data.paymentSession, '#adyen-checkout-container-{$randomId}', configurationObject);
+    var checkout = chckt.checkout(data.paymentSession, '#adyen-checkout-container-RANDOM', configurationObject);
     chckt.hooks.beforeComplete = function (node, paymentData) {
         var f = document.createElement('form');
         f.method = 'post';

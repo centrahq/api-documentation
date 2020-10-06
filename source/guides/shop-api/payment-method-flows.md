@@ -5,7 +5,7 @@ Since all payment plugins work differently we have a few scenarios when the webs
 The basic logic for `{selection}/payment` should be built like this:
 
 1. Check if `errors` is set, if so, something failed and a `message`-property should be there. If not it's a generic error.
-2. If no `errors`, there should be an `action` with either `redirect`, `form` or `success`.
+2. If no `errors`, there should be an `action` with either `redirect`, `form`, `javascript` or `success`.
 3. If `success`, the order is completed directly.
 
 ```eval_rst
@@ -50,7 +50,20 @@ Website is supposed to inject the form or build it up with the params we send an
 
 In some cases, the formHTML can be a HTML-widget, for example on Klarna Checkout. It will not actually submit a form, but showing a payment-iframe, in those cases, only action and formHTML is sent.
 
-### 3. Direct Success
+### 3. JavaScript
+We send:
+
+```json
+{
+    "action": "javascript",
+    "formFields": {},
+    "code": "...; document.dispatchEvent('xxx', ...);"
+}
+```
+
+Website is supposed to evaluate the code inside `code` to continue the payment process. For some payment method events, you can also pass the `formField`-object as the event response, for example the event `centra_checkout_payment_callback` should get this data back as a `centra_checkout_payment_response`.
+
+### 4. Direct Success
 
 We send:
 
@@ -78,7 +91,7 @@ Website is either supposed to show the receipt directly (since all information i
 
 The `affiliateHtml` is supposed to be injected for the customer to run Google Analytics tracking and other custom scripts that the client needs to run on the receipt.
 
-### 4. Error
+### 5. Error
 
 We send:
 
