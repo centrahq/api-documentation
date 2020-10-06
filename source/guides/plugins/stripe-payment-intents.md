@@ -27,7 +27,9 @@ When the address is changed in the browser popup an event will still be sent to 
    :scale: 30 %
 ```
 
-**This makes it really important that the proper country is selected before the payment button is launched, as any address that requires the currency to change will get this error. We recommend always having the country selector as the first step in the checkout, to make sure the proper currency is set.**
+```eval_rst
+.. warning:: This makes it really important that the proper country is selected before the payment button is launched, as any address that requires the currency to change will get this error. We recommend always having the country selector as the first step in the checkout, to make sure the proper currency is set.
+```
 
 This restriction might change in the future if the Payment Request API will support changing currency.
 
