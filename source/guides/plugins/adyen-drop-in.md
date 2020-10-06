@@ -23,6 +23,8 @@ There are two different flows supported for Adyen Drop-In. These two flows are d
 8. Adyen Drop-In will then redirect or post data to `paymentReturnPage` with the information about the payment.
 9. Centra gets an API call to `POST /payment-result` from `paymentReturnPage` to finalize the payment or give back an error message.
 
+### Flow with customer address filled in before initialization
+
 If Adyen Drop-In is initiated after customer has filled in their address, the flow looks like this:
 
 1. Customer fills in address information on the checkout page.
