@@ -210,8 +210,6 @@ We will now explain a regular checkout that includes Adyen Drop-In. In this case
 
 When the customer goes to the checkout, you make a `GET /selection` call to fetch the current selection from Centra.
 
-Due to SCA
-
 The Adyen Drop-In plugin will show up in the API as a payment method:
 
 ```json
@@ -240,7 +238,9 @@ The Adyen Drop-In plugin will show up in the API as a payment method:
 
 The `clientSide->externalScript` is not needed, but if you want to load it before the Checkout, we still give you information about it here.
 
-When you select the payment option, you make a `POST /payment`. This step will validate that you have sent in the address information correctly. If everything is successful, the following information will be returned:
+Due to SCA (as explained above), Adyen Drop-In can only be initated if the customer has filled in their address information first, this means you need to have the address fields before Adyen Drop-In can be shown.
+
+When the customer has filled in their address information, you make a `POST /payment` containing the `paymentMethod` for Adyen Drop-In combined with the `billingAddress` and `shippingAddress` for the customer. This step will validate that you have sent in the address information correctly. If everything is successful, the following information will be returned:
 
 ```json
 {
@@ -469,7 +469,7 @@ For completing the payment, you post the data from the event just like a regular
      - | Make a regular ``POST /payment``,
        | similar to when checkout is submitted,
        | but with the params provided from the event.
-       | Since `responseEventRequired:true` you need to respond
+       | Since ``responseEventRequired:true`` you need to respond
        | with a ``centra_checkout_payment_response``.
 ```
 
@@ -528,7 +528,7 @@ The following data is returned in this event:
    * - ``responseEventRequired``
      - boolean
      - | Always ``true`` for Adyen Drop-In.
-       | This means the payment callback needs a response event to complete:
+       | This means the payment callback needs a response event to complete, with the following name:
        | ``centra_checkout_payment_response``
    * - ``paymentMethodSpecificFields``
      - object
