@@ -29,7 +29,9 @@ The implementation requires Adyen Checkout only to be initiated after address in
 
 This means that the `POST /payment` needs to happen after the address has been changed and after products have been decided. If the customer wants to modify their information or the cart, another `POST /payment` must be made after this is done. The reason we cannot modify it from Centra's side whenever the cart is modified is because the session-data coming back from Adyen to launch the Adyen Checkout contains all payment information inside the session-data for launching the Adyen Checkout itself.
 
-If the customer tries to trick the checkout, by opening another tab to modify the cart, as soon as Centra gets the server notification call from Adyen, it will mark the order as "Payment mismatch" and set the order to "Hold". This is to prevent the order from ever being fulfilled if the payment amount does not match between the order and the payment from Adyen.
+```eval_rst
+.. note:: If the customer tries to trick the checkout, by opening another tab to modify the cart, as soon as Centra gets the server notification call from Adyen, it will mark the order as "Payment mismatch" and set the order to "Hold". This is to prevent the order from ever being fulfilled if the payment amount does not match between the order and the payment from Adyen.
+```
 
 ### Server communication
 

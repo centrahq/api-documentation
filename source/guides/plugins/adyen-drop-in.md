@@ -9,33 +9,32 @@ The Adyen Drop-In plugin is an inline part of the checkout containing the paymen
 
 ## Flow
 
-The flow works like this:
+There are two different flows supported for Adyen Drop-In. These two flows are different depending on how you want to fill in the address information. You are able to initiate the Adyen Drop-In without providing any address information directly on the checkout page when entering it. However, this requires you to make sure that when the customer has selected the payment method in Adyen Drop-In and the event to finalize the purchase is triggered, you need to make sure that the address is provided by the customer to proceed with the payment, else the payment will not be completed.
 
-1. Customer fills in address information on the website.
+### Flow with initialization only
+
+1. Customer adds products to the cart, customer has the right country and currency.
+2. Customer goes to checkout. Centra API gets a `GET /selection`.
+3. `adyen-drop-in` is found in the payment methods, the checkout page will initate the Adyen Drop-In directly, using `paymentInitiateOnly:true` to `POST /payment`.
+4. Centra gives back HTML-snippet to initiate Adyen Drop-In.
+5. Customer filles in the information, or selects what payment method they want to use.
+6. Adyen Drop-In will send a `centra_checkout_payment_callback` event. The checkout page will see that `addressIncluded:false` and append the address information to the data and send everything to `POST /payment`. The value that makes sure the payment proceeds is the `paymentMethodSpecificFields`-property containing the encrypted payment information from Adyen.
+7. The response from `POST /payment` will be returned, depending on the `action` in the response, the customer will be redirected to complete the payment, or JavaScript will be returned to send a `centra_checkout_payment_response` event back to Adyen Drop-In.
+8. Adyen Drop-In will then redirect or post data to `paymentReturnPage` with the information about the payment.
+9. Centra gets an API call to `POST /payment-result` from `paymentReturnPage` to finalize the payment or give back an error message.
+
+If Adyen Drop-In is initiated after customer has filled in their address, the flow looks like this:
+
+1. Customer fills in address information on the checkout page.
 2. When the customer is done, they can select a payment option.
-3. If Adyen Checkout is selected (Most likely by showing the Credit Card-logos/Swish/Klarna or similar as the payment option) a call should be made to Centra using `POST /payment`.
-4. Centra will initiate a Adyen Checkout-session and give back a HTML-snippet together with an indication that you actually got `adyen-drop-in` in the response.
-5. The website renders the HTML.
-6. The customer fills in the information, or selects what payment method they want to use.
-7. Adyen Drop-In will decide itself between the following scenarios:
-	* Finalize the payment and send the customer directly to the `paymentReturnPage` with parameters in the URL.
-	* Finalize the payment and send the customer directly to the `paymentReturnPage` with POST-parameters.
-	* Fail the payment and redirect the user to `paymentFailedPage`
-	* Redirect to Adyen HPP (Hosted Payment Page) for payments that needs to be hosted on Adyen. After success, either redirected to `paymentReturnPage` or `paymentFailedPage` depending on the outcome. This includes any 3D-secure enabled payment methods.
-
-## Implementation
-
-The implementation requires Adyen Drop-In only to be initiated after address information is collected by the website itself. The reason is the new [SCA (Strong Customer Authentication) ruling](https://docs.adyen.com/payments-fundamentals/psd2-sca-compliance-and-implementation-guide) being enforced in September 2019 combined with support for [AVS (Address Verification System)](https://docs.adyen.com/risk-management/avs-checks).
-
-```eval_rst
-.. note:: Even though `Adyen Drop-In does support being initiated before shipping/billing address has been inserted`__, there's nothing preventing payment finalization without providing an address, which prevents us from using Adyen Drop-In in that way, since we want to make sure there's always an address connected to the payment.
-
-__ https://docs.adyen.com/checkout/drop-in-web#how-drop-in-works
-```
-
-This means that the `POST /payment` needs to happen after the address has been changed and after products have been decided. If the customer wants to modify their information or the cart, another `POST /payment` must be made after this is done. The reason we cannot modify it from Centra's side whenever the cart is modified is because the session-data coming back from Adyen to launch the Adyen Drop-In contains all payment information inside the session-data for launching the Adyen Drop-In itself.
-
-If the customer tries to trick the checkout, by opening another tab to modify the cart, as soon as Centra gets the server notification call from Adyen, it will mark the order as "Payment mismatch" and set the order to "Hold". This is to prevent the order from ever being fulfilled if the payment amount does not match between the order and the payment from Adyen.
+3. If Adyen Checkout is selected (Most likely by showing the Credit Card-logos/Swish/Klarna or similar as the payment option) a call should be made to Centra using `POST /payment` including the address information.
+4. Centra will initiate Adyen Drop-In and give back a HTML-snippet together with an indication that you actually got `adyen-drop-in` in the response.
+5. The website renders the HTML for Adyen Drop-In.
+6. The customer fills in the information, or selects what payment method they want to use in Adyen Drop-In.
+7. Adyen Drop-In will send a `centra_checkout_payment_callback` event. The checkout page will see that `addressIncluded:true`  and send everything to `POST /payment`.
+7. The response from `POST /payment` will be returned, depending on the `action` in the response, the customer will be redirected to complete the payment, or JavaScript will be returned to send a `centra_checkout_payment_response` event back to Adyen Drop-In.
+8. Adyen Drop-In will then redirect or post data to `paymentReturnPage` with the information about the payment.
+9. Centra gets an API call to `POST /payment-result` from `paymentReturnPage` to finalize the payment or give back an error message.
 
 ### Server communication
 
@@ -210,6 +209,111 @@ Whenever you capture using Adyen Drop-In, the Payment Transaction-list in Centra
 .. note:: Remember, if you have `Capture Delay` in Adyen set to `immediate`, capture will ALWAYS fail in Centra. Our recommendation is that Centra should capture the payment instead. Please change the Capture Delay setting in Adyen by going to `Account` then select "Configure->Settings" and make sure you select the Merchant Account. In the settings page you will see `Capture Delay`. Set it to `Manual` or `7 days` to make sure Centra will control the capture event.
 ```
 
+## Implementation
+
+Depending on when you want to show the Adyen Drop-In you can initiate it in two different ways using the parameter `paymentInitiateOnly:true`. When this property is provided to `POST /payment`, no address is required to be submitted, only the country and the payment method. This allows you to render the Adyen Drop-In before the customer has provided their shipping address. This can never complete the payment fully since an address is always required in the second step to complete the checkout.
+
+When using the `paymentInitiateOnly:true`-mode, the payment method is selected in Adyen Drop-In and the event is being triggered from it (`centra_checkout_payment_callback`) the property `addressIncluded` will then be `false`, which means that the address needs to be provided from the checkout page when posting the `paymentMethodSpecificFields` to `POST /payment` to proceed with the payment.
+
+If you want to initiate Adyen Drop-In before the customer has filled in their shipping information you can do the following:
+
+`POST /payment` to Centra like this, the country is required since it will decide what payment options are available in combination with the currency of the selection:
+
+```json
+{
+  "paymentReturnPage": "https://example.com/",
+  "paymentMethod": "your-uri-of-payment-plugin",
+  "paymentInitiateOnly": true,
+  "address": {"country": "SE"}
+}
+```
+
+```eval_rst
+.. note:: ``paymentInitiateOnly:true`` can only be sent to initiate the checkout, it can never finalize the selection.
+```
+
+After the customer has selected payment method and wants to proceed, the Adyen Drop-In will send a DOM-event called `centra_checkout_payment_callback` to the current site. This event contains the information needed to start the payment process in Centra. The event will have a property called `responseEventRequired:true`. This means that Adyen Drop-In wants a response to the event. The checkout page is supposed to send all data it gets in the event to Centra to `POST /payment` as an ajax-call. Depending on if `addressIncluded` is `true` or `false`, the checkout page might need to append the address to the data before sending it to `POST /payment`. `addressIncluded` will only be `false` if Adyen Drop-In was initiated without the customer address (using `paymentInitiateOnly:true` earlier).
+
+The important part in the event data is the `paymentMethodSpecificFields` from Adyen Drop-In that contains the encrypted information for Centra to initiate the payment.
+
+When the event `centra_checkout_payment_callback` is received by the checkout page, it should make a similar call like this:
+
+`POST /payment`:
+
+```json
+{
+  "paymentReturnPage": "https://example.com/",
+  "paymentMethod": "your-uri-of-payment-plugin",
+  "paymentMethodSpecificFields": {"taken from the event": "..."},
+  "termsAndConditions": "true",
+  "address": {"taken from the event if addressIncluded:true else appended by checkout page": "..."},
+  "shippingAddress": {"taken from the event if addressIncluded:true else appended by checkout page": "..."}
+}
+```
+
+The response from this call will either result in an error, like this:
+
+```
+{
+    "errors": {
+        "paymentMethod": "failed"
+    },
+    "messages": [
+        "FRAUD"
+    ]
+}
+```
+
+This means the payment failed and the customer should be notified that the payment was not successful. The response could also contain a regular redirect action, like this:
+
+```json
+{
+    "action": "redirect",
+    "formType": "adyen-drop-in",
+    "url": "https://bank.example.com"
+}
+```
+
+When this happens, you should redirect the customer to the `url`.
+
+The third and most common action is when the Adyen Drop-In needs to get a response back from the event it sent. It looks like this:
+
+```json
+{
+    "action": "javascript",
+    "formType": "adyen-drop-in",
+    "formFields": {
+        "action": {
+            "paymentData": "Ab02b4",
+            "paymentMethodType": "paypal",
+            "sdkData": {
+                "token": "EC-44V256178J461015N"
+            },
+            "type": "sdk"
+        }
+    },
+    "code": "...document.dispatchEvent()..."
+}
+```
+
+When you get `action=javascript` you can do two things, either you evaluate the `code`-property so the JavaScript gets triggered on the page, or, you send your own event, `centra_checkout_payment_response` containing the `formFields` from the response, like this:
+
+```js
+const response = await CentraAPI('POST', 'payment', paymentData);
+if (response.action === 'javascript') {
+  var updateEvent = new CustomEvent('centra_checkout_payment_response', {detail: response.formFields});
+  document.dispatchEvent(updateEvent);
+}
+```
+
+This will make the Adyen Drop-In handle the response and try to complete the payment process automatically, by either redirect the customer to the `paymentReturnPage` to complete the payment using the `POST /payment-result`-step, or by redirecting the customer to `paymentFailedPage` since the payment failed.
+
+If no `paymentFailedPage` is provided, the customer will still be sent to the `paymentReturnPage`, but the `POST /payment-result` will give back a payment failure.
+
+```eval_rst
+.. note:: If the customer tries to trick the checkout, by opening another tab to modify the cart, as soon as Centra gets the server notification call from Adyen, it will mark the order as "Payment mismatch" and set the order to "Hold". This is to prevent the order from ever being fulfilled if the payment amount does not match between the order and the payment from Adyen.
+```
+
 ## Example implementation
 
 We will now explain a regular checkout that includes Adyen Drop-In. In this case it's for CheckoutAPI, but the same thing applies to ShopAPI, only the way the API is called differs (since ShopAPI is strictly server-side).
@@ -224,7 +328,7 @@ The Adyen Drop-In plugin will show up in the API as a payment method:
   "name": "Adyen Drop-In",
   "paymentMethodType": "adyen_drop_in",
   "useForDigitalContent": true,
-  "supportsInitiateOnly": false,
+  "supportsInitiateOnly": true,
   "providesCustomerAddressAfterPayment": false,
   "addressRequiredFields": [
     "email",
@@ -244,9 +348,9 @@ The Adyen Drop-In plugin will show up in the API as a payment method:
 
 The `clientSide->externalScript` is not needed, but if you want to load it before the Checkout, we still give you information about it here.
 
-Due to SCA (as explained above), Adyen Drop-In can only be initated if the customer has filled in their address information first, this means you need to have the address fields before Adyen Drop-In can be shown.
+Adyen Drop-In supports `paymentInitiateOnly: true` when `POST /payment` is made. This means it can be initiated without providing address information. However, when the event is triggered after a payment method is selected, the event `centra_checkout_payment_callback` will include `addressIncluded:false`. This means the address needs to be appended manually when sending the `paymentMethodSpecificFields` to `POST /payment` to continue the payment process. If an address was provided in the first `POST /payment`, the `addressIncluded` will be `true` and `billingAddress` and `shippingAddress` will be provided in the event when a payment method is selected in Adyen Drop-In.
 
-When the customer has filled in their address information, you make a `POST /payment` containing the `paymentMethod` for Adyen Drop-In combined with the `billingAddress` and `shippingAddress` for the customer. This step will validate that you have sent in the address information correctly. If everything is successful, the following information will be returned:
+To initiate the Adyen Drop-In when it has been selected using `POST /payment`, the following response will be returned for you to initiate Adyen Drop-In:
 
 ```json
 {
@@ -272,7 +376,7 @@ When the customer has filled in their address information, you make a `POST /pay
     "environment": "test",
     "clientKey": "test_ABCDEFG",
     "addressData": {
-      "...": "..."
+      "if address was provided, else null": "..."
     }
   },
   "formHtml": "<div id="adyen-drop-in-container-..."
@@ -365,9 +469,12 @@ function adyenDropInInit() {
         var eventObject = {
            paymentMethod: paymentMethod,
            paymentMethodSpecificFields: state.data,
-           responseEventRequired: true
+           responseEventRequired: true,
+           addressIncluded: addressDataObject ? true : false,
         }
-        Object.assign(eventObject, addressDataObject);
+        if (addressDataObject) {
+          Object.assign(eventObject, addressDataObject);            
+        }
         document.addEventListener(
           'centra_checkout_payment_response',
           updatePaymentRequest.bind(null, event, window.AdyenDropIn),
@@ -399,7 +506,7 @@ The form will:
 
 1. Load the same script from Adyen specified in `clientSide->externalScript`.
 2. When the script has loaded, launch the Adyen Drop-In using payment method settings from `window.adyenDropInConfig` or the predefined JSON.
-3. When the payment method is selected by the customer, an event will trigger on the page, called `centra_checkout_payment_callback`. When this even is triggered you should post the values back to Centra's API to `POST /payment`.
+3. When the payment method is selected by the customer, an event will trigger on the page, called `centra_checkout_payment_callback`. When this even is triggered you should post the values back to Centra's API to `POST /payment`. Depending on if `addressIncluded` is `true` or `false`, the customer's address might need to be included in this API-call. 
 4. Centra can respond to the request in three different ways. Using `action=javascript`, the JavaScript in the `code`-field should be evaluated (or sent back using the `centra_checkout_payment_response` event). If `action=redirect`, the user should be redirected to the `url`-property. The customer will then either complete payment process, be presented with additional data to fill in (like 3D-secure) or redirected to an additional payment step. It can also respond with `errors`, just like a regular [`PaymentActionResponse`, explained in the Swagger UI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) and they should also be supported and present to the customer that the payment failed.
 5. After payment has been completed, the customer is then returned to `paymentReturnPage` with the encrypted blob payload.
 6. The `paymentReturnPage` should always collect all URL-parameters from both the query string in the URL and the POST-data and send it to Centra. This is the way to validate if the payment went through successfully or not.
@@ -447,11 +554,13 @@ This will make sure that:
 1. You do not evaluate `type=application/json` blobs from Centra.
 2. The proper snippet will run after the DOM has changed.
 
-### DOM-events in Adyen Drop-In
+### The DOM-events in Adyen Drop-In
 
 Since Adyen Drop-In does not know how you make requests to Centra's API, you need to listen to events from Adyen Drop-In and trigger API-calls to Centra. Adyen Drop-In can currently trigger one event, completing the payment, `centra_checkout_payment_callback`. When this event is received, you need to make an API-call to Centra to `POST /payment`. This event will also contain a property called `responseEventRequired` which will be `true`. This means that you need to respond to the event with a new event, `centra_checkout_payment_response`, using the response from the `POST /payment` for the payment flow to go through. Below you will see an example flow of how to implement this.
 
-For completing the payment, you post the data from the event just like a regular `POST /payment` to finalize the order by using the parameters provided. This data includes the `billingAddress` and `shippingAddress`. The most important field is the `paymentMethodSpecificFields` that contain the data to finalize the order. The event will as mentioned contain `responseEventRequired:true` which means you need to respond to the event after you get the response from Centra. 
+For completing the payment, you post the data from the event just like a regular `POST /payment` to finalize the order by using the parameters provided. This data can include the `billingAddress` and `shippingAddress` if `addressIncluded:true`. `addressIncluded` will only be `false` if `paymentInitiateOnly` was provided when initiating Adyen Drop-In.
+
+The most important field is the `paymentMethodSpecificFields` that contain the data to finalize the order. The event will as mentioned contain `responseEventRequired:true` which means you need to respond to the event after you get the response from Centra. 
 
 ```eval_rst
 .. list-table::
@@ -462,19 +571,29 @@ For completing the payment, you post the data from the event just like a regular
    * - Event to handle
      - Parameters
      - Response event needed
-   * - ``centra_checkout_payment_callback``
-     - ``responseEventRequired:true``
-       
-       ``paymentMethod``
-       
-       ``billingAddress``
-       
-       ``shippingAddress``
-       
-       ``paymentMethodSpecificFields``
+   * - ``centra_checkout_payment_callback`` with ``addressIncluded:true``
+     - | ``responseEventRequired:true``
+       | ``addressIncluded:true``
+       | ``paymentMethod``
+       | ``billingAddress``
+       | ``shippingAddress``
+       | ``paymentMethodSpecificFields``
      - | Make a regular ``POST /payment``,
        | similar to when checkout is submitted,
        | but with the params provided from the event.
+       | Since ``responseEventRequired:true`` you need to respond
+       | with a ``centra_checkout_payment_response``.
+   * - ``centra_checkout_payment_callback`` with ``addressIncluded:false``
+     - | ``responseEventRequired:true``
+       | ``addressIncluded:false``
+       | ``paymentMethod``
+       | ``billingAddress``
+       | ``shippingAddress``
+       | ``paymentMethodSpecificFields``
+     - | Make a regular ``POST /payment``,
+       | similar to when checkout is submitted,
+       | append ``address`` and ``billingAddress`` to the call
+       | combined with the params provided from the event.
        | Since ``responseEventRequired:true`` you need to respond
        | with a ``centra_checkout_payment_response``.
 ```
@@ -485,11 +604,12 @@ If the response to `POST /payment` has `action=javascript`, this response will a
 document.addEventListener('centra_checkout_payment_callback', function(origdata) {
   var postData = origdata.detail;
   var responseEventRequired = postData.responseEventRequired;
+  var addressIncluded = postData.addressIncluded;
   
   const response = await CentraAPI('POST', 'payment', {
     payment: postData.paymentMethod,
-    billingAddress: postData.billingAddress,
-    shippingAddress: postData.shippingAddress,
+    billingAddress: addressIncluded ? postData.billingAddress : billingAddressFromCheckout(),
+    shippingAddress: addressIncluded ? postData.shippingAddress : shippingAddressFromCheckout(),
     paymentMethodSpecificFields: postData.paymentMethodSpecificFields
   });
   if (responseEventRequired) {
@@ -536,6 +656,9 @@ The following data is returned in this event:
      - | Always ``true`` for Adyen Drop-In.
        | This means the payment callback needs a response event to complete, with the following name:
        | ``centra_checkout_payment_response``
+   * - ``addressIncluded``
+     - boolean
+     - | Will be ``true`` when ``billingAddress`` and ``shippingAddress`` is included in the event. This one will be ``false`` if Adyen Drop-In was not initiated with an address included, using ``paymentInitiateOnly:true``.
    * - ``paymentMethodSpecificFields``
      - object
      - | This data should be sent to the ``POST /payment`` call
