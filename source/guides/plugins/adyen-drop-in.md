@@ -253,7 +253,7 @@ When the event `centra_checkout_payment_callback` is received by the checkout pa
 
 The response from this call will either result in an error, like this:
 
-```
+```json
 {
     "errors": {
         "paymentMethod": "failed"
@@ -608,8 +608,8 @@ document.addEventListener('centra_checkout_payment_callback', function(origdata)
   
   const response = await CentraAPI('POST', 'payment', {
     payment: postData.paymentMethod,
+    address: addressIncluded ? postData.shippingAddress : shippingAddressFromCheckout(),
     billingAddress: addressIncluded ? postData.billingAddress : billingAddressFromCheckout(),
-    shippingAddress: addressIncluded ? postData.shippingAddress : shippingAddressFromCheckout(),
     paymentMethodSpecificFields: postData.paymentMethodSpecificFields
   });
   if (responseEventRequired) {

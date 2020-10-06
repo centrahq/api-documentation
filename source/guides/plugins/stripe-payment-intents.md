@@ -589,7 +589,8 @@ The following data is returned in this event:
        | Stripe does not use this.
    * - ``addressIncluded``
      - boolean
-     - | When ``billingAddress`` and ``shippingAddress`` is included in the event. Always ``true`` for Stripe.
+     - | When ``billingAddress`` and ``shippingAddress`` is included in the event.
+       | Always ``true`` for Stripe.
    * - ``paymentMethodSpecificFields``
      - object
      - | This data should be sent to the ``POST /payment`` call
