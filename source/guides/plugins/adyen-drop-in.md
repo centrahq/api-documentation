@@ -27,7 +27,9 @@ The flow works like this:
 
 The implementation requires Adyen Drop-In only to be initiated after address information is collected by the website itself. The reason is the new [SCA (Strong Customer Authentication) ruling](https://stripe.com/docs/strong-customer-authentication) launching in September 2019. 
 
-**Even though [Adyen Drop-In does support being initiated before shipping/billing address has been inserted](https://docs.adyen.com/checkout/drop-in-web#how-drop-in-works), there's nothing preventing payment finalization without providing an address, which prevents us from using Adyen Drop-In in that way, since we want to make sure there's always an address connected to the payment.**
+```eval_rst
+.. note:: Even though [Adyen Drop-In does support being initiated before shipping/billing address has been inserted](https://docs.adyen.com/checkout/drop-in-web#how-drop-in-works), there's nothing preventing payment finalization without providing an address, which prevents us from using Adyen Drop-In in that way, since we want to make sure there's always an address connected to the payment.
+```
 
 This means that the `POST /payment` needs to happen after the address has been changed and after products have been decided. If the customer wants to modify their information or the cart, another `POST /payment` must be made after this is done. The reason we cannot modify it from Centra's side whenever the cart is modified is because the session-data coming back from Adyen to launch the Adyen Drop-In contains all payment information inside the session-data for launching the Adyen Drop-In itself.
 
@@ -39,7 +41,9 @@ The Adyen Drop-In needs its own Server Communication URL set up in Adyen. If you
 
 ### Set up
 
-**You need to contact Adyen Support at `support@adyen.com` to make sure they have activated Adyen Drop-In for your Merchant Account before you begin.**
+```eval_rst
+.. note:: You need to contact Adyen Support at ``support@adyen.com`` to make sure they have activated Adyen Drop-In for your Merchant Account before you begin.
+```
 
 To validate that you are able to use the Adyen Drop-In, go to Accounts -> API Credentials, look at your user called `ws@Company.[YourCompanyAccount]` and make sure that these roles are enabled:
 
