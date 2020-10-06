@@ -226,6 +226,7 @@ If you want to initiate Adyen Drop-In before the customer has filled in their sh
   "paymentReturnPage": "https://example.com/",
   "paymentMethod": "your-uri-of-payment-plugin",
   "paymentInitiateOnly": true,
+  "termsAndConditions": true,
   "address": {"country": "SE"}
 }
 ```
@@ -247,7 +248,7 @@ When the event `centra_checkout_payment_callback` is received by the checkout pa
   "paymentReturnPage": "https://example.com/",
   "paymentMethod": "your-uri-of-payment-plugin",
   "paymentMethodSpecificFields": {"taken from the event": "..."},
-  "termsAndConditions": "true",
+  "termsAndConditions": true,
   "address": {"taken from the event if addressIncluded:true else appended by checkout page": "..."},
   "shippingAddress": {"taken from the event if addressIncluded:true else appended by checkout page": "..."}
 }
