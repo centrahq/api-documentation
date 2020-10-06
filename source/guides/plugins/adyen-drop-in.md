@@ -25,7 +25,7 @@ The flow works like this:
 
 ## Implementation
 
-The implementation requires Adyen Drop-In only to be initiated after address information is collected by the website itself. The reason is the new [SCA (Strong Customer Authentication) ruling](https://stripe.com/docs/strong-customer-authentication) launching in September 2019. 
+The implementation requires Adyen Drop-In only to be initiated after address information is collected by the website itself. The reason is the new [SCA (Strong Customer Authentication) ruling](https://docs.adyen.com/payments-fundamentals/psd2-sca-compliance-and-implementation-guide) being enforced in September 2019 combined with support for [AVS (Address Verification System)](https://docs.adyen.com/risk-management/avs-checks).
 
 ```eval_rst
 .. note:: Even though `Adyen Drop-In does support being initiated before shipping/billing address has been inserted
