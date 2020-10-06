@@ -28,8 +28,9 @@ The flow works like this:
 The implementation requires Adyen Drop-In only to be initiated after address information is collected by the website itself. The reason is the new [SCA (Strong Customer Authentication) ruling](https://docs.adyen.com/payments-fundamentals/psd2-sca-compliance-and-implementation-guide) being enforced in September 2019 combined with support for [AVS (Address Verification System)](https://docs.adyen.com/risk-management/avs-checks).
 
 ```eval_rst
-.. note:: Even though `Adyen Drop-In does support being initiated before shipping/billing address has been inserted
-<https://docs.adyen.com/checkout/drop-in-web#how-drop-in-works>`_, there's nothing preventing payment finalization without providing an address, which prevents us from using Adyen Drop-In in that way, since we want to make sure there's always an address connected to the payment.
+.. note:: Even though `Adyen Drop-In does support being initiated before shipping/billing address has been inserted`__, there's nothing preventing payment finalization without providing an address, which prevents us from using Adyen Drop-In in that way, since we want to make sure there's always an address connected to the payment.
+
+__ https://docs.adyen.com/checkout/drop-in-web#how-drop-in-works
 ```
 
 This means that the `POST /payment` needs to happen after the address has been changed and after products have been decided. If the customer wants to modify their information or the cart, another `POST /payment` must be made after this is done. The reason we cannot modify it from Centra's side whenever the cart is modified is because the session-data coming back from Adyen to launch the Adyen Drop-In contains all payment information inside the session-data for launching the Adyen Drop-In itself.
