@@ -69,9 +69,13 @@ Here is a list of things to consider and make sure work when testing the site be
 | | Payment widgets | Is the total the same in Klarna Checkout / Adyen Checkout as the summary from API? |
 | | | Does total in Klarna Checkout / Adyen Checkout update accordingly when adding voucher, changing quantity of product, removing product, adding upsell product, changing shipping? |
 | | Shipping widgets | Does total in Ingrid update accordingly when adding voucher, changing quantity of product, removing product, adding upsell product, changing shipping, does price / options change on country change as expected? |
+| | Taxes | Is the tax value correct for different regions? |
+| | | Are taxes applied correctly before and after checkout? |
 | | Vouchers | Can voucher be added? |
 | | | Can voucher be removed? |
 | | Multiple vouchers | Does checkout support multiple vouchers? Can they be removed one by one? |
+| | | Are vouchers applied in the right order? Multiple vouchers with the same priority set may give you unexpected results. |
+| | | Do you have any vouchers that should not be combined with other vouchers? Do they have "no combine" setting properly applied? |
 | | Google analytics and/or GTM + conversion | Make sure that conversions are registered in the analytics when orders are placed. |
 | Product Page | Color select size memory | Make sure that if a size is selected and you change color, that the selected size is remembered, but only if that size exists in the new color, else select none. |
 | | Don’t need to select size on one-size-products | If there’s only one size, remove the size selector completely, or make it selected per default. |
@@ -81,3 +85,4 @@ Here is a list of things to consider and make sure work when testing the site be
 | | Selected variant/color | Is there any visual indication of what variant is currently selected? |
 | | Adding of products | When you’ve added a product, are you able to select and add another size for the same product? |
 | | | When you’ve added a product, are you able to select and add another color for the same product? |
+| | Adding bundled products | If you use bundles, can a bundle be added to the basket? Are the items in the bundle listed correctly? |
