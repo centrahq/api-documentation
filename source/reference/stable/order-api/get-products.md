@@ -207,6 +207,12 @@ This will return product data from Centra with categories.
 
             - ISO-Alpha-2 (``SE``, ``US``, ``GB`` etc)
 
+          * - ``store``
+
+              .. type:: string
+
+            - Store name product is related to.
+
           * - ``categories``
 
               .. type:: array of string
@@ -332,6 +338,7 @@ This will return product data from Centra with categories.
          "description": "",
          "shortDescription": "",
          "comment": "",
+         "store": "Retail",
          "categories": [
            "Collection \/ Jackets\/Outerwear",
            "New Arrivals"
@@ -393,6 +400,7 @@ This will return product data from Centra with categories.
          "description": "",
          "shortDescription": "",
          "comment": "",
+         "store": "Retail",
          "categories": [
            "Collection \/ Jackets\/Outerwear",
            "New Arrivals"
