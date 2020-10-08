@@ -15,9 +15,9 @@ There are two different flows supported for Adyen Drop-In. These two flows are d
 
 1. Customer adds products to the cart, customer has the right country and currency.
 2. Customer goes to checkout. Centra API gets a `GET /selection`.
-3. `adyen-drop-in` is found in the payment methods, the checkout page will initate the Adyen Drop-In directly, using `paymentInitiateOnly:true` to `POST /payment`.
+3. `adyen-drop-in` is found in the payment methods, the checkout page will initiate the Adyen Drop-In directly, using `paymentInitiateOnly:true` to `POST /payment`.
 4. Centra gives back HTML-snippet to initiate Adyen Drop-In.
-5. Customer filles in the information, or selects what payment method they want to use.
+5. Customer fills in the information, or selects what payment method they want to use.
 6. Adyen Drop-In will send a `centra_checkout_payment_callback` event. The checkout page will see that `addressIncluded:false` and append the address information to the data and send everything to `POST /payment`. The value that makes sure the payment proceeds is the `paymentMethodSpecificFields`-property containing the encrypted payment information from Adyen.
 7. The response from `POST /payment` will be returned, depending on the `action` in the response, the customer will be redirected to complete the payment, or JavaScript will be returned to send a `centra_checkout_payment_response` event back to Adyen Drop-In.
 8. Adyen Drop-In will then redirect or post data to `paymentReturnPage` with the information about the payment.
@@ -770,7 +770,7 @@ Since the `responseEventRequired` is `true`, Adyen Drop-In needs a response to t
      - string
      - | ``javascript``, ``redirect`` or ``failed``.
        | If ``javascript``, evaluate the data inside ``code``
-       | or send back ``formFields`` as an event called
+       | or send back ``formFields`` to the event called
        | ``centra_checkout_payment_response``
    * - ``code``
      - string
