@@ -12,19 +12,19 @@
    :api_key: true
 ```
 
-This will modify the products on the shipment, keeping the same `shipmentId`. This function can only be done on existing shipments that:
+This will modify the products on the shipment, keeping the same `shipmentId`. This function is designed for creation and modification of new shipments, meaning it will *not* work on existing shipments which:
 
-* Has not been shipped.
-* Has not been captured or paid.
-* Does not have any returns.
+* Have been shipped,
+* Have been captured or paid, or
+* Have any returns.
+
+The only exception to this rule is setting GTG (Good to Go) or setting serial numbers on serializable product lines. This you can do at any point.
 
 To be able to use this call, you need to create a shipment using `"capture": false` so the create shipment call is not trying to capture the money.
 
 ```eval_rst
 .. warning:: If the automatic capture when creating shipments is disabled, to avoid sending shipments that has not been captured you need to :ref:`Capture Shipment <order-api-capture-shipment>` before you ship it.
 ```
-
-If no products are sent, the products will not be updated. This can be used to only update the GTG (Good to Go) status of an order.
 
 If you need to remove the shipment, use the [Delete Shipment](delete-shipment) method.
 
@@ -215,6 +215,28 @@ Response is explained in the [Create Shipment Response](create-shipment-response
      "status": "no",
      "msg": "shipment is sent and can not be updated",
      "shipment": "4-1"
+   }
+```
+
+```eval_rst
+.. code-block:: json
+   :linenos:
+
+   {
+       "status": "no",
+       "msg": "shipment is paid and can not be updated",
+       "shipment": "4-1"
+   }
+```
+
+```eval_rst
+.. code-block:: json
+   :linenos:
+
+   {
+       "status": "no",
+       "msg": "shipment is captured and can not be updated",
+       "shipment": "4-1"
    }
 ```
 
