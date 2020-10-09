@@ -119,6 +119,13 @@ This will create a shipment and per default try to capture from the payment prov
 
      - Return slip tracking number for shipment. Only used if ``shipped`` is ``true``.
 
+   * - ``semdEmail``
+
+       .. type:: boolean
+          :required: false
+
+     - Decide if Shipping Confirmation e-mail should be sent. If not defined, Store setting "Send Shipping Confirmation" will be used instead. Only used if ``shipped`` is ``true``.
+
    * - ``xml``
 
        .. type:: boolean
