@@ -75,6 +75,13 @@ This will insert back the tracking number and carrier information to Centra. An 
           :required: false
 
      - Return slip tracking number for shipment.     
+     
+   * - ``semdEmail``
+
+       .. type:: boolean
+          :required: false
+
+     - Decide if Shipping Confirmation e-mail should be sent. If not defined, Store setting "Send Shipping Confirmation" will be used instead.
 
    * - ``internalComment``
 
