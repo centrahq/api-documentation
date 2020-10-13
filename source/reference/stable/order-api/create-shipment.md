@@ -119,7 +119,7 @@ This will create a shipment and per default try to capture from the payment prov
 
      - Return slip tracking number for shipment. Only used if ``shipped`` is ``true``.
 
-   * - ``semdEmail``
+   * - ``sendEmail``
 
        .. type:: boolean
           :required: false
