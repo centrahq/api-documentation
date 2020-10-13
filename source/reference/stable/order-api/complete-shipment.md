@@ -76,7 +76,7 @@ This will insert back the tracking number and carrier information to Centra. An 
 
      - Return slip tracking number for shipment.     
      
-   * - ``semdEmail``
+   * - ``sendEmail``
 
        .. type:: boolean
           :required: false
