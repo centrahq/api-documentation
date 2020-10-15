@@ -32,7 +32,7 @@ This will clone a voucher with updated provided information
        .. type:: string
           :required: false
 
-     - Code of the voucher. Will be generated a random one if not passed. The base voucher will be cancelled if same code is passed.
+     - Code of the voucher. Will be generated a random one if not passed.
 
    * - ``conversionHtml``
 
@@ -146,21 +146,6 @@ Voucher does not belong to this store
        "voucher": "3",
        "msg": {
            "voucher": "Voucher does not belong to this store"
-       }
-   }
-
-```
-
-Code is already taken by another voucher
-```eval_rst
-.. code-block:: json
-   :linenos:
-
-   {
-       "status": "no",
-       "voucher": "3",
-       "msg": {
-           "voucher": "Code is already taken"
        }
    }
 

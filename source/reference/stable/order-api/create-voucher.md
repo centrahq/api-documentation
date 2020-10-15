@@ -206,21 +206,6 @@ Market does not exist for a provided store
    }
 ```
 
-Voucher code is not unique
-
-```eval_rst
-.. code-block:: json
-   :linenos:
-
-   {
-       "status": "no",
-       "msg": {
-           "code": "Code is already taken"
-       }
-   }
-
-```
-
 Neither `value` nor `valueByPricelist` provided
 
 ```eval_rst
