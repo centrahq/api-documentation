@@ -29,7 +29,7 @@ This will fetch the orders allowed for the plugin being set up.
        .. type:: int
           :required: false
 
-     - Limit amount of orders returned.
+     - Limit amount of orders returned. Default: 20.
 
    * - ``offset``
 
