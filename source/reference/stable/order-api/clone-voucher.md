@@ -34,6 +34,13 @@ This will clone a voucher with updated provided information
 
      - Code of the voucher. Will be generated a random one if not passed.
 
+   * - ``stopDate``
+   
+       .. type:: string
+          :required: true
+   
+     - Stop date of the voucher in `Y-m-d` format.
+
    * - ``conversionHtml``
 
        .. type:: string
@@ -53,7 +60,8 @@ This will clone a voucher with updated provided information
 
    {
       "name": "Welcome 10%",
-      "code": "new-welcome-10"
+      "code": "new-welcome-10",
+      "stopDate": "2022-07-09"
    }
 ```
 
@@ -105,6 +113,21 @@ This will clone a voucher with updated provided information
 
 ```
 ## Errors example
+
+Required fields are not passed
+```eval_rst
+.. code-block:: json
+   :linenos:
+
+   {
+       "status": "no",
+       "voucher": "4",
+       "msg": {
+           "stopDate": "required"
+       }
+   }
+
+```
 
 Voucher not found
 ```eval_rst
