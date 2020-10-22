@@ -35,7 +35,7 @@ The quantity of said product which is on order and linked towards a supplier ord
 * **Demand**  
 The quantity of said product which is on order but not linked to a supplier order or allocated. All products in unshipped orders that are back ordered or on preorder.
 * **Unshipped**  
-The quantity of said product which is allocated on order but not yet shipped.
+The quantity of products on the order which are not yet shipped, including preorder or demand.
 * **Available now** = FTA - Demand  
 The quantity available right now of said product.
 * **Unlinked**  
