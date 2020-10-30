@@ -16,24 +16,6 @@ GET  *base*/campaign-sites
 GET  *base*/campaign-sites/*campaignSiteURI*
 ```
 
-<!--
-```eval_rst
-.. api-name:: Shop API
-   :version: 1
-
-.. endpoint::
-   :method: GET
-   :url: *base*/campaign-sites
-
-.. endpoint::
-   :method: GET
-   :url: *base*/campaign-sites/*campaignSiteURI*
-
-.. authentication::
-   :api_key: true
-```
--->
-
 Fetches a specific campaign site referenced by its name, or the **full** campaign sites list.
 
 If the `campaignSiteURI` parameter is specified, one campaign site is fetched, otherwise **all campaign sites** are fetched.
@@ -43,21 +25,6 @@ If the `campaignSiteURI` parameter is specified, one campaign site is fetched, o
 [parameter data="campaignSiteURI" datatype="string" isRequired=false storetype="b2b b2c" sublevel=1]
 Campaign Site URI, unique key for this campaign site.
 [/parameter]
-
-<!--
-```eval_rst
-.. list-table::
-   :widths: auto
-
-   * - ``campaignSiteURI``
-
-       .. type:: string
-          :required: false
-
-     - Campaign Site URI, unique key for this campaign site.
-
-```
--->
 
 ## Response
 `200` `Content-type: application/json`
