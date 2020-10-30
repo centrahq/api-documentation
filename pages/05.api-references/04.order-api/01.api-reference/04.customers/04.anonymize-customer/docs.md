@@ -12,20 +12,6 @@ taxonomy:
 PUT  *base*/anonymize-customer/*customerId*
 ```
 
-<!--
-```eval_rst
-.. api-name:: Order API
-   :version: 1
-
-.. endpoint::
-   :method: PUT
-   :url: *base*/anonymize-customer/*customerId*
-
-.. authentication::
-   :api_key: true
-```
--->
-
 This endpoint will anonymize all personal data for a customer identifed by the customer id.
 
 [notice-box=alert]This is irrevocable. Personal data will be permanently deleted. This may include financial data. Invoices due to legal requirements will NOT be anonymized.[/notice-box]
@@ -35,20 +21,6 @@ This endpoint will anonymize all personal data for a customer identifed by the c
 [parameter data="customerId" datatype="int" isRequired=true storetype="b2b b2c" sublevel=1]
 The ``customerID`` from :ref:`List customers <order-api-list-customers>`.
 [/parameter]
-
-<!--
-```eval_rst
-.. list-table::
-   :widths: auto
-
-   * - ``customerId``
-
-       .. type:: int
-          :required: true
-
-     - The ``customerID`` from :ref:`List customers <order-api-list-customers>`.
-```
--->
 
 ## Request example
 
@@ -67,28 +39,6 @@ The ``customerID`` from :ref:`List customers <order-api-list-customers>`.
 [parameter data="msg" datatype="string" isRequired=false sublevel=1]
 The response if the anonymization was successful or an error if ``status`` is ``no``.
 [/parameter]
-
-<!--
-```eval_rst
-.. list-table::
-   :widths: auto
-
-   * - ``status``
-
-       .. type:: string
-          :required: true
-
-     - ``ok`` if success, else ``no``.
-
-   * - ``msg``
-
-       .. type:: object
-          :required: true
-
-     - The response if the anonymization was successful or an error if ``status`` is ``no``.
-
-```
--->
 
 ## Response example
 
