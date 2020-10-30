@@ -37,7 +37,7 @@ Response in xml format instead of json.
 
 Both `id` and `deliveryId` from [List supplier deliveries](list-supplier-deliveries) can be used to fetch a supplier delivery.
 
-```http request
+```http
    GET <base>/supplier-deliveries/*supplierDeliveryId* HTTP/1.1
 ```
 

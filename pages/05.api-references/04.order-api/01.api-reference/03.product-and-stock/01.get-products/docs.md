@@ -50,7 +50,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http request
+```http
    GET <base>/products HTTP/1.1
    Content-type: application/json
 ```

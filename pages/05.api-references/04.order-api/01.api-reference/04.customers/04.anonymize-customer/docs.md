@@ -24,7 +24,7 @@ The ``customerID`` from :ref:`List customers <order-api-list-customers>`.
 
 ## Request example
 
-```http request
+```http
    PUT <base>/anonymize-customer/123 HTTP/1.1
 ```
 

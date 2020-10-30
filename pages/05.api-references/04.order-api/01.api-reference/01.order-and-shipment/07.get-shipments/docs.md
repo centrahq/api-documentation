@@ -52,7 +52,7 @@ Only return shipments older than provided date
 
 ## Request example
 
-```http request
+```http
    GET <base>/shipments?limit=5 HTTP/1.1
 ```
 
@@ -188,7 +188,7 @@ How much tax. ex 20
 
 ## Response example
 
-```http request
+```http
    HTTP/1.1 200 OK
    Content-type: application/json
 

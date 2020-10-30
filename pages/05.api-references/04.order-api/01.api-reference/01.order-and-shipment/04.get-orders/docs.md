@@ -56,7 +56,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http request
+```http
    GET <base>/orders?newer_than=2019-01-01+12:11:39&limit=10 HTTP/1.1
 ```
 
@@ -136,7 +136,7 @@ How much tax. ex 20
 
 ## Response example
 
-```http request
+```http
    HTTP/1.1 200 OK
    Content-type: application/json
 

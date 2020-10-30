@@ -22,7 +22,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http request
+```http
    GET <base>/supplier-orders/*supplierOrderId* HTTP/1.1
 ```
 

@@ -78,7 +78,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http request
+```http
    POST <base>/shipments HTTP/1.1
    Content-type: application/json
 
@@ -131,7 +131,7 @@ If ``status`` returns ``no``, this value should send back a message why it faile
 
 ## Response example
 
-```http request
+```http
    HTTP/1.1 200 OK
    Content-type: application/json
 

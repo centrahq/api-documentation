@@ -64,7 +64,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http request
+```http
    GET <base>/stock?[&limit=2][&sku=DCG001][&modified=2016-01-01+12:10:11][&created=2011-01-01] HTTP/1.1
 ```
 

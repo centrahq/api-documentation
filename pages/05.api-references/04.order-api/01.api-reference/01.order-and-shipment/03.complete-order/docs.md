@@ -92,7 +92,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http request
+```http
    POST <base>/order/123 HTTP/1.1
    Content-type: application/json
 

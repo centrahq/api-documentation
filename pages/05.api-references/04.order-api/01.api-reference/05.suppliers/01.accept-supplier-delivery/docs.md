@@ -54,7 +54,7 @@ Response in xml format instead of json.
 
 Both `id` and `deliveryId` from [List supplier deliveries](list-supplier-deliveries) can be used to accept a supplier delivery.
 
-```http request
+```http
    POST <base>/supplier-delivery/364 HTTP/1.1
    Content-type: application/json
 
@@ -71,7 +71,7 @@ Both `id` and `deliveryId` from [List supplier deliveries](list-supplier-deliver
 
 Append /sku to the URL and switch from EAN to SKU for the product keys.
 
-```http request
+```http
    POST <base>/supplier-delivery/364/sku HTTP/1.1
    Content-type: application/json
 

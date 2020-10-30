@@ -34,7 +34,7 @@ Conversion html of the voucher
 
 ## Request example
 
-```http request
+```http
    PUT <base>/voucher/3/clone HTTP/1.1
 
    {

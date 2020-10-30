@@ -71,7 +71,7 @@ Return products not being activated yet.
 
 ## Request example
 
-```http request
+```http
    POST <base>/products/filter HTTP/1.1
    Content-type: application/json
 

@@ -24,7 +24,7 @@ The name of each element could be anything you like. The content of each element
 
 ## Request example
 
-```http request
+```http
    POST <base>/orders HTTP/1.1
    Content-type: application/json
 

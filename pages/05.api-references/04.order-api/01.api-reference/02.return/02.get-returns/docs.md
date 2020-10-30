@@ -64,7 +64,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http request
+```http
    GET <base>/returns?limit=2 HTTP/1.1
 ```
 
@@ -228,7 +228,7 @@ Unit price as seen on shipment.
 
 ## Response example
 
-```http request
+```http
    HTTP/1.1 200 OK
    Content-type: application/json
 

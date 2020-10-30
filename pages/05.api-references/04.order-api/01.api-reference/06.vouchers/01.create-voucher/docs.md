@@ -66,7 +66,7 @@ Conversion html of the voucher
 
 ## Request example
 
-```http request
+```http
    POST <base>/voucher HTTP/1.1
 
    {

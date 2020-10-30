@@ -52,7 +52,7 @@ The URI for this campaign site.
 
 ## Response example
 
-```http request
+```http
    HTTP/1.1 200 OK
    Content-type: application/json
 
@@ -68,7 +68,7 @@ The URI for this campaign site.
 
 ## Error example
 
-```http request
+```http
    HTTP/1.1 404 Not Found
    Content-type: application/json
 

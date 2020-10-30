@@ -316,13 +316,13 @@ The language is set automatically using GEO IP. The API returns data localized t
 
 You can change the language with:
 
-```http request
+```http
 PUT /languages/de
 ```
 
 Or with the optional `language` field when you change country:
 
-```http request
+```http
 PUT /countries/se
 {
     "language": "sv"

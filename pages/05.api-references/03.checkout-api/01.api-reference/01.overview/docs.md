@@ -78,7 +78,7 @@ If you select more "Product Filter Fields" in the Centra plugin settings, you ca
 
 ### Example
 
-```http request
+```http
 POST products?pretty
 {
   "limit": 2,
@@ -434,7 +434,7 @@ In the filter object, the only thing that changes depending on what you filter o
 
 You can post a uri to the **POST products** endpoint to filter out products that have a specific uri or that are in a category with a specific uri:
 
-```http request
+```http
 POST products?pretty
 {
   "uri": {
@@ -451,7 +451,7 @@ There is a more generic endpoint for this:
 
 #### POST uri
 You post a uri, and what the uri can be for. Just like POST products:
-```http request
+```http
 POST uri
 {
     "uri":"jeans/slim-5-pocket-jeans-white",
@@ -470,7 +470,7 @@ The response changes depending on what was found. The plan is that we will add n
 
 The response has `"found": "product"` and a `"product"` object:
 
-```http request
+```http
 POST uri
 {
     "uri":"jeans/slim-5-pocket-jeans-white",
@@ -609,7 +609,7 @@ Response:
 
 The only difference from the previous example is the request has `"for":["category"]` but we know this uri leads to a product. So no category with that URI is found. The API returns status code 404, and the response has an "errors" object (the rest of the API follows this convention, if there are errors then the response contains an "errors" object).
 
-```http request
+```http
 POST uri
 {
     "uri":"jeans/slim-5-pocket-jeans-white",
@@ -637,7 +637,7 @@ Response:
 ### Example: URI leads to a category, API returns a category and list of products
 The response contains `"found": "category"`, the `"category"` object with the category name, and just like `POST products` it has `"products"`, `"productCount"` and `"filter"`. The content of these is exactly the same as `POST products`.
 
-```http request
+```http
 POST uri
 {
     "uri":"jeans",

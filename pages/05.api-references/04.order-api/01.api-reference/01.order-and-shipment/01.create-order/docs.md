@@ -274,7 +274,7 @@ If an external invoice was created, insert the URL to the invoice here.
 
 ## Request example
 
-```http request
+```http
    POST <base>/order HTTP/1.1
    Content-type: application/json
 

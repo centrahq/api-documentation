@@ -26,7 +26,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http request
+```http
    DELETE <base>/shipments/*shipmentId* HTTP/1.1
 ```
 

@@ -26,7 +26,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http request
+```http
    GET <base>/customers/4234 HTTP/1.1
 ```
 

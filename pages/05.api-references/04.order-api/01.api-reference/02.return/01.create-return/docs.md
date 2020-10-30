@@ -92,7 +92,7 @@ Send refund email. Default value is ``false``.
 
 ## Request example
 
-```http request
+```http
    POST <base>/return HTTP/1.1
    Content-type: application/json
 
@@ -109,7 +109,7 @@ Send refund email. Default value is ``false``.
 
 ## Request example including refund
 
-```http request
+```http
    POST <base>/return HTTP/1.1
    Content-type: application/json
 

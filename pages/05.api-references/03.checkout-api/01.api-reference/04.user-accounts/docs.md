@@ -95,7 +95,7 @@ The first will send an email with a password reset link. You can specify the URI
 The second is used when the customer clicks the link in the email. You need to pass on the hash from the link to the API.
 
 Example:
-```http request
+```http
 POST /password-reset-email/same@example.com
 {
     "linkUri": "my-uri/with/slashes"
@@ -109,7 +109,7 @@ The email contains this link:
 https://mywebshop.example.com/my-uri/with/slashes?id=48&i=8a87a9e9fea3c3cfdea183b281ec43f3
 
 When the customer clicks on it, you need to send the "id" and "i" and "newPassword" to the API:
-```http request
+```http
 POST /password-reset
 {
   "newPassword":"secret!",
@@ -134,7 +134,7 @@ POST "from" and "size" paramters for paging. Without them all orders will be ret
 The response looks similar to the regular JSON response, except it contains an "orders" object that is an array of orders. And a "ordersPaging" object that keeps track of paging.
 
 Example:
-```http request
+```http
 POST orders
 {
     "from":3,
