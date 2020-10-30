@@ -12,20 +12,6 @@ taxonomy:
 POST  *base*/shipments
 ```
 
-<!--
-```eval_rst
-.. api-name:: Order API
-   :version: 1
-
-.. endpoint::
-   :method: POST
-   :url: *base*/shipments
-
-.. authentication::
-   :api_key: true
-```
--->
-
 This will create a shipment and per default try to capture from the payment provider, shipment will not be created if the capture fails.
 
 [notice-box=alert]You have the ability to turn off capture to make it possible to edit the shipment after it has been created. However, if you explicitly turn off capture using ``"capture": false``, we will not capture the money for the order automatically, and the :ref:`order-api-complete-shipment` call MUST be made and verified that it was successful until you can ship any products.[/notice-box]

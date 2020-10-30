@@ -6,15 +6,6 @@ taxonomy:
   category: docs
 ---
 
-# Selections and Orders
-
-<!--
-```eval_rst
-.. api-name:: Checkout API
-   :version: 1
-```
--->
-
 ## Overview
 
 A *selection* is an open order, or a shopping cart. You add *items* to the selection, the product items to buy.

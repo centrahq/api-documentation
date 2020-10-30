@@ -12,20 +12,6 @@ taxonomy:
 PUT  *base*/voucher/*id*/clone
 ```
 
-<!--
-```eval_rst
-.. api-name:: Order API
-   :version: 1
-
-.. endpoint::
-   :method: PUT
-   :url: *base*/voucher/*id*/clone
-
-.. authentication::
-   :api_key: true
-```
--->
-
 This will clone a voucher with updated provided information
 
 ## Parameters
@@ -45,35 +31,6 @@ Stop date of the voucher in `Y-m-d` format.
 [parameter data="conversionHtml" datatype="string" isRequired=false storetype="b2b b2c" sublevel=1]
 Conversion html of the voucher
 [/parameter]
-
-<!--
-```eval_rst
-.. list-table::
-   :widths: auto
-
-   * - ``name``
-
-       .. type:: string
-          :required: false
-
-     - Name of the voucher.
-
-   * - ``code``
-
-       .. type:: string
-          :required: false
-
-     - Code of the voucher. Will be generated a random one if not passed.
-
-   * - ``conversionHtml``
-
-       .. type:: string
-          :required: false
-
-     - Conversion html of the voucher
-
-```
--->
 
 ## Request example
 
@@ -103,34 +60,6 @@ Id of a new voucher
 [parameter data="code" datatype="string" isRequired=false sublevel=1]
 Code of a new voucher
 [/parameter]
-
-<!--
-```eval_rst
-.. list-table::
-   :widths: auto
-
-   * - ``status``
-
-       .. type:: string
-          :required: true
-
-     - ``ok`` if success, else ``no``.
-
-   * - ``voucher``
-
-       .. type:: int
-          :required: false
-
-     - Id of a new voucher
-
-   * - ``code``
-
-       .. type:: string
-          :required: false
-
-     - Code of a new voucher
-```
--->
 
 ## Response example
 

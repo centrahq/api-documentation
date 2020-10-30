@@ -62,7 +62,7 @@ Campaign Site URI, unique key for this campaign site.
 ## Response
 `200` `Content-type: application/json`
 
-[parameter data="campaignSiteURI" datatype="campaign site object" isRequired=false storetype="b2b b2c" sublevel=1]
+[parameter data="campaignSiteURI" datatype="campaign site object" isRequired=false sublevel=1]
 Campaign Site URI, unique key for this campaign site.
 ``"canada": {"name": "Canada"}`` for campaign site with URI ``canada``.
 [/parameter]
@@ -83,50 +83,6 @@ The URL the customer should be redirected to after the market has been set.
 The URI for this campaign site.
 [/parameter]
 
-<!--
-```eval_rst
-.. list-table::
-   :widths: auto
-
-   * - object key
-
-       .. type:: campaign site object
-          :required: true
-
-     - The ``campaignSiteURI`` for the campaign site object.
-
-       ``"canada": {"name": "Canada"}`` for campaign site with URI ``canada``.
-
-       .. list-table::
-          :widths: auto
-
-          * - ``name``
-
-              .. type:: string
-
-            - The name of the campaign site.
-
-          * - ``market``
-
-              .. type:: string
-
-            - The market ID that should be set for the customer.
-
-          * - ``goTo``
-
-              .. type:: string
-
-            - The URL the customer should be redirected to after the market has been set.
-
-          * - ``campaignSite``
-
-              .. type:: string
-
-            - The URI for this campaign site.
-```
--->
-
-
 ## Response example
 
 ```http request
@@ -143,26 +99,6 @@ The URI for this campaign site.
    }
 ```
 
-<!--
-```eval_rst
-.. code-block:: http
-   :linenos:
-
-   HTTP/1.1 200 OK
-   Content-type: application/json
-
-   {
-      "canada" : {
-         "market" : "16",
-         "name" : "canada",
-         "goTo" : "",
-         "campaignSite" : "canada"
-      }
-   }
-
-```
--->
-
 ## Error example
 
 ```http request
@@ -175,19 +111,3 @@ The URI for this campaign site.
       }
    }
 ```
-
-<!--
-```eval_rst
-.. code-block:: http
-   :linenos:
-
-   HTTP/1.1 404 Not Found
-   Content-type: application/json
-
-   {
-      "errors" : {
-         "campaignSite" : "not found"
-      }
-   }
-```
--->

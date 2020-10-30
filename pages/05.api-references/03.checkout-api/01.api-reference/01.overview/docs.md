@@ -8,13 +8,6 @@ taxonomy:
 
 # API reference
 
-<!--
-```eval_rst
-.. api-name:: Checkout API
-   :version: 1
-```
--->
-
 **POST products**
 
 This returns a list of products. You send a JSON body to search and filter the results. Described below.

@@ -6,15 +6,6 @@ taxonomy:
   category: docs
 ---
 
-# User Accounts
-
-<!--
-```eval_rst
-.. api-name:: Checkout API
-   :version: 1
-```
--->
-
 ## Overview
 
 Register:
