@@ -1,6 +1,6 @@
 ---
-title: Order API - GET Voucher
-altTitle: GET Voucher
+title: Order API - Get Voucher
+altTitle: Get Voucher
 excerpt: Fetching active/inactive voucher by specified ID.
 taxonomy:
   category: docs

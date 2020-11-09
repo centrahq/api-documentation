@@ -1,6 +1,6 @@
 ---
-title: Order API - GET Products
-altTitle: GET Products
+title: Order API - Get Products
+altTitle: Get Products
 excerpt: Returning product data from Centra with categories.
 taxonomy:
   category: docs

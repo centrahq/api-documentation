@@ -1,6 +1,6 @@
 ---
-title: Shop API - GET Collections
-altTitle: GET Collections
+title: Shop API - Get Collections
+altTitle: Get Collections
 excerpt: Fetching a single or multiple collections.
 taxonomy:
   category: docs

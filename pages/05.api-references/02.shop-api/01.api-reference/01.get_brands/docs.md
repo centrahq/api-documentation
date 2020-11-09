@@ -1,6 +1,6 @@
 ---
-title: Shop API - GET Brands
-altTitle: GET Brands
+title: Shop API - Get Brands
+altTitle: Get Brands
 excerpt: Fetching a single or multiple brands
 taxonomy:
   category: docs

@@ -1,6 +1,6 @@
 ---
-title: Order API - GET Shipments
-altTitle: GET Shipments
+title: Order API - Get Shipments
+altTitle: Get Shipments
 excerpt: Fetching all Good to Go-shipments that are not sent.
 taxonomy:
   category: docs

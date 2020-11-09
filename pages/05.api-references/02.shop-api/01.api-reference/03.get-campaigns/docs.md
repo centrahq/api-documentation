@@ -1,6 +1,6 @@
 ---
-title: Shop API - GET Campaigns
-altTitle: GET Campaigns
+title: Shop API - Get Campaigns
+altTitle: Get Campaigns
 excerpt: Fetching a single or multiple campaigns.
 taxonomy:
   category: docs

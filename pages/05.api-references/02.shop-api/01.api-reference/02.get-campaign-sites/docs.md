@@ -1,6 +1,6 @@
 ---
-title: Shop API - GET Campaign Sites
-altTitle: GET Campaign Sites
+title: Shop API - Get Campaign Sites
+altTitle: Get Campaign Sites
 excerpt: Fetching a single or multiple campaign sites.
 taxonomy:
   category: docs

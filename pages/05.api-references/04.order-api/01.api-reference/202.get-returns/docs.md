@@ -1,6 +1,6 @@
 ---
-title: Order API - GET Returns
-altTitle: GET Returns
+title: Order API - Get Returns
+altTitle: Get Returns
 excerpt: Fetching all returns.
 taxonomy:
   category: docs
