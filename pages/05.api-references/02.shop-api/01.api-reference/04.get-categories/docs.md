@@ -1,6 +1,6 @@
 ---
-title: Shop API - GET Categories
-altTitle: GET Categories
+title: Shop API - Get Categories
+altTitle: Get Categories
 excerpt: Fetching a single or multiple categories.
 taxonomy:
   category: docs

@@ -1,6 +1,6 @@
 ---
-title: Shop API - GET Products IDs
-altTitle: GET Products IDs
+title: Shop API - Get Products IDs
+altTitle: Get Products IDs
 excerpt: Fetching a list of products ids.
 taxonomy:
   category: docs

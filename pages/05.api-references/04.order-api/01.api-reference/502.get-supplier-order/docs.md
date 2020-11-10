@@ -1,6 +1,6 @@
 ---
-title: Order API - GET Supplier Order
-altTitle: GET Supplier Order
+title: Order API - Get Supplier Order
+altTitle: Get Supplier Order
 excerpt: Listing the products inside a supplier order.
 taxonomy:
   category: docs

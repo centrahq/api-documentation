@@ -1,6 +1,6 @@
 ---
-title: Order API - GET Supplier Delivery Details
-altTitle: GET Supplier Delivery Details
+title: Order API - Get Supplier Delivery Details
+altTitle: Get Supplier Delivery Details
 excerpt: Getting the incoming and not accepted deliveries that are connected to the warehouse this plugin is connected to.
 taxonomy:
   category: docs

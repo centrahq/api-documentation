@@ -1,6 +1,6 @@
 ---
-title: Shop API - GET Measurement Charts
-altTitle: GET Measurement Charts
+title: Shop API - Get Measurement Charts
+altTitle: Get Measurement Charts
 excerpt: Fetching a single or multiple collections.
 taxonomy:
   category: docs

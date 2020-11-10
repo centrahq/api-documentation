@@ -1,6 +1,6 @@
 ---
-title: Shop API - GET Filtered Products
-altTitle: GET Filtered Products
+title: Shop API - Get Filtered Products
+altTitle: Get Filtered Products
 excerpt: Fetching a list products based on filters.
 taxonomy:
   category: docs

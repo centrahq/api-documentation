@@ -1,6 +1,6 @@
 ---
-title: Order API - GET Stock
-altTitle: GET Stock
+title: Order API - Get Stock
+altTitle: Get Stock
 excerpt: Returning product data from Centra with stock info
 taxonomy:
   category: docs

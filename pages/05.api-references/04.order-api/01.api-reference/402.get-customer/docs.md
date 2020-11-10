@@ -1,6 +1,6 @@
 ---
-title: Order API - GET Customer
-altTitle: GET Customer
+title: Order API - Get Customer
+altTitle: Get Customer
 excerpt: Returning customer by specified ID
 taxonomy:
   category: docs

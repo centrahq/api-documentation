@@ -1,6 +1,6 @@
 ---
-title: Order API - GET Orders
-altTitle: GET Orders
+title: Order API - Get Orders
+altTitle: Get Orders
 excerpt: Fetching the orders allowed for the plugin being set up.
 taxonomy:
   category: docs
