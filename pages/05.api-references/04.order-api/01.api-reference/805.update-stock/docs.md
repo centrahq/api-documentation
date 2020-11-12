@@ -48,7 +48,7 @@ Response in xml format instead of json.
 [/parameter]
 
 ## Request example
-The example above uses EAN, this is the same field as the [Get stock](get-stock) product field `ean`. The example below uses SKU by combining the [Get stock](get-stock) fields `sku`, `variantSku` and `sizeSku`:
+The example above uses EAN, this is the same field as the [Get stock](/api-references/order-api/api-reference/get-stock) product field `ean`. The example below uses SKU by combining the [Get stock](/api-references/order-api/api-reference/get-stock) fields `sku`, `variantSku` and `sizeSku`:
 
 ```http
    POST <base>/stock HTTP/1.1

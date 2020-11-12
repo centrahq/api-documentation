@@ -52,7 +52,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-Both `id` and `deliveryId` from [List supplier deliveries](list-supplier-deliveries) can be used to accept a supplier delivery.
+Both `id` and `deliveryId` from [List supplier deliveries](/api-references/order-api/api-reference/list-supplier-deliveries) can be used to accept a supplier delivery.
 
 ```http
    POST <base>/supplier-delivery/364 HTTP/1.1

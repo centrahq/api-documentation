@@ -26,7 +26,7 @@ To be able to use this call, you need to create a shipment using `"capture": fal
 If the automatic capture when creating shipments is disabled, to avoid sending shipments that has not been captured you need to :ref:`Capture Shipment <order-api-capture-shipment>` before you ship it.
 [/notice-box]
 
-If you need to remove the shipment, use the [Delete Shipment](delete-shipment) method.
+If you need to remove the shipment, use the [Delete Shipment](/api-references/order-api/api-reference/delete-shipment) method.
 
 ## Parameters
 
@@ -78,7 +78,7 @@ Response in xml format instead of json.
 
 `200` `Content-type: application/json`
 
-Response is explained in the [Create Shipment Response](create-shipment-response).
+Response is explained in the [Create Shipment Response](/api-references/order-api/api-reference/create-shipment).
 
 ## Response example
 

@@ -16,7 +16,7 @@ You are able to insert multiple orders at the same time by changing the endpoint
 
 ## Parameters
 
-The request consists of a JSON object with names for each element. The content of each element should be an order object, specified in [Create Order](create-order-parameters). The name for each element is then used in the response to map against either a success response or an error for each order.
+The request consists of a JSON object with names for each element. The content of each element should be an order object, specified in [Create Order](/api-references/order-api/api-reference/create-order). The name for each element is then used in the response to map against either a success response or an error for each order.
 
 [parameter data="foo bar etc ..." datatype="order object" isRequired=true sublevel=1]
 The name of each element could be anything you like. The content of each element are exactly like the parameters for :ref:`Create Order <create-order-parameters>`.

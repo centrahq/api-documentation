@@ -17,7 +17,7 @@ This will complete the subscription. Often called when user comes back to paymen
 ## Parameters
 
 [parameter data="id" datatype="string" isRequired=true sublevel=1]
-The subscription ID from :doc:`Create Subscription </reference/stable/subscription-api/create-subscription>`
+The subscription ID from :doc: [Create Subscription](/api-references/subscription-api/api-reference/create-subscription)
 [/parameter]
 
 [parameter data="payment" datatype="string" isRequired=true sublevel=1]
@@ -25,8 +25,9 @@ URI of payment plugin to be used. Needs to be set up before as a payment plugin 
 [/parameter]
 
 [parameter data="all provider GET/POST params " datatype="any" isRequired=true sublevel=1]
-Attach all GET/POST parameters sent from the payment provider to the ``payment_url`` from :doc:`Create Subscription </reference/stable/subscription-api/create-subscription>`. These will be used to validate if the payment was successful.
+Attach all GET/POST parameters sent from the payment provider to the ``payment_url`` from :doc: [Create Subscription](/api-references/subscription-api/api-reference/create-subscription). These will be used to validate if the payment was successful.
 [/parameter]
+
 ## Request example
 
 ```http

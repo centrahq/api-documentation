@@ -29,7 +29,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-Both `id` and `deliveryId` from [List supplier deliveries](list-supplier-deliveries) can be used to fetch a supplier delivery.
+Both `id` and `deliveryId` from [List supplier deliveries](/api-references/order-api/api-reference/list-supplier-deliveries) can be used to fetch a supplier delivery.
 
 ```http
    GET <base>/supplier-deliveries/*supplierDeliveryId* HTTP/1.1
