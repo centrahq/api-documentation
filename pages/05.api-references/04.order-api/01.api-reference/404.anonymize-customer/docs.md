@@ -11,6 +11,7 @@ taxonomy:
 ```text
 PUT  *base*/anonymize-customer/*customerId*
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 This endpoint will anonymize all personal data for a customer identifed by the customer id.
 

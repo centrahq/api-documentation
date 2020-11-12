@@ -11,6 +11,7 @@ taxonomy:
 ```text
 GET  *base*/subscription/packages
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 Receive a list of all the active packages and their price in the provided pricelist.
 ## Parameters

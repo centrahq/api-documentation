@@ -11,6 +11,8 @@ taxonomy:
 ```text
 POST  *base*/subscription/payment
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
+
 
 This will complete the subscription. Often called when user comes back to payment_url from /subscription/order. All GET/POST-params sent by the payment plugin needs to be attached to this call.
 

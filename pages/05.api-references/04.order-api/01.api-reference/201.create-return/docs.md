@@ -11,6 +11,7 @@ taxonomy:
 ```text
 POST  *base*/return
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will create return for given shipment and items. Return will be created even if some of the provided items cannot be returned.
 

@@ -11,6 +11,7 @@ taxonomy:
 ```text
 PUT  *base*/orders
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 Update information on the order.
 

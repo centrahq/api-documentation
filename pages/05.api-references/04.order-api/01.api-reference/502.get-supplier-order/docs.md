@@ -11,6 +11,7 @@ taxonomy:
 ```text
 GET *base*/supplier-orders/*supplierOrderId*
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 List the products inside a supplier order.
 

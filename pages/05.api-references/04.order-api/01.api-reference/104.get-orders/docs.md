@@ -17,6 +17,7 @@ taxonomy:
 ```text
 GET  *base*/orders?[&limit=5][&offset=5][&order=83651][&customer_id=1][&xml=1]
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will fetch the orders allowed for the plugin being set up.
 

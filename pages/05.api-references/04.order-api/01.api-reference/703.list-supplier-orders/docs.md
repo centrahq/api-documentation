@@ -11,6 +11,7 @@ taxonomy:
 ```text
 GET *base*/supplier-orders
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 Get all confirmed supplier orders visible by the plugin.
 

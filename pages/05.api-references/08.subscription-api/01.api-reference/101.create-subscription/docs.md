@@ -11,6 +11,7 @@ taxonomy:
 ```text
 POST  *base*/subscription/order
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 Add a subscription with payment details, will not be completed/registered as a completed subscription until `subscription/payment` has been called.
 ## Parameters

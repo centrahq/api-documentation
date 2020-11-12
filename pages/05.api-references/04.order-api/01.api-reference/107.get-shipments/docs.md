@@ -17,6 +17,7 @@ taxonomy:
 ```text
 GET *base*/shipments?[&limit=5][&order=83651]
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 Will list all Good to Go-shipments that are not sent. Oldest first.
 

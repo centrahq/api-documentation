@@ -11,6 +11,7 @@ taxonomy:
 ```text
 GET  *base*/subscription/subscriptions?customerEmail=*email*
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 Receive a list of all subscriptions for the customer.
 

@@ -11,6 +11,7 @@ taxonomy:
 ```text
 PUT  *base*/subscription/subscription/*id*
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 Update a subscription.
 

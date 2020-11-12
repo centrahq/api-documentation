@@ -11,6 +11,7 @@ taxonomy:
 ```text
 GET  *base*/subscription/subscriptions/*id*
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 Return subscription by specified id.
 

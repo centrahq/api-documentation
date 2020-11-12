@@ -11,6 +11,7 @@ taxonomy:
 ```text
 PUT  *base*/customers/*customerId*
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 Update customer information.
 

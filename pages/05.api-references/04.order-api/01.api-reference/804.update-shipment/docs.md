@@ -11,7 +11,7 @@ taxonomy:
 ```text
 PUT  *base*/shipments/*shipmentId*
 ```
-
+Authentication : [API Key](/api-references/api-intro#authentication)
 This will modify the products on the shipment, keeping the same `shipmentId`. This function is designed for creation and modification of new shipments, meaning it will *not* work on existing shipments which:
 
 * Have been shipped,

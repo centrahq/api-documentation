@@ -11,6 +11,7 @@ taxonomy:
 ```text
 DELETE  *base*/shipments/*shipmentId*[?xml=1]
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will delete the shipment completely. Will only work if the shipment does not have any invoices or credit notes connected to it.
 

@@ -11,6 +11,7 @@ taxonomy:
 ```text
 GET  *base*/customers/*customerId*
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 Return customer by specified ID.
 

@@ -17,6 +17,7 @@ taxonomy:
 ```text
 GET *base*/supplier-deliveries/*supplierDeliveryId*
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 Get the incoming and not accepted deliveries that are connected to the warehouse this plugin is connected to.
 

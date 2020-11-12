@@ -11,6 +11,7 @@ taxonomy:
 ```text
 PUT  *base*/capture
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will capture the payment for a shipment. You can use this on a shipment that has `"shouldCapture": true` from [Get shipments](order-api-get-shipments).
 

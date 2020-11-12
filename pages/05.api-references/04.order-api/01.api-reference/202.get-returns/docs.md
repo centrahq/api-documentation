@@ -17,6 +17,7 @@ taxonomy:
 ```text
 GET  *base*/returns?[&limit=5][&page=2][&return=23]
 ```
+Authentication : [API Key](/api-references/api-intro#authentication)
 
 Will list all returns, newest first.
 
