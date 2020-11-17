@@ -514,12 +514,6 @@ The form will:
 5. After payment has been completed, the customer is then returned to `paymentReturnPage` with the encrypted blob payload.
 6. The parameters sent through query string and POST-data should be collected and sent to Centra's `payment-result` endpoint for finalization.
 
-### Parameters sent to paymentReturnPage
-
-```eval_rst
-.. warning:: The `paymentReturnPage` should always collect all URL-parameters from both the query string in the URL and the POST-data and send it to Centra. This is the way to validate if the payment went through successfully or not. Some payment methods used through Adyen Checkout will use POST-data instead of sending back the parameters as query string parameters. 
-```
-
 You need to make sure you insert the HTML into your DOM, and also make sure you evaluate the javascript from the response. One solution to do this in React is to inject the HTML into the DOM, then run the following code on it:
 
 Insert HTML into DOM:
@@ -795,6 +789,12 @@ Since the `responseEventRequired` is `true`, Adyen Drop-In needs a response to t
 ```
 
 The [`PaymentActionResponse`, explained in the Swagger UI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) and in [Payment Method flows](https://docs.centra.com/guides/shop-api/payment-method-flows) does not differ specifically for Adyen Drop-In, the important part is to support ``action=javascript`` to provide info to the already embedded Adyen Drop-In form.
+
+### Parameters sent to paymentReturnPage
+
+```eval_rst
+.. warning:: The `paymentReturnPage` should always collect all URL-parameters from both the query string in the URL and the POST-data and send it to Centra. This is the way to validate if the payment went through successfully or not. Some payment methods used through Adyen Checkout will use POST-data instead of sending back the parameters as query string parameters. 
+```
 
 ### Testing
 
