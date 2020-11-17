@@ -307,6 +307,12 @@ This will make sure that:
 1. You do not evaluate `type=application/json` blobs from Centra.
 2. The proper snippet will run after the DOM has changed.
 
+### Parameters sent to paymentReturnPage
+
+```eval_rst
+.. warning:: The `paymentReturnPage` should always collect all URL-parameters from both the query string in the URL and the POST-data and send it to Centra. This is the way to validate if the payment went through successfully or not. Some payment methods used through Adyen Checkout will use POST-data instead of sending back the parameters as query string parameters. 
+```
+
 ### Configuration of Adyen Checkout
 
 As you see above, we use our own standard look of Adyen Checkout. If you like to have other settings, you can set the `window.adyenCheckoutConfig`-property in your DOM to override our suggested settings. [Here you can find information about what options you can set for Adyen Checkout Web SDK](https://docs.adyen.com/checkout/web-sdk/customization/).
