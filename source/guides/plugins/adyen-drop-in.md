@@ -29,7 +29,7 @@ If Adyen Drop-In is initiated after customer has filled in their address, the fl
 
 1. Customer fills in address information on the checkout page.
 2. When the customer is done, they can select a payment option.
-3. If Adyen Checkout is selected (Most likely by showing the Credit Card-logos/Swish/Klarna or similar as the payment option) a call should be made to Centra using `POST /payment` including the address information.
+3. If Adyen Drop-In is selected (Most likely by showing the Credit Card-logos/Swish/Klarna or similar as the payment option) a call should be made to Centra using `POST /payment` including the address information.
 4. Centra will initiate Adyen Drop-In and give back a HTML-snippet together with an indication that you actually got `adyen-drop-in` in the response.
 5. The website renders the HTML for Adyen Drop-In.
 6. The customer fills in the information, or selects what payment method they want to use in Adyen Drop-In.
@@ -793,7 +793,7 @@ The [`PaymentActionResponse`, explained in the Swagger UI](https://docs.centra.c
 ### Parameters sent to paymentReturnPage
 
 ```eval_rst
-.. warning:: The `paymentReturnPage` should always collect all URL-parameters from both the query string in the URL and the POST-data and send it to Centra. This is the way to validate if the payment went through successfully or not. Some payment methods used through Adyen Checkout will use POST-data instead of sending back the parameters as query string parameters. 
+.. warning:: The `paymentReturnPage` should always collect all URL-parameters from both the query string in the URL and the POST-data and send it to Centra. This is the way to validate if the payment went through successfully or not. Some payment methods used through Adyen Drop-In will use POST-data instead of sending back the parameters as query string parameters. 
 ```
 
 ### Testing
