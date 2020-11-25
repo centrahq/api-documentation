@@ -23,10 +23,9 @@ It's time to add new promotion in Voyado.
 1. Save it, then Activate it
 1. Assign contacts
 
-<img src="images/voyado-promotions-with-voucher.png">
 ```eval_rst
 .. image:: images/voyado-promotions-with-voucher.png
-   :scale: 30 %
+   :scale: 50 %
 ```
 
 ## Front End
