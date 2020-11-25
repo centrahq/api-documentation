@@ -36,6 +36,16 @@ Copy the value into the Centra-plugin.
 
 The Audience-ID can be found by going to your [Audiences in Mailchimp](https://admin.mailchimp.com/lists/) and then selecting "Settings" on the Audience you want to use. In the bottom of the settings-page you will see "Unique id for audience X". Copy this value into the field in the Centra plugin.
 
+#### Audience Tags
+
+Centra sends to Mailchimp these tags:
+
+* FNAME
+* LNAME
+* GENDER
+
+To be abel to use tags, make sure they are configured in your Audience settings.
+
 #### "From"-address
 
 To make sure Mailchimp will send emails using your own domain, make sure you have [verified your domain with Mailchimp](https://admin.mailchimp.com/account/domains/) and then add an email address with that same domain to use as the "From"-email address for all your receipts.
@@ -210,4 +220,3 @@ Also, in the reporting for each campaign you will be able to see all the convers
 ```
 
 These values will be converted to your base currency, so if your base currency is EUR, the totals will be calculated into EUR even though the orders might be in different currencies.
-
