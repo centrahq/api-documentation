@@ -17,6 +17,7 @@ If you're using Klarna Checkout for payment, you will need to configure the foll
 
 For any payment method other than Klarna Checkout, you will only need to configure:
 * Rulemailer mailing plugin,
+* CA automation in Rule app,
 * Additional Front End change to support recovering cart based on selection ID.
 
 ## How does Cart Abandonment feature work?
