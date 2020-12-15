@@ -64,7 +64,7 @@ Will list the shipment with the corresponding shipment Id.
 .. code-block:: http
    :linenos:
 
-   GET <base>/shipment/1234?limit=5 HTTP/1.1
+   GET <base>/shipment/1234 HTTP/1.1
 
 ```
 
