@@ -10,7 +10,7 @@
 
 .. endpoint::
    :method: GET
-   :url: *base*/shipment/*shipmentId*
+   :url: *base*/shipments/*shipmentId*
 
 .. authentication::
    :api_key: true
