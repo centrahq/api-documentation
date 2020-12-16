@@ -34,12 +34,19 @@ This will clone a voucher with updated provided information
 
      - Code of the voucher. Will be generated a random one if not passed.
 
+   * - ``replaceExisting``
+
+       .. type:: boolean
+          :required: false
+
+     - Default ``false``. Allow cloning to existing code. Will deactivate the existing voucher.
+
    * - ``stopDate``
    
        .. type:: string
           :required: true
    
-     - Stop date of the voucher in `Y-m-d` format.
+     - Stop date of the voucher in ``Y-m-d`` format.
 
    * - ``conversionHtml``
 
@@ -169,6 +176,21 @@ Voucher does not belong to this store
        "voucher": "3",
        "msg": {
            "voucher": "Voucher does not belong to this store"
+       }
+   }
+
+```
+
+Voucher code already exists
+```eval_rst
+.. code-block:: json
+   :linenos:
+
+   {
+       "status": "no",
+       "voucher": "3",
+       "msg": {
+           "code": "Code is already taken"
        }
    }
 
