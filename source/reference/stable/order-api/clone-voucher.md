@@ -34,7 +34,7 @@ This will clone a voucher with updated provided information
 
      - Code of the voucher. Will be generated a random one if not passed.
 
-   * - ``allowReplaceExisting``
+   * - ``replaceExisting``
 
        .. type:: boolean
           :required: false
