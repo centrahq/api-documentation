@@ -38,6 +38,7 @@ Notice that the wholesale prices have a `<priceb>` field. This is the recommende
 
 Also note that the T001 product has prices on the variant level (the blue one is more expensive than the red one). The PWC product has prices on the product level, so if it had multiple variants they would have the same price.
 
+When using Time Altered Prices you can use two new properties set on `item` and `variation` levels. `<alteredprice>` and `<alteredpriceb>` will set the Time Altered Prices for given product or variant. Example was presented on `T001`.
 
 ## Request
 
@@ -88,11 +89,15 @@ Also note that the T001 product has prices on the variant level (the blue one is
                 <id>T001_RED</id>
                 <price>45</price>
                 <priceb>123</priceb>
+                <alteredprice>50</alteredprice>
+                <alteredpriceb>150</alteredpriceb>
               </variation>
               <variation>
                 <id>T001_BLUE</id>
                 <price>67</price>
                 <priceb>234</priceb>
+                <alteredprice>80</alteredprice>
+                <alteredpriceb>250</alteredpriceb>
               </variation>
             </product>
             <product>
