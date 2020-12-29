@@ -36,7 +36,14 @@ Will list all returns, newest first.
        .. type:: int
           :required: false
 
-     - Number of page of results to return.     
+     - Number of the page of results to return. Can be used instead of `offset`. Page numbers start at 1.
+
+   * - ``offset``
+
+       .. type:: int
+          :required: false
+
+     - Offset how far in to start returning the returns. Can be used instead of `page`. Offset starts at 0.
 
    * - ``return``
 
