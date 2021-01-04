@@ -432,11 +432,11 @@ In the filter object, the only thing that changes depending on what you filter o
 ### Searching improvements since v2.92
 
 Using the free-text `"search"` field in `POST /products` endpoint now has the following improvements:
-- Handling of non-Latin characters (e.g. "röd", "små"),  
-- Matching Latin to non-Latin characters (searching "röd" will also match "rod"),  
+- Handling of non-Latin characters (e.g. "grön", "små"),  
+- Matching Latin to non-Latin characters (searching "grön" will also match "gron"),  
 - Proximity (fuzzy) matching of phrases (searching "prdct" should match "product").
 
-For example, if you have a Product named "Test Product" which contains "Röd" in its description, you should be able to find it using phrases like: `"test product"`, `"test röd"`, `"product rod"`, or even `"prdct rd"`.
+For example, if you have a Product named "Test Product" which contains "Grön" in its description, you should be able to find it using phrases like: `"test product"`, `"test grön"`, `"product gron"`, or even `"prdct grn"`.
 
 ## Routing
 
