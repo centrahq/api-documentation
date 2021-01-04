@@ -438,6 +438,10 @@ Using the free-text `"search"` field in `POST /products` endpoint now has the fo
 
 For example, if you have a Product named "Test Product" which contains "Grön" in its description, you should be able to find it using phrases like: `"test product"`, `"test grön"`, `"product gron"`, or even `"prdct gron"`.
 
+```eval_rst
+.. note:: Fuzzy search only works on words longer than 3 characters.
+```
+
 ## Routing
 
 You can post a uri to the **POST products** endpoint to filter out products that have a specific uri or that are in a category with a specific uri:
