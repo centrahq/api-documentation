@@ -436,7 +436,7 @@ Using the free-text `"search"` field in `POST /products` endpoint now has the fo
 - Matching Latin to non-Latin characters (searching "grön" will also match "gron"),  
 - Proximity (fuzzy) matching of phrases (searching "prdct" should match "product").
 
-For example, if you have a Product named "Test Product" which contains "Grön" in its description, you should be able to find it using phrases like: `"test product"`, `"test grön"`, `"product gron"`, or even `"prdct grn"`.
+For example, if you have a Product named "Test Product" which contains "Grön" in its description, you should be able to find it using phrases like: `"test product"`, `"test grön"`, `"product gron"`, or even `"prdct gron"`.
 
 ## Routing
 
