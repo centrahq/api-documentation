@@ -429,6 +429,14 @@ The "filter" object has values for the field "swatch.desc" at the end of this JS
 
 In the filter object, the only thing that changes depending on what you filter on is the "count". If you do not filter on anything count = totalCount.
 
+### Searching improvements since v2.92
+
+Using the free-text `"search"` field in `POST /products` endpoint now has the following improvements:
+- Handling of non-Latin characters (e.g. "röd", "små"),  
+- Matching Latin to non-Latin characters (searching "röd" will also match "rod"),  
+- Proximity (fuzzy) matching of phrases (searching "prdct" should match "product").
+
+For example, if you have a Product named "Test Product" which contains "Röd" in its description, you should be able to find it using phrases like: `"test product"`, `"test röd"`, `"product rod"`, or even `"prdct rd"`.
 
 ## Routing
 
