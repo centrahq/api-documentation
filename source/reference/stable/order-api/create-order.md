@@ -549,7 +549,7 @@ Here are the parameters allowed to create an order. There are some fields specif
           "auth": {
               "status": 1,
               "response": "[PSP response]",
-              "transaction": "[Auth transation ID here]",
+              "transaction": "[Auth transation ID]",
               "method": "cc",
               "amount": 100.00
           },
