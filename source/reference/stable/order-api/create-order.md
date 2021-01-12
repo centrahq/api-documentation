@@ -543,7 +543,24 @@ Here are the parameters allowed to create an order. There are some fields specif
               "unitPrice": 12.11,
               "originalPrice": 50.22
           }
-      ]
+      ],
+      "payment": {
+          "id": 49,
+          "auth": {
+              "status": 1,
+              "response": "[PSP response]",
+              "transaction": "[Auth transation ID here]",
+              "method": "cc",
+              "amount": 100.00
+          },
+          "capture": {
+              "status": 1,
+              "response": "[PSP response]",
+              "transaction": "[Capture transation ID]",
+              "method": "cc",
+              "amount": 100.00
+          }
+       }
     }
 ```
 
