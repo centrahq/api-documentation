@@ -20,6 +20,10 @@ Tax Rules control what amount of tax should be applied based on Country and Cust
 
 For each Tax Rule you can also configure if the prices in your Store should be displayed with or without tax and whether or not to apply tax to the handling and shipping fees (which is enabled by default). Finally, for countries in which tax amount depends on the state (like US, Canada or Australia), you can select to apply tax per ship-to country **and** state, in which case you will need to create separate Rules for each of the tax rates and apply them to appropriate states. It's even possible to configure tax rules applying per specific zip codes, which is sometimes used for US taxes.
 
+[notice-box=warning]
+If you enable a Tax Rule for specific US zip codes, Centra will enable zip code validation for US orders. This means only allowed zip code formats for United States will be: `NNNNN`, `NNNN-NNNNN` or `NNNNNNNNN`. Other formats will return a checkout error and prevent you from finalizing the order. You need to be aware of it and handle this scenario in your front end.
+[/notice-box]
+
 ### Tax Class
 
 Tax Classes are assigned to the Customers (B2C) and Accounts (B2B) for which the same Tax Rules should be applied. One of the popular use case is to have a "Tax exempt" class for customers who are not paying VAT or Sales tax. This means that for each country in which you have VAT-exempt customers, you will need to have two Tax Rules - one with "Tax exempt" Tax Class selected and 0% tax rate, and one for other classes with appropriate tax rate.
