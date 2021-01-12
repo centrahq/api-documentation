@@ -42,3 +42,5 @@ Because Gift Certificates are a "virtual" product, adding them to your selection
 ### Campaign
 
 Campaigns allow the store admin to temporarily change the prices of selected products. Campaign is defined by its name, Store, Markets and Pricelists for which the Campaign should be active. In B2B Campaigns it's also required to select at least one Delivery Window. Then the user can select one or more products and set specific discounts for each of them, either by configuring a new, fixed price, or by specifying the percentage discount. Every product on the list has "Start" and "Stop" dates for when the discount is active.
+
+The way Campaigns work is that they actually set a new base price of the Product. This means that any discount vouchers will apply to the Campaign price, not the Pricelist price. If this is not desired, you can instead configure your voucher to apply on the original price excluding campaign price. This is configurable in the voucher action results.
