@@ -33,9 +33,11 @@ Gift certificate definition in Centra consists of its name, the Store it's activ
 
 Gift certificates of type "Priceoff" allow to purchase store credit and specify its value in every currency of every Pricelist active in the Store, or, when appropriate configuration option is selected, only in the currency in which the certificate was purchased.
 
-Gift certificates of type "Dynamic Priceoff" (...) [_Some magic in the Front End? Not sure. No one I asked knows. Either find out or remove._]
+Gift certificates of type "Dynamic Priceoff" allow the end customer to specify the credit amount themselves.
 
-Gift certificates of type "Free products" (...) [_Nobody I asked knows how this works. Find out or remove._]
+[notice-box=info]
+Because Gift Certificates are a "virtual" product, adding them to your selection will clear it of any other products. You cannot mix actual products and gift certs in the same order, and you should make it clear to your customers in your front end.
+[/notice-box]
 
 ### Campaign
 
