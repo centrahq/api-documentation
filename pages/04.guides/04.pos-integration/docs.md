@@ -144,3 +144,117 @@ POST http://customer.centra.com/api/order-api/order/
 
 TBD
 -->
+
+
+### Webhooks
+
+When the status of a check-first order updates we will send webhooks to the configured endpoint. To receive webhooks, ensure the Centra Webhooks plugin is enabled with the Check First event trigger selected. [Click here for information on setting up webhooks](/plugins/centra-webhook)
+
+In each of the payloads `id` refers to the order number which can be used in the Order API.
+
+#### Create
+Create events are emitted when an order using check-first warehouses is created.
+The webhook contains the Id for each check-first warehouse being used, and the date at which it will time-out.
+
+```json
+{
+    "events": [
+        {
+            "type": "check_first",
+            "action": "create",
+            "date": "2021-01-11 16:21:00.552288",
+            "id": 19,
+            "data": {
+                "warehouses": [
+                    {
+                        "warehouseId": 2,
+                        "expirationAt": "2021-01-11T15:21:00+01:00"
+                    },
+                    {
+                        "warehouseId": 3,
+                        "expirationAt": "2021-01-12T16:21:00+01:00"
+                    },
+                    {
+                        "warehouseId": 4,
+                        "expirationAt": "2021-01-12T16:21:00+01:00"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
+#### Rejected
+Rejected events are emitted whenever the Check-first warehouse has been cancelled on an order.
+
+This can happen either when an individual store rejects the order [by the Order Api](/api-references/order-api/api-reference/update-check-first) or when the "Resume" button is pressed on a check-first order from AMS.
+
+If all are rejected the order will proceed to be processed as a regular order.
+
+```json
+{
+  "events": [
+    {
+      "type": "check_first",
+      "action": "rejected",
+      "date": "2021-01-11 16:21:08.356543",
+      "id": 20,
+      "data": {
+        "warehouseId": 3
+      }
+    },
+    {
+      "type": "check_first",
+      "action": "rejected",
+      "date": "2021-01-11 16:21:08.773921",
+      "id": 20,
+      "data": {
+        "warehouseId": 4
+      }
+    }
+  ]
+}
+```
+
+#### Accepted
+Accepted events are emitted when an order is accepted by a check-first [by the Order Api](/api-references/order-api/api-reference/update-check-first).
+
+After an order is accepted it can not be accepted by any other check-first, and they are automatically rejected.
+```json
+{
+  "events": [
+    {
+      "type": "check_first",
+      "action": "accepted",
+      "date": "2021-01-11 16:20:17.752285",
+      "id": 18,
+      "data": {
+        "warehouseId": 4
+      }
+    }
+  ]
+}
+```
+
+#### Timeout
+
+Timeout events are emitted after a check-first warehouse times out for an order, at the date specified in the [Create](#create) call.
+
+After this time it is no longer possible to accept the order using this warehouse.
+
+```json
+{
+  "events": [
+    {
+      "type": "check_first",
+      "action": "timeout",
+      "date": "2021-01-11 16:20:00.757946",
+      "id": 18,
+      "data": {
+        "warehouseId": 2
+      }
+    }
+  ]
+}
+```
