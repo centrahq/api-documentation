@@ -14,13 +14,13 @@ Centra is a natively multi-market (different products or pricing to different cu
 
 Store is the basic logical entity in Centra. By default, each Centra instance is created with two stores, Retail and Wholesale, but it is possible to add more. This is useful for customers who want to serve multiple stores (for example, different brands and/or types of products) using a single Centra instance. Each Store contains a number of options controlling behaviour of orders, shipments, customers, invoices, stock, notification e-mails and payments.
 
-Defining a store requires specifying default Pricelist, default Market and selecting locales. Additionaly, each store should be tied to at least one Warehouse Group. Finally, Store can have multiple plugins enabled, which control functions like APIs, payment and shipping methods, data feeds (Facebook, Instagram, Google Merchant etc.) or e-mails.
+Defining a store requires specifying default Pricelist, default Market and selecting locales. Additionaly, each store should be tied to at least one Allocation Rule. Finally, Store can have multiple plugins enabled, which control functions like APIs, payment and shipping methods, data feeds (Facebook, Instagram, Google Merchant etc.) or e-mails.
 
 ### Market
 
-Markets divide your store into logical entities, which can be based on Geo-locations (one market per each country the store goods are offered in), or business needs (e.g. "VIP" market offerring goods at limited prices to VIP customers). Products in each market can have different prices, discounts and use different currencies, they also can have completely separate Product Displays, resulting in a different ways the same Products are shown in each Market. Products stock levels are shown based on the configured Warehouse Group.
+Markets divide your store into logical entities, which can be based on Geo-locations (one market per each country the store goods are offered in), or business needs (e.g. "VIP" market offerring goods at limited prices to VIP customers). Products in each market can have different prices, discounts and use different currencies, they also can have completely separate Product Displays, resulting in a different ways the same Products are shown in each Market. Products stock levels are shown based on the configured Allocation Rule.
 
-Markets also control which campaigns and vouchers are available, which shipping options are available, and which Warehouse Group is used to display stock level.
+Markets also control which campaigns and vouchers are available, which shipping options are available, and which Allocation Rule is used to display stock level.
 
 Market can be set by:
 * (Prio 1) Store API `PUT /markets/switch`
@@ -72,11 +72,11 @@ A Display is, just like a display in a brick-and-mortar store, one or more relat
 
 ### Warehouse
 
-A warehouse in Centra is where stock is stored. Warehouse is defined by its name and priority. Each warehouse can belong to one or more warehouse groups. When stock is added, either by importing a CSV or via stock editor, it always needs to be added to one of the warehouses. There are no storage locations in Centra.
+A Warehouse in Centra is where stock is stored. Warehouse is defined by its name and priority. Each Warehouse can belong to one or more Allocation Rules. When stock is added, either by importing a CSV or via stock editor, it always needs to be added to one of the Warehouses. There are no storage locations in Centra.
 
-### Warehouse Group
+### Allocation Rule
 
-Consists of one or more warehouses sorted by priority. One warehouse group can belong to multiple markets, but two groups cannot belong to the same market. With the help of a warehouse group, you will set for which markets and stores specific warehouses is used for. Each market has exactly one default warehouse group.
+Consists of one or more warehouses sorted by priority. One Allocation Rule can belong to multiple markets, but two groups cannot belong to the same market. With the help of a Allocation Rules, you will set for which markets and stores specific warehouses is used for. Each market has exactly one default Allocation Rule.
 
 ### Plugin
 

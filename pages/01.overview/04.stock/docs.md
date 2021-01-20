@@ -8,11 +8,11 @@ taxonomy:
 
 As mentioned in the previous chapters, each Product has at least one Variant, and every Variant has at least one Size. In Centra, stock is defined on the Size level, which means we keep information about inventory for every Size of every Variant of every Product.
 
-### Warehouses and Warehouse Groups
+### Warehouses and Allocation Rules
 
-A warehouse in Centra is where stock information about every product size is stored. Warehouse is defined by its name and priority. Each Warehouse can belong to one or more Warehouse Groups. When stock is added, either by importing a CSV or via stock editor, it always needs to be added to one of the Warehouses. Warehouses in Centra don't hold any information about storage locations.
+A warehouse in Centra is where stock information about every product size is stored. Warehouse is defined by its name and priority. Each Warehouse can belong to one or more Allocation Rules. When stock is added, either by importing a CSV or via stock editor, it always needs to be added to one of the Warehouses. Warehouses in Centra don't hold any information about storage locations.
 
-Each Warehouse can belong to one or more Warehouse Groups. One Warehouse Group can belong to multiple Markets, but one Market can have only one Warehouse Group. This way Centra controls which Warehouses' stock will be displayed in each Market.
+One Allocation Rule can belong to multiple Markets, but one Market can have only one Allocation Rule. This way Centra controls which Warehouses' stock will be displayed in each Market.
 
 ### Example stock levels and definitions
 

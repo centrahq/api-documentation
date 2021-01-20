@@ -10,7 +10,7 @@ taxonomy:
 
 ###  **Account**  
 _B2B_  
-Account is a company or individual buying Wholesale with a profile stored in Centra. An Account can be represented by several Buyers. Information about the Account is stored where customer information is stored. Examples are: Customer Number, Buyers, Addresses. There are also attributes for segmentation such as Market, Price List and Warehouse Group. Accounts are only used in the Wholesale module of Centra. The corresponding concept in the Direct-to-Consumer module is Customer.
+Account is a company or individual buying Wholesale with a profile stored in Centra. An Account can be represented by several Buyers. Information about the Account is stored where customer information is stored. Examples are: Customer Number, Buyers, Addresses. There are also attributes for segmentation such as Market, Price List and Allocation Rule. Accounts are only used in the Wholesale module of Centra. The corresponding concept in the Direct-to-Consumer module is Customer.
 
 ### **Affiliate**  
 _B2C_  
@@ -23,6 +23,10 @@ Specific user role in Centra for agents. The Agent can add Accounts and place or
 ### **Allocated (stock)**
 Allocated = Physical - Free To Allocate  
 The number of said products that are allocated on orders or shipments which are not yet completed.
+
+### **Allocation Rule**  
+_B2B/B2C_  
+Consists of one or more warehouses sorted by priority. One Allocation Rule can belong to multiple markets, but two groups cannot belong to the same market. With the help of a Allocation Rule, you will set for which markets and stores specific warehouses is used for. Each market has exactly one default Allocation Rule.
 
 ### **Attribute**  
 _B2B/B2C_  
@@ -381,8 +385,4 @@ A voucher is used to give rebates, free shipping, free products etc. to a custom
 
 ### **Warehouse**  
 _B2B/B2C_  
-A warehouse in Centra is where stock is stored. Warehouse is defined by its name and priority. Each warehouse can belong to one or more warehouse groups. When stock is added, either by importing a CSV or via stock editor, it always needs to be added to one of the warehouses.
-
-### **Warehouse group**  
-_B2B/B2C_  
-Consists of one or more warehouses sorted by priority. One warehouse group can belong to multiple markets, but two groups cannot belong to the same market. With the help of a warehouse group, you will set for which markets and stores specific warehouses is used for. Each market has exactly one default warehouse group.
+A warehouse in Centra is where stock is stored. Warehouse is defined by its name and priority. Each warehouse can belong to one or more Allocation Rules. When stock is added, either by importing a CSV or via stock editor, it always needs to be added to one of the warehouses.
