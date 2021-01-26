@@ -187,12 +187,12 @@ The following element types exist today. Not all of them are supported for the D
 
    * - ``input``
      - .. figure:: images/attribute-input.png
-     - Mapped/Dynamic
+     - Static or Dynamic
      - Set class of the input (double the size of the input): ``'class' => 'double'``
 
    * - ``textarea``
      - .. figure:: images/attribute-textarea.png
-     - Mapped/Dynamic
+     - Static or Dynamic
      - Set class of the textarea: ``'class' => 'double'``
 
    * - ``readonly``
@@ -202,12 +202,12 @@ The following element types exist today. Not all of them are supported for the D
 
    * - ``boolean``
      - .. figure:: images/attribute-boolean.png
-     - Mapped/Dynamic
+     - Static or Dynamic
      - Options for the radio inputs (default is always 0): ``'options' => [[1,'Yes'],[0,'No']]``
 
    * - ``select``
      - .. figure:: images/attribute-select.png
-     - Mapped/Dynamic
+     - Static or Dynamic
      - Default selected is always first option, so keep it as ``[0,'Select']``.
 
        Like this: ``'options' => [[0,'Select'],['1','AAA'],['2','BBB']]``
@@ -216,14 +216,14 @@ The following element types exist today. Not all of them are supported for the D
 
    * - ``image``
      - .. figure:: images/attribute-image.png
-     - Mapped
+     - Static
      - Size of the image: ``'size' => '600x400'``
 
        Allowed image formats: ``'jpg','jpeg','png','gif','svg'``
 
    * - ``file``
      - .. figure:: images/attribute-file.png
-     - Mapped
+     - Static
      - No options available.
 ```
 
