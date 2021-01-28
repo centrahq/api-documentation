@@ -39,6 +39,8 @@ Gift certificates of type "Dynamic Priceoff" allow the end customer to specify t
 Because Gift Certificates are a "virtual" product, adding them to your selection will clear it of any other products. You cannot mix actual products and gift certs in the same order, and you should make it clear to your customers in your front end.
 [/notice-box]
 
+To learn how to implement purchase of gift certificates on your website, see the article [How to sell Gift Certificates in your Store](/fe-development/gift-certs).
+
 ### Campaign
 
 Campaigns allow the store admin to temporarily change the prices of selected products. Campaign is defined by its name, Store, Markets and Pricelists for which the Campaign should be active. In B2B Campaigns it's also required to select at least one Delivery Window. Then the user can select one or more products and set specific discounts for each of them, either by configuring a new, fixed price, or by specifying the percentage discount. Every product on the list has "Start" and "Stop" dates for when the discount is active.
