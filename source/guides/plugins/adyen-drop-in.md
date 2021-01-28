@@ -725,13 +725,13 @@ document.addEventListener('centra_checkout_payment_callback', function(origdata)
     termsAndConditions: true, // Get from checkout.
   });
   if (responseEventRequired) {
-    if(data.action === 'redirect') {
-      location.href = data.url;
+    if(response.action === 'redirect') {
+      location.href = response.url;
       return;
     }
-    if (data.errors) {
+    if (response.errors) {
       // Payment failed for some reason, show error
-      ShowPaymentFailedError(data.errors);
+      ShowPaymentFailedError(response.errors);
       return;
     }
     // action is javascript, send back the formFields
