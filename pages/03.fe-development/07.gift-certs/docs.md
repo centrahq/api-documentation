@@ -20,9 +20,7 @@ In Centra, gift certificates can be purchased with the same flow as standard pro
 
 ### Types of GCs
 
-You can learn the basics of creating gift certificates in [Gift Certificates in B2C](https://support.centra.com/centra-sections/retail-b2c/promo/creating-a-gift-certificate) article on our Support site.
-
-There are two types of gift certificates:
+You can learn the basics of creating gift certificates in [Gift Certificates in B2C](https://support.centra.com/centra-sections/retail-b2c/promo/creating-a-gift-certificate) article on our Support site. There are two types of gift certificates:
 * `Priceoff` - this is a certificate that has pre-defined value in each of currencies you want to sell in,
 * `Dynamic Priceoff` - this is a certificate with no pre-defined value, you can choose it in your front end.
 
@@ -68,7 +66,7 @@ As you can see, `Dynamic gift certificate` can have any value, while the `Pre-de
 Once you have the list of available GCs, you can add them to your selection by calling [POST /selections/{selection}/gift-certificates/{giftCertificate}](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_selections__selection__gift_certificates__giftCertificate_), for example:
 `POST /selections/{selection}/gift-certificates/gift-2`
 
-In case of a `Dynamic Priceoff` certificate, you will either need to add `"amount": X` to your POST, or call [POST /selections/{selection}/gift-certificates/{giftCertificate}/amount/{amount}](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_selections__selection__gift_certificates__giftCertificate__amount__amount_), e.g.:
+In case of a `Dynamic Priceoff` certificate, you will either need to add `"amount": X` to your POST body, or call [POST /selections/{selection}/gift-certificates/{giftCertificate}/amount/{amount}](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_selections__selection__gift_certificates__giftCertificate__amount__amount_), e.g.:
 `POST /selections/{selection}/gift-certificates/gift-1/amount/100`
 The amount is always specified in the currency of the selection.
 
