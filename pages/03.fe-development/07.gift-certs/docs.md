@@ -1,7 +1,7 @@
 ---
-title: Gift Certificates
+title: How to sell Gift Certificates in your Store
 altTitle: Gift Certificates
-excerpt: Gift Certificates are "virtual" products that are handled differently in Centra. Learn how to sell them in your Front End.
+excerpt: Gift Certificates are "virtual" products that are handled differently in Centra. Here is how to handle them in your Front End.
 taxonomy:
   category: docs
 ---
