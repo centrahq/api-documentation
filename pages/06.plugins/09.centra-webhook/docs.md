@@ -20,13 +20,89 @@ We only allow the Webhook notification to be posted to HTTP or HTTPS using the p
 
 You are allowed to set an Endpoint-secret to be able to validate that the webhooks are originating from Centra, you're also able to decide if we should validate your SSL-certificate or not.
 
-### Webhook version
+### Webhook versions
 
-The first version released is webhooks aimed for when using the CheckoutAPI. The data inside the events sent as webhooks if formatted to simplify integration with the Checkout API.
+#### Checkout API
 
-For example: Whenever a product or a variant is modified in Centra, the webhook will actually send the Product Display Item ID for the items changed. 
+This was the first version released, aimed for when using the CheckoutAPI. The data inside the events sent as webhooks if formatted to simplify integration with the Checkout API.
+
+The Checkout API webhook type consists of triggers that correlates with the taxonomy of the Checkout API. Whenever objects related to a Product Display Item are modified, such as a brand connected to products, the webhook will also send triggers for the Product Display Item IDs being affected. This allows you to easily invalidate product cache as soon as a webhook is sent.
+
+Example:
+
+```json
+{
+  "products": [
+    "12412",
+    "12413",
+    "12414",
+    "12415",
+    "12426",
+    "12518"
+  ],
+  "brands": [
+    "5"
+  ]
+}
+```
 
 If a product is not available or used at all in the store the plugin is installed on, there will be no webhook call at all. This makes it possible to use multiple stores and only get webhook events for the products in the store the plugin is installed in.
+
+Checkout API webhooks currently support events of the following types:
+* Product (webhook name: `products`)
+* Inactive Product (`products`)
+* Category (`categories`)
+* Pricelist (`pricelists`)
+* Warehouse (`warehouses`)
+* Allocation rule (`warehouseGroups`)
+* Brand (`brands`)
+* Market (`markets`)
+* Campaign (`campaigns`)
+* Campaign Site (`campaignSites`)
+* Affiliate (`affiliates`)
+* Gift Certificate (`giftCertificates`)
+* Static (`statics`)
+* CMS Article (`cmsArticles`)
+* Maps Location (`mapsLocations`)
+* Maps Region (`mapsRegion`)
+
+#### Integration API
+
+Second version of the webhook is meant to be used with a wide range of integration APIs, which handle orders after they come into Centra. 
+
+Integration API webhooks currently support events of the following types:
+* Order (webhook name: `order`)
+* Shipment (`shipment`)
+* Customer (`customer`)
+* Account (`account`)
+* Return (`return`)
+
+Example:
+
+```json
+{
+  "events": [
+    {
+      "type": "order",
+      "action": "update",
+      "date": "2021-01-29 14:40:58.628033",
+      "id": 2735
+    },
+    {
+      "type": "shipment",
+      "action": "create",
+      "date": "2021-01-29 14:40:58.628119",
+      "id": 1902
+    },
+    {
+      "type": "shipment",
+      "action": "good_to_go",
+      "date": "2021-01-29 14:40:58.628239",
+      "id": 1902
+    }
+  ]
+}
+```
 
 ### Event triggers
 
