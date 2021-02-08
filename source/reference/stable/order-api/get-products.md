@@ -55,9 +55,16 @@ This will return product data from Centra with categories.
 
      - Filter products based on product, variant and stock item IDs.
 
+   * - ``market``
+
+       .. type:: integer
+          :required: false
+
+     - Get products from a specific Market ID (configured on the Product Display Page).
+
    * - ``limit``
 
-       .. type:: int
+       .. type:: integer
           :required: false
 
      - You will get this amount of products, and a "next" parameter in return if there are multiple pages. This will go a lot faster to fetch, instead of fetching all products at once.
