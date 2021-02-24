@@ -12,13 +12,15 @@
    :api_key: true
 ```
 
-This updates the `physicalStock` quantities in Centra. This is the number of products in stock including those that are reserved for orders.
+By default, this endpoint updates the `physicalStock` quantities in Centra. This is the number of products in stock including those that are reserved for orders - basically the amount you currently have in your Warehouse.
 
 ```eval_rst
 .. warning:: You cannot set the quantity below the number that is reserved for orders, the value specified in ``allocatedStock`` from :ref:`Get stock <order-api-get-stock>`. In the case the stock update contains a lower amount than the allocated stock, Centra will set the quantity to ``allocatedStock`` which the lowest possible value without affecting any reserved orders.
 
              The request will not return any error message, but an email notification can be sent to a Centra-administrator from the plugin settings.
 ```
+
+It is also possible to configure your Order API plugin to update the Free-to-Allocate (FTA) amount instead. This is the amount returned as `availableStock` by the `GET /stock` endpoint. If you choose to update FTA, stock already allocated to existing orders should remain unaffected.
 
 ## Parameters
 
