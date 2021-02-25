@@ -226,7 +226,7 @@ Here are the parameters allowed to create an order. There are some fields specif
 
             - ID specific to the product size.
 
-              Either ``id``, ``ean`` or ``sku`` must be used.
+              Either ``id``, ``ean``, ``sku`` or ``item`` must be used.
 
           * - ``ean``
 
@@ -235,7 +235,7 @@ Here are the parameters allowed to create an order. There are some fields specif
 
             - EAN of product item.
 
-              Either ``id``, ``ean`` or ``sku`` must be used.
+              Either ``id``, ``ean``, ``sku`` or ``item`` must be used.
 
           * - ``sku``
 
@@ -244,8 +244,17 @@ Here are the parameters allowed to create an order. There are some fields specif
 
             - SKU of product item. Should either be the Size SKU or a combination of Product SKU + Variant SKU + Size SKU.
 
-              Either ``id``, ``ean`` or ``sku`` must be used.
+              Either ``id``, ``ean``, ``sku`` or ``item`` must be used.
+              
+          * - ``item``
 
+              .. type:: string
+                 :required: false
+
+            - Item of product item. This is the same identifier as in Shop API / Checkout API item.
+
+              Either ``id``, ``ean``, ``sku`` or ``item`` must be used.
+              
           * - ``unitPrice``
 
               .. type:: decimal2 (0.00)
