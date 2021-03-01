@@ -4,6 +4,10 @@
 
 This marks the event from the previous example as done. That event had ID 115. To illustrate how to mark multiple events as done at the same time, this example also sends event IDs 116 and 117.
 
+```eval_rst
+.. warning:: Remember, the API returns the oldest events, up to a 100 in each events_Get. If you do not use events_Done on read events, all 100 events exposed in the queue will eventually be old and you won’t see any new events.
+```
+
 ## Request
 
 ```
