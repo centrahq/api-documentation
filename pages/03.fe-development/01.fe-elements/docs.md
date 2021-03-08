@@ -477,6 +477,10 @@ After [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20
 
 This means you should redirect the visitor to the URL provided, the payment page of Payex. The `paymentReturnPage` and `paymentFailedPage` in the request is where the visitor will return after the payment at Payex. You must have these pages in your front end.
 
+[notice-box=alert]
+The `paymentReturnPage` should always collect all URL-parameters from both the query string in the URL and the POST-data and send it to Centra. This is the way to validate if the payment went through successfully or not. Some payment methods will use POST-data instead of sending back the parameters as query string parameters, so it is important that your page can handle POST requests as well.
+[/notice-box]
+
 When the customer ends up on `paymentFailedPage`, you know that payment failed. When the customer ends up on `paymentReturnPage`, you **must** ask the API if the payment was a success, because it can still fail. You do this by forwarding the GET and POST variables that the visitor had when it accessed the paymentReturnPage to the API:
 
 [POST /payment-result](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment_result) request:
