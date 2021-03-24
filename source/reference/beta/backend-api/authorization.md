@@ -1,22 +1,67 @@
-## General information
+# Authorization
 
-### Header authorization
-In [Altair GraphQL](https://altair.sirmuel.design/) you click on a sun rays (?) icon on the left and set header name to Authorization, and content to Bearer `{{graphql_token}}`. `{{graphql_token}}` is a string value , it should look like `c80d3d270c68ec422401fcfe2e195ee4`.
+## GraphQL Access Token
 
-//TBD IMAGE
+An access token is a credential that is bound to certain set of permissions. The set of permissions
+is decided during token generation. It is not bound to any specific user by the application,
+but it might be issued with specific user in mind.
 
-### Cookie authorization
+Access token has an obligatory expiration time after which it will no longer authorize any requests.
 
-Add cookie named `graphql-access` with only the access token as value.
+### Token Revocation (TODO -- find info!)
 
-For using Centra graphql you need user token with correct permissions. This could be done in two ways:
-- in AMS
-- using graphql and AMS admin token
+## Authorizing Requests
 
-## AMS way to get token
-You need to go to
+### Header
 
-**System -> Api Tokens -> "+ Integration API TOKEN"**
+One way to authorize the request is to provide an `Authorization` header:
+
+```
+POST *base*/graphql
+
+Authorization: Bearer <access token>
+```
+
+CURL example:
+
+```
+curl "${BASE_URL}/graphql" \
+    -X POST \
+    -H "Authorization: Bearer ${ACCESS_TOKEN}" \
+    -H "Content-Type: application/json" \
+    -d '{"query":"{ __schema { types { name } } }"}'
+```
+
+### Cookie
+
+Another way to authorize request to GraphGL API is to add a cookie named `graphql-access` with only the access token as value.
+
+```
+POST *base*/graphql
+
+Cookie: graphql-access=<access token>
+```
+
+CURL example:
+
+```
+curl "${BASE_URL}/graphql" \
+    -X POST \
+    -H "Cookie: graphql-access=${ACCESS_TOKEN}" \
+    -H "Content-Type: application/json" \
+    -d '{"query":"{ __schema { types { name } } }"}'
+```
+
+For instructions on how to attach a header or cookie in your API client refer to the client's documentation.
+
+## Obtaining Access Token
+
+For GraphQL access you need user token with correct permissions. This could be done in two ways:
+- Via AMS
+- Via GraphQL (using admin token)
+
+### Obtaining token via AMS
+Navigate to `System -> Api Tokens` and then add a new token by clicking `+ Integration API TOKEN` button.
 
 Here we are able to provide restrictions, select permissions, and expiration time.
 Requirements for generating token are:
@@ -24,58 +69,51 @@ Requirements for generating token are:
 - At least one permission
 - Expirations time should be provided.
 
-After that, we could click save, and we will be redirected to page, where
+### Obtaining token via GraphQL (using admin token)
 
-## Graphql generating user access token
 Admin auth token for creating user for fetching data
-To fetch token, we need to go to
-**Diagnostics -> SysInfo -> GraphQL Access**
-and  get(generate) Admin token //screenshot
-This token is used to create user, which will communicate with backend.
-GraphQL endpoint is usually 
+To fetch token, we need to go to `Diagnostics -> SysInfo` and then select `GraphQL Access`.
+If there is no token generate a random one and save it. Keep in mind that this token never expires
+and therefore should never be disclosed to API clients. Use the admin token only to generate
+new API tokens.
 
-`{centra_url}/graphql`
+To create a new access token issue a request to the GraphQL API and authorize it using the obtained admin token.
+You have to provide the same token parameters as with AMS token generation.
 
-To create user we need proper authorization, so we need to add Admin token, to request header
-
-`Authorization: Bearer {{admin_token}}`
-
-Now, we can use mutation to create user to work with GraphQL
-
-Mutation will look like this:
+CURL example:
 
 ```
-
-mutation token($user: GraphQLUserInput!, $ttl: Int) {
-  generateToken(user: $user, ttl: $ttl) {
-    token
-    isValid
-    expiresAt
-    user {
-      name
-      permissions
-    }
-  }
-}
+curl "${BASE_URL}/graphql" \
+    -X POST \
+    -H "Authorization: Bearer ${ADMIN_TOKEN}" \
+    -H "Content-Type: application/json" \
+    -d '{"query": "mutation { generateToken( user: { name: \"Example\", permissions: [\"Product:read\"] }, ttl: 3600 ) { token isValid expiresAt } }" }'
 ```
 
-Here - `GraphQLUserInput` is instance of a user,
+You can now use the token from the response:
 
-it looks like:
 ```
 {
-"name": "John",
-"permissions": ["*"]
+    "data": {
+        "generateToken": {
+            "token": "abcd............abcd",
+            "isValid": true,
+            "expiresAt": "2025-12-31T23:59:59+0000"
+        }
+    }
 }
 ```
 
-`ttl` - is time to live in seconds. This is used to limit lifetime of token.
-```
-"ttl": 86400
-```
+## Permissions
 
-Response should be like
+For complete list of permissions query the GraphQL API using admin token:
 
 ```
-
+curl "${BASE_URL}/graphql" \
+    -X POST \
+    -H "Authorization: Bearer ${ADMIN_TOKEN}" \
+    -H "Content-Type: application/json" \
+    -d '{"query": "{ permissionNames }"}'
 ```
+The list of permissions is changing as new permissions are added to match
+new queries and mutations.
