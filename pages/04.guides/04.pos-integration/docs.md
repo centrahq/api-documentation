@@ -83,6 +83,7 @@ More information: [Order API - Update stock](https://docs.centra.com/reference/s
 ```text
 POST http://customer.centra.com/api/order-api/stock/
 ```
+
 ```json
 {
   "products": [
@@ -138,23 +139,48 @@ POST http://customer.centra.com/api/order-api/order/
        }
    ]
  }
- ```
+```
 
 #### Example response
 
 TBD
 -->
 
+## Buy online ship from store
 
-### Webhooks
+With buy online ship from store we make it possible to place orders in the webshop which are packed and shipped by a store.
 
-When the status of a check-first order updates we will send webhooks to the configured endpoint. To receive webhooks, ensure the Centra Webhooks plugin is enabled with the Check First event trigger selected. [Click here for information on setting up webhooks](/plugins/centra-webhook)
+### Setup
 
-In each of the payloads `id` refers to the order number which can be used in the Order API.
+To setup buy online ship from store in centra it is required to setup a brick and mortar and a warehouse for each store that can accept orders. To get this data our [GraphQL API](/api-references/graphql-integration-api) can be used
 
-#### Create
-Create events are emitted when an order using check-first warehouses is created.
-The webhook contains the Id for each check-first warehouse being used, and the date at which it will time-out.
+##### Brick and Mortar
+
+The Brick and Mortar entry contains information about the store. 
+
+![pos-brick-and-mortar.png](pos-brick-and-mortar.png)
+
+##### Warehouse
+
+The warehouse should be setup to be connected to your brick and mortar and as "Check First", which to centra means that the stock quantities are unreliable and need to be verified before the order is handled. It is also required that this warehouse is updated with the stores stock values. 
+
+![pos-check-first-warehouse.png](pos-check-first-warehouse.png)
+
+##### Webhooks
+
+To get notified of new orders to ship from what stores the [Centra webhook API](/plugins/centra-webhook) needs to be setup. make sure to set it up with type Integration API and ensure that "check first" is ticked
+
+![pos-integration-api.png](pos-integration-api.png) ![pos-check-first-webhook.png](pos-check-first-webhook.png) 
+
+### Getting information about buy online ship from store orders
+
+Webhooks is how you will recive information about buy online ship from store orders, webhooks will be sent when order are created, accepted ,rejected or times out. the same order can send the same action multiple times depending on setup.
+
+In each of the payloads `id` refers to the order number which can be used in the Order API. `action` has information about what happened and `data` has more data depending on the `action`
+
+##### Create
+Create events are emitted when we expect a store to pickup and ship an order.
+The webhook contains the Id for each check-first warehouse that is allowed to ship the order and the date at which it will time-out. in case of many warehouses whoever accepts first will get to send.
 
 ```json
 {
@@ -185,7 +211,7 @@ The webhook contains the Id for each check-first warehouse being used, and the d
 }
 ```
 
-#### Rejected
+##### Rejected
 Rejected events are emitted whenever the Check-first warehouse has been cancelled on an order.
 
 This can happen either when an individual store rejects the order [by the Order Api](/api-references/order-api/api-reference/update-check-first) or when the "Resume" button is pressed on a check-first order from AMS.
@@ -217,7 +243,7 @@ If all are rejected the order will proceed to be processed as a regular order.
 }
 ```
 
-#### Accepted
+##### Accepted
 Accepted events are emitted when an order is accepted by a check-first [by the Order Api](/api-references/order-api/api-reference/update-check-first).
 
 After an order is accepted it can not be accepted by any other check-first, and they are automatically rejected.
@@ -237,7 +263,7 @@ After an order is accepted it can not be accepted by any other check-first, and 
 }
 ```
 
-#### Timeout
+##### Timeout
 
 Timeout events are emitted after a check-first warehouse times out for an order, at the date specified in the [Create](#create) call.
 
@@ -258,3 +284,18 @@ After this time it is no longer possible to accept the order using this warehous
   ]
 }
 ```
+
+### Processing buy online ship from store orders
+
+#### Rejecting order
+
+If the store is unable to ship the order they should reject it as quickly as possible so it can move on as fast as possible. rejection is done by calling the [Order API update check first endpoint](/api-references/order-api/api-reference/update-check-first), no further action is needed and if all stores reject the order it will be shiped as a normal order.
+
+
+#### Accepting the order
+
+If the store is able to ship the order a call to [Order API update check first endpoint](/api-references/order-api/api-reference/update-check-first).
+
+on error the order should not be shipped. errors can happen if the store was to slow and a timeout happend, or if anotehr store accepted first.
+
+on success the order should be shipped and the appropriate actions to create and mark the order as shipped in centra should be taken.  
