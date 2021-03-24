@@ -99,6 +99,7 @@ POST http://customer.centra.com/api/order-api/stock/
 
 TBD
 
+<!--
 ### [Optional] Creating an order
 
 [This chapter is work in progress]
@@ -143,7 +144,7 @@ POST http://customer.centra.com/api/order-api/order/
 #### Example response
 
 TBD
-
+-->
 
 ## Buy online ship from store
 
