@@ -43,6 +43,7 @@ We recommend a further reading before starting using the GraphQL API:
 
  - <a href="https://graphql.org" target="_blank">https://graphql.org/</a> - Official GraphQL website. A canonical source of knowledge.
  - <a href="https://www.howtographql.com/" target="_blank">https://www.howtographql.com/</a> - Alternative introduction to GraphQL.
+ - <a href="https://relay.dev/graphql/connections.htm" target="_blank">https://relay.dev/graphql/connections.htm</a> - One of approaches for handling pagination in GraphQL (used by this API).
 
 ## Requirements
  - Live Centra

@@ -1,5 +1,4 @@
-#### All markets with countries for store ID 1:
-##### Request All markets with countries for store
+### All markets with countries for store ID 1
 ```
 {
   markets(where: {storeId: 1}, sort: [id_DESC]) {
@@ -12,10 +11,8 @@
   }
 }
 ```
-#### Response example
 
-#### The whole folder structure:
-##### Request example
+### The whole folder structure
 ```
 {
   folders(where: {isTopFolder: true}) {
@@ -32,12 +29,10 @@
   }
 }
 ```
-##### Response example
 
-#### Latest confirmed wholesale orders with account and buyer data.
+### Latest confirmed wholesale orders with account and buyer data
 This one uses [Relay connection](https://relay.dev/graphql/connections.htm) format, so you can see `totalCount` and whether there is a previous page (because it's backward pagination):
 
-##### Request example
 ```
 {
   orderConnection(last: 10, where: {storeType: WHOLESALE, status: CONFIRMED}, sort: orderDate_ASC) {
@@ -66,4 +61,3 @@ This one uses [Relay connection](https://relay.dev/graphql/connections.htm) form
   }
 }
 ```
-##### Response example
