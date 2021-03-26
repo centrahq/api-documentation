@@ -1,7 +1,5 @@
-# Overview
-
 ```eval_rst
-.. api-name:: Backend API
+.. api-name:: Integration API
    :version: beta
 
 .. endpoint::
@@ -12,10 +10,14 @@
    :graphql_token: true
 ```
 
-```note:: The Backend GraphQL is not yet released. Please stay tuned.
+```note:: The GraphQL Integration API is still in Beta.
 ```
 
-## What is GraphQL
+# Overview
+
+Integration API uses GraphQL for querying and manipulating data.
+
+## What is GraphQL?
 GraphQL is a trending alternative to RESTful APIs that pulls
 all requested data for multiple entities with a single request.
 It improves client-server interactions and reduces the latency that makes the
@@ -37,15 +39,15 @@ POST *base*/graphql
 Content-Type: application/json
 ```
 
-### Read more
+## Requirements
+- Live Centra
+- Authentication token (see section `Authorization` how to obtain one)
+- Correct permissions
+
+## Read more
 
 We recommend a further reading before starting using the GraphQL API:
 
  - <a href="https://graphql.org" target="_blank">https://graphql.org/</a> - Official GraphQL website. A canonical source of knowledge.
  - <a href="https://www.howtographql.com/" target="_blank">https://www.howtographql.com/</a> - Alternative introduction to GraphQL.
  - <a href="https://relay.dev/graphql/connections.htm" target="_blank">https://relay.dev/graphql/connections.htm</a> - One of approaches for handling pagination in GraphQL (used by this API).
-
-## Requirements
- - Live Centra
- - Authentication token (see section `Authorization` how to obtain one)
- - Correct permissions
