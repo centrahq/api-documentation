@@ -1,0 +1,129 @@
+# Paypal Commerce
+
+This plugin enables payments with a customers paypal account or with creditcard.
+
+## Set up
+
+To configure Paypal Commerce plugin in Centra go to store plugins, select desirable plugin and you should see similar screen to the screenshot below.
+
+```eval_rst
+.. image:: images/paypal-commerce-setup.png
+   :scale: 30 %
+```
+
+To connect your account just click `Connect with paypal` button and follow steps on Paypal page. This operation will bind your account with Centra's. After this you can start using Paypal Commerce.
+
+If the plugin is setup on your Q/A server it will talk to the paypal sandbox, or for the production server it wil ltalk to paypals production.
+
+Override Shipping Address can only be used with the redirect mode and allows you to set the address to use in your checkout.
+
+You can also restrict Paypal to only work for specified markets, pricelists, countries or languages.
+
+## Limitations
+
+We require the customer to select the correct country and state before starting the paypal checkout process.
+
+## Usage
+
+This plugin can be used in 2 ways either the checkout redirects to paypal or you render what payapl calls msart buttons on the checkout page which enables payments with either credit card or paypal account. 
+
+## Redirect
+
+This method is identical to how Centras previous paypal plugin worked. It works by responding with a URL that you will redirect the customer to and once the customer is done with the payment the customer will be redirected back to the webshop where you can call our payment-result endpoint just as described in our [Payment method flows](https://docs.centra.com/guides/shop-api/payment-method-flows.html#payment-result-types) documentation.
+
+## Smart Buttons
+
+works by using the [paypal javascript SDK](https://developer.paypal.com/docs/business/javascript-sdk/) 
+
+### Flow
+
+The flow works like this:
+
+1. Customer adds products to their cart. The country is either selected by the customer or selected by Geo-IP (based on the IP-address of the customer).
+2. The website makes a `POST /payment` request with the `address.country` (and `address.state`, if state is selected) for the customer, together with a `paymentInitiateOnly:true`-parameter. This tells Centra not to set the payment option as the selected one (since the payment button is selected opt-in by the customer when pressing it). This call can be made directly when the user accesses the checkout page. 
+3. Centra will return a snippet that will try to launch the payment request button inside its own `<div>` provided in the snippet. You can also set the selector of the payment button by setting the `window.paypalSmartButtonSelector`-variable in the DOM.
+4. If the customer changes anything in their selection, such as the quantity for a product, a similar `POST /payment` call as explained in #1 needs to run to reload the payment button snippet with the proper amount set.
+
+### Events
+
+Since Centra does not know how you make requests to the API, you need to listen to events from the payment button and trigger API-calls to Centra based on what they are used for. Paypal commerce currently have one event `centra_checkout_payment_callback` which is triggered when a payment is completed. 
+
+### Payment finalization
+
+We will now handle the final event happening when payment is completed in paypal by the customer. We previously registered the following handler:
+
+```js
+    document.addEventListener('centra_checkout_payment_callback', this.paymentSelected);
+```
+
+Which is the one that will trigger now.
+
+The following data is returned in this event:
+
+```eval_rst
+.. list-table::
+   :widths: auto
+   :class: small-table
+   :header-rows: 1
+
+   * - Field
+     - Type
+     - Comment
+   * - ``responseEventRequired``
+     - boolean
+     - Always ``false`` for Paypal.
+   * - ``addressIncluded``
+     - boolean
+     - Always ``false`` for Paypal.
+   * - ``paymentMethodSpecificFields``
+     - object
+     - | This data should be sent to the ``POST /payment`` call
+       | in Centra for the payment to be validated.
+   * - ``paymentMethod``
+     - string
+     - The selected payment method used.
+   * - ``billingAddress``
+     - object
+     - Data containing the address for billing. for paypal just contains country and state
+   * - ``billingAddress.state``
+     - string
+     - Optional, might be empty for countries not supporting states.
+   * - ``billingAddress.country``
+     - string
+     - Country code
+   * - ``shippingAddress``
+     - object
+     - Data containing the address for shipping. for paypal just contains country and state
+   * - ``shippingAddress.state``
+     - string
+     - Optional, might be empty for countries not supporting states.
+   * - ``shippingAddress.country``
+     - string
+     - Country code
+```
+
+We would take the event data, and create a `checkoutRequest` based on the data provided. This data would then be sent to the `POST /payment` in the Centra API.
+
+```js
+  paymentSelected = (event: any) => {
+    const { checkoutRequest: checkout } = this.props;
+    const { paymentMethodSpecificFields, paymentMethod } = event.detail;
+    const { billingAddress: billingAddressData, shippingAddress: shippingAddressData } = event.detail;
+    const billingAddress: IAddress = Address.create(billingAddressData);
+    const shippingAddress: IAddress = Address.create(shippingAddressData);
+    checkout({
+      paymentMethodSpecificFields,
+      paymentMethod: paymentMethod,
+      billingAddress: billingAddress,
+      shippingAddress: shippingAddress,
+    });
+  }
+```
+
+This request would then result in the common [`PaymentActionResponse`, explained in the Swagger UI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) and in [Payment Method flows](https://docs.centra.com/guides/shop-api/payment-method-flows).
+
+
+## Testing
+
+Make sure to test towards the centra QA server t oensure you are talking to the paypal sandbox.
+
