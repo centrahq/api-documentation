@@ -13,3 +13,6 @@ Some examples of acclaimed GraphQL API clients include:
  - <a target="_blank" href="https://www.postman.com/">Postman</a>
  - <a target="_blank" href="https://altair.sirmuel.design/">Altair</a>
  - <a target="_blank" href="https://insomnia.rest/">Insomnia</a>
+
+Centra also provides a  <a href="https://docs.centra.com/graphql/">web version of documentation</a>
+if you would rather see it in your browser.
