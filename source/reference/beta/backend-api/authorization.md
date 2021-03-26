@@ -67,7 +67,8 @@ Here we are able to provide restrictions, select permissions, and expiration tim
 Requirements for generating token are:
 - Providing description
 - At least one permission
-- Expirations time should be provided.
+
+Expiration time is optional - the default value equals 30 days.
 
 ### Obtaining token via GraphQL (using admin token)
 
