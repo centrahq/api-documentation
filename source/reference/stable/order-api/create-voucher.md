@@ -69,6 +69,13 @@ This will create a simple voucher of `percentoff` or `priceoff` type
 
      - Values by pricelist of the voucher, where price list ID is a key and discount is a value. Is required if `priceoff` is a voucher type. 
 
+   * - ``freeShipping``
+
+       .. type:: boolean
+          :required: false
+
+     - Defaults to `false`, if set to `true`, voucher will add a free shipping on top of the `priceoff` or `percentoff`.
+   
    * - ``store``
 
        .. type:: int
