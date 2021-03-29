@@ -48,6 +48,21 @@ The flow works like this:
 
 Since Centra does not know how you make requests to the API, you need to listen to events from the payment button and trigger API-calls to Centra based on what they are used for. Paypal commerce currently have one event `centra_checkout_payment_callback` which is triggered when a payment is completed. 
 
+### Payment Initialization
+
+To get the buttons start by doing a call to `POST payment`
+```json
+{
+    "address": {
+        "country": "SE"
+    },
+    "paymentMethod": "paypal-commerce",
+    "paymentInitiateOnly": true,
+    "termsAndConditions": true,
+}
+```
+This will result in a response with action `form` and the `formHtml` field will contain html + javascript that is expected to run on your site. it will include the paypal javascipt code and initialize the buttons in the `<div>` element provided in the `formHtml` code or you can choose to decide where theese buttons go by specifying a selector by setting the `window.paypalSmartButtonSelector`-variable.
+
 ### Payment finalization
 
 We will now handle the final event happening when payment is completed in paypal by the customer. We previously registered the following handler:
