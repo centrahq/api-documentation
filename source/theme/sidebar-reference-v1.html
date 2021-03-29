@@ -17,21 +17,24 @@
 <div class="sidebar__spacing"></div>
 
 <div class="sidebar__group {{ sidebar_collapse_group('reference/beta/backend-api/') }}">
-  <p><a href="javascript:void(0)">Backend API <code class="sidebar__beta">Beta</code></a></p>
+  <p><a href="javascript:void(0)">Integration API <code class="sidebar__beta">Beta</code></a></p>
 
  <ul>
   {{ sidebar_item(
-   false,
-   'GraphQL'
+   'reference/beta/backend-api/overview',
+   'Overview'
   ) }}
   {{ sidebar_item(
-   'reference/beta/backend-api/graphql',
-   'GraphQL',
-   'POST /graphql'
+  'reference/beta/backend-api/authorization',
+  'Authorization'
   ) }}
   {{ sidebar_item(
-   false,
-   'REST API'
+  'reference/beta/backend-api/schema',
+  'Schema'
+  ) }}
+  {{ sidebar_item(
+  'reference/beta/backend-api/examples',
+  'Examples'
   ) }}
  </ul>
 </div>

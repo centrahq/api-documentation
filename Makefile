@@ -7,9 +7,10 @@
 # You can set these variables from the command line. When editing extensions, it is
 # recommended to use the "-E" flag to force a rebuild every time you run 'Make', as
 # it is not guaranteed it will rebuild when no '.rst' files have changed.
+PYTHON_CMD     ?= python        # Override if you have different version of python installed
 SPHINXOPTS     = -W -n
 SPHINXPRODOPTS = -j auto -D html_file_suffix=''
-SPHINXBUILD    = python -msphinx
+SPHINXBUILD    = $(PYTHON_CMD) -msphinx
 SPHINXPROJ     = api-documentation
 SOURCEDIR      = source
 BUILDDIR       = build
@@ -40,7 +41,7 @@ js-reload:
 	@./node_modules/.bin/parcel source/theme/js/index.js --out-dir build/_static --out-file index --no-hmr --port 8002
 
 html-reload:
-	python -m sphinx_autobuild -b html "${SOURCEDIR}" "${BUILDDIR}" ${SPHINXOPTS} ${O}
+	$(PYTHON_CMD) -m sphinx_autobuild -b html "${SOURCEDIR}" "${BUILDDIR}" ${SPHINXOPTS} ${O}
 
 start:
 	make html-reload & make css-reload & make js-reload
