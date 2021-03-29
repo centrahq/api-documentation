@@ -28,7 +28,7 @@ class AuthenticationDirective(Directive):
             api_ref = self.create_reference("/overview/authentication", "API key")
             inline += api_ref
         if "graphql_token" in self.options and self.options["graphql_token"]:
-            gql_ref = self.create_reference("/reference/beta/backend-api/authorization", "Access Token")
+            gql_ref = self.create_reference("/reference/beta/integration-api/authorization", "Access Token")
             inline += gql_ref
         if "organization_access_token" in self.options and self.options["organization_access_token"]:
             pat_ref = self.create_reference("/overview/authentication", "Organization access token")
