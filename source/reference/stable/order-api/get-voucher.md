@@ -122,6 +122,12 @@ Return active/inactive voucher by specified Id. Cancelled vouchers are ignored.
 
             - Value of the voucher for each price list. Contains id of price list to value. Exists for `priceoff` voucher type
 
+          * - ``freeShipping``
+
+              .. type:: bool
+
+            - Information if there is a free shipping applied in addition to price or percentage discount; `true` if yes, `false` otherwise.
+            
           * - ``store``
 
               .. type:: int

@@ -11,6 +11,7 @@ class AuthenticationDirective(Directive):
     optional_arguments = 0
     option_spec = {
         "api_key": utilities.validate_bool,
+        "graphql_token": utilities.validate_bool,
         "organization_access_token": utilities.validate_bool
         #"oauth": utilities.validate_bool
     }
@@ -23,9 +24,12 @@ class AuthenticationDirective(Directive):
 
         # References need to be contained within something like an inline text
         # element; they cannot directly be added to the container.
-        if self.options["api_key"]:
+        if "api_key" in self.options and self.options["api_key"]:
             api_ref = self.create_reference("/overview/authentication", "API key")
             inline += api_ref
+        if "graphql_token" in self.options and self.options["graphql_token"]:
+            gql_ref = self.create_reference("/reference/beta/backend-api/authorization", "Access Token")
+            inline += gql_ref
         if "organization_access_token" in self.options and self.options["organization_access_token"]:
             pat_ref = self.create_reference("/overview/authentication", "Organization access token")
             inline += pat_ref
