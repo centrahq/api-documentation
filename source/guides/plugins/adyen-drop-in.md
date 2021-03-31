@@ -279,7 +279,19 @@ This means the payment failed and the customer should be notified that the payme
 
 When this happens, you should redirect the customer to the `url`.
 
-The third and most common action is when the Adyen Drop-In needs to get a response back from the event it sent. It looks like this:
+It can also be finalized directly, this happens when you for example use a credit card without the need of 3D-secure, in this case, the response will be an `action=success` and you will get the order receipt back directly (depending on ShopAPI or CheckoutAPI the response looks a bit different as shown in Swagger: https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment under `Status 201`):
+
+```json
+{
+    "action": "success",
+    "order": "123",
+    "status":"untouched",
+    "message":"Thank you for your order!",
+    "date":"2021-01-11 16:33:15",
+    ...
+```
+
+The fourth and most common action is when the Adyen Drop-In needs to get a response back from the event it sent. It looks like this:
 
 ```json
 {
