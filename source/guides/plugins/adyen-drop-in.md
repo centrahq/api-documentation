@@ -279,7 +279,7 @@ This means the payment failed and the customer should be notified that the payme
 
 When this happens, you should redirect the customer to the `url`.
 
-It can also be finalized directly, this happens when you for example use a credit card without the need of 3D-secure, in this case, the response will be an `action=success` and you will get the order receipt back directly (depending on ShopAPI or CheckoutAPI the response looks a bit different as shown in Swagger: https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment under `Status 201`):
+It can also be finalized directly, this happens when you for example use a credit card without the need of 3D-secure, in this case, the response will be an `action=success` and you will get the order receipt back directly (depending on ShopAPI or CheckoutAPI the response looks a bit different as shown in [CheckoutAPI Swagger](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) under `Status 201`):
 
 ```json
 {
