@@ -86,8 +86,8 @@ KCOv3 plugin should be configured according to the instructions found in [Klarna
 To properly recover customer's selection, the following logic should be added to your web shop.
 
 1. CA link in Rule plugin configuration should point to, for example: `https://example.com/abandoned-cart/{selection}`
-2. When visited, the given selection ID should be fetched from Centra and attached to the current customer session,
-3. User should then be redirected to `https://example.com/checkout` (or `https://example.com/selection`, or whichever is your standard checkout page) with a proper list of products.
+2. When visited, the given selection ID should be fetched from Centra and attached to the current customer session. For Shop API, the selection ID is used to fetch the selection requested, using `GET /selection/{selection}`. In Checkout API you can use the endpoint `PUT /selection/{selection}` to attach the current session token to the selection from the email.
+3. User should then be redirected to `https://example.com/checkout` (or `https://example.com/selection`, or whichever is your standard checkout page) with the proper list of products from the abandoned selection.
 
 It is possible that the original products are out of stock, but that should be handled as usual during the checkout step, when `POST /payment` call does stock check and updates the selection accordingly.
 
