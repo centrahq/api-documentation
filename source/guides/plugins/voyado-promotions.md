@@ -1,15 +1,29 @@
-# How to use vouchers with Voyado promotions?
+# Voyado
 
-## Overview
+## How to do abandoned cart with Voyado?
+
+Depending on your set up with Voyado and what API you use, there are different solutions to solve a proper abandoned cart solution.
+
+### CheckoutAPI
+
+With the CheckoutAPI the user has a token key that is the one keeping track of the current selection. You can provide the token for the cart as the value for Voyado to send in the abandoned cart-link. The cart-link should then change to the token provided, so the customer that clicks the link in the abandoned cart email would switch their token to the one provided. 
+
+### ShopAPI
+
+With the ShopAPI you always know the current selection ID for the open cart. If you're using a Javascript solution for Voyado to capture the current selection, you can provide Voyado with the selection ID of the current cart. You can then make an endpoint that will change the current user's selection ID to the one provided.
+
+## How to use vouchers with Voyado promotions?
+
+### Overview
 This guide explains how you can combine Voyado's promotions with Centra's voucher logic, to offer your members in Voyado discounts or perks such as free shipping. You have access to the full voucher logic in Centra when designing promotions in Voyado and Centra ensures promotions are redeemed from Voyado once used. 
 
-## Prerequisites
+### Prerequisites
 In this scenario we assume that you already have an account in Voyado and configured the plugin `Voyado v2` in Centra.
 
-## In Centra
+### In Centra
 The first thing you need to do is add a new voucher to your store. The only thing that is required for this scenario is `Method: code`, `Max usage: 0` and `Start/stop date` set accordingly to your needs. The `code` can be anything you want. 
 
-## In Voyado
+### In Voyado
 It's time to add new promotion in Voyado.
 
 1. Login to your account in Voyado
@@ -28,7 +42,8 @@ It's time to add new promotion in Voyado.
    :scale: 50 %
 ```
 
-## Front End
+### Frontend
+
 You present available promotions from Voyado to your customer by fetching them from Voyado. 
 
 Remember to query Voyado with additional header `apikey`.
@@ -83,7 +98,7 @@ Example payment query body:
 ```
 
 
-## Security
+### Security
 Remember that you shouldn't reveal your Voyado's `apikey` to public. These queries should be done on backend.
 
 Anyone with access to the vocuher `code` will be able to use it, so make sure to keep it secret if you don't want that. 
