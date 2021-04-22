@@ -6,11 +6,11 @@ Depending on your set up with Voyado and what API you use, there are different s
 
 ### CheckoutAPI
 
-With the CheckoutAPI the user has a token key that is the one keeping track of the current selection. You can provide the token for the cart as the value for Voyado to send in the abandoned cart-link. The cart-link should then change to the token provided, so the customer that clicks the link in the abandoned cart email would switch their token to the one provided. 
+With the CheckoutAPI the user has a token key that is the one keeping track of the current selection. You can provide the token for the cart as the value for Voyado to send in the abandoned cart-link. The cart-link should then change to the token provided, so the customer that clicks the link in the abandoned cart email would switch their token to the one provided. There's no endpoint to trigger to switch the token, but rather the `API-token`-value already being used in the communication with Centra is the one to be switched.
 
 ### ShopAPI
 
-With the ShopAPI you always know the current selection ID for the open cart. If you're using a Javascript solution for Voyado to capture the current selection, you can provide Voyado with the selection ID of the current cart. You can then make an endpoint that will change the current user's selection ID to the one provided.
+With the ShopAPI you always know the current selection ID for the open cart, since all those endpoints are under `/selections/{selectionId}/`. If you're using a Javascript solution for Voyado to register the current selection, you can provide Voyado with the selection ID of the current cart. You can then make an endpoint that will change the current user's selection ID to the one provided. There's no endpoint to trigger a switch to the new selection, but you would then make sure the `selectionId` being used in the communication with Centra is switched. Also make sure you validate the value being sent as only being `^[a-f0-9]+$`. You could also make a `GET /selections/{selection}` to validate that the selection still exists.
 
 ## How to use vouchers with Voyado promotions?
 
