@@ -805,7 +805,11 @@ The [`PaymentActionResponse`, explained in the Swagger UI](https://docs.centra.c
 ### Parameters sent to paymentReturnPage
 
 ```eval_rst
-.. warning:: The `paymentReturnPage` should always collect all URL-parameters from both the query string in the URL and the POST-data and send it to Centra. This is the way to validate if the payment went through successfully or not. Some payment methods used through Adyen Drop-In will use POST-data instead of sending back the parameters as query string parameters. 
+.. warning:: The ``paymentReturnPage`` should always collect all URL-parameters from both the query string in the URL and the POST-data and send it to Centra. This is the way to validate if the payment went through successfully or not. Some payment methods used through Adyen Drop-In will use POST-data instead of sending back the parameters as query string parameters. 
+
+Also, if you're running serverless, you can not use an endpoint to convert the POST-data into query-parameters directly, since the payload from Adyen can be really large (since it grows depending on how many items the selection contains for example). If you need to use something else than POST-data, you can have an endpoint receiving the POST-data and converts it to fragment-data, like this: ``https://example.com/thank-you#centraPaymentMethod=x&payload=xyz``, that way you will not hit any issues with too long URLs. You then need to parse the fragment part just like query parameters to send the data to the ``POST /payment-result``-endpoint.
+
+Another solution would be to have an endpoint that injects the data into the DOM as JSON (using the example code below) to then send the data to Centra.
 ```
 
 To make sure you support both POST/GET requests and outputs the data into the DOM properly (for you javascript to pick up the parameters and send them to Centra's `POST /payment-result`, here's example code for Node.js to collect POST/GET-parameters into a variable in the DOM. The code below also supports associative arrays in POST (like `details[paymentAction]=xxx`) since Adyen does send this kind of data.
