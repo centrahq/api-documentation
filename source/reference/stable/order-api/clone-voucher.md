@@ -41,6 +41,13 @@ This will clone a voucher with updated provided information
 
      - Default ``false``. Allow cloning to existing code. Will deactivate the existing voucher.
 
+   * - ``startDate``
+   
+       .. type:: string
+          :required: false
+   
+     - Start date of the voucher in ``Y-m-d`` format.
+   
    * - ``stopDate``
    
        .. type:: string
