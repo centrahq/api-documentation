@@ -115,6 +115,8 @@ This will create a simple voucher of `percentoff` or `priceoff` type
 
 ## Request example
 
+Voucher type `percentoff`:
+
 ```eval_rst
 .. code-block:: http
    :linenos:
@@ -123,9 +125,31 @@ This will create a simple voucher of `percentoff` or `priceoff` type
 
    {
       "name": "Welcome 10%",
-      "stopDate": "2020-07-09",
+      "stopDate": "2021-07-09",
       "type": "percentoff",
       "value": 10,
+      "store": 1,
+      "markets": 1,
+      "status": true
+   }
+```
+
+Voucher type `priceoff` with discounts in two Pricelists:
+
+```eval_rst
+.. code-block:: http
+   :linenos:
+
+   POST <base>/voucher HTTP/1.1
+
+   {
+      "name": "Welcome discount",
+      "stopDate": "2021-07-09",
+      "type": "priceoff",
+      "valueByPricelist": {
+          "19": 100,
+          "20": 10
+      },
       "store": 1,
       "markets": 1,
       "status": true
