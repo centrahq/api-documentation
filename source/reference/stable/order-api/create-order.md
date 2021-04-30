@@ -493,6 +493,22 @@ Here are the parameters allowed to create an order. There are some fields specif
 
                    - If an external invoice was created, insert the URL to the invoice here.
 
+   * - ``extraAttributes``
+
+       .. type:: object
+          :required: false
+
+     - Object for sending in custom order attributes
+
+       .. list-table::
+          :widths: auto
+
+          * - ``attributeName_elementName``
+
+              .. type:: any
+
+            - List of key-value pairs for every attribute element you want to set.
+
 ```
 
 ## Request example
@@ -560,6 +576,9 @@ Here are the parameters allowed to create an order. There are some fields specif
               "method": "cc",
               "amount": 100.00
           }
+       },
+       "extraAttributes": {
+          "is_new_customer_bool_value": true
        }
     }
 ```
