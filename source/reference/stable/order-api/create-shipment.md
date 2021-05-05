@@ -16,7 +16,7 @@
    :api_key: true
 ```
 
-This will create a shipment and per default try to capture from the payment provider, shipment will not be created if the capture fails.
+This call will create a shipment and per default try to capture from the payment provider, shipment will not be created if the capture fails. If there's an unshipped shipment (identical on the product selection you want to ship) already created on the order this call will return the same shipment. You can use `createAlways: true` to bypass this safety behaviour.
 
 ```eval_rst
 .. warning:: You have the ability to turn off capture to make it possible to edit the shipment after it has been created. However, if you explicitly turn off capture using ``"capture": false``, we will not capture the money for the order automatically, and the :ref:`order-api-complete-shipment` call MUST be made and verified that it was successful until you can ship any products.
@@ -83,6 +83,13 @@ This will create a shipment and per default try to capture from the payment prov
           :required: false
 
      - Mark the shipment as sent. Default: ``false``.
+
+   * - ``createAlways``
+
+       .. type:: boolean
+          :required: false
+
+     - Default: ``false``. If there's already an unshipped shipment created that matches the products you want to create a shipment for, the same shipment will be returned. However, if this option is ``true`` we will skip the check for identical open shipments and create it anyway.
 
    * - ``carrier``
 
