@@ -361,7 +361,7 @@ Here are the parameters allowed to create an order. There are some fields specif
 
      - Default ``false``. Create the order even though products did not exist. These products will be marked as back ordered.
 
-   * - ``comment``
+   * - ``otherComment``
 
        .. type:: string
           :required: false
