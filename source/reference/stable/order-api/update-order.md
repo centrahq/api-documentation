@@ -34,6 +34,43 @@ Update information on the order.
 
      - Append some text to internal comment field.
 
+   * - ``replaceInternalComment``
+
+       .. type:: boolean
+          :required: false
+
+     - Default ``false``. Replace the full content of the internal comment field with the ``internalComment``.
+
+   * - ``comment``
+
+       .. type:: string
+          :required: false
+
+     - Append some text to comment field.
+
+   * - ``replaceComment``
+
+       .. type:: boolean
+          :required: false
+
+     - Default ``false``. Replace the full content of the comment field with the ``comment``.
+
+   * - ``extraAttributes``
+
+       .. type:: object
+          :required: false
+
+     - Object for sending in custom order attributes
+
+       .. list-table::
+          :widths: auto
+
+          * - ``attributeName_elementName``
+
+              .. type:: any
+
+            - List of key-value pairs for every attribute element you want to set. Send it as an empty string to remove the current content.
+
    * - ``xml``
 
        .. type:: boolean
