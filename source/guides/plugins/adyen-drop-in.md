@@ -314,6 +314,8 @@ The fourth and most common action is when the Adyen Drop-In needs to get a respo
 When you get `action=javascript` you can do two things, either you evaluate the `code`-property so the JavaScript gets triggered on the page, or, you send your own event, `centra_checkout_payment_response` containing the `formFields` from the response, like this:
 
 ```js
+// CentraAPI pseudo code for XMLHttpRequest (XHR, (fetch / ajax etc)) to the checkout REST API. 
+// 'POST' is type of request. 'payment' = route, paymentData = object to send to Centra.
 const response = await CentraAPI('POST', 'payment', paymentData);
 if (response.action === 'javascript') {
   var updateEvent = new CustomEvent('centra_checkout_payment_response', {detail: response.formFields});
@@ -521,7 +523,7 @@ The form will:
 
 1. Load the same script from Adyen specified in `clientSide->externalScript`.
 2. When the script has loaded, launch the Adyen Drop-In using payment method settings from `window.adyenDropInConfig` or the predefined JSON.
-3. When the payment method is selected by the customer, an event will trigger on the page, called `centra_checkout_payment_callback`. When this even is triggered you should post the values back to Centra's API to `POST /payment`. Depending on if `addressIncluded` is `true` or `false`, the customer's address might need to be included in this API-call. 
+3. When the payment method is selected by the customer, an event will trigger on the page `document`, called `centra_checkout_payment_callback`. When this even is triggered you should post the values back to Centra's API to `POST /payment`. Depending on if `addressIncluded` is `true` or `false`, the customer's address might need to be included in this API-call. 
 4. Centra can respond to the request in three different ways. Using `action=javascript`, the JavaScript in the `code`-field should be evaluated (or sent back using the `centra_checkout_payment_response` event). If `action=redirect`, the user should be redirected to the `url`-property. The customer will then either complete payment process, be presented with additional data to fill in (like 3D-secure) or redirected to an additional payment step. It can also respond with `errors`, just like a regular [`PaymentActionResponse`, explained in the Swagger UI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) and they should also be supported and present to the customer that the payment failed.
 5. After payment has been completed, the customer is then returned to `paymentReturnPage` with the encrypted blob payload.
 6. The parameters sent through query string and POST-data should be collected and sent to Centra's `payment-result` endpoint for finalization.
@@ -613,37 +615,7 @@ The most important field is the `paymentMethodSpecificFields` that contain the d
        | with a ``centra_checkout_payment_response``.
 ```
 
-If the response to `POST /payment` has `action=javascript`, this response will also have a `code`-property that will issue the `centra_checkout_payment_response` automatically if you evaluate it. However, you can also run the event-response yourself like this:
-
-```js
-document.addEventListener('centra_checkout_payment_callback', function(origdata) {
-  var postData = origdata.detail;
-  var responseEventRequired = postData.responseEventRequired;
-  var addressIncluded = postData.addressIncluded;
-  
-  const response = await CentraAPI('POST', 'payment', {
-    payment: postData.paymentMethod,
-    address: addressIncluded ? postData.shippingAddress : shippingAddressFromCheckout(),
-    billingAddress: addressIncluded ? postData.billingAddress : billingAddressFromCheckout(),
-    paymentMethodSpecificFields: postData.paymentMethodSpecificFields
-  });
-  if (responseEventRequired) {
-    if(data.action === 'redirect') {
-      location.href = data.url;
-      return;
-    }
-    if (data.errors) {
-      // Payment failed for some reason, show error
-      ShowPaymentFailedError(data.errors);
-      return;
-    }
-    // action is javascript, send back the formFields
-    sendCentraEvent("centra_checkout_payment_response", response.formFields);
-  }
-});
-```
-
-This will make sure the Adyen Drop-In gets the event data from Centra to finalize the payment.
+If the response to `POST /payment` has `action=javascript`, this response will also have a `code`-property that will issue the `centra_checkout_payment_response` automatically if you evaluate it.
 
 ### Payment finalization fields
 
@@ -749,22 +721,35 @@ The following data is returned in this event:
      -
 ```
 
-We would take the event data, and create a `checkoutRequest` based on the data provided. This data would then be sent to the `POST /payment` in the Centra API.
+We would take the event data, and create a `checkoutRequest` based on the data provided. This data would then be sent to the `POST /payment` in the Centra API. This will make sure the Adyen Drop-In gets the event data from Centra to finalize the payment.
 
 ```js
-  paymentSelected = (event: any) => {
-    const { checkoutRequest: checkout } = this.props;
-    const { paymentMethodSpecificFields, paymentMethod } = event.detail;
-    const { billingAddress: billingAddressData, shippingAddress: shippingAddressData } = event.detail;
-    const billingAddress: IAddress = Address.create(billingAddressData);
-    const shippingAddress: IAddress = Address.create(shippingAddressData);
-    checkout({
-      paymentMethodSpecificFields,
-      paymentMethod: paymentMethod,
-      billingAddress: billingAddress,
-      shippingAddress: shippingAddress,
-    });
+document.addEventListener('centra_checkout_payment_callback', function(origdata) {
+  const { addressIncluded, billingAddress, shippingAddress, paymentMethodSpecificFields, paymentMethod, responseEventRequired } = origdata.detail;
+  
+  // CentraAPI pseudo code for XMLHttpRequest (XHR, (fetch / ajax etc)) to the checkout REST API. 
+  // 'POST' is type of request. 'payment' = route
+  const response = await CentraAPI('POST', 'payment', {
+    paymentMethod,
+    paymentMethodSpecificFields,
+    address: addressIncluded ? billingAddress : billingAddressFromCheckout(), // psuedo code billingAddressFromCheckout()
+    shippingAddress: addressIncluded ? shippingAddress : shippingAddressFromCheckout(), // psuedo code shippingAddressFromCheckout()
+    termsAndConditions: true, // Get from checkout.
+  });
+  if (responseEventRequired) {
+    if(response.action === 'redirect') {
+      location.href = response.url;
+      return;
+    }
+    if (response.errors) {
+      // Payment failed for some reason, show error
+      ShowPaymentFailedError(response.errors);
+      return;
+    }
+    // action is javascript, send back the formFields
+    sendCentraEvent("centra_checkout_payment_response", response.formFields);
   }
+});
 ```
 
 Since the `responseEventRequired` is `true`, Adyen Drop-In needs a response to this event to be able to finalize the payment process. When sending the `POST /payment` using the `paymentMethodSpecificFields` provided by the event from Adyen Drop-In, the following response details will be returned:
