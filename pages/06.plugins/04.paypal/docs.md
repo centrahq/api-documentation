@@ -72,12 +72,12 @@ Response example:
 
 ```json
 {
-  "action": "form",
-  "formType": "paypal_commerce",
-  "formFields": {
-    "id": "<paypal-token>"
-  },
-  "formHtml": "<div id=\"paypal-button-yrdjjofjruuxuqhlr2vznlxumqgw0v1t97qhbpm\"></div>\n<script src=\"https://www.paypal.com/sdk/js?client-id=<client-id>&merchant-id=<merchant-id>&currency=SEK&intent=authorize&integration-date=2021-03-01\"></script>\n<script id=\"paypal-script-yrdjjofjruuxuqhlr2vznlxumqgw0v1t97qhbpm\" data-payment-method=\"paypal_commerce\">\n    var randomId = \"yrdjjofjruuxuqhlr2vznlxumqgw0v1t97qhbpm\";\n    var country = \"SE\";\n    var buttonElement = window.paypalSmartButtonSelector || \"#paypal-button-\" + randomId;\n    var scriptObject = document.getElementById(\"paypal-script-\" + randomId);\n    var paymentMethod = scriptObject.dataset.paymentMethod;\n    paypal.Buttons({\n        createOrder: function (data, actions) {\n          return \"<paypal-token>\";\n        },\n        onApprove: function (data, actions) {\n            var eventObject = {\n              paymentMethod: paymentMethod,\n              paymentMethodSpecificFields: {\n                  payment_method_id: data.orderID\n              },\n              responseEventRequired: false,\n              addressIncluded: false,\n              shippingAddress: {\n                country: country,                                      \n              },\n              billingAddress: {\n                country: country,                                      \n              },\n            };\n            \n            paymentCompleteEvent = new CustomEvent(\"centra_checkout_payment_callback\", {detail:eventObject});\n            document.dispatchEvent(paymentCompleteEvent);\n            \n            return true;\n        }\n      }).render(buttonElement);\n</script>"
+    "action": "form",
+    "formType": "paypal_commerce",
+    "formFields": {
+        "id": "<paypal-token>"
+    },
+    "formHtml": "<div id=\"paypal-button-yrdjjofjruuxuqhlr2vznlxumqgw0v1t97qhbpm\"></div>\n<script src=\"https://www.paypal.com/sdk/js?client-id=<client-id>&merchant-id=<merchant-id>&currency=SEK&intent=authorize&integration-date=2021-03-01\"></script>\n<script id=\"paypal-script-yrdjjofjruuxuqhlr2vznlxumqgw0v1t97qhbpm\" data-payment-method=\"paypal_commerce\">\n    var randomId = \"yrdjjofjruuxuqhlr2vznlxumqgw0v1t97qhbpm\";\n    var country = \"SE\";\n    var buttonElement = window.paypalSmartButtonSelector || \"#paypal-button-\" + randomId;\n    var scriptObject = document.getElementById(\"paypal-script-\" + randomId);\n    var paymentMethod = scriptObject.dataset.paymentMethod;\n    paypal.Buttons({\n        createOrder: function (data, actions) {\n          return \"<paypal-token>\";\n        },\n        onApprove: function (data, actions) {\n            var eventObject = {\n              paymentMethod: paymentMethod,\n              paymentMethodSpecificFields: {\n                  payment_method_id: data.orderID\n              },\n              responseEventRequired: false,\n              addressIncluded: false,\n              shippingAddress: {\n                country: country,                                      \n              },\n              billingAddress: {\n                country: country,                                      \n              },\n            };\n            \n            paymentCompleteEvent = new CustomEvent(\"centra_checkout_payment_callback\", {detail:eventObject});\n            document.dispatchEvent(paymentCompleteEvent);\n            \n            return true;\n        }\n      }).render(buttonElement);\n</script>"
 }
 ```
 
@@ -86,7 +86,7 @@ Response example:
 We will now handle the final event happening when payment is completed in PayPal by the customer. We previously registered the following handler:
 
 ```js
-    document.addEventListener('centra_checkout_payment_callback', this.paymentSelected);
+document.addEventListener('centra_checkout_payment_callback', this.paymentSelected);
 ```
 
 Which is the one that will trigger now.
@@ -138,19 +138,19 @@ The following data is returned in this event:
 We would take the event data, and create a `checkoutRequest` based on the data provided. This data would then be sent to the `POST /payment` in the Centra API.
 
 ```js
-  paymentSelected = (event: any) => {
+paymentSelected = (event: any) => {
     const { checkoutRequest: checkout } = this.props;
     const { paymentMethodSpecificFields, paymentMethod } = event.detail;
     const { billingAddress: billingAddressData, shippingAddress: shippingAddressData } = event.detail;
     const billingAddress: IAddress = Address.create(billingAddressData);
     const shippingAddress: IAddress = Address.create(shippingAddressData);
     checkout({
-      paymentMethodSpecificFields,
-      paymentMethod: paymentMethod,
-      billingAddress: billingAddress,
-      shippingAddress: shippingAddress,
+        paymentMethodSpecificFields,
+        paymentMethod: paymentMethod,
+        billingAddress: billingAddress,
+        shippingAddress: shippingAddress,
     });
-  }
+}
 ```
 
 This request would then result in the common [`PaymentActionResponse`, explained in the Swagger UI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) and in [Payment Method flows](/fe-development/payments/payment-flows).
