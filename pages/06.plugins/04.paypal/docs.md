@@ -32,7 +32,7 @@ This plugin can be used in 2 ways: either the checkout redirects to PayPal, or y
 
 ### Redirect
 
-This method is identical to how Centra's previous PayPal plugin worked. It works by responding with a URL that you will redirect the customer to, and once the customer is done with the payment they will be redirected back to the webshop, where you can call our payment-result endpoint just as described in our [Payment method flows](https://docs.centra.com/guides/shop-api/payment-method-flows#payment-result-types) documentation.
+This method is identical to how Centra's previous PayPal plugin worked. It works by responding with a URL that you will redirect the customer to, and once the customer is done with the payment they will be redirected back to the webshop, where you can call our payment-result endpoint just as described in our [Payment method flows](/fe-development/payments/payment-flows#payment-result-types) documentation.
 
 ### Smart Buttons
 
@@ -153,7 +153,7 @@ We would take the event data, and create a `checkoutRequest` based on the data p
   }
 ```
 
-This request would then result in the common [`PaymentActionResponse`, explained in the Swagger UI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) and in [Payment Method flows](https://docs.centra.com/guides/shop-api/payment-method-flows).
+This request would then result in the common [`PaymentActionResponse`, explained in the Swagger UI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) and in [Payment Method flows](/fe-development/payments/payment-flows).
 
 ### Testing
 
