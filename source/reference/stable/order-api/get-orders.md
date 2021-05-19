@@ -16,7 +16,8 @@
    :api_key: true
 ```
 
-This will fetch the orders allowed for the plugin being set up.
+This will fetch the orders allowed for the plugin being set up. Any custom attributes assigned to orders
+will also be returned as individual fields (see example).
 
 ## Parameters
 
@@ -201,7 +202,15 @@ This will fetch the orders allowed for the plugin being set up.
                      .. type:: float
 
                    - How much tax. ex 20
-
+          * - ``custom_attribute_n``
+          
+              .. type:: string
+              
+            - Any additional custom fields will also be included in response. The
+              response's property will be named according to the name of the custom field. For example
+              an attribute named ``order_attr`` with element ``value`` will yield a field called
+              ``order_attr_value`` in the response.
+              
 ```
 
 ## Response example
@@ -289,6 +298,7 @@ This will fetch the orders allowed for the plugin being set up.
              "value": 795.75
            }
          ],
+         "custom_attribute_1": "A custom attribute value",
          "products": [
            {
              "lineId": "43243",

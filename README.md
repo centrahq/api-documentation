@@ -93,6 +93,17 @@ Redirects are handled using a Lambda@Edge function installed on the North Caroli
 
 Update the function and deploy it again at Lambda@Edge to add more redirects.
 
+### Python version
+
+If you want to use a different version of Python you can configure it using `PYTHON_CMD` variable:
+```shell
+make PYTHON_CMD=python3 html
+```
+or, event better, set environment variable (in `~/./profile` or `~/.bash_profile` etc.):
+```shell
+export PYTHON_CMD=python3
+```
+
 ## Support
 
 If you are having issues, please let us know. We accept pull requests on our public documentation.
