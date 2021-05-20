@@ -202,7 +202,7 @@ will also be returned as individual fields (see example).
                      .. type:: float
 
                    - How much tax. ex 20
-          * - ``custom_attribute_n``
+          * - Custom Attributes: ``attributeName_elementName``
           
               .. type:: string
               
@@ -298,7 +298,7 @@ will also be returned as individual fields (see example).
              "value": 795.75
            }
          ],
-         "custom_attribute_1": "A custom attribute value",
+         "attributeName_elementName": "A custom attribute value",
          "products": [
            {
              "lineId": "43243",
