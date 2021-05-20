@@ -202,14 +202,17 @@ will also be returned as individual fields (see example).
                      .. type:: float
 
                    - How much tax. ex 20
-          * - Custom Attributes: ``attributeName_elementName``
+          * - Custom Attributes: ``<attribute>_<element>``
           
               .. type:: string
               
             - Any additional custom fields will also be included in response. The
-              response's property will be named according to the name of the custom field. For example
-              an attribute named ``order_attr`` with element ``value`` will yield a field called
-              ``order_attr_value`` in the response.
+              response's property will be named according to the name of the custom field and its elements.
+              For example an attribute named ``attribute`` with element ``element`` will yield a field called
+              ``attribute_element`` in the response (as in example below). Another, more real-life scenario might 
+              include an
+              attribute named ``order_attr`` with element ``external_id`` that would return a field
+              ``order_attr_external_id``.
               
 ```
 
@@ -298,7 +301,7 @@ will also be returned as individual fields (see example).
              "value": 795.75
            }
          ],
-         "attributeName_elementName": "A custom attribute value",
+         "attribute_element": "A custom attribute value",
          "products": [
            {
              "lineId": "43243",
