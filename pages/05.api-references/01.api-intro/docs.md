@@ -38,9 +38,11 @@ curl -H "API-Authorization foo" <base>/orders
 
 Here are some examples which you can consider when planning your integration with Centra. If none of those covers your use case, let us know and we will advise!
 
-### [REST] DTC webshop APIs (Checkout / Shop [deprecated])
+### [REST] DTC webshop API (Checkout API)
 
 If you are building a front end for your brand or DTC store, either as a website or a mobile app, you should probably look into using the Checkout API. It's our hybrid webshop API, able to operate both in Client and Server mode, giving you access to products catalog, prices, payments, checkout, shipping options, vouchers, anything you need to build a webshop. To read more about building a front end using Checkout API, visit [Creating Front End for Centra store](/fe-development) section.
+
+#### Shop API [deprecated]
 
 Shop API is an older, soon to be deprecated webshop API, which only works in authenticated Server mode. It operates directly on selections (instead of sessions), is not aware of the end-user context, and is less capable performance-wise, since it doesn't use ES cache internally, like Checkout API does.
 
