@@ -44,9 +44,11 @@ For example: ``package[]=3232&package[]=4344``
 
 [parameter data="payment" datatype="string" isRequired=true sublevel=1]
 URI of payment plugin to be used. Needs to be set up before as a payment plugin for the store.
-
-.. note:: There are only a few payment plugins that supports subscription services. Please make sure the payment plugin you set up allows it.
 [/parameter]
+
+[notice-box=info]
+There are only a few payment plugins that support subscription services. Please make sure the payment plugin you set up allows it.
+[/notice-box]
 
 [parameter data="payment_url" datatype="string" isRequired=false sublevel=1]
 A url where the customer should be redirected to when payment is completed.
