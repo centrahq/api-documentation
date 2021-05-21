@@ -48,10 +48,6 @@ Shop API is an older, soon to be deprecated webshop API, which only works in aut
 Checkout API is highly recommended for any new implementations. Shop API will be deprecated in the near future.
 [/notice-box]
 
-### [SOAP] ERP system integrations
-
-Many customers use the ERP systems, like Navision, to store the master of the data for Products, Customers, Pricelists and so on. If you need to integrate to those systems, you may be interested in our [SOAP API](/api-references/soap-integration-api). Since in this case Centra works in a slave mode, this is currently the only API that allows you to modify Centra Products, Pricelists, Invoices, Orders, etc. We very rarely add new features to this API, but we also have comprehensive docs covering most of use cases required when working with an ERP. They are all described in our [ERP integration guide](/guides/erp-integration).
-
 ### [REST] Integration API (Order API)
 
 If your integration takes care of orders *after* they are created in Centra, you can look into using Order API. It covers lots of functions, like [WMS integrations](/guides/wms-integration), Return Management Systems, Stock management, etc. For those orders you may want to update existing Orders, create and modify Shipments, read or manipulate Stock, or read/create/update Returns. You also have access to Customer data and the [Supplier Module](https://support.centra.com/centra-sections/modules/supplier-module). With the right API plugin config, you will also be able to insert Orders directly into Centra (e.g. when migrating from another platform), or manipulate Vouchers (e.g. for cloning vouchers to give to your influencers).
@@ -63,3 +59,7 @@ Order API was originally built as a pick-and-pack service integration API, with 
 This is designed to be the last integration API we will ever need. It gives you granular access to almost all parts of Centra, including the parts previously available only from the backend UI. The only limit is your imagination.
 
 Currently, GraphQL works mostly in write-only mode, but we are adding new functionalities (including write) with every Centra version. Once it's done, it will deprecate Order API for sure, and possibly SOAP API as well.
+
+### [SOAP] ERP system integrations
+
+Many customers use the ERP systems, like Navision, to store the master of the data for Products, Customers, Pricelists and so on. If you need to integrate to those systems, you may be interested in our [SOAP API](/api-references/soap-integration-api). Since in this case Centra works in a slave mode, this is currently the only API that allows you to modify Centra Products, Pricelists, Invoices, Orders, etc. We very rarely add new features to this API, but we also have comprehensive docs covering most of use cases required when working with an ERP. They are all described in our [ERP integration guide](/guides/erp-integration).
