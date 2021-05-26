@@ -40,7 +40,7 @@ Here are some examples which you can consider when planning your integration wit
 
 ### [REST] DTC webshop API (Checkout API)
 
-If you are building a front end for your brand or DTC store, either as a website or a mobile app, you should probably look into using the Checkout API. It's our hybrid webshop API, able to operate both in Client and Server mode, giving you access to products catalog, prices, payments, checkout, shipping options, vouchers, anything you need to build a webshop. To read more about building a front end using Checkout API, visit [Creating Front End for Centra store](/fe-development) section.
+If you are building a front end for your brand or DTC store, either as a website or a mobile app, you should probably look into using Checkout API. It's our hybrid webshop API, able to operate both in Client and Server mode, giving you access to products catalog, prices, payments, checkout, shipping options, vouchers, anything you need to build a webshop. To read more about building a front end using Checkout API, visit [Creating Front End for Centra store](/fe-development) section.
 
 #### Shop API [deprecated]
 
@@ -52,16 +52,20 @@ Checkout API is highly recommended for any new implementations. Shop API will be
 
 ### [REST] Integration API (Order API)
 
-If your integration takes care of orders *after* they are created in Centra, you can look into using Order API. It covers lots of functions, like [WMS integrations](/guides/wms-integration), Return Management Systems, Stock management, etc. For those orders you may want to update existing Orders, create and modify Shipments, read or manipulate Stock, or read/create/update Returns. You also have access to Customer data and the [Supplier Module](https://support.centra.com/centra-sections/modules/supplier-module). With the right API plugin config, you will also be able to insert Orders directly into Centra (e.g. when migrating from another platform), or manipulate Vouchers (e.g. for cloning vouchers to give to your influencers).
+If your integration takes care of orders *after* they are created in Centra, you can be interested in using Order API. It covers lots of functions, like [WMS integrations](/guides/wms-integration), Return Management Systems, Stock management, etc. For those orders you may want to update existing Orders, create and modify Shipments, read or manipulate Stock, or read/create/update Returns. You also have access to Customer data and the [Supplier Module](https://support.centra.com/centra-sections/modules/supplier-module). With the right API plugin config, you will also be able to insert Orders directly into Centra (e.g. when migrating from another e-commerce platform), or manipulate Vouchers (e.g. generating cloned vouchers for your influencers).
 
-Order API was originally built as a pick-and-pack service integration API, with a lot of functionality added over the years. It is, however, very far from being feature-complete. For this reason we are developing GraphQL API
+Order API was originally built as a pick-and-pack service integration API, with a lot of functionality added over the years. It is, however, very far from being feature-complete. For this reason we are developing GraphQL API.
 
 ### [GQL] GraphQL Integration API
 
 This is designed to be the last integration API we will ever need. It gives you granular access to almost all parts of Centra, including the parts previously available only from the backend UI. The only limit is your imagination.
 
-Currently, GraphQL works mostly in write-only mode, but we are adding new functionalities (including write) with every Centra version. Once it's done, it will deprecate Order API for sure, and possibly SOAP API as well.
+Currently, GraphQL works mostly in read-only mode, but we are adding new functionality (including write parts) with every Centra version. Once fully developed, it will deprecate Order API, and possibly SOAP API as well. To learn more, see [GraphQL Integration API](/api-references/graphql-integration-api).
 
 ### [SOAP] ERP system integrations
 
-Many customers use the ERP systems, like Navision, to store the master of the data for Products, Customers, Pricelists and so on. If you need to integrate to those systems, you may be interested in our [SOAP API](/api-references/soap-integration-api). Since in this case Centra works in a slave mode, this is currently the only API that allows you to modify Centra Products, Pricelists, Invoices, Orders, etc. We very rarely add new features to this API, but we also have comprehensive docs covering most of use cases required when working with an ERP. They are all described in our [ERP integration guide](/guides/erp-integration).
+Many customers use the ERP systems, like Navision, to store the master of the data for Products, Customers, Pricelists and so on. If you need to integrate to those systems, you may be interested in our [SOAP API](/api-references/soap-integration-api). Since in this case Centra works in a slave mode, this is currently the only API that allows you to modify Centra Products, Pricelists, Shipping, Invoices, etc. We very rarely add new features to this API, but we also have comprehensive docs covering most of use cases required when working with an ERP system. They are all described in our [ERP integration guide](/guides/erp-integration).
+
+### [REST] Subscription API
+
+This API is used for recurring sales where the orders are created automatically using a specified subscription period. Using the API you are able to create new subscriptions that will authorize the payment provider and enable orders to be created. To read more, see the [Subscription API reference](/api-references/subscription-api/api-reference).
