@@ -731,6 +731,8 @@ document.addEventListener('centra_checkout_payment_callback', function(origdata)
   // 'POST' is type of request. 'payment' = route
   const response = await CentraAPI('POST', 'payment', {
     paymentMethod,
+    paymentReturnPage: 'https://example.com/yourReturnPageForPaymentResult',
+    paymentFailedPage: 'https://example.com/yourPageForPaymentFailure',
     paymentMethodSpecificFields,
     address: addressIncluded ? billingAddress : billingAddressFromCheckout(), // psuedo code billingAddressFromCheckout()
     shippingAddress: addressIncluded ? shippingAddress : shippingAddressFromCheckout(), // psuedo code shippingAddressFromCheckout()
