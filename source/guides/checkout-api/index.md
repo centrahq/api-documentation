@@ -91,6 +91,8 @@ When the API is used client-side, the authentication is making sure that the Ori
 
 To make sure that only the origins you allow can use the API, please make sure you add the endpoints that you're currently using to this list. When a non-allowed origin is used, the API will respond with a status `401 Unauthorized`.
 
+Origins are not checked if not provided in the plugin configuration. This may be preferable when you have multiple or dynamic list of subdomains for your QA/testing environment.
+
 ## Token
 
 To maintain a state of a selection for a customer, regardless if server-side or client-side, there's a `token`-parameter inside the response JSON that will be used to maintain the current client-session:
