@@ -78,7 +78,14 @@ Add a subscription with payment details, will not be completed/registered as a c
        .. type:: string
           :required: false
 
-     - A url where the customer should be redirected to when payment is completed.
+     - A url where the customer should be redirected to when payment is completed. Some payment methods require this to be provided. (Was previously called ``doneurl``)
+
+   * - ``payment_failed_url``
+
+       .. type:: string
+          :required: false
+
+     - A url where the customer should be redirected to when payment is cancelled or failed. If not provided the ``payment_url`` will be used instead.
 
    * - ``pnr``
 
