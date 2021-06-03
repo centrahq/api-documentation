@@ -34,6 +34,13 @@ This will complete the subscription. Often called when user comes back to `payme
 
      - URI of payment plugin to be used. Needs to be set up before as a payment plugin for the store.
 
+   * - ``checksum``
+
+       .. type:: string
+          :required: true
+
+     - The value from the ``checksum`` response from :doc:`Create Subscription </reference/stable/subscription-api/create-subscription>`.
+
    * - **[all GET/POST params sent by payment provider]**
 
      - Attach all GET/POST parameters sent from the payment provider to the ``payment_url`` from :doc:`Create Subscription </reference/stable/subscription-api/create-subscription>`. These will be used to validate if the payment was successful.
