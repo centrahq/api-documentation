@@ -250,6 +250,13 @@ Example Request with consents:
 
             - The currency that the subscription was registered with, ``SEK``, ``USD``, ``EUR``, etc.
 
+   * - ``checksum``
+
+       .. type:: string
+          :required: true
+
+     - A checksum of the content of the current subscription. This value should later on be provided to the call to ``POST /subscription/payment`` to make sure the subscription content is intact from when the subscription was created.
+
    * - ``msg``
 
        .. type:: string
@@ -272,7 +279,8 @@ Example Request with consents:
        "url": "https://...",
        "value": "123.50",
        "currency": "SEK"
-     }
+     },
+     "checksum": "e5838ff26d514403a2b6e3339876a8bf"
    }
 ```
 
