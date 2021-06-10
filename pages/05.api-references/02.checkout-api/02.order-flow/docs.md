@@ -16,6 +16,7 @@ Creates a new selection (equivalent to a "basket") when a first item is added. `
 
 ### API response
 
+[snippet summary="Add item to selection"]
 ```json
 {
     "token": "0ft2kmhg80tlkgq26fq4840vkp",
@@ -678,6 +679,7 @@ Creates a new selection (equivalent to a "basket") when a first item is added. `
     }
 }
 ```
+[/snippet]
 
 ## Add another product to selection
 
@@ -687,6 +689,7 @@ Adding another item to selection, because we can.
 
 ### API response
 
+[snippet summary="Add more items to selection"]
 ```json
 {
     "token": "0ft2kmhg80tlkgq26fq4840vkp",
@@ -1349,6 +1352,7 @@ Adding another item to selection, because we can.
     }
 }
 ```
+[/snippet]
 
 ## Show selection
 
