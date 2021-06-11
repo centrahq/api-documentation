@@ -279,3 +279,188 @@ This is how it looks like in the API:
 ```
 
 The [dynamic attribute element types](#attribute-element-types) supported are all returning simple strings, so they look the same as per above.
+
+## Examples
+
+[notice-box=info]
+We recommend using `snake_case` for all your custom attributes API names. Since Centra uses `camelCase`, and all the values are mixed up in the API responses, it's helpful to be able to immediately tell which attributes are custom, which also prevents the risk of accidentaly re-using already existing attribute name key.
+[/notice-box]
+
+#### [Template]
+
+[snippet summary="Test snippet"]
+```php
+    '' => [
+        'desc' => '',
+        'group' => '',
+        'readonly' => ,
+        'elements' => [
+            '' => [
+                'desc' => '',
+                'type' => ''
+            ]
+        ]
+    ]
+```
+[/snippet]
+
+#### Product category video
+
+File upload is easy to manage for limited number of 
+
+[snippet summary="Product category video"]
+```php
+    'pr_cat_video' => [
+        'desc' => 'Product Category Video',
+        'group' => 'product',
+        'readonly' => true,
+        'elements' => [
+            'file' => [
+                'desc' => 'Category video',
+                'type' => 'file'
+            ]
+        ]
+    ]
+```
+[/snippet]
+
+#### Product video
+
+dynamic input field to store video URL
+
+[snippet summary="Product video"]
+```php
+    'pr_video' => [
+        'desc' => 'Product Video',
+        'group' => 'product',
+        'readonly' => false,
+        'elements' => [
+            'url' => [
+                'desc' => 'Product Video URL',
+                'type' => 'input'
+            ]
+        ]
+    ]
+```
+[/snippet]
+
+#### Dangerous goods
+
+Required for some products at customs
+
+[snippet summary="Dangerous goods"]
+```php
+    'pr_dangerous' => [
+        'desc' => 'Dangerous goods',
+        'group' => 'product',
+        'readonly' => false,
+        'elements' => [
+            'value' => [
+                'desc' => 'Dangerous goods code',
+                'type' => 'input'
+            ]
+        ]
+    ]
+```
+[/snippet]
+
+#### Showroom swatch
+
+Remember, Variant-level attribute use group `variation`, not ~variant~.
+
+[snippet summary="Showroom swatch"]
+```php
+    'sh_swatch' => [
+        'desc' => 'Showroom Color Swatch',
+        'group' => 'variation',
+        'readonly' => true,
+        'elements' => [
+            'desc' => [
+                'desc' => 'Color',
+                'type' => 'input'
+            ],
+            'hex' => [
+                'desc' => 'Hex',
+                'type' => 'input'
+            ],
+            'image' => [
+                'desc' => 'Image',
+                'type' => 'image',
+                'size' => '50x50'
+            ]
+        ]
+    ]
+```
+[/snippet]
+
+#### Promotion yes/no
+
+Booleans are normally dynamic, not pre-defined. Duh. ;)
+
+[snippet summary="Promotion yes/no"]
+```php
+    'var_promo' => [
+        'desc' => 'Promotion',
+        'group' => 'variation',
+        'readonly' => false,
+        'elements' => [
+            'sale' => [
+                'desc' => 'Sale',
+                'type' => 'boolean',
+                'options' => [['0','No'],['1','Yes']]
+            ],
+            'preorder' => [
+                'desc' => 'Pre-order',
+                'type' => 'boolean',
+                'options' => [['0','No'],['1','Yes']]
+            ]
+        ]
+    ]
+```
+[/snippet]
+
+#### Product gender
+
+[notice-box=info]
+Remember, the keys are enums, not integers. It's `['0','Select']`, not `[0,'Select']`.
+[/notice-box]
+
+[snippet summary="Product gender"]
+```php
+    'pr_gender' => [
+        'desc' => 'Product gender',
+        'group' => 'product',
+        'readonly' => false,
+        'elements' => [
+            'value' => [
+                'desc' => 'Product gender',
+                'type' => 'select',
+                'options' => [['0','Select'],['fem','Female'],['male','Male'],['unisex','Unisex']],
+            ]
+        ]
+    ]
+```
+[/snippet]
+
+#### Product material - multi-select
+
+[snippet summary="Product material - multi-select"]
+```php
+    'pr_material' => [
+        'desc' => 'Product material(s)',
+        'group' => 'product',
+        'readonly' => true,
+        'multi' => true,
+        'elements' => [
+            'name' => [
+                'desc' => 'Material name',
+                'type' => 'input'
+            ],
+            'description' => [
+                'desc' => 'Material description',
+                'type' => 'textarea'
+            ]
+        ]
+    ]
+```
+[/snippet]
