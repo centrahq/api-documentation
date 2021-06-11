@@ -312,7 +312,7 @@ Description
 
 File upload is easy to manage for limited number of 
 
-![Product Category Video](example-product-category-video.png)
+![ProductCategoryVideo](example-product-category-video.png)
 
 [snippet summary="Product category video"]
 ```php
@@ -334,7 +334,7 @@ File upload is easy to manage for limited number of
 
 dynamic input field to store video URL
 
-![Product Video URL](example-product-video-url.png)
+![ProductVideoURL](example-product-video-url.png)
 
 [snippet summary="Product video"]
 ```php
@@ -356,7 +356,7 @@ dynamic input field to store video URL
 
 Required for some products at customs
 
-![Dangerous goods](example-dangeours-goods.png)
+![DangerousGoods](example-dangeours-goods.png)
 
 [snippet summary="Dangerous goods"]
 ```php
@@ -378,8 +378,8 @@ Required for some products at customs
 
 Remember, Variant-level attribute use group `variation`, not ~variant~.
 
-![](example-showroom-1.png)
-![](example-showroom-2.png)
+![ShowroomSwatch1](example-showroom-1.png)
+![ShowroomSwatch2](example-showroom-2.png)
 
 [snippet summary="Showroom swatch"]
 ```php
@@ -410,7 +410,7 @@ Remember, Variant-level attribute use group `variation`, not ~variant~.
 
 Booleans are normally dynamic, not pre-defined. Duh. ;)
 
-![Promotion yes/no](example-promotion-yes-no.png)
+![PromotionYesNo](example-promotion-yes-no.png)
 
 [snippet summary="Promotion yes/no"]
 ```php
@@ -440,7 +440,7 @@ Booleans are normally dynamic, not pre-defined. Duh. ;)
 Remember, the keys are enums, not integers. It's `['0','Select']`, not `[0,'Select']`.
 [/notice-box]
 
-![Product gender](example-product-gender.png)
+![ProductGender](example-product-gender.png)
 
 [snippet summary="Product gender"]
 ```php
@@ -463,7 +463,7 @@ Remember, the keys are enums, not integers. It's `['0','Select']`, not `[0,'Sele
 
 [Desc]
 
-![Product material - multi-select](example-product-material-multi.png)
+![ProductMaterialMulti](example-product-material-multi.png)
 
 [snippet summary="Product material - multi-select"]
 ```php
