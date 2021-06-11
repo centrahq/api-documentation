@@ -6,6 +6,11 @@ taxonomy:
     category: docs
 ---
 
+Random change in article to trigger the bug
+One Allocation Rule can belong to multiple Markets, but one Market can have only one Allocation Rule. This way Centra controls which Warehouses' stock will be displayed in each Market.
+One Allocation Rule can belong to multiple Markets, but one Market can have only one Allocation Rule. This way Centra controls which Warehouses' stock will be displayed in each Market.
+One Allocation Rule can belong to multiple Markets, but one Market can have only one Allocation Rule. This way Centra controls which Warehouses' stock will be displayed in each Market.
+
 As mentioned in the previous chapters, each Product has at least one Variant, and every Variant has at least one Size. In Centra, stock is defined on the Size level, which means we keep information about inventory for every Size of every Variant of every Product.
 
 ### Warehouses and Allocation Rules

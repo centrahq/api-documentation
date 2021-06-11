@@ -6,6 +6,8 @@ taxonomy:
     category: docs
 ---
 
+Random change in article to trigger the bug
+
 Centra uses a predefined product model that is optimized to solve the complexities of fashion and lifestyle products. The structure cannot be changed by users, however users can switch some functionalities on and off and define their own attributes.
 
 Two different concepts for modelling and storing items for sale are used in Centra: Displays and Products. This includes Variants and Sizes of Products.

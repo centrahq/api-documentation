@@ -6,6 +6,10 @@ taxonomy:
     category: docs
 ---
 
+Random change in article to trigger the bug
+
+Random change in article to trigger the bugRandom change in article to trigger the bugRandom change in article to trigger the bugRandom change in article to trigger the bugRandom change in article to trigger the bugRandom change in article to trigger the bugRandom change in article to trigger the bugRandom change in article to trigger the bugRandom change in article to trigger the bugRandom change in article to trigger the bugRandom change in article to trigger the bugRandom change in article to trigger the bugRandom change in article to trigger the bugRandom change in article to trigger the bugRandom change in article to trigger the bug
+
 Centra allows store administrators to create many types of promotions, generate voucher codes, set up campaigns and cooperate with affiliates. Configuration of such promotions is separate for each Store in your Centra.
 
 ### Voucher

@@ -6,11 +6,7 @@ taxonomy:
     category: docs
 ---
 
-## Creating and completing an order
-
-### Selections
-
-In Centra, a list of chosen products that are not yet an order are referred to as a Selection. Selections work differently for Direct-To-Consumer and Wholesale, but the overall concept is the same.
+Random change in article to trigger the bug
 
 #### Direct-To-Consumer (B2C) Selections, also known as Carts
 
@@ -24,6 +20,18 @@ Wholesale Selections are stored for each account and can be viewed and manipulat
 
 Centra automatically detects Selections that are not checked out and generates Abandoned Cart events that are transferred to marketing applications for retargeting applications. Click here to read more about the [Cart Abandonment feature](/plugins/cartabandonment).
 
+### Order flow
+
+Here's the basic order flow as seen in Centra backend.
+### Order flow
+
+Here's the basic order flow as seen in Centra backend.
+### Order flow
+
+Here's the basic order flow as seen in Centra backend.
+### Order flow
+
+Here's the basic order flow as seen in Centra backend.
 ### Order flow
 
 Here's the basic order flow as seen in Centra backend.

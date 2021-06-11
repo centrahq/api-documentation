@@ -6,6 +6,8 @@ taxonomy:
     category: docs
 ---
 
+Random change in article to trigger the bug
+
 There are three main concepts that govern how the Tax is applied in Centra: Tax Groups, Tax Rules and Tax Classes.
 
 ![TaxLogic](tax-logic.png)
@@ -15,6 +17,12 @@ There are three main concepts that govern how the Tax is applied in Centra: Tax 
 Tax Group consists of one or more Tax Rules, which control what amount of tax should be applied. You can configure any number of Tax Groups in Centra, but each Store can have only one default Tax Group. This will be the default Tax Group that is selected in Product Attributes configured for this store, but you can select any other Tax Group on a per-product basis, if necessary.
 
 ### Tax Rules
+
+Random change in article to trigger the bug
+
+Random change in article to trigger the bug
+
+Random change in article to trigger the bug
 
 Tax Rules control what amount of tax should be applied based on Country and Customer (B2C) or Account (B2B) Tax Classes. For example, if you're selling in EU, Australia and Japan and need to calculate VAT tax for those markets, you would create three Tax Rules: EU (with 25% tax), Australia (with 10% tax), and Japan (with 8% tax).
 

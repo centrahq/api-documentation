@@ -6,6 +6,7 @@ taxonomy:
     category: docs
 ---
 
+Random change in article to trigger the bug
 ## Custom Attributes
 
 This is how you set up the custom attributes for product, variants, orders and customers.
