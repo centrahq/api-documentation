@@ -288,6 +288,10 @@ We recommend using `snake_case` for all your custom attributes API names. Since 
 
 #### [Template]
 
+Description
+
+![](.png)
+
 [snippet summary="Test snippet"]
 ```php
     '' => [
@@ -307,6 +311,8 @@ We recommend using `snake_case` for all your custom attributes API names. Since 
 #### Product category video
 
 File upload is easy to manage for limited number of 
+
+![Product Category Video](example-product-category-video.png)
 
 [snippet summary="Product category video"]
 ```php
@@ -328,6 +334,8 @@ File upload is easy to manage for limited number of
 
 dynamic input field to store video URL
 
+![Product Video URL](example-product-video-url.png)
+
 [snippet summary="Product video"]
 ```php
     'pr_video' => [
@@ -348,6 +356,8 @@ dynamic input field to store video URL
 
 Required for some products at customs
 
+![Dangerous goods](example-dangeours-goods.png)
+
 [snippet summary="Dangerous goods"]
 ```php
     'pr_dangerous' => [
@@ -367,6 +377,9 @@ Required for some products at customs
 #### Showroom swatch
 
 Remember, Variant-level attribute use group `variation`, not ~variant~.
+
+![](example-showroom-1.png)
+![](example-showroom-2.png)
 
 [snippet summary="Showroom swatch"]
 ```php
@@ -397,6 +410,8 @@ Remember, Variant-level attribute use group `variation`, not ~variant~.
 
 Booleans are normally dynamic, not pre-defined. Duh. ;)
 
+![Promotion yes/no](example-promotion-yes-no.png)
+
 [snippet summary="Promotion yes/no"]
 ```php
     'var_promo' => [
@@ -425,6 +440,8 @@ Booleans are normally dynamic, not pre-defined. Duh. ;)
 Remember, the keys are enums, not integers. It's `['0','Select']`, not `[0,'Select']`.
 [/notice-box]
 
+![Product gender](example-product-gender.png)
+
 [snippet summary="Product gender"]
 ```php
     'pr_gender' => [
@@ -443,6 +460,10 @@ Remember, the keys are enums, not integers. It's `['0','Select']`, not `[0,'Sele
 [/snippet]
 
 #### Product material - multi-select
+
+[Desc]
+
+![Product material - multi-select](example-product-material-multi.png)
 
 [snippet summary="Product material - multi-select"]
 ```php
