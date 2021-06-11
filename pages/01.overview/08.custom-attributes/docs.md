@@ -290,8 +290,6 @@ We recommend using `snake_case` for all your custom attributes API names. Since 
 
 Description
 
-![](.png)
-
 [snippet summary="Test snippet"]
 ```php
     '' => [
@@ -308,11 +306,12 @@ Description
 ```
 [/snippet]
 
+This displays like this:  
+![](.png)
+
 #### Product category video
 
 File upload is easy to manage for limited number of 
-
-![ProductCategoryVideo](example-product-category-video.png)
 
 [snippet summary="Product category video"]
 ```php
@@ -330,11 +329,12 @@ File upload is easy to manage for limited number of
 ```
 [/snippet]
 
+After you add and upload the video files in Catalog -> Attributes, this will display like this in the Product page:  
+![ProductCategoryVideo](example-product-category-video.png)
+
 #### Product video
 
 dynamic input field to store video URL
-
-![ProductVideoURL](example-product-video-url.png)
 
 [snippet summary="Product video"]
 ```php
@@ -352,11 +352,12 @@ dynamic input field to store video URL
 ```
 [/snippet]
 
+This will look like this in the Product page:  
+![ProductVideoURL](example-product-video-url.png)
+
 #### Dangerous goods
 
 Required for some products at customs
-
-![DangerousGoods](example-dangeours-goods.png)
 
 [snippet summary="Dangerous goods"]
 ```php
@@ -374,12 +375,11 @@ Required for some products at customs
 ```
 [/snippet]
 
+![DangerousGoods](example-dangeours-goods.png)
+
 #### Showroom swatch
 
 Remember, Variant-level attribute use group `variation`, not ~variant~.
-
-![ShowroomSwatch1](example-showroom-1.png)
-![ShowroomSwatch2](example-showroom-2.png)
 
 [snippet summary="Showroom swatch"]
 ```php
@@ -406,11 +406,12 @@ Remember, Variant-level attribute use group `variation`, not ~variant~.
 ```
 [/snippet]
 
+![ShowroomSwatch1](example-showroom-1.png)
+![ShowroomSwatch2](example-showroom-2.png)
+
 #### Promotion yes/no
 
 Booleans are normally dynamic, not pre-defined. Duh. ;)
-
-![PromotionYesNo](example-promotion-yes-no.png)
 
 [snippet summary="Promotion yes/no"]
 ```php
@@ -434,13 +435,13 @@ Booleans are normally dynamic, not pre-defined. Duh. ;)
 ```
 [/snippet]
 
+![PromotionYesNo](example-promotion-yes-no.png)
+
 #### Product gender
 
 [notice-box=info]
 Remember, the keys are enums, not integers. It's `['0','Select']`, not `[0,'Select']`.
 [/notice-box]
-
-![ProductGender](example-product-gender.png)
 
 [snippet summary="Product gender"]
 ```php
@@ -459,11 +460,11 @@ Remember, the keys are enums, not integers. It's `['0','Select']`, not `[0,'Sele
 ```
 [/snippet]
 
+![ProductGender](example-product-gender.png)
+
 #### Product material - multi-select
 
 [Desc]
-
-![ProductMaterialMulti](example-product-material-multi.png)
 
 [snippet summary="Product material - multi-select"]
 ```php
@@ -485,3 +486,5 @@ Remember, the keys are enums, not integers. It's `['0','Select']`, not `[0,'Sele
     ]
 ```
 [/snippet]
+
+![ProductMaterialMulti](example-product-material-multi.png)
