@@ -38,9 +38,9 @@ If Adyen Drop-In is initiated after customer has filled in their address, the fl
 8. Adyen Drop-In will then redirect or post data to `paymentReturnPage` with the information about the payment.
 9. Centra gets an API call to `POST /payment-result` from `paymentReturnPage` to finalize the payment or give back an error message.
 
-### Server communication
+### Webhook
 
-The Adyen Drop-In needs its own Server Communication URL set up in Adyen. If you use multiple Merchant Accounts in Adyen, you need one per Merchant Account pointing to one of the Adyen Drop-In plugins inside Centra. If the Server Communication URL is not set up, all orders in Centra will never go out of "Waiting for Payment"-status and will be set as "Hold".
+The Adyen Drop-In needs its own Webhook URL set up in Adyen. If you use multiple Merchant Accounts in Adyen, you need one per Merchant Account pointing to one of the Adyen Drop-In plugins inside Centra. If the Webhook URL is not set up, all orders in Centra will never go out of "Waiting for Payment"-status and will be set as "Hold".
 
 ### Set up
 
@@ -107,12 +107,12 @@ https://www.example.com
 
 There's more information about how to get your Client key in the [documentation about Client keys in Adyen Docs](https://docs.adyen.com/development-resources/client-side-authentication/migrate-from-origin-key-to-client-key).
 
-#### Notification URL / Server communication
+#### Notification URL / Webhook
 
-The `Notification URL` is used for the Server Communication from Adyen.
+The `Notification URL` is used for the webhook from Adyen.
 
 ```eval_rst
-.. warning:: You should set a Server communication URL for each Merchant Account you have. Make sure you have selected a Merchant Account in Adyen before you add it on the "Server Communication"-page.
+.. warning:: You should set a webhook for each Merchant Account you have. Make sure you have selected a Merchant Account in Adyen before you add it on the "Webhook"-page.
 ```
 
 ```eval_rst
@@ -120,7 +120,7 @@ The `Notification URL` is used for the Server Communication from Adyen.
    :scale: 50 %
 ```
 
-To add a new Service Communication URL in Adyen, go to `Account` and then select `Server Communication`. Make sure that you have a Merchant Account selected (You should see "No merchant selected" in the top right of Adyen if you have not selected one) before you click `Add` on the "Standard Notification".
+To add a new webhook in Adyen, go to `Account` and then select `Webhooks`. Make sure that you have a Merchant Account selected (You should see "No merchant selected" in the top right of Adyen if you have not selected one) before you click `Add` on the "Standard Notification".
 
 Enter the URL from the Adyen Drop-In-plugin from Centra. If you are creating a new plugin, please save the plugin once and open it again to see the Notification URL.
 
@@ -152,7 +152,7 @@ Under "Authentication" you should write anything you like in "User Name" and "Pa
 
 Now, press "Test Configuration" to verify we respond successfully. After that you can press "Save Configuration".
 
-Repeat this step for the Merchant Accounts you use with Centra and make sure each "Service Communication URL" you use points to a plugin with the same Merchant Account set. Also make sure that your Server Communication URL points to an active or inactive Adyen Drop-In-plugin in Centra. If the plugin is disabled (red), the notification will not work.
+Repeat this step for the Merchant Accounts you use with Centra and make sure each "Webhook URL" you use points to a plugin with the same Merchant Account set. Also make sure that your Webhook URL points to an active or inactive Adyen Drop-In-plugin in Centra. If the plugin is disabled (red), the webhook will not work.
 
 ### Live endpoint
 
@@ -205,7 +205,7 @@ As you see above, we use our own standard look of Adyen Drop-In. If you like to 
 
 ### Capturing with Adyen Drop-In
 
-Whenever you capture using Adyen Drop-In, the Payment Transaction-list in Centra will contain a `capture-request` instead. This is because Centra is actually waiting for the notification from Adyen to mark the order as captured successfully or not.
+Whenever you capture using Adyen Drop-In, the Payment Transaction-list in Centra will contain a `capture-request` instead. This is because Centra is actually waiting for the webhook from Adyen to mark the order as captured successfully or not.
 
 ```eval_rst
 .. note:: Remember, if you have `Capture Delay` in Adyen set to `immediate`, capture will ALWAYS fail in Centra. Our recommendation is that Centra should capture the payment instead. Please change the Capture Delay setting in Adyen by going to `Account` then select "Configure->Settings" and make sure you select the Merchant Account. In the settings page you will see `Capture Delay`. Set it to `Manual` or `7 days` to make sure Centra will control the capture event.
@@ -328,7 +328,7 @@ This will make the Adyen Drop-In handle the response and try to complete the pay
 If no `paymentFailedPage` is provided, the customer will still be sent to the `paymentReturnPage`, but the `POST /payment-result` will give back a payment failure.
 
 ```eval_rst
-.. note:: If the customer tries to trick the checkout, by opening another tab to modify the cart, as soon as Centra gets the server notification call from Adyen, it will mark the order as "Payment mismatch" and set the order to "Hold". This is to prevent the order from ever being fulfilled if the payment amount does not match between the order and the payment from Adyen.
+.. note:: If the customer tries to trick the checkout, by opening another tab to modify the cart, as soon as Centra gets the webhook call from Adyen, it will mark the order as "Payment mismatch" and set the order to "Hold". This is to prevent the order from ever being fulfilled if the payment amount does not match between the order and the payment from Adyen.
 ```
 
 ## Example implementation
