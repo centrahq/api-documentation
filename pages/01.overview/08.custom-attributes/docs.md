@@ -329,7 +329,7 @@ File upload is easy to manage for a limited number of videos.
 ```
 [/snippet]
 
-After you add and upload the video files in Catalog -> Attributes, this will display like this in the Product page:  
+After you add and upload the video files in Catalog -> Attributes, you will see the list of options in the Product page:  
 ![ProductCategoryVideo](example-product-category-video.png)
 
 #### Product video
@@ -407,12 +407,15 @@ Remember, Variant-level attribute use group `variation`, not ~variant~.
 ```
 [/snippet]
 
-![ShowroomSwatch1](example-showroom-1.png)
+Swatch definitions need to be configured in Catalog -> Attributes:  
 ![ShowroomSwatch2](example-showroom-2.png)
+
+...and then selected on the Variant page:  
+![ShowroomSwatch1](example-showroom-1.png)
 
 #### Promotion yes/no
 
-Booleans are normally dynamic, not pre-defined. Duh. ;)
+Booleans are normally dynamic, not pre-defined. Remember, default value(s) (index `0`) will _not_ be returned in the API.
 
 [snippet summary="Promotion yes/no"]
 ```php
@@ -440,8 +443,10 @@ Booleans are normally dynamic, not pre-defined. Duh. ;)
 
 #### Product gender
 
+The difference between this and Static attribute is that the `select` options cannot be adjusted/expanded without a code change.
+
 [notice-box=info]
-Remember, the keys are enums, not integers. It's `['0','Select']`, not `[0,'Select']`.
+Please notice, the keys are enums, not integers. It's `['0','Select']`, not `[0,'Select']`.
 [/notice-box]
 
 [snippet summary="Product gender"]
@@ -461,11 +466,12 @@ Remember, the keys are enums, not integers. It's `['0','Select']`, not `[0,'Sele
 ```
 [/snippet]
 
+The select then looks like this in the UI:  
 ![ProductGender](example-product-gender.png)
 
 #### Product material - multi-select
 
-[Desc]
+For attributes which are pre-defined, multiple values can be made selectable at once.
 
 [snippet summary="Product material - multi-select"]
 ```php
@@ -488,4 +494,5 @@ Remember, the keys are enums, not integers. It's `['0','Select']`, not `[0,'Sele
 ```
 [/snippet]
 
+Multi-select snippet looks like this in Centra:  
 ![ProductMaterialMulti](example-product-material-multi.png)
