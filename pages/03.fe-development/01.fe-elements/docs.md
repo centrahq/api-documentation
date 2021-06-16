@@ -341,7 +341,7 @@ Be mindful to properly parse and encode the e-mail subscription field in your Fr
 
 You may notice that the [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint accepts a parameter called `email_field`. This value is meant as a honeypot field for spam bots or web crawlers. In your front end, next to the subscribe form, you should implement a field or a checkbox which is not visible to the end user, but clearly part of the form from the source code perspective. Any value passed to this form element should be passed to that variable. It's a signal to Centra, as well as to external mailer systems, that this subscription was filled out by a bot, so it should be ignored. At the same time, the API behaviour looks the same to the user, so the bot will not get any information back letting it know it failed.
 
-To read more and see some examples, see https://en.docs.rule.se/article/283-rule-botstop-spamskydd-via-api
+To read more and see some examples, check out [Rule article about email honey pots](https://en.docs.rule.se/article/283-rule-botstop-spamskydd-via-api).
 
 ### Newsletter sign-up for "Let me know when the product is back in stock"
 
