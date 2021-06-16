@@ -311,7 +311,7 @@ This displays like this:
 
 #### Product category video
 
-File upload is easy to manage for limited number of 
+File upload is easy to manage for a limited number of videos.
 
 [snippet summary="Product category video"]
 ```php
@@ -334,7 +334,7 @@ After you add and upload the video files in Catalog -> Attributes, this will dis
 
 #### Product video
 
-dynamic input field to store video URL
+When the amount of videos is un-manageable, like one video per product, it might be better to use a dynamic input field to store video URL instead of a file
 
 [snippet summary="Product video"]
 ```php
@@ -357,7 +357,7 @@ This will look like this in the Product page:
 
 #### Dangerous goods
 
-Required for some products at customs
+Required for some products at customs. Might differ between product categories and shipping countries.
 
 [snippet summary="Dangerous goods"]
 ```php
@@ -375,6 +375,7 @@ Required for some products at customs
 ```
 [/snippet]
 
+It renders as a simple input field in the UI:  
 ![DangerousGoods](example-dangeours-goods.png)
 
 #### Showroom swatch
