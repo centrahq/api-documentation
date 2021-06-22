@@ -1,4 +1,4 @@
-# Product Data 4 - Bundle product example
+# Product Data 4 - A Bundle
 
 Bundles behave like real products in terms of adding them to a selection, applying discounts and creating shipments. They do not exist in reality in the warehouse, but consist of multiple "real" products, which needs to be taken into consideration by the pick-and-pack staff.
 
