@@ -102,11 +102,13 @@ For changing the shipping address and shipping method, you need to receive the e
 
 For completing the payment, you post it just like a regular `POST /payment` to finalize the order by using the parameters provided, including the `billingAddress` and `shippingAddress`. The important one is the `paymentMethodSpecificFields` that contain the data to finalize the order.
 
+<div class="tableWrapper" markdown='1'>
 | Event to handle | Parameters | Response event needed |
 | --------------- | ----------: | --------------------- | 
 | `centra_checkout_shipping_address_callback`   | `shippingCountry` `shippingState` `shippingZipCode` | `centra_checkout_shipping_address_response`
 | `centra_checkout_shipping_method_callback` | `shippingMethod` | `centra_checkout_shipping_method_response`
 | `centra_checkout_payment_callback`    | `responseEventRequired:false` `addressIncluded:true` `paymentMethod` `billingAddress` `shippingAddress` `paymentMethodSpecificFields` | Make a regular `POST /payment`, similar to when checkout is submitted, but with the params provided from the event.
+</div>
 
 <!--
 ```eval_rst

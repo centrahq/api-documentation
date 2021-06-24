@@ -525,10 +525,12 @@ For completing the payment, you post the data from the event just like a regular
 
 The most important field is the `paymentMethodSpecificFields` that contain the data to finalize the order. The event will as mentioned contain `responseEventRequired:true` which means you need to respond to the event after you get the response from Centra. 
 
+<div class="tableWrapper" markdown='1'>
 | Event to handle | Parameters | Response event needed |
 | --------------- | ---------- | --------------------- |
 | `centra_checkout_payment_callback` with `addressIncluded:true` | `responseEventRequired:true` `addressIncluded:true` `paymentMethod` `billingAddress` `shippingAddress` `paymentMethodSpecificFields` | Make a regular `POST /payment`, similar to when checkout is submitted, but with the params provided from the event. Since `responseEventRequired:true` you need to respond with a `centra_checkout_payment_response`. |
 | `centra_checkout_payment_callback` with `addressIncluded:false` | `responseEventRequired:true` `addressIncluded:true` `paymentMethod` `billingAddress` `shippingAddress` `paymentMethodSpecificFields` | Make a regular `POST /payment`, similar to when checkout is submitted, append `address` and `billingAddress` to the call combined with the params provided from the event. Since `responseEventRequired:true` you need to respond with a `centra_checkout_payment_response`. |
+</div>
 
 <!--
 ```eval_rst
