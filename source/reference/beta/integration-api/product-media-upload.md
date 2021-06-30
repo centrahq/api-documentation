@@ -64,7 +64,6 @@ const uploadFile = (uploadPolicy, file) => {
         };
     });
 };
-
 ```
 
 - HTML template with dynamically created media upload form:
@@ -137,6 +136,7 @@ const uploadFile = (uploadPolicy, file) => {
         const fileInput = document.createElement('input');
         fileInput.setAttribute('type', 'file');
         fileInput.setAttribute('name', 'file');
+        fileInput.setAttribute('required', true);
         fileInput.setAttribute('accept', 'image/*');
         form.appendChild(fileInput);
     
@@ -165,6 +165,4 @@ const uploadFile = (uploadPolicy, file) => {
     </script>
   </body>
 </html>
-
-
 ```
