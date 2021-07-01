@@ -6,13 +6,17 @@ taxonomy:
 child_type: docs
 ---
 
-Let's talk about some rules we strive to keep when working with our Partners
+Let's talk about some rules we strive to keep when working with our Partners. We hope to build efficient and professional relations, resulting in creating more integrations for more Customers.
 
 ## How we work - general rules
 
 #### Philosophy #1: We are here to help
 
-Centra is great. We love our product, and we want to convince you about it. 
+Centra is great. We love our product, and we want to convince you about it.
+
+On our Customer's side, we do that by guiding each new brand into configuring and using Centra in the way appropriate for their Products and sales logistics, including config like Products catalog, shipping options, taxes appropriate to their Markets, Warehouse and Stock configuration, currencies, languages and translations. After initial onboarding, it is the responsibility of the Customer to keep their data updated with new Products, Markets, etc. Therefore, as an Integration Partner, you can and should expect the data to be provided by the Customer.
+
+On our Partner's side, we love sharing our knowledge, guides we wrote for different features, Swaggers and changelogs, and any piece of knowledge you may need to properly build and test your integration. Whether you are building a website, an app, ERP integration, pick-and-pack Warehouse integration, or simply playing with our brand new GraphQL API, we either have or should have a place in our docs where you can find what you're looking for. And if we don't - that's why we want to be able to talk to all of you directly in Slack. We would also like to invite you to our Partner webinars, where we demo the Centra UI as well as the most commonly used APIs and their functions. And that's actually the order we'd like to do that - first, we'll ask you to familiarize yourself with Centra basics, so that you understand the idea of how it works, and once you do, and can follow our specific docs to solve your use cases, then we will be happy to help you out in direct Slack support. Because of the sheer amount of Customers and Partners we need to talk to each day, we hope you understand why we like to work this way.
 
 #### Philosophy #2: Instead of solving every problem for you, we prefer to educate you on how to solve it yourself
 
@@ -20,26 +24,36 @@ We will be happy to answer any of your questions, either directly or by pointing
 
 We would also love if you showed Centra to your new colleagues - you and they will have a common perspective on using Centra, and we believe explanation coming from a person working on the same problem is easier to understand than any documentation.
 
+Having said that, we strive to have the best available documentation, which we would measure by how many Partners are able to build working solutions without needing to ask us any questions. We've had single integrations like that in the past, and we're proud of that fact.
+
 #### Philosophy 3: Technical Support and Professional Services are two completely different things
 
 What we do for our Partners:
-* Technical support  
-  If you have technical questions, either about Centra UI or our APIs, let us know! Please make sure to always include as much details as you can - which customer and environment you are working with, what you are trying to achieve, how far have you managed to follow our guides and documentation, etc.
-* Bug reports and verification  
+
+* **Technical support**  
+  If you have technical questions, either about Centra UI or our APIs, let us know! Please make sure to always include as much details as you can - which customer and environment you are working with, what you are trying to achieve, how far have you managed to follow our guides and documentation, and so on
+
+* **Bug reports and verification**  
   If you encounter any behaviour that deviates from documentation or common sense, let us know! We want Centra to work reliably for everyone, so any technical issues will be looked at and fixed, if deemed necessary.
-* Questions about technical features  
+
+* **Questions about technical features**  
   If you have questions about new features, specific APIs, things mentioned in our newsletter - ask away! Even if we don't respond immediately, we will find a way to explain it to you as best we can.
-* (Optional) Basic monitoring of your websites (Pingdom-based with alerts in Slack)  
+
+* **(Optional) Basic monitoring of your websites (Pingdom-based with alerts in Slack)**  
   With this we can help you share the burden of monitoring status of Customer's websites - we will discover if it fails to load, warn you about certificates that will soon expire, etc.
 
 What we don't do:
-* Professional services (unless paid for)  
+
+* **Professional services (unless paid for)**  
   If your request is out of scope of technical support, and you still want us to spend time working on it, we should agree on how much our time is going to cost.
-* Filling environments with data  
+
+* **Filling environments with data**  
   This is the responsibility of our common Customers - we give them education and tools to set up or import Products and their media, Markets, Shipping alternatives, Taxes, etc. We don't have automated tools to, for example, generate test orders - this is near to impossible to do well, since the amount of permutations of different setups, plugins, flows and integrations grows exponentially with every new, unique Customer.
-* Testing of customer's configurations / plugins  
+
+* **Testing of customer's configurations / plugins**
   Centra should throw errors when, for example, payment plugin fails to authenticate. Most of the times Centra can't help, though, since Customers have their own agreements with Payment / E-mail / other providers and any issues with those services is outside of our control.
-* Application design advice  
+
+* **Application design advice**  
   Don't ask us how many Warehouses should be set up - this is something our Customer should know!
 
 For example:
@@ -47,14 +61,14 @@ For example:
 <div class="tableWrapper" markdown='1'>
 | What we do | What we don't do |
 | --- | --- |
-| **Custom attributes** |
-| We will help you understand the concepts and give you some examples | We will not build 10+ attribute definitions for you, but we can do a review of the ones you have added |
 | **Products catalog** |
 | We will show you example products and point to our documentation for creating new ones | We will not fill your environment with meaningful products, for that we have bulk actions in Centra UI, and also the products import function |
+| **Custom attributes** |
+| We will help you understand the concepts and give you some examples | We will not build 10+ attribute definitions for you, but we can do a review of the ones you have added |
 | **Test orders** |
 | We will guide you how to create them, explain the order flow, teach you how to create / complete shipments, etc. | We will not generate dozens of test order permutations for you, those should be generated by you or the customer, based on required use-cases, payment and shipping methods |
 | **Stress and performance tests** |
-| We will not run them for you, unless it's treated as paid Professional Services work | We will tell you how we usually do them and give you hints to start |
+| We will tell you how we usually do them and give you hints to start | We will not run them for you, unless it's treated as paid Professional Services work |
 </div>
 
 ## How we communicate - rules in Slack
