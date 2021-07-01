@@ -110,44 +110,6 @@ For completing the payment, you post it just like a regular `POST /payment` to f
 | `centra_checkout_payment_callback`    | `responseEventRequired:false` `addressIncluded:true` `paymentMethod` `billingAddress` `shippingAddress` `paymentMethodSpecificFields` | Make a regular `POST /payment`, similar to when checkout is submitted, but with the params provided from the event.
 </div>
 
-<!--
-```eval_rst
-.. list-table::
-   :widths: auto
-   :class: small-table api-command-list
-   :header-rows: 1
-
-   * - Event to handle
-     - Parameters
-     - Response event needed
-   * - ``centra_checkout_shipping_address_callback``
-     - | ``shippingCountry``
-       | ``shippingState``
-       | ``shippingZipCode``
-     - ``centra_checkout_shipping_address_response``
-   * - ``centra_checkout_shipping_method_callback``
-     - ``shippingMethod``
-     - ``centra_checkout_shipping_method_response``
-   * - ``centra_checkout_payment_callback``
-     - | ``responseEventRequired:false``
-       | ``addressIncluded:true``
-       | ``paymentMethod``
-       | ``billingAddress``
-       | ``shippingAddress``
-       | ``paymentMethodSpecificFields``
-     - | Make a regular ``POST /payment``,
-       | similar to when checkout is submitted,
-       | but with the params provided from the event.
-```
--->
-[parameter data="brandId" datatype="brand object" isRequired=true storetype="b2b b2c" sublevel=1]
-The brandId for the brand object.  
-`"14": {"name": "Brand X"}` for brand ID 14.
-[/parameter]
-
-[parameter data="name" datatype="string" sublevel=2]
-The name of the brand.
-[/parameter]
 For changing shipping address and shipping method, you also need to respond back with parts of the Selection-model that Centra gave back on those requests. All data needed for the event exists inside the response, and you can reuse the same event trigger for both events.
  
 The response event needs an object like this:
@@ -173,30 +135,6 @@ const returnObject = {
 | `shippingMethod` | `selection.shippingMethod` |
 | `shippingMethodsAvailable` | `shippingMethods` |
 
-<!--
-```eval_rst
-.. list-table::
-   :widths: auto
-   :class: small-table
-   :header-rows: 1
-
-   * - Return Object field
-     - Field inside Selection-response
-   * - ``country``
-     - ``location.country``
-   * - ``currency``
-     - ``selection.currency``
-   * - ``currencyDenominator``
-     - ``selection.currencyFormat.denominator``
-   * - ``grandTotalPriceAsNumber``
-     - ``selection.totals.grandTotalPriceAsNumber``
-   * - ``shippingMethod``
-     - ``selection.shippingMethod``
-   * - ``shippingMethodsAvailable``
-     - ``shippingMethods``
-```
--->
-
 ### Fields from Selection-model in ShopAPI
 
 | Return Object field | Field inside Selection-response |
@@ -207,31 +145,6 @@ const returnObject = {
 | `grandTotalPriceAsNumber` | `totals.grandTotalPriceAsNumber` |
 | `shippingMethod` | `shippingMethod` |
 | `shippingMethodsAvailable` | `shippingMethodsAvailable` |
-
-<!--
-```eval_rst
-.. list-table::
-   :widths: auto
-   :class: small-table
-   :header-rows: 1
-
-   * - Return Object field
-     - Field inside Selection-response
-   * - ``country``
-     - ``country``
-   * - ``currency``
-     - ``currency``
-   * - ``currencyDenominator``
-     - ``currencyFormat.denominator``
-   * - ``grandTotalPriceAsNumber``
-     - ``totals.grandTotalPriceAsNumber``
-   * - ``shippingMethod``
-     - ``shippingMethod``
-   * - ``shippingMethodsAvailable``
-     - ``shippingMethodsAvailable``
-```
--->
-
 
 If an error occurred while handling the event, the response should be handled with the following object, this will make sure the payment popup understands something went wrong:
 
@@ -623,102 +536,6 @@ The following data is returned in this event:
 | `shippingAddress.country` | string | Country code |
 | `shippingAddress.phoneNumber` | string | |
 | `shippingAddress.email` | string | |
-
-
-<!--
-```eval_rst
-.. list-table::
-   :widths: auto
-   :class: small-table
-   :header-rows: 1
-
-   * - Field
-     - Type
-     - Comment
-   * - ``responseEventRequired``
-     - boolean
-     - | Always ``false`` for Stripe.
-       | Set to ``true`` when the payment callback needs a response.
-       | Stripe does not use this.
-   * - ``addressIncluded``
-     - boolean
-     - | When ``billingAddress`` and ``shippingAddress`` is included in the event.
-       | Always ``true`` for Stripe.
-   * - ``paymentMethodSpecificFields``
-     - object
-     - | This data should be sent to the ``POST /payment`` call
-       | in Centra for the payment to be validated.
-   * - ``paymentMethod``
-     - string
-     - The selected payment method used.
-   * - ``billingAddress``
-     - object
-     - Data containing the address for billing.
-   * - ``billingAddress.firstName``
-     - string
-     -
-   * - ``billingAddress.lastName``
-     - string
-     -
-   * - ``billingAddress.address1``
-     - string
-     -
-   * - ``billingAddress.address2``
-     - string
-     -
-   * - ``billingAddress.zipCode``
-     - string
-     -
-   * - ``billingAddress.state``
-     - string
-     - Optional, might be empty for countries not supporting states.
-   * - ``billingAddress.city``
-     - string
-     -
-   * - ``billingAddress.country``
-     - string
-     - Country code
-   * - ``billingAddress.phoneNumber``
-     - string
-     -
-   * - ``billingAddress.email``
-     - string
-     -
-   * - ``shippingAddress``
-     - object
-     - Data containing the address for shipping.
-   * - ``shippingAddress.firstName``
-     - string
-     -
-   * - ``shippingAddress.lastName``
-     - string
-     -
-   * - ``shippingAddress.address1``
-     - string
-     -
-   * - ``shippingAddress.address2``
-     - string
-     -
-   * - ``shippingAddress.zipCode``
-     - string
-     -
-   * - ``shippingAddress.state``
-     - string
-     - Optional, might be empty for countries not supporting states.
-   * - ``shippingAddress.city``
-     - string
-     -
-   * - ``shippingAddress.country``
-     - string
-     - Country code
-   * - ``shippingAddress.phoneNumber``
-     - string
-     -
-   * - ``shippingAddress.email``
-     - string
-     -
-```
--->
 
 We would take the event data, and create a `checkoutRequest` based on the data provided. This data would then be sent to the `POST /payment` in the Centra API.
 
