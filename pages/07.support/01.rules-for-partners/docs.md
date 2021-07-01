@@ -23,29 +23,37 @@ We would also love if you showed Centra to your new colleagues - you and they wi
 #### Philosophy 3: Technical Support and Professional Services are two completely different things
 
 What we do for our Partners:
-* Technical support: If you have technical questions, either about Centra UI or our APIs, let us know! Please make sure to always include as much details as you can - which customer and environment you are working with, what you are trying to achieve, how far have you managed to follow our guides and documentation, etc.
-* Bug reports and verification: If you encounter any behaviour that deviates from documentation or common sense, let us know! We want Centra to work reliably for everyone, so any technical issues will be looked at and fixed, if deemed necessary.
-* Questions about technical features: If you have questions about new features, specific APIs, things mentioned in our newsletter - ask away! Even if we don't respond immediately, we will find a way to explain it to you as best we can.
-* (Optional) Basic monitoring of your websites (Pingdom-based with alerts in Slack): With this we can help you share the burden of monitoring status of Customer's websites - we will discover if it fails to load, warn you about certificates that will soon expire, etc.
+* Technical support  
+  If you have technical questions, either about Centra UI or our APIs, let us know! Please make sure to always include as much details as you can - which customer and environment you are working with, what you are trying to achieve, how far have you managed to follow our guides and documentation, etc.
+* Bug reports and verification  
+  If you encounter any behaviour that deviates from documentation or common sense, let us know! We want Centra to work reliably for everyone, so any technical issues will be looked at and fixed, if deemed necessary.
+* Questions about technical features  
+  If you have questions about new features, specific APIs, things mentioned in our newsletter - ask away! Even if we don't respond immediately, we will find a way to explain it to you as best we can.
+* (Optional) Basic monitoring of your websites (Pingdom-based with alerts in Slack)  
+  With this we can help you share the burden of monitoring status of Customer's websites - we will discover if it fails to load, warn you about certificates that will soon expire, etc.
 
 What we don't do:
-* Professional services (unless paid for): If your request is out of scope of technical support, and you still want us to spend time working on it, we should agree on how much our time is going to cost.
-* Filling environments with data: This is the responsibility of our common Customers - we give them education and tools to set up or import Products and their media, Markets, Shipping alternatives, Taxes, etc. We don't have automated tools to, for example, generate test orders - this is near to impossible to do well, since the amount of permutations of different setups, plugins, flows and integrations grows exponentially with every new, unique Customer.
-* Testing of customer's configurations / plugins: Centra should throw errors when, for example, payment plugin fails to authenticate. Most of the times Centra can't help, though, since Customers have their own agreements with Payment / E-mail / other providers and any issues with those services is outside of our control.
-* Application design advice: Don't ask us how many Warehouses you need to set up - this is something our Customer should know!
+* Professional services (unless paid for)  
+  If your request is out of scope of technical support, and you still want us to spend time working on it, we should agree on how much our time is going to cost.
+* Filling environments with data  
+  This is the responsibility of our common Customers - we give them education and tools to set up or import Products and their media, Markets, Shipping alternatives, Taxes, etc. We don't have automated tools to, for example, generate test orders - this is near to impossible to do well, since the amount of permutations of different setups, plugins, flows and integrations grows exponentially with every new, unique Customer.
+* Testing of customer's configurations / plugins  
+  Centra should throw errors when, for example, payment plugin fails to authenticate. Most of the times Centra can't help, though, since Customers have their own agreements with Payment / E-mail / other providers and any issues with those services is outside of our control.
+* Application design advice  
+  Don't ask us how many Warehouses should be set up - this is something our Customer should know!
 
 For example:
 
 <div class="tableWrapper" markdown='1'>
 | What we do | What we don't do |
 | --- | --- |
-| *Custom attributes* |
+| **Custom attributes** |
 | We will help you understand the concepts and give you some examples | We will not build 10+ attribute definitions for you, but we can do a review of the ones you have added |
-| *Products catalog* |
+| **Products catalog** |
 | We will show you example products and point to our documentation for creating new ones | We will not fill your environment with meaningful products, for that we have bulk actions in Centra UI, and also the products import function |
-| *Test orders* |
+| **Test orders** |
 | We will guide you how to create them, explain the order flow, teach you how to create / complete shipments, etc. | We will not generate dozens of test order permutations for you, those should be generated by you or the customer, based on required use-cases, payment and shipping methods |
-| *Stress and performance tests* |
+| **Stress and performance tests** |
 | We will not run them for you, unless it's treated as paid Professional Services work | We will tell you how we usually do them and give you hints to start |
 </div>
 
