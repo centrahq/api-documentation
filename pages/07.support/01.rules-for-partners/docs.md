@@ -6,7 +6,7 @@ taxonomy:
 child_type: docs
 ---
 
-Let's talk about some rules we strive to keep when working with our Partners. We hope to build efficient and professional relations, resulting in creating more integrations for more Customers.
+Let's talk about some rules we strive to keep when working with our Partners. We hope to build efficient and professional relations, resulting in creating more amazing integrations for more and more happy Customers.
 
 ## How we work - general rules
 
@@ -16,15 +16,15 @@ Centra is great. We love our product, and we want to convince you about it.
 
 On our Customer's side, we do that by guiding each new brand into configuring and using Centra in the way appropriate for their Products and sales logistics, including config like Products catalog, shipping options, taxes appropriate to their Markets, Warehouse and Stock configuration, currencies, languages and translations. After initial onboarding, it is the responsibility of the Customer to keep their data updated with new Products, Markets, etc. Therefore, as an Integration Partner, you can and should expect the data to be provided by the Customer.
 
-On our Partner's side, we love sharing our knowledge, guides we wrote for different features, Swaggers and changelogs, and any piece of knowledge you may need to properly build and test your integration. Whether you are building a website, an app, ERP integration, pick-and-pack Warehouse integration, or simply playing with our brand new GraphQL API, we either have or should have a place in our docs where you can find what you're looking for. And if we don't - that's why we want to be able to talk to all of you directly in Slack. We would also like to invite you to our Partner webinars, where we demo the Centra UI as well as the most commonly used APIs and their functions. And that's actually the order we'd like to do that - first, we'll ask you to familiarize yourself with Centra basics, so that you understand the idea of how it works, and once you do, and can follow our specific docs to solve your use cases, then we will be happy to help you out in direct Slack support. Because of the sheer amount of Customers and Partners we need to talk to each day, we hope you understand why we like to work this way.
+On our Partner's side, we love sharing our knowledge, guides we wrote for different features, Swaggers and changelogs, and any piece of knowledge you may need to properly build and test your integration. Whether you are building a website, an app, ERP integration, pick-and-pack Warehouse integration, or simply playing with our brand new GraphQL API, we either have or should have a place in our docs where you can find what you're looking for. And if we don't - that's why we want to be able to talk to all of you directly in Slack. After you've read our basic docs, we would also like to invite you to our Partner webinars, where we demo the Centra UI as well as the most commonly used APIs and their functions. And that's actually the order we'd like to do that - first, we'll ask you to familiarize yourself with Centra basics, so that you understand the idea of how it works, and once you do, and can follow our specific docs to solve your use cases, then we will be happy to help you out in direct Slack support. Because of the sheer amount of Customers and Partners we need to talk to each day, we hope you understand why we like to work this way.
 
 #### Philosophy #2: Instead of solving every problem for you, we prefer to educate you on how to solve it yourself
 
 We will be happy to answer any of your questions, either directly or by pointing to our documentation, and if something is missing - we will add it for sure. If you forgot how something works - just ask, and we will remind you. However, after explaining a concept once or twice, we will expect you to have that knowledge and not ask the same questions every week. We hope you understand - we have hundreds of customers developed with dozens of different Partners, so it would be impossible for us to give you 100% of our time and focus. The more you learn at early stages of working with Centra, the easier it will be to later work on adding more customers and new integrations.
 
-We would also love if you showed Centra to your new colleagues - you and they will have a common perspective on using Centra, and we believe explanation coming from a person working on the same problem is easier to understand than any documentation.
+We would also love if you introduced Centra to your new colleagues - you and they will have a common perspective on using Centra, and we believe explanation coming from a person working on the same problem is easier to understand than any documentation.
 
-Having said that, we strive to have the best available documentation, which we would measure by how many Partners are able to build working solutions without needing to ask us any questions. We've had single integrations like that in the past, and we're proud of that fact.
+Having said that, we strive to have the best available docs, which we would measure by how many Partners are able to build working solutions without having to ask us any questions. We've had single integrations like that in the past already, and we're proud of that fact.
 
 #### Philosophy 3: Technical Support and Professional Services are two completely different things
 
@@ -75,7 +75,7 @@ For example:
 
 #### Ping us when you need help
 
-`@here` pings everyone who's online (has green dot status). Used to get our attention, it's fine if it takes us up to an hour to respond (usually much sooner, though). `@channel` pings everyone in that channel, currently available or not. Only doesn't ping people who have their notifications disabled. Use with caution, mostly to report urgent issues, sev 1 and such.
+`@here` pings everyone who's online (has green dot status). Used to get our attention, it's fine if it takes us up to an hour to respond (usually much sooner, though). `@channel` pings everyone in that channel, currently available or not. Only doesn't ping people who have their notifications manually disabled. Use with caution, mostly to report urgent issues, sev 1 and such.
 
 #### Do not use PM for business/technical questions
 
