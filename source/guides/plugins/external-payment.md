@@ -158,9 +158,32 @@ example response:
 }
 ```
 
-
-
 ```eval_rst
 .. warning:: Only one successful (success=true) authorization and one successful (success=true) capture is allowed per order.
 ```
 
+
+## Captures and refunds:
+
+Captures and refunds should be done manually in your PSP dashboard. 
+
+Captures and refunds triggered by Order API or AMS are forbidden for orders paid with External Payment Plugin and will result in following errors:
+
+
+```eval_rst
+.. image:: images/external-payment-capture-error.png
+   :scale: 50 %
+```
+
+
+
+- Capturing shipments or trying to create refund via creating return in Order API are also not allowed for orders paid with External Payment Plugin:
+
+example response:
+```json
+{
+    "status": "no",
+    "msg": "Action not supported by external payment plugin. Please do that action in your payment provider.",
+    "order": 123
+}
+```
