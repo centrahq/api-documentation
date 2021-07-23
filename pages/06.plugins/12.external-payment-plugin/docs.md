@@ -1,4 +1,10 @@
-# External payment plugin
+---
+title: External Payment Plugin
+altTitle: External Payment Plugin
+excerpt: Learn how to use External Payment Plugin in order to integrate PSP of your choice with Centra
+taxonomy:
+    category: docs      
+---
 
 External payment plugin allows you to integrate Payment Service Providers of your choice that are not supported by Centra. It is intended to be used along with Checkout API, however requests finalizing payments should be handled server-side as payload signature using shared secret is required.
 
