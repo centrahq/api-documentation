@@ -72,7 +72,7 @@ This endpoint is intended for receiving authorization information. It can be cal
       }
     }
     ```
-
+<div class="tableWrapper" markdown='1'>
 | Field | Type | Comment |
 | ----- | ---- | ------- |
 | `selection` | string | Selection id returned at `POST /payment` call |
@@ -83,6 +83,7 @@ This endpoint is intended for receiving authorization information. It can be cal
 | `transactionReference` | string | Transaction identifier from  PSP|
 | `success` | boolean | Successful or failed result of payment authorization|
 | `transaction` | object | All the transaction details that were received from PSP|
+</div>
 
 ####Signature
 
@@ -144,7 +145,7 @@ example error response:
       }
     }
     ```
-
+<div class="tableWrapper" markdown='1'>
 | Field | Type | Comment |
 | ----- | ---- | ------- |
 | `selection` | string | Selection id returned at `POST /payment` call |
@@ -156,7 +157,7 @@ example error response:
 | `success` | boolean | Successful or failed result of payment authorization|
 | `intent` | string | Intent of a notification, possible values: auth/capture|
 | `transaction` | object | All the transaction details that were received from PSP|
-
+</div>
 
 ####Signature
 
