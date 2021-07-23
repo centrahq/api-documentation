@@ -71,6 +71,14 @@ This endpoint is intended for receiving authorization information. It can be cal
     }
     ```
 
+####Signature
+
+The signature is a base64 encoded HMAC SHA256 hash.
+Example code using JavaScript and CryptoJS library:
+```javascript
+btoa(CryptoJS.HmacSHA256($payload, secret).toString(CryptoJS.digest));
+```
+
 ##### Signature payload fields (separated by colon):
 Signature payload fields must be provided in following order, separated by colon:
 - selection id (received in `POST /payment call`)
@@ -80,7 +88,7 @@ Signature payload fields must be provided in following order, separated by colon
 - transactionReference
 - success
 
-`selectionId:amount:currency:timestamp:transactionReference:success`
+payload: `selectionId:amount:currency:timestamp:transactionReference:success`
 
 ####Response:
 
@@ -123,6 +131,15 @@ example error response:
       }
     }
     ```
+
+####Signature
+
+The signature is a base64 encoded HMAC SHA256 hash.
+Example code using JavaScript and CryptoJS library:
+```javascript
+btoa(CryptoJS.HmacSHA256($payload, secret).toString(CryptoJS.digest));
+```
+
 ##### Signature payload fields (separated by colon):
 Signature payload fields must be provided in following order, separated by colon:
 - selection id (received in `POST /payment call`)
@@ -133,7 +150,7 @@ Signature payload fields must be provided in following order, separated by colon
 - success
 - intent
 
-`selectionId:amount:currency:timestamp:transactionReferenece:success:intent`
+payload: `selectionId:amount:currency:timestamp:transactionReference:success:intent`
 
 ####Response:
 
