@@ -62,22 +62,23 @@ This endpoint is intended for receiving authorization information. It can be cal
 
 ####Request:
 
-    ```json
+```json
     {
       "paymentMethodFields": {
           "selection": "selection",
           "signature": "signature",
           "currency": "SEK",
           "amount": "100.00",
-          "timestamp": timestamp,
+          "timestamp": 1627029828,
           "transactionReference": "transactionReference",
-          "success": true/false,
+          "success": true,
           "transaction": {
               "key": "value"
           }
       }
     }
-    ```
+```
+
 <div class="tableWrapper" markdown='1'>
 | Field | Type | Comment |
 | ----- | ---- | ------- |
@@ -136,21 +137,22 @@ example error response:
 
 ####Request:
 
-    ```json
+```json
     {
       "selection": "selection",
       "signature": "signature",
       "currency": "SEK",
       "amount": "100.00", 
-      "timestamp": timestamp,
+      "timestamp": 1627029828,
       "transactionReference": "transactionReference",
-      "success": true/false,
+      "success": true,
       "intent": "auth",
       "transaction": {
           "key": "value"
       }
     }
-    ```
+```
+
 <div class="tableWrapper" markdown='1'>
 | Field | Type | Comment |
 | ----- | ---- | ------- |
@@ -189,7 +191,7 @@ payload: `selectionId:amount:currency:timestamp:transactionReference:success:int
 
 If the push notification is accepted Centra will respond with HTTP status 200.
 
-example response:
+Example response:
 ```json
 {
     "success": true,
@@ -200,7 +202,7 @@ example response:
 Status other than 200 indicates that something went wrong. Either the sent data is corrupted or other error occured like some fields missing or invalid signature. This may result in payments not visible in Centra and orders not being accepted.
 The message field of response object will contain the failure reason.
 
-example response:
+Example response:
 ```json
 {
     "success": false,
