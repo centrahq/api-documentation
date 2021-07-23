@@ -59,19 +59,30 @@ This endpoint is intended for receiving authorization information. It can be cal
     ```json
     {
       "paymentMethodFields": {
-          "selection": "selection", //string, selection id
-          "signature": "signature", //string
-          "currency": "SEK", //string, currency code (ISO 4217)
-          "amount": "100.00", //numeric string with dot as decimal separator
-          "timestamp": timestamp, //integer, signature unix timestamp in UTC 
-          "transactionReference": "transactionReference", //string, transaction identifier from PSP
-          "success": true/false, //boolean
+          "selection": "selection",
+          "signature": "signature",
+          "currency": "SEK",
+          "amount": "100.00",
+          "timestamp": timestamp,
+          "transactionReference": "transactionReference",
+          "success": true/false,
           "transaction": {
-              //all the transaction details as key=>value that were received from PSP
+              "key": "value"
           }
       }
     }
     ```
+
+| Field | Type | Comment |
+| ----- | ---- | ------- |
+| `selection` | string | Selection id returned at `POST /payment` call |
+| `signature` | string | Base64 encoded signed payload (details below) |
+| `currency` | string | Currency code (ISO 4217) |
+| `amount` | string | Numeric string with dot as decimal separator |
+| `timestamp` | int | Signature unix timestamp in UTC |
+| `transactionReference` | string | Transaction identifier from  PSP|
+| `success` | boolean | Successful or failed result of payment authorization|
+| `transaction` | object | All the transaction details that were received from PSP|
 
 ####Signature
 
@@ -120,19 +131,32 @@ example error response:
 
     ```json
     {
-      "selection": "selection", //string, selection id
-      "signature": "signature", //string
-      "currency": "SEK", //string, currency code (ISO 4217)
-      "amount": "100.00", //numeric string with dot as decimal separator 
-      "timestamp": timestamp, //integer, signature unix timestamp in UTC
-      "transactionReference": "transactionReference", //string, transaction identifier from PSP
-      "success": true/false, //boolean
-      "intent": "auth", //string, possible values: auth/capture
+      "selection": "selection",
+      "signature": "signature",
+      "currency": "SEK",
+      "amount": "100.00", 
+      "timestamp": timestamp,
+      "transactionReference": "transactionReference",
+      "success": true/false,
+      "intent": "auth",
       "transaction": {
-          //all the transaction details as key=>value that were received from PSP
+          "key": "value"
       }
     }
     ```
+
+| Field | Type | Comment |
+| ----- | ---- | ------- |
+| `selection` | string | Selection id returned at `POST /payment` call |
+| `signature` | string | Base64 encoded signed payload (details below) |
+| `currency` | string | Currency code (ISO 4217) |
+| `amount` | string | Numeric string with dot as decimal separator, e.g. "100.00" |
+| `timestamp` | int | Signature unix timestamp in UTC |
+| `transactionReference` | string | Transaction identifier from  PSP|
+| `success` | boolean | Successful or failed result of payment authorization|
+| `intent` | string | Intent of a notification, possible values: auth/capture|
+| `transaction` | object | All the transaction details that were received from PSP|
+
 
 ####Signature
 
