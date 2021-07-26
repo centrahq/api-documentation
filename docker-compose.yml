@@ -1,0 +1,20 @@
+# Heavily based on https://github.com/gushmazuko/grav-nginx
+version: "3.8"
+services:
+  grav:
+    build:
+      context: ./
+      args:
+        GH_ACCESS_TOKEN: 'put your token in docker-compose.override.yml'
+        TZ: ${TZ}
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+    volumes:
+#      - ./data:/usr/share/nginx/html
+      - ./docker/conf/nginx/grav.conf:/etc/nginx/conf.d/grav.conf
+      - ./docker/conf/php/grav.conf:/etc/php/7.3/fpm/pool.d/grav.conf
+      - ./config:/usr/share/nginx/html/user/config
+      - ./pages:/usr/share/nginx/html/user/pages
+    ports:
+      - 8020:80

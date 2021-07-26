@@ -12,6 +12,10 @@ We take pull requests on our documentation as well, if you think that something 
 The documentation is formatted using markdown. All
 documentation should be written in US English.
 
+### Running locally
+
+See [readme](docs/run-locally.md).
+
 ### Releasing new versions of the documentation
 
 Deployment is handled using continuous deployment.

@@ -24,7 +24,7 @@ rm -rf ./user/pages
 mv ../config ./user/config
 mv ../pages ./user/pages
 
-# Downlaod and replace themes
+# Download and replace themes
 rm -rf ./user/themes
 
 mkdir temp && \
