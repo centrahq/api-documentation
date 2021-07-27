@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "This project contains the source of Centra's public API documentation. The documentation is located at https://docs.centra.com.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/centrahq/api-documentation.git"
@@ -16,11 +13,5 @@
   "bugs": {
     "url": "https://github.com/centrahq/api-documentation/issues"
   },
-  "homepage": "https://github.com/centrahq/api-documentation#readme",
-  "dependencies": {
-    "autoprefixer": "^9.6.5",
-    "postcss": "^7.0.18",
-    "postcss-cli": "^6.1.3",
-    "sass": "^1.22.12"
-  }
+  "homepage": "https://github.com/centrahq/api-documentation#readme"
 }
