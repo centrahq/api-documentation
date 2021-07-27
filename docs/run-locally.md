@@ -8,7 +8,7 @@
    ```
 1. In case of changes in installed plugins, node packages or style changes a rebuild is needed:
    ```shell
-   docker-compse up --build
+   docker-compose up --build
    ```
 1. Visit http://localhost:8020/
 
