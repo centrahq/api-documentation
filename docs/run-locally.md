@@ -2,6 +2,15 @@
 
 1. Create an GitHub access token and make sure you can access `centrahq/centra-grav-themes` repository.
 1. Create a `docker-compose.override.yml` file and put obtained access token as `GH_ACCESS_TOKEN` build argument.
+   ```yaml
+   version: "3.8"
+   services:
+      grav:
+         build:
+            args:
+              GH_ACCESS_TOKEN: 'ghp_xxxxxxxxxxxxxx' # Obtained from GitHub
+
+   ```
 1. Build docker image and spin it up:
    ```shell
    docker-compose up
