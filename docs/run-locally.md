@@ -10,7 +10,16 @@
    ```shell
    docker-compse up --build
    ```
+1. Visit http://localhost:8020/
 
 # Without docker
 
 To be disclosed in unknown future.
+
+
+# Editing the documentation
+
+When you have `grav` up and running it will automatically serve `*.md` files located in `pages` directory. After 
+saving changes to `.md` file simply reload your browser to see the changes take effect.
+
+Final documentation content should be committed to the repository.
