@@ -32,6 +32,8 @@ curl -H "Authorization: token $GITHUB_AUTH_TOKEN" -L https://api.github.com/repo
 tar -xz --strip-components=1 -C temp && \
 mv ./temp/themes ./user/themes && \
 mv ./temp/shortcodes ./user/shortcodes && \
+mv ./temp/webpack/webpack.config.js ./user/webpack.config.js && \
+mv ./temp/webpack/package.json ./user/package.json && \
 rm -rf temp
 
 chmod a+rwx -R ./user
@@ -49,6 +51,8 @@ bin/gpm install tntsearch
 bin/plugin tntsearch index
 chmod a+rwx -R ./cache
 
-mkdir user/themes/centra/css -p
-sass user/themes/centra/scss/style.scss:user/themes/centra/css/style.css --style compressed
-postcss user/themes/centra/css/style.css --use=autoprefixer --map=false --output=user/themes/centra/css/style.css
+# Build js and css
+cd ./user
+
+npm i
+npm run build
