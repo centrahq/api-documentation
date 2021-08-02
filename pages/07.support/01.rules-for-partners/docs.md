@@ -84,6 +84,8 @@ Ping the whole channel, not individual people. Don't PM (private message), unles
 * because once the question is answered, we all get to share this knowledge and know-how.
 Plus, people are likely to be in meetings, so PMing a single person does not guarantee fast response times.
 
+Similarly, the problem of using threads in Slack: They are great to keep an ongoing discussion away from people who are not interested in it, which is nice for when the discussion is ongoing. However, do **not** re-use them afterwards - since they have limited visibility, only you and one other person will see that message. If a day or more has passed, that person might not be online, so you are better off asking for updates in the main channel.
+
 #### Provide full details every time
 
 Please understand that Centra has way over a hundred customers, and we're helping many of them on the same day, everyday. You might be working on a specific customer and/or integration for weeks, so when you report an issue it might be obvious to you who this is for, but it's not for us. It will help a lot if you always reported us with:
