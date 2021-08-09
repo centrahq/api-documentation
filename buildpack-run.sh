@@ -42,7 +42,6 @@ chmod a+rwx -R ./user
 bin/gpm install breadcrumbs
 bin/gpm install external_links
 bin/gpm install featherlight
-bin/gpm install highlight
 bin/gpm install page-toc
 bin/gpm install shortcode-core
 bin/gpm install tntsearch
