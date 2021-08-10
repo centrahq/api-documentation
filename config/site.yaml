@@ -1,5 +1,6 @@
 title: 'Centra Documentation'
 default_lang: en
+tagManagerId: 'G-YGHX5DBJXY'
 author:
   name: 'Centra'
 taxonomies: [category,tag,author]
