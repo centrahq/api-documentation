@@ -290,7 +290,6 @@ We recommend using `snake_case` for all your custom attributes API names. Since 
 
 Description
 
-[snippet summary="Test snippet"]
 ```php
     '' => [
         'desc' => '',
@@ -304,7 +303,6 @@ Description
         ]
     ]
 ```
-[/snippet]
 
 This displays like this:  
 ![](.png)
@@ -313,7 +311,6 @@ This displays like this:
 
 File upload is easy to manage for a limited number of videos.
 
-[snippet summary="Product category video"]
 ```php
     'pr_cat_video' => [
         'desc' => 'Product Category Video',
@@ -327,7 +324,6 @@ File upload is easy to manage for a limited number of videos.
         ]
     ]
 ```
-[/snippet]
 
 After you add and upload the video files in Catalog -> Attributes, you will see the list of options in the Product page:  
 ![ProductCategoryVideo](example-product-category-video.png)
@@ -336,7 +332,6 @@ After you add and upload the video files in Catalog -> Attributes, you will see 
 
 When the amount of videos is un-manageable, like one video per product, it might be better to use a dynamic input field to store video URL instead of a file
 
-[snippet summary="Product video"]
 ```php
     'pr_video' => [
         'desc' => 'Product Video',
@@ -350,7 +345,6 @@ When the amount of videos is un-manageable, like one video per product, it might
         ]
     ]
 ```
-[/snippet]
 
 This will look like this in the Product page:  
 ![ProductVideoURL](example-product-video-url.png)
@@ -359,7 +353,6 @@ This will look like this in the Product page:
 
 Required for some products at customs. Might differ between product categories and shipping countries.
 
-[snippet summary="Dangerous goods"]
 ```php
     'pr_dangerous' => [
         'desc' => 'Dangerous goods',
@@ -373,7 +366,6 @@ Required for some products at customs. Might differ between product categories a
         ]
     ]
 ```
-[/snippet]
 
 It renders as a simple input field in the UI:  
 ![DangerousGoods](example-dangeours-goods.png)
@@ -382,7 +374,6 @@ It renders as a simple input field in the UI:
 
 Remember, Variant-level attribute use group `variation`, not ~variant~.
 
-[snippet summary="Showroom swatch"]
 ```php
     'sh_swatch' => [
         'desc' => 'Showroom Color Swatch',
@@ -405,7 +396,6 @@ Remember, Variant-level attribute use group `variation`, not ~variant~.
         ]
     ]
 ```
-[/snippet]
 
 Swatch definitions need to be configured in Catalog -> Attributes:  
 ![ShowroomSwatch2](example-showroom-2.png)
@@ -417,7 +407,6 @@ Swatch definitions need to be configured in Catalog -> Attributes:
 
 Booleans are normally dynamic, not pre-defined. Remember, default value(s) (index `0`) will _not_ be returned in the API.
 
-[snippet summary="Promotion yes/no"]
 ```php
     'var_promo' => [
         'desc' => 'Promotion',
@@ -437,7 +426,6 @@ Booleans are normally dynamic, not pre-defined. Remember, default value(s) (inde
         ]
     ]
 ```
-[/snippet]
 
 ![PromotionYesNo](example-promotion-yes-no.png)
 
@@ -449,7 +437,6 @@ The difference between this and Static attribute is that the `select` options ca
 Please notice, the keys are enums, not integers. It's `['0','Select']`, not `[0,'Select']`.
 [/notice-box]
 
-[snippet summary="Product gender"]
 ```php
     'pr_gender' => [
         'desc' => 'Product gender',
@@ -464,7 +451,6 @@ Please notice, the keys are enums, not integers. It's `['0','Select']`, not `[0,
         ]
     ]
 ```
-[/snippet]
 
 The select then looks like this in the UI:  
 ![ProductGender](example-product-gender.png)
@@ -473,7 +459,6 @@ The select then looks like this in the UI:
 
 For attributes which are pre-defined, multiple values can be made selectable at once.
 
-[snippet summary="Product material - multi-select"]
 ```php
     'pr_material' => [
         'desc' => 'Product material(s)',
@@ -492,7 +477,6 @@ For attributes which are pre-defined, multiple values can be made selectable at 
         ]
     ]
 ```
-[/snippet]
 
 Multi-select snippet looks like this in Centra:  
 ![ProductMaterialMulti](example-product-material-multi.png)
