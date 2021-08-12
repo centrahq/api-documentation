@@ -20,7 +20,7 @@ Tax Rules control what amount of tax should be applied based on Country and Cust
 
 For each Tax Rule you can also configure if the prices in your Store should be displayed with or without tax and whether or not to apply tax to the handling and shipping fees (which is enabled by default). Finally, for countries in which tax amount depends on the state (like US, Canada or Australia), you can select to apply tax per ship-to country **and** state, in which case you will need to create separate Rules for each of the tax rates and apply them to appropriate states. It's even possible to configure tax rules applying per specific zip codes, which is sometimes used for US taxes.
 
-[notice-box=warning]
+[notice-box=alert]
 If you enable a Tax Rule for specific US zip codes, Centra will enable zip code validation for US orders. This means only allowed zip code formats for United States will be: `NNNNN`, `NNNN-NNNNN` or `NNNNNNNNN`. Other formats will return a checkout error and prevent you from finalizing the order. You need to be aware of it and handle this scenario in your front end.
 [/notice-box]
 
