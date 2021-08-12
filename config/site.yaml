@@ -1,6 +1,7 @@
 title: 'Centra Documentation'
 default_lang: en
 tagManagerId: 'G-YGHX5DBJXY'
+hotjarId: 2550386
 author:
   name: 'Centra'
 taxonomies: [category,tag,author]
