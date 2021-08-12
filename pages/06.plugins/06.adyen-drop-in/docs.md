@@ -99,7 +99,9 @@ There's more information about how to get your Client key in the [documentation 
 
 The `Notification URL` is used for the Server Communication from Adyen.
 
-[notice-box=warning]You should set a Server communication URL for each Merchant Account you have. Make sure you have selected a Merchant Account in Adyen before you add it on the "Server Communication"-page.[/notice-box]
+[notice-box=alert]
+You should set a Server communication URL for each Merchant Account you have. Make sure you have selected a Merchant Account in Adyen before you add it on the "Server Communication"-page.
+[/notice-box]
 
 ![adyen-drop-in-merchant.png](adyen-drop-in-merchant.png)
 

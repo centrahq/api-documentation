@@ -52,8 +52,10 @@ In both ways you need to provide the signature which is base64 encoded HMAC SHA2
 
 The first request (either POST `/payment-result` or push notification) with successful (`success=true`) authorization triggers order creation. If the first authorization to arrive is a failed one it will be accepted by Centra and shown on the order transcation history later, when the order is created.
 
-[notice-box=warning]There is no way to provide or update the customer address using requests finalizing the payment.
-Centra needs to know the customer address before. Not providing the address before might result in invalid orders with empty address.[/notice-box]
+[notice-box=alert]
+There is no way to provide or update the customer address using requests finalizing the payment.
+Centra needs to know the customer address before. Not providing the address before might result in invalid orders with empty address.
+[/notice-box]
 
 
 ###1. Checkout API `POST /payment-result`:
@@ -210,7 +212,9 @@ Example response:
 }
 ```
 
-[notice-box=warning]Only one successful (success=true) authorization and one successful (success=true) capture is allowed per order.[/notice-box]
+[notice-box=alert]
+Only one successful (success=true) authorization and one successful (success=true) capture is allowed per order.
+[/notice-box]
 
 
 ## Captures and refunds:
