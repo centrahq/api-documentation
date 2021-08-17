@@ -49,7 +49,7 @@ One, or many (for POST), of the following parameters can be specified:
        .. type:: int
           :required: false
 
-     - Maximum amount of returned products. Recommended range: between 10 and 100
+     - Maximum number of returned products. Recommended range: between 10 and 100
 
    * - ``offset``
 
