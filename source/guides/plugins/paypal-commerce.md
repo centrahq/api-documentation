@@ -8,7 +8,7 @@ To configure PayPal Commerce plugin in Centra go to store plugins, select desira
 
 ```eval_rst
 .. image:: images/paypal-commerce-setup.png
-   :scale: 50 %
+   :scale: 100 %
 ```
 
 To connect your account just click `Connect with PayPal` button and follow steps on PayPal page. This operation will bind your account with Centra. After this you can start using PayPal Commerce.
