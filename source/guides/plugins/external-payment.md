@@ -8,7 +8,7 @@ External payment plugin settings look like this:
 
 ```eval_rst
 .. image:: images/external-payment-plugin-view.png
-   :scale: 50 %
+   :scale: 100 %
 ```
 
 To set up External Payment Plugin you need to provide all the basic plugin information like Name, Name in Frontend, URI and:
@@ -218,7 +218,7 @@ Captures and refunds triggered by Order API or AMS are forbidden for orders paid
 
 ```eval_rst
 .. image:: images/external-payment-plugin-capture-error.png
-   :scale: 50 %
+   :scale: 100 %
 ```
 
 - Capturing shipments or trying to create refund via creating return in Order API is also not allowed for orders paid with External Payment Plugin:
