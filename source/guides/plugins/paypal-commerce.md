@@ -1,18 +1,15 @@
----
-title: Checkout with PayPal Commerce
-altTitle: PayPal Commerce
-excerpt: Learn how to use PayPal - one of the most popular credit card and bank transfer PSPs
-taxonomy:
-    category: docs
----
+# PayPal Commerce
 
-This plugin enables payments with a customers PayPal account or with creditcard.
+This plugin enables payments with a customers PayPal account or with credit card.
 
 ### Set up
 
 To configure PayPal Commerce plugin in Centra go to store plugins, select desirable plugin and you should see similar screen to the screenshot below.
 
-![paypal-commerce-setup.png](paypal-commerce-setup.png)
+```eval_rst
+.. image:: images/paypal-commerce-setup.png
+   :scale: 50 %
+```
 
 To connect your account just click `Connect with PayPal` button and follow steps on PayPal page. This operation will bind your account with Centra. After this you can start using PayPal Commerce.
 
@@ -53,7 +50,7 @@ Since Centra does not know how you make requests to the API, you need to listen 
 
 #### Payment Initialization
 
-To get the buttons, start by making a call to `POST payment`:
+To get the buttons, start by making a call to `POST /payment`:
 
 ```json
 {
