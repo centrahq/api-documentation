@@ -21,7 +21,7 @@ routes:
   /guides/shop-api/changes-between-v0-and-v1: '/api-references/shop-api'
   /guides/cms/index: '/fe-development/cms'
   /guides/cms/slot-properties: '/fe-development/cms'
-  /guides/cms/custom-attributes: '/overview/custom-attributes
+  /guides/cms/custom-attributes: '/overview/custom-attributes'
   /guides/plugins/adyen-checkout: '/plugins/adyen'
   /guides/plugins/adyen-drop-in: '/plugins/adyen-drop-in'
   /guides/plugins/klarna-checkout-v3: '/plugins/klarna'
