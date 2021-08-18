@@ -72,16 +72,46 @@ This endpoint is intended for receiving authorization information. It can be cal
     }
 ```
 
-| Field | Type | Comment |
-| ----- | ---- | ------- |
-| `selection` | string | Selection id returned at `POST /payment` call |
-| `signature` | string | Base64 encoded signed payload (details below) |
-| `currency` | string | Currency code (ISO 4217) |
-| `amount` | string | Numeric string with dot as decimal separator |
-| `timestamp` | int | Signature unix timestamp in UTC |
-| `transactionReference` | string | Transaction identifier from  PSP|
-| `success` | boolean | Successful or failed result of payment authorization|
-| `transaction` | object | All the transaction details that were received from PSP|
+```eval_rst
+.. list-table::
+   :header-rows: 1
+
+   * - Field
+     - Type
+     - Comment
+
+   * - ``selection``
+     - string
+     - Selection id returned at ``POST /payment`` call
+
+   * - ``signature``
+     - string
+     - Base64 encoded signed payload (details below)
+
+   * - ``currency``
+     - string
+     - Currency code (ISO 4217)
+
+   * - ``amount``
+     - string
+     - Numeric string with dot as decimal separator
+
+   * - ``timestamp``
+     - int
+     - Signature unix timestamp in UTC
+
+   * - ``transactionReference``
+     - string
+     - Transaction identifier from  PSP
+
+   * - ``success``
+     - boolean
+     - Successful or failed result of payment authorization
+
+   * - ``transaction``
+     - object
+     - All the transaction details that were received from PSP
+```
 
 #### Signature
 
@@ -144,17 +174,50 @@ example error response:
     }
 ```
 
-| Field | Type | Comment |
-| ----- | ---- | ------- |
-| `selection` | string | Selection id returned at `POST /payment` call |
-| `signature` | string | Base64 encoded signed payload (details below) |
-| `currency` | string | Currency code (ISO 4217) |
-| `amount` | string | Numeric string with dot as decimal separator, e.g. "100.00" |
-| `timestamp` | int | Signature unix timestamp in UTC |
-| `transactionReference` | string | Transaction identifier from  PSP|
-| `success` | boolean | Successful or failed result of payment authorization|
-| `intent` | string | Intent of a notification, possible values: auth/capture|
-| `transaction` | object | All the transaction details that were received from PSP|
+```eval_rst
+.. list-table::
+   :header-rows: 1
+
+   * - Field
+     - Type
+     - Comment
+
+   * - ``selection``
+     - string
+     - Selection id returned at ``POST /payment`` call
+
+   * - ``signature``
+     - string
+     - Base64 encoded signed payload (details below)
+
+   * - ``currency``
+     - string
+     - Currency code (ISO 4217)
+
+   * - ``amount``
+     - string
+     - Numeric string with dot as decimal separator, e.g. "100.00"
+
+   * - ``timestamp``
+     - int
+     - Signature unix timestamp in UTC
+
+   * - ``transactionReference``
+     - string
+     - Transaction identifier from  PSP
+
+   * - ``success``
+     - boolean
+     - Successful or failed result of payment authorization
+
+   * - ``intent``
+     - string
+     - Intent of a notification, possible values: auth/capture
+
+   * - ``transaction``
+     - object
+     - All the transaction details that were received from PSP
+```
 
 #### Signature
 
