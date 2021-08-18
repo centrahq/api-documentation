@@ -9,3 +9,30 @@ metadata:
   description: 'Centra Documentation'
 summary:
   size: 300
+routes:
+  /overview/installation: '/api-references/api-intro#installation'
+  /overview/endpoints: '/api-references/api-intro#endpoints'
+  /overview/authentication: '/api-references/api-intro#authentication'
+  /guides/checkout-api/index: '/api-references/checkout-api'
+  /guides/checkout-api/breaking-changes-v2-69: '/api-references/checkout-api'
+  /guides/shop-api/index: '/api-references/shop-api'
+  /guides/shop-api/payment-method-flows: '/fe-development/payments/payment-flows'
+  /guides/shop-api/checklist-for-launching: '/fe-development/launch-checklist'
+  /guides/shop-api/changes-between-v0-and-v1: '/api-references/shop-api'
+  /guides/cms/index: '/fe-development/cms'
+  /guides/cms/slot-properties: '/fe-development/cms'
+  /guides/cms/custom-attributes: '/overview/custom-attributes
+  /guides/plugins/adyen-checkout: '/plugins/adyen'
+  /guides/plugins/adyen-drop-in: '/plugins/adyen-drop-in'
+  /guides/plugins/klarna-checkout-v3: '/plugins/klarna'
+  /guides/plugins/mailchimp-ecommerce: '/plugins/mailchimp'
+  /guides/plugins/quickpay: '/plugins/quickpay'
+  /guides/plugins/paypal-commerce: '/plugins/paypal'
+  /guides/plugins/stripe-checkout: '/plugins/stripe'
+  /guides/plugins/stripe-payment-intents: '/plugins/stripe-payment-intents'
+  /guides/plugins/external-payment: '/plugins/external-payment-plugin'
+  /guides/plugins/centra-webhook: '/plugins/centra-webhook'
+  /guides/plugins/voyado-promotions: '/plugins/voyado-vouchers'
+  /guides/soap-api/index: '/api-references/soap-integration-api'
+  /guides/soap-api/centra-concepts: '/overview/centra-overview'
+  
