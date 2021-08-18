@@ -16,7 +16,7 @@ Tax Group consists of one or more Tax Rules, which control what amount of tax sh
 
 ### Tax Rules
 
-Tax Rules control what amount of tax should be applied based on Country and Customer (B2C) or Account (B2B) Tax Classes. For example, if you're selling in EU, Australia and Japan and need to calculate VAT tax for those markets, you would create three Tax Rules: EU (with 25% tax), Australia (with 10% tax), and Japan (with 8% tax).
+Tax Rules control what amount of tax should be applied based on Country and Customer (B2C) or Account (B2B) Tax Classes. For example, if you're selling in Poland, Australia and Japan and need to calculate VAT tax for those markets, you would create three Tax Rules: Poland (with 22% tax), Australia (with 10% tax), and Japan (with 8% tax).
 
 For each Tax Rule you can also configure if the prices in your Store should be displayed with or without tax and whether or not to apply tax to the handling and shipping fees (which is enabled by default). Finally, for countries in which tax amount depends on the state (like US, Canada or Australia), you can select to apply tax per ship-to country **and** state, in which case you will need to create separate Rules for each of the tax rates and apply them to appropriate states. It's even possible to configure tax rules applying per specific zip codes, which is sometimes used for US taxes.
 

@@ -8,7 +8,7 @@ taxonomy:
 
 ## Custom Attributes
 
-This is how you set up the custom attributes for product, variants, orders and customers.
+Products, variants, orders and customers can all be expanded with additional information. Here's how you can do it.
 
 The following structure is used in the `config.php` to define custom attributes on products, variants, accounts and orders. Attributes allow you to create arbitrary fields that will be available in the API and exports. There are different types of attributes.
 

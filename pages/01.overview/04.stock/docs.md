@@ -51,4 +51,4 @@ Available options to set threshold or offset are available in AMS:
 * Warehouse threshold setting: Setup -> Warehouses -> Add threshold  
 * Product variant offset: Edit stock settings -> Offset
 
-It's worth mentioning that those options does not apply to AMS full admin, that selection will not be blocked by the settings.
+It's worth mentioning that these options do not apply to AMS full admin, that selection will not be blocked by the settings.

@@ -14,11 +14,9 @@ External payment plugin settings look like this:
 
 ![img.png](external-payment-plugin-view.png)
 
-
 To set up External Payment Plugin you need to provide all the basic plugin information like Name, Name in Frontend, URI and:
 - Notification key - auto-generated value used to authorize authorization and capture notifications to endpoint visible under `Notifications URL`.
   Must be stored server-side and not revealed to third parties.
-
 
 - Shared secret - auto-generated value used to sign payload send to endpoints finalizing the payment when External Payment Plugin is used.
   Must be stored server-side and not revealed to third parties.
@@ -27,30 +25,28 @@ To set up External Payment Plugin you need to provide all the basic plugin infor
 
 The integration with Payment Service Provider, order creation and management must be done outside of Centra. Results of payment authorization and capture from redirects and push notifications should be forwarded to Centra to proper endpoints.
 
-
 - Customer goes to checkout. Centra API gets a `GET /selection`
-
 
 - `external-payment` method is found and can be selected for checkout
 
-
 - `POST /payment` request is made with 	`"paymentMethod": "external-payment"` which on success responds with following data:
 
-    ```json
+```json
     {
       "token": "abcd1234efgh12340ba6142228334aaf4",
       "action": "external",
       "selection": "4f1211119567211c441d86e19fbd7114"
     }
-    ```
+```
+
 You should store the `selection` field value. It needs to be included in signature payload when finalizing the payment.
 
-## Order finalization:
+## Order finalization
 
 There are 2 ways described below to provide information about successful or failed authorization or capture.
 In both ways you need to provide the signature which is base64 encoded HMAC SHA256 signature. The payload is signed using shared secret configurable in External Payment Plugin settings in Centra AMS.
 
-The first request (either POST `/payment-result` or push notification) with successful (`success=true`) authorization triggers order creation. If the first authorization to arrive is a failed one it will be accepted by Centra and shown on the order transcation history later, when the order is created.
+The first request (either `POST /payment-result` or push notification) with successful (`success=true`) authorization triggers order creation. If the first authorization to arrive is a failed one it will be accepted by Centra and shown on the order transcation history later, when the order is created.
 
 [notice-box=alert]
 There is no way to provide or update the customer address using requests finalizing the payment.
@@ -58,11 +54,11 @@ Centra needs to know the customer address before. Not providing the address befo
 [/notice-box]
 
 
-###1. Checkout API `POST /payment-result`:
+### Checkout API `POST /payment-result`:
 
 This endpoint is intended for receiving authorization information. It can be called only once with successful authorization per order.
 
-####Request:
+#### Request:
 
 ```json
     {
@@ -94,7 +90,7 @@ This endpoint is intended for receiving authorization information. It can be cal
 | `transaction` | object | All the transaction details that were received from PSP|
 </div>
 
-####Signature
+#### Signature
 
 The signature is a base64 encoded HMAC SHA256 hash.
 Example code using JavaScript and CryptoJS library:
@@ -102,7 +98,8 @@ Example code using JavaScript and CryptoJS library:
 btoa(CryptoJS.HmacSHA256($payload, secret).toString(CryptoJS.digest));
 ```
 
-##### Signature payload fields (separated by colon):
+##### Signature payload fields
+
 Signature payload fields must be provided in following order, separated by colon:
 - selection id (received in `POST /payment call`)
 - amount
@@ -113,7 +110,7 @@ Signature payload fields must be provided in following order, separated by colon
 
 payload: `selectionId:amount:currency:timestamp:transactionReference:success`
 
-####Response:
+#### Response:
 
 On `success=true` it will respond with HTTP status 201 and order object. The order will be created in Centra backend. `(note: only one such call per order is allowed)
 `
@@ -135,9 +132,9 @@ example error response:
 ```
 
 
-###2. Push notification send to `Notification URL ` visible in the plugin settings
+### Push notification send to `Notification URL ` visible in the plugin settings
 
-####Request:
+#### Request:
 
 ```json
     {
@@ -169,7 +166,7 @@ example error response:
 | `transaction` | object | All the transaction details that were received from PSP|
 </div>
 
-####Signature
+#### Signature
 
 The signature is a base64 encoded HMAC SHA256 hash.
 Example code using JavaScript and CryptoJS library:
@@ -177,7 +174,8 @@ Example code using JavaScript and CryptoJS library:
 btoa(CryptoJS.HmacSHA256($payload, secret).toString(CryptoJS.digest));
 ```
 
-##### Signature payload fields (separated by colon):
+##### Signature payload fields
+
 Signature payload fields must be provided in following order, separated by colon:
 - selection id (received in `POST /payment call`)
 - amount
@@ -189,7 +187,7 @@ Signature payload fields must be provided in following order, separated by colon
 
 payload: `selectionId:amount:currency:timestamp:transactionReference:success:intent`
 
-####Response:
+#### Response:
 
 If the push notification is accepted Centra will respond with HTTP status 200.
 
@@ -216,20 +214,16 @@ Example response:
 Only one successful (success=true) authorization and one successful (success=true) capture is allowed per order.
 [/notice-box]
 
-
 ## Captures and refunds:
 
 Captures and refunds should be done manually in your PSP dashboard.
 
-Captures and refunds triggered by Order API or AMS are forbidden for orders paid with External Payment Plugin and will result in following errors:
-
+Captures and refunds triggered by Order API or AMS are forbidden for orders paid with External Payment Plugin and will result in following error:
 
 ![img.png](external-payment-plugin-capture-error.png)
 
-
 - Capturing shipments or trying to create refund via creating return in Order API are also not allowed for orders paid with External Payment Plugin:
 
-example response:
 ```json
 {
     "status": "no",

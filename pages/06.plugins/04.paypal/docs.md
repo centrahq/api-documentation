@@ -6,7 +6,7 @@ taxonomy:
     category: docs
 ---
 
-This plugin enables payments with a customers PayPal account or with creditcard.
+This plugin enables payments with a customers PayPal account or with credit card.
 
 ### Set up
 
@@ -53,7 +53,7 @@ Since Centra does not know how you make requests to the API, you need to listen 
 
 #### Payment Initialization
 
-To get the buttons, start by making a call to `POST payment`:
+To get the buttons, start by making a call to `POST /payment`:
 
 ```json
 {
