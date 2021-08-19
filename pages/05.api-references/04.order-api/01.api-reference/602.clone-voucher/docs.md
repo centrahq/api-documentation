@@ -8,9 +8,7 @@ taxonomy:
 
 # Clone voucher
 
-```text
-PUT  *base*/voucher/*id*/clone
-```
+`PUT  *base*/voucher/*id*/clone`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will clone a voucher with updated provided information
@@ -36,13 +34,13 @@ Conversion html of the voucher
 ## Request example
 
 ```http
-   PUT <base>/voucher/3/clone HTTP/1.1
+PUT <base>/voucher/3/clone HTTP/1.1
 
-   {
-      "name": "Welcome 10%",
-      "code": "new-welcome-10",
-      "stopDate": "2022-07-09"
-   }
+{
+    "name": "Welcome 10%",
+    "code": "new-welcome-10",
+    "stopDate": "2022-07-09"
+}
 ```
 
 ## Response
@@ -65,54 +63,54 @@ Code of a new voucher
 ## Response example
 
 ```json
-   {
-       "status": "ok",
-       "voucher": 4,
-       "code": "new-welcome-10"
-   }
+{
+    "status": "ok",
+    "voucher": 4,
+    "code": "new-welcome-10"
+}
 ```
 ## Errors example
 
 Required fields are not passed
 ```json
-   {
-       "status": "no",
-       "voucher": "4",
-       "msg": {
-           "stopDate": "required"
-       }
-   }
+{
+    "status": "no",
+    "voucher": "4",
+    "msg": {
+        "stopDate": "required"
+    }
+}
 ```
 
 Voucher not found
 ```json
-   {
-       "status": "no",
-       "voucher": "3",
-       "msg": {
-           "voucher": "Voucher not found"
-       }
-   }
+{
+    "status": "no",
+    "voucher": "3",
+    "msg": {
+        "voucher": "Voucher not found"
+    }
+}
 ```
 
 Auto vouchers not supported
 ```json
-   {
-       "status": "no",
-       "voucher": "3",
-       "msg": {
-           "voucher": "Auto vouchers not supported"
-       }
-   }
+{
+    "status": "no",
+    "voucher": "3",
+    "msg": {
+        "voucher": "Auto vouchers not supported"
+    }
+}
 ```
 
 Voucher does not belong to this store
 ```json
-   {
-       "status": "no",
-       "voucher": "3",
-       "msg": {
-           "voucher": "Voucher does not belong to this store"
-       }
-   }
+{
+    "status": "no",
+    "voucher": "3",
+    "msg": {
+        "voucher": "Voucher does not belong to this store"
+    }
+}
 ```

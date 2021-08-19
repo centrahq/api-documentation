@@ -8,9 +8,7 @@ taxonomy:
 
 # Create return
 
-```text
-POST  *base*/return
-```
+`POST  *base*/return`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will create return for given shipment and items. Return will be created even if some of the provided items cannot be returned.
@@ -94,39 +92,39 @@ Send refund email. Default value is ``false``.
 ## Request example
 
 ```http
-   POST <base>/return HTTP/1.1
-   Content-type: application/json
+POST <base>/return HTTP/1.1
+Content-type: application/json
 
-   {
-     "shipment": "120276-1",
-     "returnStock": 1,
-     "comment": "Return created with Order Api",
-     "products": {
-       "268871": "1",
-       "268870": "1"
-     }
-   }
+{
+  "shipment": "120276-1",
+  "returnStock": 1,
+  "comment": "Return created with Order Api",
+  "products": {
+    "268871": "1",
+    "268870": "1"
+  }
+}
 ```
 
 ## Request example including refund
 
 ```http
-   POST <base>/return HTTP/1.1
-   Content-type: application/json
+POST <base>/return HTTP/1.1
+Content-type: application/json
 
-   {
-     "shipment": "120276-1",
-     "returnStock": 1,
-     "comment": "Return created with Order Api",
-     "products": {
-       "268871": "1",
-       "268870": "1"
-     },
-     "refund": {
-       "refundPayment": true,
-       "sendEmail": true
-     }
-   }
+{
+  "shipment": "120276-1",
+  "returnStock": 1,
+  "comment": "Return created with Order Api",
+  "products": {
+    "268871": "1",
+    "268870": "1"
+  },
+  "refund": {
+    "refundPayment": true,
+    "sendEmail": true
+  }
+}
 ```
 
 ## Response
@@ -156,37 +154,37 @@ If ``status`` returns ``no``, this value should send back a message why it faile
 ## Response example
 
 ```json
-   {
-     "status": "ok",
-     "return": 5397,
-     "returnCompleted": false,
-     "returnedItems": [
-       "268871"
-     ]
-   }
+{
+  "status": "ok",
+  "return": 5397,
+  "returnCompleted": false,
+  "returnedItems": [
+    "268871"
+  ]
+}
 ```
 
 ## Response example including refund
 
 ```json
-   {
-     "status": "ok",
-     "return": 5397,
-     "returnCompleted": true,
-     "returnedItems": [
-       "268871"
-     ],
-     "refund": {
-       "status": "ok"
-     }
-   }
+{
+  "status": "ok",
+  "return": 5397,
+  "returnCompleted": true,
+  "returnedItems": [
+    "268871"
+  ],
+  "refund": {
+    "status": "ok"
+  }
+}
 ```
 
 ## Error example
 
 ```json
-   {
-     "status": "no",
-     "msg": "return could not be created."
-   }
+{
+  "status": "no",
+  "msg": "return could not be created."
+}
 ```

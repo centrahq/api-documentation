@@ -8,9 +8,7 @@ taxonomy:
 
 # Create shipment
 
-```text
-POST  *base*/shipments
-```
+`POST  *base*/shipments`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will create a shipment and per default try to capture from the payment provider, shipment will not be created if the capture fails.
@@ -80,16 +78,16 @@ Response in xml format instead of json.
 ## Request example
 
 ```http
-   POST <base>/shipments HTTP/1.1
-   Content-type: application/json
+POST <base>/shipments HTTP/1.1
+Content-type: application/json
 
-   {
-     "order": 83651,
-     "products": {
-       "43243": 1,
-       "43244": 2
-     }
-   }
+{
+  "order": 83651,
+  "products": {
+    "43243": 1,
+    "43244": 2
+  }
+}
 ```
 
 <!--
@@ -133,33 +131,33 @@ If ``status`` returns ``no``, this value should send back a message why it faile
 ## Response example
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-     "status": "ok",
-     "order": 83651,
-     "shipment": "83651-1",
-     "deliveryNote": "http://.../delivery-note.pdf",
-     "proforma": "http://.../proforma.pdf",
-     "invoice": "http://.../invoice.pdf"
-   }
+{
+  "status": "ok",
+  "order": 83651,
+  "shipment": "83651-1",
+  "deliveryNote": "http://.../delivery-note.pdf",
+  "proforma": "http://.../proforma.pdf",
+  "invoice": "http://.../invoice.pdf"
+}
 ```
 
 ## Error examples
 
 ```json
-   {
-     "status": "no",
-     "msg": "order does not exist",
-     "order": "1337"
-   }
+{
+  "status": "no",
+  "msg": "order does not exist",
+  "order": "1337"
+}
 ```
 
 ```json
-   {
-     "msg": "can not capture order",
-     "status": "no",
-     "order": "5"
-   }
+{
+  "msg": "can not capture order",
+  "status": "no",
+  "order": "5"
+}
 ```

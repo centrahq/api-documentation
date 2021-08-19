@@ -14,9 +14,7 @@ taxonomy:
 
 # Get returns
 
-```text
-GET  *base*/returns?[&limit=5][&page=2][&return=23]
-```
+`GET  *base*/returns?[&limit=5][&page=2][&return=23]`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 Will list all returns, newest first.
@@ -65,9 +63,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http
-   GET <base>/returns?limit=2 HTTP/1.1
-```
+`GET <base>/returns?limit=2 HTTP/1.1`
 
 <!--
 ```eval_rst
@@ -230,93 +226,93 @@ Unit price as seen on shipment.
 ## Response example
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-       "status": "ok",
-       "returns": [
-           {
-               "returnId": 385,
-               "completed": false,
-               "shipment": "20059-1",
-               "shipmentId": 8039,
-               "orderId": 20059,
-               "selectionId": "8bf93dd57e9ebf9291c8c3a5f0cb63bf",
-               "customerId": 416715,
-               "date": "2019-07-11 14:34:32",
-               "returnCost": 0,
-               "shippingCost": 0,
-               "handlingCost": 0,
-               "voucherValue": 0,
-               "taxValue": 21.41,
-               "taxDeduction": 0,
-               "currency": "EUR",
-               "baseCurrency": "SEK",
-               "baseCurrencyRate": 10.6453,
-               "returnToStock": true,
-               "comment": "Godkänd retur",
-               "createdFrom": "Order API",
-               "products": [
-                   {
-                       "returnLineId": 555,
-                       "shipmentLineId": 30672,
-                       "orderLineId": 60288,
-                       "productId": 159,
-                       "variantId": 372,
-                       "productName": "Muffin man",
-                       "productBrand": "Handcrafted",
-                       "variantName": "Big cart",
-                       "size": "One Size",
-                       "sku": "MUF1042",
-                       "variantSku": "",
-                       "sizeSku": "",
-                       "ean": "7340112910426",
-                       "quantity": 1,
-                       "price": 124.1
-                   }
-               ]
-           },
-           {
-               "returnId": 384,
-               "shipment": "20179-1",
-               "shipmentId": 8094,
-               "orderId": 20179,
-               "selectionId": "ae6eb1befe5d6f850a016932ca4276dc",
-               "customerId": 734042,
-               "date": "2019-07-11 14:33:56",
-               "returnCost": 0,
-               "shippingCost": 0,
-               "handlingCost": 0,
-               "voucherValue": 0,
-               "taxValue": 9.08,
-               "taxDeduction": 0,
-               "currency": "GBP",
-               "baseCurrency": "SEK",
-               "baseCurrencyRate": 11.61479,
-               "returnToStock": true,
-               "comment": null,
-               "createdFrom": "Order API",
-               "products": [
-                   {
-                       "returnLineId": 553,
-                       "shipmentLineId": 30800,
-                       "orderLineId": 60669,
-                       "productId": 196,
-                       "variantId": 430,
-                       "productName": "Plush Guitar",
-                       "productBrand": "",
-                       "variantName": "Pink",
-                       "size": null,
-                       "sku": "PNKG8484",
-                       "variantSku": "",
-                       "sizeSku": "",
-                       "ean": "7340082321862",
-                       "quantity": 1,
-                       "price": 54.5
-                   }
-               ]
-           }
-       ]
-   }
+{
+    "status": "ok",
+    "returns": [
+        {
+            "returnId": 385,
+            "completed": false,
+            "shipment": "20059-1",
+            "shipmentId": 8039,
+            "orderId": 20059,
+            "selectionId": "8bf93dd57e9ebf9291c8c3a5f0cb63bf",
+            "customerId": 416715,
+            "date": "2019-07-11 14:34:32",
+            "returnCost": 0,
+            "shippingCost": 0,
+            "handlingCost": 0,
+            "voucherValue": 0,
+            "taxValue": 21.41,
+            "taxDeduction": 0,
+            "currency": "EUR",
+            "baseCurrency": "SEK",
+            "baseCurrencyRate": 10.6453,
+            "returnToStock": true,
+            "comment": "Godkänd retur",
+            "createdFrom": "Order API",
+            "products": [
+                {
+                    "returnLineId": 555,
+                    "shipmentLineId": 30672,
+                    "orderLineId": 60288,
+                    "productId": 159,
+                    "variantId": 372,
+                    "productName": "Muffin man",
+                    "productBrand": "Handcrafted",
+                    "variantName": "Big cart",
+                    "size": "One Size",
+                    "sku": "MUF1042",
+                    "variantSku": "",
+                    "sizeSku": "",
+                    "ean": "7340112910426",
+                    "quantity": 1,
+                    "price": 124.1
+                }
+            ]
+        },
+        {
+            "returnId": 384,
+            "shipment": "20179-1",
+            "shipmentId": 8094,
+            "orderId": 20179,
+            "selectionId": "ae6eb1befe5d6f850a016932ca4276dc",
+            "customerId": 734042,
+            "date": "2019-07-11 14:33:56",
+            "returnCost": 0,
+            "shippingCost": 0,
+            "handlingCost": 0,
+            "voucherValue": 0,
+            "taxValue": 9.08,
+            "taxDeduction": 0,
+            "currency": "GBP",
+            "baseCurrency": "SEK",
+            "baseCurrencyRate": 11.61479,
+            "returnToStock": true,
+            "comment": null,
+            "createdFrom": "Order API",
+            "products": [
+                {
+                    "returnLineId": 553,
+                    "shipmentLineId": 30800,
+                    "orderLineId": 60669,
+                    "productId": 196,
+                    "variantId": 430,
+                    "productName": "Plush Guitar",
+                    "productBrand": "",
+                    "variantName": "Pink",
+                    "size": null,
+                    "sku": "PNKG8484",
+                    "variantSku": "",
+                    "sizeSku": "",
+                    "ean": "7340082321862",
+                    "quantity": 1,
+                    "price": 54.5
+                }
+            ]
+        }
+    ]
+}
 ```

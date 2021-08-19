@@ -37,7 +37,7 @@ We send:
 {
     "action": "form",
     "formHtml": "<form method='post' action='https://example.com'><input type='hidden' name='field1' value='x' /></form><script>(autosubmit-code)</script>",
-    "formFields": {"field1": "x", "field2": "y"},
+    "formFields": { "field1": "x", "field2": "y" },
     "formUrl": "https://example.com"
 }
 ```

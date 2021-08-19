@@ -8,9 +8,7 @@ taxonomy:
 
 # Complete shipment
 
-```text
-POST  *base*/shipment
-```
+`POST  *base*/shipment`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will insert back the tracking number and carrier information to Centra. An email will be sent out to the customer with the tracking information.
@@ -99,20 +97,20 @@ If ``status`` returns ``no``, this value should send back a message why it faile
 ## Response example
 
 ```json
-   {
-     "status": "ok",
-     "order": 83651,
-     "shipment": "83651-1"
-   }
+{
+  "status": "ok",
+  "order": 83651,
+  "shipment": "83651-1"
+}
 ```
 
 ## Error example
 
 ```json
-   {
-     "status": "no",
-     "msg": "capture failed",
-     "order": 83651,
-     "shipment": "83651-1"
-   }
+{
+  "status": "no",
+  "msg": "capture failed",
+  "order": 83651,
+  "shipment": "83651-1"
+}
 ```

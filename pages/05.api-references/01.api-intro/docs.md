@@ -30,9 +30,7 @@ For authentication we use the API key, which is a shared secret generated in the
 
 Example request:
 
-```text
-curl -H "API-Authorization foo" <base>/orders
-```
+`curl -H "API-Authorization foo" <base>/orders`
 
 ## Choosing the right API for your integration
 

@@ -8,9 +8,7 @@ taxonomy:
 
 # Create subscription
 
-```text
-POST  *base*/subscription/order
-```
+`POST  *base*/subscription/order`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 Add a subscription with payment details, will not be completed/registered as a completed subscription until `subscription/payment` has been called.
@@ -103,32 +101,32 @@ The language of the consent. No validation is made on this field for the formatt
 ## Request example
 
 ```http
-    POST <base>/subscription/order HTTP/1.1
-    Content-Type: application/x-www-form-urlencoded
-    
-    name=Kalle&sname=Anka&address=Paradisäppelvägen+9&
-    coaddress=&city=Ankeborg&state=&zipcode=12345&
-    country=SE&email=kalle.anka@example.com&package[]=1&package[]=3&
-    payment=nets[&pnr=880101-7845]&
-    language=SV
+POST <base>/subscription/order HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+name=Kalle&sname=Anka&address=Paradisäppelvägen+9&
+coaddress=&city=Ankeborg&state=&zipcode=12345&
+country=SE&email=kalle.anka@example.com&package[]=1&package[]=3&
+payment=nets[&pnr=880101-7845]&
+language=SV
 ```
 
 Example Request with consents:
 
 ```http
-    POST <base>/subscription/order? HTTP/1.1
-    Content-Type: application/x-www-form-urlencoded
-    
-    name=Kalle&sname=Anka&address=Paradisäppelvägen+9&coaddress=&
-    city=Ankeborg&state=&zipcode=12345&country=SE&
-    email=kalle.anka@example.com&package[]=1&package[]=3&
-    payment=nets[&payment_url=https://...][&pnr=880101-7845]&
-    language=SV&
-    consent[direct_marketing]=1&
-    consent_name[direct_marketing]=Direct%20Marketing&
-    consent_version[direct_marketing]=1.1&
-    consent[newsletter]=1&consent_name[newsletter]=Newsletter&
-    consent_version[newsletter]=v2&consent_language[newsletter]=sv_SE
+POST <base>/subscription/order? HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+name=Kalle&sname=Anka&address=Paradisäppelvägen+9&coaddress=&
+city=Ankeborg&state=&zipcode=12345&country=SE&
+email=kalle.anka@example.com&package[]=1&package[]=3&
+payment=nets[&payment_url=https://...][&pnr=880101-7845]&
+language=SV&
+consent[direct_marketing]=1&
+consent_name[direct_marketing]=Direct%20Marketing&
+consent_version[direct_marketing]=1.1&
+consent[newsletter]=1&consent_name[newsletter]=Newsletter&
+consent_version[newsletter]=v2&consent_language[newsletter]=sv_SE
 ```
 ## Response
 
@@ -165,40 +163,40 @@ If ``status`` returns ``no``, this value should send back a message why it faile
 ## Response examples
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-    {
-     "status": "ok",
-     "id": 3,
-     "payment": {
-       "url": "https://...",
-       "value": "123.50",
-       "currency": "SEK"
-     }
-    }
+{
+  "status": "ok",
+  "id": 3,
+  "payment": {
+    "url": "https://...",
+    "value": "123.50",
+    "currency": "SEK"
+  }
+}
 ```
 
 ## Error example
 
 ```json
-   {
-     "status": "Could not register customer",
-     "error": true,
-     "errors": [
-       "email",
-       "payment"
-     ]
-   }
+{
+  "status": "Could not register customer",
+  "error": true,
+  "errors": [
+    "email",
+    "payment"
+  ]
+}
 ```
 
 Bad payment method:
 
 ```json
-   {
-        "status": "Bad Payment Method",
-        "error": true,
-        "message": "Error message"
-  }
+{
+    "status": "Bad Payment Method",
+    "error": true,
+    "message": "Error message"
+}
 ```
 

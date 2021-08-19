@@ -8,9 +8,7 @@ taxonomy:
 
 # Complete order
 
-```text
-POST  *base*/order/*orderId*
-```
+`POST  *base*/order/*orderId*`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 If [Create Order](/api-references/order-api/api-reference/create-order) was used with `createOnly` set as `true`, the order will only be prepared but not finalized. By using the Complete Order-endpoint you can finalize the order to be placed properly as a second step from creating the order. This might be necessary if you first need to make sure the order can be placed (Create Order) and then finalize it after you've verified the payment (Complete Order).
@@ -94,12 +92,12 @@ Response in xml format instead of json.
 ## Request example
 
 ```http
-   POST <base>/order/123 HTTP/1.1
-   Content-type: application/json
+POST <base>/order/123 HTTP/1.1
+Content-type: application/json
 
-   {
-     "comment": "Completed order, here is a comment"
-   }
+{
+  "comment": "Completed order, here is a comment"
+}
 ```
 
 ## Response
@@ -122,19 +120,19 @@ If ``status`` returns ``no``, this value should send back a message why it faile
 ## Response example
 
 ```json
-   {
-     "orders": [
-       "44"
-     ],
-     "status": "ok"
-   }
+{
+  "orders": [
+    "44"
+  ],
+  "status": "ok"
+}
 ```
 
 ## Error example
 
 ```json
-   {
-     "status": "no",
-     "msg": "Message about why the order failed to be completed."
-   }
+{
+  "status": "no",
+  "msg": "Message about why the order failed to be completed."
+}
 ```

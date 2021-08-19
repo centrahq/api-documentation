@@ -8,13 +8,9 @@ taxonomy:
 
 # Get campaigns
 
-```text
-GET  *base*/campaigns
-```
+`GET  *base*/campaigns`
 
-```text
-GET  *base*/campaigns/*campaignId*
-```
+`GET  *base*/campaigns/*campaignId*`
 
 Fetches a specific campaign referenced by its ID, or the **full** campaigns list.
 
@@ -63,64 +59,64 @@ An array with ``productIds`` currently in the campaign.
 Fetching a list of campaigns:
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-     "5": {
-        "name" : "Outlet",
-        "campaign" : "5",
-        "markets" : {
-           "16" : {
-              "pricelists" : {
-                 "47" : {
-                    "productsOnSale" : [
-                       "2194",
-                       "2172",
-                       "1639",
-                    ]
-                 }
+{
+  "5": {
+    "name" : "Outlet",
+    "campaign" : "5",
+    "markets" : {
+        "16" : {
+          "pricelists" : {
+              "47" : {
+                "productsOnSale" : [
+                    "2194",
+                    "2172",
+                    "1639",
+                ]
               }
-           }
+          }
         }
-     }
-   }
+    }
+  }
+}
 ```
 
 Fetching a specific campaign using `campaignId`:
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-      "name" : "Outlet",
-      "campaign" : "5",
-      "markets" : {
-         "16" : {
-            "pricelists" : {
-               "47" : {
-                  "productsOnSale" : [
-                     "2194",
-                     "2172",
-                     "1639",
-                  ]
-               }
+{
+  "name" : "Outlet",
+  "campaign" : "5",
+  "markets" : {
+      "16" : {
+        "pricelists" : {
+            "47" : {
+              "productsOnSale" : [
+                  "2194",
+                  "2172",
+                  "1639",
+              ]
             }
-         }
+        }
       }
-   }
+  }
+}
 ```
 
 ## Error example
 
 ```http
-   HTTP/1.1 404 Not Found
-   Content-type: application/json
+HTTP/1.1 404 Not Found
+Content-type: application/json
 
-   {
-       "errors" : {
-          "campaign" : "not found"
-       }
+{
+    "errors" : {
+      "campaign" : "not found"
     }
+}
 ```

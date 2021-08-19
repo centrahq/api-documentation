@@ -27,7 +27,7 @@ not the server.
 GraphQL Operates on JSON objects and therefore such content type should also be
 used for requests' payload:
 
-```
+```http
 POST *base*/graphql
 
 Content-Type: application/json

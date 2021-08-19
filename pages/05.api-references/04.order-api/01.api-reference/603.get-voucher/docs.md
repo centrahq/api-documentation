@@ -8,9 +8,7 @@ taxonomy:
 
 # Get voucher
 
-```text
-GET *base*/vouchers/*id*
-```
+`GET *base*/vouchers/*id*`
 
 Return active/inactive voucher by specified ID. Cancelled vouchers are ignored. 
 
@@ -26,9 +24,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http
-   GET <base>/vouchers/1 HTTP/1.1
-```
+`GET <base>/vouchers/1 HTTP/1.1`
 
 <!--
 ```eval_rst
@@ -111,55 +107,55 @@ The date in ``Y-m-d H-i-s`` format when the voucher was created.
 ## Response example
 
 ```json
-   {
-       "status": "ok",
-       "voucher": {
-           "id": 1,
-           "name": "Welcome 10%",
-           "code": "welcome10",
-           "conversionHtml": "",
-           "startDate": "2020-06-26",
-           "stopDate": "2020-07-09",
-           "type": "percentoff",
-           "value": "10",
-           "store": 1,
-           "markets": [
-               1
-           ],
-           "limit": 1,
-           "status": "active",
-           "priority": 1,
-           "createdAt": "2020-06-25 12:00:00"
-       }
-   }
+{
+    "status": "ok",
+    "voucher": {
+        "id": 1,
+        "name": "Welcome 10%",
+        "code": "welcome10",
+        "conversionHtml": "",
+        "startDate": "2020-06-26",
+        "stopDate": "2020-07-09",
+        "type": "percentoff",
+        "value": "10",
+        "store": 1,
+        "markets": [
+            1
+        ],
+        "limit": 1,
+        "status": "active",
+        "priority": 1,
+        "createdAt": "2020-06-25 12:00:00"
+    }
+}
 ```
 
 ```json
-   {
-       "status": "ok",
-       "voucher": {
-           "id": 1,
-           "name": "Welcome 10",
-           "code": "welcome10",
-           "conversionHtml": "",
-           "startDate": "2020-06-26",
-           "stopDate": "2020-07-09",
-           "type": "priceoff",
-           "value": null,
-           "valueByPricelist": {
-               "1": 10,
-               "2": 44,
-               "3": 13,
-               "4": 130,
-           },
-           "store": 1,
-           "markets": [
-               1
-           ],
-           "limit": 1,
-           "status": "active",
-           "priority": 1,
-           "createdAt": "2020-06-25 12:00:00"
-       }
-   }
+{
+    "status": "ok",
+    "voucher": {
+        "id": 1,
+        "name": "Welcome 10",
+        "code": "welcome10",
+        "conversionHtml": "",
+        "startDate": "2020-06-26",
+        "stopDate": "2020-07-09",
+        "type": "priceoff",
+        "value": null,
+        "valueByPricelist": {
+            "1": 10,
+            "2": 44,
+            "3": 13,
+            "4": 130,
+        },
+        "store": 1,
+        "markets": [
+            1
+        ],
+        "limit": 1,
+        "status": "active",
+        "priority": 1,
+        "createdAt": "2020-06-25 12:00:00"
+    }
+}
 ```

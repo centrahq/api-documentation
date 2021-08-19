@@ -8,13 +8,9 @@ taxonomy:
 
 # Get measurement charts
 
-```text
-GET  *base*/measurement-charts
-```
+`GET  *base*/measurement-charts`
 
-```text
-GET  *base*/measurement-charts/*measurementChartId*
-```
+`GET  *base*/measurement-charts/*measurementChartId*`
 
 Fetches a specific measurement chart referenced by its ID, or the **full** list of measurement charts.
 
@@ -67,70 +63,70 @@ The unit which the measurement chart is calculated in. For example ``cm``.
 ## Response example
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-     "2": {
-       "name" : "Test",
-       "rows" : {
-          "Length" : {
-             "L" : "30",
-             "M" : "27",
-             "S" : "23"
-          }
-       },
-       "columnNames" : [
-          "S",
-          "M",
-          "L"
-       ],
-       "unit" : "cm",
-       "rowNames" : [
-          "Length"
-       ],
-       "measurementChart" : "2"
-     }
-   }
+{
+  "2": {
+    "name" : "Test",
+    "rows" : {
+      "Length" : {
+          "L" : "30",
+          "M" : "27",
+          "S" : "23"
+      }
+    },
+    "columnNames" : [
+      "S",
+      "M",
+      "L"
+    ],
+    "unit" : "cm",
+    "rowNames" : [
+      "Length"
+    ],
+    "measurementChart" : "2"
+  }
+}
 ```
 
 Fetching a specific collection using `collectionId`:
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-      "name" : "Test",
-      "rows" : {
-         "Length" : {
-            "L" : "30",
-            "M" : "27",
-            "S" : "23"
-         }
-      },
-      "columnNames" : [
-         "S",
-         "M",
-         "L"
-      ],
-      "unit" : "cm",
-      "rowNames" : [
-         "Length"
-      ],
-      "measurementChart" : "2"
-   }
+{
+  "name" : "Test",
+  "rows" : {
+      "Length" : {
+        "L" : "30",
+        "M" : "27",
+        "S" : "23"
+      }
+  },
+  "columnNames" : [
+      "S",
+      "M",
+      "L"
+  ],
+  "unit" : "cm",
+  "rowNames" : [
+      "Length"
+  ],
+  "measurementChart" : "2"
+}
 ```
 
 ## Error example
 
 ```http
-   HTTP/1.1 404 Not Found
-   Content-type: application/json
+HTTP/1.1 404 Not Found
+Content-type: application/json
 
-   {
-      "errors" : {
-         "measurementChart" : "not found"
-      }
-   }
+{
+  "errors" : {
+      "measurementChart" : "not found"
+  }
+}
 ```

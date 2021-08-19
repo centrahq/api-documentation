@@ -387,29 +387,29 @@ We then start to handle the `updateShippingAddress`. We know that we will get `s
 
 ```js
 // in StripePaymentIntents-component:
-    const { countryChangeRequest: countryChange, countryStateChangeRequest: countryStateChange } = this.props;
+const { countryChangeRequest: countryChange, countryStateChangeRequest: countryStateChange } = this.props;
 
-    const { shippingCountry, shippingState } = event.detail;
+const { shippingCountry, shippingState } = event.detail;
 ```
 
 We can then run these two different requests based on if the `shippingState` was provided:
 
 ```js
-    if (shippingState) {
-        countryStateChange({
-            countryCode: shippingCountry,
-            stateCode: shippingState,
-            formName: FormNames.shippingAddress,
-            onComplete: this.changeShippingAddressCompleted
-        });
-    } else {
-        countryChange({
-            countryCode: shippingCountry,
-            formName: FormNames.shippingAddress,
-            onComplete: this.changeShippingAddressCompleted
-        });
-    }
+if (shippingState) {
+    countryStateChange({
+        countryCode: shippingCountry,
+        stateCode: shippingState,
+        formName: FormNames.shippingAddress,
+        onComplete: this.changeShippingAddressCompleted
+    });
+} else {
+    countryChange({
+        countryCode: shippingCountry,
+        formName: FormNames.shippingAddress,
+        onComplete: this.changeShippingAddressCompleted
+    });
   }
+}
 ```
 
 We also add the `onComplete` here for the response action to directly give us a callback when the response is back. This could be done using additional actions also, but this is to simplify the flow.
@@ -436,33 +436,33 @@ fromPromise$(rest.httpPut(`/countries/${action.payload.countryCode}`))
 The `onComplete`-triggers our `changeShippingAddressCompleted` function with the response data. This function will be the one triggering the `centra_checkout_shipping_address_callback` to update the payment request.
 
 ```js
-  changeShippingAddressCompleted = (response: any) => {
-    this.sendCentraEvent('centra_checkout_shipping_address_response', response);
-  }
+changeShippingAddressCompleted = (response: any) => {
+  this.sendCentraEvent('centra_checkout_shipping_address_response', response);
+}
 ```
 
 And this will be our `sendCentraEvent`-wrapper:
 
 ```js
-  sendCentraEvent = (eventType: string, data: any) => {
-    let returnObject = {};
-    if (data && data.selection && data.selection.totals) {
-        returnObject = {
-            country: data.location.country,
-            currency: data.selection.currency,
-            currencyDenominator: data.selection.currencyFormat.denominator,
-            grandTotalPriceAsNumber: data.selection.totals.grandTotalPriceAsNumber,
-            shippingMethod: data.selection.shippingMethod,
-            shippingMethodsAvailable: data.shippingMethods
-        };
-    } else {
-        returnObject = {
-            error: true
-        };
-    }
-    const shippingUpdateEvent = new CustomEvent(eventType, { detail: returnObject });
-    document.dispatchEvent(shippingUpdateEvent);
+sendCentraEvent = (eventType: string, data: any) => {
+  let returnObject = {};
+  if (data && data.selection && data.selection.totals) {
+      returnObject = {
+          country: data.location.country,
+          currency: data.selection.currency,
+          currencyDenominator: data.selection.currencyFormat.denominator,
+          grandTotalPriceAsNumber: data.selection.totals.grandTotalPriceAsNumber,
+          shippingMethod: data.selection.shippingMethod,
+          shippingMethodsAvailable: data.shippingMethods
+      };
+  } else {
+      returnObject = {
+          error: true
+      };
   }
+  const shippingUpdateEvent = new CustomEvent(eventType, { detail: returnObject });
+  document.dispatchEvent(shippingUpdateEvent);
+}
 ```
 
 This means we will send back an error-event if we did not get any `selection` or `selection.totals` in the response, to make the payment request fail.
@@ -470,13 +470,13 @@ This means we will send back an error-event if we did not get any `selection` or
 We can now do a similar implementation to "Change shipping method". We would add our `updateShippingMethod` to the `StripePaymentIntents`-component: 
 
 ```js
-  updateShippingMethod = (event: any) => {
-    const { shippingMethodChangeRequest: shippingMethodChange } = this.props;
-    shippingMethodChange({
-        shippingMethod: event.detail.shippingMethod,
-        onComplete: this.changeShippingMethodCompleted
-    });
-  }
+updateShippingMethod = (event: any) => {
+  const { shippingMethodChangeRequest: shippingMethodChange } = this.props;
+  shippingMethodChange({
+      shippingMethod: event.detail.shippingMethod,
+      onComplete: this.changeShippingMethodCompleted
+  });
+}
 ```
 
 And in our `shippingMethodChange`-action we would instead:
@@ -489,9 +489,9 @@ return fromPromise$(rest.httpPut(`/shipping-methods/${shippingMethod}`))
 The `onComplete: thischangeShippingMethodCompleted` would run with the payload provided when completed and we would just trigger our `sendCentraEvent`-trigger with a different event type:
 
 ```js
-  changeShippingMethodCompleted = (response: any) => {
-    this.sendCentraEvent('centra_checkout_shipping_method_response', response);
-  }
+changeShippingMethodCompleted = (response: any) => {
+  this.sendCentraEvent('centra_checkout_shipping_method_response', response);
+}
 ```
 
 You should now be able to launch the payment button, change the address inside it, and select the different shipping options available. This should also reload the total amount of the request:
@@ -503,7 +503,7 @@ You should now be able to launch the payment button, change the address inside i
 We will now handle the final event happening when payment is completed in the popup by the customer. The customer has selected the shipping address, shipping method, and payment option. They now click confirm for the payment to finalize. We previously registered the following handler:
 
 ```js
-    document.addEventListener('centra_checkout_payment_callback', this.paymentSelected);
+document.addEventListener('centra_checkout_payment_callback', this.paymentSelected);
 ```
 
 Which is the one that will trigger now.
@@ -542,19 +542,19 @@ The following data is returned in this event:
 We would take the event data, and create a `checkoutRequest` based on the data provided. This data would then be sent to the `POST /payment` in the Centra API.
 
 ```js
-  paymentSelected = (event: any) => {
-    const { checkoutRequest: checkout } = this.props;
-    const { paymentMethodSpecificFields, paymentMethod } = event.detail;
-    const { billingAddress: billingAddressData, shippingAddress: shippingAddressData } = event.detail;
-    const billingAddress: IAddress = Address.create(billingAddressData);
-    const shippingAddress: IAddress = Address.create(shippingAddressData);
-    checkout({
-      paymentMethodSpecificFields,
-      paymentMethod: paymentMethod,
-      billingAddress: billingAddress,
-      shippingAddress: shippingAddress,
-    });
-  }
+paymentSelected = (event: any) => {
+  const { checkoutRequest: checkout } = this.props;
+  const { paymentMethodSpecificFields, paymentMethod } = event.detail;
+  const { billingAddress: billingAddressData, shippingAddress: shippingAddressData } = event.detail;
+  const billingAddress: IAddress = Address.create(billingAddressData);
+  const shippingAddress: IAddress = Address.create(shippingAddressData);
+  checkout({
+    paymentMethodSpecificFields,
+    paymentMethod: paymentMethod,
+    billingAddress: billingAddress,
+    shippingAddress: shippingAddress,
+  });
+}
 ```
 
 This request would then result in the common [`PaymentActionResponse`, explained in the Swagger UI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) and in [Payment Method flows](https://docs.centra.com/guides/shop-api/payment-method-flows) and does not differ for Stripe specifically.

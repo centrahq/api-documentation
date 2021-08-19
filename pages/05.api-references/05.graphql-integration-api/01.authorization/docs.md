@@ -96,7 +96,7 @@ curl "${BASE_URL}/graphql" \
 
 One way to authorize the request is to provide an `Authorization` header:
 
-```
+```http
 POST *base*/graphql
 
 Authorization: Bearer <access token>
@@ -116,7 +116,7 @@ curl "${BASE_URL}/graphql" \
 
 Another way to authorize request to GraphGL API is to add a cookie named `graphql-access` with only the access token as value.
 
-```
+```http
 POST *base*/graphql
 
 Cookie: graphql-access=<access token>

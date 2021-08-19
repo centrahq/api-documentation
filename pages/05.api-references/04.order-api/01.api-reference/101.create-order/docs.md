@@ -8,9 +8,7 @@ taxonomy:
 
 # Create order
 
-```text
-POST  *base*/order
-```
+`POST  *base*/order`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will insert a new order directly into Centra bypassing any needs of a payment. This API could be used to directly import orders from external systems. The API-plugin needs to have "Allow Order Create" set as `true` to allow this call to be made.
@@ -276,50 +274,50 @@ If an external invoice was created, insert the URL to the invoice here.
 ## Request example
 
 ```http
-   POST <base>/order HTTP/1.1
-   Content-type: application/json
+POST <base>/order HTTP/1.1
+Content-type: application/json
 
-   {
-      "invoiceAddress": {
-          "country": "SE",
-          "firstName": "John",
-          "lastName": "Smith",
-          "address": "12 Alto Road",
-          "coaddress": "c/o Peter",
-          "zipcode": "90212",
-          "city": "San Francisco",
-          "email": "x@example.com"
-      },
-      "deliveryAddress": {
-          "country": "US",
-          "firstName": "John",
-          "lastName": "Smith",
-          "address": "1500 California St",
-          "coaddress": "c/o Peter",
-          "zipcode": "90210",
-          "city": "San Francisco",
-          "state": "CA"
-      },
-      "products": [
-          {
-              "qty": 2,
-              "ean": "ABCDEFGHIJKL",
-              "unitPrice": 14.11,
-              "originalPrice": 100.11,
-              "itemText" : {
-                "sku": "SPECIAL-SKU-FOR-THIS-ONE",
-                "product": "A special product",
-                "variant": ""
-              }
-          },
-          {
-              "qty": 1,
-              "sku": "SKUASKUBSKUC",
-              "unitPrice": 12.11,
-              "originalPrice": 50.22
+{
+  "invoiceAddress": {
+      "country": "SE",
+      "firstName": "John",
+      "lastName": "Smith",
+      "address": "12 Alto Road",
+      "coaddress": "c/o Peter",
+      "zipcode": "90212",
+      "city": "San Francisco",
+      "email": "x@example.com"
+  },
+  "deliveryAddress": {
+      "country": "US",
+      "firstName": "John",
+      "lastName": "Smith",
+      "address": "1500 California St",
+      "coaddress": "c/o Peter",
+      "zipcode": "90210",
+      "city": "San Francisco",
+      "state": "CA"
+  },
+  "products": [
+      {
+          "qty": 2,
+          "ean": "ABCDEFGHIJKL",
+          "unitPrice": 14.11,
+          "originalPrice": 100.11,
+          "itemText" : {
+            "sku": "SPECIAL-SKU-FOR-THIS-ONE",
+            "product": "A special product",
+            "variant": ""
           }
-      ]
-    }
+      },
+      {
+          "qty": 1,
+          "sku": "SKUASKUBSKUC",
+          "unitPrice": 12.11,
+          "originalPrice": 50.22
+      }
+  ]
+}
 ```
 
 The response will return an array of orders when the call was successful (unless you used `createOnly` set as `true`). This is because the order might have been split into different orders depending on rules inside Centra.
@@ -347,31 +345,31 @@ If ``status`` returns ``no``, this value should send back a message why it faile
 ## Response examples
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-      "status": "ok",
-      "orders": [
-        1234
-      ]
-   }
+{
+  "status": "ok",
+  "orders": [
+    1234
+  ]
+}
 ```
 
 If `createOnly` is set to `true`, the response looks like this:
 
 ```json
-   {
-     "status": "ok",
-     "order": 1234
-   }
+{
+  "status": "ok",
+  "order": 1234
+}
 ```
 
 ## Error example
 
 ```json
-   {
-     "status": "no",
-     "msg": "Message about why the order failed to be created."
-   }
+{
+  "status": "no",
+  "msg": "Message about why the order failed to be created."
+}
 ```

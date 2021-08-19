@@ -8,13 +8,9 @@ taxonomy:
 
 # Get collections
 
-```text
-GET  *base*/collections
-```
+`GET  *base*/collections`
 
-```text
-GET  *base*/collections/*collectionId*
-```
+`GET  *base*/collections/*collectionId*`
 
 Fetches a specific collection referenced by its ID, or the **full** list of collections.
 
@@ -49,40 +45,40 @@ The URI for this collection.
 ## Response example
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-     "20": {
-       "name" : "AW15",
-       "collection" : "20",
-       "uri" : "aw15"
-     }
-   }
+{
+  "20": {
+    "name" : "AW15",
+    "collection" : "20",
+    "uri" : "aw15"
+  }
+}
 ```
 
 Fetching a specific collection using `collectionId`:
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-      "name" : "AW15",
-      "collection" : "20",
-      "uri" : "aw15"
-   }
+{
+  "name" : "AW15",
+  "collection" : "20",
+  "uri" : "aw15"
+}
 ```
 
 ## Error example
 
 ```http
-   HTTP/1.1 404 Not Found
-   Content-type: application/json
+HTTP/1.1 404 Not Found
+Content-type: application/json
 
-   {
-      "errors" : {
-         "collection" : "not found"
-      }
-   }
+{
+  "errors" : {
+      "collection" : "not found"
+  }
+}
 ```

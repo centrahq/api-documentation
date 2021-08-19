@@ -8,9 +8,7 @@ taxonomy:
 
 # Get supplier order
 
-```text
-GET *base*/supplier-orders/*supplierOrderId*
-```
+`GET *base*/supplier-orders/*supplierOrderId*`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 List the products inside a supplier order.
@@ -23,9 +21,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http
-   GET <base>/supplier-orders/*supplierOrderId* HTTP/1.1
-```
+`GET <base>/supplier-orders/*supplierOrderId* HTTP/1.1`
 
 ## Response
 
@@ -82,51 +78,51 @@ The currency code for the cost / pcs. ISO-Alpha-2 (``SE``, ``US``, ``GB`` etc).
 ## Response example
 
 ```json
-   {
-     "status": "ok",
-     "order": {
-       "orderId": "957",
-       "supplierName": "Falca",
-       "supplierCountry": "ES",
-       "created": "2019-01-28 01:15",
-       "ETD": "2019-03-31 15:15",
-       "ETA": "2019-04-05 20:15",
-       "message": "Text entered by centra admin",
-       "productsQty": 20000,
-       "products": [
-         {
-           "sku": "12019005",
-           "variantSku": "A",
-           "sizeSku": "",
-           "brand": "Kronan",
-           "collection": "ALL",
-           "product": "Bike Lady 0 speed BLACK",
-           "variant": "SVART",
-           "size": "ONE SIZE",
-           "ean": "898989891212",
-           "weight": 22,
-           "weightUnit": "kg",
-           "quantity": 122
-           "cost": "9.40",
-           "costCurrency": "USD"
-         },
-         {
-           "sku": "12019007",
-           "variantSku": "A",
-           "sizeSku": "",
-           "brand": "Kronan",
-           "collection": "ALL",
-           "product": "Bike Lady 0 speed BLUE",
-           "variant": "BLUE",
-           "size": "ONE SIZE",
-           "ean": "898989891213",
-           "weight": 22,
-           "weightUnit": "kg",
-           "quantity": 342,
-           "cost": "12.40",
-           "costCurrency": "EUR"
-         }
-       ]
-     }
-   }
+{
+  "status": "ok",
+  "order": {
+    "orderId": "957",
+    "supplierName": "Falca",
+    "supplierCountry": "ES",
+    "created": "2019-01-28 01:15",
+    "ETD": "2019-03-31 15:15",
+    "ETA": "2019-04-05 20:15",
+    "message": "Text entered by centra admin",
+    "productsQty": 20000,
+    "products": [
+      {
+        "sku": "12019005",
+        "variantSku": "A",
+        "sizeSku": "",
+        "brand": "Kronan",
+        "collection": "ALL",
+        "product": "Bike Lady 0 speed BLACK",
+        "variant": "SVART",
+        "size": "ONE SIZE",
+        "ean": "898989891212",
+        "weight": 22,
+        "weightUnit": "kg",
+        "quantity": 122
+        "cost": "9.40",
+        "costCurrency": "USD"
+      },
+      {
+        "sku": "12019007",
+        "variantSku": "A",
+        "sizeSku": "",
+        "brand": "Kronan",
+        "collection": "ALL",
+        "product": "Bike Lady 0 speed BLUE",
+        "variant": "BLUE",
+        "size": "ONE SIZE",
+        "ean": "898989891213",
+        "weight": 22,
+        "weightUnit": "kg",
+        "quantity": 342,
+        "cost": "12.40",
+        "costCurrency": "EUR"
+      }
+    ]
+  }
+}
 ```

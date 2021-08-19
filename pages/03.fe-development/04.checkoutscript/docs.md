@@ -18,7 +18,7 @@ Below is an example of how the EventListener can look, where `var url` is your e
 * `PUT {api-url}/selections/{selection}/checkout-fields` in Shop API, or
 * `PUT {api-url}/payment-fields` in Checkout API.
 
-```
+```js
 document.addEventListener('centra_checkout_callback', function(origdata) {
     var url = '{your-endpoint-which-does-PUT-checkout/payment-fields}'
     $.ajax(url, {
@@ -38,7 +38,7 @@ When you change the selection in the checkout whilst Klarna Checkout or Ingrid p
 
 Here's an example:
 
-```
+```js
 // Perform quantity change of an selection line using ajax
 function updateSelectionLine(lineID, data) {
 	CentraCheckout.suspend() //suspend Klarna and Shipwallet

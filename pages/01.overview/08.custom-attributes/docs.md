@@ -21,18 +21,18 @@ The normal attribute on a product or variant is one which is mapped to an attrib
 The structure looks something like this:
 
 ```php
-   <?php
-   $usr_conf['ATTRIBUTE_TYPES'] = [
-       'sh_swatch' => [
-         'desc' => 'Showroom Color Swatch',
-         'readonly' => true,
-         'group' => 'variation',
-         'elements' => [
-             'color' => ['desc' => 'Image', 'type' => 'image', 'size' => '60x60'],
-             'color_text' => ['desc' => 'Color', 'type' => 'textarea']
-         ],
-       ]
-   ];
+<?php
+$usr_conf['ATTRIBUTE_TYPES'] = [
+    'sh_swatch' => [
+        'desc' => 'Showroom Color Swatch',
+        'readonly' => true,
+        'group' => 'variation',
+        'elements' => [
+            'color' => ['desc' => 'Image', 'type' => 'image', 'size' => '60x60'],
+            'color_text' => ['desc' => 'Color', 'type' => 'textarea']
+        ],
+    ]
+];
 ```
 
 You can then create a new Showroom Color Swatch-attribute under `CATALOG / ATTRIBUTES`:
@@ -46,22 +46,22 @@ When this attribute is saved, this attribute option will be listed under the `Sh
 In the API, the values will come out like this:
 
 ```json
-   {
-      "countryOfOriginName": "",
-      "sh_swatch": {
-        "color": {
-          "type": "image",
-          "url": "https://.../client/dynamic/attributes/image_9471.jpg",
-          "width": "60",
-          "height": "60",
-          "mimeType": "image/jpeg"
-        },
-        "color_text": "#8b0000"
-      },
-      "markets": {
-         "...": "..."
-      }
-   }
+{
+    "countryOfOriginName": "",
+    "sh_swatch": {
+    "color": {
+        "type": "image",
+        "url": "https://.../client/dynamic/attributes/image_9471.jpg",
+        "width": "60",
+        "height": "60",
+        "mimeType": "image/jpeg"
+    },
+    "color_text": "#8b0000"
+    },
+    "markets": {
+        "...": "..."
+    }
+}
 ```
 
 ### Dynamic attributes
@@ -73,30 +73,30 @@ It used to be that if you had `"readonly": false` on the attribute, only the ele
 [/notice-box]
 
 ```php
-   <?php
-   $usr_conf['ATTRIBUTE_TYPES'] = [
-       'limited_edition' => [
-         'desc' => 'Limited Edition',
-         'group' => 'product',
-         'readonly' => false,
-         'elements' => [
-             'text' => ['desc' => 'Limited Edition', 'type' => 'boolean',
-                 'options' => [[1,'Yes'],[0,'No']]
-             ],
-         ],
-       ],
-       'promo' => [
-         'desc' => 'Promotion',
-          'group' => 'product',
-          'readonly' => false,
-          'elements' => [
-              'sale' => ['desc' => 'Sale', 'type' => 'boolean',
-                  'options' => [[1,'Yes'],[0,'No']]],
-              'preorder' => ['desc' => 'Pre-order', 'type' => 'boolean',
-                  'options' => [[1,'Yes'],[0,'No']]]
-          ],
+<?php
+$usr_conf['ATTRIBUTE_TYPES'] = [
+    'limited_edition' => [
+        'desc' => 'Limited Edition',
+        'group' => 'product',
+        'readonly' => false,
+        'elements' => [
+            'text' => ['desc' => 'Limited Edition', 'type' => 'boolean',
+                'options' => [[1,'Yes'],[0,'No']]
+            ],
         ],
-   ];
+    ],
+    'promo' => [
+        'desc' => 'Promotion',
+        'group' => 'product',
+        'readonly' => false,
+        'elements' => [
+            'sale' => ['desc' => 'Sale', 'type' => 'boolean',
+                'options' => [[1,'Yes'],[0,'No']]],
+            'preorder' => ['desc' => 'Pre-order', 'type' => 'boolean',
+                'options' => [[1,'Yes'],[0,'No']]]
+        ],
+    ],
+];
 ```
 
 These will show up on the product directly with a `Yes / No`-option:
@@ -135,18 +135,18 @@ The `group` on the attribute inside the `config.php` specifies where the attribu
 Element-type is inside the `elements`-property for the attribute `config.php`:
 
 ```php
-   <?php
-   $usr_conf['ATTRIBUTE_TYPES'] = [
-       'limited_edition' => [
-         'desc' => 'This is the attribute',
-         'group' => 'product',
-         'elements' => [
-             'text' => ['desc' => 'This is the element-type', 'type' => 'boolean',
-                 'options' => [[1,'Yes'],[0,'No']]
-             ],
-         ],
-       ],
-   ];
+<?php
+$usr_conf['ATTRIBUTE_TYPES'] = [
+    'limited_edition' => [
+        'desc' => 'This is the attribute',
+        'group' => 'product',
+        'elements' => [
+            'text' => ['desc' => 'This is the element-type', 'type' => 'boolean',
+                'options' => [[1,'Yes'],[0,'No']]
+            ],
+        ],
+    ],
+];
 ```
 
 The following element types exist today. Not all of them are supported for the Dynamic attributes (which are shown inline on each product/variant), so the support for the different options are listed below:
@@ -166,18 +166,18 @@ The following element types exist today. Not all of them are supported for the D
 Selectable mapped attributes can be configured so that multiple values can be selected at once. This is achieved by adding parameter `'multi' => true` to the attribute. For example, a multi-choice `Label` attribute can be configured like this:
 
 ```php
-    'label' => [
-        'desc' => 'Label',
-        'group' => 'variation',
-        'readonly' => true,
-        'multi' => true,
-        'elements' => [
-            'value' => [
-                'desc' => 'Label description',
-                'type' => 'text'
-            ],
+'label' => [
+    'desc' => 'Label',
+    'group' => 'variation',
+    'readonly' => true,
+    'multi' => true,
+    'elements' => [
+        'value' => [
+            'desc' => 'Label description',
+            'type' => 'text'
         ],
     ],
+],
 ```
 
 In Centra, the attribute will look like this:
@@ -187,9 +187,9 @@ In Centra, the attribute will look like this:
 Its values will be returned as an object in API response:
 
 ```json
- "label": {
-     "3": "Eco",
-     "1": "Bio"
+"label": {
+    "3": "Eco",
+    "1": "Bio"
  },
 ```
 
@@ -200,26 +200,26 @@ The API-output differs between Dynamic and Mapped attributes.
 **Mapped attributes** will always have a parent element named as the attribute-key. This is how the elements look like from the mapped attributes:
 
 ```php
-   <?php
-   $usr_conf['ATTRIBUTE_TYPES'] = [
-     'attribute_field' => [
-         'desc' => 'This is the attribute',
-         'group' => 'product',
-         'readonly' => true,
-         'elements' => [
-             'text' => ['desc' => 'Text', 'type' => 'input'],
-             'textarea' => ['desc' => 'Textarea', 'type' => 'textarea'],
-             'boolean' => ['desc' => 'Boolean', 'type' => 'boolean',
-                 'options' => [[1,'Yes'],[0,'No']]
-             ],
-             'select' => ['desc' => 'Select', 'type' => 'select',
-                 'options' => [[0,'Select'],['aa','AA'],['bb','BB']]
-             ],
-             'image' => ['desc' => 'Image', 'type' => 'image', 'size' => '600x400'],
-             'file' => ['desc' => 'File', 'type' => 'file']
-         ],
-     ],
-   ];
+<?php
+$usr_conf['ATTRIBUTE_TYPES'] = [
+    'attribute_field' => [
+        'desc' => 'This is the attribute',
+        'group' => 'product',
+        'readonly' => true,
+        'elements' => [
+            'text' => ['desc' => 'Text', 'type' => 'input'],
+            'textarea' => ['desc' => 'Textarea', 'type' => 'textarea'],
+            'boolean' => ['desc' => 'Boolean', 'type' => 'boolean',
+                'options' => [[1,'Yes'],[0,'No']]
+            ],
+            'select' => ['desc' => 'Select', 'type' => 'select',
+                'options' => [[0,'Select'],['aa','AA'],['bb','BB']]
+            ],
+            'image' => ['desc' => 'Image', 'type' => 'image', 'size' => '600x400'],
+            'file' => ['desc' => 'File', 'type' => 'file']
+        ],
+    ],
+];
 ```
 
 ![](attribute-mapping-all.png)
@@ -227,25 +227,25 @@ The API-output differs between Dynamic and Mapped attributes.
 This is how the response from the API looks like:
 
 ```json
-   {
-     "attribute_field": {
-       "text": "Text",
-       "textarea": "Textarea",
-       "boolean": "1",
-       "select": "bb",
-       "image": {
-         "type": "image",
-         "url": "https://.../client/dynamic/attributes/image1_4265_png.jpg",
-         "width": "600",
-         "height": "400",
-         "mimeType": "image/jpeg"
-       },
-       "file": {
-         "type": "file",
-         "url": "https://.../client/dynamic/attributes/6/image1.png"
-       }
-     }
-   }
+{
+    "attribute_field": {
+    "text": "Text",
+    "textarea": "Textarea",
+    "boolean": "1",
+    "select": "bb",
+    "image": {
+        "type": "image",
+        "url": "https://.../client/dynamic/attributes/image1_4265_png.jpg",
+        "width": "600",
+        "height": "400",
+        "mimeType": "image/jpeg"
+    },
+    "file": {
+        "type": "file",
+        "url": "https://.../client/dynamic/attributes/6/image1.png"
+    }
+    }
+}
 ```
 
 **Dynamic attributes** however, will be listed inline on the product inside the API.
@@ -255,17 +255,17 @@ Remember that only the element with the key `text` will be shown and only if the
 [/notice-box]
 
 ```php
-   <?php
-   $usr_conf['ATTRIBUTE_TYPES'] = [
-       'attribute_name' => [
-         'desc' => 'This is the attribute',
-         'group' => 'product',
-         'readonly' => false,
-         'elements' => [
-             'text' => ['desc' => 'Text', 'type' => 'input'],
-         ],
-       ],
-   ];
+<?php
+$usr_conf['ATTRIBUTE_TYPES'] = [
+    'attribute_name' => [
+        'desc' => 'This is the attribute',
+        'group' => 'product',
+        'readonly' => false,
+        'elements' => [
+            'text' => ['desc' => 'Text', 'type' => 'input'],
+        ],
+    ],
+];
 ```
 
 ![](attribute-text-dynamic.png)
@@ -273,9 +273,9 @@ Remember that only the element with the key `text` will be shown and only if the
 This is how it looks like in the API:
 
 ```json
-   {
-     "attribute_name": "This is the text"
-   }
+{
+    "attribute_name": "This is the text"
+}
 ```
 
 The [dynamic attribute element types](#attribute-element-types) supported are all returning simple strings, so they look the same as per above.
@@ -291,17 +291,17 @@ We recommend using `snake_case` for all your custom attributes API names. Since 
 Description
 
 ```php
-    '' => [
-        'desc' => '',
-        'group' => '',
-        'readonly' => ,
-        'elements' => [
-            '' => [
-                'desc' => '',
-                'type' => ''
-            ]
+'' => [
+    'desc' => '',
+    'group' => '',
+    'readonly' => ,
+    'elements' => [
+        '' => [
+            'desc' => '',
+            'type' => ''
         ]
     ]
+]
 ```
 
 This displays like this:  
@@ -312,17 +312,17 @@ This displays like this:
 File upload is easy to manage for a limited number of videos.
 
 ```php
-    'pr_cat_video' => [
-        'desc' => 'Product Category Video',
-        'group' => 'product',
-        'readonly' => true,
-        'elements' => [
-            'file' => [
-                'desc' => 'Category video',
-                'type' => 'file'
-            ]
+'pr_cat_video' => [
+    'desc' => 'Product Category Video',
+    'group' => 'product',
+    'readonly' => true,
+    'elements' => [
+        'file' => [
+            'desc' => 'Category video',
+            'type' => 'file'
         ]
     ]
+]
 ```
 
 After you add and upload the video files in Catalog -> Attributes, you will see the list of options in the Product page:  
@@ -333,17 +333,17 @@ After you add and upload the video files in Catalog -> Attributes, you will see 
 When the amount of videos is un-manageable, like one video per product, it might be better to use a dynamic input field to store video URL instead of a file
 
 ```php
-    'pr_video' => [
-        'desc' => 'Product Video',
-        'group' => 'product',
-        'readonly' => false,
-        'elements' => [
-            'url' => [
-                'desc' => 'Product Video URL',
-                'type' => 'input'
-            ]
+'pr_video' => [
+    'desc' => 'Product Video',
+    'group' => 'product',
+    'readonly' => false,
+    'elements' => [
+        'url' => [
+            'desc' => 'Product Video URL',
+            'type' => 'input'
         ]
     ]
+]
 ```
 
 This will look like this in the Product page:  
@@ -354,17 +354,17 @@ This will look like this in the Product page:
 Required for some products at customs. Might differ between product categories and shipping countries.
 
 ```php
-    'pr_dangerous' => [
-        'desc' => 'Dangerous goods',
-        'group' => 'product',
-        'readonly' => false,
-        'elements' => [
-            'value' => [
-                'desc' => 'Dangerous goods code',
-                'type' => 'input'
-            ]
+'pr_dangerous' => [
+    'desc' => 'Dangerous goods',
+    'group' => 'product',
+    'readonly' => false,
+    'elements' => [
+        'value' => [
+            'desc' => 'Dangerous goods code',
+            'type' => 'input'
         ]
     ]
+]
 ```
 
 It renders as a simple input field in the UI:  
@@ -375,26 +375,26 @@ It renders as a simple input field in the UI:
 Remember, Variant-level attribute use group `variation`, not ~variant~.
 
 ```php
-    'sh_swatch' => [
-        'desc' => 'Showroom Color Swatch',
-        'group' => 'variation',
-        'readonly' => true,
-        'elements' => [
-            'desc' => [
-                'desc' => 'Color',
-                'type' => 'input'
-            ],
-            'hex' => [
-                'desc' => 'Hex',
-                'type' => 'input'
-            ],
-            'image' => [
-                'desc' => 'Image',
-                'type' => 'image',
-                'size' => '50x50'
-            ]
+'sh_swatch' => [
+    'desc' => 'Showroom Color Swatch',
+    'group' => 'variation',
+    'readonly' => true,
+    'elements' => [
+        'desc' => [
+            'desc' => 'Color',
+            'type' => 'input'
+        ],
+        'hex' => [
+            'desc' => 'Hex',
+            'type' => 'input'
+        ],
+        'image' => [
+            'desc' => 'Image',
+            'type' => 'image',
+            'size' => '50x50'
         ]
     ]
+]
 ```
 
 Swatch definitions need to be configured in Catalog -> Attributes:  
@@ -408,23 +408,23 @@ Swatch definitions need to be configured in Catalog -> Attributes:
 Booleans are normally dynamic, not pre-defined. Remember, default value(s) (index `0`) will _not_ be returned in the API.
 
 ```php
-    'var_promo' => [
-        'desc' => 'Promotion',
-        'group' => 'variation',
-        'readonly' => false,
-        'elements' => [
-            'sale' => [
-                'desc' => 'Sale',
-                'type' => 'boolean',
-                'options' => [['0','No'],['1','Yes']]
-            ],
-            'preorder' => [
-                'desc' => 'Pre-order',
-                'type' => 'boolean',
-                'options' => [['0','No'],['1','Yes']]
-            ]
+'var_promo' => [
+    'desc' => 'Promotion',
+    'group' => 'variation',
+    'readonly' => false,
+    'elements' => [
+        'sale' => [
+            'desc' => 'Sale',
+            'type' => 'boolean',
+            'options' => [['0','No'],['1','Yes']]
+        ],
+        'preorder' => [
+            'desc' => 'Pre-order',
+            'type' => 'boolean',
+            'options' => [['0','No'],['1','Yes']]
         ]
     ]
+]
 ```
 
 ![PromotionYesNo](example-promotion-yes-no.png)
@@ -438,18 +438,18 @@ Please notice, the keys are enums, not integers. It's `['0','Select']`, not `[0,
 [/notice-box]
 
 ```php
-    'pr_gender' => [
-        'desc' => 'Product gender',
-        'group' => 'product',
-        'readonly' => false,
-        'elements' => [
-            'value' => [
-                'desc' => 'Product gender',
-                'type' => 'select',
-                'options' => [['0','Select'],['fem','Female'],['male','Male'],['unisex','Unisex']],
-            ]
+'pr_gender' => [
+    'desc' => 'Product gender',
+    'group' => 'product',
+    'readonly' => false,
+    'elements' => [
+        'value' => [
+            'desc' => 'Product gender',
+            'type' => 'select',
+            'options' => [['0','Select'],['fem','Female'],['male','Male'],['unisex','Unisex']],
         ]
     ]
+]
 ```
 
 The select then looks like this in the UI:  
@@ -460,22 +460,22 @@ The select then looks like this in the UI:
 For attributes which are pre-defined, multiple values can be made selectable at once.
 
 ```php
-    'pr_material' => [
-        'desc' => 'Product material(s)',
-        'group' => 'product',
-        'readonly' => true,
-        'multi' => true,
-        'elements' => [
-            'name' => [
-                'desc' => 'Material name',
-                'type' => 'input'
-            ],
-            'description' => [
-                'desc' => 'Material description',
-                'type' => 'textarea'
-            ]
+'pr_material' => [
+    'desc' => 'Product material(s)',
+    'group' => 'product',
+    'readonly' => true,
+    'multi' => true,
+    'elements' => [
+        'name' => [
+            'desc' => 'Material name',
+            'type' => 'input'
+        ],
+        'description' => [
+            'desc' => 'Material description',
+            'type' => 'textarea'
         ]
     ]
+]
 ```
 
 Multi-select snippet looks like this in Centra:  

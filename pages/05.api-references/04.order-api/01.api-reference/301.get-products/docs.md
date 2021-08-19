@@ -8,9 +8,7 @@ taxonomy:
 
 # Get products
 
-```text
-GET  *base*/products
-```
+`GET  *base*/products`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will return product data from Centra with categories.
@@ -52,8 +50,8 @@ Response in xml format instead of json.
 ## Request example
 
 ```http
-   GET <base>/products HTTP/1.1
-   Content-type: application/json
+GET <base>/products HTTP/1.1
+Content-type: application/json
 ```
 
 ## Response
@@ -199,136 +197,136 @@ Will contain a URL to the next page.
 ## Response example
 
 ```json
-   {
-     "status": "ok",
-     "products": [
-       {
-         "sku": "M411-740",
-         "productId": 232,
-         "variantSku": "",
-         "variantId": 1211,
-         "sizeSku": "",
-         "brand": "Odd Molly",
-         "collection": "Molly Prefall 2011",
-         "product": "bakers cross 3\/4 blouse",
-         "variant": "LITE ROSE",
-         "size": "3",
-         "stockItemId": 3424,
-         "ean": "",
-         "weight": 0.17,
-         "weightUnit": "kg",
-         "countryOfOrigin": "PT",
-         "harmCode": "6206300090",
-         "harmDescription": "Cotton - blouse",
-         "active": 0,
-         "folder": "Folder 1 / Folder 2"
-         "name": "Bakers Cross",
-         "description": "",
-         "shortDescription": "",
-         "comment": "",
-         "store": "Retail",
-         "categories": [
-           "Collection \/ Jackets\/Outerwear",
-           "New Arrivals"
-         ],
-         "images": [
-           "https:\/\/...\/images\/1_0d2f67cd05.jpg",
-           "https:\/\/...\/images\/1_318da2ad06.jpg",
-           "https:\/\/...\/images\/1_c4e1c20d34.jpg"
-         ],
-         "prices": [
-           {
-             "id": "36",
-             "price": "329.00",
-             "pricelist": "EUR Europe",
-             "currency": "EUR",
-             "campaigns": [
-               {
-                 "id": "40",
-                 "campaign": "OUTLET 50% NY",
-                 "price": 164.5
-               }
-             ]
-           },
-           {
-             "id": "35",
-             "price": "269.00",
-             "pricelist": "GBP",
-             "currency": "GBP",
-             "campaigns": [
-               {
-                 "id": "40",
-                 "campaign": "OUTLET 50% NY",
-                 "price": 134.5
-               }
-             ]
-           }
-         ]
-       },
-       {
-         "sku": "M411-740",
-         "productId": 232,
-         "variantSku": "",
-         "variantId": 1211,
-         "sizeSku": "",
-         "brand": "Odd Molly",
-         "collection": "Molly Prefall 2011",
-         "product": "bakers cross 3\/4 blouse",
-         "variant": "LITE ROSE",
-         "size": "4",
-         "stockItemId": 3425,
-         "ean": "",
-         "weight": 0.17,
-         "weightUnit": "kg",
-         "countryOfOrigin": "PT",
-         "harmCode": "6206300090",
-         "harmDescription": "Cotton - blouse",
-         "active": 0,
-         "name": "Bakers Cross",
-         "description": "",
-         "shortDescription": "",
-         "comment": "",
-         "store": "Retail",
-         "categories": [
-           "Collection \/ Jackets\/Outerwear",
-           "New Arrivals"
-         ],
-         "images": [
-           "https:\/\/...\/images\/1_0d2f67cd05.jpg",
-           "https:\/\/...\/images\/1_318da2ad06.jpg",
-           "https:\/\/...\/images\/1_c4e1c20d34.jpg"
-         ]
-         "prices": [
-           {
-             "id": "36",
-             "price": "329.00",
-             "pricelist": "EUR Europe",
-             "currency": "EUR",
-             "campaigns": [
-               {
-                 "id": "40",
-                 "campaign": "OUTLET 50% NY",
-                 "price": 164.5
-               }
-             ]
-           },
-           {
-             "id": "35",
-             "price": "269.00",
-             "pricelist": "GBP",
-             "currency": "GBP",
-             "campaigns": [
-               {
-                 "id": "40",
-                 "campaign": "OUTLET 50% NY",
-                 "price": 134.5
-               }
-             ]
-           }
-         ]
-       }
-     ],
-     "previous": "?limit=10&page=2",
-     "next": "?limit=10&page=3"
-   }
+{
+  "status": "ok",
+  "products": [
+    {
+      "sku": "M411-740",
+      "productId": 232,
+      "variantSku": "",
+      "variantId": 1211,
+      "sizeSku": "",
+      "brand": "Odd Molly",
+      "collection": "Molly Prefall 2011",
+      "product": "bakers cross 3\/4 blouse",
+      "variant": "LITE ROSE",
+      "size": "3",
+      "stockItemId": 3424,
+      "ean": "",
+      "weight": 0.17,
+      "weightUnit": "kg",
+      "countryOfOrigin": "PT",
+      "harmCode": "6206300090",
+      "harmDescription": "Cotton - blouse",
+      "active": 0,
+      "folder": "Folder 1 / Folder 2"
+      "name": "Bakers Cross",
+      "description": "",
+      "shortDescription": "",
+      "comment": "",
+      "store": "Retail",
+      "categories": [
+        "Collection \/ Jackets\/Outerwear",
+        "New Arrivals"
+      ],
+      "images": [
+        "https:\/\/...\/images\/1_0d2f67cd05.jpg",
+        "https:\/\/...\/images\/1_318da2ad06.jpg",
+        "https:\/\/...\/images\/1_c4e1c20d34.jpg"
+      ],
+      "prices": [
+        {
+          "id": "36",
+          "price": "329.00",
+          "pricelist": "EUR Europe",
+          "currency": "EUR",
+          "campaigns": [
+            {
+              "id": "40",
+              "campaign": "OUTLET 50% NY",
+              "price": 164.5
+            }
+          ]
+        },
+        {
+          "id": "35",
+          "price": "269.00",
+          "pricelist": "GBP",
+          "currency": "GBP",
+          "campaigns": [
+            {
+              "id": "40",
+              "campaign": "OUTLET 50% NY",
+              "price": 134.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sku": "M411-740",
+      "productId": 232,
+      "variantSku": "",
+      "variantId": 1211,
+      "sizeSku": "",
+      "brand": "Odd Molly",
+      "collection": "Molly Prefall 2011",
+      "product": "bakers cross 3\/4 blouse",
+      "variant": "LITE ROSE",
+      "size": "4",
+      "stockItemId": 3425,
+      "ean": "",
+      "weight": 0.17,
+      "weightUnit": "kg",
+      "countryOfOrigin": "PT",
+      "harmCode": "6206300090",
+      "harmDescription": "Cotton - blouse",
+      "active": 0,
+      "name": "Bakers Cross",
+      "description": "",
+      "shortDescription": "",
+      "comment": "",
+      "store": "Retail",
+      "categories": [
+        "Collection \/ Jackets\/Outerwear",
+        "New Arrivals"
+      ],
+      "images": [
+        "https:\/\/...\/images\/1_0d2f67cd05.jpg",
+        "https:\/\/...\/images\/1_318da2ad06.jpg",
+        "https:\/\/...\/images\/1_c4e1c20d34.jpg"
+      ]
+      "prices": [
+        {
+          "id": "36",
+          "price": "329.00",
+          "pricelist": "EUR Europe",
+          "currency": "EUR",
+          "campaigns": [
+            {
+              "id": "40",
+              "campaign": "OUTLET 50% NY",
+              "price": 164.5
+            }
+          ]
+        },
+        {
+          "id": "35",
+          "price": "269.00",
+          "pricelist": "GBP",
+          "currency": "GBP",
+          "campaigns": [
+            {
+              "id": "40",
+              "campaign": "OUTLET 50% NY",
+              "price": 134.5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "previous": "?limit=10&page=2",
+  "next": "?limit=10&page=3"
+}
 ```

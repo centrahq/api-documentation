@@ -25,7 +25,7 @@ When you filter and search in the API, you are doing that on the main product pl
 With one related product
 
 ```json
- {
+{
   "product": "3",
   "name": "Tv\u00e5",
   "uri": "tva",

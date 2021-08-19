@@ -8,13 +8,9 @@ taxonomy:
 
 # Get campaign sites
 
-```text
-GET  *base*/campaign-sites
-```
+`GET  *base*/campaign-sites`
 
-```text
-GET  *base*/campaign-sites/*campaignSiteURI*
-```
+`GET  *base*/campaign-sites/*campaignSiteURI*`
 
 Fetches a specific campaign site referenced by its name, or the **full** campaign sites list.
 
@@ -53,28 +49,28 @@ The URI for this campaign site.
 ## Response example
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-      "canada" : {
-         "market" : "16",
-         "name" : "canada",
-         "goTo" : "",
-         "campaignSite" : "canada"
-      }
-   }
+{
+  "canada" : {
+      "market" : "16",
+      "name" : "canada",
+      "goTo" : "",
+      "campaignSite" : "canada"
+  }
+}
 ```
 
 ## Error example
 
 ```http
-   HTTP/1.1 404 Not Found
-   Content-type: application/json
+HTTP/1.1 404 Not Found
+Content-type: application/json
 
-   {
-      "errors" : {
-         "campaignSite" : "not found"
-      }
-   }
+{
+  "errors" : {
+      "campaignSite" : "not found"
+  }
+}
 ```

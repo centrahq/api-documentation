@@ -92,9 +92,7 @@ POST products?pretty
 
 This means products must match:
 
-```
-Free text search for "som" AND category = 709 AND swatch.desc = (Red OR Blue)
-```
+`Free text search for "som" AND category = 709 AND swatch.desc = (Red OR Blue)`
 
 Paging is return 2 products, and skip the first 5.
 
@@ -103,326 +101,326 @@ So how do you know about category 709? Or that swatch.desc can be Red or Blue? T
 Response:
 
 ```json
-   {
-     "token": "esf1p3tgchfg5ggtpqdpgqjtt6",
-     "products": [
-       {
-         "variant": "30372",
-         "name": "Avery solid mohair beanie ice blue",
-         "uri": "avery-solid-mohair-beanie-ice-blue",
-         "sku": "SKU1SKU1",
-         "productSku": "SKU1SKU1",
-         "brand": "1",
-         "brandName": "Some Brand",
-         "brandUri": "some-brand",
-         "collection": "51",
-         "collectionName": "Last Season",
-         "collectionUri": "last-season",
-         "variantName": "smoke",
-         "countryOrigin": "CN",
-         "excerpt": "",
-         "excerptHtml": "",
-         "description": "Oversized beanie in a mohair blend",
-         "descriptionHtml": "<p>Oversized beanie in a mohair blend.",
-         "metaTitle": "Solid Mohair beanie | Some Brand ",
-         "metaDescription": "An oversized beanie in a mohair blend.",
-         "metaKeywords": "Women\\'s knitted beanie hat",
-         "stockUnit": "",
-         "category": "709",
-         "categoryName": [
-           "Women\\'s",
-           "Sale"
-         ],
-         "categoryUri": "womens\/sale",
-         "centraProduct": "26453",
-         "centraVariant": "22068",
-         "itemQuantityMinimum": 1,
-         "itemQuantityMultipleOf": 1,
-         "price": "150\u00a0SEK",
-         "priceAsNumber": 150,
-         "discountPercent": 70,
-         "priceBeforeDiscount": "500\u00a0SEK",
-         "priceBeforeDiscountAsNumber": 500,
-         "showAsOnSale": true,
-         "itemTable": {
-           "x": [
-             "onesize"
-           ],
-           "y": [
-             ""
-           ],
-           "dividerSymbol": "x"
-         },
-         "items": [
-           {
-             "item": "22208-126748",
-             "itemTableX": 0,
-             "itemTableY": 0,
-             "name": "onesize",
-             "ean": "123123123",
-             "sku": "SKU1SKU1"
-           }
-         ],
-         "media": {
-           "standard": [
-             "https:\/\/example.net\/client\/dynamic\/images\/26453_c80b4e751c-5.jpg"
-           ]
-         },
-         "swatch": {
-           "desc": "Blue",
-           "hex": "Blue"
-         },
-         "categories": {
-           "709": {
-             "category": "709",
-             "name": [
-               "Women\\'s",
-               "Sale"
-             ],
-             "uri": "womens\/sale"
-           }
-         },
-         "relatedProducts": [
-         ]
-       },
-       {
-         "product": "22069",
-         "name": "Snapback baseball cap winter white",
-         "uri": "snapback-baseball-cap-winter-white",
-         "sku": "SKU2SKU2",
-         "productSku": "SKU2SKU2",
-         "brand": "1",
-         "brandName": "Some Brand",
-         "brandUri": "some-brand",
-         "collection": "51",
-         "collectionName": "Last Season",
-         "collectionUri": "last-season",
-         "variantName": "winter white",
-         "countryOrigin": "CN",
-         "excerpt": "",
-         "excerptHtml": "",
-         "description": "ladies\\' baseball cap\n[b]QUALITY:[\/b]\nfurpile synthetic",
-         "descriptionHtml": "<p>ladies' baseball cap<br \/>\n<strong>QUALITY:<\/strong><br \/>\nfurpile synthetic<\/p>",
-         "metaTitle": "Snapback baseball cap | Some Brand ",
-         "metaDescription": "",
-         "metaKeywords": "",
-         "stockUnit": "",
-         "category": "709",
-         "categoryName": [
-           "Women\\'s",
-           "Sale"
-         ],
-         "categoryUri": "womens\/sale",
-         "centraProduct": "26589",
-         "centraVariant": "22204",
-         "itemQuantityMinimum": 1,
-         "itemQuantityMultipleOf": 1,
-         "price": "120\u00a0SEK",
-         "priceAsNumber": 120,
-         "discountPercent": 70,
-         "priceBeforeDiscount": "400\u00a0SEK",
-         "priceBeforeDiscountAsNumber": 400,
-         "showAsOnSale": true,
-         "itemTable": {
-           "x": [
-             "onesize"
-           ],
-           "y": [
-             ""
-           ],
-           "dividerSymbol": "x"
-         },
-         "items": [
-           {
-             "item": "22069-127296",
-             "itemTableX": 0,
-             "itemTableY": 0,
-             "name": "onesize",
-             "ean": "234234234",
-             "sku": "SKU2SKU2"
-           }
-         ],
-         "media": {
-           "standard": [
-             "https:\/\/example.net\/client\/dynamic\/images\/26589_e31b009b90-g409647021.jpg"
-           ]
-         },
-         "swatch": {
-           "desc": "Red",
-           "hex": "ff0000"
-         },
-         "categories": {
-           "709": {
-             "category": "709",
-             "name": [
-               "Women\\'s",
-               "Sale"
-             ],
-             "uri": "womens\/sale"
-           }
-         },
-         "relatedProducts": [
-         ]
-       }
-     ],
-     "productCount": 7,
-     "filter": [
-       {
-         "field": "brands",
-         "values": [
-           {
-             "value": "1",
-             "count": 7,
-             "totalCount": 344,
-             "data": {
-               "brand": "1",
-               "brandName": "Some Brand"
-             }
-           }
-         ]
-       },
-       {
-         "field": "categories",
-         "values": [
-           {
-             "value": "599",
-             "count": 0,
-             "totalCount": 49,
-             "data": {
-               "category": "599",
-               "name": [
-                 "Jeans"
-               ],
-               "uri": "jeans"
-             }
-           },
-           {
-             "value": "62",
-             "count": 0,
-             "totalCount": 23,
-             "data": {
-               "category": "62",
-               "name": [
-                 "Jeans",
-                 "T-shirts"
-               ],
-               "uri": "jeans\/t-shirts",
-               "inCategory": "599"
-             }
-           },
-           {
-             "value": "14",
-             "count": 0,
-             "totalCount": 17,
-             "data": {
-               "category": "14",
-               "name": [
-                 "Jeans",
-                 "Shirts "
-               ],
-               "uri": "jeans\/shirts",
-               "inCategory": "599"
-             }
-           },
-           {
-             "value": "3",
-             "count": 7,
-             "totalCount": 69,
-             "data": {
-               "category": "3",
-               "name": [
-                 "Women\\'s"
-               ],
-               "uri": "womens"
-             }
-           },
-           {
-             "value": "320",
-             "count": 0,
-             "totalCount": 3,
-             "data": {
-               "category": "320",
-               "name": [
-                 "Women\\'s",
-                 "Tops"
-               ],
-               "uri": "womens\/tops",
-               "inCategory": "3"
-             }
-           },
-           {
-             "value": "709",
-             "count": 7,
-             "totalCount": 38,
-             "data": {
-               "category": "709",
-               "name": [
-                 "Women\\'s",
-                 "Sale"
-               ],
-               "uri": "womens\/sale",
-               "inCategory": "3"
-             }
-           }
-         ]
-       },
-       {
-         "field": "collections",
-         "values": [
-           {
-             "value": "27",
-             "count": 0,
-             "totalCount": 37,
-             "data": {
-               "collection": "27",
-               "collectionName": "Spring"
-             }
-           },
-           {
-             "value": "51",
-             "count": 7,
-             "totalCount": 95,
-             "data": {
-               "collection": "51",
-               "collectionName": "Last Season"
-             }
-           }
-         ]
-       },
-       {
-         "field": "swatch.desc",
-         "values": [
-           {
-             "value": "Red",
-             "count": 1,
-             "totalCount": 35,
-             "data": {
-               "desc": "Red",
-               "hex": "ff0000"
-             }
-           },
-           {
-             "value": "Green",
-             "count": 0,
-             "totalCount": 14,
-             "data": {
-               "desc": "Green",
-               "hex": "00ff00"
-             }
-           },
-           {
-             "value": "Blue",
-             "count": 6,
-             "totalCount": 12,
-             "data": {
-               "desc": "Blue",
-               "hex": "Blue"
-             }
-           }
-         ]
-       }
-     ]
-   }
+{
+  "token": "esf1p3tgchfg5ggtpqdpgqjtt6",
+  "products": [
+    {
+      "variant": "30372",
+      "name": "Avery solid mohair beanie ice blue",
+      "uri": "avery-solid-mohair-beanie-ice-blue",
+      "sku": "SKU1SKU1",
+      "productSku": "SKU1SKU1",
+      "brand": "1",
+      "brandName": "Some Brand",
+      "brandUri": "some-brand",
+      "collection": "51",
+      "collectionName": "Last Season",
+      "collectionUri": "last-season",
+      "variantName": "smoke",
+      "countryOrigin": "CN",
+      "excerpt": "",
+      "excerptHtml": "",
+      "description": "Oversized beanie in a mohair blend",
+      "descriptionHtml": "<p>Oversized beanie in a mohair blend.",
+      "metaTitle": "Solid Mohair beanie | Some Brand ",
+      "metaDescription": "An oversized beanie in a mohair blend.",
+      "metaKeywords": "Women\\'s knitted beanie hat",
+      "stockUnit": "",
+      "category": "709",
+      "categoryName": [
+        "Women\\'s",
+        "Sale"
+      ],
+      "categoryUri": "womens\/sale",
+      "centraProduct": "26453",
+      "centraVariant": "22068",
+      "itemQuantityMinimum": 1,
+      "itemQuantityMultipleOf": 1,
+      "price": "150\u00a0SEK",
+      "priceAsNumber": 150,
+      "discountPercent": 70,
+      "priceBeforeDiscount": "500\u00a0SEK",
+      "priceBeforeDiscountAsNumber": 500,
+      "showAsOnSale": true,
+      "itemTable": {
+        "x": [
+          "onesize"
+        ],
+        "y": [
+          ""
+        ],
+        "dividerSymbol": "x"
+      },
+      "items": [
+        {
+          "item": "22208-126748",
+          "itemTableX": 0,
+          "itemTableY": 0,
+          "name": "onesize",
+          "ean": "123123123",
+          "sku": "SKU1SKU1"
+        }
+      ],
+      "media": {
+        "standard": [
+          "https:\/\/example.net\/client\/dynamic\/images\/26453_c80b4e751c-5.jpg"
+        ]
+      },
+      "swatch": {
+        "desc": "Blue",
+        "hex": "Blue"
+      },
+      "categories": {
+        "709": {
+          "category": "709",
+          "name": [
+            "Women\\'s",
+            "Sale"
+          ],
+          "uri": "womens\/sale"
+        }
+      },
+      "relatedProducts": [
+      ]
+    },
+    {
+      "product": "22069",
+      "name": "Snapback baseball cap winter white",
+      "uri": "snapback-baseball-cap-winter-white",
+      "sku": "SKU2SKU2",
+      "productSku": "SKU2SKU2",
+      "brand": "1",
+      "brandName": "Some Brand",
+      "brandUri": "some-brand",
+      "collection": "51",
+      "collectionName": "Last Season",
+      "collectionUri": "last-season",
+      "variantName": "winter white",
+      "countryOrigin": "CN",
+      "excerpt": "",
+      "excerptHtml": "",
+      "description": "ladies\\' baseball cap\n[b]QUALITY:[\/b]\nfurpile synthetic",
+      "descriptionHtml": "<p>ladies' baseball cap<br \/>\n<strong>QUALITY:<\/strong><br \/>\nfurpile synthetic<\/p>",
+      "metaTitle": "Snapback baseball cap | Some Brand ",
+      "metaDescription": "",
+      "metaKeywords": "",
+      "stockUnit": "",
+      "category": "709",
+      "categoryName": [
+        "Women\\'s",
+        "Sale"
+      ],
+      "categoryUri": "womens\/sale",
+      "centraProduct": "26589",
+      "centraVariant": "22204",
+      "itemQuantityMinimum": 1,
+      "itemQuantityMultipleOf": 1,
+      "price": "120\u00a0SEK",
+      "priceAsNumber": 120,
+      "discountPercent": 70,
+      "priceBeforeDiscount": "400\u00a0SEK",
+      "priceBeforeDiscountAsNumber": 400,
+      "showAsOnSale": true,
+      "itemTable": {
+        "x": [
+          "onesize"
+        ],
+        "y": [
+          ""
+        ],
+        "dividerSymbol": "x"
+      },
+      "items": [
+        {
+          "item": "22069-127296",
+          "itemTableX": 0,
+          "itemTableY": 0,
+          "name": "onesize",
+          "ean": "234234234",
+          "sku": "SKU2SKU2"
+        }
+      ],
+      "media": {
+        "standard": [
+          "https:\/\/example.net\/client\/dynamic\/images\/26589_e31b009b90-g409647021.jpg"
+        ]
+      },
+      "swatch": {
+        "desc": "Red",
+        "hex": "ff0000"
+      },
+      "categories": {
+        "709": {
+          "category": "709",
+          "name": [
+            "Women\\'s",
+            "Sale"
+          ],
+          "uri": "womens\/sale"
+        }
+      },
+      "relatedProducts": [
+      ]
+    }
+  ],
+  "productCount": 7,
+  "filter": [
+    {
+      "field": "brands",
+      "values": [
+        {
+          "value": "1",
+          "count": 7,
+          "totalCount": 344,
+          "data": {
+            "brand": "1",
+            "brandName": "Some Brand"
+          }
+        }
+      ]
+    },
+    {
+      "field": "categories",
+      "values": [
+        {
+          "value": "599",
+          "count": 0,
+          "totalCount": 49,
+          "data": {
+            "category": "599",
+            "name": [
+              "Jeans"
+            ],
+            "uri": "jeans"
+          }
+        },
+        {
+          "value": "62",
+          "count": 0,
+          "totalCount": 23,
+          "data": {
+            "category": "62",
+            "name": [
+              "Jeans",
+              "T-shirts"
+            ],
+            "uri": "jeans\/t-shirts",
+            "inCategory": "599"
+          }
+        },
+        {
+          "value": "14",
+          "count": 0,
+          "totalCount": 17,
+          "data": {
+            "category": "14",
+            "name": [
+              "Jeans",
+              "Shirts "
+            ],
+            "uri": "jeans\/shirts",
+            "inCategory": "599"
+          }
+        },
+        {
+          "value": "3",
+          "count": 7,
+          "totalCount": 69,
+          "data": {
+            "category": "3",
+            "name": [
+              "Women\\'s"
+            ],
+            "uri": "womens"
+          }
+        },
+        {
+          "value": "320",
+          "count": 0,
+          "totalCount": 3,
+          "data": {
+            "category": "320",
+            "name": [
+              "Women\\'s",
+              "Tops"
+            ],
+            "uri": "womens\/tops",
+            "inCategory": "3"
+          }
+        },
+        {
+          "value": "709",
+          "count": 7,
+          "totalCount": 38,
+          "data": {
+            "category": "709",
+            "name": [
+              "Women\\'s",
+              "Sale"
+            ],
+            "uri": "womens\/sale",
+            "inCategory": "3"
+          }
+        }
+      ]
+    },
+    {
+      "field": "collections",
+      "values": [
+        {
+          "value": "27",
+          "count": 0,
+          "totalCount": 37,
+          "data": {
+            "collection": "27",
+            "collectionName": "Spring"
+          }
+        },
+        {
+          "value": "51",
+          "count": 7,
+          "totalCount": 95,
+          "data": {
+            "collection": "51",
+            "collectionName": "Last Season"
+          }
+        }
+      ]
+    },
+    {
+      "field": "swatch.desc",
+      "values": [
+        {
+          "value": "Red",
+          "count": 1,
+          "totalCount": 35,
+          "data": {
+            "desc": "Red",
+            "hex": "ff0000"
+          }
+        },
+        {
+          "value": "Green",
+          "count": 0,
+          "totalCount": 14,
+          "data": {
+            "desc": "Green",
+            "hex": "00ff00"
+          }
+        },
+        {
+          "value": "Blue",
+          "count": 6,
+          "totalCount": 12,
+          "data": {
+            "desc": "Blue",
+            "hex": "Blue"
+          }
+        }
+      ]
+    }
+  ]
+}
 ```
 
 The "filter" object has values for the field "swatch.desc" at the end of this JSON blob. And the last thing is value "Blue". "count":6 means there are 6 blue products in the current filtered set of products, "totalCount":12 means there are 12 blue products in total without filtering. The "data" object contains the data the frontend should use to display "Blue", it is the same data as the "swatch" on the product itself.
@@ -454,10 +452,10 @@ You post a uri, and what the uri can be for. Just like POST products:
 ```http
 POST uri
 {
-    "uri":"jeans/slim-5-pocket-jeans-white",
-    "for":["category", "product"],
-    "limit":2,
-    "skipFirst":0
+    "uri": "jeans/slim-5-pocket-jeans-white",
+    "for": ["category", "product"],
+    "limit": 2,
+    "skipFirst": 0
 }
 ```
 - uri is the uri
@@ -473,136 +471,136 @@ The response has `"found": "product"` and a `"product"` object:
 ```http
 POST uri
 {
-    "uri":"jeans/slim-5-pocket-jeans-white",
-    "for":["category", "product"],
-    "limit":2,
-    "skipFirst":0
+    "uri": "jeans/slim-5-pocket-jeans-white",
+    "for": ["category", "product"],
+    "limit": 2,
+    "skipFirst": 0
 }
 ```
 
 Response:
 
 ```json
-   {
-     "token": "esf1p3tgchfg5ggtpqdpgqjtt6",
-     "found": "product",
-     "product": {
-       "product": "24379",
-       "name": "Slim 5-pocket jeans white",
-       "uri": "slim-5-pocket-jeans-white",
-       "sku": "",
-       "productSku": "",
-       "brand": "1",
-       "brandName": "Some Brand",
-       "brandUri": "some-brand",
-       "collection": "55",
-       "collectionName": "Summer",
-       "collectionUri": "summer",
-       "variantName": "white",
-       "countryOrigin": "TR",
-       "excerpt": "",
-       "excerptHtml": "",
-       "description": "Classic 5-pocket jeans",
-       "descriptionHtml": "<p>Classic 5-pocket jeans<\/p>",
-       "metaTitle": "Eddy 5-pocket jeans | Some Brand ",
-       "metaDescription": "",
-       "metaKeywords": "",
-       "stockUnit": "",
-       "category": "599",
-       "categoryName": [
-         "Jeans"
-       ],
-       "categoryUri": "jeans",
-       "centraProduct": "26954",
-       "centraVariant": "22775",
-       "itemQuantityMinimum": 1,
-       "itemQuantityMultipleOf": 1,
-       "price": "900\u00a0SEK",
-       "priceAsNumber": 900,
-       "discountPercent": 0,
-       "priceBeforeDiscount": "900\u00a0SEK",
-       "priceBeforeDiscountAsNumber": 900,
-       "showAsOnSale": false,
-       "itemTable": {
-         "x": [
-           "W28L32",
-           "W29L32",
-           "W30L32",
-           "W31L32",
-           "W31L34",
-           "W32L32",
-           "W32L34",
-           "W33L32",
-           "W33L34",
-           "W34L32",
-           "W34L34",
-           "W36L32",
-           "W36L34",
-           "W38L34"
-         ],
-         "y": [
-           ""
-         ],
-         "dividerSymbol": "x"
-       },
-       "items": [
-         {
-           "item": "24379-130563",
-           "itemTableX": 0,
-           "itemTableY": 0,
-           "name": "W28L32",
-           "ean": "",
-           "sku": "",
-           "stock":"yes"
-         },
-         {
-           "item": "24379-130564",
-           "itemTableX": 1,
-           "itemTableY": 0,
-           "name": "W29L32",
-           "ean": "",
-           "sku": "",
-           "stock":"yes"
-         },
-         {
-           "item": "24379-130565",
-           "itemTableX": 2,
-           "itemTableY": 0,
-           "name": "W30L32",
-           "ean": "",
-           "sku": "",
-           "stock":"yes"
-         },
-         {
-           "item": "24379-130566",
-           "itemTableX": 3,
-           "itemTableY": 0,
-           "name": "W31L32",
-           "ean": "",
-           "sku": "",
-           "stock":"yes"
-         }
-       ],
-       "media": {
-         "standard": [
-           "https:\/\/example.com\/client\/dynamic\/images\/26954_09e21e4415-banner-dress-shirts_1.jpg",
-           "https:\/\/example.com\/client\/dynamic\/images\/26954_7e68107548-27295_821558126c-h109916999-original5.jpg",
-           "https:\/\/example.com\/client\/dynamic\/images\/26954_a506c5a76b-h105127001_d2.jpg",
-           "https:\/\/example.com\/client\/dynamic\/images\/26954_a7a7ad85b3-h105127001_d1.jpg",
-           "https:\/\/example.com\/client\/dynamic\/images\/26954_ebfa438d2f-h105127001_d3.jpg"
-         ]
-       },
-       "categories": {
-         "599": {
-           "category": "599",
-           "name": [
-             "Jeans"
-           ],
-           "uri": "jeans"
-         }
-       }
-     }
-   }
+{
+  "token": "esf1p3tgchfg5ggtpqdpgqjtt6",
+  "found": "product",
+  "product": {
+    "product": "24379",
+    "name": "Slim 5-pocket jeans white",
+    "uri": "slim-5-pocket-jeans-white",
+    "sku": "",
+    "productSku": "",
+    "brand": "1",
+    "brandName": "Some Brand",
+    "brandUri": "some-brand",
+    "collection": "55",
+    "collectionName": "Summer",
+    "collectionUri": "summer",
+    "variantName": "white",
+    "countryOrigin": "TR",
+    "excerpt": "",
+    "excerptHtml": "",
+    "description": "Classic 5-pocket jeans",
+    "descriptionHtml": "<p>Classic 5-pocket jeans<\/p>",
+    "metaTitle": "Eddy 5-pocket jeans | Some Brand ",
+    "metaDescription": "",
+    "metaKeywords": "",
+    "stockUnit": "",
+    "category": "599",
+    "categoryName": [
+      "Jeans"
+    ],
+    "categoryUri": "jeans",
+    "centraProduct": "26954",
+    "centraVariant": "22775",
+    "itemQuantityMinimum": 1,
+    "itemQuantityMultipleOf": 1,
+    "price": "900\u00a0SEK",
+    "priceAsNumber": 900,
+    "discountPercent": 0,
+    "priceBeforeDiscount": "900\u00a0SEK",
+    "priceBeforeDiscountAsNumber": 900,
+    "showAsOnSale": false,
+    "itemTable": {
+      "x": [
+        "W28L32",
+        "W29L32",
+        "W30L32",
+        "W31L32",
+        "W31L34",
+        "W32L32",
+        "W32L34",
+        "W33L32",
+        "W33L34",
+        "W34L32",
+        "W34L34",
+        "W36L32",
+        "W36L34",
+        "W38L34"
+      ],
+      "y": [
+        ""
+      ],
+      "dividerSymbol": "x"
+    },
+    "items": [
+      {
+        "item": "24379-130563",
+        "itemTableX": 0,
+        "itemTableY": 0,
+        "name": "W28L32",
+        "ean": "",
+        "sku": "",
+        "stock":"yes"
+      },
+      {
+        "item": "24379-130564",
+        "itemTableX": 1,
+        "itemTableY": 0,
+        "name": "W29L32",
+        "ean": "",
+        "sku": "",
+        "stock":"yes"
+      },
+      {
+        "item": "24379-130565",
+        "itemTableX": 2,
+        "itemTableY": 0,
+        "name": "W30L32",
+        "ean": "",
+        "sku": "",
+        "stock":"yes"
+      },
+      {
+        "item": "24379-130566",
+        "itemTableX": 3,
+        "itemTableY": 0,
+        "name": "W31L32",
+        "ean": "",
+        "sku": "",
+        "stock":"yes"
+      }
+    ],
+    "media": {
+      "standard": [
+        "https:\/\/example.com\/client\/dynamic\/images\/26954_09e21e4415-banner-dress-shirts_1.jpg",
+        "https:\/\/example.com\/client\/dynamic\/images\/26954_7e68107548-27295_821558126c-h109916999-original5.jpg",
+        "https:\/\/example.com\/client\/dynamic\/images\/26954_a506c5a76b-h105127001_d2.jpg",
+        "https:\/\/example.com\/client\/dynamic\/images\/26954_a7a7ad85b3-h105127001_d1.jpg",
+        "https:\/\/example.com\/client\/dynamic\/images\/26954_ebfa438d2f-h105127001_d3.jpg"
+      ]
+    },
+    "categories": {
+      "599": {
+        "category": "599",
+        "name": [
+          "Jeans"
+        ],
+        "uri": "jeans"
+      }
+    }
+  }
+}
 ```
 
 ### Example: URI leads nowhere, API returns 404
@@ -612,10 +610,10 @@ The only difference from the previous example is the request has `"for":["catego
 ```http
 POST uri
 {
-    "uri":"jeans/slim-5-pocket-jeans-white",
-    "for":["category"],
-    "limit":2,
-    "skipFirst":0
+    "uri": "jeans/slim-5-pocket-jeans-white",
+    "for": ["category"],
+    "limit": 2,
+    "skipFirst": 0
 }
 ```
 
@@ -626,12 +624,12 @@ Response header:
 Response:
 
 ```json
-   {
-     "token": "esf1p3tgchfg5ggtpqdpgqjtt6",
-     "errors": {
-       "uri": "not found"
-     }
-   }
+{
+  "token": "esf1p3tgchfg5ggtpqdpgqjtt6",
+  "errors": {
+    "uri": "not found"
+  }
+}
 ```
 
 ### Example: URI leads to a category, API returns a category and list of products
@@ -640,39 +638,39 @@ The response contains `"found": "category"`, the `"category"` object with the ca
 ```http
 POST uri
 {
-    "uri":"jeans",
-    "for":["category", "product"],
-    "limit":2,
-    "skipFirst":0
+    "uri": "jeans",
+    "for": ["category", "product"],
+    "limit": 2,
+    "skipFirst": 0
 }
 ```
 
 Response (edited to make it shorter):
 
 ```json
-   {
-       "token": "esf1p3tgchfg5ggtpqdpgqjtt6",
-       "found": "category",
-       "category": {
-           "category": "599",
-           "name": [
-               "Jeans"
-           ],
-           "uri": "jeans"
-       },
-       "products": [
-           {
-               "product": "32240",
-               ...
-           },
-           {
-               "product": "32245",
-               ...
-           }
-       ],
-       "productCount": 49,
-       "filter": [...]
-   }
+{
+    "token": "esf1p3tgchfg5ggtpqdpgqjtt6",
+    "found": "category",
+    "category": {
+        "category": "599",
+        "name": [
+            "Jeans"
+        ],
+        "uri": "jeans"
+    },
+    "products": [
+        {
+            "product": "32240",
+            ...
+        },
+        {
+            "product": "32245",
+            ...
+        }
+    ],
+    "productCount": 49,
+    "filter": [...]
+}
 ```
 
 ## Categories
@@ -680,44 +678,44 @@ Response (edited to make it shorter):
 **GET categories** returns an array of categories like this:
 
 ```json
-   {
-     "token": "esf1p3tgchfg5ggtpqdpgqjtt6",
-     "categories": [
-       {
-         "category": "5",
-         "name": [
-           "Some category"
-         ],
-         "uri": "some_category"
-       },
-       {
-         "category": "3",
-         "name": [
-           "V\u00e4xt"
-         ],
-         "uri": "vaxt"
-       },
-       {
-         "category": "4",
-         "name": [
-           "V\u00e4xt",
-           "Buske"
-         ],
-         "uri": "vaxt\/buske",
-         "inCategory": "3"
-       },
-       {
-         "category": "2",
-         "name": [
-           "V\u00e4xt",
-           "Buske",
-           "Nypon"
-         ],
-         "uri": "vaxt\/buske\/nypon",
-         "inCategory": "4"
-       }
-     ]
-   }
+{
+  "token": "esf1p3tgchfg5ggtpqdpgqjtt6",
+  "categories": [
+    {
+      "category": "5",
+      "name": [
+        "Some category"
+      ],
+      "uri": "some_category"
+    },
+    {
+      "category": "3",
+      "name": [
+        "V\u00e4xt"
+      ],
+      "uri": "vaxt"
+    },
+    {
+      "category": "4",
+      "name": [
+        "V\u00e4xt",
+        "Buske"
+      ],
+      "uri": "vaxt\/buske",
+      "inCategory": "3"
+    },
+    {
+      "category": "2",
+      "name": [
+        "V\u00e4xt",
+        "Buske",
+        "Nypon"
+      ],
+      "uri": "vaxt\/buske\/nypon",
+      "inCategory": "4"
+    }
+  ]
+}
 ```
 
 This array is sorted in the order you set in the Centra admin. Notice that some categories in the array are under-categories of another category. You see this on last two, they have the field `inCategory` with the category id of the category they are a subcategory of. Also notice the `name` array and `uri` of these, they contain the full name and uri, of the main category and under-categories.

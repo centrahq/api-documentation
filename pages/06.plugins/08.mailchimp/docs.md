@@ -59,15 +59,11 @@ These fields are meta-data about the store that will be created in Mailchimp. Th
 
 Use this field if you want to prepend a URL for every product in the transactional emails. The structure for each product URL will look like this:
 
-```text
-frontendPrefix + categoryURI + productURI
-```
+`frontendPrefix + categoryURI + productURI`
 
 So if the "Frontend prefix" is `https://ecommerce.centra.dev` and the category for Shirts has a URI called `shirts` and the product URI is `nice-shirt`, the URL for the product being sent to Mailchimp will become:
 
-```text
-https://ecommerce.centra.dev/shirts/nice-shirt
-```
+`https://ecommerce.centra.dev/shirts/nice-shirt`
 
 You can also specify the URL for each product when you add items to the selection, this way the URL being used in the transactional emails will follow exactly the URL you sent in when the cart was created.
 

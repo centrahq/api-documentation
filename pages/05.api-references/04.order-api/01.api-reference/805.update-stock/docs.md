@@ -8,9 +8,7 @@ taxonomy:
 
 # Update stock
 
-```text
-PUT  *base*/stock
-```
+`PUT  *base*/stock`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 This updates the `physicalStock` quantities in Centra. This is the number of products in stock including those that are reserved for orders.
@@ -52,55 +50,55 @@ Response in xml format instead of json.
 The example above uses EAN, this is the same field as the [Get stock](/api-references/order-api/api-reference/get-stock) product field `ean`. The example below uses SKU by combining the [Get stock](/api-references/order-api/api-reference/get-stock) fields `sku`, `variantSku` and `sizeSku`:
 
 ```http
-   POST <base>/stock HTTP/1.1
-   Content-type: application/json
+POST <base>/stock HTTP/1.1
+Content-type: application/json
 
-   {
-     "products": [
-       {
-         "product": "1234567890123",
-         "quantity": 54
-       },
-       {
-         "product": "9876543210123",
-         "quantity": 55
-       },
-       {
-         "product": "5432167890123",
-         "quantity": 1
-       }
-     ]
-   }
+{
+  "products": [
+    {
+      "product": "1234567890123",
+      "quantity": 54
+    },
+    {
+      "product": "9876543210123",
+      "quantity": 55
+    },
+    {
+      "product": "5432167890123",
+      "quantity": 1
+    }
+  ]
+}
 ```
 
 Optionally you can also include a cost / pcs value for the items.
 
 ```http
-   POST <base>/stock HTTP/1.1
-   Content-type: application/json
+POST <base>/stock HTTP/1.1
+Content-type: application/json
 
-   {
-     "products":[
-       {
-         "product": "1234567890123",
-         "quantity": 54,
-         "costPrice": 12.54,
-         "costPriceCurrency": "SEK"
-       },
-       {
-         "product": "9876543210123",
-         "quantity": 55,
-         "costPrice": 8.12,
-         "costPriceCurrency": "EUR"
-       },
-       {
-         "product": "5432167890123",
-         "quantity": 1,
-         "costPrice": 54.24,
-         "costPriceCurrency": "USD"
-       }
-     ]
-   }
+{
+  "products":[
+    {
+      "product": "1234567890123",
+      "quantity": 54,
+      "costPrice": 12.54,
+      "costPriceCurrency": "SEK"
+    },
+    {
+      "product": "9876543210123",
+      "quantity": 55,
+      "costPrice": 8.12,
+      "costPriceCurrency": "EUR"
+    },
+    {
+      "product": "5432167890123",
+      "quantity": 1,
+      "costPrice": 54.24,
+      "costPriceCurrency": "USD"
+    }
+  ]
+}
 ```
 
 ## Response
@@ -135,9 +133,9 @@ Like this: ``["43242342", "43243294", "432432232"]``
 ## Response example
 
 ```json
-    {
-      "status":"ok"
-    }
+{
+  "status":"ok"
+}
 ```
 
 
@@ -145,15 +143,15 @@ Like this: ``["43242342", "43243294", "432432232"]``
 ## Error example
 
 ```json
-   {
-       "status": "no",
-       "msg": "Some of the products were not updated",
-       "errors": {
-         "productsNotFound": [
-           "9876543210123",
-           "5432167890123"
-         ]
-       }
-     }
+{
+  "status": "no",
+  "msg": "Some of the products were not updated",
+  "errors": {
+    "productsNotFound": [
+      "9876543210123",
+      "5432167890123"
+    ]
+  }
+}
 ```
 

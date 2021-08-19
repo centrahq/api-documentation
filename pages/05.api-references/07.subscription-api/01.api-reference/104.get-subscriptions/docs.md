@@ -8,9 +8,7 @@ taxonomy:
 
 # Get subscriptions
 
-```text
-GET  *base*/subscription/subscriptions?customerEmail=*email*
-```
+`GET  *base*/subscription/subscriptions?customerEmail=*email*`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 Receive a list of all subscriptions for the customer.
@@ -24,8 +22,8 @@ Customer email address
 ## Request example
 
 ```http
-    POST <base>/subscription/order HTTP/1.1
-    Content-Type: application/x-www-form-urlencoded
+POST <base>/subscription/order HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
     
 GET <base>/subscription?customerEmail=example@centra.com HTTP/1.1
 ```
@@ -120,66 +118,66 @@ Subscription customer id
 ## Response examples
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-     {
-        "status": "ok",
-        "subscriptions": [
-          {
-            "status": "active",
-            "id": 3,
-            "amount": "900.00",
-            "shipping": "20.00",
-            "itemCount": 2,
-            "currency": "SEK",
-            "createdAt": "2020-05-05 15:00:00",
-            "startDate": "2020-05-05",
-            "nextOrderDate": "2020-05-06",
-            "interval": 14,
-            "intervalType": "Day",
-            "pricelist": "19",
-            "packages": ["1"],
-            "address": {
-              "firstName": "Kalle",
-              "lastName": "Anka",
-              "phoneNumber": "+4687203333",
-              "address1": "Malarvarvsbacken 8",
-              "address2": "c/o Young Skilled AB",
-              "zipCode": "11733",
-              "city": "Stockholm",
-              "state": "",
-              "country": "SE"
-            },
-            "customer": "132"
-          },
-          {
-            "status": "paused",
-            "id": 4,
-            "amount": "500.00",
-            "shipping": "20.00",
-            "itemCount": 1,
-            "currency": "SEK",
-            "createdAt": "2020-04-03 12:00:00",
-            "startDate": "2020-04-03",
-            "nextOrderDate": "2020-04-04",
-            "interval": 14,
-            "intervalType": "Day",
-            "pricelist": "19",
-            "packages": ["1"],
-            "address": {
-              "firstName": "Kalle",
-              "lastName": "Anka",
-              "phoneNumber": "+4687203333",
-              "address1": "Malarvarvsbacken 8",
-              "address2": "c/o Young Skilled AB",
-              "zipCode": "11733",
-              "city": "Stockholm",
-              "state": "",
-              "country": "SE"
-            },
-            "customer": "132"
-          }
-        ]
-      }
+{
+  "status": "ok",
+  "subscriptions": [
+    {
+      "status": "active",
+      "id": 3,
+      "amount": "900.00",
+      "shipping": "20.00",
+      "itemCount": 2,
+      "currency": "SEK",
+      "createdAt": "2020-05-05 15:00:00",
+      "startDate": "2020-05-05",
+      "nextOrderDate": "2020-05-06",
+      "interval": 14,
+      "intervalType": "Day",
+      "pricelist": "19",
+      "packages": ["1"],
+      "address": {
+        "firstName": "Kalle",
+        "lastName": "Anka",
+        "phoneNumber": "+4687203333",
+        "address1": "Malarvarvsbacken 8",
+        "address2": "c/o Young Skilled AB",
+        "zipCode": "11733",
+        "city": "Stockholm",
+        "state": "",
+        "country": "SE"
+      },
+      "customer": "132"
+    },
+    {
+      "status": "paused",
+      "id": 4,
+      "amount": "500.00",
+      "shipping": "20.00",
+      "itemCount": 1,
+      "currency": "SEK",
+      "createdAt": "2020-04-03 12:00:00",
+      "startDate": "2020-04-03",
+      "nextOrderDate": "2020-04-04",
+      "interval": 14,
+      "intervalType": "Day",
+      "pricelist": "19",
+      "packages": ["1"],
+      "address": {
+        "firstName": "Kalle",
+        "lastName": "Anka",
+        "phoneNumber": "+4687203333",
+        "address1": "Malarvarvsbacken 8",
+        "address2": "c/o Young Skilled AB",
+        "zipCode": "11733",
+        "city": "Stockholm",
+        "state": "",
+        "country": "SE"
+      },
+      "customer": "132"
+    }
+  ]
+}
 ```

@@ -8,9 +8,7 @@ taxonomy:
 
 # Get packages
 
-```text
-GET  *base*/subscription/packages
-```
+`GET  *base*/subscription/packages`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 Receive a list of all the active packages and their price in the provided pricelist.
@@ -23,8 +21,8 @@ Name of pricelist to list packages for.
 ## Request example
 
 ```http
-    GET <base>/subscription/packages?pricelist=SEK HTTP/1.1
-    Content-Type: application/x-www-form-urlencoded
+GET <base>/subscription/packages?pricelist=SEK HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
 ```
 
 ## Response
@@ -74,41 +72,41 @@ Product name
 ## Response examples
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
 {
-     "packages": [
-       {
-         "id": 1,
-         "name": "Super Package 5000",
-         "price": "123.50",
-         "currency": "SEK",
-         "products": [
-           {
-             "id": "1",
-             "size": "S",
-             "variant": "Red",
-             "product": "T-shirt"
-           }
-         ]
-       },
-       {
-         "id": 2,
-         "name": "Super Package 10000",
-         "price": "246.50",
-         "currency": "SEK",
-         "products": [
-           {
-             "id": "1",
-             "size": "L",
-             "variant": "Red",
-             "product": "T-shirt"
-           }
-         ]
-       }
-     ]
-   }
+  "packages": [
+    {
+      "id": 1,
+      "name": "Super Package 5000",
+      "price": "123.50",
+      "currency": "SEK",
+      "products": [
+        {
+          "id": "1",
+          "size": "S",
+          "variant": "Red",
+          "product": "T-shirt"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Super Package 10000",
+      "price": "246.50",
+      "currency": "SEK",
+      "products": [
+        {
+          "id": "1",
+          "size": "L",
+          "variant": "Red",
+          "product": "T-shirt"
+        }
+      ]
+    }
+  ]
+}
 ```
 
 

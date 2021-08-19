@@ -10,13 +10,9 @@ taxonomy:
 
 Endpoints:
 
-```text
-GET  *base*/brands
-```
+`GET  *base*/brands`
 
-```text
-GET  *base*/brands/*brandId
-```
+`GET  *base*/brands/*brandId`
 
 <!--
 ```eval_rst
@@ -108,7 +104,7 @@ Brand ID as integer.
 -->
 
 [parameter data="brandId" datatype="brand object" isRequired=true storetype="b2b b2c" sublevel=1]
-The brandId for the brand object.  
+The brandId for the brand object.
 `"14": {"name": "Brand X"}` for brand ID 14.
 [/parameter]
 [parameter data="name" datatype="string" sublevel=2]
@@ -149,19 +145,19 @@ Meta data about the brand.
 -->
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-      "1" : {
-         "name" : "Brand Name",
-         "brand" : "1",
-         "uri" : "brandname",
-         "metaKeywords" : "",
-         "metaDescription" : "",
-         "metaTitle" : ""
-      }
-   }
+{
+  "1" : {
+      "name" : "Brand Name",
+      "brand" : "1",
+      "uri" : "brandname",
+      "metaKeywords" : "",
+      "metaDescription" : "",
+      "metaTitle" : ""
+  }
+}
 ```
 
 ## Error example
@@ -183,12 +179,12 @@ Meta data about the brand.
 -->
 
 ```http
-   HTTP/1.1 404 Not Found
-   Content-type: application/json
+HTTP/1.1 404 Not Found
+Content-type: application/json
 
-   {
-      "errors" : {
-         "brand" : "not found"
-      }
-   }
+{
+  "errors" : {
+      "brand" : "not found"
+  }
+}
 ```

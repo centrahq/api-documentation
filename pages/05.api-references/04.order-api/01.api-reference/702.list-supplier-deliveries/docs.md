@@ -8,9 +8,7 @@ taxonomy:
 
 # List supplier deliveries
 
-```text
-GET *base*/supplier-deliveries
-```
+`GET *base*/supplier-deliveries`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 Get the incoming and not accepted deliveries that are connected to the warehouse this plugin is connected to.
@@ -30,9 +28,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http
-   GET <base>/supplier-deliveries HTTP/1.1
-```
+`GET <base>/supplier-deliveries HTTP/1.1`
 
 <!--
 ```eval_rst
@@ -83,33 +79,33 @@ Estimated time of delivery for the customer.
 ## Response example
 
 ```json
-   {
-     "status": "ok",
-     "deliveries": [
-       {
-         "id": "364",
-         "orderId": "957",
-         "deliveryId": "957-1",
-         "supplierName": "Falca",
-         "supplierCountry": "ES",
-         "created": "2019-01-28 01:15",
-         "ETD": "2019-03-31 15:15",
-         "ETA": "2019-04-05 20:15",
-         "message": "Text entered by centra admin",
-         "productsQty": 20000
-       },
-       {
-         "id": "365",
-         "orderId": "957",
-         "deliveryId": "957-2",
-         "supplierName": "Falca",
-         "supplierCountry": "ES",
-         "created": "2019-01-28 01:15",
-         "ETD": "2019-03-31 15:15",
-         "ETA": "2019-04-05 20:15",
-         "message": "Text entered by centra admin",
-         "productsQty": 10000
-       }
-     ]
-   }
+{
+  "status": "ok",
+  "deliveries": [
+    {
+      "id": "364",
+      "orderId": "957",
+      "deliveryId": "957-1",
+      "supplierName": "Falca",
+      "supplierCountry": "ES",
+      "created": "2019-01-28 01:15",
+      "ETD": "2019-03-31 15:15",
+      "ETA": "2019-04-05 20:15",
+      "message": "Text entered by centra admin",
+      "productsQty": 20000
+    },
+    {
+      "id": "365",
+      "orderId": "957",
+      "deliveryId": "957-2",
+      "supplierName": "Falca",
+      "supplierCountry": "ES",
+      "created": "2019-01-28 01:15",
+      "ETD": "2019-03-31 15:15",
+      "ETA": "2019-04-05 20:15",
+      "message": "Text entered by centra admin",
+      "productsQty": 10000
+    }
+  ]
+}
 ```

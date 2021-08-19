@@ -8,9 +8,7 @@ taxonomy:
 
 # Get filtered products
 
-```text
-POST  *base*/products/filter
-```
+`POST  *base*/products/filter`
 
 Fetches a list of products based on the provided filter parameters. The GET calls below filter the product list on the parameter given in the URI. If you want to filter on several fields at once, you should use POST to `/products/filter`.
 
@@ -72,14 +70,14 @@ Return products not being activated yet.
 ## Request example
 
 ```http
-   POST <base>/products/filter HTTP/1.1
-   Content-type: application/json
+POST <base>/products/filter HTTP/1.1
+Content-type: application/json
 
-   {
-      "market": 123,
-      "products": ["514", "515"],
-      "categories": 1
-   }
+{
+  "market": 123,
+  "products": ["514", "515"],
+  "categories": 1
+}
 ```
 
 ## Response
@@ -91,56 +89,46 @@ The object returned will have the `productId` for each product as the key. The p
 ## Response example
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-      "1": {"product-object"},
-      "2": {"product-object"},
-   }
+{
+  "1": {"product-object"},
+  "2": {"product-object"},
+}
 ```
 
 ## Error example
 
 ```http
-   HTTP/1.1 404 Not Found
-   Content-type: application/json
+HTTP/1.1 404 Not Found
+Content-type: application/json
 
-   {
-      "errors" : {
-         "categories" : "not found: 1"
-      }
-   }
+{
+  "errors" : {
+      "categories" : "not found: 1"
+  }
+}
 ```
 
 ## Filter on categories
 
-```text
-GET  *base*/products/categories/*categories*
-```
+`GET  *base*/products/categories/*categories*`
 
 Parameters explained under [Multi parameter filtering parameters](shop-api-filter-products-parameters).
 
 ## Filter on internal IDs
 
-```text
-GET  *base*/products/silk-product/*silkProduct*
-```
+`GET  *base*/products/silk-product/*silkProduct*`
 
-```text
-GET  *base*/products/silk-variant/*silkVariant*
-```
+`GET  *base*/products/silk-variant/*silkVariant*`
 
 Parameters explained under [Multi parameter filtering parameters](shop-api-filter-products-parameters).
 
 ## Filter on SKU or URI
 
-```text
-GET  *base*/products/sku/*sku*
-```
+`GET  *base*/products/sku/*sku*`
 
-```text
-GET  *base*/products/uri/*uri*
-```
+`GET  *base*/products/uri/*uri*`
 
 Parameters explained under [Multi parameter filtering parameters](shop-api-filter-products-parameters).

@@ -8,13 +8,9 @@ taxonomy:
 
 # Get categories
 
-```text
-GET  *base*/categories
-```
+`GET  *base*/categories`
 
-```text
-GET  *base*/categories/*categoryId*
-```
+`GET  *base*/categories/*categoryId*`
 
 Fetches a specific category referenced by its ID, or the **full** list of categories.
 
@@ -81,80 +77,80 @@ A list of ``productId`` for products in this category.
 ## Response example
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-     "117": {
-       "metaTitle" : "",
-       "name" : "Category Name",
-       "metaDescription" : "",
-       "sortString" : "s-1",
-       "localized" : {
-          "sv" : {
-             "name" : "Swedish Category Name",
-             "metaTitle" : "Swedish Meta Title"
-          },
-       },
-       "completeUri" : "category-name",
-       "metaKeywords" : "",
-       "category" : "117",
-       "categories" : {
-          "... <nested categories> ..."
-       },
-       "products" : [
-          "665",
-          "2165",
-          "2177",
-       ],
-       "sortOrder" : "-1",
-       "uri" : "category-name"
-     }
-   }
+{
+  "117": {
+    "metaTitle" : "",
+    "name" : "Category Name",
+    "metaDescription" : "",
+    "sortString" : "s-1",
+    "localized" : {
+      "sv" : {
+          "name" : "Swedish Category Name",
+          "metaTitle" : "Swedish Meta Title"
+      },
+    },
+    "completeUri" : "category-name",
+    "metaKeywords" : "",
+    "category" : "117",
+    "categories" : {
+      "... <nested categories> ..."
+    },
+    "products" : [
+      "665",
+      "2165",
+      "2177",
+    ],
+    "sortOrder" : "-1",
+    "uri" : "category-name"
+  }
+}
 ```
 
 Fetching a specific category using `categoryId`:
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-      "metaTitle" : "",
-      "name" : "Category Name",
-      "metaDescription" : "",
-      "sortString" : "s-1",
-      "localized" : {
-         "sv" : {
-            "name" : "Swedish Category Name",
-            "metaTitle" : "Swedish Meta Title"
-         },
+{
+  "metaTitle" : "",
+  "name" : "Category Name",
+  "metaDescription" : "",
+  "sortString" : "s-1",
+  "localized" : {
+      "sv" : {
+        "name" : "Swedish Category Name",
+        "metaTitle" : "Swedish Meta Title"
       },
-      "completeUri" : "category-name",
-      "metaKeywords" : "",
-      "category" : "117",
-      "categories" : {
-         "... <nested categories> ..."
-      },
-      "products" : [
-         "665",
-         "2165",
-         "2177",
-      ],
-      "sortOrder" : "-1",
-      "uri" : "category-name"
-   }
+  },
+  "completeUri" : "category-name",
+  "metaKeywords" : "",
+  "category" : "117",
+  "categories" : {
+      "... <nested categories> ..."
+  },
+  "products" : [
+      "665",
+      "2165",
+      "2177",
+  ],
+  "sortOrder" : "-1",
+  "uri" : "category-name"
+}
 ```
 
 ## Error example
 
 ```http
-   HTTP/1.1 404 Not Found
-   Content-type: application/json
+HTTP/1.1 404 Not Found
+Content-type: application/json
 
-   {
-      "errors" : {
-         "category" : "not found"
-      }
-   }
+{
+  "errors" : {
+      "category" : "not found"
+  }
+}
 ```

@@ -32,11 +32,11 @@ The integration with Payment Service Provider, order creation and management mus
 - `POST /payment` request is made with 	`"paymentMethod": "external-payment"` which on success responds with following data:
 
 ```json
-    {
-      "token": "abcd1234efgh12340ba6142228334aaf4",
-      "action": "external",
-      "selection": "4f1211119567211c441d86e19fbd7114"
-    }
+{
+    "token": "abcd1234efgh12340ba6142228334aaf4",
+    "action": "external",
+    "selection": "4f1211119567211c441d86e19fbd7114"
+}
 ```
 
 You should store the `selection` field value. It needs to be included in signature payload when finalizing the payment.
@@ -61,20 +61,20 @@ This endpoint is intended for receiving authorization information. It can be cal
 #### Request:
 
 ```json
-    {
-      "paymentMethodFields": {
-          "selection": "selection",
-          "signature": "signature",
-          "currency": "SEK",
-          "amount": "100.00",
-          "timestamp": 1627029828,
-          "transactionReference": "transactionReference",
-          "success": true,
-          "transaction": {
-              "key": "value"
-          }
-      }
+{
+    "paymentMethodFields": {
+        "selection": "selection",
+        "signature": "signature",
+        "currency": "SEK",
+        "amount": "100.00",
+        "timestamp": 1627029828,
+        "transactionReference": "transactionReference",
+        "success": true,
+        "transaction": {
+            "key": "value"
+        }
     }
+}
 ```
 
 <div class="tableWrapper" markdown='1'>
@@ -137,19 +137,19 @@ example error response:
 #### Request:
 
 ```json
-    {
-      "selection": "selection",
-      "signature": "signature",
-      "currency": "SEK",
-      "amount": "100.00", 
-      "timestamp": 1627029828,
-      "transactionReference": "transactionReference",
-      "success": true,
-      "intent": "auth",
-      "transaction": {
-          "key": "value"
-      }
+{
+    "selection": "selection",
+    "signature": "signature",
+    "currency": "SEK",
+    "amount": "100.00", 
+    "timestamp": 1627029828,
+    "transactionReference": "transactionReference",
+    "success": true,
+    "intent": "auth",
+    "transaction": {
+        "key": "value"
     }
+}
 ```
 
 <div class="tableWrapper" markdown='1'>
