@@ -8,13 +8,9 @@ taxonomy:
 
 # Accept supplier delivery
 
-```text
-POST  *base*/supplier-deliveries/*supplierDeliveryId*
-```
+`POST  *base*/supplier-deliveries/*supplierDeliveryId*`
 
-```text
-POST  *base*/supplier-deliveries/*supplierDeliveryId*/sku
-```
+`POST  *base*/supplier-deliveries/*supplierDeliveryId*/sku`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 Will accept the delivery with the proper quantities in the physical delivery. This will be inserted into the preferred warehouse.
@@ -56,16 +52,16 @@ Response in xml format instead of json.
 Both `id` and `deliveryId` from [List supplier deliveries](/api-references/order-api/api-reference/list-supplier-deliveries) can be used to accept a supplier delivery.
 
 ```http
-   POST <base>/supplier-delivery/364 HTTP/1.1
-   Content-type: application/json
+POST <base>/supplier-delivery/364 HTTP/1.1
+Content-type: application/json
 
-   {
-     "products": {
-       "73213213123": 32,
-       "73213213124": 12,
-     },
-     "insertStock": false
-   }
+{
+  "products": {
+    "73213213123": 32,
+    "73213213124": 12,
+  },
+  "insertStock": false
+}
 ```
 
 ### Accept using SKU instead of EAN
@@ -73,15 +69,15 @@ Both `id` and `deliveryId` from [List supplier deliveries](/api-references/order
 Append /sku to the URL and switch from EAN to SKU for the product keys.
 
 ```http
-   POST <base>/supplier-delivery/364/sku HTTP/1.1
-   Content-type: application/json
+POST <base>/supplier-delivery/364/sku HTTP/1.1
+Content-type: application/json
 
-   {
-     "products": {
-       "PRODSKUVARIANTSKUSIZESKU": 32,
-       "PRODSKUVARIANTSKUSIZESKU2": 12,
-     }
-   }
+{
+  "products": {
+    "PRODSKUVARIANTSKUSIZESKU": 32,
+    "PRODSKUVARIANTSKUSIZESKU2": 12,
+  }
+}
 ```
 
 ## Response
@@ -131,19 +127,19 @@ The total quantity of products remaining in the accepted supplier order delivery
 ## Response example
 
 ```json
-   {
-     "status":"ok",
-     "additionalDelivery": {
-       "id": "365",
-       "orderId": "957",
-       "deliveryId": "957-2",
-       "supplierName": "Falca",
-       "supplierCountry": "ES",
-       "created": "2019-01-28 01:15",
-       "ETD": "2019-03-31 15:15",
-       "ETA": "2019-04-05 20:15",
-       "message": "Text entered by centra admin",
-       "productsQty": 19891
-     }
-   }
+{
+  "status":"ok",
+  "additionalDelivery": {
+    "id": "365",
+    "orderId": "957",
+    "deliveryId": "957-2",
+    "supplierName": "Falca",
+    "supplierCountry": "ES",
+    "created": "2019-01-28 01:15",
+    "ETD": "2019-03-31 15:15",
+    "ETA": "2019-04-05 20:15",
+    "message": "Text entered by centra admin",
+    "productsQty": 19891
+  }
+}
 ```

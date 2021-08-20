@@ -8,9 +8,7 @@ taxonomy:
 
 # Update shipment
 
-```text
-PUT  *base*/shipments/*shipmentId*
-```
+`PUT  *base*/shipments/*shipmentId*`
 Authentication : [API Key](/api-references/api-intro#authentication)
 This will modify the products on the shipment, keeping the same `shipmentId`. This function is designed for creation and modification of new shipments, meaning it will *not* work on existing shipments which:
 
@@ -58,20 +56,20 @@ Response in xml format instead of json.
 ## Request example
 
 ```http
-     PUT <base>/shipments/23123 HTTP/1.1
-     Content-type: application/json
-  
-     {
-       "gtg":1,
-       "products": {
-         "43243": 1,
-         "43244": 2,
-         "43245": {
-           "serialNumber": "newSerialNumber",
-           "qty": 5
-         }
-       }
-     }
+PUT <base>/shipments/23123 HTTP/1.1
+Content-type: application/json
+
+{
+  "gtg":1,
+  "products": {
+    "43243": 1,
+    "43244": 2,
+    "43245": {
+      "serialNumber": "newSerialNumber",
+      "qty": 5
+    }
+  }
+}
 ```
 
 ## Response
@@ -83,89 +81,89 @@ Response is explained in the [Create Shipment Response](/api-references/order-ap
 ## Response example
 
 ```json
- {
-     "status": "ok",
-     "shipment": {
-       "orderId": "83651",
-       "selectionId": "ff805e6dc70f905553e2225c6977a27a",
-       "orderDate": "2012-02-04 15:16:13",
-       "cancelDate": "2012-08-04 15:16:13",
-       "preferredDeliveryDate": "2012-05-04 15:16:13",
-       "estimatedDeliveryDate": "2012-05-04 15:16:13",
-       "orderStore": "retail",
-       "orderCurrency": "EUR",
-       "shipmentId": "83651-1",
-       "customerId": "11627",
-       "accountId": "0",
-       "deliveryName": "Someones Name",
-       "deliveryCompany": "",
-       "deliveryEmail": "tetete@ttet.com",
-       "deliveryCell": "+4912345678",
-       "deliveryTele": "",
-       "deliveryAddress": "Examplestreet 1",
-       "deliveryCoaddress": "",
-       "deliveryZipcode": "12345",
-       "deliveryCity": "Somecity",
-       "deliveryState": "",
-       "deliveryCountry": "DE",
-       "billingVAT": "",
-       "poNumber": "",
-       "shippingList": "standard",
-       "proforma": "http://.../proforma?shipment=83651-1",
-       "deliveryNote": "http://../delnote?shipment=83651-1",
-       "invoices": [
-         "https://online.klarna.com/invoice_public_show.yaws/invoice.pdf?invno=<>&orgno="
-       ],
-       "suspect": 0,
-       "hold": 0,
-       "paid": 1,
-       "shouldCapture": 0,
-       "shippingValue": 25,
-       "voucherValue": 0,
-       "grandTotalValue": 3978.75,
-       "grandTotalTaxValue": 795.75,
-       "internalComment": "",
-       "otherComment": "",
-       "products": [
-         {
-           "lineId": "43243",
-           "sku": "B405916999",
-           "variantSku": "",
-           "sizeSku": "",
-           "name": "Product #1",
-           "variant": "White",
-           "size": "XS",
-           "ean": "7332577534606",
-           "qty": 1,
-           "originalPrice": 500.5,
-           "price": 450.5,
-           "weight": 2,
-           "weightUnit": "kg",
-           "countryOfOrigin": "DE",
-           "harmCode": "345345435",
-           "comment": ""
-         },
-         {
-           "lineId": "43244",
-           "sku": "C00622469B",
-           "variantSku": "",
-           "sizeSku": "",
-           "name": "Product #2",
-           "variant": "Blue",
-           "size": "XS",
-           "ean": "7332577652942",
-           "qty": 2,
-           "originalPrice": 200.5,
-           "price": 180.5,
-           "weight": 1.5,
-           "weightUnit": "kg",
-           "countryOfOrigin": "CI",
-           "harmCode": "423432",
-           "comment": ""
-         }
-       ]
-     }
-   }
+{
+  "status": "ok",
+  "shipment": {
+    "orderId": "83651",
+    "selectionId": "ff805e6dc70f905553e2225c6977a27a",
+    "orderDate": "2012-02-04 15:16:13",
+    "cancelDate": "2012-08-04 15:16:13",
+    "preferredDeliveryDate": "2012-05-04 15:16:13",
+    "estimatedDeliveryDate": "2012-05-04 15:16:13",
+    "orderStore": "retail",
+    "orderCurrency": "EUR",
+    "shipmentId": "83651-1",
+    "customerId": "11627",
+    "accountId": "0",
+    "deliveryName": "Someones Name",
+    "deliveryCompany": "",
+    "deliveryEmail": "tetete@ttet.com",
+    "deliveryCell": "+4912345678",
+    "deliveryTele": "",
+    "deliveryAddress": "Examplestreet 1",
+    "deliveryCoaddress": "",
+    "deliveryZipcode": "12345",
+    "deliveryCity": "Somecity",
+    "deliveryState": "",
+    "deliveryCountry": "DE",
+    "billingVAT": "",
+    "poNumber": "",
+    "shippingList": "standard",
+    "proforma": "http://.../proforma?shipment=83651-1",
+    "deliveryNote": "http://../delnote?shipment=83651-1",
+    "invoices": [
+      "https://online.klarna.com/invoice_public_show.yaws/invoice.pdf?invno=<>&orgno="
+    ],
+    "suspect": 0,
+    "hold": 0,
+    "paid": 1,
+    "shouldCapture": 0,
+    "shippingValue": 25,
+    "voucherValue": 0,
+    "grandTotalValue": 3978.75,
+    "grandTotalTaxValue": 795.75,
+    "internalComment": "",
+    "otherComment": "",
+    "products": [
+      {
+        "lineId": "43243",
+        "sku": "B405916999",
+        "variantSku": "",
+        "sizeSku": "",
+        "name": "Product #1",
+        "variant": "White",
+        "size": "XS",
+        "ean": "7332577534606",
+        "qty": 1,
+        "originalPrice": 500.5,
+        "price": 450.5,
+        "weight": 2,
+        "weightUnit": "kg",
+        "countryOfOrigin": "DE",
+        "harmCode": "345345435",
+        "comment": ""
+      },
+      {
+        "lineId": "43244",
+        "sku": "C00622469B",
+        "variantSku": "",
+        "sizeSku": "",
+        "name": "Product #2",
+        "variant": "Blue",
+        "size": "XS",
+        "ean": "7332577652942",
+        "qty": 2,
+        "originalPrice": 200.5,
+        "price": 180.5,
+        "weight": 1.5,
+        "weightUnit": "kg",
+        "countryOfOrigin": "CI",
+        "harmCode": "423432",
+        "comment": ""
+      }
+    ]
+  }
+}
 ```
 
 
@@ -173,33 +171,33 @@ Response is explained in the [Create Shipment Response](/api-references/order-ap
 ## Error example
 
 ```json
-   {
-     "status": "no",
-     "msg": "shipment is sent and can not be updated",
-     "shipment": "4-1"
-   }
+{
+  "status": "no",
+  "msg": "shipment is sent and can not be updated",
+  "shipment": "4-1"
+}
 ```
 
 ```json
-  {
-     "status": "no",
-     "msg": "shipment is paid and can not be updated",
-     "shipment": "4-1"
-   }
+{
+  "status": "no",
+  "msg": "shipment is paid and can not be updated",
+  "shipment": "4-1"
+}
 ```
 
 ```json
-  {
-     "status": "no",
-     "msg": "shipment is captured and can not be updated",
-     "shipment": "4-1"
-   }
+{
+  "status": "no",
+  "msg": "shipment is captured and can not be updated",
+  "shipment": "4-1"
+}
 ```
 
 ```json
-  {
-     "status": "no",
-     "msg": "shipment has refunds and can not be updated", 
-     "shipment": "4-1"
-   }
+{
+  "status": "no",
+  "msg": "shipment has refunds and can not be updated", 
+  "shipment": "4-1"
+}
 ```

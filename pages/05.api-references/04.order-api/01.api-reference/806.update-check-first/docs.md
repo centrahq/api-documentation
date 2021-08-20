@@ -7,9 +7,7 @@ taxonomy:
 
 # Update Check First
 
-```text
-POST *base*/check-first
-```
+`POST *base*/check-first`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 
@@ -34,14 +32,14 @@ Whether to accept or reject the Check First warehouse. ``true`` to accept, ``fal
 ## Request example
 
 ```http
-   POST <base>/check-first HTTP/1.1
-   Content-type: application/json
+POST <base>/check-first HTTP/1.1
+Content-type: application/json
 
-   {
-     "orderNumber": 123,
-     "warehouseId": 321,
-     "accepted": true
-   }
+{
+   "orderNumber": 123,
+   "warehouseId": 321,
+   "accepted": true
+}
 ```
 
 ## Response
@@ -66,36 +64,36 @@ Error message describing an issue with the provided accepted value.
 ## Response example
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-     "status": "ok"
-   }
+{
+   "status": "ok"
+}
 ```
 ## Error examples
 
 ```json
-   {
-     "status": "no",
-     "msg": {
-        "orderNumber": "invalid value",
-        "warehouseId": "required",
-        "accepted": "invalid value"
-     }
+{
+   "status": "no",
+   "msg": {
+      "orderNumber": "invalid value",
+      "warehouseId": "required",
+      "accepted": "invalid value"
    }
+}
 ```
 
 ```json
-    {
-      "msg": "order does not exist",
-      "status": "no"
-    }
+{
+   "msg": "order does not exist",
+   "status": "no"
+}
 ```
 
 ```json
-   {
-      "msg": "failed to allocate stock",
-      "status": "no"
-   }
+{
+   "msg": "failed to allocate stock",
+   "status": "no"
+}
 ```

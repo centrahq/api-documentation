@@ -8,9 +8,7 @@ taxonomy:
 
 # Anonymize customer
 
-```text
-PUT  *base*/anonymize-customer/*customerId*
-```
+`PUT  *base*/anonymize-customer/*customerId*`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 This endpoint will anonymize all personal data for a customer identifed by the customer id.
@@ -25,9 +23,7 @@ The ``customerID`` from :ref:`List customers <order-api-list-customers>`.
 
 ## Request example
 
-```http
-   PUT <base>/anonymize-customer/123 HTTP/1.1
-```
+`PUT <base>/anonymize-customer/123 HTTP/1.1`
 
 ## Response
 
@@ -44,10 +40,10 @@ The response if the anonymization was successful or an error if ``status`` is ``
 ## Response example
 
 ```json
-   {
-     "status": "ok",
-     "msg": "The personal data has been anonymized."
-   }
+{
+  "status": "ok",
+  "msg": "The personal data has been anonymized."
+}
 ```
 
 ## Error example
@@ -55,17 +51,17 @@ The response if the anonymization was successful or an error if ``status`` is ``
 If the customer was not found:
 
 ```json
-   {
-     "status": "no",
-     "msg": "The customer was not found."
-   }
+{
+  "status": "no",
+  "msg": "The customer was not found."
+}
 ```
 
 If the customer was already anonymized:
 
 ```json
-   {
-     "status": "no",
-     "msg": "The personal data was already anonymized."
-   }
+{
+  "status": "no",
+  "msg": "The personal data was already anonymized."
+}
 ```

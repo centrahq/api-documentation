@@ -8,9 +8,7 @@ taxonomy:
 
 # Delete shipment
 
-```text
-DELETE  *base*/shipments/*shipmentId*[?xml=1]
-```
+`DELETE  *base*/shipments/*shipmentId*[?xml=1]`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will delete the shipment completely. Will only work if the shipment does not have any invoices or credit notes connected to it.
@@ -27,9 +25,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http
-   DELETE <base>/shipments/*shipmentId* HTTP/1.1
-```
+`DELETE <base>/shipments/*shipmentId* HTTP/1.1`
 
 ## Response
 
@@ -54,20 +50,20 @@ If ``status`` returns ``no``, this value should send back a message why it faile
 ## Response example
 
 ```json
-   {
-     "status": "ok",
-     "msg": "shipment removed",
-     "order": 8,
-     "shipment": "8-1"
-   }
+{
+  "status": "ok",
+  "msg": "shipment removed",
+  "order": 8,
+  "shipment": "8-1"
+}
 ```
 
 ## Error example
 
 ```json
-   {
-     "status": "no",
-     "msg": "shipment has invoices or creditnotes and could not be deleted.",
-     "shipment": "3-1"
-   }
+{
+  "status": "no",
+  "msg": "shipment has invoices or creditnotes and could not be deleted.",
+  "shipment": "3-1"
+}
 ```

@@ -8,13 +8,9 @@ taxonomy:
 
 # Get products
 
-```text
-GET  *base*/products
-```
+`GET  *base*/products`
 
-```text
-GET  *base*/products/*productId*
-```
+`GET  *base*/products/*productId*`
 
 Fetches a specific product referenced by its ID, or the **full** product list.
 
@@ -34,24 +30,24 @@ The object returned will have the `productId` for each product as the key. The p
 ## Response example
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   {
-      "1": {"product-object"},
-      "2": {"product-object"},
-   }
+{
+  "1": {"product-object"},
+  "2": {"product-object"},
+}
 ```
 
 ## Error example
 
 ```http
-   HTTP/1.1 404 Not Found
-   Content-type: application/json
+HTTP/1.1 404 Not Found
+Content-type: application/json
 
-   {
-      "errors" : {
-         "product" : "not found"
-      }
-   }
+{
+  "errors" : {
+      "product" : "not found"
+  }
+}
 ```

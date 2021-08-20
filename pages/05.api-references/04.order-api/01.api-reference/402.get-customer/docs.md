@@ -8,9 +8,7 @@ taxonomy:
 
 # Get customer
 
-```text
-GET  *base*/customers/*customerId*
-```
+`GET  *base*/customers/*customerId*`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 Return customer by specified ID.
@@ -28,7 +26,7 @@ Response in xml format instead of json.
 ## Request example
 
 ```http
-   GET <base>/customers/4234 HTTP/1.1
+GET <base>/customers/4234 HTTP/1.1
 ```
 
 <!--
@@ -108,47 +106,47 @@ If the customer was registered, which means it is allowed to sign in.
 ## Response example
 
 ```json
-   {
-       "status": "ok",
-       "customer": {
-           "customerId": "4",
-           "email": "jon.snow@example.com",
-           "firstName": "Jon",
-           "lastName": "Snow",
-           "address1": "Time Square 55",
-           "address2": "",
-           "zipCode": "2456",
-           "city": "Tampa",
-           "state": "LA",
-           "country": "US",
-           "phoneNumber": "096456192",
-           "newsletter": true,
-           "gender": "",
-           "registered": false,
-           "consents": [
-               {
-                   "key": "test_key1",
-                   "name": "Consent1",
-                   "consented": true,
-                   "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley ",
-                   "language": "",
-                   "version": "1",
-                   "created": "2018-03-15 20:40:36",
-                   "modified": "2018-03-15 20:40:36"
-               },
-               {
-                   "key": "test_key2",
-                   "name": "Consent2",
-                   "consented": false,
-                   "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley ",
-                   "language": "EN",
-                   "version": "",
-                   "created": "2018-03-15 20:41:14",
-                   "modified": "2018-03-15 20:41:14"
-               }
-           ],
-           "created": "2018-03-15 20:42:59",
-           "modified": "2018-03-15 20:42:59"
-       }
-   }
+{
+    "status": "ok",
+    "customer": {
+        "customerId": "4",
+        "email": "jon.snow@example.com",
+        "firstName": "Jon",
+        "lastName": "Snow",
+        "address1": "Time Square 55",
+        "address2": "",
+        "zipCode": "2456",
+        "city": "Tampa",
+        "state": "LA",
+        "country": "US",
+        "phoneNumber": "096456192",
+        "newsletter": true,
+        "gender": "",
+        "registered": false,
+        "consents": [
+            {
+                "key": "test_key1",
+                "name": "Consent1",
+                "consented": true,
+                "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley ",
+                "language": "",
+                "version": "1",
+                "created": "2018-03-15 20:40:36",
+                "modified": "2018-03-15 20:40:36"
+            },
+            {
+                "key": "test_key2",
+                "name": "Consent2",
+                "consented": false,
+                "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley ",
+                "language": "EN",
+                "version": "",
+                "created": "2018-03-15 20:41:14",
+                "modified": "2018-03-15 20:41:14"
+            }
+        ],
+        "created": "2018-03-15 20:42:59",
+        "modified": "2018-03-15 20:42:59"
+    }
+}
 ```

@@ -8,9 +8,7 @@ taxonomy:
 
 # Update order
 
-```text
-PUT  *base*/orders
-```
+`PUT  *base*/orders`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 Update information on the order.
@@ -32,13 +30,13 @@ Response in xml format instead of json.
 ## Request example
 
 ```http
-   PUT <base>/orders HTTP/1.1
-   Content-type: application/json
+PUT <base>/orders HTTP/1.1
+Content-type: application/json
 
-   {
-     "order": 83651,
-     "internalComment": "test"
-   }
+{
+  "order": 83651,
+  "internalComment": "test"
+}
 ```
 
 ## Response
@@ -60,10 +58,10 @@ If ``status`` returns ``no``, this value should send back a message why it faile
 ## Response example
 
 ```json
-  {
-     "status": "ok",
-     "order": 83651
-   }
+{
+  "status": "ok",
+  "order": 83651
+}
 ```
 
 
@@ -72,8 +70,8 @@ If ``status`` returns ``no``, this value should send back a message why it faile
 
 ```json
 {
-     "status": "no",
-     "msg": "order in wrong market",
-     "order": 83651
-   }
+  "status": "no",
+  "msg": "order in wrong market",
+  "order": 83651
+}
 ```

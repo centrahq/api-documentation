@@ -34,9 +34,7 @@ More information: [Order API - Get products](https://docs.centra.com/reference/s
 
 #### Example request
 
-```text
-GET http://customer.centra.com/api/order-api/products/?ean=5901144123590
-```
+`GET http://customer.centra.com/api/order-api/products/?ean=5901144123590`
 
 #### Example response
 
@@ -60,9 +58,7 @@ More information: [Order API - Get stock](https://docs.centra.com/reference/stab
 
 #### Example request
 
-```text
-GET http://customer.centra.com/api/order-api/stock/?ean=5901144123590
-```
+`GET http://customer.centra.com/api/order-api/stock/?ean=5901144123590`
 
 #### Example response
 
@@ -80,9 +76,7 @@ More information: [Order API - Update stock](https://docs.centra.com/reference/s
 
 #### Example request
 
-```text
-POST http://customer.centra.com/api/order-api/stock/
-```
+`POST http://customer.centra.com/api/order-api/stock/`
 
 ```json
 {

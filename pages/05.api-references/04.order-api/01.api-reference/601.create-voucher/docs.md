@@ -8,9 +8,7 @@ taxonomy:
 
 # Create voucher
 
-```text
-POST  *base*/voucher
-```
+`POST  *base*/voucher`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will create a simple voucher of `percentoff` or `priceoff` type
@@ -68,17 +66,17 @@ Conversion html of the voucher
 ## Request example
 
 ```http
-   POST <base>/voucher HTTP/1.1
+POST <base>/voucher HTTP/1.1
 
-   {
-      "name": "Welcome 10%",
-      "stopDate": "2020-07-09",
-      "type": "percentoff",
-      "value": 10,
-      "store": 1,
-      "markets": 1,
-      "status": true
-   }
+{
+    "name": "Welcome 10%",
+    "stopDate": "2020-07-09",
+    "type": "percentoff",
+    "value": 10,
+    "store": 1,
+    "markets": 1,
+    "status": true
+}
 ```
 
 <!--
@@ -106,46 +104,46 @@ Code of a created voucher
 ## Response example
 
 ```json
-   {
-       "status": "ok",
-       "voucher": 13,
-       "code": "quooquadi_t6uqwecifin"
-   }
+{
+    "status": "ok",
+    "voucher": 13,
+    "code": "quooquadi_t6uqwecifin"
+}
 ```
 ## Errors example
 
 Required fields are not passed
 ```json
-   {
-       "status": "no",
-       "msg": {
-           "name": "required",
-           "stopDate": "required",
-           "type": "required",
-           "store": "required",
-           "markets": "required",
-           "status": "required"
-       }
-   }
+{
+    "status": "no",
+    "msg": {
+        "name": "required",
+        "stopDate": "required",
+        "type": "required",
+        "store": "required",
+        "markets": "required",
+        "status": "required"
+    }
+}
 ```
 
 Market does not exist for a provided store
 ```json
-   {
-       "status": "no",
-       "msg": {
-           "markets": "Market 2 not found."
-       }
-   }
+{
+    "status": "no",
+    "msg": {
+        "markets": "Market 2 not found."
+    }
+}
 ```
 
 Neither `value` nor `valueByPricelist` provided
 
 ```json
-   {
-       "status": "no",
-       "msg": {
-           "value": "One of 'value' or 'valueByPricelist' should be provided."
-       }
-   }
+{
+    "status": "no",
+    "msg": {
+        "value": "One of 'value' or 'valueByPricelist' should be provided."
+    }
+}
 ```

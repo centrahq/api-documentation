@@ -116,7 +116,7 @@ For each event trigger there's a "Field Name", this is the key used in the paylo
 
 The webhook is sent as a regular POST-request using a urlencoded `payload`-parameter containing the JSON, like this:
 
-```
+```http
 POST /url HTTP/1.1
 Host: example.com
 X-Centra-Signature: t=15798...
@@ -160,29 +160,21 @@ The endpoint secret inside the webhook plugin settings is used to generate a sig
 
 This signature header contains two parameters, like this:
 
-```text
-t=1579866370,v1=340a5be9321ad1b83dec05455650b6e174797a7267f48703ccdb7f251a8ba6c9
-```
+`t=1579866370,v1=340a5be9321ad1b83dec05455650b6e174797a7267f48703ccdb7f251a8ba6c9`
 
 The timestamp is used to make sure a replay attack cannot be done, if someone would be able to get a valid signature. The `v1` contains a **HMAC-SHA256** based on the timestamp and the request body separated with a dot `.`.
 
 You can parse this header value by splitting it on `,` and then splitting each value with `=`. The key `v1` contains the signature of the following values (with a dot `.` as the separator):
 
-```text
-{timestamp}.{requestBody}
-```
+`{timestamp}.{requestBody}`
 
 This means, if your endpoint signature was: `test123`, the timestamp inside `t` was `12345678` and the request body would look like this:
 
-```text
-payload=%7B%22x%22%3A%22test%22%7D
-```
+`payload=%7B%22x%22%3A%22test%22%7D`
 
 The signature would be made of:
 
-```text
-12345678.payload=%7B%22x%22%3A%22test%22%7D
-```
+`12345678.payload=%7B%22x%22%3A%22test%22%7D`
 
 And the header would look like this:
 

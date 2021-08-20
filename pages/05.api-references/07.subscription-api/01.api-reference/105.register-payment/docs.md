@@ -8,9 +8,7 @@ taxonomy:
 
 # Register payment
 
-```text
-POST  *base*/subscription/payment
-```
+`POST  *base*/subscription/payment`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 
@@ -33,11 +31,10 @@ Attach all GET/POST parameters sent from the payment provider to the ``payment_u
 ## Request example
 
 ```http
-    POST <base>/subscription/payment HTTP/1.1
-    Content-Type: application/x-www-form-urlencoded
-    
-    id=3&payment=nets&[+all GET/POST params sent by payment provider]
+POST <base>/subscription/payment HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
 
+id=3&payment=nets&[+all GET/POST params sent by payment provider]
 ```
 
 ## Response
@@ -117,44 +114,44 @@ If ``true``, the payment was not successful. The ``status`` should contain infor
 ## Response examples
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-      {
-         "status": "ok",
-         "id": 3,
-         "amount": "900.00",
-         "shipping": "20.00",
-         "itemCount": 2,
-         "currency": "SEK",
-         "address": {
-           "firstName": "Kalle",
-           "lastName": "Anka",
-           "phoneNumber": "+4687203333",
-           "address1": "Malarvarvsbacken 8",
-           "address2": "c/o Young Skilled AB",
-           "zipCode": "11733",
-           "city": "Stockholm",
-           "state": "",
-           "country": "SE"
-         },
-         "createdAt": "2020-05-05 15:00:00",
-         "startDate": "2020-05-05",
-         "nextOrderDate": "2020-05-06",
-         "interval": 14,
-         "intervalType": "Day",
-         "receipt": "<div>...</div>"
-       }
+{
+  "status": "ok",
+  "id": 3,
+  "amount": "900.00",
+  "shipping": "20.00",
+  "itemCount": 2,
+  "currency": "SEK",
+  "address": {
+    "firstName": "Kalle",
+    "lastName": "Anka",
+    "phoneNumber": "+4687203333",
+    "address1": "Malarvarvsbacken 8",
+    "address2": "c/o Young Skilled AB",
+    "zipCode": "11733",
+    "city": "Stockholm",
+    "state": "",
+    "country": "SE"
+  },
+  "createdAt": "2020-05-05 15:00:00",
+  "startDate": "2020-05-05",
+  "nextOrderDate": "2020-05-06",
+  "interval": 14,
+  "intervalType": "Day",
+  "receipt": "<div>...</div>"
+}
 ```
 
 ## Error example
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-    {
-      "status": "Could not register customer",
-      "error": true
-    }
+{
+  "status": "Could not register customer",
+  "error": true
+}
 ```

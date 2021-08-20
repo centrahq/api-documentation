@@ -7,9 +7,7 @@ taxonomy:
 ---
 # Get product IDs
 
-```text
-GET  *base*/product-ids
-```
+`GET  *base*/product-ids`
 
 Fetches a list of all product IDs. This is a quicker API operation than [fetching all products](get-products) so it can be useful when e.g. comparing a list of products cached in the frontend to those in Centra.
 
@@ -23,8 +21,8 @@ Product IDs for all active products in the store.
 ## Response example
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
-   ["123", "124", "125"]
+["123", "124", "125"]
 ```

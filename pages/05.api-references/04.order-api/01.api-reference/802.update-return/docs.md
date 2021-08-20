@@ -8,9 +8,7 @@ taxonomy:
 
 # Update return
 
-```text
-PUT  *base*/returns/*returnId*
-```
+`PUT  *base*/returns/*returnId*`
 Authentication : [API Key](/api-references/api-intro#authentication)
 Update information on Return.
 
@@ -31,12 +29,12 @@ Response in xml format instead of json.
 ## Request example
 
 ```http
-   PUT <base>/returns/2 HTTP/1.1
-   Content-type: application/json
-   
-   {
-     "completed": true
-   }
+PUT <base>/returns/2 HTTP/1.1
+Content-type: application/json
+
+{
+  "completed": true
+}
 ```
 
 ## Response
@@ -202,57 +200,57 @@ If ``status`` returns ``no``, this value should send back a message why it faile
 ## Response example
 
 ```json
-  {
-       "status": "ok",
-       "return": {
-           "returnId": 18,
-           "completed": false,
-           "shipment": "44-1",
-           "shipmentId": 1142,
-           "orderId": 44,
-           "selectionId": "be337d27e16564cadad0a340b8bc1fbe",
-           "customerId": 31,
-           "date": "2020-01-07 17:00:29",
-           "returnCost": 5,
-           "shippingCost": 5.55,
-           "handlingCost": 9,
-           "voucherValue": 0,
-           "taxValue": 21.91,
-           "taxDeduction": 0,
-           "currency": "SEK",
-           "baseCurrency": "SEK",
-           "baseCurrencyRate": 1,
-           "returnToStock": false,
-           "comment": null,
-           "createdFrom": "Order API",
-           "products": [
-               {
-                   "returnLineId": 17,
-                   "shipmentLineId": 2681,
-                   "orderLineId": 112,
-                   "productId": 7,
-                   "variantId": 2460,
-                   "productName": "Test Product STOCK",
-                   "productBrand": null,
-                   "variantName": null,
-                   "size": null,
-                   "sku": "TPSTOCK",
-                   "variantSku": "",
-                   "sizeSku": "",
-                   "ean": "StockTestEAN",
-                   "quantity": 1,
-                   "price": 100
-               }
-           ]
-       }
-   }
+{
+    "status": "ok",
+    "return": {
+        "returnId": 18,
+        "completed": false,
+        "shipment": "44-1",
+        "shipmentId": 1142,
+        "orderId": 44,
+        "selectionId": "be337d27e16564cadad0a340b8bc1fbe",
+        "customerId": 31,
+        "date": "2020-01-07 17:00:29",
+        "returnCost": 5,
+        "shippingCost": 5.55,
+        "handlingCost": 9,
+        "voucherValue": 0,
+        "taxValue": 21.91,
+        "taxDeduction": 0,
+        "currency": "SEK",
+        "baseCurrency": "SEK",
+        "baseCurrencyRate": 1,
+        "returnToStock": false,
+        "comment": null,
+        "createdFrom": "Order API",
+        "products": [
+            {
+                "returnLineId": 17,
+                "shipmentLineId": 2681,
+                "orderLineId": 112,
+                "productId": 7,
+                "variantId": 2460,
+                "productName": "Test Product STOCK",
+                "productBrand": null,
+                "variantName": null,
+                "size": null,
+                "sku": "TPSTOCK",
+                "variantSku": "",
+                "sizeSku": "",
+                "ean": "StockTestEAN",
+                "quantity": 1,
+                "price": 100
+            }
+        ]
+    }
+}
 ```
 
 ## Error example
 
 ```json
-   {
-     "status": "no",
-     "msg": "Return with id=100500 does not exist"
-   }
+{
+  "status": "no",
+  "msg": "Return with id=100500 does not exist"
+}
 ```

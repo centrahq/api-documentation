@@ -14,9 +14,7 @@ taxonomy:
 
 # Get stock
 
-```text
-GET *base*/stock
-```
+`GET *base*/stock`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will return product data from Centra with stock info. The values of the stock depends on the connected warehouses for the API-plugin.
@@ -65,9 +63,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http
-   GET <base>/stock?[&limit=2][&sku=DCG001][&modified=2016-01-01+12:10:11][&created=2011-01-01] HTTP/1.1
-```
+`GET <base>/stock?[&limit=2][&sku=DCG001][&modified=2016-01-01+12:10:11][&created=2011-01-01] HTTP/1.1`
 
 <!--
 ```eval_rst
@@ -166,57 +162,57 @@ Will contain a URL to the next page.
 ## Response example
 
 ```json
-   {
-     "status": "ok",
-     "products": [
-       {
-         "sku": "12019005",
-         "productId": 10,
-         "variantSku": "A",
-         "variantId": 9,
-         "sizeSku": "X",
-         "brand": "Kronan",
-         "collection": "ALL",
-         "product": "Bike Lady 0 speed BLACK",
-         "variant": "SVART",
-         "size": "ONE SIZE",
-         "stockItemId": 3131,
-         "ean": "1234567890123",
-         "weight": 22,
-         "weightUnit": "kg",
-         "countryOfOrigin": "",
-         "harmCode": "87120030",
-         "harmDescription": "Cyklar",
-         "active": 1,
-         "physicalStock": 5,
-         "allocatedStock": 1,
-         "availableStock": 4
-       },
-       {
-         "sku": "12028008",
-         "productId": 11,
-         "variantSku": "B",
-         "variantId": 10,
-         "sizeSku": "Y",
-         "brand": "Kronan",
-         "collection": "ALL",
-         "product": "Bike Man 0 speed BROWN",
-         "variant": "BRUN",
-         "size": "ONE SIZE",
-         "stockItemId": 3132,
-         "ean": "9876543210123",
-         "weight": 22,
-         "weightUnit": "kg",
-         "countryOfOrigin": "",
-         "harmCode": "87120030",
-         "harmDescription": "CYKEL",
-         "active": 1,
-         "physicalStock": 141,
-         "allocatedStock": 10,
-         "availableStock": 131
-       }
-     ],
-     "previous": "?limit=2&page=2",
-     "next": "?limit=2&page=3"
-   }
+{
+  "status": "ok",
+  "products": [
+    {
+      "sku": "12019005",
+      "productId": 10,
+      "variantSku": "A",
+      "variantId": 9,
+      "sizeSku": "X",
+      "brand": "Kronan",
+      "collection": "ALL",
+      "product": "Bike Lady 0 speed BLACK",
+      "variant": "SVART",
+      "size": "ONE SIZE",
+      "stockItemId": 3131,
+      "ean": "1234567890123",
+      "weight": 22,
+      "weightUnit": "kg",
+      "countryOfOrigin": "",
+      "harmCode": "87120030",
+      "harmDescription": "Cyklar",
+      "active": 1,
+      "physicalStock": 5,
+      "allocatedStock": 1,
+      "availableStock": 4
+    },
+    {
+      "sku": "12028008",
+      "productId": 11,
+      "variantSku": "B",
+      "variantId": 10,
+      "sizeSku": "Y",
+      "brand": "Kronan",
+      "collection": "ALL",
+      "product": "Bike Man 0 speed BROWN",
+      "variant": "BRUN",
+      "size": "ONE SIZE",
+      "stockItemId": 3132,
+      "ean": "9876543210123",
+      "weight": 22,
+      "weightUnit": "kg",
+      "countryOfOrigin": "",
+      "harmCode": "87120030",
+      "harmDescription": "CYKEL",
+      "active": 1,
+      "physicalStock": 141,
+      "allocatedStock": 10,
+      "availableStock": 131
+    }
+  ],
+  "previous": "?limit=2&page=2",
+  "next": "?limit=2&page=3"
+}
 ```

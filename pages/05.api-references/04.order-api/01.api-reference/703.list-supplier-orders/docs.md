@@ -8,9 +8,7 @@ taxonomy:
 
 # List supplier orders
 
-```text
-GET *base*/supplier-orders
-```
+`GET *base*/supplier-orders`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 Get all confirmed supplier orders visible by the plugin.
@@ -23,9 +21,7 @@ Response in xml format instead of json.
 
 ## Request example
 
-```http
-   GET <base>/supplier-orders HTTP/1.1
-```
+`GET <base>/supplier-orders HTTP/1.1`
 
 <!--
 ```eval_rst
@@ -73,29 +69,29 @@ The total quantity of products in this supplier order.
 ## Response example
 
 ```json
-     {
-        "status": "ok",
-        "orders": [
-          {
-            "orderId": "957",
-            "supplierName": "Falca",
-            "supplierCountry": "ES",
-            "created": "2019-01-28 01:15",
-            "ETD": "2019-03-31 15:15",
-            "ETA": "2019-04-05 20:15",
-            "message": "Text entered by centra admin",
-            "productsQty": 20000
-          },
-          {
-            "orderId": "957",
-            "supplierName": "Falca",
-            "supplierCountry": "ES",
-            "created": "2019-01-28 01:15",
-            "ETD": "2019-03-31 15:15",
-            "ETA": "2019-04-05 20:15",
-            "message": "Text entered by centra admin",
-            "productsQty": 10000
-          }
-        ]
-      }
+{
+  "status": "ok",
+  "orders": [
+    {
+      "orderId": "957",
+      "supplierName": "Falca",
+      "supplierCountry": "ES",
+      "created": "2019-01-28 01:15",
+      "ETD": "2019-03-31 15:15",
+      "ETA": "2019-04-05 20:15",
+      "message": "Text entered by centra admin",
+      "productsQty": 20000
+    },
+    {
+      "orderId": "957",
+      "supplierName": "Falca",
+      "supplierCountry": "ES",
+      "created": "2019-01-28 01:15",
+      "ETD": "2019-03-31 15:15",
+      "ETA": "2019-04-05 20:15",
+      "message": "Text entered by centra admin",
+      "productsQty": 10000
+    }
+  ]
+}
 ```

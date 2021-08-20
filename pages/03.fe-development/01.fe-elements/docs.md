@@ -47,9 +47,7 @@ These tokens should be saved by the front end for every client session and used 
 
 ### Product catalog
 
-```text
-Welcome to the store! Feel free to browse around.
-```
+`Welcome to the store! Feel free to browse around.`
 
 [notice-box=info]
 Whenever you use Centra API to fetch products, the product IDs used are actually the display IDs of the products. Like described in the [Product model chapter](/overview/products), the displays act as a presentation layer for your products.
@@ -77,21 +75,21 @@ Another method is the [POST /products](https://docs.centra.com/swagger-ui/?api=C
 {
     "skipFirst": 5,
     "limit": 10,
-    "categories": [1,2,3],
-    "collections": [1,2,3],
+    "categories": [1, 2, 3],
+    "collections": [1, 2, 3],
     "silkProduct": 123,
     "search": "hello world",
-    "products": [1,2,3],
+    "products": [1, 2, 3],
     "relatedProducts": true,
-    "brands": [1,2,3],
+    "brands": [1, 2, 3],
     "swatch.desc": ["Red", "Blue", "Green"],
-    "items.name":["W24\/L30"],
-    "onlyAvailable":true,
-    "uri":{
-        "uri":"jeans\/black",
-        "for":["product", "category"]
+    "items.name": ["W24\/L30"],
+    "onlyAvailable": true,
+    "uri": {
+        "uri": "jeans\/black",
+        "for": ["product", "category"]
     }
-},
+}
 ```
 
 * `skipFirst` and `limit` can be used for paging.
@@ -112,46 +110,45 @@ POST products?pretty
   "skipFirst": 5,
   "search": "som",
   "categories": [709],
-  "swatch.desc": ["Red","Blue"]
+  "swatch.desc": ["Red", "Blue"]
 }
 ```
 
 This means return 2 products (while skipping first 5) which match:
 
-```text
-Free text search for "som" AND category = 709 AND swatch.desc = (Red OR Blue)
-```
+`Free text search for "som" AND category = 709 AND swatch.desc = (Red OR Blue)`
 
 So how do you know about category 709? Or that swatch.desc can be Red or Blue? This is what the “filter” in the response is for. It contains all possible filtering values, and a count of how many products matches each filtering value in the current set of filtered products and for all products.
 
 Full example responses can be found in Swagger for [POST /products](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/5.%20product%20catalog/post_products).
 
 ```json
-  (...)
-  "filter": [
-    {
-      "field": "swatch.desc",
-      "values": [
-        {
-          "value": "Red",
-          "count": 1,
-          "totalCount": 35,
-          "data": {
-            "desc": "Red",
-            "hex": "ff0000"
-          }
-        },
-        {
-          "value": "Blue",
-          "count": 6,
-          "totalCount": 12,
-          "data": {
-            "desc": "Blue",
-            "hex": "0000ff"
-          }
+(...)
+"filter": [
+  {
+    "field": "swatch.desc",
+    "values": [
+      {
+        "value": "Red",
+        "count": 1,
+        "totalCount": 35,
+        "data": {
+          "desc": "Red",
+          "hex": "ff0000"
         }
-      ]
-    }
+      },
+      {
+        "value": "Blue",
+        "count": 6,
+        "totalCount": 12,
+        "data": {
+          "desc": "Blue",
+          "hex": "0000ff"
+        }
+      }
+    ]
+  }
+]
 ```
 
 The `filter` object has values for the `swatch.desc` field at the end of this JSON blob. At the end of it value “Blue” shows `“count”:6`, which means there are 6 blue products in the current filtered set of products, `“totalCount”:12` means there are 12 blue products in total without filtering. The  `“data"` object contains the data the front end should use to display `“Blue”`, it is the same data as the `“swatch”` on the product itself.
@@ -169,10 +166,10 @@ You can search products and categories by URI when using the [POST /uri](https:/
 ```json
 POST /uri
 {
-    "uri":"jeans/slim-5-pocket-jeans-white",
-    "for":["category", "product"],
-    "limit":2,
-    "skipFirst":0
+    "uri": "jeans/slim-5-pocket-jeans-white",
+    "for": ["category", "product"],
+    "limit": 2,
+    "skipFirst": 0
 }
 ```
 
@@ -240,14 +237,13 @@ Checkout API allows you to filter on any of the preexisting and custom product a
 
 From now on you can use these filters in your `POST /products` calls. For example, if you're looking for a product with SKU "BB7112" and with swatch color "Red", simply run:
 
-```
+```json
 {
-   "limit": 50,
-   "skipFirst": 0,
-   "search": "BB7112",
-   "swatch.desc": "Red"
+    "limit": 50,
+    "skipFirst": 0,
+    "search": "BB7112",
+    "swatch.desc": "Red"
 }
-
 ```
 
 The precise filter name, `swatch.desc` in this example, depends on your custom attribute configuration. The attribute values will always be returned with the key `[attribute-name].[element-name]`, with the exception of elements called `text` - due to legacy reasons this element name will be omitted, and the value will be returned just as `[attribute-name]`.
@@ -272,9 +268,7 @@ With that configuration, whenever you fetch a product, you will also receive inf
 
 ### Country / language / market switcher
 
-```text
-Welcome! Välkommen! Witamy! ¡Bienvenida! Wilkommen! Üdvözöljük! Velkommen!
-```
+`Welcome! Välkommen! Witamy! ¡Bienvenida! Wilkommen! Üdvözöljük! Velkommen!`
 
 Both Markets and Pricelists can be configured to automatically apply to selections in specific countries. Because this needs to be deterministic, we have the following limitation to using countries as Geo-locations:
 * One country can only be a geo-location for one Market per Store,
@@ -290,9 +284,7 @@ If you switch to a country which is not shippable (`"shipTo": false`), you will 
 
 ### Consents
 
-```text
-Here are the terms and conditions.
-```
+`Here are the terms and conditions.`
 
 Don't forget that for a proper payment you need to add a Front End consent checkbox (or checkboxes). This needs to be verified by sending a boolean `"termsAndConditions": true` in your [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) call. Otherwise, you will receive the below error, which you should handle by displaying a message about consents being required for checkout process to complete.
 
@@ -311,9 +303,7 @@ You can configure the Checkout API plugin to *not* require terms and conditions 
 
 ### Customer registration and login
 
-```text
-Would you like your usual?
-```
+`Would you like your usual?`
 
 Depending on your business design, you may want to allow your customers to register and log in on your website. This is not a requirement in Centra, though. By default, when an order with an unique e-mail address is completed, Centra will create a Customer with a property `Registered user: No`.
 
@@ -327,9 +317,7 @@ To fetch details of currently logged user, call [GET /customer](https://docs.cen
 
 ### Newsletter sign-up form
 
-```text
-We have some cool stuff we'd love to show you now and in the future!
-```
+`We have some cool stuff we'd love to show you now and in the future!`
 
 You can subscribe your customers for e-mail newsletter using [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint. In it, you can choose to send `country` and `language` parameters, which can be used to control the newsletter language and to filter newsletter updates on products available in customer's Market. Registered newsletter e-mails can be found in Centra back end under Retail -> Customers -> Newsletter.
 
@@ -347,7 +335,7 @@ To read more and see some examples, check out [Rule article about email honey po
 
 If product which is out of stock shows "Notify me when back in stock", the customer can be registered under Customers > Newsletter with their e-mail address and the product that they wish to be notified about. This list  should automatically go to your audience ID or mailing list inside your ESP (E-mail Service Provider). However, there is no automation from Centra in terms of when stock is added, this is something that you would have to manually handle. So when the stock is back, you would go to the ESP and send e-mails to customers with that product and/or size.
 
-To register products or specific product sizes for customer newsletter, you should call [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint with optional parameters:  
+To register products or specific product sizes for customer newsletter, you should call [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint with optional parameters:
 * `country` - allows you to specify the country for the newsletter, which can affect the products availability you display based on the Market,
 * `language` - allows you to specify the language of the newsletter, which helps you send a correct translation to specific customers,
 * `product` - sent as `[displayID]` registers customer e-mail in the Newsletter list with a specific product,
@@ -355,17 +343,13 @@ To register products or specific product sizes for customer newsletter, you shou
 
 #### Sign-up voucher code
 
-```text
-Would you sign up if we offered you a discount?
-```
+`Would you sign up if we offered you a discount?`
 
 [Automatic voucher on newsletter sign-up - is it possible in Centra?]
 
 ### Basket / selection
 
-```text
-Sure you got everything you wanted?
-```
+`Sure you got everything you wanted?`
 
 At any point when you modify the selection (by adding items, changing payment method or filling address details), Centra will return the fully updated selection in the response. This way, unless you receive an error message, you can always make sure your changes were applied. You can also fetch the current selection at any time by calling [GET /selection](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/get_selection).
 
@@ -385,9 +369,7 @@ The line ID is also necessary for creating returns for completed orders - you wi
 
 ### Shipping options
 
-```text
-How quickly you can get your stuff, and how much it would cost.
-```
+`How quickly you can get your stuff, and how much it would cost.`
 
 With every selection response, the API will include a `shippingMethods` table. In it you will receive all available shipping methods based on the current country of the selection. You can choose any of them using the [PUT /shipping-methods/{shippingMethod}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/3.%20selection%20handling%2C%20modify%20selection/put_shipping_methods__shippingMethod_) call.
 
@@ -403,9 +385,7 @@ You can find out which countries are shippable with:
 
 ### Checkout
 
-```text
-Let us know everything we need to know to deliver your stuff to you!
-```
+`Let us know everything we need to know to deliver your stuff to you!`
 
 Your Checkout API plugin configuration allows you to specify which checkout fields (other than country) are required:
 
@@ -415,17 +395,13 @@ Even before completing the checkout and proceeding to payment, you can set some 
 
 #### Newsletter sign-up 2
 
-```text
-Now that you've entered your e-mail, sure you wouldn't like to sign up for some promos?
-```
+`Now that you've entered your e-mail, sure you wouldn't like to sign up for some promos?`
 
 Now that your customer has entered their e-mail might be a good moment to suggest a newsletter subscription. You can do it at any time by sending [PUT /payment-fields](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields) with `newsletter: true`, or add this parameter to the [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) call.
 
 ### Payment
 
-```text
-Pay up!
-```
+`Pay up!`
 
 Once the selection is finalized, shipping and payments methods selected, it's time to finalize the order by completing the payment. This is initiated by calling [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment).
 
@@ -453,15 +429,15 @@ Since so much depends on the shipping country, like prices, shipping costs, taxe
 [notice-box=alert]Some integrations, like DHL shipping, require that you format the zip code (postal code) in a format that is commonly used in the shipping country. If you pass the zip code in a different format, creating a shipment can fail. It is therefore important that you follow the zip code formatting recommendation for every country you intend to ship to. For example, Swedish codes are formatted as NNN NN (with a space), in Germany you have: NNNNN, in Poland: NN-NNN, in Denmark: NNNN. [A full list of postal codes formats by country can be found on Wikipedia](https://en.wikipedia.org/wiki/List_of_postal_codes). If you encounter any problems after following these guidelines, we recommend to contact DHL support.[/notice-box]
 
 In addition, if you've configured Centra to apply precise US taxes based on zip codes, further `zipcode` validation will be required for United States orders. In order to comply with tax regulations, we need to ensure the zip code matches one of the following formats:
-* `NNNNN`  
-* `NNNNN-NNNN`  
-* `NNNNNNNNN`  
+* `NNNNN`
+* `NNNNN-NNNN`
+* `NNNNNNNNN`
 If the zip code is in a different format, Centra will return an error:
 
 ```json
 "errors": {
     "zipcode": "For taxes applied for the United States, the Zip Code must be a valid US Zip Code."
-},
+}
 ```
 
 [notice-box=info]If you did not enable taxes per zip code in your Centra Tax Rules, for now any zip code will be accepted with US orders. However, please beware that this behavior will change in the near future, so implementing US zip code validation will soon be a must.[/notice-box]
@@ -520,11 +496,11 @@ HTTP/1.1 200 OK
 [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) request:
 ```json
 {
-    "paymentReturnPage":"https://example.com/payment-return-page",
-    "paymentFailedPage":"https://example.com/payment-failed-page",
-    "termsAndConditions":true,
-    "address":{
-        "country":"SE"
+    "paymentReturnPage": "https://example.com/payment-return-page",
+    "paymentFailedPage": "https://example.com/payment-failed-page",
+    "termsAndConditions": true,
+    "address": {
+        "country": "SE"
     }
 }
 ```
@@ -532,9 +508,9 @@ HTTP/1.1 200 OK
 [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) response:
 ```json
 {
-"token":"0ms3rnl09a4i4brtbitt1o0cu1",
-"action":"form",
-"formHtml":"<div id=\"klarna-checkout-container\" style=\"overflow-x: hidden;\">\n    <script type=\"text\/javascript\">\n    \/* <![CDATA[ *\/\n        (function(w,k,i,d,n,c,l,p){\n            w[k]=w[k]||function(){(w[k].q=w[k].q||[]).push(arguments)};\n            w[k].config={\n                container:w.document.getElementById(i),\n                ORDER_URL:'https:\/\/checkout.testdrive.klarna.com\/checkout\/orders\/FZKBVVGD7PIIFMOOOE5N61Y5TKY',\n                AUTH_HEADER:'KlarnaCheckout MsmS7sUBsXVCIzo80FlZ',\n                LAYOUT:'desktop',\n                LOCALE:'sv-se',\n                ORDER_STATUS:'checkout_incomplete',\n                MERCHANT_TAC_URI:'http:\/\/example.com\/terms.html',\n                MERCHANT_TAC_TITLE:'Young Skilled',\n                MERCHANT_NAME:'Young Skilled',\n                MERCHANT_COLOR:'',\n                GUI_OPTIONS:[],\n                ALLOW_SEPARATE_SHIPPING_ADDRESS:\n                false,\n                PURCHASE_COUNTRY:'swe',\n                PURCHASE_CURRENCY:'sek',\n                NATIONAL_IDENTIFICATION_NUMBER_MANDATORY:\n                false,\n                ANALYTICS:'UA-36053137-1',\n                TESTDRIVE:true,\n                PHONE_MANDATORY:true,\n                PACKSTATION_ENABLED:false,\n                BOOTSTRAP_SRC:'https:\/\/checkout.testdrive.klarna.com\/170312-6cde26c\/checkout.bootstrap.js',\n                PREFILLED: false\n            };\n            n=d.createElement('script');\n            c=d.getElementById(i);\n            n.async=!0;\n            n.src=w[k].config.BOOTSTRAP_SRC;\n            c.appendChild(n);\n            try{\n                p = w[k].config.BOOTSTRAP_SRC.split('\/');\n                p = p.slice(0, p.length - 1);\n                l = p.join('\/') +\n                    '\/api\/_t\/v1\/snippet\/load?order_url=' +\n                    w.encodeURIComponent(w[k].config.ORDER_URL) + '&order_status=' +\n                    w.encodeURIComponent(w[k].config.ORDER_STATUS) + '&timestamp=' +\n                    (new Date).getTime();\n                ((w.Image && (new w.Image))||(d.createElement&&d.createElement('img'))||{}).src=l;\n            }catch(e){}\n        })(this,'_klarnaCheckout','klarna-checkout-container',document);\n    \/* ]]> *\/\n    <\/script>\n    <noscript>\n        Please <a href=\"http:\/\/enable-javascript.com\">enable JavaScript<\/a>.\n    <\/noscript>\n<\/div>\n"
+    "token": "0ms3rnl09a4i4brtbitt1o0cu1",
+    "action": "form",
+    "formHtml": "<div id=\"klarna-checkout-container\" style=\"overflow-x: hidden;\">\n    <script type=\"text\/javascript\">\n    \/* <![CDATA[ *\/\n        (function(w,k,i,d,n,c,l,p){\n            w[k]=w[k]||function(){(w[k].q=w[k].q||[]).push(arguments)};\n            w[k].config={\n                container:w.document.getElementById(i),\n                ORDER_URL:'https:\/\/checkout.testdrive.klarna.com\/checkout\/orders\/FZKBVVGD7PIIFMOOOE5N61Y5TKY',\n                AUTH_HEADER:'KlarnaCheckout MsmS7sUBsXVCIzo80FlZ',\n                LAYOUT:'desktop',\n                LOCALE:'sv-se',\n                ORDER_STATUS:'checkout_incomplete',\n                MERCHANT_TAC_URI:'http:\/\/example.com\/terms.html',\n                MERCHANT_TAC_TITLE:'Young Skilled',\n                MERCHANT_NAME:'Young Skilled',\n                MERCHANT_COLOR:'',\n                GUI_OPTIONS:[],\n                ALLOW_SEPARATE_SHIPPING_ADDRESS:\n                false,\n                PURCHASE_COUNTRY:'swe',\n                PURCHASE_CURRENCY:'sek',\n                NATIONAL_IDENTIFICATION_NUMBER_MANDATORY:\n                false,\n                ANALYTICS:'UA-36053137-1',\n                TESTDRIVE:true,\n                PHONE_MANDATORY:true,\n                PACKSTATION_ENABLED:false,\n                BOOTSTRAP_SRC:'https:\/\/checkout.testdrive.klarna.com\/170312-6cde26c\/checkout.bootstrap.js',\n                PREFILLED: false\n            };\n            n=d.createElement('script');\n            c=d.getElementById(i);\n            n.async=!0;\n            n.src=w[k].config.BOOTSTRAP_SRC;\n            c.appendChild(n);\n            try{\n                p = w[k].config.BOOTSTRAP_SRC.split('\/');\n                p = p.slice(0, p.length - 1);\n                l = p.join('\/') +\n                    '\/api\/_t\/v1\/snippet\/load?order_url=' +\n                    w.encodeURIComponent(w[k].config.ORDER_URL) + '&order_status=' +\n                    w.encodeURIComponent(w[k].config.ORDER_STATUS) + '&timestamp=' +\n                    (new Date).getTime();\n                ((w.Image && (new w.Image))||(d.createElement&&d.createElement('img'))||{}).src=l;\n            }catch(e){}\n        })(this,'_klarnaCheckout','klarna-checkout-container',document);\n    \/* ]]> *\/\n    <\/script>\n    <noscript>\n        Please <a href=\"http:\/\/enable-javascript.com\">enable JavaScript<\/a>.\n    <\/noscript>\n<\/div>\n"
 }
 ```
 
@@ -544,8 +520,6 @@ After payment is completed, you should finalize the order in the same manner as 
 
 ### Receipt page
 
-```text
-Thanks for your order!
-```
+`Thanks for your order!`
 
 Once you have successfully called [POST /payment-result](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment_result), the selection will become an Order in Centra, and a proper receipt will be generated. Please note that you should only call `payment-result` once per each order. If you need to retrieve the order receipt later on your website, you can fetch it using the [GET /receipt](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/get_receipt) endpoint.

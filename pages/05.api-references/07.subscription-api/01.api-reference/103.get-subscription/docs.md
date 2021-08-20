@@ -8,9 +8,7 @@ taxonomy:
 
 # Get subscription
 
-```text
-GET  *base*/subscription/subscriptions/*id*
-```
+`GET  *base*/subscription/subscriptions/*id*`
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 Return subscription by specified id.
@@ -24,8 +22,8 @@ Customer id.
 ## Request example
 
 ```http
-    GET <base>/subscription/1 HTTP/1.1
-    Content-Type: application/x-www-form-urlencoded
+GET <base>/subscription/1 HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
 ```
 
 ## Response
@@ -118,48 +116,48 @@ Subscription customer id
 ## Response examples
 
 ```http
-   HTTP/1.1 200 OK
-   Content-type: application/json
+HTTP/1.1 200 OK
+Content-type: application/json
 
+{
+  "status": "ok",
+  "subscriptions": [
     {
-     "status": "ok",
-     "subscriptions": [
-       {
-         "status": "active",
-         "id": 3,
-         "amount": "900.00",
-         "shipping": "20.00",
-         "itemCount": 2,
-         "currency": "SEK",
-         "createdAt": "2020-05-05 15:00:00",
-         "startDate": "2020-05-05",
-         "nextOrderDate": "2020-05-06",
-         "interval": 14,
-         "intervalType": "Day",
-         "pricelist": "19",
-         "packages": ["1"],
-         "address": {
-           "firstName": "Kalle",
-           "lastName": "Anka",
-           "phoneNumber": "+4687203333",
-           "address1": "Malarvarvsbacken 8",
-           "address2": "c/o Young Skilled AB",
-           "zipCode": "11733",
-           "city": "Stockholm",
-           "state": "",
-           "country": "SE"
-         },
-         "customer": "132",
-       }
-     ]
-   }
+      "status": "active",
+      "id": 3,
+      "amount": "900.00",
+      "shipping": "20.00",
+      "itemCount": 2,
+      "currency": "SEK",
+      "createdAt": "2020-05-05 15:00:00",
+      "startDate": "2020-05-05",
+      "nextOrderDate": "2020-05-06",
+      "interval": 14,
+      "intervalType": "Day",
+      "pricelist": "19",
+      "packages": ["1"],
+      "address": {
+        "firstName": "Kalle",
+        "lastName": "Anka",
+        "phoneNumber": "+4687203333",
+        "address1": "Malarvarvsbacken 8",
+        "address2": "c/o Young Skilled AB",
+        "zipCode": "11733",
+        "city": "Stockholm",
+        "state": "",
+        "country": "SE"
+      },
+      "customer": "132",
+    }
+  ]
+}
 ```
 
 ## Error examples
 
 ```json
-   {
-     "status": "Subscription not found",
-     "error": true
-   }
+{
+  "status": "Subscription not found",
+  "error": true
+}
 ```

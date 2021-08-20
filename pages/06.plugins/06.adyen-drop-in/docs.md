@@ -83,15 +83,11 @@ When this Client key is added to the plugin, you can now edit the allowed origin
 
 If your website is `example.com` and both `www.example.com` and `example.com` are valid domains for it, the origins you need to allow in Adyen's backend are:
 
-```
-https://example.com
-```
+`https://example.com`
 
 and
 
-```
-https://www.example.com
-```
+`https://www.example.com`
 
 There's more information about how to get your Client key in the [documentation about Client keys in Adyen Docs](https://docs.adyen.com/development-resources/client-side-authentication/migrate-from-origin-key-to-client-key).
 
@@ -111,9 +107,7 @@ Enter the URL from the Adyen Drop-In-plugin from Centra. If you are creating a n
 
 The Notification URL should look something like this:
 
-```
-https://x.centra.com/api/adyen-drop-in/1/?access-key=AABBCCDD
-```
+`https://x.centra.com/api/adyen-drop-in/1/?access-key=AABBCCDD`
 
 Make sure that:
 
@@ -146,9 +140,7 @@ The live endpoint prefix is something you find inside your [Adyen-live account h
 
 And it will look something like this:
 
-```
-7ff08825ff786a90-CentraCompany
-```
+`7ff08825ff786a90-CentraCompany`
 
 You will define this for both Checkout and the standard payments endpoints in the plugin. These does only affect when Test Mode is off, in Test-Mode, the domains are the same for all customers.
 
