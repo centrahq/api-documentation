@@ -372,7 +372,7 @@ It renders as a simple input field in the UI:
 
 #### Showroom swatch
 
-Remember, Variant-level attribute use group `variation`, not ~variant~.
+Remember, Variant-level attribute use group `variation`, not `variant`.
 
 ```php
 'sh_swatch' => [
