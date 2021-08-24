@@ -35,7 +35,7 @@ Here's the basic order flow as seen in Centra backend.
 * **Incomplete** (0)  
   This is a selection before the checkout is completed. It contains the list of selected items, information about language and currency, discounts, plus a list of optional shipping methods.
 * **Pending** (1)  
-  This order has been checked out, with payment authorization being completed. Depending on the Store settings, payment capture attempt may follow immediately, otherwise capture will be done on order shipment. In addition to the incomplete order, it contains information on customer, selected shipping and payment. This step can be skipped by enabling the Store option "Autoconfirm Orders".
+  This order has been checked out, with [payment authorization](/overview/glossary#payment-authorization) being completed. Depending on the Store settings, [payment capture](/overview/glossary#payment-capture) attempt may follow immediately, otherwise capture will be done on order shipment. In addition to the incomplete order, it contains information on customer, selected shipping and payment. This step can be skipped by enabling the Store option "Autoconfirm Orders".
 * **Confirmed** (2)  
   This order has been manually confirmed in the Centra admin panel, or confirmed automatically by appropriate Store setting. Only confirmed orders can have shipments created. This step can be skipped by enabling store option “Direct to Shipment”, in which case the checked out order will transfer to status Processing (3) with a shipment created and marked Good-To-Go.
 * **Processing** (3)  

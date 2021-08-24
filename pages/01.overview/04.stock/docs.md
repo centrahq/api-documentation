@@ -24,16 +24,15 @@ Physical | FTA | Allocated | Linked | Demand | Unshipped | Available Now | Unlin
 
 * **Physical** = FTA + Allocated  
 This is the quantity that you have on the shelf in the warehouse. If there are any differences, Centra wouldn’t know about it.
-* **FTA** = Physical - Allocated - Warehouse Threshold/Product Variant offset  
-Free to Allocate. This is the quantity of said product which is available to allocate on orders, or simply, this is the quantity available. 
-Quantity might be protected from being sold by "Warehouse Threshold" or "Product variant offset" setting. 
-If product offset is greater than 0, it overrides warehouse threshold settings.
+* **FTA** = Physical - Allocated (- Warehouse Threshold/Product Variant offset)  
+Free to Allocate. This is the quantity of said product which is available to allocate on orders, or simply, this is the quantity available. You can sell that quantity without affecting existing orders.   
+Quantity might be protected from being sold by "Warehouse Threshold" or "Product variant offset" setting. If product offset is greater than 0, it overrides warehouse threshold settings.
 * **Allocated** = Physical - FTA  
 The number of said products that are allocated on orders or shipments which are not yet completed.
 * **Linked**  
 The quantity of said product which is on order and linked towards a supplier order.
 * **Demand**  
-The quantity of said product which is on order but not linked to a supplier order or allocated. All products in unshipped orders that are back ordered or on preorder.
+The quantity of said product which is on order but not linked to a supplier order or allocated. Basically, amount of products ordered via preorder or backorder, which will need to have Stock added in order to be allocated and shipped in the future.
 * **Unshipped**  
 The quantity of products on the order which are not yet shipped, including preorder or demand.
 * **Available now** = FTA - Demand  

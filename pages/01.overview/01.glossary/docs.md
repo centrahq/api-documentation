@@ -240,6 +240,12 @@ See [Order flow in Centra](/guides/orderflow).
 
 ## **P**
 
+### **Payment authorization**  
+This is the initial part of the payment, when the payment provider verifies the purchaser has the available funds to cover the transaction, and reserves the funds on the account of the purchaser. The reserved funds often show as "blocked" in the purchaser's account. Payment authotization is enough to complete the payment in Centra and finalize placing the order, payment capture usually occurs later.
+
+### **Payment capture**  
+This is the second part of the payment, when the funds are actually transferred from the account of the purchaser to the merchant account. Payments that have been captured can no longer be cancelled, they should be refunded instead, if needed. Remember, that depending on the Payment Service Provider and the payment method used, there is a maximum time limit between authorization and capture (usually between 14 and 30 days). By default, Centra will finalize the payment capture when the Order is shipped, but you can configure it to capture immediately, or capture manually in the UI.
+
 ### **Pending** (order status 1)  
 This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, shipping and payment.
 

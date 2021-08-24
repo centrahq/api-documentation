@@ -16,7 +16,7 @@ The API-outputs defined below are using the Shop API, some differences might app
 
 ### Mapped attributes
 
-The normal attribute on a product or variant is one which is mapped to an attribute object which can contain meta-data. There is a reason for this, for example: if you have a specific Color-attribute that contains the name, hex-code and image of the color. You do not want to upload these values every time, so an attribute is then created, which you then link to the products that should have the color.
+The normal attribute on a product or variant is one which is mapped to an attribute object which can contain meta-data. There is a reason for this, for example: if you have a specific Color-attribute that contains the name, hex-code and image of the color. You do not want to upload these values every time, so an attribute is then created, which you then link to the products that should have the color. Think of mapped attributes as const values that you can later choose from.
 
 The structure looks something like this:
 

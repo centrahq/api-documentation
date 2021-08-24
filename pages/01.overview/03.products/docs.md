@@ -18,7 +18,7 @@ A Product is stored in a hierarchical structure, in which the Product is broken 
 
 Most information is stored on the Product level, where you find the Folder, Collection and all basic information such as Country of Origin, HS Code and Material Composition.
 
-The Variant level focuses on media (images) and a few attributes, notably color. Campaigns can be set on the Variant level. Besides actual size, the Size level stores GTINs (UPC or EAN codes) and weight. Stock inventory is stored on the Size level, as the size represents the physical item that exists in a warehouse.
+The Variant level focuses on media (images) and a few attributes, notably color. Campaigns can be set on the Variant level. Besides actual size, the Size level stores GTINs (UPC or EAN codes). Stock inventory is stored on the Size level, as the size represents the physical item that exists in a warehouse.
 
 All products have at least one Variant and all Variants have at least one Size, even if it is a one-size product.
 
@@ -26,14 +26,15 @@ All products have at least one Variant and all Variants have at least one Size, 
 
 A Display is, just like a display in a brick-and-mortar store, one or more related items for sale that is arranged and presented in a way that might trigger a purchase. An item for sale might be included in more than one Display. You might for example have a unisex item included both in a Display in the Women’s and Men’s department. When you query the API for what to show on a category page, you will get a set of Displays back, and when you query the API for what to show on a product page, you will get a single Display.
 
-Displays can also be related to each other, which can be used in the front end to show off different variants of the same product, or suggest products that might go well together.
+You can also activate many variants on a single Display, for example all variants of the same Product can share a Display. If you do that, Centra APIs will return the first Variant activated in the Display, and return all other activated Variants as API products related to the first one. The type of relation is configurable.
+
+Displays can also be related to each other, which can be used in the front end to show off different variants of the same product, or suggest products that might go well together. Relations have no special logic in Centra, they are technically only simple attributes pointing one-way to another Display, they mostly affect how Products are returned in the APIs.
 
 ### Attributes
 
 Displays carry attributes set on all three different levels in the Product model as well as attributes set on the Display itself.
 
 Centra has three Attribute Categories: Standard, Pre-Defined and Custom.
-
 
 | Attribute Category | Description | Examples |
 |--------------------|-------------|----------|
@@ -96,7 +97,7 @@ This is a design decision you should carefully consider when onboarding with Cen
 | | Shirts | Phone cases v1 | Phone cases v2 |
 |---|---|---|---|
 | Product | Specific style or cut. Similar shirt made of different material is probably a different product. | Specific design and material of a case. Same design cases made of plastic and silicon could be different products. | Case made for a specific phone model. |
-| Variant | Different colors of the same style. | Same design and material cases made for a different phone model. Amount of material will differ, but due to its cheapness the prices can be the same. | Different designs cases for the same case model, including different materials. They can have same or different prices. |
+| Variant | Different colors of the same style. | Same design and material cases made for a different phone model. Amount of material will differ, but thanks to the margins, the prices can be the same for all variants. | Different designs cases for the same case model, including different materials. They can have same or different prices. |
 | Size | Different sizes of the same color. Same price for each. | Each variant should only have one size. | Each variant should only have one size. |
 | Display | You can display each variant separately, or create a single display for unisex products. | You can set up a single display for a specific case design and activate it for all phone model variants. | You can set up a single display for all designs variants made for the same phone model. |
 

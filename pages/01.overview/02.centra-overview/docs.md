@@ -64,7 +64,7 @@ Most information is stored on the Product level, where you find the Folder, Coll
 
 The Variant level focuses on media (images) and a few attributes, notably color.
 
-Besides actual size, the Size level stores GTINs (UPC or EAN codes) and weight. Stock inventory is stored on the Size level, as the size represents the physical item that exists in a warehouse. 
+Besides actual size, the Size level stores GTINs (UPC or EAN codes). Stock inventory is stored on the Size level, as the size represents the physical item that exists in a warehouse. 
 
 ### Product Display
 
@@ -72,7 +72,7 @@ A Display is, just like a display in a brick-and-mortar store, one or more relat
 
 ### Warehouse
 
-A Warehouse in Centra is where stock is stored. Warehouse is defined by its name and priority. Each Warehouse can belong to one or more Allocation Rules. When stock is added, either by importing a CSV or via stock editor, it always needs to be added to one of the Warehouses. There are no storage locations in Centra.
+A Warehouse in Centra is where stock is stored. Warehouse is defined by its name and priority. Each Warehouse can belong to one or more Allocation Rules. When stock is added, either via API, by importing a CSV or via stock editor, it always needs to be added to one of the Warehouses.
 
 ### Allocation Rule
 
