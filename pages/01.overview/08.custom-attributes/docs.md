@@ -49,14 +49,14 @@ In the API, the values will come out like this:
 {
     "countryOfOriginName": "",
     "sh_swatch": {
-    "color": {
-        "type": "image",
-        "url": "https://.../client/dynamic/attributes/image_9471.jpg",
-        "width": "60",
-        "height": "60",
-        "mimeType": "image/jpeg"
-    },
-    "color_text": "#8b0000"
+	    "color": {
+	        "type": "image",
+	        "url": "https://.../client/dynamic/attributes/image_9471.jpg",
+	        "width": "60",
+	        "height": "60",
+	        "mimeType": "image/jpeg"
+        },
+        "color_text": "#8b0000"
     },
     "markets": {
         "...": "..."
@@ -229,21 +229,21 @@ This is how the response from the API looks like:
 ```json
 {
     "attribute_field": {
-    "text": "Text",
-    "textarea": "Textarea",
-    "boolean": "1",
-    "select": "bb",
-    "image": {
-        "type": "image",
-        "url": "https://.../client/dynamic/attributes/image1_4265_png.jpg",
-        "width": "600",
-        "height": "400",
-        "mimeType": "image/jpeg"
-    },
-    "file": {
-        "type": "file",
-        "url": "https://.../client/dynamic/attributes/6/image1.png"
-    }
+	    "text": "Text",
+	    "textarea": "Textarea",
+	    "boolean": "1",
+	    "select": "bb",
+	    "image": {
+	        "type": "image",
+	        "url": "https://.../client/dynamic/attributes/image1_4265_png.jpg",
+	        "width": "600",
+	        "height": "400",
+	        "mimeType": "image/jpeg"
+	    },
+	    "file": {
+	        "type": "file",
+	        "url": "https://.../client/dynamic/attributes/6/image1.png"
+	    }
     }
 }
 ```
