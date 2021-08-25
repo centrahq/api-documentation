@@ -286,6 +286,27 @@ The [dynamic attribute element types](#attribute-element-types) supported are al
 We recommend using `snake_case` for all your custom attributes API names. Since Centra uses `camelCase`, and all the values are mixed up in the API responses, it's helpful to be able to immediately tell which attributes are custom, which also prevents the risk of accidentaly re-using already existing attribute name key.
 [/notice-box]
 
+#### Product care instructions
+
+A multi-line dynamic text field for entering additional information about the Product. Can also be set up on the Variant level (`group => variation`).
+
+```php
+'pr_care_instructions' => [
+    'desc' => 'Product Care Instructions',
+    'group' => 'product',
+    'readonly' => false,
+    'elements' => [
+        'text' => [
+            'desc' => 'Product Care Instructions',
+            'type' => 'textarea'
+        ]
+    ]
+]
+```
+
+This displays like this:  
+![](attribute-dynamic-multiline.png)
+
 #### Product category video
 
 File upload is easy to manage for a limited number of videos.
