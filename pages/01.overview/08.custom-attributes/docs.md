@@ -286,27 +286,6 @@ The [dynamic attribute element types](#attribute-element-types) supported are al
 We recommend using `snake_case` for all your custom attributes API names. Since Centra uses `camelCase`, and all the values are mixed up in the API responses, it's helpful to be able to immediately tell which attributes are custom, which also prevents the risk of accidentaly re-using already existing attribute name key.
 [/notice-box]
 
-#### [Template]
-
-Description
-
-```php
-'' => [
-    'desc' => '',
-    'group' => '',
-    'readonly' => ,
-    'elements' => [
-        '' => [
-            'desc' => '',
-            'type' => ''
-        ]
-    ]
-]
-```
-
-This displays like this:  
-![](.png)
-
 #### Product category video
 
 File upload is easy to manage for a limited number of videos.
@@ -480,3 +459,26 @@ For attributes which are pre-defined, multiple values can be made selectable at 
 
 Multi-select snippet looks like this in Centra:  
 ![ProductMaterialMulti](example-product-material-multi.png)
+
+<!--
+#### [Template]
+
+Description
+
+```php
+'' => [
+    'desc' => '',
+    'group' => '',
+    'readonly' => ,
+    'elements' => [
+        '' => [
+            'desc' => '',
+            'type' => ''
+        ]
+    ]
+]
+```
+
+This displays like this:  
+![](.png)
+-->
