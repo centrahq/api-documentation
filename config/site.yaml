@@ -36,4 +36,4 @@ routes:
   /guides/soap-api/index: '/api-references/soap-integration-api'
   /guides/soap-api/centra-concepts: '/overview/centra-overview'
   /fe-development/(.*): '/fe-development'
-  /reference/stable/order-api/(.*): '/api-references/order-api/api-reference/'
+  /reference/stable/order-api/(.*): '/api-references/order-api/api-reference/(.*)'
