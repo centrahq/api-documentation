@@ -38,7 +38,7 @@ Ensure all applicable legislation and privacy agreements with customers are resp
 
 ### Data format
 
-The data exported from the API is documented in the [API reference section](https://centra-api-documentation-demo.herokuapp.com/api-references), which also includes an explanation of how to use the GraphQL API.
+The data exported from the API is documented in the [API reference section](/api-references), which also includes an explanation of how to use the GraphQL API.
 
 [notice-box=info]
 The data model described in the API reference assumes full access to all data. With limited access rights, the data set available will be reduced.
