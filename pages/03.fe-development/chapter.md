@@ -1,6 +1,6 @@
 ---
 title: Front End development
-altTitle: Front End development (TBA)
+altTitle: Front End development
 taxonomy:
   category: docs
 ---
