@@ -35,4 +35,4 @@ routes:
   /guides/plugins/voyado-promotions: '/plugins/voyado-vouchers'
   /guides/soap-api/index: '/api-references/soap-integration-api'
   /guides/soap-api/centra-concepts: '/overview/centra-overview'
-  
+  /fe-development/(.*): '/fe-development'
