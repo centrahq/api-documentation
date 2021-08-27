@@ -145,5 +145,62 @@ curl "${BASE_URL}/graphql" \
     -H "Content-Type: application/json" \
     -d '{"query": "{ permissionNames }"}'
 ```
-The list of permissions is changing as new permissions are added to match
-new queries and mutations.
+The list of permissions is changing as new permissions are added to match new queries and mutations.
+
+If you call the API without required permissions, you will be informed about this explicitly:
+
+Request:
+
+```graphql
+{
+  orderConnection(
+    last: 10, before: "bnVtYmVyOjE2Ng==", where: {storeType: WHOLESALE}
+  )
+  {
+    totalCount
+    pageInfo{hasPreviousPage, hasNextPage, startCursor, endCursor}
+    edges{
+      node{
+        number
+        status
+        grandTotal{
+          value
+          currency {code}
+        }
+        orderDate
+      }
+      cursor
+    }
+  }
+}
+```
+
+Response:
+
+```graphql
+{
+  "errors": [
+    {
+      "message": "You need Order:read permission to access orderConnection.",
+      "extensions": {
+        "category": "authorization"
+      },
+      "locations": [
+        {
+          "line": 6,
+          "column": 3
+        }
+      ],
+      "path": [
+        "orderConnection"
+      ]
+    }
+  ],
+  "extensions": {
+    "complexity": 50,
+    "permissionsUsed": [
+      "Order:read"
+    ]
+  }
+}
+```
