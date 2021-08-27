@@ -151,7 +151,7 @@ If you call the API without required permissions, you will be informed about thi
 
 Request:
 
-```graphql
+```gql
 {
   orderConnection(
     last: 10, before: "bnVtYmVyOjE2Ng==", where: {storeType: WHOLESALE}
@@ -177,7 +177,7 @@ Request:
 
 Response:
 
-```graphql
+```gql
 {
   "errors": [
     {
@@ -204,3 +204,7 @@ Response:
   }
 }
 ```
+
+[notice-box=info]
+During your integration's initial tests in QA, it's worth to note all the information returned in `extensions.permissionsUsed`, so that you know exactly which permissions are required for use cases covered in your integration. This way you can later use API tokens with minimal permissions when you move to Production, which we highly recommend. Running Production integrations on tokens with full admin permissions is considered bad practice, and a potential security vulnerability.
+[/notice-box]
