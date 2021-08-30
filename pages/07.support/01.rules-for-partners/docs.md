@@ -20,7 +20,7 @@ TL;DR: We are here to help, but we are also here to educate and guide where ever
 | **Test orders** |
 | We are happy to guide you on creating test orders, can explain the [order flow](/overview/orderflow) and even teach you how to [create / complete shipments](https://support.centra.com/centra-sections/retail-b2c/sales/expediting-a-b2c-order). | Creating multiple test order variations though is something you'll benifit from learning to do yourself. We'll aslo show the client how of course. based on required use-cases.
 | **Stress and performance tests** |
-| Once again, teaching you to run stress tests without our help is a much more effecient way to develop skillsets, and once you know how you have those skills in house.  |
+| - | Once again, teaching you to run stress tests without our help is a much more effecient way to develop skillsets, and once you know how you have those skills in house.  |
 </div>
 
 ## Our work - general guidence
