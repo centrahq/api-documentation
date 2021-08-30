@@ -38,3 +38,4 @@ routes:
   /fe-development/(.*): '/fe-development'
 redirects:
   /reference/stable/order-api/(.*): '/api-references/order-api/api-reference/$1'
+  /reference/stable/checkout-api/(.*): '/api-references/checkout-api/api-reference/$1'
