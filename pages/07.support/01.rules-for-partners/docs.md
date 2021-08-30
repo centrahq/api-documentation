@@ -1,6 +1,6 @@
 ---
 title: Cooperation with our Partners
-altTitle: Best practice when in contact with us
+altTitle: Rules of engagement
 taxonomy:
     category: docs
 child_type: docs
