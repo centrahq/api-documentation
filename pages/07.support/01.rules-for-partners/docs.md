@@ -18,7 +18,7 @@ TL;DR: We are here to help, but we are also here to educate and guide where ever
 | **Custom attributes** |
 | We'll help you to understand the concept of attributes and share some examples with you [in our Custom Attributes docs](/overview/custom-attributes) | However, we will not build multiple attribute definitions for you, reviewing one you've created yourself and then advising you on the best outcome is much more effecient for us all.  |
 | **Test orders** |
-| We are happy to guide you on creating test orders, can explain the [order flow](/overview/orderflow) and even teach you how to [create / complete shipments](https://support.centra.com/centra-sections/retail-b2c/sales/expediting-a-b2c-order). | Creating multiple test order variations though is something you'll benifit from learning to do yourself. We'll aslo show the client how of course. based on required use-cases.
+| We are happy to guide you on creating test orders, can explain the [order flow](/overview/orderflow) and teach you how to [create / complete shipments](https://support.centra.com/centra-sections/retail-b2c/sales/expediting-a-b2c-order). | Creating multiple test order variations though is something you'll benifit from learning to do yourself. We'll aslo show the client how of course. based on required use-cases.
 | **Stress and performance tests** |
 | - | Once again, teaching you to run stress tests without our help is a much more effecient way to develop skillsets, and once you know how you have those skills in house.  |
 </div>
@@ -58,7 +58,7 @@ What we do for our Partners:
   If you encounter any behaviour that deviates from documentation or common sense, let us know! We want Centra to work reliably for everyone, so any technical issues will be looked at and fixed, if deemed necessary.
 
 * **Questions about technical features**  
-  If you have questions about new features, specific APIs, things mentioned in our newsletter - ask away! Even if we don't respond immediately, we will find a way to explain it to you as best we can.
+  If you have questions about new features, specific APIs, things mentioned in our newsletter - ask away! §Even if we don't respond immediately, we will find a way to explain it to you as best we can.
 
 * **(Optional) Basic monitoring of your websites (Pingdom-based with alerts in Slack)**  
   With this we can help you share the burden of monitoring status of Customer's websites - we will discover if it fails to load, warn you about certificates that will soon expire, etc.
