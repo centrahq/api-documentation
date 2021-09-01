@@ -76,98 +76,145 @@ const uploadFile = (uploadPolicy, file) => {
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Test media upload with pre-signed POST policy</title>
-    <style>
-      .add-margin { margin: 1em; }
-      .success { color: green; }
-      textarea:valid { border: 2px solid green; }
-      textarea:invalid { border: 2px solid red; }
-    </style>
-  </head>
 
-  <body>
-    <div class="add-margin">
-      <h2>Test media upload with pre-signed POST policy</h2>
-      <form id="gql-form">
-        <div><label for="gql-input">Paste raw GraphQL response from <code>createMediaUpload</code> mutation:</label></div>
-        <div><textarea id="gql-input" cols="80" rows="20" required autofocus></textarea></div>
-        <div><button type="submit">Generate Form</button></div>
-      </form>
-    </div>
-    <div class="add-margin"><b>UUID:</b> <span id="uuid-container"/></div>
-    <div id="test-form-container" class="add-margin"></div>
-    <div id="after-submit" class="add-margin success"></div>
+<head>
+  <title>
+    Test AWS s3 pre-signed post form media upload
+  </title>
+  <style type="text/css">
+    body {
+      margin: 50px auto;
+      text-align: center;
+      width: 33%;
+    }
+    div {
+      margin-top: 15px;
+    }
+    tt {
+      padding: 2px 4px;
+      background-color: #eee;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+    #gql-form {
+      width: 100%;
+      text-align: left;
+    }
+    #gql-input {
+      width: 100%;
+      height: 300px;
+    }
+    #uuid-container {
+      width: 250px;
+      line-height: 2.5em;
+      text-align: center;
+      background-color: #eee;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+  </style>
+</head>
 
-    <script>
-      function generateForm(e) {
-        e.preventDefault();
-        const input = document.getElementById('gql-input');
-        try {
-          const parsed = JSON.parse(input.value);
-          createForm(parsed);
-        } catch (e) {
-          console.error('Invalid response - not a valid JSON.' + e);
-        }
-        document.getElementById('after-submit').innerHTML = '';
-        return false;
-      }
-    
-      window.onload = function exampleFunction() {
-        document.getElementById('gql-form').addEventListener('submit', generateForm);
-      }
-    
-      function createForm(gqlResponse) {
-        const formContainer = document.getElementById('test-form-container');
-        formContainer.innerHTML = '';
-        document.getElementById('uuid-container').innerText = gqlResponse.data.createMediaUpload.UUID;
-        const policy = gqlResponse.data.createMediaUpload.uploadPolicy;
-        const formAttributes = policy.attributes;
-        const formInputs = policy.fields;
-    
-        const form = document.createElement('form');
-        formAttributes.forEach(function (attr) {
-          form.setAttribute(attr.name, attr.value)
-        });
-    
-        formInputs.forEach(function(input) {
-          let inputElem = document.createElement('input');
-          inputElem.setAttribute('type', 'hidden');
-          inputElem.setAttribute('name', input.name);
-          inputElem.setAttribute('value', input.value);
-          form.appendChild(inputElem);
-        });
-    
-        const fileInput = document.createElement('input');
-        fileInput.setAttribute('type', 'file');
-        fileInput.setAttribute('name', 'file');
-        fileInput.setAttribute('required', true);
-        fileInput.setAttribute('accept', 'image/*');
-        form.appendChild(fileInput);
-    
-        const submit = document.createElement('input');
-        submit.setAttribute('type', 'submit');
-        submit.setAttribute('value', 'Upload');
-        form.appendChild(submit)
-    
-        fileInput.addEventListener('input', function(e) {
-          let inputElem = document.createElement('input');
-          inputElem.setAttribute('type', 'hidden');
-          inputElem.setAttribute('name', 'Content-Type');
-          inputElem.setAttribute('value', fileInput.files[0].type);
-          form.insertBefore(inputElem, fileInput);
-        });
-    
-        form.addEventListener('submit', function(e) {
-          const afterSubmitInfo = document.getElementById('after-submit');
-          afterSubmitInfo.innerHTML = '<h3>File uploaded! Now go and run the ' +
-                  '<code>completeMediaUpload</code> to connect it with a Product or ProductVariant</h3>';
-          return false;
-        });
-        
-        formContainer.appendChild(form);
-      }
-    </script>
-  </body>
+<body>
+
+
+<form id='gql-form'>
+  <h3>Usage</h3>
+  <ol>
+    <li>Call `createMediaUpload` mutation, eg:
+      <pre>
+mutation {
+  createMediaUpload(
+    input: {
+      mediaType: IMAGE
+    }
+  ) {
+    UUID
+    uploadPolicy {
+      attributes { name value }
+      fields { name value }
+    }
+    userErrors { message path }
+  }
+}
+            </pre></li>
+    <li>Copy response and paste in the input below</li>
+    <li>Use <tt>Generate Form</tt> button to create an upload form</li>
+    <li>Once the form is generated, select file using <tt>Choose File</tt> button and then click
+      <tt>upload</tt></li>
+  </ol>
+  <h3>Generate upload form</h3>
+  <label for='gql-input'>Paste GraphQL response:</label><br/>
+  <textarea id='gql-input'></textarea><br/>
+  <button type="submit">Generate Form</button>
+</form>
+<div><b>UUID:</b><input type="text" readonly="readonly" id='uuid-container'/></div>
+<div id="test-form-container">
+</div>
+
+<script>
+  function generateForm(e) {
+    e.preventDefault();
+    let input = document.getElementById('gql-input');
+    let parsed = JSON.parse(input.value);
+    if (parsed === false) {
+      console.error('Invalid response -- not a valid JSON');
+    }
+    createForm(parsed);
+
+    return false;
+  }
+
+  window.onload = function exampleFunction() {
+
+    document.getElementById('gql-form').addEventListener('submit', generateForm);
+  }
+
+  function createForm(gqlResponse) {
+    let formContainer = document.getElementById('test-form-container');
+    formContainer.innerHTML = '';
+    document.getElementById('uuid-container').value = gqlResponse.data.createMediaUpload.UUID;
+    let policy = gqlResponse.data.createMediaUpload.uploadPolicy;
+    let formAttributes = policy.attributes;
+    let formInputs = policy.fields;
+
+    var form = document.createElement("form");
+    formAttributes.forEach(function (attr) {
+      form.setAttribute(attr.name, attr.value)
+    });
+
+    formInputs.forEach(function(input) {
+      let inputElem = document.createElement("input");
+      inputElem.setAttribute('type', 'hidden');
+
+      inputElem.setAttribute('name', input.name);
+      inputElem.setAttribute('value', input.value);
+
+      form.appendChild(inputElem);
+    });
+
+    let fileInput = document.createElement("input");
+    fileInput.setAttribute('type', 'file');
+    fileInput.setAttribute('name', 'file');
+    form.appendChild(fileInput);
+
+    let submit = document.createElement("input");
+    submit.setAttribute('type', 'submit');
+    submit.setAttribute('value', 'upload');
+    form.appendChild(submit)
+
+    fileInput.addEventListener('input', function(e) {
+      let inputElem = document.createElement("input");
+      inputElem.setAttribute('type', 'hidden');
+      inputElem.setAttribute('name', "Content-Type");
+      inputElem.setAttribute('value', fileInput.files[0].type);
+      form.insertBefore(inputElem, fileInput);
+    });
+
+    formContainer.appendChild(form);
+  }
+</script>
+</body>
+
 </html>
 ```
