@@ -16,7 +16,9 @@ In general, PoS system integration will use Order API endpoints to fetch product
 
 To implement a PoS integration using the Order API, you need access to Centra with a configured Order API endpoint. Please note that you would need to authorise with the secret key configured in the Centra Order API settings.
 
-[notice-box=alert]Warning: Never use the integration you build towards a production Centra environment before it is thoroughly tested and verified to be working as intended![/notice-box]
+[notice-box=alert]
+Warning: Never use the integration you build towards a production Centra environment before it is thoroughly tested and verified to be working as intended!
+[/notice-box]
 
 ### Initial configuration
 
@@ -68,7 +70,9 @@ TBD
 
 Once the purchase is done, you need to update the physical stock levels in Centra so that you don't oversell your stock. **Remember**: This endpoint works by allowing you to set the stock amount of specific product to the **new** value, **not** deduct the amount that you're just now selling. In other words, if the `physicalStock` was 499, and the customer is buying 5 items, you'll want to update the stock to 494.
 
-[notice-box=alert]Centra will not allow you to update the `physicalStock` below what's already reserved for other orders (`allocatedStock`). If you attempt to do that, Centra will set the quantity to the lowest possible value without affecting any other orders.[/notice-box]
+[notice-box=alert]
+Centra will not allow you to update the `physicalStock` below what's already reserved for other orders (`allocatedStock`). If you attempt to do that, Centra will set the quantity to the lowest possible value without affecting any other orders.
+[/notice-box]
 
 The `product` in the call body needs to uniquely identify product, variant and size, so you can either use a combination of `productSku`, `variantSku` and `sizeSku`, or use EAN number instead.
 

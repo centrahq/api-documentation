@@ -8,7 +8,9 @@ taxonomy:
 
 Klarna is a popular payment provider which allows payments with credit and debit cards, as well as "Buy now, pay within 14 days" type of purchase. Here's all the information that you'll need to start using this plugin.
 
-[notice-box=alert]`Klarna Checkout v3` is the currently recommended Klarna plugin. If you're using the old `Klarna` plugin or `KCOv2`, consider upgrading to the latest version.[/notice-box]
+[notice-box=alert]
+`Klarna Checkout v3` is the currently recommended Klarna plugin. If you're using the old `Klarna` plugin or `KCOv2`, consider upgrading to the latest version.
+[/notice-box]
 
 ### Gather information from Klarna Checkout
 
@@ -42,7 +44,9 @@ By enabling "Organization" you can allow businesses to also place orders using K
 
 This allows the shipping address to be separate from what is used in Klarna.
 
-[notice-box=alert]Only enable this if you are validating fraud outside of Klarna, as Klarna does not cover fraudulent orders if you bypass their shipping address for the customer.[/notice-box]
+[notice-box=alert]
+Only enable this if you are validating fraud outside of Klarna, as Klarna does not cover fraudulent orders if you bypass their shipping address for the customer.
+[/notice-box]
 
 ![klarna-shipping-address.png](klarna-shipping-address.png)
 
@@ -64,7 +68,9 @@ Since you can have multiple Klarna Checkout plugins based on different regions, 
 
 You can also make sure that Paypal does not show up as a separate payment, if it will be used inside Klarna Checkout.
 
-[notice-box=info]When using Klarna Checkout in test mode, you need to make sure the PayPal plugin you're using with it is configured to "Sandbox mode". Once your testing is done, you can disable test/sandbox mode on both plugins.[/notice-box]
+[notice-box=info]
+When using Klarna Checkout in test mode, you need to make sure the PayPal plugin you're using with it is configured to "Sandbox mode". Once your testing is done, you can disable test/sandbox mode on both plugins.
+[/notice-box]
 
 #### Geo-restrictions
 
@@ -86,7 +92,9 @@ You are able to customize colors in Klarna Checkout widget - you are able to set
 
 To test the flow, you first need to make sure the `Test-Mode` is enabled and that the `Klarna Endpoint` points to either `EU TEST` or `NA TEST` based on your Klarna Region setup.
 
-[notice-box=alert]You will need to disable test-mode for the plugin in Centra when you run it in production.[/notice-box]
+[notice-box=alert]
+You will need to disable test-mode for the plugin in Centra when you run it in production.
+[/notice-box]
 
 You can then use the [test-users provided by Klarna](https://developers.klarna.com/en/testing/invoice-and-account) to place test orders.
 

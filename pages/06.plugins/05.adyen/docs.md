@@ -41,7 +41,9 @@ The Adyen-Checkout needs its own Server Communication URL set up in Adyen. It wi
 
 ### Set up
 
-[notice-box=info]You need to contact Adyen Support at `support@adyen.com` to make sure they have activated Adyen Checkout for your Merchant Account before you begin.[/notice-box]
+[notice-box=info]
+You need to contact Adyen Support at `support@adyen.com` to make sure they have activated Adyen Checkout for your Merchant Account before you begin.
+[/notice-box]
 
 To validate that you are able to use the Adyen Checkout, look at your user called `ws@Company.[YourCompanyAccount]` and make sure that this role is enabled:
 
@@ -63,11 +65,15 @@ The `API Username` and `API Password` should be for the Web Service user called 
 
 The `API key` previously used for CSE (Client Side Encryption) is now also used for Adyen Checkout. [There's an article in Adyen Docs](https://docs.adyen.com/user-management/how-to-get-the-api-key/) on how to get it. 
 
-[notice-box=info]It will be the same user and API-key for all your merchant accounts if you have more than one.[/notice-box]
+[notice-box=info]
+It will be the same user and API-key for all your merchant accounts if you have more than one.
+[/notice-box]
 
 The `Notification URL` is used for the Server Communication from Adyen.
 
-[notice-box=alert]You should set a Server communication URL for each Merchant Account you have. Make sure you have selected a Merchant Account in Adyen before you add it on the "Server Communication"-page.[/notice-box]
+[notice-box=alert]
+You should set a Server communication URL for each Merchant Account you have. Make sure you have selected a Merchant Account in Adyen before you add it on the "Server Communication"-page.
+[/notice-box]
 
 ![adyen-merchant.png](adyen-merchant.png)
 
@@ -117,7 +123,9 @@ You will define this for both Checkout and the standard payments endpoints in th
 ![adyen-live-endpoints.png](adyen-live-endpoints.png)
 
 
-[notice-box=alert]Going live with Adyen Checkout is not possible unless you have the Live endpoint prefix set up. Payments and Adyen Checkout initialization will always fail.[/notice-box]
+[notice-box=alert]
+Going live with Adyen Checkout is not possible unless you have the Live endpoint prefix set up. Payments and Adyen Checkout initialization will always fail.
+[/notice-box]
 
 #### Other configurations
 
@@ -285,12 +293,16 @@ As you see above, we use our own standard look of Adyen Checkout. If you like to
 
 Capturing the payment with Adyen Checkout works a bit differently than the old Adyen plugin. Whenever you capture, the Payment Transaction-list in Centra will contain a `capture-request` instead. This is because Centra is actually waiting for the notification from Adyen to mark the order as captured successfully or not.
 
-[notice-box=info]Remember, if you have `Capture Delay` in Adyen set to `immediate`, capture will ALWAYS fail in Centra. Our recommendation is that Centra should capture the payment instead. Please change the Capture Delay setting in Adyen by going to `Account` then select "Configure->Settings" and make sure you select the Merchant Account. In the settings page you will see `Capture Delay`. Set it to `Manual` or `7 days` to make sure Centra will control the capture event.[/notice-box]
+[notice-box=info]
+Remember, if you have `Capture Delay` in Adyen set to `immediate`, capture will ALWAYS fail in Centra. Our recommendation is that Centra should capture the payment instead. Please change the Capture Delay setting in Adyen by going to `Account` then select "Configure->Settings" and make sure you select the Merchant Account. In the settings page you will see `Capture Delay`. Set it to `Manual` or `7 days` to make sure Centra will control the capture event.
+[/notice-box]
 
 ### Testing
 
 To test the flow, you first need to make sure the `Test-Mode` is enabled and that the credentials inside the Centra plugin are taken from `ca-test.adyen.com` instead of `ca-live.adyen.com`.
 
-[notice-box=alert]You will need to disable test-mode for the plugin in Centra when you run it in production.[/notice-box]
+[notice-box=alert]
+You will need to disable test-mode for the plugin in Centra when you run it in production.
+[/notice-box]
 
 You can then use the [test-cards provided by Adyen](https://docs.adyen.com/developers/development-resources/test-cards/test-card-numbers) to place test orders.

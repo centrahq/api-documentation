@@ -15,7 +15,9 @@ Authentication : [API Key](/api-references/api-intro#authentication)
 
 Will accept the delivery with the proper quantities in the physical delivery. This will be inserted into the preferred warehouse.
 
-[notice-box=info]This can only be done once per supplier delivery.[/notice-box]
+[notice-box=info]
+This can only be done once per supplier delivery.
+[/notice-box]
 
 It is possible to over deliver or under deliver when accepting the delivery. This will be visible inside Centra when delivery was accepted.
 

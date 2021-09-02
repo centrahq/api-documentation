@@ -13,7 +13,9 @@ Authentication : [API Key](/api-references/api-intro#authentication)
 
 If [Create Order](/api-references/order-api/api-reference/create-order) was used with `createOnly` set as `true`, the order will only be prepared but not finalized. By using the Complete Order-endpoint you can finalize the order to be placed properly as a second step from creating the order. This might be necessary if you first need to make sure the order can be placed (Create Order) and then finalize it after you've verified the payment (Complete Order).
 
-[notice-box=info]You can use this endpoint multiple times for the same order, for example to save details on payment auth and capture at different times.[/notice-box]
+[notice-box=info]
+You can use this endpoint multiple times for the same order, for example to save details on payment auth and capture at different times.
+[/notice-box]
 
 The Create Order call is the one validating that the products exists in stock, so if the Complete Order-call is made much later than the Create Order-call, there might be products back ordered inside the finalized order.
 

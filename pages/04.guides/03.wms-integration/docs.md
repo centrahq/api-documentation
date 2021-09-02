@@ -12,7 +12,9 @@ Connecting a Warehouse Management System with Centra, to handle pick and pack wi
 
 To implement a WMS integration using the Order API, you need access to Centra with a configured Order API endpoint. Always use the test environment when developing your integration.
 
-[notice-box=alert]Warning: Never use the integration you build towards a production Centra environment before it is thoroughly tested and verified to be working as intended![/notice-box]
+[notice-box=alert]
+Warning: Never use the integration you build towards a production Centra environment before it is thoroughly tested and verified to be working as intended!
+[/notice-box]
 
 ### Overview
 
@@ -34,7 +36,9 @@ You need to make sure that you capture payments associated with shipments. This 
 
 More information: [Order API - Capture shipments](https://docs.centra.com/reference/stable/order-api/capture-shipment)
 
-[notice-box=alert]If you get an error response when trying to capture the shipment’s payment you should not proceed with sending the shipment. This is an indicator of potential fraud.[/notice-box]
+[notice-box=alert]
+If you get an error response when trying to capture the shipment’s payment you should not proceed with sending the shipment. This is an indicator of potential fraud.
+[/notice-box]
 
 ### Understanding shipment data
 
@@ -112,7 +116,9 @@ In Centra, the user will configure for which warehouse stock values should be st
 
 Keep in mind that you don’t need to send updates for every single stock movement since Centra has the order data and knows how many items belong to each order. Simply update the full stock on inbound deliveries, if the stock is manually changed in for example a stock-take or if a different system is picking stock from the same warehouse (which is not recommended).
 
-[notice-box=alert]Warning: Don’t do full stock synchronization at times when the stock is changing rapidly, as that could add back units that were sold a fraction of a second earlier into Centra’s stock.[/notice-box]
+[notice-box=alert]
+Warning: Don’t do full stock synchronization at times when the stock is changing rapidly, as that could add back units that were sold a fraction of a second earlier into Centra’s stock.
+[/notice-box]
 
 However, it’s always good practice to schedule a regular stock sync, e.g. once a day. This will ensure the systems re-sync automatically if they should go out of sync for any reason.
 

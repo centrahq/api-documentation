@@ -13,7 +13,9 @@ Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will insert a new order directly into Centra bypassing any needs of a payment. This API could be used to directly import orders from external systems. The API-plugin needs to have "Allow Order Create" set as `true` to allow this call to be made.
 
-[notice-box=alert]Remember that payments for these orders will not be handled at all by Centra. You must make sure the payments are handled and captured elsewhere.[/notice-box]
+[notice-box=alert]
+Remember that payments for these orders will not be handled at all by Centra. You must make sure the payments are handled and captured elsewhere.
+[/notice-box]
 
 ## Parameters
 

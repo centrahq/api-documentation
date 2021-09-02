@@ -106,7 +106,9 @@ You will now be able to select what emails that should be sent from Mailchimp:
 
 You can also edit the design on each template. 
 
-[notice-box=alert]Every time you want to edit your templates, you will need to disable the automation. You must remember to re-enable the automation to make the emails trigger again after editing the design.[/notice-box]
+[notice-box=alert]
+Every time you want to edit your templates, you will need to disable the automation. You must remember to re-enable the automation to make the emails trigger again after editing the design.
+[/notice-box]
 
 #### Product Recommendations in E-mail templates
 

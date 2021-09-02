@@ -13,7 +13,9 @@ Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will insert back the tracking number and carrier information to Centra. An email will be sent out to the customer with the tracking information.
 
-[notice-box=info]You can select if you want to capture the order, this is often used if the shipments are already created inside Centra. You will get an error as response if the capture did not go through.[/notice-box]
+[notice-box=info]
+You can select if you want to capture the order, this is often used if the shipments are already created inside Centra. You will get an error as response if the capture did not go through.
+[/notice-box]
 
 ## Parameters
 

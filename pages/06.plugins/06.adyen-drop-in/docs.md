@@ -48,7 +48,9 @@ The Adyen Drop-In needs its own Server Communication URL set up in Adyen. If you
 
 ### Set up
 
-[notice-box=info]You need to contact Adyen Support at ``support@adyen.com`` to make sure they have activated Adyen Drop-In for your Merchant Account before you begin.[/notice-box]
+[notice-box=info]
+You need to contact Adyen Support at ``support@adyen.com`` to make sure they have activated Adyen Drop-In for your Merchant Account before you begin.
+[/notice-box]
 
 To validate that you are able to use the Adyen Drop-In, go to Accounts -> API Credentials, look at your user called `ws@Company.[YourCompanyAccount]` and make sure that these roles are enabled:
 
@@ -69,7 +71,9 @@ The `API Username` and `API Password` should be for the Web Service user called 
 
 The `API key` previously used for CSE (Client Side Encryption) is now also used for Adyen Drop-In. [There's an article in Adyen Docs](https://docs.adyen.com/user-management/how-to-get-the-api-key/) on how to get it. 
 
-[notice-box=info]It will be the same user and API-key for all your merchant accounts if you have more than one.[/notice-box]
+[notice-box=info]
+It will be the same user and API-key for all your merchant accounts if you have more than one.
+[/notice-box]
 
 #### Client key and allowed origins
 
@@ -146,7 +150,9 @@ You will define this for both Checkout and the standard payments endpoints in th
 
 ![aadyen-drop-in-live-endpoints.png](adyen-drop-in-live-endpoints.png)
 
-[notice-box=alert]Going live with Adyen Drop-In is not possible unless you have the Live endpoint prefix set up. Payments and Adyen Drop-In initialization will always fail.[/notice-box]
+[notice-box=alert]
+Going live with Adyen Drop-In is not possible unless you have the Live endpoint prefix set up. Payments and Adyen Drop-In initialization will always fail.
+[/notice-box]
 
 ### Other configurations
 
@@ -169,7 +175,9 @@ As you see above, we use our own standard look of Adyen Drop-In. If you like to 
 ### Capturing with Adyen Drop-In
 
 Whenever you capture using Adyen Drop-In, the Payment Transaction-list in Centra will contain a `capture-request` instead. This is because Centra is actually waiting for the notification from Adyen to mark the order as captured successfully or not.
-[notice-box=info]Remember, if you have `Capture Delay` in Adyen set to `immediate`, capture will ALWAYS fail in Centra. Our recommendation is that Centra should capture the payment instead. Please change the Capture Delay setting in Adyen by going to `Account` then select "Configure->Settings" and make sure you select the Merchant Account. In the settings page you will see `Capture Delay`. Set it to `Manual` or `7 days` to make sure Centra will control the capture event.[/notice-box]
+[notice-box=info]
+Remember, if you have `Capture Delay` in Adyen set to `immediate`, capture will ALWAYS fail in Centra. Our recommendation is that Centra should capture the payment instead. Please change the Capture Delay setting in Adyen by going to `Account` then select "Configure->Settings" and make sure you select the Merchant Account. In the settings page you will see `Capture Delay`. Set it to `Manual` or `7 days` to make sure Centra will control the capture event.
+[/notice-box]
 
 ## Implementation
 
@@ -190,7 +198,9 @@ If you want to initiate Adyen Drop-In before the customer has filled in their sh
   "address": {"country": "SE"}
 }
 ```
-[notice-box=info]``paymentInitiateOnly:true`` can only be sent to initiate the checkout, it can never finalize the selection.[/notice-box]
+[notice-box=info]
+``paymentInitiateOnly:true`` can only be sent to initiate the checkout, it can never finalize the selection.
+[/notice-box]
 
 After the customer has selected payment method and wants to proceed, the Adyen Drop-In will send a DOM-event called `centra_checkout_payment_callback` to the current site. This event contains the information needed to start the payment process in Centra. The event will have a property called `responseEventRequired:true`. This means that Adyen Drop-In wants a response to the event. The checkout page is supposed to send all data it gets in the event to Centra to `POST /payment` as an ajax-call. Depending on if `addressIncluded` is `true` or `false`, the checkout page might need to append the address to the data before sending it to `POST /payment`. `addressIncluded` will only be `false` if Adyen Drop-In was initiated without the customer address (using `paymentInitiateOnly:true` earlier).
 
@@ -268,7 +278,9 @@ This will make the Adyen Drop-In handle the response and try to complete the pay
 
 If no `paymentFailedPage` is provided, the customer will still be sent to the `paymentReturnPage`, but the `POST /payment-result` will give back a payment failure.
 
-[notice-box=info]If the customer tries to trick the checkout, by opening another tab to modify the cart, as soon as Centra gets the server notification call from Adyen, it will mark the order as "Payment mismatch" and set the order to "Hold". This is to prevent the order from ever being fulfilled if the payment amount does not match between the order and the payment from Adyen.[/notice-box]
+[notice-box=info]
+If the customer tries to trick the checkout, by opening another tab to modify the cart, as soon as Centra gets the server notification call from Adyen, it will mark the order as "Payment mismatch" and set the order to "Hold". This is to prevent the order from ever being fulfilled if the payment amount does not match between the order and the payment from Adyen.
+[/notice-box]
 
 
 ## Example implementation
@@ -798,6 +810,8 @@ The [`PaymentActionResponse`, explained in the Swagger UI](https://docs.centra.c
 
 To test the flow, you first need to make sure the `Test-Mode` is enabled and that the credentials inside the Centra plugin are taken from `ca-test.adyen.com` instead of `ca-live.adyen.com`.
 
-[notice-box=alert]You will need to disable test-mode for the plugin in Centra when you run it in production.[/notice-box]
+[notice-box=alert]
+You will need to disable test-mode for the plugin in Centra when you run it in production.
+[/notice-box]
 
 You can then use the [test-cards provided by Adyen](https://docs.adyen.com/developers/development-resources/test-cards/test-card-numbers) to place test orders. Please also verify by also trying [Test cards for 3DS2 authentication](https://docs.adyen.com/development-resources/test-cards/test-card-numbers#test-3d-secure-2-authentication)

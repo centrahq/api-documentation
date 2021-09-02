@@ -13,7 +13,9 @@ Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will create a shipment and per default try to capture from the payment provider, shipment will not be created if the capture fails.
 
-[notice-box=alert]You have the ability to turn off capture to make it possible to edit the shipment after it has been created. However, if you explicitly turn off capture using ``"capture": false``, we will not capture the money for the order automatically, and the :ref:`order-api-complete-shipment` call MUST be made and verified that it was successful until you can ship any products.[/notice-box]
+[notice-box=alert]
+You have the ability to turn off capture to make it possible to edit the shipment after it has been created. However, if you explicitly turn off capture using ``"capture": false``, we will not capture the money for the order automatically, and the :ref:`order-api-complete-shipment` call MUST be made and verified that it was successful until you can ship any products.
+[/notice-box]
 
 ## Parameters
 
@@ -40,7 +42,9 @@ Default: ``false``. Mark the shipment as good to go.
 
 [parameter data="capture" datatype="boolean" isRequired=false sublevel=1]
 Default: ``true``. If Centra should capture the shipment amount from the payment provider.
-[notice-box=alert]Should not be turned off unless you are capturing the money somewhere else.[/notice-box]
+[notice-box=alert]
+Should not be turned off unless you are capturing the money somewhere else.
+[/notice-box]
 [/parameter]
 
 [parameter data="shipped" datatype="boolean" isRequired=false sublevel=1]

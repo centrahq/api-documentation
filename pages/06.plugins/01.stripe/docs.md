@@ -57,7 +57,9 @@ Save the Centra plugin.
 
 ### Webhooks
 
-[notice-box=alert]The Stripe-Checkout needs its own Webhook set up in Stripe. If the Webhook URL is not set up, no order will be completed when using Stripe Checkout.[/notice-box]
+[notice-box=alert]
+The Stripe-Checkout needs its own Webhook set up in Stripe. If the Webhook URL is not set up, no order will be completed when using Stripe Checkout.
+[/notice-box]
 
 To set up webhooks, open the plugin in Centra again to get the proper Webhook-URL for the plugin. You will see this section in the Centra-plugin:
 
@@ -69,7 +71,9 @@ Click "+ Add endpoint"  in the section "Endpoints receiving events from your acc
 
 ![stripe-checkout-notifications-setup.png](stripe-checkout-notifications-setup.png)
 
-[notice-box=info]You will need to make the similar set up for Live mode to make sure the webhooks also works for Live.[/notice-box]
+[notice-box=info]
+You will need to make the similar set up for Live mode to make sure the webhooks also works for Live.
+[/notice-box]
 
 Click "Add endpoint" to save it. The view you will see now is the settings of the webhook. Under the "Signing secret", reveal the value. This value is used so Centra knows the webhook-notification is coming from Stripe. Copy the value from this view:
 
@@ -93,7 +97,9 @@ Make sure Stripe Checkout is "Enabled" in the top right corner. Also add the dom
 
 ![stripe-checkout-setup.png](stripe-checkout-setup.png)
 
-[notice-box=alert]You need to set up a new webhook for the Centra-plugin you have in production, which should be set as "Test-Mode: No" to make sure we get webhooks from Stripe also in Live-mode. Follow the same description above under [Webhooks](#webhooks).[/notice-box]
+[notice-box=alert]
+You need to set up a new webhook for the Centra-plugin you have in production, which should be set as "Test-Mode: No" to make sure we get webhooks from Stripe also in Live-mode. Follow the same description above under [Webhooks](#webhooks).
+[/notice-box]
 
 #### Market/Pricelist/Country/Language restrictions
 
@@ -218,6 +224,8 @@ There's currently not that many settings you can do on the Stripe Checkout, howe
 
 To test the flow, you first need to make sure the `Test-Mode` is enabled and that the credentials inside the Centra plugin are taken from Stripe when "Viewing test data" is enabled.
 
-[notice-box=alert]You will need to disable test-mode for the plugin in Centra when you run it in production.[/notice-box]
+[notice-box=alert]
+You will need to disable test-mode for the plugin in Centra when you run it in production.
+[/notice-box]
 
 You can then use the [test-cards provided by Stripe](https://stripe.com/docs/testing#cards) to place test orders.

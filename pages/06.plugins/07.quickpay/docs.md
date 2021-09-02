@@ -75,6 +75,8 @@ To test the flow, you first need to enable "Allow Test transactions" in QuickPay
 
 You also need enable Test Mode in the Centra-plugin. This is the only way to get test-payments approved.
 
-[notice-box=alert]You will need to disable test-mode for the plugin in Centra when you run it in production.[/notice-box]
+[notice-box=alert]
+You will need to disable test-mode for the plugin in Centra when you run it in production.
+[/notice-box]
 
 You can then use the [test-cards provided by QuickPay](https://learn.quickpay.net/tech-talk/appendixes/test/) to place test orders.

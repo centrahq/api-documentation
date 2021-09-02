@@ -13,7 +13,9 @@ Authentication : [API Key](/api-references/api-intro#authentication)
 
 This endpoint will anonymize all personal data for a customer identifed by the customer id.
 
-[notice-box=alert]This is irrevocable. Personal data will be permanently deleted. This may include financial data. Invoices due to legal requirements will NOT be anonymized.[/notice-box]
+[notice-box=alert]
+This is irrevocable. Personal data will be permanently deleted. This may include financial data. Invoices due to legal requirements will NOT be anonymized.
+[/notice-box]
 
 ## Parameters
 
