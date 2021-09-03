@@ -81,7 +81,7 @@ $usr_conf['ATTRIBUTE_TYPES'] = [
         'readonly' => false,
         'elements' => [
             'text' => ['desc' => 'Limited Edition', 'type' => 'boolean',
-                'options' => [[1,'Yes'],[0,'No']]
+                'options' => [['0','No'],['1','Yes']]
             ],
         ],
     ],
@@ -91,9 +91,9 @@ $usr_conf['ATTRIBUTE_TYPES'] = [
         'readonly' => false,
         'elements' => [
             'sale' => ['desc' => 'Sale', 'type' => 'boolean',
-                'options' => [[1,'Yes'],[0,'No']]],
+                'options' => [['0','No'],['1','Yes']]],
             'preorder' => ['desc' => 'Pre-order', 'type' => 'boolean',
-                'options' => [[1,'Yes'],[0,'No']]]
+                'options' => [['0','No'],['1','Yes']]]
         ],
     ],
 ];
@@ -142,7 +142,7 @@ $usr_conf['ATTRIBUTE_TYPES'] = [
         'group' => 'product',
         'elements' => [
             'text' => ['desc' => 'This is the element-type', 'type' => 'boolean',
-                'options' => [[1,'Yes'],[0,'No']]
+                'options' => [['0','No'],['1','Yes']]
             ],
         ],
     ],
@@ -210,10 +210,10 @@ $usr_conf['ATTRIBUTE_TYPES'] = [
             'text' => ['desc' => 'Text', 'type' => 'input'],
             'textarea' => ['desc' => 'Textarea', 'type' => 'textarea'],
             'boolean' => ['desc' => 'Boolean', 'type' => 'boolean',
-                'options' => [[1,'Yes'],[0,'No']]
+                'options' => [['0','No'],['1','Yes']]
             ],
             'select' => ['desc' => 'Select', 'type' => 'select',
-                'options' => [[0,'Select'],['aa','AA'],['bb','BB']]
+                'options' => [['0','Select'],['aa','AA'],['bb','BB']]
             ],
             'image' => ['desc' => 'Image', 'type' => 'image', 'size' => '600x400'],
             'file' => ['desc' => 'File', 'type' => 'file']
