@@ -481,6 +481,28 @@ For attributes which are pre-defined, multiple values can be made selectable at 
 Multi-select snippet looks like this in Centra:  
 ![ProductMaterialMulti](example-product-material-multi.png)
 
+#### Double-sized input field
+
+With element `class: double` you can make your text fields (both `input` and `textarea`) twice as wide, so they take up the entire row. For example:
+
+```php
+'pr_long_name' => [
+    'desc' => 'Long Product Name',
+    'group' => 'product',
+    'readonly' => false,
+    'elements' => [
+        'text' => [
+            'desc' => 'Long Product Name',
+            'type' => 'input',
+            'class' => 'double'
+        ]
+    ]
+]
+```
+
+...is displayed like this:  
+![InputClassDouble](attribute-class-double.png)
+
 <!--
 #### [Template]
 
