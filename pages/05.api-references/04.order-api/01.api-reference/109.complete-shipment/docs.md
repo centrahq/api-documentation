@@ -13,11 +13,17 @@ Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will insert back the tracking number and carrier information to Centra. An email will be sent out to the customer with the tracking information.
 
+Remember, for the Shipment to be completed, it has to be paid, Good-to-go, and shipped.
+
 [notice-box=info]
 You can select if you want to capture the order, this is often used if the shipments are already created inside Centra. You will get an error as response if the capture did not go through.
 [/notice-box]
 
 ## Parameters
+
+[parameter data="order" datatype="int" isRequired=true sublevel=1]
+Order ID to which the shipment belongs.
+[/parameter]
 
 [parameter data="shipment" datatype="int" isRequired=true sublevel=1]
 Shipment ID for the shipment to complete.
@@ -25,6 +31,14 @@ Shipment ID for the shipment to complete.
 
 [parameter data="capture" datatype="boolean" sublevel=1]
 Default: ``true``. Try to capture the order. Ignored if the capture was already made earlier for the shipment.
+[/parameter]
+
+[parameter data="gtg" datatype="boolean" sublevel=1]
+Good-to-go. Indicates the items are packed and ready to leave the Warehouse. Required for shipment to complete.
+[/parameter]
+
+[parameter data="shipped" datatype="boolean" sublevel=1]
+Indicates the items have been shipped. Required for shipment to complete.
 [/parameter]
 
 [parameter data="carrier" datatype="string" isRequired=false sublevel=1]
