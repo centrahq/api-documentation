@@ -36,6 +36,11 @@ Each payment plugin can be restricted to specific Markets, Pricelists or Countri
 
 Key payment services providers supported by Centra are: Adyen, Klarna, PayPal and Stripe.
 
+[notice-box=alert]
+Sorry, this chapter is still under construction. Please check again later, or contact us directly to get more information.
+[/notice-box]
+
+<!--
 |  | Adyen | Klarna | PayPal | Stripe |
 |---|---|---|---|---|
 | Credit card - Mastercard | ✓ | ✓ | ✓ | ✓ |
@@ -55,3 +60,4 @@ Key payment services providers supported by Centra are: Adyen, Klarna, PayPal an
 | Sofort | ✓ |  |  |  |
 | Open Banking | ✓ |  |  |  |
 | Ideal NL |  | ✓ |  |  |
+-->
