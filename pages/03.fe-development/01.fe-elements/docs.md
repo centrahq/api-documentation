@@ -45,6 +45,18 @@ Here is how you can achieve a pleasant shopping and checkout experience for your
 
 These tokens should be saved by the front end for every client session and used to keep or restore customer's previous selection. They should be sent as `API-token` header in your API calls. You can apply your own logic to them in your front end, like introducing session timeouts which should result in creating a new, empty session by sending an API call without any token and saving the newly returned one as current. One of the positive sides of this solution is that it mitigates the "old basket" problem, in which a store customer could attempt to check out an old selection, with items which are now out of stock.
 
+#### Why do I see different Product IDs in the Centra backend and in Checkout API?
+
+"Product" means something else in the Centra backend than it means in Checkout API. This is often confusing for new users, but it makes a lot of sense. Like you already know, Centra is "headless", which means that Product setup in Centra does not decide how the Product will look in your front end, directly. "Products" in Checkout API are concepts combining information from Product, Variant and Display level, here is how:
+
+![ProductIDs](all-the-ids-in-centra.png)
+
+As you already know from our [Product model](/overview/products) overview, Products split into Variants, and each of those comes in one or many Sizes. The Product ID you're seeing in the Centra backend is the ID of that top-level Product, and is actually returned in the Checkout API as `centraProduct`. Similarily, Variant ID is returned in the API as `centraVariant`. The way Centra works, when you activate a Product Variant on a Display, it is activated in the API and assigned a new, unique (auto-incremented) ID, which we internally call Display Item ID (one Display can have multiple Product Variants activated). That Display Item ID becomes a "Product" in the Checkout API. This way the API "Product" combines data from Product, Variant and Display level.
+
+Now, on the Checkout API side, new Product IDs will be added when you activate new Product Variants on Displays, and will be removed when you inactivate them. When you fetch that Product ID, Checkout API will return the entire Product model, and you will also see the array of `items`, where each `item` denotes one of the Product's Size, and is directly connected to a specific Stock ID in your Warehouse. By checking `item` availability, you can determine which sizes have available Stock, and therefore can be presented in your front end as available for purchase. By that logic, Item ID denoted a specific Product in a specific Variant in a specific Size.
+
+When you add an `item` to your selection, it becomes an Order Line ID (`line` in the API). This is needed, because even identical `items` can have different details in your selection. For example, you may add a `comment` to one of the Items (like an engraving text for a ring), but not to another, in which case you would have two `lines` in that Order - one with Item with the comment, and one without. Another common example is using Vouchers, like "Buy one, get one free" - in this case, when you add two idential `items` to your selection, you will end up with two separate Order Lines - one with a full Price, and one free. It's especially important when considering Returns in the future - in Centra, you don't return an Item, you return a specific Order Line, so it's important to know which Item is being returned - the free one, or the full-priced one.
+
 ### Product catalog
 
 `Welcome to the store! Feel free to browse around.`
@@ -100,6 +112,10 @@ Another method is the [POST /products](https://docs.centra.com/swagger-ui/?api=C
 * `items.name` filters on specific item names.
 * `onlyAvailable`, when true, only returns products that are in stock or available for preorder. If you also specify `items.name`, those items must be available.
 * `uri` filters on a product or category with a specific URI.
+
+[notice-box=info]
+Remember that you can expand the Product model by defining [Custom Attributes](/overview/custom-attributes) for your Products and Variants. These attributes can then also be used as product filters in the API, as described in the [Search and filtering](#search-and-filtering) chapter.
+[/notice-box]
 
 ##### Examples
 
@@ -246,7 +262,7 @@ From now on you can use these filters in your `POST /products` calls. For exampl
 }
 ```
 
-The precise filter name, `swatch.desc` in this example, depends on your custom attribute configuration. The attribute values will always be returned with the key `[attribute-name].[element-name]`, with the exception of elements called `text` - due to legacy reasons this element name will be omitted, and the value will be returned just as `[attribute-name]`.
+The precise filter name, `swatch.desc` in this example, depends on your [Custom Attributes](/overview/custom-attributes) configuration. The attribute values will always be returned with the key `[attribute-name].[element-name]`.
 
 #### Image galleries / carousels
 
@@ -341,12 +357,6 @@ To register products or specific product sizes for customer newsletter, you shou
 * `product` - sent as `[displayID]` registers customer e-mail in the Newsletter list with a specific product,
 * `item` - sent as `[displayID]-[sizeID]`, same as in [POST /items/{item}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_) or [POST /items/{item}/quantity/{quantity}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item__quantity__quantity_), registers customer e-mail in the Newsletter list with a specific product size.
 
-#### Sign-up voucher code
-
-`Would you sign up if we offered you a discount?`
-
-[Automatic voucher on newsletter sign-up - is it possible in Centra?]
-
 ### Basket / selection
 
 `Sure you got everything you wanted?`
@@ -376,16 +386,17 @@ With every selection response, the API will include a `shippingMethods` table. I
 #### 'shipTo' parameter
 
 While working on Centra setup, you may sometimes encounter an error saying the current country is not "shippable". You will see this in the API selection model, under `location.shipTo`. If this parameter is `false`, you will not be able to complete an order for this country. You should make sure this country is included in at least one active shipping in Centra -> Setup -> Shipping. Shippable countries:
+* Belong to at least one active Market,
 * Belong to at least one active Pricelist,
 * Belong to at least one active Shipping list.
 
 You can find out which countries are shippable with:
-* [GET /countries](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/get_countries) - returns all shippable countries,
+* [GET /countries](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/get_countries) - returns all shippable countries, and only shippable countries,
 * [GET /countries/all](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/get_countries_all) (authorized mode) - returns all countries, each with a `shipTo` boolean.
 
 ### Checkout
 
-`Let us know everything we need to know to deliver your stuff to you!`
+`Tell us everything we need to know to deliver your stuff to you!`
 
 Your Checkout API plugin configuration allows you to specify which checkout fields (other than country) are required:
 
@@ -393,9 +404,9 @@ Your Checkout API plugin configuration allows you to specify which checkout fiel
 
 Even before completing the checkout and proceeding to payment, you can set some (or all) checkout fields using the [PUT /payment-fields](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields) endpoint. This endpoint can also be used to specify the checkout fields required for the [Cart Abandonment feature](/plugins/cartabandonment).
 
-#### Newsletter sign-up 2
+#### Newsletter sign-up part 2
 
-`Now that you've entered your e-mail, sure you wouldn't like to sign up for some promos?`
+`Now that you've entered your e-mail, are you sure you wouldn't like to sign up for some promotions?`
 
 Now that your customer has entered their e-mail might be a good moment to suggest a newsletter subscription. You can do it at any time by sending [PUT /payment-fields](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields) with `newsletter: true`, or add this parameter to the [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) call.
 
@@ -523,3 +534,14 @@ After payment is completed, you should finalize the order in the same manner as 
 `Thanks for your order!`
 
 Once you have successfully called [POST /payment-result](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment_result), the selection will become an Order in Centra, and a proper receipt will be generated. Please note that you should only call `payment-result` once per each order. If you need to retrieve the order receipt later on your website, you can fetch it using the [GET /receipt](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/get_receipt) endpoint.
+
+### Anything else?
+
+Before you go live, remember to refer to our [launch checklist](/fe-development/launch-checklist), which will help you verify some standard steps recommended before launch.
+
+You may also be interested in:
+* [Example order flow for Checkout API](/api-references/checkout-api/order-flow), as desctibed in the API references
+* [Selecting the right CMS](/fe-development/cms) for your integration
+* [Implementing Centra CheckoutScript](/fe-development/checkoutscript) in your webshop
+* [Selling Gift Certificates](/fe-development/gift-certs) in your Store
+* ...or learning more about [payments in Centra](/fe-development/payments)

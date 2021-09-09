@@ -13,6 +13,8 @@ Here is a list of things to consider and make sure work when testing the site be
 | Where | What |
 | --- | --- |
 | Currencies | What currencies will the client use? |
+| Markets | How many Markets will be used? Are they all country-based, or are there any secret / VIP Markets to test, too? |
+| Pricelists | How many Pricelists will be used? Is there just one or more Pricelists per Currency? |
 | Payment Plugins | What payment methods will the client use? |
 | | Are the payment plugins set up inside Centra? |
 | | Are the payment plugins prepared for the countries the client wants to sell in? |
@@ -26,6 +28,8 @@ Here is a list of things to consider and make sure work when testing the site be
 | | Customer loyalty (Abalon, Nosto etc?) |
 | | Newsletter subscription (Rulemailer, MailChimp, Apsis?) |
 | | Social Media (Storify, Instagram etc?) |
+| Media | What is the format of the Product images? How many image sizes will be used on the website? |
+| Product feeds | Will you be integrating either with Google or Facebook feeds? |
 
 ### Designs needed before launch
 
@@ -34,11 +38,17 @@ Here is a list of things to consider and make sure work when testing the site be
 | Design | Make sure there is design for error message handling and 404s |
 | | Any hosted payment pages that needs customization (Adyen, DIBS?) |
 | | Will you offer 100% discounts? Does your payment setup support [payments with 0 total](/fe-development/payments/handling-0-payments)? Have you tested it? |
+| Redirects | If a previous version of the webstore exists, should old URLs redirect to the new website? |
 
 ### Tests needed before launch
 
 | Where | What | How |
 | ---:| --- | --- |
+| Product Catalog | Products active | Verify all desired Products are active on all levels (Product / Variant / Display) |
+| | Images active | Verify all images are added to Products. If required, verify if all images are connected to appropriate Variants |
+| | Prices set | Verify all Products have prices set in all appropriate Pricelists |
+| | Stock available | Verify all Products have Stock levels set to values actually available in your Warehouse(s) |
+
 | General | Currency selector | Verify that it works and that it is changing the currency. |
 | | Language selector | Verify that it works and that it is changing the language properly. |
 | | Country selector | Verify that changing country works. |
@@ -86,3 +96,4 @@ Here is a list of things to consider and make sure work when testing the site be
 | | Adding of products | When you’ve added a product, are you able to select and add another size for the same product? |
 | | | When you’ve added a product, are you able to select and add another color for the same product? |
 | | Adding bundled products | If you use bundles, can a bundle be added to the basket? Are the items in the bundle listed correctly? |
+| | Localization | Are Product descriptions and attributes translated to all appropriate languages? Are those translations returned correctly in the API? |
