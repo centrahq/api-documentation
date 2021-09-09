@@ -10,19 +10,19 @@ Centra does not integrate directly with any payment methods (like Mastercard). I
 
 ## Common PSP configurations
 
-### Scenario 1 - single PSP (recommended)
+#### Scenario 1 - single PSP (recommended)
 
 ![](payment-setup1.png)
 
 In many cases it is sufficient to only use one PSP, as long as it covers all payment methods that will be used in your store. For example, PayPal will allow you to accept payments using each of the most popular credit cards or using a bank transfer.
 
-### Scenario 2 - multiple PSPs (recommended if required)
+#### Scenario 2 - multiple PSPs (recommended if required)
 
 ![](payment-setup2.png)
 
 In case a single PSP does not cover all required payment methods, it is often seen that two or more payment plugins are configured. For example, you can use PayPal to cover card payments, and add Stripe checkout to accept Apple Pay payments as well.
 
-### Scenario 3 - PSP in PSP (not recommended unless necessary)
+#### Scenario 3 - PSP in PSP (not recommended unless necessary)
 
 ![](payment-setup3.png)
 
