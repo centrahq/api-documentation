@@ -15,7 +15,8 @@ In this article, you will find:
 2. A framework for evaluating and selecting a CMS for your headless ecommerce project (whether on our platform Centra or another headless ecommerce platform)
 3. A shortlist of interesting CMS to consider, with links to interviews of developers having used the different CMS for their projects
 
-...
+(...)
+
 
 [notice-box=alert]
 Sorry, this chapter is still under construction. Please check again later, or contact us directly to get more information.
