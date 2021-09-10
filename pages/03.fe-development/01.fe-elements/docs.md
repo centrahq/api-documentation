@@ -343,7 +343,7 @@ Be mindful to properly parse and encode the e-mail subscription field in your Fr
 
 #### How to avoid bots - a short remark on honeypots
 
-You may notice that the [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint accepts a parameter called `email_field`. This value is meant as a honeypot field for spam bots or web crawlers. In your front end, next to the subscribe form, you should implement a field or a checkbox which is not visible to the end user, but clearly part of the form from the source code perspective. Any value passed to this form element should be passed to that variable. It's a signal to Centra, as well as to external mailer systems, that this subscription was filled out by a bot, so it should be ignored. At the same time, the API behaviour looks the same to the user, so the bot will not get any information back letting it know it failed.
+You may notice that the [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint accepts a parameter called `email_field`. This value is meant as a honeypot field for spam bots or web crawlers. In your front end, next to the subscribe form, you should implement a field or a checkbox which is not visible to the end user, but clearly part of the form from the source code perspective. Any value passed to this form element should be passed to that variable. It's a signal to Centra, as well as to external mailer systems, that this subscription was filled out by a bot, so it should be ignored. At the same time, the API behaviour looks the same to the user, so the bot will not get any information back letting it know it failed to subscribe.
 
 To read more and see some examples, check out [Rule article about email honey pots](https://en.docs.rule.se/article/283-rule-botstop-spamskydd-via-api).
 
@@ -392,7 +392,7 @@ While working on Centra setup, you may sometimes encounter an error saying the c
 
 You can find out which countries are shippable with:
 * [GET /countries](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/get_countries) - returns all shippable countries, and only shippable countries,
-* [GET /countries/all](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/get_countries_all) (authorized mode) - returns all countries, each with a `shipTo` boolean.
+* [GET /countries/all](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/get_countries_all) (in authorized mode) - returns all countries, each with a `shipTo` boolean.
 
 ### Checkout
 
@@ -431,11 +431,11 @@ See the implementation details for:
 * [Stripe Checkout](/plugins/stripe)
 * [Klarna Checkout v3](/plugins/klarna)
 * [PayPal](/plugins/paypal)
-* [Adyen Checkout beta](/plugins/adyen)
+* [Adyen Drop-In](/plugins/adyen-drop-in)
 
 #### Payment country
 
-Since so much depends on the shipping country, like prices, shipping costs, taxes and product availability, `address.country` is the only checkout field that is required by default. Furthermore, some countries will additionally require `address.state` to apply appropriate taxes.
+Since so much depends on the shipping country, like prices, shipping costs, taxes and product availability, `address.country` is one of the only two checkout fields that is required by default (next to `address.email`, which uniquely identifies a Customer in Centra). Furthermore, some countries will additionally require `address.state` to apply appropriate taxes.
 
 [notice-box=alert]
 Some integrations, like DHL shipping, require that you format the zip code (postal code) in a format that is commonly used in the shipping country. If you pass the zip code in a different format, creating a shipment can fail. It is therefore important that you follow the zip code formatting recommendation for every country you intend to ship to. For example, Swedish codes are formatted as NNN NN (with a space), in Germany you have: NNNNN, in Poland: NN-NNN, in Denmark: NNNN. [A full list of postal codes formats by country can be found on Wikipedia](https://en.wikipedia.org/wiki/List_of_postal_codes). If you encounter any problems after following these guidelines, we recommend to contact DHL support.
@@ -549,3 +549,5 @@ You may also be interested in:
 * [Implementing Centra CheckoutScript](/fe-development/checkoutscript) in your webshop
 * [Selling Gift Certificates](/fe-development/gift-certs) in your Store
 * ...or learning more about [payments in Centra](/fe-development/payments)
+
+Welcome to Centra, and happy coding!
