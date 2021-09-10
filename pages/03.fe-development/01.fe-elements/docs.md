@@ -8,7 +8,7 @@ taxonomy:
 
 ## Checkout API introduction
 
-[Checkout API](/api-references/checkout-api) is a hybrid webshop API, built to operate both from client and server side. In client-side communication it exposes all endpoints necessary to fetch products, filter categories, build a [selection](/glossary/glossary-basic#selection) (a.k.a. cart) and complete checkout process with a number of supported payment and shipping methods. In server-side (authenticated) calls it allows you to fetch details about all Markets, Pricelists and Warehouses, or explicitly set Market, Pricelist, Country or Language for current selection.
+[Checkout API](/api-references/checkout-api) is a hybrid webshop API, built to operate both from client and server side. In client-side communication it exposes all endpoints necessary to fetch products, filter categories, build a [selection](/overview/glossary#selection) (a.k.a. cart) and complete checkout process with a number of supported payment and shipping methods. In server-side (authenticated) calls it allows you to fetch details about all Markets, Pricelists and Warehouses, or explicitly set Market, Pricelist, Country or Language for current selection.
 
 [notice-box=alert]
 Server side API calls made from a web browser will be blocked. Be careful to never expose your shared API secret.
@@ -41,7 +41,7 @@ Here is how you can achieve a pleasant shopping and checkout experience for your
 
 ### Selection vs session token
 
-[Selection](/glossary/glossary-basic#selection) in Centra is what other e-commerce solutions call a "basket" or "cart". When using the older [Shop API](/api-references/shop-api) the selection ID (a hash like `abeb59928306768d255e21920f9087a4`) would be exposed and used directly to add products, activate promotions and proceed through the payment process. In Checkout API we introduced a new layer of abstraction, by not exposing selection IDs directly in the API, but instead connecting them internally with session tokens (e.g. `esf1p3tgchfg5ggtpqdpgqjtt6`).
+[Selection](/overview/glossary#selection) in Centra is what other e-commerce solutions call a "basket" or "cart". When using the older [Shop API](/api-references/shop-api) the selection ID (a hash like `abeb59928306768d255e21920f9087a4`) would be exposed and used directly to add products, activate promotions and proceed through the payment process. In Checkout API we introduced a new layer of abstraction, by not exposing selection IDs directly in the API, but instead connecting them internally with session tokens (e.g. `esf1p3tgchfg5ggtpqdpgqjtt6`).
 
 These tokens should be saved by the front end for every client session and used to keep or restore customer's previous selection. They should be sent as `API-token` header in your API calls. You can apply your own logic to them in your front end, like introducing session timeouts which should result in creating a new, empty session by sending an API call without any token and saving the newly returned one as current. One of the positive sides of this solution is that it mitigates the "old basket" problem, in which a store customer could attempt to check out an old selection, with items which are now out of stock.
 
@@ -343,7 +343,7 @@ Be mindful to properly parse and encode the e-mail subscription field in your Fr
 
 #### How to avoid bots - a short remark on honeypots
 
-You may notice that the [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint accepts a parameter called `email_field`. This value is meant as a honeypot field for spam bots or web crawlers. In your front end, next to the subscribe form, you should implement a field or a checkbox which is not visible to the end user, but clearly part of the form from the source code perspective. Any value passed to this form element should be passed to that variable. It's a signal to Centra, as well as to external mailer systems, that this subscription was filled out by a bot, so it should be ignored. At the same time, the API behaviour looks the same to the user, so the bot will not get any information back letting it know it failed.
+You may notice that the [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint accepts a parameter called `email_field`. This value is meant as a honeypot field for spam bots or web crawlers. In your front end, next to the subscribe form, you should implement a field or a checkbox which is not visible to the end user, but clearly part of the form from the source code perspective. Any value passed to this form element should be passed to that variable. It's a signal to Centra, as well as to external mailer systems, that this subscription was filled out by a bot, so it should be ignored. At the same time, the API behaviour looks the same to the user, so the bot will not get any information back letting it know it failed to subscribe.
 
 To read more and see some examples, check out [Rule article about email honey pots](https://en.docs.rule.se/article/283-rule-botstop-spamskydd-via-api).
 
@@ -392,7 +392,7 @@ While working on Centra setup, you may sometimes encounter an error saying the c
 
 You can find out which countries are shippable with:
 * [GET /countries](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/get_countries) - returns all shippable countries, and only shippable countries,
-* [GET /countries/all](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/get_countries_all) (authorized mode) - returns all countries, each with a `shipTo` boolean.
+* [GET /countries/all](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/get_countries_all) (in authorized mode) - returns all countries, each with a `shipTo` boolean.
 
 ### Checkout
 
@@ -431,11 +431,11 @@ See the implementation details for:
 * [Stripe Checkout](/plugins/stripe)
 * [Klarna Checkout v3](/plugins/klarna)
 * [PayPal](/plugins/paypal)
-* [Adyen Checkout beta](/plugins/adyen)
+* [Adyen Drop-In](/plugins/adyen-drop-in)
 
 #### Payment country
 
-Since so much depends on the shipping country, like prices, shipping costs, taxes and product availability, `address.country` is the only checkout field that is required by default. Furthermore, some countries will additionally require `address.state` to apply appropriate taxes.
+Since so much depends on the shipping country, like prices, shipping costs, taxes and product availability, `address.country` is one of the only two checkout fields that is required by default (next to `address.email`, which uniquely identifies a Customer in Centra). Furthermore, some countries will additionally require `address.state` to apply appropriate taxes.
 
 [notice-box=alert]
 Some integrations, like DHL shipping, require that you format the zip code (postal code) in a format that is commonly used in the shipping country. If you pass the zip code in a different format, creating a shipment can fail. It is therefore important that you follow the zip code formatting recommendation for every country you intend to ship to. For example, Swedish codes are formatted as NNN NN (with a space), in Germany you have: NNNNN, in Poland: NN-NNN, in Denmark: NNNN. [A full list of postal codes formats by country can be found on Wikipedia](https://en.wikipedia.org/wiki/List_of_postal_codes). If you encounter any problems after following these guidelines, we recommend to contact DHL support.
@@ -549,3 +549,5 @@ You may also be interested in:
 * [Implementing Centra CheckoutScript](/fe-development/checkoutscript) in your webshop
 * [Selling Gift Certificates](/fe-development/gift-certs) in your Store
 * ...or learning more about [payments in Centra](/fe-development/payments)
+
+Welcome to Centra, and happy coding!
