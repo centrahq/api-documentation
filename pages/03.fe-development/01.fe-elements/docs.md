@@ -8,7 +8,7 @@ taxonomy:
 
 ## Checkout API introduction
 
-[Checkout API](/api-references/checkout-api) is a hybrid webshop API, built to operate both from client and server side. In client-side communication it exposes all endpoints necessary to fetch products, filter categories, build a [selection](/glossary/glossary-basic#selection) (a.k.a. cart) and complete checkout process with a number of supported payment and shipping methods. In server-side (authenticated) calls it allows you to fetch details about all Markets, Pricelists and Warehouses, or explicitly set Market, Pricelist, Country or Language for current selection.
+[Checkout API](/api-references/checkout-api) is a hybrid webshop API, built to operate both from client and server side. In client-side communication it exposes all endpoints necessary to fetch products, filter categories, build a [selection](/overview/glossary#selection) (a.k.a. cart) and complete checkout process with a number of supported payment and shipping methods. In server-side (authenticated) calls it allows you to fetch details about all Markets, Pricelists and Warehouses, or explicitly set Market, Pricelist, Country or Language for current selection.
 
 [notice-box=alert]
 Server side API calls made from a web browser will be blocked. Be careful to never expose your shared API secret.
@@ -41,7 +41,7 @@ Here is how you can achieve a pleasant shopping and checkout experience for your
 
 ### Selection vs session token
 
-[Selection](/glossary/glossary-basic#selection) in Centra is what other e-commerce solutions call a "basket" or "cart". When using the older [Shop API](/api-references/shop-api) the selection ID (a hash like `abeb59928306768d255e21920f9087a4`) would be exposed and used directly to add products, activate promotions and proceed through the payment process. In Checkout API we introduced a new layer of abstraction, by not exposing selection IDs directly in the API, but instead connecting them internally with session tokens (e.g. `esf1p3tgchfg5ggtpqdpgqjtt6`).
+[Selection](/overview/glossary#selection) in Centra is what other e-commerce solutions call a "basket" or "cart". When using the older [Shop API](/api-references/shop-api) the selection ID (a hash like `abeb59928306768d255e21920f9087a4`) would be exposed and used directly to add products, activate promotions and proceed through the payment process. In Checkout API we introduced a new layer of abstraction, by not exposing selection IDs directly in the API, but instead connecting them internally with session tokens (e.g. `esf1p3tgchfg5ggtpqdpgqjtt6`).
 
 These tokens should be saved by the front end for every client session and used to keep or restore customer's previous selection. They should be sent as `API-token` header in your API calls. You can apply your own logic to them in your front end, like introducing session timeouts which should result in creating a new, empty session by sending an API call without any token and saving the newly returned one as current. One of the positive sides of this solution is that it mitigates the "old basket" problem, in which a store customer could attempt to check out an old selection, with items which are now out of stock.
 
