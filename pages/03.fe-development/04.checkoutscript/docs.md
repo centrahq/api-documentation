@@ -32,9 +32,10 @@ document.addEventListener('centra_checkout_callback', function(origdata) {
 });
 ```
 
-### Suspend() and Resume()
+### Suspend(), Resume() and OrderUpdated()
 
-When you change the selection in the checkout whilst Klarna Checkout, Qliro One or Ingrid plugin is loaded, they need to get updated with the same data Centra has, while Centra does most of the heavy lifting here, like sending data to the Klarna, Qliro One and Ingrid. Your website, however, needs to suspend and resume the widgets. The `CentraCheckout` object has functions for suspending and resuming Klarna Checkout, Qliro One and Ingrid, depending on which are loaded from Centra. They are `CentraCheckout.suspend()` and `CentraCheckout.resume()` respectively.
+When you change the selection in the checkout whilst Klarna Checkout, Qliro One or Ingrid plugin is loaded, they need to get updated with the same data Centra has, while Centra does most of the heavy lifting here, like sending data to the Klarna, Qliro One and Ingrid. Your website, however, needs to suspend and resume the widgets. The `CentraCheckout` object has functions for suspending and resuming Klarna Checkout, Qliro One and Ingrid, depending on which are loaded from Centra. They are `CentraCheckout.suspend()` and `CentraCheckout.resume()` respectively. 
+For Qliro One instead of `CentraCheckout.resume()` you can use `CentraCheckout.orderUpdated(newOrderTotal)` to synchronize widget with new order total.
 
 Here's an example:
 
