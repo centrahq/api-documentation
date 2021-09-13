@@ -22,13 +22,28 @@ Add `Qliro One` to your store you want to use it for. Insert the data gathered a
 
 ![qliro-keys.png](qliro-keys.png)
 
-You can start testing the plugin using Test-Mode. If you want to use the Test-Mode remember to set:
+#### Testing
+
+To use plugin in Test mode and test against Qliro API sandbox set the following setting to "Yes":
 
 ![qliro-testmode.png](qliro-testmode.png)
 
+[notice-box=alert]
+You will need to disable test-mode for the plugin in Centra when you run it in production.
+[/notice-box]
+
 ### Setup options
 
-There are a lot of options in the Qliro One plugin.
+#### Require success validation
+
+Optional order validation step fired when customer submits the order in the payment widget.  
+It validates following data: 
+
+- Customer identity (if option `Verify identity with BankID (SE only)` is used)
+- Juridical type - whether the selected type is allowed by configuration
+- Items availability
+
+The result can be handled on frontend side, implementing callback `onPaymentDeclined()` which accepts decline reason as an argument. For more details please refer to Qliro documentation. 
 
 #### Allow organizations to place orders
 
@@ -44,15 +59,29 @@ By enabling "newsletter signup" checkbox, it will be visible inside Qliro One wi
 
 #### Age restiction  
 
-- Todo or remove
+Age restriction setting allows to decide whether you want to provide `minimalCustomerAge` parameter on payment session initialization. Setting the value "Yes" enables an additional attribute on product level of type "Age limit" - visible in Catalog/Attributes setup.
+If there is a product with age limit restriction in the basket, the `minimumCustomerAge` value will be sent to Qliro.
+
+![img.png](qliro-age-restrict.png)
 
 #### Verify identity with BankID - Sweden Only
 
-- Todo or remove
+Set to "Yes" if you want BankID to be required for customer to be able to complete purchase.
 
 #### Customer information 
 
-- Todo or remove
+The payment widget can be prefilled with customer data coming from the selected source:
+
+- basket shipping address
+- basket billing address
+- customer address
+
+You can select if you want the address filled by customer in the payment widget to be used as the one visible on the order.
+
+Setting `Use customer addresses from QliroOne` to "No" will ignore the address coming from the payment widget, so it should be used only when customer address information is collected in a separate form before proceeding to payment.
+
+Configuration allows for preventing customers from changing the data that the payment widget is filled with on checkout initialization using "lock" settings.
+Customer information can be locked partially or fully. 
 
 #### Geo-restrictions
 
@@ -75,14 +104,6 @@ You are able to configure corner radius of
 * Button corner radius
 
 ![qliro-styling.png](qliro-styling.png)
-
-#### Testing
-
-To test the flow, you first need to make sure the `Test-Mode` is enabled and that the `Test mode` is set to `Yes`.
-
-[notice-box=alert]
-You will need to disable test-mode for the plugin in Centra when you run it in production.
-[/notice-box]
 
 
 #### Required configuration
