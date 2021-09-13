@@ -48,7 +48,6 @@ Here is a list of things to consider and make sure work when testing the site be
 | | Images active | Verify all images are added to Products. If required, verify if all images are connected to appropriate Variants |
 | | Prices set | Verify all Products have prices set in all appropriate Pricelists |
 | | Stock available | Verify all Products have Stock levels set to values actually available in your Warehouse(s) |
-
 | General | Currency selector | Verify that it works and that it is changing the currency. |
 | | Language selector | Verify that it works and that it is changing the language properly. |
 | | Country selector | Verify that changing country works. |
