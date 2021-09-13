@@ -33,7 +33,7 @@ Product URI
 [/parameter]
 
 [parameter data="quantity" datatype="int" isRequired=false storetype="b2b b2c" sublevel=1]
-Maximum amount of returned products.
+Maximum number of returned products. Recommended range: between 10 and 100
 [/parameter]
 
 [parameter data="offset" datatype="int" isRequired=false storetype="b2b b2c" sublevel=1]
