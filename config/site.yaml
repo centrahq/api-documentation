@@ -26,6 +26,7 @@ routes:
   /guides/plugins/adyen-drop-in: '/plugins/adyen-drop-in'
   /guides/plugins/klarna-checkout-v3: '/plugins/klarna'
   /guides/plugins/mailchimp-ecommerce: '/plugins/mailchimp'
+  /guides/plugins/qliro: '/plugins/qliro-one'
   /guides/plugins/quickpay: '/plugins/quickpay'
   /guides/plugins/paypal-commerce: '/plugins/paypal'
   /guides/plugins/stripe-checkout: '/plugins/stripe'
