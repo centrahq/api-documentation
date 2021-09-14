@@ -1,5 +1,5 @@
 ---
-title: Using Centra CheckoutScript to update active KCO and Ingrid sessions
+title: Using Centra CheckoutScript to update active Ingrid, KCO, Qliro One sessions
 altTitle: Centra CheckoutScript
 excerpt: Centra CheckoutScript, or an elegant way to handle event signalling between Centra and its plugins.
 taxonomy:
@@ -8,7 +8,7 @@ taxonomy:
 
 ## What is Centra CheckoutScript?
 
-In the selection response, if Klarna Checkout or Ingrid are active on the selection, Centra will return an element called `centraCheckoutScript`. It registers an event for events triggered by the widgets which need to be passed down to Centra, and convenience functions for suspension and resume of the widgets. If you get the `centraCheckoutScript` in the selection response, you should add it to your page so that it's picked up.
+In the selection response, if Klarna Checkout, Qliro One or Ingrid are active on the selection, Centra will return an element called `centraCheckoutScript`. It registers an event for events triggered by the widgets which need to be passed down to Centra, and convenience functions for suspension and resume of the widgets. If you get the `centraCheckoutScript` in the selection response, you should add it to your page so that it's picked up.
 
 ### Events
 
@@ -34,14 +34,16 @@ document.addEventListener('centra_checkout_callback', function(origdata) {
 
 ### Suspend() and Resume()
 
-When you change the selection in the checkout whilst Klarna Checkout or Ingrid plugin is loaded, they need to get updated with the same data Centra has, while Centra does most of the heavy lifting here, like sending data to the Klarna and Ingrid. Your website, however, needs to suspend and resume the widgets. The `CentraCheckout` object has functions for suspending and resuming both Klarna Checkout and Ingrid, depending on which are loaded from Centra. They are `CentraCheckout.suspend()` and `CentraCheckout.resume()` respectively.
+When you change the selection in the checkout whilst Klarna Checkout, Qliro One or Ingrid plugin is loaded, they need to get updated with the same data Centra has, while Centra does most of the heavy lifting here, like sending data to the Klarna, Qliro One and Ingrid. Your website, however, needs to suspend and resume the widgets. The `CentraCheckout` object has functions for suspending and resuming Klarna Checkout, Qliro One and Ingrid, depending on which are loaded from Centra. They are `CentraCheckout.suspend()` and `CentraCheckout.resume()` respectively. 
+
+For Qliro One, you also need to define `var totalPrice` with new cart total - we need it to synchronize Qliro One widget and unlock it right time.
 
 Here's an example:
 
 ```js
 // Perform quantity change of an selection line using ajax
 function updateSelectionLine(lineID, data) {
-	CentraCheckout.suspend() //suspend Klarna and Shipwallet
+	CentraCheckout.suspend() //suspend Klarna, Qliro One and Ingrid
 	$.ajax({my-endpoint}, { 
         method:"POST",
         data: origdata.detail,
