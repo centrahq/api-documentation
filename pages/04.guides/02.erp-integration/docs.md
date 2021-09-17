@@ -60,10 +60,10 @@ This is the only way data is sent from Centra to the ERP system.
 
 Events are fetched using:
 
-* events_Get [https://docs.centra.com/soap/index.php?op=events_Get](https://docs.centra.com/soap/index.php?op=events_Get)  
-* events_GetByMarkets [https://docs.centra.com/soap/index.php?op=events_GetByMarkets](https://docs.centra.com/soap/index.php?op=events_GetByMarkets) (you can fetch events only for one or more markets)
+* events_Get [https://docs.centra.com/api-references/soap-integration-api/api-reference#events_Get](https://docs.centra.com/api-references/soap-integration-api/api-reference#events-get)  
+* events_GetByMarkets [https://docs.centra.com/api-references/soap-integration-api/api-reference#events_GetByMarkets](https://docs.centra.com/api-references/soap-integration-api/api-reference#events-getbymarkets) (you can fetch events only for one or more markets)
 
-Events are removed from the queue with events_Done [https://docs.centra.com/soap/index.php?op=events_Done](https://docs.centra.com/soap/index.php?op=events_Done)
+Events are removed from the queue with [events_Done](https://docs.centra.com/api-references/soap-integration-api/api-reference#events-done)
 
 [notice-box=alert]
 Do not call events_Done until you are certain the event is permantently stored in the receiving system. Calling events_Done before this is the case might cause the systems to go out of sync in case of disruptions.
@@ -77,7 +77,7 @@ For example, if there are 234 events in the queue, events_Get will return the ol
 There is no timeout after which events disappear automatically. If the ERP system is unable to fetch events due to down time or high load, events will be permanently stored in Centra until fetched.
 [/notice-box]
 
-The data for each event depends on the type of the event. Events of type “order” contain an order. The structure is the same as for the corresponding “update” operation for that type of data. An order event contains the data structure from orders_Update [https://docs.centra.com/soap/index.php?op=orders_Update](https://docs.centra.com/soap/index.php?op=orders_Update).
+The data for each event depends on the type of the event. Events of type “order” contain an order. The structure is the same as for the corresponding “update” operation for that type of data. An order event contains the data structure from [orders_Update](https://docs.centra.com/api-references/soap-integration-api/api-reference#orders-update).
 
 Each event contains the complete data for the object that has changed. It does not contain historical data, i.e., to know what has changed, you would need to compare it yourself to the data on your side to know that. 
 
@@ -87,13 +87,13 @@ Hand-over points between the systems should be decided. For example, an order is
 
 ### Updates
 
-The different update operations in the API will update or create new data objects in Centra. There are many different fields in the update operations, for example the products_Update [https://docs.centra.com/soap/index.php?op=products_Update](https://docs.centra.com/soap/index.php?op=products_Update). You do not need to send all fields, only the ones that are required to identify what object you want to update (the different `<id>` fields) and the fields with data that you want to change.
+The different update operations in the API will update or create new data objects in Centra. There are many different fields in the update operations, for example the [products_Update](https://docs.centra.com/api-references/soap-integration-api/api-reference#products-update). You do not need to send all fields, only the ones that are required to identify what object you want to update (the different `<id>` fields) and the fields with data that you want to change.
 
 The fields that you do not include in the update are not changed.
 
 If the data object you send does not exist in Centra, it will be created.
 
-For example the customers_Update lets you update or create retail/B2C customers. [https://docs.centra.com/soap/index.php?op=customers_Update](https://docs.centra.com/soap/index.php?op=customers_Update)
+For example the [customers_Update](https://docs.centra.com/api-references/soap-integration-api/api-reference#customers-update) lets you update or create retail/B2C customers.
 
 You need to send the `<id>` to identify what customer to update. If no customer with that ID exists, a new customer is created.
 
@@ -144,7 +144,7 @@ All examples in this documentation uses the “SOAP API” endpoint.
 
 To test the connection, use the events_Get operation. This is a read only operation, nothing bad can happen.
 
-[https://docs.centra.com/soap/index.php?op=events_Get](https://docs.centra.com/soap/index.php?op=events_Get)
+[https://docs.centra.com/api-references/soap-integration-api/api-reference#events_Get](https://docs.centra.com/api-references/soap-integration-api/api-reference#events-get)
 
 [notice-box=alert]
 Never use the integration you build towards a production Centra environment before it is thoroughly tested and verified to be working as intended!
@@ -196,7 +196,7 @@ The response you get when you try this may contain a data payload in the `<ns1:e
 
 ## Markets
 
-[https://docs.centra.com/soap/index.php?op=markets_Update](https://docs.centra.com/soap/index.php?op=markets_Update)
+[https://docs.centra.com/api-references/soap-integration-api/api-reference#markets_Update](https://docs.centra.com/api-references/soap-integration-api/api-reference#markets-update)
 
 Creates new, or updates existing markets in Centra.
 
@@ -272,7 +272,7 @@ Centra supports sales directly to customers, "direct-to-consumer" or "B2C", and 
 
 ## Product Data: Sizetables
 
-[https://docs.centra.com/soap/index.php?op=sizes_Update](https://docs.centra.com/soap/index.php?op=sizes_Update)
+[https://docs.centra.com/api-references/soap-integration-api/api-reference#sizes_Update](https://docs.centra.com/api-references/soap-integration-api/api-reference#sizes-update)
 
 Before you can send product data to Centra you need to have size tables in place.
 
@@ -382,7 +382,7 @@ When you send the same sizes_Update again, nothing changes in Centra and you wil
 
 ## Product Data: A Sweater example
 
-[https://docs.centra.com/soap/index.php?op=products_Update](https://docs.centra.com/soap/index.php?op=products_Update)
+[https://docs.centra.com/api-references/soap-integration-api/api-reference#products_Update](https://docs.centra.com/api-references/soap-integration-api/api-reference#products-update)
 
 This example creates or updates a product – in this case a turtleneck sweater. It demonstrates Centra’s product structure of product, variants and sizes. The product comes in red and blue variants, and each variant is available in sizes S, M and L.
 
@@ -530,7 +530,7 @@ The `<sku>` field is not required by Centra itself, but if Centra connects to ot
 
 ## Product Data: A Chair example
 
-[https://docs.centra.com/soap/index.php?op=products_Update](https://docs.centra.com/soap/index.php?op=products_Update)
+[https://docs.centra.com/api-references/soap-integration-api/api-reference#products_Update](https://docs.centra.com/api-references/soap-integration-api/api-reference#products-update)
 
 This example creates or updates a product. We will be using a chair for this example. The product does not have different variants or sizes. To fit Centra’s product structure, it is created with a single variant and a single size.
 
@@ -707,7 +707,7 @@ The minimum required handling of bundles for a working integration is to inspect
 
 ## Product Stock: Warehouses
 
-[https://docs.centra.com/soap/index.php?op=warehouses_Update](https://docs.centra.com/soap/index.php?op=warehouses_Update)
+[https://docs.centra.com/api-references/soap-integration-api/api-reference#warehouses_Update](https://docs.centra.com/api-references/soap-integration-api/api-reference#warehouses-update)
 
 Creates or updates warehouses in Centra.
 
@@ -745,7 +745,7 @@ This operation is optional. If you simply send stock numbers to a warehouse `<id
 
 ## Product Stock: Stock Update
 
-[https://docs.centra.com/soap/index.php?op=products_Update](https://docs.centra.com/soap/index.php?op=products_Update)
+[https://docs.centra.com/api-references/soap-integration-api/api-reference#products_Update](https://docs.centra.com/api-references/soap-integration-api/api-reference#products-update)
 
 Set product stock quantities in a warehouse.
 
@@ -814,7 +814,7 @@ This also means you should fetch orders from Centra before sending stock updates
 
 ## Pricelists
 
-[https://docs.centra.com/soap/index.php?op=pricelists_Update](https://docs.centra.com/soap/index.php?op=pricelists_Update)
+[https://docs.centra.com/api-references/soap-integration-api/api-reference#pricelists_Update](https://docs.centra.com/api-references/soap-integration-api/api-reference#pricelists-update)
 
 Update or create pricelists. A pricelist contains prices for products in a specific currency.
 
