@@ -50,6 +50,10 @@ Data transmission is always initiated by you. You request events to receive data
 
 You will need to send a username and password with each request.
 
+[notice-box=info]
+SOAP API uses its own user and password, which is not related to the AMS users and needs to be set up by Centra staff.
+[/notice-box]
+
 ### Events and the Event Queue
 
 When data that is relevant for the ERP integration changes in Centra, an event is created in the SOAP API.
