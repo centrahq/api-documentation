@@ -80,7 +80,7 @@ $usr_conf['ATTRIBUTE_TYPES'] = [
         'group' => 'product',
         'readonly' => false,
         'elements' => [
-            'text' => ['desc' => 'Limited Edition', 'type' => 'boolean',
+            'bool' => ['desc' => 'Limited Edition', 'type' => 'boolean',
                 'options' => [['0','No'],['1','Yes']]
             ],
         ],
@@ -107,7 +107,7 @@ And in the API, it will show up like this:
 
 ```json
 ...
-"limited_edition": "1",
+"limited_edition_bool": "1",
 "promo_sale": "1",
 "promo_preorder": "1",
 ...
