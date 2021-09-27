@@ -14,7 +14,8 @@ You need the following data:
 
 1. The API key for your Qliro store.
 2. The Secret for your Qliro store.
-3. Merchant GUID for your Qliro store - if you want to see links to Qliro Merchant panel.
+3. Both `Merchant integrity policy-URL` and `Terms & Conditions-URL` are required and need to be valid URLs
+4. Merchant GUID for your Qliro store - if you want to see links to Qliro Merchant panel.
 
 ### Create the plugin in Centra
 
@@ -33,6 +34,11 @@ You will need to disable test-mode for the plugin in Centra when you run it in p
 [/notice-box]
 
 ### Setup options
+
+#### Notifications
+
+Notification endpoints for all kinds of incoming notifications: customer checkout status, order management status and order validation are defined dynamically and provided for Qliro by the integration plugin.
+There is no need to explicitly define them in plugin settings.
 
 #### Require success validation
 
