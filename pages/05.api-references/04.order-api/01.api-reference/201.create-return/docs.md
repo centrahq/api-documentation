@@ -147,6 +147,10 @@ Return ID that was created.
 If the return was completed directly on creation, this can only happen if a successful refund was made when return was created.
 [/parameter]
 
+[parameter data="returnedItems" datatype="array" isRequired=false sublevel=1]
+Array of Line IDs of returned Products.
+[/parameter]
+
 [parameter data="msg" datatype="string" isRequired=false sublevel=1]
 If ``status`` returns ``no``, this value should send back a message why it failed.
 [/parameter]
