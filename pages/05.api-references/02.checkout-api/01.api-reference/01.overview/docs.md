@@ -55,7 +55,7 @@ The request you send can contain these fields, everything is optional:
     "products": [1,2,3],
     "relatedProducts": true,
     "brands": [1,2,3],
-    "swatch.desc": ["Red", "Blue", "Green"]
+    "swatch.desc": ["Red", "Blue", "Green"],
     "items.name":["W24\/L30"],
     "onlyAvailable":true,
     "uri":{
