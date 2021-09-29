@@ -105,7 +105,7 @@ You should set a Server communication URL for each Merchant Account you have. Ma
 
 ![adyen-drop-in-merchant.png](adyen-drop-in-merchant.png)
 
-To add a new Service Communication URL in Adyen, go to `Account` and then select `Server Communication`. Make sure that you have a Merchant Account selected (You should see "No merchant selected" in the top right of Adyen if you have not selected one) before you click `Add` on the "Standard Notification".
+To add a new Service Communication URL in Adyen, go to `Developers` and then select `Webhooks`. Make sure that you have a Merchant Account selected (You should see "No merchant selected" in the top right of Adyen if you have not selected one) before you click `Add` on the "Standard Notification".
 
 Enter the URL from the Adyen Drop-In-plugin from Centra. If you are creating a new plugin, please save the plugin once and open it again to see the Notification URL.
 
