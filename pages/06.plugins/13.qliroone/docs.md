@@ -112,8 +112,42 @@ You are able to configure corner radius of
 ![qliro-styling.png](qliro-styling.png)
 
 
-#### Required configuration
+#### API
 
-To make sure that your Qliro One plugin will work, please make sure that the following configuration fields are filled:
-- Qliro One API key
-- Qliro One API secret
+When properly configured Qliro will be returned both in Checkout API and Shop API as available payment method:
+
+```json
+{
+            "paymentMethod": "qliroone-payment",
+            "name": "Qliro One",
+            "paymentMethodType": "qliro",
+            "supportsInitiateOnly": false,
+            "providesCustomerAddressAfterPayment": true,
+            "handlingCost": "0.00 SEK",
+            "handlingCostAsNumber": 0
+}
+```
+
+When Qliro is selected as payment method on the selection, then a POST /selection/payment is called and payment session is initialized.
+If the request fails, the details can be found in `DIAGNOSTICS/DEBUG LOG`.
+If payment session initialization was successful, the following response will be returned:
+
+```json
+{
+  "token": "89d3744441706b51d9bc4ba157607203",
+  "action": "form",
+  "formType": "qliro",
+  "formHtml": "<script type=\"text/javascript\">(function(w, g) { w[g] = {\r\ncheckoutWebAppBaseUrl: (...)"
+}
+```
+
+The `formHtml` field should be used to render payment widget on frontend.
+The customer will after finalizing be redirected back to the `paymentReturnPage` provided in the POST /payment-call.
+The `paymentReturnPage` should then make a call with empty body to POST /payment-result - Centra backend will fetch the information about payment result from Qliro and respond with success or failure. 
+The result will also arrive to Centra backend with the push notification from Qliro.
+
+
+#### Updates to active sessions
+
+When the cart is updated during active payment session, `centraCheckoutSript` should be used to suspend and resume the payment widget while Centra backend is sending updates towards Qliro API.
+More information about `centraCheckoutScript` can be found [here](https://docs.centra.com/fe-development/checkoutscript)
