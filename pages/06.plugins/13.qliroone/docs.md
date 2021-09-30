@@ -149,5 +149,13 @@ The result will also arrive to Centra backend with the push notification from Ql
 
 #### Updates to active sessions
 
-When the cart is updated during active payment session, `centraCheckoutSript` should be used to suspend and resume the payment widget while Centra backend is sending updates towards Qliro API.
+Qliro API allows for updates of the cart items during active payment session.
+When the cart total is updated during active payment session, `centraCheckoutSript` should be used to suspend and resume the payment widget while Centra backend is sending updates towards Qliro API.
 More information about `centraCheckoutScript` can be found [here](https://docs.centra.com/fe-development/checkoutscript)
+
+Other updates e.g. customer address or shipping country require creating new payment session and widget replacement. They're done by requesting to:
+
+* `PUT {api-url}/selections/{selection}/checkout-fields` in Shop API, or
+* `PUT {api-url}/payment-fields` in Checkout API.
+
+Centra will respond with `paymentHTML` field that contains the reloaded widget that should be used to replace the existing one on the page.
