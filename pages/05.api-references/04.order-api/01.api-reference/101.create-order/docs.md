@@ -314,7 +314,22 @@ Content-type: application/json
           "unitPrice": 12.11,
           "originalPrice": 50.22
       }
-  ]
+  ],
+  "payment": {
+      "id": 36,
+      "auth": {
+          "status": 1,
+          "transaction": "894751945132",
+          "method": "cc",
+          "amount": 26.22
+      },
+      "capture": {
+          "status": 1,
+          "transaction": "154342468439",
+          "method": "cc",
+          "amount": 26.22
+      }
+  }
 }
 ```
 
