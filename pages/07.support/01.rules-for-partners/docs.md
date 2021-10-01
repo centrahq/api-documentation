@@ -64,7 +64,7 @@ What we do for our Partners:
   If you encounter any behaviour that deviates from documentation or common practice, let us know! We want Centra to work reliably for everyone, so any technical issues will be looked at and fixed if deemed necessary.
 
 * **Questions about technical features**  
-  If you have questions about new features, specific APIs, things mentioned in our newsletter - ask away! §Even if we don't respond immediately, we will find a way to explain it to you as best we can.
+  If you have questions about new features, specific APIs, things mentioned in our newsletter - ask away! If a shared client needs the same training let us know and we'll get in contact with them
 
 * **(Optional) Basic monitoring of your websites (Pingdom-based with alerts in Slack)**  
   With this we can help you share the burden of monitoring status of Customer's websites - we will discover if it fails to load, warn you about certificates that will soon expire, etc.
@@ -72,29 +72,33 @@ What we do for our Partners:
 What we don't do:
 
 * **Professional services (unless paid for)**  
-  If your request is out of scope of technical support, and you still want us to spend time working on it, we should agree on how much our time is going to cost.
+  If your request is out of scope of technical support, and you still want us to spend time working on it, we can of course help. We'll need to estimate how much time the additional service will take and agree on a fee.
 
-* **Filling environments with data**  
+* **Adding data to Centra enviroments**  
   This is the responsibility of our common Customers - we give them education and tools to set up or import Products and their media, Markets, Shipping alternatives, Taxes, etc. We don't have automated tools to, for example, generate test orders - this is near to impossible to do well, since the amount of permutations of different setups, plugins, flows and integrations grows exponentially with every new, unique Customer.
 
 * **Testing of customer's configurations / plugins**
-  Centra should throw errors when, for example, payment plugin fails to authenticate. Most of the times Centra can't help, though, since Customers have their own agreements with Payment / E-mail / other providers and any issues with those services is outside of our control.
+  Centra should throw errors when, for example, payment plugin fails to authenticate. In most cases this won't be something Centra can help with. Clients will have their own agreements with Payment / E-mail / other service providers and any issues with those services should be addressed with the service provider.
 
 * **Application design advice**  
-  Don't ask us how many Warehouses should be set up - this is something our Customer should know!
+  Questions related to the architecture of a store such as how many Warehouses should be set up, is something our Clients will need to decide. There for this type of question should be feilded to the client. 
 
-## How we communicate - rules in Slack
+## How we co-operate - communicating via Slack
 
 #### Ping us when you need help
 
-`@here` pings everyone who's online (has green dot status). Used to get our attention, it's fine if it takes us up to an hour to respond (usually much sooner, though). `@channel` pings everyone in that channel, currently available or not. Only doesn't ping people who have their notifications manually disabled. Use with caution, mostly to report urgent issues, sev 1 and such.
+`@here` pings all online channel members. Use this call to help us give your issue the attention it needs. It may take us up to an hour to respond but we are usually much faster. 
+`@channel` pings everyone in that channel, currently available or not. Only doesn't ping people who have their notifications manually disabled. Use with caution, mostly to report urgent issues, sev 1 and such.
 
 #### Do not use PM for business/technical questions
 
-Ping the whole channel, not individual people. Don't PM (private message), unless it's for sharing API secrets, passwords, or for personal reasons. Any questions are better off asked in the public channel:
-* because more people will see it, so you have a better chance to quickly find someone who knows the authoritative answer, and
-* because once the question is answered, we all get to share this knowledge and know-how.
-Plus, people are likely to be in meetings, so PMing a single person does not guarantee fast response times.
+- Ping the whole channel using one of the above methods. Please refrain from messaging individual people in the channel via threads. 
+- Don't PM (private message), unless it's for sharing API secrets, passwords, or for personal reasons. 
+
+Questions should be visable for everyone in the channel for the following reasons:
+* More people will your question
+* When the question is answered everyone in the channel will see the reply - increasing knowledge and know-how.
+* Individuals you message may be in meetings
 
 Similarly, the problem of using threads in Slack: They are great to keep an ongoing discussion away from people who are not interested in it, which is nice for when the discussion is ongoing. However, do **not** re-use them afterwards - since they have limited visibility, only you and one other person will see that message. If a day or more has passed, that person might not be online, so you are better off asking for updates in the main channel.
 
