@@ -241,12 +241,8 @@ Will contain information that should be inserted in regards to how the payment w
 The ID of the payment plugin used from Centra. If not used, the order will not be marked with a payment type at all.
 [/parameter]
 
-[parameter data="id" datatype="int" sublevel=2]
-The ID of the payment plugin used from Centra. If not used, the order will not be marked with a payment type at all.
-[/parameter]
-
-[parameter data="auth capture" datatype="object" isRequired=false sublevel=2]
-Information about the authorization and capture of the order. Authorization was the reservation of the order, capture is when the value also has been charged.
+[parameter data="auth / capture" datatype="object" isRequired=false sublevel=2]
+Information about the authorization and capture of the order. Authorization was the reservation of the order, capture is when the value also has been charged. You can add separate information via `payment.auth` and `payment.capture` objects.
 [/parameter]
 
 [parameter data="response" datatype="string" isRequired=false sublevel=3]
@@ -318,7 +314,22 @@ Content-type: application/json
           "unitPrice": 12.11,
           "originalPrice": 50.22
       }
-  ]
+  ],
+  "payment": {
+      "id": 36,
+      "auth": {
+          "status": 1,
+          "transaction": "894751945132",
+          "method": "cc",
+          "amount": 26.22
+      },
+      "capture": {
+          "status": 1,
+          "transaction": "154342468439",
+          "method": "cc",
+          "amount": 26.22
+      }
+  }
 }
 ```
 
