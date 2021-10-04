@@ -158,4 +158,4 @@ Other updates e.g. customer address or shipping country require creating new pay
 * `PUT {api-url}/selections/{selection}/checkout-fields` in Shop API, or
 * `PUT {api-url}/payment-fields` in Checkout API.
 
-Centra will respond with `paymentHTML` field that contains the reloaded widget that should be used to replace the existing one on the page.
+Centra will respond with `paymentHTML` field that contains the reloaded widget and `qliroReplaceSnippet` field indicating whether returned snippet should replace the existing one on the page.
