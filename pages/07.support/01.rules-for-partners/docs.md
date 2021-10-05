@@ -54,17 +54,17 @@ What we do for our Partners:
 
 * **Technical support**  
   If you have technical questions, either about Centra UI or our APIs, let us know! Please make sure to always include as much details as you can. Always mentionthe following when contacting partner support: 
-- Which client you are working on
-- Which environment you are working on (QA or production)
-- What the actual results are now 
-- What you are trying to achieve
-- Whether our guides and documentation helped, where you became stuck or if documentation is are missing
+    - Which client you are working on
+    - Which environment you are working on (QA or production)
+    - What the actual results are now 
+    - What you are trying to achieve
+    - Whether our guides and documentation helped, where you became stuck or if documentation is are missing
 
 * **Bug reports and verification**  
   If you encounter any behaviour that deviates from documentation or common practice, let us know! We want Centra to work reliably for everyone, so any technical issues will be looked at and fixed if deemed necessary.
 
 * **Questions about technical features**  
-  If you have questions about new features, specific APIs, things mentioned in our newsletter - ask away! If a shared client needs the same training let us know and we'll get in contact with them
+  If you have questions about new features, specific APIs, or things mentioned in our newsletter - ask away! If a shared client needs the same training let us know and we'll get in contact with them
 
 * **(Optional) Basic monitoring of your websites (Pingdom-based with alerts in Slack)**  
   With this we can help you share the burden of monitoring status of Customer's websites - we will discover if it fails to load, warn you about certificates that will soon expire, etc.
@@ -85,23 +85,28 @@ What we don't do:
 
 ## How we co-operate - communicating via Slack
 
-#### Ping us when you need help
+* **Response times**
 
-`@here` pings all online channel members. Use this call to help us give your issue the attention it needs. It may take us up to an hour to respond but we are usually much faster. 
-`@channel` pings everyone in that channel, currently available or not. Only doesn't ping people who have their notifications manually disabled. Use with caution, mostly to report urgent issues, sev 1 and such.
+Our team does it's best to respond as quickly as possible 
+- Our aim is to respond within the hour for servere issues - however, we are usually much faster. 
+- For more general questions our aim is to respond within 2 hours
 
-#### Do not use PM for business/technical questions
+* **How to contact us**
 
-- Ping the whole channel using one of the above methods. Please refrain from messaging individual people in the channel via threads. 
-- Don't PM (private message), unless it's for sharing API secrets, passwords, or for personal reasons. 
+- Starting a message with `@here` or including it in one pings all online channel members. Use this call to help us give your issue the attention it needs. 
+- Starting a message with `@channel` or inclduing it in one pings everyone in that channel, whether they are online or not. 
+- Please refrain from messaging individual people in the channel via threads. Ping the whole channel using one of the above methods instead
+- Please refrain from sending PM's (private messages) to a channel member, unless it's for sharing API secrets, passwords, or for personal reasons.
+- Similarly, only use threads in slack for ongoing discussions occuring in the same day. Do **not** re-use them afterwards - since they have limited visibility after 24h has passed
 
-Questions should be visable for everyone in the channel for the following reasons:
+* Note: People who have their notifications manually disabled will still not recive an @channel message. Use this message type with caution, a good example of when it is approriate to use is when you want to report an urgent issue (sev 1)
+
+Best practice - Questions should be visable for everyone in the channel because:
 * More people will your question
-* When the question is answered everyone in the channel will see the reply - increasing knowledge and know-how.
-* Individuals you message may be in meetings
+* Everyone in the channel will be able to see answers/solutions - increasing knowledge and know-how.
+* Individuals you message individually may be in a meeting and cannot reply 
 
-Similarly, the problem of using threads in Slack: They are great to keep an ongoing discussion away from people who are not interested in it, which is nice for when the discussion is ongoing. However, do **not** re-use them afterwards - since they have limited visibility, only you and one other person will see that message. If a day or more has passed, that person might not be online, so you are better off asking for updates in the main channel.
+* **Be kind**
 
-#### Be nice :)
-
-We are here to help, but it's not like all of us know all the answers at all time. Sometimes we'll help immediately, sometimes we will need to consult internally, and sometimes we will tell you the issue is not on our end and you need to contact the PSP or external service support. In any case, once we said we will look into a problem, pinging `@here` every 20 minutes will not help in speeding up the process. We understand you might be anxious, but we can be, too. We are all human, and we work best when we use positive reinforcement, not rudeness and shouting ;)
+We are here to help, but in some cases we will need to consult internally which may increase response times, in other cases we may tell you the issue is not one casued by Centra and that you'll need to consult other service providers.
+We also understand that particularly troublesome incident can create anxiety, especially when there is a deadline, but we kindly ask you refrain from messaging the channel asking for updates once we have confirmed we are working on the problem. 
