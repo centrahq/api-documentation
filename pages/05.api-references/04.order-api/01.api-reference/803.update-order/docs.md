@@ -16,11 +16,31 @@ Update information on the order.
 ## Parameters
 
 [parameter data="order" datatype="int" isRequired=true sublevel=1]
-Order ID to update
+Order ID to update.
 [/parameter]
 
 [parameter data="internalComment" datatype="string" isRequired=false sublevel=1]
-Append some text to internal comment field.
+Append some text to the internal comment field.
+[/parameter]
+
+[parameter data="replaceInternalComment" datatype="boolean" isRequired=false sublevel=1]
+Default `false`. Replace the full content of the internal comment field with the `internalComment`.
+[/parameter]
+
+[parameter data="comment" datatype="string" isRequired=false sublevel=1]
+Append some text to the comment field.
+[/parameter]
+
+[parameter data="replaceComment" datatype="boolean" isRequired=false sublevel=1]
+Default `false`. Replace the full content of the comment field with the `comment`.
+[/parameter]
+
+[parameter data="extraAttributes" datatype="object" isRequired=false sublevel=1]
+Object for sending in custom order attributes.
+[/parameter]
+
+[parameter data="attributeName_elementName" datatype="any" isRequired=false sublevel=2]
+List of key-value pairs for every attribute element you want to set. Send it as an empty string to remove the current content.
 [/parameter]
 
 [parameter data="xml" datatype="boolean" isRequired=false sublevel=1]
