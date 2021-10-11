@@ -19,6 +19,8 @@ In this article we cover:
 * How Centra handles translations and localization
 * Fetching product data from Centra
 
+Before you begin to work on your integration, make sure to read about Centra's [Store logic and other basic concepts](/overview/centra-overview).
+
 ## Multiple stores in Centra
 
 Centra takes a segmented single-store approach, meaning there is no need to set up multiple Stores to serve different audiences with different offers. 
@@ -29,7 +31,7 @@ Most often the Stores would look entirely different, meaning using two entirely 
 
 ## Customer segmentation in Centra
 
-Within a Store, Centra uses two key tools for segmenting what offer should be available to what customer: Market and Pricelist. On top of this, the ship-to Country has some implications for segmentation. All three are typically set automatically based on Geo-IP, but can be set using different business logic as well. 
+Within a [Store](/overview/centra-overview#store), Centra uses two key tools for segmenting what offer should be available to what customer: [Market](/overview/centra-overview#market) and [Pricelist](/overview/centra-overview#pricelist). On top of this, the ship-to Country has some implications for segmentation. All three are typically set automatically based on Geo-IP, but can be set using different business logic as well. 
 
 Market in Centra acts as a filter that can control access to viewing Products/Displays, Campaigns, Vouchers, Inventory, Shipping prices, and more. 
 
@@ -59,9 +61,9 @@ Expected behavior is that a customer can select their language of choice regardl
 
 There is a fall-back language configured in Centra. In case a specific text string is not translated to the requested language, the fallback language will be used instead. 
 
-Centra allows for both location-agnostic languages (e.g., ‘en’ for English) and location-specific languages (e.g., `en-US` for American English and `en-GB` for British English). 
+Centra allows for both location-agnostic languages (e.g., `en` for English) and location-specific languages (e.g., `en-US` for American English and `en-GB` for British English). 
 
-Filtering individual CMS modules for language makes no sense. Instead, entire pages should be translated (by combining translated modules) and the language of the pages should be put in the ‘lang’ tag of the page, e.g., `<html lang="es-ES">`. 
+Filtering individual CMS modules for language makes no sense. Instead, entire pages should be translated (by combining translated modules) and the language of the pages should be put in the `lang` tag of the page, e.g., `<html lang="es-ES">`. 
 
 [notice-box=success]
 Best practice: Map languages 1-to-1 between the CMS and Centra. If possible, fetch the exact language codes from Centra programmatically to avoid user mistakes and misunderstandings.
@@ -75,7 +77,7 @@ Best practice: Set up a fall-back language in the CMS. Use the same fall-back la
 
 Centra’s APIs offer various ways of fetching the data required for integrating CMS. 
 
-It is recommended to use the Checkout API (REST/JSON) or Integration API (GraphQL) to get all the available Markets, Pricelists and Products/Displays. It is possible to get all the products for a specific Market, Pricelist and Language for caching. After the products are selected by the user when creating the page in the CMS it is advisable to save the ids of these products in the page data and fetch products by ids when rendering the page for the end-customer. POST /products, GET /markets, GET /pricelists endpoints offer all the functionality required for the implementation. The Checkout API operates for one Store, while the Integration API operates across all Stores. 
+It is recommended to use the [Checkout API (REST/JSON)](/api-references/checkout-api/api-reference) or [Integration API (GraphQL)](/api-references/graphql-integration-api) to get all the available Markets, Pricelists and Products/Displays. It is possible to get all the products for a specific Market, Pricelist and Language for caching. After the products are selected by the user when creating the page in the CMS it is advisable to save the ids of these products in the page data and fetch products by ids when rendering the page for the end-customer. [POST /products](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/5.%20product%20catalog/post_products), [GET /markets](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/get_markets), [GET /pricelists](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/get_pricelists) endpoints offer all the functionality required for the implementation. The Checkout API operates for one Store, while the Integration API operates across all Stores. 
 
 ### Example Integration API (GraphQL) queries
 
