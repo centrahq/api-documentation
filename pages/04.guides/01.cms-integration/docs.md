@@ -133,7 +133,7 @@ Use this query to fetch a list of Pricelists. This can be used to create a filte
 
 #### Fetching a list of Countries
 
-Use this query to fetch a list of (ship-to) Countries. This can be used to create a filter for module visibility. 
+Use this query to fetch a list of Countries.
 
 ```graphql
 {
@@ -197,14 +197,6 @@ Use this query to fetch a list of Displays, filtering by Market.
     }
   }
 }
-```
-
-#### Fetching a list of Displays in a Category with basic data
-
-Use this query to fetch a list of Displays, filtering by Market and Pricelist and Category. 
-
-```graphql
-code
 ```
 
 #### Fetching a Displays with extended data
