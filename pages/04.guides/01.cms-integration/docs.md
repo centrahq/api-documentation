@@ -86,15 +86,29 @@ It is recommended to use the [Checkout API (REST/JSON)](/api-references/checkout
 Use this query to fetch a list of Stores, to allow the user to select which Store to work on. Filter out only Direct-to-Consumer stores unless you intend to support building Wholesale Stores (out of scope for this guide. 
 
 ```graphql
-code
+{
+  stores(where:{type: DIRECT_TO_CONSUMER}){
+    id
+    name
+  }
+}
 ```
 
 #### Fetching a list of Markets
 
-Use this query to fetch a list of Markets. This can be used to create a filter for page and module visibility. 
+Use this query to fetch a list of Markets in a specific Store. This can be used to create a filter for page and module visibility. 
 
 ```graphql
-code
+{
+  markets(where:{storeId: 1}){
+    id
+    name
+    assignedToCountries{
+      name
+      code
+    }
+  }
+}
 ```
 
 #### Fetching a list of Pricelists
@@ -102,7 +116,19 @@ code
 Use this query to fetch a list of Pricelists. This can be used to create a filter for page and module visibility. 
 
 ```graphql
-code
+{
+  pricelists(where:{storeId: 1}){
+    id
+    name
+    currency{
+      code
+    }
+    assignedToCountries{
+      name
+      code
+    }
+  }
+}
 ```
 
 #### Fetching a list of Countries
@@ -110,23 +136,67 @@ code
 Use this query to fetch a list of (ship-to) Countries. This can be used to create a filter for module visibility. 
 
 ```graphql
-code
+{
+  countries{
+    name
+    continent
+    isEU
+    states{
+      name
+    }
+  }
+}
 ```
 
 #### Fetching the Category tree
 
-Use this query to fetch the Category tree in Centra. 
+Use this query to fetch the Category tree in Centra. We support up to 3 levels of nested categories.
 
 ```graphql
-code
+{
+  categories{
+    id
+    name
+    uri
+    childCategories{
+      id
+      name
+      uri
+      childCategories{
+        id
+        name
+        uri
+      }
+    }
+  }
+}
 ```
 
 #### Fetching a list of Displays with basic data
 
-Use this query to fetch a list of Displays, filtering by Market and Pricelist. 
+Use this query to fetch a list of Displays, filtering by Market. 
 
 ```graphql
-code
+{
+  displays(where: {marketId: 5}){
+    product{name}
+    productVariants{name}
+    id
+    name
+    description
+    status
+    prices{
+      pricelist{
+        id
+        name
+      }
+      price{
+        value
+        currency{code}
+      }
+    }
+  }
+}
 ```
 
 #### Fetching a list of Displays in a Category with basic data
@@ -142,10 +212,46 @@ code
 Use this query to fetch a Display, filtering by id. 
 
 ```graphql
-code
+{
+  displays(where: {marketId: 5}){
+    product{name}
+    productVariants{name}
+    id
+    name
+    status
+    description
+    shortDescription
+    metaDescription
+    metaKeywords
+    updatedAt
+    prices{
+      pricelist{
+        id
+        name
+      }
+      price{
+        value
+        currency{code}
+      }
+    }
+    canonicalCategory{
+      name
+      metaDescription
+    }
+    categories{
+      name
+      metaDescription
+    }
+    media{
+      source(sizeName: "Standard"){
+        url
+      }
+    }
+  }
+}
 ```
 
-A detailed API specification can be found here: https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/ - ?????
+A detailed API specification can be found here: [https://docs.centra.com/graphql/](https://docs.centra.com/graphql/)
 
 ## Routing
 
