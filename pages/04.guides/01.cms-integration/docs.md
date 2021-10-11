@@ -154,7 +154,7 @@ Use this query to fetch the Category tree in Centra. We support up to 3 levels o
 
 ```graphql
 {
-  categories{
+  categories(where: {isTopCategory: true}){
     id
     name
     uri
