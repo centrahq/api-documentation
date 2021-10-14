@@ -101,10 +101,6 @@ You are able to customize colors in Qliro One widget - you are able to set color
 * Call To Action button
 * Call To Action hovered button
 
-You are able to set
-* Subheader for shipping header
-* Merchant constraint name
-
 You are able to configure corner radius of
 * General corner radius
 * Button corner radius
