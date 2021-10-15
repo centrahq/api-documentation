@@ -37,7 +37,7 @@ Default ``0``. Update shipment with Good to Go.
 [/parameter]
 
 [parameter data="products" datatype="object" isRequired=false sublevel=1]
-Key is ``lineID`` from the :ref:`Get orders response <get-orders-response>` and value is the ``quantity``.
+Key is ``lineID`` from the [Get orders response](/api-references/order-api/api-reference/get-orders#response) and value is the ``quantity``.
 Example: ``{"products":{"1441":3}}`` will update a shipment to 3 products from item ``1441``.
 [/parameter]
 
