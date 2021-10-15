@@ -16,7 +16,7 @@ This will capture the payment for a shipment. You can use this on a shipment tha
 ## Parameters
 
 [parameter data="shipment" datatype="string" isRequired=true storetype="b2b b2c" sublevel=1]
-The ``shipmentId`` from :ref:`Get shipments <order-api-get-shipments>` or :ref:`Create shipment <order-api-create-shipment>`.
+The ``shipmentId`` from [Get shipments](/api-references/order-api/api-reference/get-shipments) or [Create shipment](/api-references/order-api/api-reference/create-shipment).
 [/parameter]
 
 [parameter data="xml" datatype="boolean" isRequired=false storetype="b2b b2c" sublevel=1]

@@ -24,12 +24,12 @@ Order ID to create shipment on.
 [/parameter]
 
 [parameter data="products" datatype="object" isRequired=true sublevel=1]
-Key is ``lineID`` from the :ref:`Get orders response <get-orders-response>` and value is the ``quantity``.
+Key is ``lineID`` from the [Get orders response](/api-references/order-api/api-reference/get-orders#response) and value is the ``quantity``.
 Example: ``{"products":{"1441":2}}`` will create a shipment of 2 products from item ``1441``.
 [/parameter]
 
 [parameter data="key in object" datatype="string" isRequired=true sublevel=1]
-``lineID`` from the :ref:`Get orders response <get-orders-response>` referring to a specific product item in the order.
+``lineID`` from the [Get orders response](/api-references/order-api/api-reference/get-orders#response) referring to a specific product item in the order.
 [/parameter]
 
 [parameter data="value in object" datatype="int" isRequired=true sublevel=2]
