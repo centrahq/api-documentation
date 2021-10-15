@@ -16,7 +16,7 @@ This will delete the shipment completely. Will only work if the shipment does no
 ## Parameters
 
 [parameter data="shipmentId" datatype="string" isRequired=false sublevel=1]
-The ``shipmentId`` from :ref:`Get shipments <order-api-get-shipments>` or :ref:`Create shipment <order-api-create-shipment>`.
+The ``shipmentId`` from [Get shipments](/api-references/order-api/api-reference/get-shipments) or [Create shipment](/api-references/order-api/api-reference/create-shipment).
 [/parameter]
 
 [parameter data="xml" datatype="boolean" isRequired=false sublevel=1]
