@@ -16,11 +16,11 @@ This will create return for given shipment and items. Return will be created eve
 ## Parameters
 
 [parameter data="shipment" datatype="string" isRequired=true sublevel=1]
-The ``shipmentId`` from :ref:`Get shipments <order-api-get-shipments>` or :ref:`Create shipment <order-api-create-shipment>`.
+The ``shipmentId`` from [Get shipments](/api-references/order-api/api-reference/get-shipments) or [Create shipment](/api-references/order-api/api-reference/create-shipment).
 [/parameter]
 
 [parameter data="products" datatype="object" isRequired=false sublevel=1]
-Key is ``lineID`` from the :ref:`Get shipments <order-api-get-shipments>` and value is the ``quantity``.
+Key is ``lineID`` from the [Get shipments](/api-references/order-api/api-reference/get-shipments) and value is the ``quantity``.
 Example: ``{"products":{"1441":2}}`` will create a return of 2 products from item ``1441``.
 [/parameter]
 
