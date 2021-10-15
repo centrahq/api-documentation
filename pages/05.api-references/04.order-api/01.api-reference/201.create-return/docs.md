@@ -25,7 +25,7 @@ Example: ``{"products":{"1441":2}}`` will create a return of 2 products from ite
 [/parameter]
 
 [parameter data="key in object" datatype="string" isRequired=true sublevel=2]
-``lineID`` from the :ref:`Get shipments <order-api-get-shipments>` referring to a specific product item in the order.
+``lineID`` from the [Get shipments](/api-references/order-api/api-reference/get-shipments) referring to a specific product item in the order.
 [/parameter]
 
 [parameter data="value in object" datatype="int" isRequired=true sublevel=2]
