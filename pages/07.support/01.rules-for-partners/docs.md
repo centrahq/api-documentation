@@ -53,7 +53,9 @@ Having said that, we'd also love to have them attend one of our API or certifica
 What we do for our Partners:
 
 * **Technical support**  
+
   If you have technical questions, either about Centra UI or our APIs, let us know! Please make sure to always include as much details as you can. Always mentionthe following when contacting partner support: 
+
     - Which client you are working on
     - Which environment you are working on (QA or production)
     - What the actual results are now 
@@ -61,26 +63,33 @@ What we do for our Partners:
     - Whether our guides and documentation helped, where you became stuck or if documentation is are missing
 
 * **Bug reports and verification**  
+
   If you encounter any behaviour that deviates from documentation or common practice, let us know! We want Centra to work reliably for everyone, so any technical issues will be looked at and fixed if deemed necessary.
 
 * **Questions about technical features**  
+
   If you have questions about new features, specific APIs, or things mentioned in our newsletter - ask away! If a shared client needs the same training let us know and we'll get in contact with them
 
 * **(Optional) Basic monitoring of your websites (Pingdom-based with alerts in Slack)**  
+
   With this we can help you share the burden of monitoring status of Customer's websites - we will discover if it fails to load, warn you about certificates that will soon expire, etc.
 
 What we don't do:
 
 * **Professional services (unless paid for)**  
+
   If your request is out of scope of technical support, and you still want us to spend time working on it, we can of course help. We'll need to estimate how much time the additional service will take and agree on a fee.
 
 * **Adding data to Centra enviroments**  
+
   This is the responsibility of our common Customers - we give them education and tools to set up or import Products and their media, Markets, Shipping alternatives, Taxes, etc. We don't have automated tools to, for example, generate test orders - this is near to impossible to do well, since the amount of permutations of different setups, plugins, flows and integrations grows exponentially with every new, unique Customer.
 
 * **Testing of customer's configurations / plugins**
+
   Centra should throw errors when, for example, payment plugin fails to authenticate. In most cases this won't be something Centra can help with. Clients will have their own agreements with Payment / E-mail / other service providers and any issues with those services should be addressed with the service provider.
 
 * **Application design advice**  
+
   Questions related to the architecture of a store such as how many Warehouses should be set up, is something our Clients will need to decide. There for this type of question should be feilded to the client. 
 
 ## How we co-operate - communicating via Slack
