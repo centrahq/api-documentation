@@ -94,13 +94,13 @@ What we don't do:
 
 ## How we co-operate - communicating via Slack
 
-* **Response times**
+**Response times**
 
 Our team does it's best to respond as quickly as possible 
 - Our aim is to respond within the hour for servere issues - however, we are usually much faster. 
 - For more general questions our aim is to respond within 2 hours
 
-* **How to contact us**
+**How to contact us**
 
 - Starting a message with `@here` or including it in one pings all online channel members. Use this call to help us give your issue the attention it needs. 
 - Starting a message with `@channel` or inclduing it in one pings everyone in that channel, whether they are online or not. 
@@ -108,14 +108,14 @@ Our team does it's best to respond as quickly as possible
 - Please refrain from sending PM's (private messages) to a channel member, unless it's for sharing API secrets, passwords, or for personal reasons.
 - Similarly, only use threads in slack for ongoing discussions occuring in the same day. Do **not** re-use them afterwards - since they have limited visibility after 24h has passed
 
-* Note: People who have their notifications manually disabled will still not recive an @channel message. Use this message type with caution, a good example of when it is approriate to use is when you want to report an urgent issue (sev 1)
+Note: People who have their notifications manually disabled will still not recive an @channel message. Use this message type with caution, a good example of when it is approriate to use is when you want to report an urgent issue (sev 1)
 
 Best practice - Questions should be visable for everyone in the channel because:
 * More people will your question
 * Everyone in the channel will be able to see answers/solutions - increasing knowledge and know-how.
 * Individuals you message individually may be in a meeting and cannot reply 
 
-* **Be kind**
+**Be kind**
 
 We are here to help, but in some cases we will need to consult internally which may increase response times, in other cases we may tell you the issue is not one casued by Centra and that you'll need to consult other service providers.
 We also understand that particularly troublesome incident can create anxiety, especially when there is a deadline, but we kindly ask you refrain from messaging the channel asking for updates once we have confirmed we are working on the problem. 
