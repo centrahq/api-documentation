@@ -63,19 +63,34 @@ Is voucher `active` or `inactive`
 Conversion html of the voucher
 [/parameter]
 
-## Request example
+## Request examples
 
 ```http
 POST <base>/voucher HTTP/1.1
 
 {
     "name": "Welcome 10%",
-    "stopDate": "2020-07-09",
+    "stopDate": "2022-07-09",
     "type": "percentoff",
     "value": 10,
     "store": 1,
     "markets": 1,
     "status": true
+}
+```
+
+```http
+{
+   "name": "Welcome!",
+   "stopDate": "2022-07-09",
+   "type": "priceoff",
+   "valueByPricelist": {
+       "19": 100,
+       "20": 10
+   },
+   "store": 1,
+   "markets": 1,
+   "status": true
 }
 ```
 
