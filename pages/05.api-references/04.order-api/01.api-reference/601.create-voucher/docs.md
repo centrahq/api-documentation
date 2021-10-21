@@ -80,6 +80,8 @@ POST <base>/voucher HTTP/1.1
 ```
 
 ```http
+POST <base>/voucher HTTP/1.1
+
 {
    "name": "Welcome!",
    "stopDate": "2022-07-09",
