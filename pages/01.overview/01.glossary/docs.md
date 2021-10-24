@@ -246,6 +246,13 @@ This is the initial part of the payment, when the payment provider verifies the 
 ### **Payment capture**  
 This is the second part of the payment, when the funds are actually transferred from the account of the purchaser to the merchant account. Payments that have been captured can no longer be cancelled, they should be refunded instead, if needed. Remember, that depending on the Payment Service Provider and the payment method used, there is a maximum time limit between authorization and capture (usually between 14 and 30 days). By default, Centra will finalize the payment capture when the Order is shipped, but you can configure it to capture immediately, or capture manually in the UI.
 
+### **Payment method**
+_B2B/B2C_
+Payment method in Centra indicates what payment service provider has been used for making a payment. This will be equivalent to what store plugin was used for processing the payment. 
+
+### **Payment type**
+Payment type in in Centra indicates what type of payment method has been used for making a payment, e.g., a 3rd party payment service provider. 
+
 ### **Pending** (order status 1)  
 This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, shipping and payment.
 
