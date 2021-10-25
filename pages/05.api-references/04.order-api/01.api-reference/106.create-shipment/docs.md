@@ -8,13 +8,13 @@ taxonomy:
 
 # Create shipment
 
-`POST  *base*/shipments`
+`POST  *base*/shipments`  
 Authentication : [API Key](/api-references/api-intro#authentication)
 
 This will create a shipment and per default try to capture from the payment provider, shipment will not be created if the capture fails.
 
 [notice-box=alert]
-You have the ability to turn off capture to make it possible to edit the shipment after it has been created. However, if you explicitly turn off capture using ``"capture": false``, we will not capture the money for the order automatically, and the :ref:`order-api-complete-shipment` call MUST be made and verified that it was successful until you can ship any products.
+You have the ability to turn off capture to make it possible to edit the shipment after it has been created. However, if you explicitly turn off capture using ``"capture": false``, we will not capture the money for the order automatically, and the [Order API complete shipment](/api-references/order-api/api-reference/complete-shipment) call MUST be made and verified that it was successful until you can ship any products.
 [/notice-box]
 
 ## Parameters
