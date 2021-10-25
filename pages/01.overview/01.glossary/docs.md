@@ -251,7 +251,7 @@ _B2B/B2C_
 Payment method in Centra indicates which payment service provider has been used for making a payment. This will be equivalent to which store plugin was used for processing the payment.
 
 ### **Payment type**
-Payment type in in Centra indicates what type of payment method has been used for making a payment, e.g., a 3rd party payment service provider. 
+Payment type in in Centra indicates which type of payment method has been used for making a payment, e.g., a 3rd party payment service provider. 
 
 ### **Pending** (order status 1)  
 This order has been checked out, with payment steps being completed. In addition to the incomplete order, it contains information on customer, shipping and payment.
