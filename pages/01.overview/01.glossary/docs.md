@@ -248,7 +248,7 @@ This is the second part of the payment, when the funds are actually transferred 
 
 ### **Payment method**
 _B2B/B2C_
-Payment method in Centra indicates what payment service provider has been used for making a payment. This will be equivalent to what store plugin was used for processing the payment. 
+Payment method in Centra indicates which payment service provider has been used for making a payment. This will be equivalent to which store plugin was used for processing the payment.
 
 ### **Payment type**
 Payment type in in Centra indicates what type of payment method has been used for making a payment, e.g., a 3rd party payment service provider. 
