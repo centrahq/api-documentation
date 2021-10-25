@@ -21,7 +21,7 @@ The only exception to this rule is setting GTG (Good to Go) or setting serial nu
 To be able to use this call, you need to create a shipment using `"capture": false` so the create shipment call is not trying to capture the money.
 
 [notice-box=alert]
-If the automatic capture when creating shipments is disabled, to avoid sending shipments that has not been captured you need to :ref:`Capture Shipment <order-api-capture-shipment>` before you ship it.
+If the automatic capture when creating shipments is disabled, to avoid sending shipments that has not been captured you need to [Capture Shipment](/api-references/order-api/api-reference/capture-shipment) before you ship it.
 [/notice-box]
 
 If you need to remove the shipment, use the [Delete Shipment](/api-references/order-api/api-reference/delete-shipment) method.
