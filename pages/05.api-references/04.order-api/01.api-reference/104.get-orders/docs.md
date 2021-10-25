@@ -134,10 +134,19 @@ How much tax. ex 20
 [parameter data="paymentType" datatype="string" sublevel=2]
 Payment method type, one of: cc, inv, 3rd, free, prepaid.
 Where cc = credit card, inv = invoice, 3rd = third party.
+Value is not unique, more than one payment method can have 
 [/parameter]
 
 [parameter data="paymentDescription" datatype="string" sublevel=2]
 Payment method description from plugin configuration.
+[/parameter]
+
+[parameter data="paymentReference" datatype="string" sublevel=2]
+Payment reference ID from external service provider.
+[/parameter]
+
+[parameter data="paymentMethod" datatype="string" sublevel=2]
+Payment method ID - unique name of payment provider.
 [/parameter]
 
 ## Response example
@@ -200,6 +209,8 @@ Content-type: application/json
       "ipAddress": "127.0.0.1",
       "paymentType": "free",
       "paymentDescription": "",
+      "paymentReference": null,
+      "paymentMethod": null,
       "defaultCarrier": "",
       "shipments": [
         {
