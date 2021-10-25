@@ -142,11 +142,11 @@ Payment method description from plugin configuration.
 [/parameter]
 
 [parameter data="paymentReference" datatype="string" sublevel=2]
-Payment reference ID from external service provider.
+Payment reference ID from external service provider. Can be null.
 [/parameter]
 
 [parameter data="paymentMethod" datatype="string" sublevel=2]
-Payment method ID - unique name of payment provider.
+Payment method ID - unique name of payment provider. Can be null.
 [/parameter]
 
 ## Response example
@@ -208,9 +208,9 @@ Content-type: application/json
       "pricelistId": 1,
       "ipAddress": "127.0.0.1",
       "paymentType": "free",
-      "paymentDescription": "",
-      "paymentReference": null,
-      "paymentMethod": null,
+      "paymentDescription": "Klarna checkout v3",
+      "paymentReference": "12345678-1234-1234-864e-6ef2621c4ab6",
+      "paymentMethod": "klarna",
       "defaultCarrier": "",
       "shipments": [
         {
