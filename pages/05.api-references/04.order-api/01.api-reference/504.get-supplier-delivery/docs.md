@@ -6,16 +6,10 @@ taxonomy:
   category: docs
 ---
 
-<!--
-```eval_rst
-.. _order-api-get-supplier-delivery:
-```
--->
-
 # Get supplier delivery
 
-`GET *base*/supplier-deliveries/*supplierDeliveryId*`
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `GET *base*/supplier-deliveries/*supplierDeliveryId*`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 Get the incoming and not accepted deliveries that are connected to the warehouse this plugin is connected to.
 

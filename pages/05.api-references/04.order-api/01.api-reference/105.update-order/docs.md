@@ -8,8 +8,8 @@ taxonomy:
 
 # Update order
 
-`PUT  *base*/orders`
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `PUT  *base*/orders`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 Update information on the order.
 

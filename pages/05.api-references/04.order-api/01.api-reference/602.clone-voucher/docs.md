@@ -8,8 +8,8 @@ taxonomy:
 
 # Clone voucher
 
-`PUT  *base*/voucher/*id*/clone`
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `PUT  *base*/voucher/*id*/clone`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 This will clone a voucher with updated provided information
 

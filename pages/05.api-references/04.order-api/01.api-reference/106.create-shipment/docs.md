@@ -8,8 +8,8 @@ taxonomy:
 
 # Create shipment
 
-`POST  *base*/shipments`  
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `POST  *base*/shipments`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 This will create a shipment and per default try to capture from the payment provider, shipment will not be created if the capture fails.
 

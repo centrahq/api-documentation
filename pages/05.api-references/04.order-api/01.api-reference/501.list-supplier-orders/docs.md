@@ -8,8 +8,8 @@ taxonomy:
 
 # List supplier orders
 
-`GET *base*/supplier-orders`
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `GET *base*/supplier-orders`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 Get all confirmed supplier orders visible by the plugin.
 

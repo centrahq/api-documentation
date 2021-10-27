@@ -6,16 +6,10 @@ taxonomy:
   category: docs
 ---
 
-<!--
-```eval_rst
-.. _order-api-get-shipments:
-```
--->
-
 # Get shipments
 
-`GET *base*/shipments?[&limit=5][&order=83651]`
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `GET *base*/shipments?[&limit=5][&order=83651]`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 Will list all Good to Go-shipments that are not sent. Oldest first.
 

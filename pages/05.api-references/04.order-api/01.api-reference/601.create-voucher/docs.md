@@ -8,8 +8,8 @@ taxonomy:
 
 # Create voucher
 
-`POST  *base*/voucher`
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `POST  *base*/voucher`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 This will create a simple voucher of `percentoff` or `priceoff` type
 

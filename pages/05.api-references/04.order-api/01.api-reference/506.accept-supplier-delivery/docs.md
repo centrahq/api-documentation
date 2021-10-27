@@ -8,10 +8,9 @@ taxonomy:
 
 # Accept supplier delivery
 
-`POST  *base*/supplier-deliveries/*supplierDeliveryId*`
-
-`POST  *base*/supplier-deliveries/*supplierDeliveryId*/sku`
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `POST  *base*/supplier-deliveries/*supplierDeliveryId*`  
+Endpoint: `POST  *base*/supplier-deliveries/*supplierDeliveryId*/sku`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 Will accept the delivery with the proper quantities in the physical delivery. This will be inserted into the preferred warehouse.
 

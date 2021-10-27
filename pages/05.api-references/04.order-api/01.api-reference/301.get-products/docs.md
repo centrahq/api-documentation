@@ -8,8 +8,8 @@ taxonomy:
 
 # Get products
 
-`GET  *base*/products`
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `GET  *base*/products`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 This will return product data from Centra with categories.
 

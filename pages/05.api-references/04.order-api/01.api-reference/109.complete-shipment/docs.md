@@ -8,8 +8,8 @@ taxonomy:
 
 # Complete shipment
 
-`POST  *base*/shipment`
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `POST  *base*/shipment`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 This will insert back the tracking number and carrier information to Centra. An email will be sent out to the customer with the tracking information.
 
