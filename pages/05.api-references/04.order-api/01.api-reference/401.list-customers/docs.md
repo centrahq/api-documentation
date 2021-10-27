@@ -8,8 +8,8 @@ taxonomy:
 
 # List Customers
 
-`GET *base*/customers`  
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `GET *base*/customers`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 Return list of the customers.
 

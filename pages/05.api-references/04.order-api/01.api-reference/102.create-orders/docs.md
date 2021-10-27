@@ -8,8 +8,8 @@ taxonomy:
 
 # Batch create orders
 
-`POST  *base*/orders`
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `POST  *base*/orders`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 You are able to insert multiple orders at the same time by changing the endpoint from `<base>/order` to `<base>/orders` and sending data for each order inside an object with defined keys. You will get back responses for each order using the same defined keys you sent.
 

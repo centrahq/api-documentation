@@ -8,8 +8,8 @@ taxonomy:
 
 # Update customer
 
-`PUT  *base*/customers/*customerId*`
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `PUT  *base*/customers/*customerId*`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 Update customer information.
 

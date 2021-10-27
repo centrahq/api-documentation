@@ -7,15 +7,14 @@ taxonomy:
 
 # Update Check First
 
-`POST *base*/check-first`
-Authentication : [API Key](/api-references/api-intro#authentication)
-
+Endpoint: `POST *base*/check-first`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 This will update the status of a check-first warehouse on an order.
+
 [notice-box=alert]
 Updating a check first for an order is irreversible. Once an order has been accepted or rejected, it can no longer be changed.
 [/notice-box]
-
 
 ## Parameters
 

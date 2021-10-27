@@ -6,16 +6,10 @@ taxonomy:
   category: docs
 ---
 
-<!--
-```eval_rst
-.. _order-api-get-stock:
-```
--->
-
 # Get stock
 
-`GET *base*/stock`
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `GET *base*/stock`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 This will return product data from Centra with stock info. The values of the stock depends on the connected warehouses for the API-plugin.
 

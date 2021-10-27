@@ -8,8 +8,9 @@ taxonomy:
 
 # Update return
 
-`PUT  *base*/returns/*returnId*`
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `PUT  *base*/returns/*returnId*`  
+Authentication: [API Key](/api-references/api-intro#authentication)
+
 Update information on Return.
 
 ## Parameters

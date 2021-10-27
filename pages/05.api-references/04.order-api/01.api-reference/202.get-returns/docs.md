@@ -6,16 +6,10 @@ taxonomy:
   category: docs
 ---
 
-<!--
-```eval_rst
-.. _order-api-get-returns:
-```
--->
-
 # Get returns
 
-`GET  *base*/returns?[&limit=5][&page=2][&return=23]`
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `GET  *base*/returns?[&limit=5][&page=2][&return=23]`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 Will list all returns, newest first.
 

@@ -8,8 +8,8 @@ taxonomy:
 
 # Create order
 
-`POST  *base*/order`
-Authentication : [API Key](/api-references/api-intro#authentication)
+Endpoint: `POST  *base*/order`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 This will insert a new order directly into Centra bypassing any needs of a payment. This API could be used to directly import orders from external systems. The API-plugin needs to have "Allow Order Create" set as `true` to allow this call to be made.
 

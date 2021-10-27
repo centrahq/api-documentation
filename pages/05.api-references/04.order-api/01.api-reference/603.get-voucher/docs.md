@@ -8,7 +8,8 @@ taxonomy:
 
 # Get voucher
 
-`GET *base*/vouchers/*id*`
+Endpoint: `GET *base*/vouchers/*id*`  
+Authentication: [API Key](/api-references/api-intro#authentication)
 
 Return active/inactive voucher by specified ID. Cancelled vouchers are ignored. 
 
