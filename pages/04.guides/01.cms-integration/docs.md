@@ -120,9 +120,7 @@ Use this query to fetch a list of Pricelists. This can be used to create a filte
   pricelists(where:{storeId: 1}){
     id
     name
-    currency{
-      code
-    }
+    currency{code}
     assignedToCountries{
       name
       code
