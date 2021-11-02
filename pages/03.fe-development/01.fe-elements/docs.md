@@ -282,7 +282,7 @@ With that configuration, whenever you fetch a product, you will also receive inf
 
 ![MediaMultipleVariants](media-multiple-variants.png)
 
-### Country / language / market switcher
+### Country / market / language switcher
 
 `Welcome! Välkommen! Witamy! ¡Bienvenida! Wilkommen! Üdvözöljük! Velkommen!`
 
@@ -297,6 +297,8 @@ To switch the current selection to specific country, call [PUT /countries/{count
 [notice-box=alert]
 If you switch to a country which is not shippable (`"shipTo": false`), you will still be able to browse products and add them to selection, but you won't be able to complete the checkout process.
 [/notice-box]
+
+You can only configure one default Language per Country, but you can change the language of the selection at any point by calling [PUT /languages/{language}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/put_languages__language_). The `{language}` is the language `code`, as defined in Centra -> System -> Languages. Once a specific selection language is selected, Centra will use the configured ISO codes ([ISO-3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) for countries and [ISO-639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) for languages) to send combined locale (like `en_US`) to any payment/shipping plugins, which allows to display them in the desired language.
 
 ### Consents
 
