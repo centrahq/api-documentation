@@ -7,7 +7,7 @@ category: docs
 
 
 ### All markets with countries for store ID 1
-```json
+```gql
 {
   markets(where: {storeId: 1}, sort: [id_DESC]) {
     id
