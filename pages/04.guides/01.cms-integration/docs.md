@@ -87,7 +87,7 @@ Use this query to fetch a list of Stores, to allow the user to select which Stor
 
 ```graphql
 {
-  stores(where:{type: DIRECT_TO_CONSUMER}){
+  stores(where: {type: DIRECT_TO_CONSUMER}) {
     id
     name
   }
@@ -100,10 +100,10 @@ Use this query to fetch a list of Markets in a specific Store. This can be used 
 
 ```graphql
 {
-  markets(where:{storeId: 1}){
+  markets(where: {storeId: 1}) {
     id
     name
-    assignedToCountries{
+    assignedToCountries {
       name
       code
     }
@@ -117,11 +117,11 @@ Use this query to fetch a list of Pricelists. This can be used to create a filte
 
 ```graphql
 {
-  pricelists(where:{storeId: 1}){
+  pricelists(where: {storeId: 1}) {
     id
     name
-    currency{code}
-    assignedToCountries{
+    currency {code}
+    assignedToCountries {
       name
       code
     }
@@ -135,11 +135,11 @@ Use this query to fetch a list of Countries.
 
 ```graphql
 {
-  countries{
+  countries {
     name
     continent
     isEU
-    states{
+    states {
       name
     }
   }
@@ -152,15 +152,15 @@ Use this query to fetch the Category tree in Centra. We support up to 3 levels o
 
 ```graphql
 {
-  categories(where: {isTopCategory: true}){
+  categories(where: {isTopCategory: true}) {
     id
     name
     uri
-    childCategories{
+    childCategories {
       id
       name
       uri
-      childCategories{
+      childCategories {
         id
         name
         uri
@@ -176,21 +176,21 @@ Use this query to fetch a list of Displays, filtering by Market.
 
 ```graphql
 {
-  displays(where: {marketId: 5}){
-    product{name}
-    productVariants{name}
+  displays(where: {marketId: 5}) {
+    product {name}
+    productVariants {name}
     id
     name
     description
     status
-    prices{
-      pricelist{
+    prices {
+      pricelist {
         id
         name
       }
-      price{
+      price {
         value
-        currency{code}
+        currency {code}
       }
     }
   }
@@ -203,9 +203,9 @@ Use this query to fetch a Display, filtering by id.
 
 ```graphql
 {
-  displays(where: {id: 1}){
-    product{name}
-    productVariants{name}
+  displays(where: {id: 1}) {
+    product {name}
+    productVariants {name}
     id
     name
     status
@@ -214,26 +214,26 @@ Use this query to fetch a Display, filtering by id.
     metaDescription
     metaKeywords
     updatedAt
-    prices{
+    prices {
       pricelist{
         id
         name
       }
-      price{
+      price {
         value
         currency{code}
       }
     }
-    canonicalCategory{
+    canonicalCategory {
       name
       metaDescription
     }
-    categories{
+    categories {
       name
       metaDescription
     }
-    media{
-      source(sizeName: "standard"){
+    media {
+      source(sizeName: "standard") {
         type
         url
       }
