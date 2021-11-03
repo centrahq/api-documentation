@@ -96,7 +96,7 @@ What we don't do:
 
 #### Response times
 
-Our team does its best to respond as quickly as possible 
+Our team does their best to respond as quickly as possible 
 - Our aim is to respond within the hour for servere issues - however, we are usually much faster. 
 - For more general questions our aim is to respond within 2 hours
 
