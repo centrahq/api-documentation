@@ -129,7 +129,7 @@ This one uses [Relay connection](https://relay.dev/graphql/connections.htm) form
 ### One other way to fetch orders
 This time for specific dates in D2C:
 
-```json
+```gql
 {
   orders(where: {createdAt: {from: "2021-10-23 00:00:00", to: "2021-10-23 23:59:59", storeType: DIRECT_TO_CONSUMER}}) {
     number
