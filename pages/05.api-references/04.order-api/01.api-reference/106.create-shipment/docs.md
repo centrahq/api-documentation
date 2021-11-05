@@ -76,7 +76,7 @@ Decide if Shipping Confirmation e-mail should be sent. If not defined, Store set
 [/parameter]
 
 [parameter data="deductPreviousCosts" datatype="boolean" isRequired=false sublevel=1]
-Used together with the `capture` param, necessary when your order is split into multiple shipments. If the first shipment you created and captured contained the shipping cost, you can use this param to skip it in the secondary shipments. This is necessary, since the payment providers will not allow you to capture more more that was authorised, so you can only charge the shipping cost once.
+Used together with the `capture` param, necessary when your order is split into multiple shipments. If the first shipment you created and captured contained the shipping cost, you can use this param to skip it in the secondary shipments. This is necessary, since the payment providers will not allow you to capture more more than was authorised, so you can only charge the shipping cost once.
 [/parameter]
 
 [parameter data="xml" datatype="boolean" isRequired=false sublevel=1]
