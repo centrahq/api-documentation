@@ -125,6 +125,10 @@ Percentage of tax. ex 25
 How much tax. ex 20
 [/parameter]
 
+[parameter data="paymentPlugin" datatype="string" sublevel=2]
+Payment plugin type, e.g. `adyen_drop_in`, `klarna_checkout_v1`, `paypal_v1`, etc.
+[/parameter]
+
 [parameter data="paymentType" datatype="string" sublevel=2]
 Payment method type, one of: cc, inv, 3rd, free, prepaid.
 Where cc = credit card, inv = invoice, 3rd = third party.
@@ -201,6 +205,7 @@ Content-type: application/json
       "marketId": 1,
       "pricelistId": 1,
       "ipAddress": "127.0.0.1",
+      "paymentPlugin": "klarna_checkout_v1",
       "paymentType": "free",
       "paymentDescription": "Klarna checkout v3",
       "paymentReference": "12345678-1234-1234-864e-6ef2621c4ab6",
