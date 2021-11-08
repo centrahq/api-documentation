@@ -75,6 +75,10 @@ Return slip tracking number for shipment. Only used if ``shipped`` is ``true``.
 Decide if Shipping Confirmation e-mail should be sent. If not defined, Store setting "Send Shipping Confirmation" will be used instead. Only used if ``shipped`` is ``true``.
 [/parameter]
 
+[parameter data="deductPreviousCosts" datatype="boolean" isRequired=false sublevel=1]
+Used together with the `capture` param, necessary when your order is split into multiple shipments. If the first shipment you created and captured contained the shipping cost, you can use this param to skip it in the subsequent shipments. This is necessary, since the payment providers will not allow you to capture more than was authorised, so you can only charge the shipping cost once.
+[/parameter]
+
 [parameter data="xml" datatype="boolean" isRequired=false sublevel=1]
 Response in xml format instead of json.
 [/parameter]
