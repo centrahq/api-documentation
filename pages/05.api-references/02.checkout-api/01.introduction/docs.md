@@ -166,6 +166,16 @@ if (response.token != currentTokenInYourState) {
 }
 ```
 
+### Token-less communication
+
+If you are using server-side caching of content based on Centra, you might not need any tokens to connect to the customers requesting the content at all, since you will be using the content for more than one customer. To avoid creation of tokens completely when you do not need them, you can provide `none` to the API-token:
+
+```
+API-token: none
+```
+
+This will make Centra not return any token at all in the response, and will not save the current settings. This allows the request to not talk with the token storage and will speed up the response.
+
 ### Encoding of dynamic parameters in routing
 
 Some of the API-endpoints, like `DELETE /vouchers/{voucher}` contains a dynamic parameter in the URL. It's important to make sure you are **always** URL-encoding the dynamic URI-components properly. For example, having a voucher code with `+`, ie: `TEST+CODE` should be sent to `DELETE /vouchers/TEST%2BCODE` and not `DELETE /vouchers/TEST+CODE`.
