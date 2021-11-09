@@ -80,6 +80,7 @@ Response in xml format instead of json.
    Content-type: application/json
 
    {
+     "order": "83651",
      "shipment": "83651-1",
      "carrier": "Fedex",
      "service": "Express",
