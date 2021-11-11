@@ -94,6 +94,14 @@ Type of origin the order was created from. Allowed types: ``return``, ``order`` 
 ID of internal origin of the origin type. If Return #123 was used to create the order, ``id`` should be ``123``.
 [/parameter]
 
+[parameter data="extraAttributes" datatype="object" isRequired=false sublevel=1]
+Object for sending in custom order attributes.
+[/parameter]
+
+[parameter data="attributeName_elementName" datatype="any" isRequired=false sublevel=2]
+List of key-value pairs for every attribute element you want to set. Send it as an empty string to remove the current content.
+[/parameter]
+
 [parameter data="accountId" datatype="int" isRequired=false storeType="b2b" sublevel=1]
 Account ID for B2B-customer. Required if order is placed for B2B.
 [/parameter]
