@@ -193,10 +193,6 @@ Explictly set the order number for the order. Will only work if the order does n
 Send order confirmation or not, if not provided, the store settings will be used.
 [/parameter]
 
-[parameter data="applyVouchers" datatype="boolean" isRequired=false sublevel=1]
-Default ``true``. If Centra should calculate the voucher value depending on automatic voucher rules.
-[/parameter]
-
 [parameter data="adjustStock" datatype="boolean" isRequired=false sublevel=1]
 Default ``true``. Extract products from stock and fail with error if stock does not exist. If ``deliveryWindow`` is set as preorder this setting will not matter.
 [/parameter]
@@ -277,6 +273,14 @@ The amount that was authorized.
 If an external invoice was created, insert the URL to the invoice here.
 [/parameter]
 
+[parameter data="applyVouchers" datatype="boolean" isRequired=false sublevel=1]
+Default ``true``. If Centra should calculate the voucher value depending on automatic voucher rules.
+[/parameter]
+
+[parameter data="voucherCodes" datatype="array" isRequired=false sublevel=1]
+Array of voucher codes to apply on the order.
+[/parameter]
+
 ## Request example
 
 ```http
@@ -337,7 +341,8 @@ Content-type: application/json
           "method": "cc",
           "amount": 26.22
       }
-  }
+  },
+  "voucherCodes": ["MyFirstGiftcard", "New10PercentOff"]
 }
 ```
 
