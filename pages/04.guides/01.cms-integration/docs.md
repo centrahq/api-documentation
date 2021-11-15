@@ -83,7 +83,7 @@ It is recommended to use the [Checkout API (REST/JSON)](/api-references/checkout
 
 #### Fetching a list of Stores
 
-Use this query to fetch a list of Stores, to allow the user to select which Store to work on. Filter out only Direct-to-Consumer stores unless you intend to support building Wholesale Stores (out of scope for this guide. 
+Use this query to fetch a list of Stores, to allow the user to select which Store to work on. Filter out only Direct-to-Consumer stores unless you intend to support building Wholesale Stores (out of scope for this guide). 
 
 ```graphql
 {
