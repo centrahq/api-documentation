@@ -145,13 +145,30 @@ The result will also arrive to Centra backend with the push notification from Ql
 
 #### Updates to active sessions
 
+###### CheckoutScript 
 Qliro API allows for updates of the cart items during active payment session.
 When the cart total is updated during active payment session, `centraCheckoutSript` should be used to suspend and resume the payment widget while Centra backend is sending updates towards Qliro API.
 More information about `centraCheckoutScript` can be found [here](https://docs.centra.com/fe-development/checkoutscript)
 
-Other updates e.g. customer address or shipping country require creating new payment session and widget replacement. They're done by requesting to:
+###### Replacing payment widget
 
-* `PUT {api-url}/selections/{selection}/checkout-fields` in Shop API, or
-* `PUT {api-url}/payment-fields` in Checkout API.
+Replacing widget on frontend could be required when updates to payment session are not allowed or result in error. Centra will try to create new payment session in Qliro and 
+will respond with `paymentHTML` field that contains the reloaded widget and `qliroReplaceSnippet` field indicating whether returned snippet should replace the existing one on the page.
 
-Centra will respond with `paymentHTML` field that contains the reloaded widget and `qliroReplaceSnippet` field indicating whether returned snippet should replace the existing one on the page.
+```
+"paymentHTML": "<script type="text/javascript">(function(w, g) { w[g] = {rncheckoutWebAppBaseUrl: "https://pago.qit.nu/checkout/webapp/",rncheckoutWebAppVersion: "1.74.0",rncheckoutWebApiBaseUrl: "https://pago.qit.nu/checkout/webapi/",rnqliroTermsUrl: "https://assets.qliro.com/terms/se/sv/terms/1/user_terms.pdf",rnorderId: "2830123",rncountry: "SE",rnlanguage:  (..........)",
+"qliroReplaceSnippet": true,
+```
+
+Whenever the call updating the selection state in Centra is made the response should be checked for `qliroReplaceSnippet` field, for example: voucher application, manipulating quantity of
+checkout cart item, updating customer's shipping address and so on. 
+
+#### Frontend event listeners
+
+After payment processing is initiated, updates to an active session in Qliro are not allowed.
+To prevent modifying order in Centra after payment is initiated, frontend should make use of
+`onPaymentProcess()` and lock the interaction with the checkout cart.
+
+https://developers.qliro.com/docs/frontend-features/listeners
+
+This needs to be done to prevent mismatch between Centra and Qliro by allowing updates in the checkout when payment was already initiated with a particular cart total.
