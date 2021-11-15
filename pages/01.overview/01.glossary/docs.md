@@ -85,7 +85,7 @@ _B2B_
 A note on an order if the Account don’t want the order after a certain date. The order is not automatically cancelled on the Cancel Date, it is a note for sales staff.
 
 ### **Cancelled** (order status 6)  
-This ordered has been cancelled at any stage before the payment was captured (once the payment has been successful, a refund should be made instead of cancelling the order). Cancelled orders have the option to be fully and irreversibly deleted from the database.
+This order has been cancelled at any stage before the payment was captured (once the payment has been successful, a refund should be made instead of cancelling the order). Cancelled orders have the option to be fully and irreversibly deleted from the database.
 
 ### **Cart**  
 _B2C_  
@@ -307,7 +307,7 @@ A function to refund money to your customer in case of returns. A refund can onl
 
 ### **Related products**  
 _B2B/B2C_  
-Product displays can be related in different ways. This is used mainly for B2C stores to display things like “goes well with”. But it can also be used i.e. to display that a product is available in another material.
+Product displays can be related in different ways. This is used mainly for B2C stores to display things like “goes well with”. But it can also be used e.g. to display that a product is available in another material.
 
 ### **Report**  
 _B2B/B2C_  
@@ -335,7 +335,7 @@ Boolean attribute of a Product. A product is serializable if every item sold is 
 
 ### **Shipment**  
 _B2B/B2C_  
-A Shipment is generated from a sales order. One order can have multiple shipments, which will be used by a warehouse to print packing lists and print delivery notes. When a shipment is completed there is an option to save tracking number so that the information can be sent to the consumer. Shipment is also the entity from where you can create and Invoice.
+A Shipment is generated from a sales order. One order can have multiple shipments, which will be used by a warehouse to print packing lists and print delivery notes. When a shipment is completed there is an option to save tracking number so that the information can be sent to the consumer. Shipment is also an entity from where you can create an Invoice.
 
 ### **Shipping cost**  
 _B2B/B2C_  
@@ -353,7 +353,7 @@ In Centra, statics are used to define some of the commonly used parts of the sys
 
 ### **Store**  
 _B2B/B2C_  
-Centra can have multiple stores in the same instance. The usual setup is to have two stores - one for B2C and one for B2B. It is however possible to have more than one B2C store if needed. Each Store can have its own plugins configured. Each Store also has its own structure in terms of Brand, Categories, Pricelists and so forth. In a more general term a Store is a separate sales channel. However if you are to create two Wholesale stores they will share the same invoice number, hence you can not use stores for a multi company setup in B2B/Wholesale if you want to create Invoices.
+Centra can have multiple stores in the same instance. The usual setup is to have two stores - one for B2C and one for B2B. It is however possible to have more than one B2C store if needed. Each Store can have its own plugins configured. Each Store also has its own structure in terms of Brand, Categories, Pricelists and so forth. In a more general term a Store is a separate sales channel. However, if you are to create two Wholesale stores they will share the same invoice number, hence you can not use stores for a multi company setup in B2B/Wholesale if you want to create Invoices.
 
 ### **Supplier**  
 _B2B/B2C_  
