@@ -56,3 +56,13 @@ This means 25% VAT will go into VAT-type 3 and 0% VAT will go into VAT-type 6. T
 ### Additional settings
 
 If you want Tripletex to send out emails whenever the invoices are synced to Tripletex, you can set "send invoice by email" in Centra to "yes". Since you are often syncing invoices after you have sent them out from Centra, this is default set to "no".
+
+DTC-invoices will use the Customer ID as the customer ID in Tripletex, and Wholesale will use the Account ID as the Customer ID in Tripletex. If you're using both store types in Centra, we recommend setting either `dtc_customer_id_padding` or `wholesale_account_id_padding` so the numbers never conflict between DTC and Wholesale.
+
+These two padding fields work like this:
+
+* If `dtc_customer_id_padding` is empty, sending Customer ID `1234` will send `1234` as the customer ID to Tripletex.
+* If `dtc_customer_id_padding` is `100000`, sending Customer ID `1234` will send `101234` as the customer ID to Tripletex.
+* If `dtc_customer_id_padding` is `34240000`, sending Customer ID `1234` will send `34241234` as the customer ID to Tripletex.
+
+If the Customer ID is higher than the amount of trailing zeroes in the padding field, Centra will give an error explaining that the ID does not fit in the padding. Make sure you're using a big enough padding for your account and customer IDs.
