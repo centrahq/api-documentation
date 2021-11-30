@@ -7,7 +7,7 @@ category: docs
 
 
 ### All markets with countries for store ID 1
-```gql
+```GraphQL
 {
   markets(where: {storeId: 1}, sort: [id_DESC]) {
     id
