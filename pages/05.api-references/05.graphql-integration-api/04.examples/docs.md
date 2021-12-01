@@ -7,6 +7,7 @@ category: docs
 
 
 ### All markets with countries for store ID 1
+
 ```GraphQL
 {
   markets(where: {storeId: 1}, sort: [id_DESC]) {
@@ -95,6 +96,7 @@ Use this query to fetch the Category tree in Centra. We support up to 3 levels o
 ```
 
 ### Latest confirmed wholesale orders with account and buyer data
+
 This one uses [Relay connection](https://relay.dev/graphql/connections.htm) format, so you can see `totalCount` and whether there is a previous page (because it's backward pagination):
 
 ```gql
@@ -127,6 +129,7 @@ This one uses [Relay connection](https://relay.dev/graphql/connections.htm) form
 ```
 
 ### One other way to fetch orders
+
 This time for specific dates in D2C:
 
 ```gql
@@ -225,6 +228,8 @@ Use this query to fetch a Display, filtering by id.
   }
 }
 ```
+
+---
 
 ### Fetching ALL the data
 
