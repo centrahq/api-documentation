@@ -783,7 +783,7 @@ Since the `responseEventRequired` is `true`, Adyen Drop-In needs a response to t
      - Comment
    * - ``action``
      - string
-     - | ``javascript``, ``redirect`` or ``failed``.
+     - | ``javascript``, ``redirect``, ``failed`` or direct ``success``.
        | If ``javascript``, evaluate the data inside ``code``
        | or send back ``formFields`` as an event called
        | ``centra_checkout_payment_response``
@@ -805,6 +805,8 @@ Since the `responseEventRequired` is `true`, Adyen Drop-In needs a response to t
 -->
 
 The [`PaymentActionResponse`, explained in the Swagger UI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) and in [Payment Method flows](https://docs.centra.com/guides/shop-api/payment-method-flows) does not differ specifically for Adyen Drop-In, the important part is to support ``action=javascript`` to provide info to the already embedded Adyen Drop-In form.
+
+Direct ``success`` can be seen for free orders (including shipping cost), or if your customer used a credit card without 3DS verification. In this case, you can display the receipt page immediately.
 
 ### Parameters sent to paymentReturnPage
 
