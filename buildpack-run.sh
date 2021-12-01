@@ -1,4 +1,4 @@
-GRAV_VERSION="1.6.26"
+GRAV_VERSION="1.7.17"
 
 # Read auth token from env file
 if [ -f "$ENV_DIR/GITHUB_AUTH_TOKEN" ]; then
