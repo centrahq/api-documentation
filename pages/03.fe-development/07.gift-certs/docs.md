@@ -12,7 +12,7 @@ taxonomy:
 Currently, gift certificates are only supported in [Shop API](/api-references/shop-api).
 [/notice-box]
 
-In Centra, gift certificates can be purchased with the same flow as standard products. Once you buy a GC and pay for it, a voucher will be automatically generated and sent to your end customer via e-mail. However, since GCs are virtual items, there are some differences:
+In Centra, gift certificates can be purchased with a similar flow as standard products. Once you buy a GC and pay for it, a voucher will be automatically generated and sent to your end customer via e-mail. However, since GCs are virtual items, there are some differences:
 
 * Gift certificates cannot belong to the same selection as "real" products. Once you add a GC to your selection, other items will be removed from it.
 * You can only buy one gift certificate at a time. If you add a new GC to your selection, previous one will be removed.
