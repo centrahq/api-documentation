@@ -806,6 +806,85 @@ Since the `responseEventRequired` is `true`, Adyen Drop-In needs a response to t
 
 The [`PaymentActionResponse`, explained in the Swagger UI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) and in [Payment Method flows](https://docs.centra.com/guides/shop-api/payment-method-flows) does not differ specifically for Adyen Drop-In, the important part is to support ``action=javascript`` to provide info to the already embedded Adyen Drop-In form.
 
+### Parameters sent to paymentReturnPage
+
+[notice-box=alert]
+The `paymentReturnPage` should always collect all URL-parameters from both the query string in the URL and the POST-data and send it to Centra. This is the way to validate if the payment went through successfully or not. Some payment methods used through Adyen Drop-In will use POST-data instead of sending back the parameters as query string parameters.
+
+Also, if you're running serverless, you can not use an endpoint to convert the POST-data into query-parameters directly, since the payload from Adyen can be really large (since it grows depending on how many items the selection contains for example). If you need to use something else than POST-data, you can have an endpoint receiving the POST-data and converts it to fragment-data, like this: `https://example.com/thank-you#centraPaymentMethod=x&payload=xyz`, that way you will not hit any issues with too long URLs. You then need to parse the fragment part just like query parameters to send the data to the `POST /payment-result`-endpoint.
+
+Another solution would be to have an endpoint that injects the data into the DOM as JSON (using the example code below) to then send the data to Centra.
+[/notice-box]
+
+To make sure you support both POST/GET requests and outputs the data into the DOM properly (for you javascript to pick up the parameters and send them to Centra's `POST /payment-result`, here's example code for Node.js to collect POST/GET-parameters into a variable in the DOM. The code below also supports associative arrays in POST (like `details[paymentAction]=xxx`) since Adyen does send this kind of data.
+
+```js
+  function toJSON(formData) {
+    split = /[\[\]]+/;
+    fields = Array.from(formData.keys());
+    values = Array.from(formData.values());
+    const hierarchyFields = fields.map(field => field.split(split).filter(floor => floor !== ""))
+    const data = values.reduce( (data,value,index) => {
+        let swap = data
+        let h = hierarchyFields[index]
+        h.forEach((floor,index,fieldsHierarchy) => {
+            if(!fieldsHierarchy[index + 1]){
+                swap[floor.replace("[]","")] = value
+                return
+            }
+            if(!swap[floor]){
+                swap[floor] = {};
+                if(!isNaN(parseInt(fieldsHierarchy[index + 1]))){
+                    swap[floor] = [];
+                }
+            }
+            swap = swap[floor];
+        })
+        return data
+    },{})
+    return data;
+  }
+  async function convertPostAndGetToJSON(request) {
+    let postData = {}
+    try {
+      postData = toJSON(await request.formData());
+    } catch(e) { }
+    const getData = toJSON(await new URL(request.url).searchParams);
+    Object.assign(postData, getData)
+    return JSON.stringify(postData).replace(/\//g, '\\\/')
+  }
+```
+
+We can then use this with the `request`-object:
+
+```js
+let payload = await convertPostAndGetToJSON(request);
+```
+
+And then insert in the DOM like this for the javascript to use it to finalize the payment:
+
+```html
+<script>window.PaymentPayload = {{ payload }}</script>
+```
+
+[notice-box=alert]
+If you are using the solution above to fill the DOM directly with the POST-data, you need to make sure that if you use cookie-storage for the current token of the user, that the cookie is set with `SameSite=None`. (More information from Adyen)[https://www.adyen.help/hc/en-us/articles/360013000160-How-does-the-Chrome-SameSite-Cookie-policy-affect-my-integration]. The reason for this is that when the POST-data comes back from the 3ds-payment flow, the cookies will not be present if they're not explicitly set as `SameSite=None`. We recommend the conversion to fragment data, as that doesn't require you to change the SameSite-option of the current token.
+[/notice-box]
+
+### Test payment data endpoint
+
+Here's a test endpoint that behaves like the `paymentResultPage` should do in terms of collecting query/POST parameters to properly support all payment methods:
+
+```
+$ curl "https://payment-result-example.devteam.workers.dev/?test=1&test2=1"
+<script>window.PaymentPayload = {"test":"1","test2":"1"}</script>
+```
+
+```
+$ curl -X POST -d "test[ok]=1&test[ok2]=1" "https://payment-result-example.devteam.workers.dev/?test=1&test2=1"
+<script>window.PaymentPayload = {"test":{"ok":"1","ok2":"1"},"test2":"1"}</script>
+```
+
 ### Testing
 
 To test the flow, you first need to make sure the `Test-Mode` is enabled and that the credentials inside the Centra plugin are taken from `ca-test.adyen.com` instead of `ca-live.adyen.com`.
