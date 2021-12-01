@@ -868,7 +868,7 @@ And then insert in the DOM like this for the javascript to use it to finalize th
 ```
 
 [notice-box=alert]
-If you are using the solution above to fill the DOM directly with the POST-data, you need to make sure that if you use cookie-storage for the current token of the user, that the cookie is set with `SameSite=None`. (More information from Adyen)[https://www.adyen.help/hc/en-us/articles/360013000160-How-does-the-Chrome-SameSite-Cookie-policy-affect-my-integration]. The reason for this is that when the POST-data comes back from the 3ds-payment flow, the cookies will not be present if they're not explicitly set as `SameSite=None`. We recommend the conversion to fragment data, as that doesn't require you to change the SameSite-option of the current token.
+If you are using the solution above to fill the DOM directly with the POST-data, you need to make sure that if you use cookie-storage for the current token of the user, that the cookie is set with `SameSite=None`. [More information from Adyen](https://www.adyen.help/hc/en-us/articles/360013000160-How-does-the-Chrome-SameSite-Cookie-policy-affect-my-integration). The reason for this is that when the POST-data comes back from the 3ds-payment flow, the cookies will not be present if they're not explicitly set as `SameSite=None`. We recommend the conversion to fragment data, as that doesn't require you to change the SameSite-option of the current token.
 [/notice-box]
 
 ### Test payment data endpoint
