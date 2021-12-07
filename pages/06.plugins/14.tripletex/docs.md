@@ -40,18 +40,23 @@ XXXXXXXX = 8 digits, will contain the invoice number
 X        = 1 digit, checksum for the whole KID
 ```
 
-You get the KID from Tripletex when you have the proper connection set up with the bank.
+You get the KID from Tripletex when you have the proper connection set up with the bank. If you do not want to use KID, remove the `customer number` completely from Centra, and no KID will be generated.
 
-### Taxes
+### Ledger account mapping
 
-To set up taxes, you need to route certain tax percentages from Centra to VAT-types in Tripletex. The default ones are:
+To set up ledger account mapping, there are two settings depending on DTC (Direct-to-Consumer) or Wholesale. These mappings are made on country codes but also supports fallbacks for `EU` (Europe) and `WW` (World-wide).
+
+The ledger account mapping will decide on the VAT percentage, so make sure you are mapping to the proper ledger accounts correlating with your VAT/Tax set up for those countries.
+
+Both the "DTC ledger mapping" and the "Wholesale ledger mapping" works similarly. They look like this per default:
 
 ```
-25=3
-0=6
+NO=0001
+EU=0002
+WW=0003
 ```
 
-This means 25% VAT will go into VAT-type 3 and 0% VAT will go into VAT-type 6. These are default codes in Tripletex, but you can modify these in Centra if you have other groups that you use.
+This means that invoices with country set as `Norway` will map to the ledger account `0001`. If the country code for the invoice is not found, it will check if the country belongs to Europe and use `EU`. If the country is not in Europe, or the `EU`-account is not set up, the fallback will be `WW` (World-wide).
 
 ### Additional settings
 
