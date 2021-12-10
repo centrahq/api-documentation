@@ -45,6 +45,7 @@ bin/gpm install featherlight
 bin/gpm install page-toc
 bin/gpm install shortcode-core
 bin/gpm install tntsearch
+bin/gpm install svg-extension
 
 # Create search index
 bin/plugin tntsearch index
