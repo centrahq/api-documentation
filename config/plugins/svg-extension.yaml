@@ -1,0 +1,3 @@
+enabled: true
+path: 'theme://images/icons/'
+defaultClass: ''
