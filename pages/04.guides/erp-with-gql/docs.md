@@ -337,7 +337,49 @@ When Products are added, you need to add them to Pricelists and set a price if y
 
 ### Fetching existing Pricelists
 
-[TBD]
+Once you've filtered which Pricelists you are interested in, you can fetch any data you need about each of the Pricelist returned. To see other ways of filtering Pricelists, see [PricelistFilter definition](https://docs.centra.com/graphql/pricelistfilter.html) in our documentation.
+
+#### Request
+
+```gql
+pricelists(where: { name: { contains: "SEK" } }, sort: [id_ASC]) {
+    ...pricelistCustomDetails
+  }
+}
+
+fragment pricelistCustomDetails on Pricelist {
+  id
+  name
+  status
+}
+```
+
+#### Response
+
+```gql
+{
+  "data": {
+    "pricelists": [
+      {
+        "id": 1,
+        "name": "SEK",
+        "status": "ACTIVE"
+      },
+      {
+        "id": 3,
+        "name": "VIP-SEK",
+        "status": "ACTIVE"
+      }
+    ]
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "Pricelist:read"
+    ]
+  }
+}
+```
 
 ### Creating a new Pricelist
 
