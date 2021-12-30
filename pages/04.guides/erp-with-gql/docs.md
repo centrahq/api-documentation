@@ -212,11 +212,48 @@ Size charts define the sizes of each Product Variant in Centra. Creating them sh
 
 ## Warehouses - read and create
 
-Warehouses are the logical entities holding product Stock. Warehouse stock items connect directly to each variant size.
+[Warehouses](/overview/stock#warehouses-and-allocation-rules) are the logical entities holding product Stock. Warehouse stock items connect directly to each variant size.
 
 ### Fetching existing warehouses
 
-[TBD]
+Once you've filtered which Warehouses you are interested in, you can fetch any data you need about each of the Warehouses returned. To see other ways of filtering Warehouses, see [WarehouseFilter definition](https://docs.centra.com/graphql/warehousefilter.html) in our documentation.
+
+#### Request
+
+```gql
+warehouses(where: {name: {contains: "Default Warehouse"}}, sort: [id_ASC]) {
+    ...warehouseCustomDetails
+  }
+}
+
+fragment warehouseCustomDetails on Warehouse {
+  id
+  name
+  status
+}
+```
+
+#### Response
+
+```gql
+{
+  "data": {
+    "warehouses": [
+      {
+        "id": 3,
+        "name": "Retail",
+        "status": "ACTIVE"
+      }
+    ]
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "Warehouse:read"
+    ]
+  }
+}
+```
 
 ### Creating a new warehouse
 
@@ -305,7 +342,6 @@ When Products are added, you need to add them to Pricelists and set a price if y
 ### Creating a new Pricelist
 
 [TBD]
-
 
 ## Fetching Products
 
