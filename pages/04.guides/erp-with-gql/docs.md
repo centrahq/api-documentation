@@ -210,6 +210,12 @@ Size charts define the sizes of each Product Variant in Centra. Creating them sh
 
 [TBD]
 
+### Modifying size charts (not recommended)
+
+It's usually better and cleaner to create a new size chart, instead of modifying existing ones, especially if they are used in existing records, like orders and shipments.
+
+Still, here you go: [TBD]
+
 ## Warehouses - read and create
 
 [Warehouses](/overview/stock#warehouses-and-allocation-rules) are the logical entities holding product Stock. Warehouse stock items connect directly to each variant size.
@@ -221,7 +227,7 @@ Once you've filtered which Warehouses you are interested in, you can fetch any d
 #### Request
 
 ```gql
-warehouses(where: {name: {contains: "Default Warehouse"}}, sort: [id_ASC]) {
+warehouses(where: { name: { contains: "Retail" } }, sort: [id_ASC]) {
     ...warehouseCustomDetails
   }
 }
@@ -258,12 +264,6 @@ fragment warehouseCustomDetails on Warehouse {
 ### Creating a new warehouse
 
 [TBD]
-
-### Modifying size charts (not recommended)
-
-It's usually better and cleaner to create a new size chart, instead of modifying existing ones, especially if they are used in existing records, like orders and shipments.
-
-Still, here you go: [TBD]
 
 ## Adding Product 1: A sweater
 
