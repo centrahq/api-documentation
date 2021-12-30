@@ -200,3 +200,193 @@ Please note, reading Markets and reading Market Countries use different permissi
 
 ## Product Size Charts - read and create
 
+Size charts define the sizes of each Product Variant in Centra. Creating them should be a one-time action, which you should perform before importing Products into your Centra. Once assigned to a Variant, size chart can not be changed. If a size is used by a variant, especially if those belong to an existing order, you will not be able to remove them for historical (or even legal) reasons.
+
+### Fetching existing size charts and sizes
+
+[TBD]
+
+### Creating new size charts
+
+[TBD]
+
+## Warehouses - read and create
+
+Warehouses are the logical entities holding product Stock. Warehouse stock items connect directly to each variant size.
+
+### Fetching existing warehouses
+
+[TBD]
+
+### Creating a new warehouse
+
+[TBD]
+
+### Modifying size charts (not recommended)
+
+It's usually better and cleaner to create a new size chart, instead of modifying existing ones, especially if they are used in existing records, like orders and shipments.
+
+Still, here you go: [TBD]
+
+## Adding Product 1: A sweater
+
+This example creates or updates a product – in this case a turtleneck sweater. It demonstrates Centra’s product structure of product, variants and sizes. The product comes in red and blue variants, and each variant is available in sizes S, M and L.
+
+[Mention displays and status]
+
+#### Request
+
+```gql
+query something {
+	placeholder
+}
+```
+
+#### Response
+
+```gql
+query something {
+	placeholder
+}
+```
+
+## Adding Product 2: A chair
+
+This is a one-size product - which is the size chart you should use for any product variant that doesn't have multiple sizes.
+
+[Also reminder about displays]
+
+#### Request
+
+```gql
+query something {
+	placeholder
+}
+```
+
+#### Response
+
+```gql
+query something {
+	placeholder
+}
+```
+
+## Adding Product 3: A bundle
+
+Bundles consist of multiple sections, of which each can be selected from a pre-selected list of variants. It can have pre-defined price, or calculate the bundle price based on the selected variants' prices. In the more complex, flexible bundles, the amount of the products in each section can differ, too.
+
+Each bundle only has one Variant by design. It also needs to be activated on a Display, just like any other Variant. Stock of each Bundle is calculated based on the contained section variants' prices.
+
+#### Request
+
+```gql
+query something {
+	placeholder
+}
+```
+
+#### Response
+
+```gql
+query something {
+	placeholder
+}
+```
+
+## Pricelists - read and create
+
+When Products are added, you need to add them to Pricelists and set a price if you want them to be purchasable. Setting a price is one of the actions that also works on the inactive Products, allowing you to set up the Products before activating them for sale.
+
+### Fetching existing Pricelists
+
+[TBD]
+
+### Creating a new Pricelist
+
+[TBD]
+
+
+## Fetching Products
+
+As soon as Products exist, they can be fetched. However, Products in the Centra AMS backend are different that what `product` used to be in Centra wenshop APIs. In the APIs, by design, product Displays are used as a presentation layer for each product variant, allowing you to set product URI, media, description, etc.
+
+The topic of display items as products is fully explained in our [Front End development guide](/fe-development/fe-elements#why-do-i-see-different-product-ids-in-the-centra-backend-and-in-checkout-api).
+
+#### Request
+
+```gql
+query something {
+	placeholder
+}
+```
+
+#### Response
+
+```gql
+query something {
+	placeholder
+}
+```
+
+## Product Stock update
+
+Once Products with Variants are Sizes are activated with Displays, and the Warehouses exist, you can start adding stock amounts of your products in each warehouse. Once those are connected into groups in Warehouses -> Allocation Rules, they will be automatically returned as Stock for customers connecting from specific Markets, closing the part of the configuration required to have your Products available in your Store.
+
+Remember, by default Centra expects you to send your physical stock - the amount you have physically on the shelf of your warehouse. We will calculate the availability based on the existing un-fulfilled orders or Supplier Orders, and serve back the FTA - Free to Allocate - stock amount in most places. This is the amount you can sell right now.
+
+#### Request
+
+```gql
+query something {
+	placeholder
+}
+```
+
+#### Response
+
+```gql
+query something {
+	placeholder
+}
+```
+
+## B2B Wholesale - Payment Terms
+
+[TBD]
+
+#### Request
+
+```gql
+query something {
+	placeholder
+}
+```
+
+#### Response
+
+```gql
+query something {
+	placeholder
+}
+```
+
+## B2B Wholesale - Accounts
+
+[TBD]
+
+#### Request
+
+```gql
+query something {
+	placeholder
+}
+```
+
+#### Response
+
+```gql
+query something {
+	placeholder
+}
+```
