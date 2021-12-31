@@ -210,13 +210,267 @@ Size charts define the sizes of each Product Variant in Centra. Creating them sh
 
 ### Creating new size charts
 
-[TBD]
+Here's how you can create a simple 1- or 2-dimensional size chart.
+
+#### Request: One-size chart
+
+```gql
+mutation {
+  createSizeChart(
+    input: {
+      name: "One Size"
+      dividerSymbol: "x"  
+      horizontalLabels: ["One Size"]
+      verticalLabels: []
+      displayUnit: ""
+      displayDividedBy: 0
+    }
+  ) {
+    userErrors { message path }
+    sizeChart {
+      id
+      name
+      sizes {id name}
+      horizontalLabels
+      verticalLabels
+      dividerSymbol
+    }
+  }
+}
+```
+
+#### Response: One-size chart
+
+```json
+{
+  "data": {
+    "createSizeChart": {
+      "userErrors": [],
+      "sizeChart": {
+        "id": 1,
+        "name": "One Size",
+        "sizes": [
+          {
+            "id": 1,
+            "name": "One Size"
+          }
+        ],
+        "horizontalLabels": [
+          "One Size"
+        ],
+        "verticalLabels": null,
+        "dividerSymbol": "x"
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "SizeChart:write",
+      "SizeChart:read"
+    ]
+  }
+}
+```
+
+#### Request: SML chart
+
+```gql
+mutation {
+  createSizeChart(
+    input: {
+      name: "Shirts SML"
+      dividerSymbol: "x"  
+      horizontalLabels: ["S", "M", "L"]
+      verticalLabels: []
+      displayUnit: ""
+      displayDividedBy: 0
+    }
+  ) {
+    userErrors { message path }
+    sizeChart {
+      id
+      name
+      sizes {id name}
+      horizontalLabels
+      verticalLabels
+      dividerSymbol
+    }
+  }
+}
+```
+
+#### Response: SML chart
+
+```json
+{
+  "data": {
+    "createSizeChart": {
+      "userErrors": [],
+      "sizeChart": {
+        "id": 2,
+        "name": "Shirts SML",
+        "sizes": [
+          {
+            "id": 2,
+            "name": "S"
+          },
+          {
+            "id": 3,
+            "name": "M"
+          },
+          {
+            "id": 4,
+            "name": "L"
+          }
+        ],
+        "horizontalLabels": [
+          "S",
+          "M",
+          "L"
+        ],
+        "verticalLabels": null,
+        "dividerSymbol": "x"
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "SizeChart:write",
+      "SizeChart:read"
+    ]
+  }
+}
+```
+
+#### Request: Any size chart
+
+```gql
+mutation {
+  createSizeChart(
+    input: {
+      name: "Any size chart"
+      dividerSymbol: "x"  
+      horizontalLabels: ["X", "Y", "Z"]
+      verticalLabels: ["A", "B"]
+      displayUnit: ""
+      displayDividedBy: 0
+    }
+  ) {
+    userErrors { message path }
+    sizeChart {
+      id
+      name
+      sizes {id name}
+      horizontalLabels
+      verticalLabels
+      dividerSymbol
+    }
+  }
+}
+```
+
+#### Response: Any size chart
+
+```json
+{
+  "data": {
+    "createSizeChart": {
+      "userErrors": [],
+      "sizeChart": {
+        "id": 3,
+        "name": "Any size chart",
+        "sizes": [
+          {
+            "id": 5,
+            "name": "XxA"
+          },
+          {
+            "id": 6,
+            "name": "XxB"
+          },
+          {
+            "id": 7,
+            "name": "YxA"
+          },
+          {
+            "id": 8,
+            "name": "YxB"
+          },
+          {
+            "id": 9,
+            "name": "ZxA"
+          },
+          {
+            "id": 10,
+            "name": "ZxB"
+          }
+        ],
+        "horizontalLabels": [
+          "X",
+          "Y",
+          "Z"
+        ],
+        "verticalLabels": [
+          "A",
+          "B"
+        ],
+        "dividerSymbol": "x"
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "SizeChart:write",
+      "SizeChart:read"
+    ]
+  }
+}
+```
 
 ### Modifying size charts (not recommended)
 
 It's usually better and cleaner to create a new size chart, instead of modifying existing ones, especially if they are used in existing records, like orders and shipments.
 
 Still, here you go: [TBD]
+
+### Removing size charts
+
+If you have to. Better than adjust existing, usually.
+
+#### Request
+
+```gql
+mutation {
+  removeSizeChart(
+    id: 3
+  ) {
+    userErrors { message path }
+  }
+}
+```
+
+#### Response
+
+No errors means no problem. :)
+
+```json
+{
+  "data": {
+    "removeSizeChart": {
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "SizeChart:write"
+    ]
+  }
+}
+```
 
 ## Warehouses - read and create
 
