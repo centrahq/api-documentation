@@ -92,6 +92,8 @@ Markets in Centra decide which Products are visible to the API consumer. [Click 
 
 #### Request
 
+Compressed:
+
 ```sh
 curl "${BASE_URL}/graphql" \
 	    -X POST \
@@ -204,7 +206,7 @@ Size charts define the sizes of each Product Variant in Centra. Creating them sh
 
 ### Fetching existing size charts and sizes
 
-[TBD]
+
 
 ### Creating new size charts
 
