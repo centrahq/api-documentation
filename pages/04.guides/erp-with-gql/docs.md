@@ -521,47 +521,182 @@ fragment warehouseCustomDetails on Warehouse {
 
 [TBD]
 
-## Adding Product 1: A sweater
+## Adding Product 1
 
-This example creates or updates a product – in this case a turtleneck sweater. It demonstrates Centra’s product structure of product, variants and sizes. The product comes in red and blue variants, and each variant is available in sizes S, M and L.
-
-[Mention displays and status]
+Just the basic Product, without Variants (yet) and no size chart selected.
 
 #### Request
 
 ```gql
-query something {
-	placeholder
+mutation addProduct {
+  createProduct(input: {
+    name: "First Product"
+    status: INACTIVE
+    productNumber: "Prod123"
+    brand: { id: 1 }
+    collection: { id: 2 }
+    folder: { id: 1 }
+    countryOfOrigin: { code: "DE" }
+  }) {
+    product { 
+      id
+      name
+      status
+      productNumber
+      brand { name }
+      collection { name }
+      folder { name }
+    }
+    userErrors {
+      message
+      path
+    }
+  }
 }
 ```
 
 #### Response
 
-```gql
-query something {
-	placeholder
+```json
+{
+  "data": {
+    "createProduct": {
+      "product": {
+        "id": 1,
+        "name": "First Product",
+        "status": "INACTIVE",
+        "productNumber": "Prod123",
+        "brand": {
+          "name": "Base Brand"
+        },
+        "collection": {
+          "name": "AW21"
+        },
+        "folder": {
+          "name": "Shop"
+        }
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "Product:write",
+      "Product:read",
+      "Product.Brand:read",
+      "Product.Collection:read",
+      "Product.Folder:read"
+    ]
+  }
 }
 ```
 
-## Adding Product 2: A chair
+## Adding Product 1 Variant 1: A chair
 
 This is a one-size product - which is the size chart you should use for any product variant that doesn't have multiple sizes.
 
-[Also reminder about displays]
-
 #### Request
 
 ```gql
-query something {
-	placeholder
+mutation createVariant {
+  createProductVariant(input: {
+    product: { id: 1 }
+    name: "First Product"
+    status: INACTIVE
+    variantNumber: "Var123"
+    internalName: "vrnt"
+    unitCost: { # MonetaryValueInput
+      value: 41
+      currencyIsoCode: "EUR"
+    }
+    sizeChart: { id: 1 }
+  }) {
+    productVariant {
+      id
+    }
+    userErrors {
+      message
+      path
+    }
+  }
 }
 ```
 
 #### Response
 
 ```gql
-query something {
-	placeholder
+{
+  "data": {
+    "createProductVariant": {
+      "productVariant": {
+        "id": 1
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "ProductVariant:write",
+      "ProductVariant:read"
+    ]
+  }
+}
+```
+
+## Adding Product 1 Variant 2: A sweater
+
+This example creates or updates a product – in this case a turtleneck sweater. The product comes in red and blue variants, and each variant is available in sizes S, M and L.
+
+We simply mention the other size chart - and all the right sizes are created automatically.
+
+#### Request
+
+```gql
+mutation createVariant {
+  createProductVariant(input: {
+    product: { id: 1 }
+    name: "First Product"
+    status: INACTIVE
+    variantNumber: "Var456"
+    internalName: "vrnt2"
+    unitCost: { # MonetaryValueInput
+      value: 60
+      currencyIsoCode: "EUR"
+    }
+    sizeChart: { id: 2 }
+  }) {
+    productVariant {
+      id
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "createProductVariant": {
+      "productVariant": {
+        "id": 2
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "ProductVariant:write",
+      "ProductVariant:read"
+    ]
+  }
 }
 ```
 
@@ -584,6 +719,143 @@ query something {
 ```gql
 query something {
 	placeholder
+}
+```
+
+## Fetching Products
+
+Fetching a product list is best done with pagination and using a reasonable limit - probably between 20 and 100 products per page.
+
+```gql
+query productList(
+  $status: [ProductStatus!]! = [INACTIVE, ACTIVE]
+  $page: Int! = 1
+) {
+  products(
+    where: { status: $status }
+    sort: [updatedAt_DESC]
+    limit: 10
+    page: $page
+  ) {
+    ...basicProductFields
+    variants{
+      ...basicVariantFields
+      productSizes{
+        ...basicSizeFields
+      }
+    }
+  }
+
+  counters {
+    products(where: { status: $status })
+  }
+}
+
+fragment basicProductFields on Product {
+  id
+  name
+  status
+  productNumber
+  harmonizedCommodityCode
+  harmonizedCommodityCodeDescription
+  internalComment
+  isBundle
+  isSerializableProduct
+  createdAt
+  updatedAt
+}
+
+fragment basicVariantFields on ProductVariant {
+  id
+  name
+  status
+  variantNumber
+  internalName
+  unitCost {
+    value
+    currency {
+      code
+    }
+    formattedValue
+  }
+  updatedAt(format: "Y-m-d\\TH:i:sO")
+}
+
+fragment basicSizeFields on ProductSize {
+  id
+  description
+  sizeNumber
+  GTIN
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "products": [
+      {
+        "id": 1,
+        "name": "First Product",
+        "status": "INACTIVE",
+        "productNumber": "Prod123",
+        "harmonizedCommodityCode": null,
+        "harmonizedCommodityCodeDescription": null,
+        "internalComment": null,
+        "isBundle": false,
+        "isSerializableProduct": false,
+        "createdAt": "2021-12-31T13:44:23+0100",
+        "updatedAt": "2021-12-31T13:44:23+0100",
+        "variants": [
+          {
+            "id": 1,
+            "name": "First Product",
+            "status": "INACTIVE",
+            "variantNumber": "Var123",
+            "internalName": "vrnt",
+            "unitCost": {
+              "value": 41,
+              "currency": {
+                "code": "EUR"
+              },
+              "formattedValue": "41.00 EUR"
+            },
+            "updatedAt": "2021-12-31T13:51:12+0100",
+            "productSizes": []
+          },
+          {
+            "id": 2,
+            "name": "First Product",
+            "status": "INACTIVE",
+            "variantNumber": "Var456",
+            "internalName": "vrnt2",
+            "unitCost": {
+              "value": 60,
+              "currency": {
+                "code": "EUR"
+              },
+              "formattedValue": "60.00 EUR"
+            },
+            "updatedAt": "2021-12-31T13:54:18+0100",
+            "productSizes": []
+          }
+        ]
+      }
+    ],
+    "counters": {
+      "products": 2
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "Product:read",
+      "Product.InternalComment:read",
+      "Product.ProductVariant:read",
+      "ProductVariant.InternalName:read"
+    ]
+  }
 }
 ```
 
