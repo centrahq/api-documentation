@@ -866,6 +866,187 @@ No errors means no problem. :)
 }
 ```
 
+## Product Measurement Charts - read and create
+
+Measurement charts are used to display the measurements of your products. While Size Charts define product sizes (S, M, L, XL), measurement charts are used to define measurements, in specific units, for each size. For example, measuremement chart for trousers can consist of leg and waist size, defined in cm or inches, for each defined size.
+
+### Creating a new measurement chart
+
+In this example, we will create a measurements table for shirts, defining what measurements each sizes (S, M, L) have.
+
+#### Request
+
+```gql
+mutation addMeasurementChart {
+  createMeasurementChart(
+    input: {
+      name: "Shirts"
+      horizontalLabels: ["S", "M", "L"]
+      verticalLabels: ["Chest", "Sleeve"]
+      displayUnit: "cm"
+      values: [
+        {horizontalLabel: "S", verticalLabel: "Chest", value: "80"},
+        {horizontalLabel: "S", verticalLabel: "Sleeve", value: "55"},
+        {horizontalLabel: "M", verticalLabel: "Chest", value: "85"},
+        {horizontalLabel: "M", verticalLabel: "Sleeve", value: "58"},
+        {horizontalLabel: "L", verticalLabel: "Chest", value: "90"},
+        {horizontalLabel: "L", verticalLabel: "Sleeve", value: "60"}
+      ]
+    }
+  ) {
+    measurementChart {
+      id
+      name
+      horizontalLabels
+      verticalLabels
+      displayUnit
+      contentJSON
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "createMeasurementChart": {
+      "measurementChart": {
+        "id": 5,
+        "name": "Shirts",
+        "horizontalLabels": [
+          "S",
+          "M",
+          "L"
+        ],
+        "verticalLabels": [
+          "Chest",
+          "Sleeve"
+        ],
+        "displayUnit": "cm",
+        "contentJSON": "{\"Chest\":{\"S\":\"80\",\"M\":\"85\",\"L\":\"90\"},\"Sleeve\":{\"S\":\"55\",\"M\":\"58\",\"L\":\"60\"}}"
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 112,
+    "permissionsUsed": [
+      "MeasurementChart:write"
+    ]
+  }
+}
+```
+
+### Deleting a measurement chart
+
+Just like with other resources - you can only delete a measurement chart when it's not in use. Still, if you created your chart wrong, it's better to remove it and start over, instead of modifying it.
+
+#### Request
+
+```gql
+mutation deleteMeasurementChart {
+  removeMeasurementChart(id: 5) {
+    userErrors {
+      message
+      path }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "removeMeasurementChart": {
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 112,
+    "permissionsUsed": [
+      "MeasurementChart:write"
+    ]
+  }
+}
+```
+
+### Assigning a measurement chart to a product
+
+When creating or editing a Product, you can assign a measurement chart to it.
+
+#### Request
+
+```gql
+mutation editProduct {
+  updateProduct(id: 1, input: {
+      measurementTable: {
+          inherited: false
+          measurementChart: {id: 6}
+      }
+  }) {
+    product { 
+      id
+      name
+      status
+      productNumber
+      brand { name }
+      collection { name }
+      folder { name }
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+}
+```
+
+#### Response
+
+[This feature is not publicly released, yet]
+
+### Un-assigning a measurement chart from a product
+
+To do this, simply pass `null` as the chart ID.
+
+#### Request
+
+```gql
+mutation editProduct {
+  updateProduct(id: 1, input: {
+      measurementTable: {
+          inherited: false
+          measurementChart: {id: null}
+      }
+  }) {
+    product { 
+      id
+      name
+      status
+      productNumber
+      brand { name }
+      collection { name }
+      folder { name }
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+}
+```
+
+#### Response
+
+[This feature is not publicly released, yet]
+
 ## Warehouses - read and create
 
 [Warehouses](/overview/stock#warehouses-and-allocation-rules) are the logical entities holding product Stock. Warehouse stock items connect directly to each variant size.
