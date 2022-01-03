@@ -825,11 +825,11 @@ mutation addSizeChart {
 
 It's usually better and cleaner to create a new size chart, instead of modifying existing ones, especially if they are used in existing records, like orders and shipments.
 
-Still, here you go: [TBD]
+[TBD]
 
 ### Removing size charts
 
-If you have to. Better than adjust existing, usually.
+If you have to. It's better than adjust existing charts, usually.
 
 #### Request
 
@@ -1052,7 +1052,7 @@ Once the Product and Variant is created, and the size chart selected, you need t
 
 #### Request
 
-You already know your Variant and Size IDs - Centra generated them when you created them.  For every variant size you can configure size number, SKU and/or GTIN (or EAN) number.
+You already know your Variant and Size IDs - Centra generated them when you created them.  For every variant size you can configure size number (previously known as SKU) and/or GTIN (or EAN) number.
 
 ```gql
 mutation createOneSize {
@@ -1364,6 +1364,8 @@ fragment basicSizeFields on ProductSize {
 
 #### Response
 
+SKU field is read-only, it's combined of `productNumber` + `variantNumber` + `sizeNumber`.
+
 ```json
 {
   "data": {
@@ -1400,7 +1402,8 @@ fragment basicSizeFields on ProductSize {
                 "id": 279,
                 "description": "One Size",
                 "sizeNumber": "789S",
-                "GTIN": "EAN123456789S"
+                "GTIN": "EAN123456789S",
+                "SKU": "Prod123Var123789S"
               }
             ]
           },
@@ -1423,19 +1426,22 @@ fragment basicSizeFields on ProductSize {
                 "id": 280,
                 "description": "S",
                 "sizeNumber": "789S",
-                "GTIN": "EAN123456789S"
+                "GTIN": "EAN123456789S",
+                "SKU": "Prod123Var456789S"
               },
               {
                 "id": 281,
                 "description": "M",
                 "sizeNumber": "789M",
-                "GTIN": "EAN123456789M"
+                "GTIN": "EAN123456789M",
+                "SKU": "Prod123Var456789M"
               },
               {
                 "id": 282,
                 "description": "L",
                 "sizeNumber": "789L",
-                "GTIN": "EAN123456789L"
+                "GTIN": "EAN123456789L",
+                "SKU": "Prod123Var456789L"
               }
             ]
           }
@@ -1550,6 +1556,6 @@ mutation addStock {
 
 After you're done, you can verify the stock levels in Centra AMS:
 
-[](product-stock-ready.png)
+![StockLevels](product-stock-ready.png)
 
 ## Custom Attributes - read and write
