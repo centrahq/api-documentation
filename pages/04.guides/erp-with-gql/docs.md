@@ -1462,24 +1462,94 @@ fragment basicSizeFields on ProductSize {
 
 Once Products with Variants are Sizes are activated with Displays, and the Warehouses exist, you can start adding stock amounts of your products in each warehouse. Once those are connected into groups in Warehouses -> Allocation Rules, they will be automatically returned as Stock for customers connecting from specific Markets, closing the part of the configuration required to have your Products available in your Store.
 
-Remember, by default Centra expects you to send your physical stock - the amount you have physically on the shelf of your warehouse. We will calculate the availability based on the existing un-fulfilled orders or Supplier Orders, and serve back the FTA - Free to Allocate - stock amount in most places. This is the amount you can sell right now.
+Remember, by default Centra expects you to send your physical stock - the amount you have physically on the shelf of your warehouse. We will calculate the availability based on the existing un-fulfilled orders or incoming Supplier Orders, and serve back the FTA - Free to Allocate - stock amount. This is the amount you can sell right now.
 
 #### Request
 
-Use the Variant
+Use the previously known Variant and Size ID. You need to iterate through all the sizes.
+
+One size:
 
 ```gql
-query something {
-	placeholder
+mutation addStockOneSize {
+  changeStock (
+    input: {
+      intoWarehouse: {id: 3}
+      description: "New stock"
+      productVariants: [
+        {
+          productVariant: {id: 1}
+          unitCost: {
+            value: 41
+            currencyIsoCode: "EUR"
+          }
+          sizeChanges: {
+            size: {id: 1}   # One Size
+            deliveredQuantity: 5
+          }
+        }
+      ]
+    }
+  ) {
+    stockChange {id}
+    userErrors {message}
+  }
+}
+```
+
+SML sizes (repeat for each size):
+
+```gql
+mutation addStock {
+  changeStock (
+    input: {
+      intoWarehouse: {id: 3}
+      description: "New stock"
+      productVariants: [
+        {
+          productVariant: {id: 2}
+          unitCost: {
+            value: 41
+            currencyIsoCode: "EUR"
+          }
+          sizeChanges: {
+            size: {name: "S"}
+            deliveredQuantity: 2
+          }
+        }
+      ]
+    }
+  ) {
+    stockChange {id}
+    userErrors {message}
+  }
 }
 ```
 
 #### Response
 
-```gql
-query something {
-	placeholder
+```json
+{
+  "data": {
+    "changeStock": {
+      "stockChange": {
+        "id": 4284
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "StockChange:write",
+      "WarehouseDelivery:read"
+    ]
+  }
 }
 ```
+
+After you're done, you can verify the stock levels in Centra AMS:
+
+[](product-stock-ready.png)
 
 ## Custom Attributes - read and write
