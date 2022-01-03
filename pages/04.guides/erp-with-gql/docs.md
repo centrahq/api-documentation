@@ -1364,7 +1364,7 @@ fragment basicSizeFields on ProductSize {
 
 #### Response
 
-SKU field is read-only, it's combined of `productNumber` + `variantNumber` + `sizeNumber`.
+In GraphQL API, SKU field is read-only, it's combined of `productNumber` + `variantNumber` + `sizeNumber`.
 
 ```json
 {
@@ -1559,3 +1559,383 @@ After you're done, you can verify the stock levels in Centra AMS:
 ![StockLevels](product-stock-ready.png)
 
 ## Custom Attributes - read and write
+
+[Custom Attributes](/overview/custom-attributes) are used to extend Product / Variant information in Centra. They can be defined in the `config.php` file and later used in Centra AMS and the APIs. Click here to see some [examples](/overview/custom-attributes#examples).
+
+### Fetching Products and Variants with custom attributes
+
+In this guide, we will only cover Product- and Variant-level attributes. For this example, I will use almost identical API call as in [fetching products](#fetching-products), but this time we will add fragment `attributes`, which can be used to read details of attributes of different types. Great thing about this fragment is that it can be used exactly the same way on both Product and Variant level (Centra doesn't have custom size-level attributes).
+
+#### Request
+
+```gql
+query productList(
+  $status: [ProductStatus!]! = [ACTIVE]
+  $page: Int! = 1
+) {
+  products(
+    where: { status: $status }
+    sort: [updatedAt_DESC]
+    limit: 10
+    page: $page
+  ) {
+    ...basicProductFields
+    ...attributes
+    variants {
+      ...basicVariantFields
+      ...attributes
+      productSizes {
+        ...basicSizeFields
+      }
+    }
+  }
+
+  counters {
+    products(where: { status: $status })
+  }
+}
+
+fragment basicProductFields on Product {
+  id
+  name
+  status
+  productNumber
+  harmonizedCommodityCode
+  harmonizedCommodityCodeDescription
+  internalComment
+  isBundle
+  isSerializableProduct
+  harmonizedCommodityCode
+  harmonizedCommodityCodeDescription
+  createdAt
+  updatedAt
+}
+
+fragment basicVariantFields on ProductVariant {
+  id
+  name
+  status
+  variantNumber
+  internalName
+  unitCost {
+    value
+    currency {
+      code
+    }
+    formattedValue
+  }
+  updatedAt(format: "Y-m-d\\TH:i:sO")
+}
+fragment basicSizeFields on ProductSize {
+  id
+  description
+  sizeNumber
+  GTIN
+  SKU
+}
+
+fragment attributes on ObjectWithAttributes {
+  attributes {
+    type {
+      name
+      isMapped
+    }
+    description
+    objectType
+    elements {
+      key
+      description
+      kind
+      ... on AttributeStringElement {
+        value
+      }
+      ... on AttributeChoiceElement {
+        isMulti
+        selectedValue
+        selectedValueName
+      }
+      ... on AttributeFileElement {
+        url
+      }
+      ... on AttributeImageElement {
+        url
+        width
+        height
+        mimeType
+      }
+    }
+  }
+}
+```
+
+#### Response
+
+Please note attributes `Long External Product Name` on the Product level and `Showroom Color Swatch` on the Variant level. Also, additional permissions are required to run this query.
+
+```json
+{
+  "data": {
+    "products": [
+      {
+        "id": 1,
+        "name": "First Product",
+        "status": "ACTIVE",
+        "productNumber": "Prod123",
+        "harmonizedCommodityCode": "HCC123",
+        "harmonizedCommodityCodeDescription": "Harm Code Description",
+        "internalComment": null,
+        "isBundle": false,
+        "isSerializableProduct": false,
+        "createdAt": "2021-12-31T13:44:23+0100",
+        "updatedAt": "2022-01-03T13:03:17+0100",
+        "attributes": [
+          {
+            "type": {
+              "name": "pr_long_name",
+              "isMapped": false
+            },
+            "description": "Long External Product Name",
+            "objectType": "Product",
+            "elements": [
+              {
+                "key": "text",
+                "description": "Long External Product Name",
+                "kind": "INPUT",
+                "value": "Test 123"
+              }
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "id": 1,
+            "name": "Chair",
+            "status": "ACTIVE",
+            "variantNumber": "Var123",
+            "internalName": "vrnt",
+            "unitCost": {
+              "value": 41,
+              "currency": {
+                "code": "EUR"
+              },
+              "formattedValue": "41.00 EUR"
+            },
+            "updatedAt": "2022-01-03T12:35:25+0100",
+            "attributes": [
+              {
+                "type": {
+                  "name": "sh_swatch",
+                  "isMapped": true
+                },
+                "description": "Showroom Color Swatch",
+                "objectType": "ProductVariant",
+                "elements": [
+                  {
+                    "key": "desc",
+                    "description": "Color",
+                    "kind": "INPUT",
+                    "value": "Blue"
+                  },
+                  {
+                    "key": "hex",
+                    "description": "Hex",
+                    "kind": "INPUT",
+                    "value": "#0000FF"
+                  },
+                  {
+                    "key": "image",
+                    "description": "Image",
+                    "kind": "IMAGE",
+                    "url": "https://sandbox.centraqa.com/client/dynamic/attributes/centra-logo_2064_png.jpg",
+                    "width": 50,
+                    "height": 50,
+                    "mimeType": "image/jpg"
+                  }
+                ]
+              }
+            ],
+            "productSizes": [
+              {
+                "id": 279,
+                "description": null,
+                "sizeNumber": "789S",
+                "GTIN": "EAN123456789S",
+                "SKU": "Prod123Var123789S"
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Shirt",
+            "status": "ACTIVE",
+            "variantNumber": "Var456",
+            "internalName": "vrnt2",
+            "unitCost": {
+              "value": 60,
+              "currency": {
+                "code": "EUR"
+              },
+              "formattedValue": "60.00 EUR"
+            },
+            "updatedAt": "2022-01-03T12:35:33+0100",
+            "attributes": [],
+            "productSizes": [
+              {
+                "id": 280,
+                "description": "S",
+                "sizeNumber": "789S",
+                "GTIN": "EAN123456789S",
+                "SKU": "Prod123Var456789S"
+              },
+              {
+                "id": 281,
+                "description": "M",
+                "sizeNumber": "789M",
+                "GTIN": "EAN123456789M",
+                "SKU": "Prod123Var456789M"
+              },
+              {
+                "id": 282,
+                "description": "L",
+                "sizeNumber": "789L",
+                "GTIN": "EAN123456789L",
+                "SKU": "Prod123Var456789L"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "counters": {
+      "products": 1
+    }
+  },
+  "extensions": {
+    "complexity": 112,
+    "permissionsUsed": [
+      "Product:read",
+      "Product.InternalComment:read",
+      "Product.Attribute:read",
+      "Product.ProductVariant:read",
+      "ProductVariant.InternalName:read",
+      "ProductVariant.Attribute:read",
+      "Attribute:read"
+    ]
+  }
+}
+```
+
+### Modifying custom attributes
+
+Here's how you can modify the `Long External Product Name` attribute on our test Product.
+
+#### Request
+
+Fragment `attributes` is identical to previous examples.
+
+```gql
+mutation editProductAttribute {
+  assignAttributes(input: {
+    objectType: Product
+    objectId: 1
+    dynamicAttributes: [
+      {
+        attributeTypeName: "pr_long_name"
+        attributeElementKey: "text"
+        attributeElementValue: "A very long name, indeed!"
+      }
+    ]
+  }) {
+    userErrors {
+      message
+      path
+    }
+    object {
+      ...on Product {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      ...attributes
+    }
+  }
+}
+
+fragment attributes on ObjectWithAttributes {
+  attributes {
+    type {
+      name
+      isMapped
+    }
+    description
+    objectType
+    elements {
+      key
+      description
+      kind
+      ... on AttributeStringElement {
+        value
+      }
+      ... on AttributeChoiceElement {
+        isMulti
+        selectedValue
+        selectedValueName
+      }
+      ... on AttributeFileElement {
+        url
+      }
+      ... on AttributeImageElement {
+        url
+        width
+        height
+        mimeType
+      }
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "assignAttributes": {
+      "userErrors": [],
+      "object": {
+        "id": 1,
+        "name": "First Product",
+        "createdAt": "2021-12-31T13:44:23+0100",
+        "updatedAt": "2022-01-03T13:03:17+0100",
+        "attributes": [
+          {
+            "type": {
+              "name": "pr_long_name",
+              "isMapped": false
+            },
+            "description": "Long External Product Name",
+            "objectType": "Product",
+            "elements": [
+              {
+                "key": "text",
+                "description": "Long External Product Name",
+                "kind": "INPUT",
+                "value": "A very long name, indeed!"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 112,
+    "permissionsUsed": [
+      "Attribute:write",
+      "Product.Attribute:read",
+      "Attribute:read"
+    ]
+  }
+}
+```
