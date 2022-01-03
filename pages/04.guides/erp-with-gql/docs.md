@@ -200,6 +200,236 @@ Please note, reading Markets and reading Market Countries use different permissi
 
 [TBD]
 
+## Folders - read and create
+
+Folders are a way to categorise your Products in Centra. Other than Categories, Folders are meant for internal use only. They are also generic for all the Stores you have configured in your Centra, while Categories are configured per-store.
+
+### Creating a new folder
+
+#### 1st folder - Request
+
+```gql
+mutation AddFolder {
+  createFolder(input:{
+    name: "First folder",
+    parent: null
+  }){
+    folder{
+      id
+      name
+      isTopFolder
+    }
+  }
+}
+```
+
+#### 1st folder - Response
+
+```json
+{
+  "data": {
+    "createFolder": {
+      "folder": {
+        "id": 1,
+        "name": "First folder",
+        "isTopFolder": true
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "Folder:write",
+      "Folder:read"
+    ]
+  }
+}
+```
+
+#### 2nd folder - Request
+
+```gql
+mutation AddFolder {
+  createFolder(input:{
+    name: "Second folder",
+    parent: {id: 1}
+  }){
+    folder{
+      id
+      name
+      isTopFolder
+    }
+  }
+}
+```
+
+#### 2nd folder - Response
+
+```json
+{
+  "data": {
+    "createFolder": {
+      "folder": {
+        "id": 2,
+        "name": "Second folder",
+        "isTopFolder": false
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "Folder:write",
+      "Folder:read"
+    ]
+  }
+}
+```
+
+### Fetching folders
+
+You can fetch the Folders themselves, or use this query to find the Products in specific folders.
+
+#### Request
+
+```gql
+query ReadFolders{
+  folders(where: { name: { contains: "First" } }) {
+    id
+    name
+    isTopFolder
+    products{
+      ...basicProductFields
+    }
+  }
+}
+
+fragment basicProductFields on Product {
+  id
+  name
+  status
+  productNumber
+  harmonizedCommodityCode
+  harmonizedCommodityCodeDescription
+  internalComment
+  isBundle
+  isSerializableProduct
+  createdAt
+  updatedAt
+}
+```
+
+#### Response
+
+We just added this Folder, so it has no Products yet.
+
+```json
+{
+  "data": {
+    "folders": [
+      {
+        "id": 1,
+        "name": "First folder",
+        "isTopFolder": true,
+        "products": []
+      }
+    ]
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "Folder:read",
+      "Folder.Product:read"
+    ]
+  }
+}
+```
+
+## Brands - read and create
+
+A Brand is a general attribute on product level where you can store the product’s brand. Each product can only belong to a single brand.
+
+### Creating a new brand
+
+#### Request
+
+```gql
+mutation addBrand {
+  createBrand(input: {
+    name: "My Brand",
+  	uri: "my-brand",
+    addToStores: { id: 1 } }
+  ) {
+    brand {
+      id
+      name
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "createBrand": {
+      "brand": {
+        "id": 1,
+        "name": "My Brand"
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "Brand:write",
+      "Brand:read"
+    ]
+  }
+}
+```
+
+### Fetching brands
+
+#### Request
+
+```gql
+query ReadBrands {
+  brands(where: { name: { contains: "My Brand"}})
+  {
+    id
+    name
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "brands": [
+      {
+        "id": 1,
+        "name": "My Brand"
+      }
+    ]
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "Brand:read"
+    ]
+  }
+}
+```
+
 ## Product Size Charts - read and create
 
 Size charts define the sizes of each Product Variant in Centra. Creating them should be a one-time action, which you should perform before importing Products into your Centra. Once assigned to a Variant, size chart can not be changed. If a size is used by a variant, especially if those belong to an existing order, you will not be able to remove them for historical (or even legal) reasons.
