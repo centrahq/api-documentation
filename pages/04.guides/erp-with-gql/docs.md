@@ -430,6 +430,92 @@ query ReadBrands {
 }
 ```
 
+## Collections - read and create
+
+Collections are mainly a concept seen in fashion, e.g. this could be a spring-summer Collection like `AW21` or `SS22`. If products aren’t set by season and you are selling other appliances, this could e.g. be “Kitchen”. It’s mainly used as a filter option in both Centra and the Centra Showroom.
+
+### Creating a new collection
+
+#### Request
+
+```gql
+mutation addCollection {
+  createCollection(input: {
+    name: "Collection 1",
+    status: ACTIVE
+  }) {
+    collection {
+      id
+      name
+      status      
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "createCollection": {
+      "collection": {
+        "id": 1,
+        "name": "Collection 1",
+        "status": "ACTIVE"
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "Collection:write",
+      "Collection:read"
+    ]
+  }
+}
+```
+
+### Fetching collections
+
+#### Request
+
+```gql
+query readCollections {
+  collections(where: { name: { contains: "Col"}})
+  {
+    id
+    name
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "collections": [
+      {
+        "id": 1,
+        "name": "Collection 1"
+      }
+    ]
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "Collection:read"
+    ]
+  }
+}
+```
+
 ## Product Size Charts - read and create
 
 Size charts define the sizes of each Product Variant in Centra. Creating them should be a one-time action, which you should perform before importing Products into your Centra. Once assigned to a Variant, size chart can not be changed. If a size is used by a variant, especially if those belong to an existing order, you will not be able to remove them for historical (or even legal) reasons.
