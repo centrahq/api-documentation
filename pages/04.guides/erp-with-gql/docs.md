@@ -932,6 +932,8 @@ mutation addProduct {
     collection: { id: 2 }
     folder: { id: 1 }
     countryOfOrigin: { code: "DE" }
+    harmonizedCommodityCode: "HCC123"
+    harmonizedCommodityCodeDescription: "Harm Code Description"
   }) {
     product { 
       id
@@ -941,6 +943,8 @@ mutation addProduct {
       brand { name }
       collection { name }
       folder { name }
+      harmonizedCommodityCode
+      harmonizedCommodityCodeDescription
     }
     userErrors {
       message
@@ -969,7 +973,9 @@ mutation addProduct {
         },
         "folder": {
           "name": "Shop"
-        }
+        },
+        "harmonizedCommodityCode": "HCC123",
+        "harmonizedCommodityCodeDescription": "Harm Code Description"
       },
       "userErrors": []
     }
@@ -1326,6 +1332,8 @@ fragment basicProductFields on Product {
   internalComment
   isBundle
   isSerializableProduct
+  harmonizedCommodityCode
+  harmonizedCommodityCodeDescription
   createdAt
   updatedAt
 }
@@ -1364,9 +1372,9 @@ fragment basicSizeFields on ProductSize {
         "id": 1,
         "name": "First Product",
         "status": "ACTIVE",
-        "productNumber": "TSHRT123",
-        "harmonizedCommodityCode": null,
-        "harmonizedCommodityCodeDescription": null,
+        "productNumber": "Prod123",
+        "harmonizedCommodityCode": "HCC123",
+        "harmonizedCommodityCodeDescription": "Harm Code Description",
         "internalComment": null,
         "isBundle": false,
         "isSerializableProduct": false,
@@ -1390,7 +1398,7 @@ fragment basicSizeFields on ProductSize {
             "productSizes": [
               {
                 "id": 279,
-                "description": null,
+                "description": "One Size",
                 "sizeNumber": "789S",
                 "GTIN": "EAN123456789S"
               }
