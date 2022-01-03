@@ -1,7 +1,7 @@
 ---
 title: Integrating Centra with an ERP system using GraphQL Integration API
 altTitle: ERP integration with GQL
-excerpt: Centra can be configured to integrate with your Enterprise Resource Planning system using GraphQL API. Click here to see how to perform most common operations on Products, Markets, Warehouses, Stock, Orders, Shipments and Returns in both B2B and B2C sales.
+excerpt: Centra can be configured to integrate with your Enterprise Resource Planning system using GraphQL API. As GQL is still in Beta, this functionality is still under development
 taxonomy:
   category: docs
 ---
@@ -80,7 +80,7 @@ query getStores {
 }
 ```
 
-As you can see, not only does GQL API return _precisely_ the data you asked for, nothing more, it also tells you which permissions were used, so that you know what your future Prod API key needs.
+As you can see, not only does GQL API return _precisely_ the data you asked for, nothing more, it also tells you which permissions were used, so that you know precisely how to configure your Prod API token in the future.
 
 ## Markets - read and create
 
@@ -91,18 +91,6 @@ Markets in Centra decide which Products are visible to the API consumer. [Click 
 ### Fetching Markets
 
 #### Request
-
-Compressed:
-
-```sh
-curl "${BASE_URL}/graphql" \
-	    -X POST \
-	    -H "Cookie: graphql-access=${ACCESS_TOKEN}" \
-	    -H "Content-Type: application/json" \
-	    -d '{"query": "{ markets { id name assignedToCountries { code name isEU } } }"}'
-```
-
-Pretty:
 
 ```gql
 query getMarkets {
@@ -202,11 +190,15 @@ Please note, reading Markets and reading Market Countries use different permissi
 
 ## Folders - read and create
 
-Folders are a way to categorise your Products in Centra. Other than Categories, Folders are meant for internal use only. They are also generic for all the Stores you have configured in your Centra, while Categories are configured per-store.
+https://docs.centra.com/graphql/query.html#folders
+
+Folders are a way to categorise your Products in Centra. Different than Categories, Folders are meant for internal use only. They are also generic for all the Stores you have configured in your Centra, while Categories are configured per-store.
 
 ### Creating a new folder
 
 #### 1st folder - Request
+
+Top-level folder.
 
 ```gql
 mutation addFolder {
@@ -247,6 +239,8 @@ mutation addFolder {
 ```
 
 #### 2nd folder - Request
+
+Child folder.
 
 ```gql
 mutation addFolder {
@@ -289,6 +283,8 @@ mutation addFolder {
 ### Fetching folders
 
 You can fetch the Folders themselves, or use this query to find the Products in specific folders.
+
+Remember, this is just an example. You can use other [FolderFilter](https://docs.centra.com/graphql/folderfilter.html) inside the `where` clause, and use any other [StringMatch](https://docs.centra.com/graphql/stringmatch.html) when searching by name, for example.
 
 #### Request
 
@@ -347,9 +343,13 @@ We just added this Folder, so it has no Products yet.
 
 ## Brands - read and create
 
+https://docs.centra.com/graphql/query.html#brands
+
 A Brand is a general attribute on product level where you can store the product’s brand. Each product can only belong to a single brand.
 
 ### Creating a new brand
+
+In order to fully use a brand, you should enable it in one or more of your Stores.
 
 #### Request
 
@@ -432,6 +432,8 @@ query getBrands {
 
 ## Collections - read and create
 
+https://docs.centra.com/graphql/query.html#collections
+
 Collections are mainly a concept seen in fashion, e.g. this could be a spring-summer Collection like `AW21` or `SS22`. If products aren’t set by season and you are selling other appliances, this could e.g. be “Kitchen”. It’s mainly used as a filter option in both Centra and the Centra Showroom.
 
 ### Creating a new collection
@@ -487,7 +489,7 @@ mutation addCollection {
 
 ```gql
 query getCollections {
-  collections(where: { name: { contains: "Col"}})
+  collections(where: { name: { contains: "Col" } } )
   {
     id
     name
@@ -517,6 +519,8 @@ query getCollections {
 ```
 
 ## Product Size Charts - read and create
+
+https://docs.centra.com/graphql/query.html#sizeCharts
 
 Size charts define the sizes of each Product Variant in Centra. Creating them should be a one-time action, which you should perform before importing Products into your Centra. Once assigned to a Variant, size chart can not be changed. If a size is used by a variant, especially if those belong to an existing order, you will not be able to remove them for historical (or even legal) reasons.
 
@@ -549,7 +553,7 @@ query getSizeChartsAndSizes {
         "sizes": [
           {
             "id": 1,
-            "name": null
+            "name": "One Size"
           }
         ]
       },
@@ -829,7 +833,7 @@ It's usually better and cleaner to create a new size chart, instead of modifying
 
 ### Removing size charts
 
-If you have to. It's better than adjust existing charts, usually.
+If you have to. It's better than adjusting existing charts, usually.
 
 #### Request
 
@@ -868,11 +872,13 @@ No errors means no problem. :)
 
 ## Product Measurement Charts - read and create
 
-Measurement charts are used to display the measurements of your products. While Size Charts define product sizes (S, M, L, XL), measurement charts are used to define measurements, in specific units, for each size. For example, measuremement chart for trousers can consist of leg and waist size, defined in cm or inches, for each defined size.
+https://docs.centra.com/graphql/query.html#measurementCharts
+
+Measurement charts are used to display the measurements of your products. While Size Charts define product sizes (S, M, L, XL, XXL), measurement charts are used to define their measurements, in specific units, for each size. For example, measuremement chart for trousers can consist of leg and waist size, defined in cm or inches, for each defined size.
 
 ### Creating a new measurement chart
 
-In this example, we will create a measurements table for shirts, defining what measurements each sizes (S, M, L) have.
+In this example, we will create a measurements table for our shirt product, defining what measurements each sizes (S, M, L) have.
 
 #### Request
 
@@ -954,7 +960,8 @@ mutation deleteMeasurementChart {
   removeMeasurementChart(id: 5) {
     userErrors {
       message
-      path }
+      path
+    }
   }
 }
 ```
@@ -1049,6 +1056,8 @@ mutation editProduct {
 
 ## Warehouses - read and create
 
+https://docs.centra.com/graphql/query.html#warehouses
+
 [Warehouses](/overview/stock#warehouses-and-allocation-rules) are the logical entities holding product Stock. Warehouse stock items connect directly to each variant size.
 
 ### Fetching existing warehouses
@@ -1060,14 +1069,10 @@ Once you've filtered which Warehouses you are interested in, you can fetch any d
 ```gql
 query getWarehouses {
   warehouses(where: { name: { contains: "Retail" } }, sort: [id_ASC]) {
-    ...warehouseCustomDetails
+    id
+    name
+    status
   }
-}
-
-fragment warehouseCustomDetails on Warehouse {
-  id
-  name
-  status
 }
 ```
 
@@ -1098,6 +1103,8 @@ fragment warehouseCustomDetails on Warehouse {
 [TBD]
 
 ## Adding Product 1
+
+https://docs.centra.com/graphql/query.html#products
 
 Just the basic Product, without Variants (yet) and no size chart selected.
 
@@ -1188,7 +1195,7 @@ mutation createVariant {
     status: ACTIVE
     variantNumber: "Var123"
     internalName: "vrnt"
-    unitCost: { # MonetaryValueInput
+    unitCost: {   # MonetaryValueInput
       value: 41
       currencyIsoCode: "EUR"
     }
@@ -1233,7 +1240,7 @@ Once the Product and Variant is created, and the size chart selected, you need t
 
 #### Request
 
-You already know your Variant and Size IDs - Centra generated them when you created them.  For every variant size you can configure size number (previously known as SKU) and/or GTIN (or EAN) number.
+You already know your Variant and Size IDs - Centra generated them when you created them. For every variant size you can configure size number (previously known as SKU) and/or GTIN (or EAN) number.
 
 ```gql
 mutation createOneSize {
@@ -1286,9 +1293,9 @@ As you can see, new `productSize` ID is generated. These are the sizes generated
 
 ## Adding Product 1 Variant 2: A sweater
 
-This example creates or updates a product – in this case a turtleneck sweater. The product comes in red and blue variants, and each variant is available in sizes S, M and L.
+This example creates or updates a product – in this case a sweater. In our example it will only have a single Variant, which is available in sizes S, M and L.
 
-We simply mention the other size chart - and all the right sizes are created automatically.
+The only difference from the previous example is using the second size chart this time.
 
 #### Request
 
@@ -1300,7 +1307,7 @@ mutation createVariant {
     status: ACTIVE
     variantNumber: "Var456"
     internalName: "vrnt2"
-    unitCost: { # MonetaryValueInput
+    unitCost: {   # MonetaryValueInput
       value: 60
       currencyIsoCode: "EUR"
     }
@@ -1653,7 +1660,7 @@ Remember, by default Centra expects you to send your physical stock - the amount
 
 #### Request
 
-Use the previously known Variant and Size ID. You need to iterate through all the sizes.
+Use the previously known Variant, Size and Warehouse ID. You need to iterate through all the sizes.
 
 One size:
 
