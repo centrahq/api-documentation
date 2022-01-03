@@ -47,7 +47,7 @@ curl "${BASE_URL}/graphql" \
 Pretty:
 
 ```gql
-{
+query getStores {
   stores {
     id
     name
@@ -105,7 +105,7 @@ curl "${BASE_URL}/graphql" \
 Pretty:
 
 ```gql
-{
+query getMarkets {
   markets {
     id
     name
@@ -209,7 +209,7 @@ Folders are a way to categorise your Products in Centra. Other than Categories, 
 #### 1st folder - Request
 
 ```gql
-mutation AddFolder {
+mutation addFolder {
   createFolder(input:{
     name: "First folder",
     parent: null
@@ -249,7 +249,7 @@ mutation AddFolder {
 #### 2nd folder - Request
 
 ```gql
-mutation AddFolder {
+mutation addFolder {
   createFolder(input:{
     name: "Second folder",
     parent: {id: 1}
@@ -293,7 +293,7 @@ You can fetch the Folders themselves, or use this query to find the Products in 
 #### Request
 
 ```gql
-query ReadFolders{
+query getFolders{
   folders(where: { name: { contains: "First" } }) {
     id
     name
@@ -400,8 +400,8 @@ mutation addBrand {
 #### Request
 
 ```gql
-query ReadBrands {
-  brands(where: { name: { contains: "My Brand"}})
+query getBrands {
+  brands(where: { name: { contains: "My Brand" } } )
   {
     id
     name
@@ -486,7 +486,7 @@ mutation addCollection {
 #### Request
 
 ```gql
-query readCollections {
+query getCollections {
   collections(where: { name: { contains: "Col"}})
   {
     id
@@ -522,7 +522,73 @@ Size charts define the sizes of each Product Variant in Centra. Creating them sh
 
 ### Fetching existing size charts and sizes
 
+#### Request
 
+```gql
+query getSizeChartsAndSizes {
+  sizeCharts{
+    id
+    name
+    sizes {
+      id
+      name
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "sizeCharts": [
+      {
+        "id": 1,
+        "name": "One Size",
+        "sizes": [
+          {
+            "id": 1,
+            "name": null
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "S-XXL",
+        "sizes": [
+          {
+            "id": 2,
+            "name": "S"
+          },
+          {
+            "id": 3,
+            "name": "M"
+          },
+          {
+            "id": 4,
+            "name": "L"
+          },
+          {
+            "id": 5,
+            "name": "XL"
+          },
+          {
+            "id": 6,
+            "name": "XXL"
+          }
+        ]
+      }
+    ]
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "SizeChart:read"
+    ]
+  }
+}
+```
 
 ### Creating new size charts
 
@@ -531,7 +597,7 @@ Here's how you can create a simple 1- or 2-dimensional size chart.
 #### Request: One-size chart
 
 ```gql
-mutation {
+mutation addSizeChart {
   createSizeChart(
     input: {
       name: "One Size"
@@ -542,7 +608,6 @@ mutation {
       displayDividedBy: 0
     }
   ) {
-    userErrors { message path }
     sizeChart {
       id
       name
@@ -550,6 +615,10 @@ mutation {
       horizontalLabels
       verticalLabels
       dividerSymbol
+    }
+    userErrors {
+      message
+      path
     }
   }
 }
@@ -592,7 +661,7 @@ mutation {
 #### Request: SML chart
 
 ```gql
-mutation {
+mutation addSizeChart {
   createSizeChart(
     input: {
       name: "Shirts SML"
@@ -603,7 +672,6 @@ mutation {
       displayDividedBy: 0
     }
   ) {
-    userErrors { message path }
     sizeChart {
       id
       name
@@ -611,6 +679,10 @@ mutation {
       horizontalLabels
       verticalLabels
       dividerSymbol
+    }
+    userErrors {
+      message
+      path
     }
   }
 }
@@ -663,7 +735,7 @@ mutation {
 #### Request: Any size chart
 
 ```gql
-mutation {
+mutation addSizeChart {
   createSizeChart(
     input: {
       name: "Any size chart"
@@ -674,7 +746,6 @@ mutation {
       displayDividedBy: 0
     }
   ) {
-    userErrors { message path }
     sizeChart {
       id
       name
@@ -682,6 +753,10 @@ mutation {
       horizontalLabels
       verticalLabels
       dividerSymbol
+    }
+    userErrors {
+      message
+      path
     }
   }
 }
@@ -759,11 +834,14 @@ If you have to. Better than adjust existing, usually.
 #### Request
 
 ```gql
-mutation {
+mutation deleteSizeChart {
   removeSizeChart(
     id: 3
   ) {
-    userErrors { message path }
+    userErrors {
+      message
+      path
+    }
   }
 }
 ```
@@ -799,7 +877,8 @@ Once you've filtered which Warehouses you are interested in, you can fetch any d
 #### Request
 
 ```gql
-warehouses(where: { name: { contains: "Retail" } }, sort: [id_ASC]) {
+query getWarehouses {
+  warehouses(where: { name: { contains: "Retail" } }, sort: [id_ASC]) {
     ...warehouseCustomDetails
   }
 }
@@ -847,7 +926,7 @@ Just the basic Product, without Variants (yet) and no size chart selected.
 mutation addProduct {
   createProduct(input: {
     name: "First Product"
-    status: INACTIVE
+    status: ACTIVE
     productNumber: "Prod123"
     brand: { id: 1 }
     collection: { id: 2 }
@@ -880,7 +959,7 @@ mutation addProduct {
       "product": {
         "id": 1,
         "name": "First Product",
-        "status": "INACTIVE",
+        "status": "ACTIVE",
         "productNumber": "Prod123",
         "brand": {
           "name": "Base Brand"
@@ -919,7 +998,7 @@ mutation createVariant {
   createProductVariant(input: {
     product: { id: 1 }
     name: "First Product"
-    status: INACTIVE
+    status: ACTIVE
     variantNumber: "Var123"
     internalName: "vrnt"
     unitCost: { # MonetaryValueInput
@@ -941,7 +1020,7 @@ mutation createVariant {
 
 #### Response
 
-```gql
+```json
 {
   "data": {
     "createProductVariant": {
@@ -961,6 +1040,63 @@ mutation createVariant {
 }
 ```
 
+## Activating sizes of Product 1 Variant 1: A chair
+
+Once the Product and Variant is created, and the size chart selected, you need to add (activate) the desired variant sizes. This is required, since in Centra you don't need to use _all_ the configured sizes - for instance, you can configure a XXS-XXL size chart and choose it for a product variant, but only activate sizes S-L.
+
+#### Request
+
+You already know your Variant and Size IDs - Centra generated them when you created them.  For every variant size you can configure size number, SKU and/or GTIN (or EAN) number.
+
+```gql
+mutation createOneSize {
+  createProductSize(
+    input: {
+      productVariant: { id: 1 },
+      size: { id: 1 },
+      gtin: "EAN000111",
+      sizeNumber: "111"
+    }
+  ) {
+    productSize {
+      id
+      GTIN
+      sizeNumber
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+}
+```
+
+#### Response
+
+As you can see, new `productSize` ID is generated. These are the sizes generated _for this specific variant_, they will be uniquely connected to Stock levels in your Warehouse.
+
+```json
+{
+  "data": {
+    "createProductSize": {
+      "productSize": {
+        "id": 279,
+        "GTIN": "EAN000111",
+        "sizeNumber": "111"
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "ProductVariant:write",
+      "ProductSize:read"
+    ]
+  }
+}
+```
+
 ## Adding Product 1 Variant 2: A sweater
 
 This example creates or updates a product – in this case a turtleneck sweater. The product comes in red and blue variants, and each variant is available in sizes S, M and L.
@@ -974,7 +1110,7 @@ mutation createVariant {
   createProductVariant(input: {
     product: { id: 1 }
     name: "First Product"
-    status: INACTIVE
+    status: ACTIVE
     variantNumber: "Var456"
     internalName: "vrnt2"
     unitCost: { # MonetaryValueInput
@@ -1016,11 +1152,69 @@ mutation createVariant {
 }
 ```
 
+## Activating sizes of Product 1 Variant 2: A sweater
+
+This is a multi-size Variant, each size needs to be activated separately.
+
+#### Request
+
+You can also match the size by name, instead of an ID. Repeat those mutations for sizes M and L.
+
+```gql
+mutation createMultipleSizes {
+  createProductSize(
+    input: {
+      productVariant: { id: 2 },
+      size: { name: "S" },
+      gtin: "EAN123456789S",
+      sizeNumber: "789S"
+    }
+  )
+  {
+    productSize {
+      id
+      GTIN
+      sizeNumber
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "createProductSize": {
+      "productSize": {
+        "id": 281,
+        "GTIN": "EAN123456789S",
+        "sizeNumber": "789S"
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "ProductVariant:write",
+      "ProductSize:read"
+    ]
+  }
+}
+```
+
 ## Adding Product 3: A bundle
 
 Bundles consist of multiple sections, of which each can be selected from a pre-selected list of variants. It can have pre-defined price, or calculate the bundle price based on the selected variants' prices. In the more complex, flexible bundles, the amount of the products in each section can differ, too.
 
 Each bundle only has one Variant by design. It also needs to be activated on a Display, just like any other Variant. Stock of each Bundle is calculated based on the contained section variants' prices.
+
+[TBD]
 
 #### Request
 
@@ -1038,9 +1232,64 @@ query something {
 }
 ```
 
+## Pricelists - read and create
+
+When Products are added, you need to add them to Pricelists and set a price if you want them to be purchasable. Setting a price is one of the actions that also works on the inactive Products, allowing you to set up the Products before activating them for sale.
+
+### Fetching existing Pricelists
+
+Once you've filtered which Pricelists you are interested in, you can fetch any data you need about each of the Pricelist returned. To see other ways of filtering Pricelists, see [PricelistFilter definition](https://docs.centra.com/graphql/pricelistfilter.html) in our documentation.
+
+#### Request
+
+```gql
+query getPricelists {
+  pricelists(where: { name: { contains: "SEK" } }, sort: [id_ASC]) {
+    ...pricelistCustomDetails
+  }
+}
+
+fragment pricelistCustomDetails on Pricelist {
+  id
+  name
+  status
+}
+```
+
+#### Response
+
+```gql
+{
+  "data": {
+    "pricelists": [
+      {
+        "id": 1,
+        "name": "SEK",
+        "status": "ACTIVE"
+      },
+      {
+        "id": 3,
+        "name": "VIP-SEK",
+        "status": "ACTIVE"
+      }
+    ]
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "Pricelist:read"
+    ]
+  }
+}
+```
+
+### Creating a new Pricelist
+
+[TBD]
+
 ## Fetching Products
 
-Fetching a product list is best done with pagination and using a reasonable limit - probably between 20 and 100 products per page.
+Now that Products, Variants and Sizes are created, let's see how the full product looks like. Fetching a product list is best done with pagination and using a reasonable limit - probably between 20 and 100 products per page.
 
 ```gql
 query productList(
@@ -1114,20 +1363,20 @@ fragment basicSizeFields on ProductSize {
       {
         "id": 1,
         "name": "First Product",
-        "status": "INACTIVE",
-        "productNumber": "Prod123",
+        "status": "ACTIVE",
+        "productNumber": "TSHRT123",
         "harmonizedCommodityCode": null,
         "harmonizedCommodityCodeDescription": null,
         "internalComment": null,
         "isBundle": false,
         "isSerializableProduct": false,
         "createdAt": "2021-12-31T13:44:23+0100",
-        "updatedAt": "2021-12-31T13:44:23+0100",
+        "updatedAt": "2022-01-03T11:43:56+0100",
         "variants": [
           {
             "id": 1,
             "name": "First Product",
-            "status": "INACTIVE",
+            "status": "ACTIVE",
             "variantNumber": "Var123",
             "internalName": "vrnt",
             "unitCost": {
@@ -1137,13 +1386,20 @@ fragment basicSizeFields on ProductSize {
               },
               "formattedValue": "41.00 EUR"
             },
-            "updatedAt": "2021-12-31T13:51:12+0100",
-            "productSizes": []
+            "updatedAt": "2022-01-03T11:44:02+0100",
+            "productSizes": [
+              {
+                "id": 279,
+                "description": null,
+                "sizeNumber": "789S",
+                "GTIN": "EAN123456789S"
+              }
+            ]
           },
           {
             "id": 2,
             "name": "First Product",
-            "status": "INACTIVE",
+            "status": "ACTIVE",
             "variantNumber": "Var456",
             "internalName": "vrnt2",
             "unitCost": {
@@ -1153,14 +1409,33 @@ fragment basicSizeFields on ProductSize {
               },
               "formattedValue": "60.00 EUR"
             },
-            "updatedAt": "2021-12-31T13:54:18+0100",
-            "productSizes": []
+            "updatedAt": "2022-01-03T11:44:06+0100",
+            "productSizes": [
+              {
+                "id": 280,
+                "description": "S",
+                "sizeNumber": "789S",
+                "GTIN": "EAN123456789S"
+              },
+              {
+                "id": 281,
+                "description": "M",
+                "sizeNumber": "789M",
+                "GTIN": "EAN123456789M"
+              },
+              {
+                "id": 282,
+                "description": "L",
+                "sizeNumber": "789L",
+                "GTIN": "EAN123456789L"
+              }
+            ]
           }
         ]
       }
     ],
     "counters": {
-      "products": 2
+      "products": 1
     }
   },
   "extensions": {
@@ -1172,82 +1447,6 @@ fragment basicSizeFields on ProductSize {
       "ProductVariant.InternalName:read"
     ]
   }
-}
-```
-
-## Pricelists - read and create
-
-When Products are added, you need to add them to Pricelists and set a price if you want them to be purchasable. Setting a price is one of the actions that also works on the inactive Products, allowing you to set up the Products before activating them for sale.
-
-### Fetching existing Pricelists
-
-Once you've filtered which Pricelists you are interested in, you can fetch any data you need about each of the Pricelist returned. To see other ways of filtering Pricelists, see [PricelistFilter definition](https://docs.centra.com/graphql/pricelistfilter.html) in our documentation.
-
-#### Request
-
-```gql
-pricelists(where: { name: { contains: "SEK" } }, sort: [id_ASC]) {
-    ...pricelistCustomDetails
-  }
-}
-
-fragment pricelistCustomDetails on Pricelist {
-  id
-  name
-  status
-}
-```
-
-#### Response
-
-```gql
-{
-  "data": {
-    "pricelists": [
-      {
-        "id": 1,
-        "name": "SEK",
-        "status": "ACTIVE"
-      },
-      {
-        "id": 3,
-        "name": "VIP-SEK",
-        "status": "ACTIVE"
-      }
-    ]
-  },
-  "extensions": {
-    "complexity": 121,
-    "permissionsUsed": [
-      "Pricelist:read"
-    ]
-  }
-}
-```
-
-### Creating a new Pricelist
-
-[TBD]
-
-## Fetching Products
-
-As soon as Products exist, they can be fetched. However, Products in the Centra AMS backend are different that what `product` used to be in Centra wenshop APIs. In the APIs, by design, product Displays are used as a presentation layer for each product variant, allowing you to set product URI, media, description, etc.
-
-The topic of display items as products is fully explained in our [Front End development guide](/fe-development/fe-elements#why-do-i-see-different-product-ids-in-the-centra-backend-and-in-checkout-api).
-
-#### Request
-
-```gql
-query something {
-	placeholder
-}
-```
-
-#### Response
-
-```gql
-query something {
-	placeholder
 }
 ```
 
