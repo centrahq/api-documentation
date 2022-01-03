@@ -943,25 +943,7 @@ Remember, by default Centra expects you to send your physical stock - the amount
 
 #### Request
 
-```gql
-query something {
-	placeholder
-}
-```
-
-#### Response
-
-```gql
-query something {
-	placeholder
-}
-```
-
-## B2B Wholesale - Payment Terms
-
-[TBD]
-
-#### Request
+Use the Variant
 
 ```gql
 query something {
@@ -977,22 +959,4 @@ query something {
 }
 ```
 
-## B2B Wholesale - Accounts
-
-[TBD]
-
-#### Request
-
-```gql
-query something {
-	placeholder
-}
-```
-
-#### Response
-
-```gql
-query something {
-	placeholder
-}
-```
+## Custom Attributes - read and write
