@@ -9,7 +9,7 @@ taxonomy:
 In Centra, we strongly believe GraphQL is the future of the APIs, just like REST is the present and SOAP is the past. For that reason, we've been putting a lot of effort into building our GQL API into what we think will be the _last_ integration API you will ever need.
 
 [notice-box=info]
-Centra GraphQL API is currently in Beta, so not all the ERP-related functionality is available at the moment. For now you can use it to integrate with your PIM system and get used to GQL in general, additionally we recommend you to sign up for our Newsletter to be notified about updates. Let us know if there's any specific functionality you need with priority and we will look into it. You can also stay up to date by following our changelog at https://docs.centra.com/graphql/#changelog.
+Centra GraphQL API is currently in Beta, so not all the ERP-related functionality is available at the moment. For now you can use it to integrate with your PIM system and get used to GQL in general, additionally we recommend you to sign up for our Newsletter to be notified about updates. Let us know if there's any specific functionality you need with priority and we will look into it. You can always see the latest additions in the [GraphQL API changelog](https://docs.centra.com/graphql/#changelog).
 [/notice-box]
 
 ## GraphQL API introduction
@@ -25,6 +25,8 @@ GraphQL is different from other Centra APIs, especially when it comes to authent
 It is _not allowed_ to use a full-permissions API tokens in Production. This is simply not safe, as GraphQL gives you granular access to almost every part of Centra. It's also not allowed to share your tokens with others - every Centra admin user can create a new test token in a matter of seconds. Centra monitors the usage of those API tokens, so if you abuse those rules, we might contact you and ask that you address it.
 
 For more information about generating and using API tokens, see the [authorization chapter of our GraphQL API docs](/api-references/graphql-integration-api/authorization).
+
+***
 
 # Cookbook
 
