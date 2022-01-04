@@ -18,7 +18,7 @@ Also make sure that you are setting the `Test-Mode` option accordingly.
 
 The settings in the plugin affect the integration in the following way:
 
-- **Test-Mode**: If set to `yes` Centra will connect to Ingrid's `stage` environment, if set to `no` Centra will
+- **Test-Mode**: If set to `yes` Centra will connect to Ingrid's `stage` environment, if set to `no` Centra will connect to Ingrid's `production` environment.
 - **Convert method**: A legacy option to convert the shipping method codes from Ingrid into the codes used by the 3PL, this is however handled in Ingrid's admin nowadays.
 - **Default Locale**: The locale(language) the widget will be shown in by default, if a proper locale is set on the selection Centra will tell Ingrid to try to use the selection's language instead. If Ingrid doesn't support the locale on the selection, the default locale will be used.
 - **Clear zip code on error**: If set to `yes` and the zip code is set on the selection and we receive an error from Ingrid when trying to create the session, the zip code will be emptied on the selection.
