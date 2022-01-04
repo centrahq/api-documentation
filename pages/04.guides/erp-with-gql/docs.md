@@ -8,6 +8,10 @@ taxonomy:
 
 In Centra, we strongly believe GraphQL is the future of the APIs, just like REST is the present and SOAP is the past. For that reason, we've been putting a lot of effort into building our GQL API into what we think will be the _last_ integration API you will ever need.
 
+[notice-box=info]
+Centra GraphQL API is currently in Beta, so not all the ERP-related functionality is available at the moment. For now you can use it to integrate with your PIM system and get used to GQL in general, additionally we recommend you to sign up for our Newsletter to be notified about updates. Let us know if there's any specific functionality you need with priority and we will look into it. You can also stay up to date by following our changelog at https://docs.centra.com/graphql/#changelog.
+[/notice-box]
+
 ## GraphQL API introduction
 
 All queries, mutations and examples are documented in [GraphQL Integration API reference](/api-references/graphql-integration-api).
@@ -1006,6 +1010,7 @@ mutation editProduct {
       brand { name }
       collection { name }
       folder { name }
+      measurementTable{ chart { name } }
     }
     userErrors {
       message
@@ -1017,7 +1022,46 @@ mutation editProduct {
 
 #### Response
 
-[This feature is not publicly released, yet]
+```json
+{
+  "data": {
+    "updateProduct": {
+      "product": {
+        "id": 1,
+        "name": "First Product",
+        "status": "ACTIVE",
+        "productNumber": "Prod123",
+        "brand": {
+          "name": "My Brand"
+        },
+        "collection": {
+          "name": "AW20"
+        },
+        "folder": {
+          "name": "Shirts"
+        },
+        "measurementTable": {
+          "chart": {
+            "name": "Shirts"
+          }
+        }
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 112,
+    "permissionsUsed": [
+      "Product:write",
+      "Product:read",
+      "Product.Brand:read",
+      "Product.Collection:read",
+      "Product.Folder:read",
+      "Product.MeasurementTable:read"
+    ]
+  }
+}
+```
 
 ### Un-assigning a measurement chart from a product
 
@@ -1041,6 +1085,7 @@ mutation editProduct {
       brand { name }
       collection { name }
       folder { name }
+      measurementTable{ chart { name } }
     }
     userErrors {
       message
@@ -1052,7 +1097,42 @@ mutation editProduct {
 
 #### Response
 
-[This feature is not publicly released, yet]
+```json
+{
+  "data": {
+    "updateProduct": {
+      "product": {
+        "id": 1,
+        "name": "First Product",
+        "status": "ACTIVE",
+        "productNumber": "Prod123",
+        "brand": {
+          "name": "My Brand"
+        },
+        "collection": {
+          "name": "AW20"
+        },
+        "folder": {
+          "name": "Shirts"
+        },
+        "measurementTable": null
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 112,
+    "permissionsUsed": [
+      "Product:write",
+      "Product:read",
+      "Product.Brand:read",
+      "Product.Collection:read",
+      "Product.Folder:read",
+      "Product.MeasurementTable:read"
+    ]
+  }
+}
+```
 
 ## Warehouses - read and create
 
