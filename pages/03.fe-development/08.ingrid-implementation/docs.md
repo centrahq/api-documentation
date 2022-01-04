@@ -86,7 +86,7 @@ The steps can be
 3. Load the payment
 
 In this scenario the Ingrid plugin usually requires the `zip code` (via `PUT /payment-fields`) to have been entered before it tries to initialize the Ingrid session.
-Since the payment is initiated after and Ingrid has received the address data the payment service provider is up to date with the shipping price from Ingrid.
+Since the payment is initiated after Ingrid, which has already received the address data, the payment service provider is up to date with the shipping price from Ingrid.
 
 NOTE: if another address than the one provided in `PUT /payment-fields` is sent in the `POST /payment` call in step 3, Centra will _NOT_ send the new address to Ingrid.
 
