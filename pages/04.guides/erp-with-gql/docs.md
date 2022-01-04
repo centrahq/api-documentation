@@ -988,152 +988,6 @@ mutation deleteMeasurementChart {
 }
 ```
 
-### Assigning a measurement chart to a product
-
-When creating or editing a Product, you can assign a measurement chart to it.
-
-#### Request
-
-```gql
-mutation editProduct {
-  updateProduct(id: 1, input: {
-      measurementTable: {
-          inherited: false
-          measurementChart: {id: 6}
-      }
-  }) {
-    product { 
-      id
-      name
-      status
-      productNumber
-      brand { name }
-      collection { name }
-      folder { name }
-      measurementTable{ chart { name } }
-    }
-    userErrors {
-      message
-      path
-    }
-  }
-}
-```
-
-#### Response
-
-```json
-{
-  "data": {
-    "updateProduct": {
-      "product": {
-        "id": 1,
-        "name": "First Product",
-        "status": "ACTIVE",
-        "productNumber": "Prod123",
-        "brand": {
-          "name": "My Brand"
-        },
-        "collection": {
-          "name": "AW20"
-        },
-        "folder": {
-          "name": "Shirts"
-        },
-        "measurementTable": {
-          "chart": {
-            "name": "Shirts"
-          }
-        }
-      },
-      "userErrors": []
-    }
-  },
-  "extensions": {
-    "complexity": 112,
-    "permissionsUsed": [
-      "Product:write",
-      "Product:read",
-      "Product.Brand:read",
-      "Product.Collection:read",
-      "Product.Folder:read",
-      "Product.MeasurementTable:read"
-    ]
-  }
-}
-```
-
-### Un-assigning a measurement chart from a product
-
-To do this, simply pass `null` as the chart ID.
-
-#### Request
-
-```gql
-mutation editProduct {
-  updateProduct(id: 1, input: {
-      measurementTable: {
-          inherited: false
-          measurementChart: {id: null}
-      }
-  }) {
-    product { 
-      id
-      name
-      status
-      productNumber
-      brand { name }
-      collection { name }
-      folder { name }
-      measurementTable{ chart { name } }
-    }
-    userErrors {
-      message
-      path
-    }
-  }
-}
-```
-
-#### Response
-
-```json
-{
-  "data": {
-    "updateProduct": {
-      "product": {
-        "id": 1,
-        "name": "First Product",
-        "status": "ACTIVE",
-        "productNumber": "Prod123",
-        "brand": {
-          "name": "My Brand"
-        },
-        "collection": {
-          "name": "AW20"
-        },
-        "folder": {
-          "name": "Shirts"
-        },
-        "measurementTable": null
-      },
-      "userErrors": []
-    }
-  },
-  "extensions": {
-    "complexity": 112,
-    "permissionsUsed": [
-      "Product:write",
-      "Product:read",
-      "Product.Brand:read",
-      "Product.Collection:read",
-      "Product.Folder:read",
-      "Product.MeasurementTable:read"
-    ]
-  }
-}
-```
-
 ## Warehouses - read and create
 
 https://docs.centra.com/graphql/query.html#warehouses
@@ -1503,6 +1357,152 @@ query something {
 ```gql
 query something {
 	placeholder
+}
+```
+
+### Assigning a measurement chart to a product
+
+When creating or editing a Product, you can assign a measurement chart to it.
+
+#### Request
+
+```gql
+mutation editProduct {
+  updateProduct(id: 1, input: {
+      measurementTable: {
+          inherited: false
+          measurementChart: {id: 6}
+      }
+  }) {
+    product { 
+      id
+      name
+      status
+      productNumber
+      brand { name }
+      collection { name }
+      folder { name }
+      measurementTable{ chart { name } }
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "updateProduct": {
+      "product": {
+        "id": 1,
+        "name": "First Product",
+        "status": "ACTIVE",
+        "productNumber": "Prod123",
+        "brand": {
+          "name": "My Brand"
+        },
+        "collection": {
+          "name": "AW20"
+        },
+        "folder": {
+          "name": "Shirts"
+        },
+        "measurementTable": {
+          "chart": {
+            "name": "Shirts"
+          }
+        }
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 112,
+    "permissionsUsed": [
+      "Product:write",
+      "Product:read",
+      "Product.Brand:read",
+      "Product.Collection:read",
+      "Product.Folder:read",
+      "Product.MeasurementTable:read"
+    ]
+  }
+}
+```
+
+### Un-assigning a measurement chart from a product
+
+To do this, simply pass `null` as the chart ID.
+
+#### Request
+
+```gql
+mutation editProduct {
+  updateProduct(id: 1, input: {
+      measurementTable: {
+          inherited: false
+          measurementChart: {id: null}
+      }
+  }) {
+    product { 
+      id
+      name
+      status
+      productNumber
+      brand { name }
+      collection { name }
+      folder { name }
+      measurementTable{ chart { name } }
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "updateProduct": {
+      "product": {
+        "id": 1,
+        "name": "First Product",
+        "status": "ACTIVE",
+        "productNumber": "Prod123",
+        "brand": {
+          "name": "My Brand"
+        },
+        "collection": {
+          "name": "AW20"
+        },
+        "folder": {
+          "name": "Shirts"
+        },
+        "measurementTable": null
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 112,
+    "permissionsUsed": [
+      "Product:write",
+      "Product:read",
+      "Product.Brand:read",
+      "Product.Collection:read",
+      "Product.Folder:read",
+      "Product.MeasurementTable:read"
+    ]
+  }
 }
 ```
 
