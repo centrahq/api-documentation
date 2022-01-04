@@ -1830,6 +1830,198 @@ After you're done, you can verify the stock levels in Centra AMS:
 
 ![StockLevels](product-stock-ready.png)
 
+### Fetching Product Stock
+
+You can also read the Stock levels using the API. Remember, "physical" quantity is the amount you have physically on the shelf in your Warehouse, available stock (FTA - Free to Allocate) is calculated by Centra based on existing orders.
+
+#### Request
+
+Stock is stored on the Size level, so you can access it using a `products` call similar to previous examples. Note the `stockTotals` section, which requires additional permissions.
+
+```gql
+query productList(
+  $status: [ProductStatus!]! = [INACTIVE, ACTIVE]
+  $page: Int! = 1
+) {
+  products(
+    where: { status: $status }
+    sort: [updatedAt_DESC]
+    limit: 10
+    page: $page
+  ) {
+    ...basicProductFields
+    variants {
+      ...basicVariantFields
+      productSizes {
+        ...basicSizeFields
+        stockTotals{
+          availableQuantity
+          physicalQuantity
+        }
+      }
+    }
+  }
+  
+  counters {
+    products(where: { status: $status })
+  }
+}
+fragment basicProductFields on Product {
+  id
+  name
+  status
+  productNumber
+  harmonizedCommodityCode
+  harmonizedCommodityCodeDescription
+  internalComment
+  isBundle
+  isSerializableProduct
+  harmonizedCommodityCode
+  harmonizedCommodityCodeDescription
+  createdAt
+  updatedAt
+}
+fragment basicVariantFields on ProductVariant {
+  id
+  name
+  status
+  variantNumber
+  internalName
+  unitCost {
+    value
+    currency {
+      code
+    }
+    formattedValue
+  }
+  updatedAt(format: "Y-m-d\\TH:i:sO")
+}
+fragment basicSizeFields on ProductSize {
+  id
+  description
+  sizeNumber
+  GTIN
+  SKU
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "products": [
+      {
+        "id": 1,
+        "name": "First Product",
+        "status": "ACTIVE",
+        "productNumber": "Prod123",
+        "harmonizedCommodityCode": "HCC123",
+        "harmonizedCommodityCodeDescription": "Harm Code Description",
+        "internalComment": null,
+        "isBundle": false,
+        "isSerializableProduct": false,
+        "createdAt": "2021-12-31T13:44:23+0100",
+        "updatedAt": "2022-01-04T11:54:21+0100",
+        "variants": [
+          {
+            "id": 1,
+            "name": "Chair",
+            "status": "ACTIVE",
+            "variantNumber": "Var123",
+            "internalName": "vrnt",
+            "unitCost": {
+              "value": 41,
+              "currency": {
+                "code": "EUR"
+              },
+              "formattedValue": "41.00 EUR"
+            },
+            "updatedAt": "2022-01-03T12:35:25+0100",
+            "productSizes": [
+              {
+                "id": 279,
+                "description": null,
+                "sizeNumber": "789S",
+                "GTIN": "EAN123456789S",
+                "SKU": "Prod123Var123789S",
+                "stockTotals": {
+                  "availableQuantity": 10,
+                  "physicalQuantity": 10
+                }
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Shirt",
+            "status": "ACTIVE",
+            "variantNumber": "Var456",
+            "internalName": "vrnt2",
+            "unitCost": {
+              "value": 60,
+              "currency": {
+                "code": "EUR"
+              },
+              "formattedValue": "60.00 EUR"
+            },
+            "updatedAt": "2022-01-03T12:35:33+0100",
+            "productSizes": [
+              {
+                "id": 280,
+                "description": "S",
+                "sizeNumber": "789S",
+                "GTIN": "EAN123456789S",
+                "SKU": "Prod123Var456789S",
+                "stockTotals": {
+                  "availableQuantity": 4,
+                  "physicalQuantity": 4
+                }
+              },
+              {
+                "id": 281,
+                "description": "M",
+                "sizeNumber": "789M",
+                "GTIN": "EAN123456789M",
+                "SKU": "Prod123Var456789M",
+                "stockTotals": {
+                  "availableQuantity": 8,
+                  "physicalQuantity": 8
+                }
+              },
+              {
+                "id": 282,
+                "description": "L",
+                "sizeNumber": "789L",
+                "GTIN": "EAN123456789L",
+                "SKU": "Prod123Var456789L",
+                "stockTotals": {
+                  "availableQuantity": 20,
+                  "physicalQuantity": 20
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "counters": {
+      "products": 1
+    }
+  },
+  "extensions": {
+    "complexity": 112,
+    "permissionsUsed": [
+      "Product:read",
+      "Product.InternalComment:read",
+      "Product.ProductVariant:read",
+      "ProductVariant.InternalName:read",
+      "ProductSize.Stock:read"
+    ]
+  }
+}
+```
+
 ## Custom Attributes - read and write
 
 [Custom Attributes](/overview/custom-attributes) are used to extend Product / Variant information in Centra. They can be defined in the `config.php` file and later used in Centra AMS and the APIs. Click here to see some [examples](/overview/custom-attributes#examples).
