@@ -171,6 +171,20 @@ The `filter` object has values for the `swatch.desc` field at the end of this JS
 
 In the filter object, the only thing that changes depending on what you filter on is the `“count”`. If you do not filter on anything, `count` will be equal to `totalCount`.
 
+#### Custom relation types for product displays
+
+If you wish to configure your own display relation types, you can add them to your `config.php` file:
+
+```php
+$usr_conf['PRODUCT']['additional_relationtypes'] = [
+    '101' => 'Sale',
+    '102' => 'Something similar',
+    '103' => 'Something else entirely'
+];
+```
+
+Please use IDs above `100`, Centra reserves the use of the lower numbers for internal use.
+
 #### Using POST /uri endpoint
 
 [notice-box=info]
