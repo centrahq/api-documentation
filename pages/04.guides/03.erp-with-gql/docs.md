@@ -1,7 +1,7 @@
 ---
-title: Integrating Centra with an ERP system using GraphQL Integration API
-altTitle: ERP integration with GQL
-excerpt: Centra can be configured to integrate with your Enterprise Resource Planning system using GraphQL API. As GQL is still in Beta, this functionality is still under development
+title: Integrating Centra with an PIM and/or ERP systems using GraphQL Integration API
+altTitle: PIM/ERP integration with GQL
+excerpt: Centra can be configured to integrate with your Product Information Management and/or Enterprise Resource Planning systems using GraphQL API. As GQL is still in Beta, this functionality is still under development
 taxonomy:
   category: docs
 ---
