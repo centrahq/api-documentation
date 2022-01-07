@@ -32,7 +32,7 @@ For more information about generating and using API tokens, see the [authorizati
 
 ## Connection test - fetch Stores
 
-https://docs.centra.com/graphql/query.html#stores
+[https://docs.centra.com/graphql/query.html#stores](https://docs.centra.com/graphql/query.html#stores)
 
 Before you proceed, follow the instructions above to obtain your own API token. In QA, you can start with an all-permissions token for yourself. To test the connection, we will fetch info about your Stores, since even an empty Centra setup will have at least one configured. This is a read only operation, nothing bad can happen.
 
@@ -90,7 +90,7 @@ As you can see, not only does GQL API return _precisely_ the data you asked for,
 
 ## Markets - read and create
 
-https://docs.centra.com/graphql/query.html#markets
+[https://docs.centra.com/graphql/query.html#markets](https://docs.centra.com/graphql/query.html#markets)
 
 Markets in Centra decide which Products are visible to the API consumer. [Click here to learn more](https://docs.centra.com/overview/centra-overview#market).
 
@@ -196,7 +196,7 @@ Please note, reading Markets and reading Market Countries use different permissi
 
 ## Folders - read and create
 
-https://docs.centra.com/graphql/query.html#folders
+[https://docs.centra.com/graphql/query.html#folders](https://docs.centra.com/graphql/query.html#folders)
 
 Folders are a way to categorise your Products in Centra. Different than Categories, Folders are meant for internal use only. They are also generic for all the Stores you have configured in your Centra, while Categories are configured per-store.
 
@@ -349,7 +349,7 @@ We just added this Folder, so it has no Products yet.
 
 ## Brands - read and create
 
-https://docs.centra.com/graphql/query.html#brands
+[https://docs.centra.com/graphql/query.html#brands](https://docs.centra.com/graphql/query.html#brands)
 
 A Brand is a general attribute on product level where you can store the product’s brand. Each product can only belong to a single brand.
 
@@ -438,7 +438,7 @@ query getBrands {
 
 ## Collections - read and create
 
-https://docs.centra.com/graphql/query.html#collections
+[https://docs.centra.com/graphql/query.html#collections](https://docs.centra.com/graphql/query.html#collections)
 
 Collections are mainly a concept seen in fashion, e.g. this could be a spring-summer Collection like `AW21` or `SS22`. If products aren’t set by season and you are selling other appliances, this could e.g. be “Kitchen”. It’s mainly used as a filter option in both Centra and the Centra Showroom.
 
@@ -526,7 +526,7 @@ query getCollections {
 
 ## Product Size Charts - read and create
 
-https://docs.centra.com/graphql/query.html#sizeCharts
+[https://docs.centra.com/graphql/query.html#sizeCharts](https://docs.centra.com/graphql/query.html#sizeCharts)
 
 Size charts define the sizes of each Product Variant in Centra. Creating them should be a one-time action, which you should perform before importing Products into your Centra. Once assigned to a Variant, size chart can not be changed. If a size is used by a variant, especially if those belong to an existing order, you will not be able to remove them for historical (or even legal) reasons.
 
@@ -878,7 +878,7 @@ No errors means no problem. :)
 
 ## Product Measurement Charts - read and create
 
-https://docs.centra.com/graphql/query.html#measurementCharts
+[https://docs.centra.com/graphql/query.html#measurementCharts](https://docs.centra.com/graphql/query.html#measurementCharts)
 
 Measurement charts are used to display the measurements of your products. While Size Charts define product sizes (S, M, L, XL, XXL), measurement charts are used to define their measurements, in specific units, for each size. For example, measuremement chart for trousers can consist of leg and waist size, defined in cm or inches, for each defined size.
 
@@ -992,7 +992,7 @@ mutation deleteMeasurementChart {
 
 ## Warehouses - read and create
 
-https://docs.centra.com/graphql/query.html#warehouses
+[https://docs.centra.com/graphql/query.html#warehouses](https://docs.centra.com/graphql/query.html#warehouses)
 
 [Warehouses](/overview/stock#warehouses-and-allocation-rules) are the logical entities holding product Stock. Warehouse stock items connect directly to each variant size.
 
@@ -1040,7 +1040,7 @@ query getWarehouses {
 
 ## Adding Product 1
 
-https://docs.centra.com/graphql/query.html#products
+[https://docs.centra.com/graphql/query.html#products](https://docs.centra.com/graphql/query.html#products)
 
 Just the basic Product, without Variants (yet) and no size chart selected.
 
@@ -1736,7 +1736,7 @@ In GraphQL API, SKU field is read-only, it's combined of `productNumber` + `vari
 
 ## Product Stock update
 
-https://docs.centra.com/graphql/stock.html
+[https://docs.centra.com/graphql/stock.html](https://docs.centra.com/graphql/stock.html)
 
 Once Products with Variants are Sizes are activated with Displays, and the Warehouses exist, you can start adding stock amounts of your products in each warehouse. Once those are connected into groups in Warehouses -> Allocation Rules, they will be automatically returned as Stock for customers connecting from specific Markets, closing the part of the configuration required to have your Products available in your Store.
 
