@@ -1,15 +1,15 @@
 ---
-title: Integrating Centra with an PIM and/or ERP systems using GraphQL Integration API
-altTitle: PIM/ERP integration with GQL
-excerpt: Centra can be configured to integrate with your Product Information Management and/or Enterprise Resource Planning systems using GraphQL API. As GQL is still in Beta, this functionality is still under development
+title: Integrating Centra with PIM systems using GraphQL Integration API
+altTitle: PIM integration with GQL
+excerpt: Centra can be configured to integrate with your Product Information Management systems using GraphQL API. As GQL is still in Beta, more functionality is still under development
 taxonomy:
   category: docs
 ---
 
-In Centra, we strongly believe GraphQL is the future of the APIs, just like REST is the present and SOAP is the past. For that reason, we've been putting a lot of effort into building our GQL API into what we think will be the _last_ integration API you will ever need.
+In Centra, we strongly believe GraphQL is the future of the APIs, just like REST is the present and SOAP is the past. For that reason, we've been putting a lot of effort into building our GQL API into what we think one day will be the _last_ integration API you will ever need.
 
 [notice-box=info]
-Centra GraphQL API is currently in Beta, so not all the ERP-related functionality is available at the moment. For now you can use it to integrate with your PIM system and get used to GQL in general, additionally we recommend you to sign up for our Newsletter to be notified about updates. Let us know if there's any specific functionality you need with priority and we will look into it. You can always see the latest additions in the [GraphQL API changelog](https://docs.centra.com/graphql/#changelog).
+Centra GraphQL API is currently in Beta, so not all the ERP-related functionality is available at the moment. For now you can get used to GQL in general, we also recommend you to sign up for our Newsletter to be notified about updates. Let us know if there's any specific functionality you need with priority and we will look into it. You can always see the latest additions in the [GraphQL API changelog](https://docs.centra.com/graphql/#changelog).
 [/notice-box]
 
 ## GraphQL API introduction
