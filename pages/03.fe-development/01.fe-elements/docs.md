@@ -347,6 +347,22 @@ When logged in, customer's selection is linked to their account. If they log in 
 
 To fetch details of currently logged user, call [GET /customer](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/get_customer). You can also fetch their previous orders by calling [POST /orders](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_orders). When logged in, the selection contains a `loggedIn` object with the customer's address and e-mail. You can reset their password by calling [POST /password-reset-email/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_password_reset_email__email_). Once done, they can [POST /logout](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_logout) from your website.
 
+### Forgotten password reminder
+
+Centra includes the basic password reminder functionality, allowing you to build a "Forgotten password" part of your website.
+
+First, make sure you have the right website URL configured in your Checkout API plugin:
+
+![FrontEndURL](frontend-url-setting.png)
+
+Next, make sure your MSP plugin is enabled, and that the forgotten e-mail template is activated. If you don't use an external mailer, Centra will instead generate a plain-text e-mail based on the `Password Reminder` Store Static in Centra -> Setup -> Static. Part of that e-mail will be the auto-generated `link`, which we will be crucial in order to authorise the password change request.
+
+In the Checkout API, you trigger the e-mail by calling [POST /password-reset-email/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_password_reset_email__email_) endpoint, including the URI of the password reset sub-page, like `"linkUri": "forgot_pass"`. Centra will generate a unique one-time link and send it to your Customer's e-mail address. The link will look similar to: `https://example.com/forgot_pass?i=1231435&id=63457656345724`. Your website needs to remember those two URL params for this customer session, they will be used for authorisation in the next step.
+
+When the user clicks the link, they should be taken to your website, where you should display a form to enter a new password. You may want to create some sort of validation on your end, for example ask the user to enter the new password twice and compare. This is also the right place for you to implement any custom password restrictions your integration requires - Centra only requires passwords longer than 4 characters, implementing more strict password rules is up to you.
+
+Finally, when the user enters the new password and clicks to confirm, you need to send the new password to Centra using [POST /password-reset](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_password_reset) endpoint. Here Centra expects you to send in `newPassword`, as well as previously generated values of `i` and `id`, which are used to authorise this request. If the change is successful, the user will be automatically logged in (which you will see in the updated selection details). Otherwise, expect an error from Centra and act accordingly.
+
 ### Newsletter sign-up form
 
 `We have some cool stuff we'd love to show you now and in the future!`
