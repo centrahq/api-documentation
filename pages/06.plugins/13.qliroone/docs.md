@@ -150,6 +150,15 @@ Qliro API allows for updates of the cart items during active payment session.
 When the cart total is updated during active payment session, `centraCheckoutSript` should be used to suspend and resume the payment widget while Centra backend is sending updates towards Qliro API. 
 
 Resume script require JS variable `totalPrice` which contain total of Centra basket (can be taken from GET /selection response).
+```javascript
+q1.onOrderUpdated(function (order) {
+    if (order.totalPrice === totalPrice) {
+        q1.unlock()
+    }
+    // else, don't do anything
+})
+```
+
 More information about `centraCheckoutScript` can be found [here](https://docs.centra.com/fe-development/checkoutscript)
 
 ###### Replacing payment widget
