@@ -98,6 +98,27 @@ This is how the product object will look like, it will vary depending on the num
 
 `LineId` identifies the unique item row (hence the name). You’ll also get three different SKU nodes: `sku`, `variantSku` and `sizeSku`. To match them with the full product sku in the WMS you either need to concatenate these three fields or match with EAN, if applicable.
 
+#### In case you use Ingrid
+
+If you're using [Ingrid](/fe-development/ingrid-implementation) to show advanced shipping options in your checkout, after the Order is finalized you will see the Ingrid data on the Order:
+
+```json
+"shipwallet_courier_instructions": "",
+"shipwallet_doorcode": "1234",
+"shipwallet_id": "abcdef1234567890abcdef1234567890",
+"shipwallet_method": "pnl-mpc",
+"shipwallet_pickup": "12345",
+"shipwallet_deliverytime": "YYYY-MM-DD"
+```
+
+The fields are:  
+* `shipwallet_method`: The chosen shipping method  
+* `shipwallet_pickup`: If the user has chosen to have the order delivered to a Service point, this is the carrier identifer of that service point. This might be empty, but if it is not, this is crucial to get right so the customer gets the goods to the right Service Point  
+* `shipwallet_deliverytime`: When it should be delivered  
+* `shipwallet_doorcode`: Door code, if applicable  
+* `shipwallet_courier_instructions`: Generic instructions for the courier  
+* `shipwallet_id`: Ingrid's unique identifier. Generally doesn't hold any value for the 3PL, but it might be useful for back tracing  
+
 ### Editing shipments
 
 You can also update shipments, if the quantity shipped was lower than on the order. This will allow subsequent creation of additional shipments with the remaining items, or creating refunds for items that could not be shipped.

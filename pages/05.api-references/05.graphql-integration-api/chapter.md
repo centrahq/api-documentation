@@ -34,7 +34,7 @@ Content-Type: application/json
 ```
 
 ## Requirements
-- Live Centra
+- Access to Centra AMS
 - Authentication token (see section `Authorization` how to obtain one)
 - Correct permissions
 
