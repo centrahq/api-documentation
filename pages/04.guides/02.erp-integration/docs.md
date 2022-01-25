@@ -1477,6 +1477,39 @@ Since a single order can trigger events multiple times (when the order is create
 </SOAP-ENV:Envelope>
 ```
 
+#### Optional Ingrid data
+
+If you're using [Ingrid](/fe-development/ingrid-implementation) to show advanced shipping options in your checkout, after the Order is finalized you will see the Ingrid data under the `order` level, under the `<additionals>` tag. For example:
+
+```xml
+<ns1:additionals>
+    <ns1:additional>
+        <ns1:key>shipwallet_deliverytime</ns1:key>
+        <ns1:value>YYYY-MM-DD</ns1:value>
+    </ns1:additional>
+    <ns1:additional>
+        <ns1:key>shipwallet_doorcode</ns1:key>
+        <ns1:value>XXXX</ns1:value>
+    </ns1:additional>
+    <ns1:additional>
+        <ns1:key>shipwallet_id</ns1:key>
+        <ns1:value>abcdef1234567890abcdef1234567890</ns1:value>
+    </ns1:additional>
+    <ns1:additional>
+        <ns1:key>shipwallet_method</ns1:key>
+        <ns1:value>pnl-mpc</ns1:value>
+    </ns1:additional>
+    <ns1:additional>
+        <ns1:key>shipwallet_pickup</ns1:key>
+        <ns1:value/>
+    </ns1:additional>
+    <ns1:additional>
+        <ns1:key>shipwallet_courier_instructions</ns1:key>
+        <ns1:value/>
+    </ns1:additional>
+</ns1:additionals>
+```
+
 ## Direct-to-Consumer orders: Event Done
 
 [https://docs.centra.com/soap/index.php?op=events_Done](https://docs.centra.com/soap/index.php?op=events_Done)
