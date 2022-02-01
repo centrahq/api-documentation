@@ -35,10 +35,6 @@ Return orders for specified customer id.
 Return order newer than date.  Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
 [/parameter]
 
-[parameter data="newer_than" datatype="date/datetime" isRequired=false sublevel=1]
-Return order newer than date.  Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
-[/parameter]
-
 [parameter data="older_than" datatype="date/datetime" isRequired=false sublevel=1]
 Return order newer than date. Allowed formats ``YYYY-mm-dd`` and ``YYYY-mm-dd HH:MM:SS``. Timezone is system-wide and decided by the company using Centra.
 [/parameter]
