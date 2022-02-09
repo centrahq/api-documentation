@@ -1508,6 +1508,154 @@ mutation editProduct {
 }
 ```
 
+## Product weight - read and modify
+
+Historically, weight has always been configured on the Product level in the Centra AMS. However, since different sizes of products can reasonably have different weights, we also expose it on the Size level. In the future, we will add the option to differentiate between sizes' weights.
+
+### Fetching product weight
+
+To make things easier, Centra exposes weight in 3 fields - weight value, weight unit and formatted value.
+
+#### Request
+
+```gql
+query getWeight {
+  product(id: 1) {
+    id
+    name
+    weight {
+      ...weightFields
+    }
+    variants {
+      id
+      name
+      productSizes {
+        weight {
+          ...weightFields
+        }
+      }
+    }
+  }
+}
+
+fragment weightFields on Weight {
+  value
+  unit
+  formattedValue
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "product": {
+      "id": 1,
+      "name": "First product",
+      "weight": {
+        "value": 1,
+        "unit": "KILOGRAMS",
+        "formattedValue": "1.000 kg"
+      },
+      "variants": [
+        {
+          "id": 1,
+          "name": "First variant",
+          "productSizes": [
+            {
+              "weight": {
+                "value": 1,
+                "unit": "KILOGRAMS",
+                "formattedValue": "1.000 kg"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "extensions": {
+    "complexity": 112,
+    "permissionsUsed": [
+      "Product:read",
+      "Product.ProductVariant:read"
+    ]
+  }
+}
+```
+
+### Changing product weight
+
+#### Request
+
+```gql
+mutation updateWeight {
+  updateProduct(id: 1, input: {
+    weight: {
+      value: 3
+      unit: KILOGRAMS
+    }
+  }) {
+    userErrors {
+      message
+      path
+    }
+    product {
+      weight {
+        ...weightFields
+      }
+    }
+  }
+}
+
+fragment weightFields on Weight {
+  value
+  unit
+  formattedValue
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "product": {
+      "id": 1,
+      "name": "First product",
+      "weight": {
+        "value": 3,
+        "unit": "KILOGRAMS",
+        "formattedValue": "1.000 kg"
+      },
+      "variants": [
+        {
+          "id": 1,
+          "name": "First variant",
+          "productSizes": [
+            {
+              "weight": {
+                "value": 3,
+                "unit": "KILOGRAMS",
+                "formattedValue": "1.000 kg"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "extensions": {
+    "complexity": 112,
+    "permissionsUsed": [
+      "Product:read",
+      "Product.ProductVariant:read"
+    ]
+  }
+}
+```
+
 ## Pricelists - read and create
 
 When Products are added, you need to add them to Pricelists and set a price if you want them to be purchasable. Setting a price is one of the actions that also works on the inactive Products, allowing you to set up the Products before activating them for sale.
@@ -2403,3 +2551,17 @@ fragment attributes on ObjectWithAttributes {
   }
 }
 ```
+
+<!--
+#### Request
+
+```gql
+
+```
+
+#### Response
+
+```json
+
+```
+-->
