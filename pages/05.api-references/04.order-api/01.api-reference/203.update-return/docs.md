@@ -23,6 +23,14 @@ The ID from ``return`` when creating or updating a return.
 Set to `true`/`false` to change Return status to Complete/Pending.
 [/parameter]
 
+[parameter data="refundPayment" datatype="boolean" isRequired=false sublevel=1]
+If this is set to true the payment provider will get a refund request to pay back the money to the customer. The amount that will be refunded is the amount for the products, the handling, shipping and return costs. If the refund is successful against the payment provider, the ``returnCompleted`` will be ``true`` in the response.
+[/parameter]
+
+[parameter data="sendEmail" datatype="boolean" isRequired=false sublevel=2]
+Send refund email. Default value is ``false``.
+[/parameter]
+
 [parameter data="xml" datatype="boolean" isRequired=false sublevel=1]
 Response in xml format instead of json.
 [/parameter]
@@ -212,6 +220,8 @@ If ``status`` returns ``no``, this value should send back a message why it faile
         "selectionId": "be337d27e16564cadad0a340b8bc1fbe",
         "customerId": 31,
         "date": "2020-01-07 17:00:29",
+        "marketId": 1,
+        "pricelistId": 1,
         "returnCost": 5,
         "shippingCost": 5.55,
         "handlingCost": 9,
