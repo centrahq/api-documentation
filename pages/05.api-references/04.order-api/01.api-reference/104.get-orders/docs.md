@@ -194,6 +194,7 @@ Content-type: application/json
       "suspect": 0,
       "internalOrder": 0,
       "hold": 0,
+      "waitingForPayment": 0,
       "shippingValue": 25,
       "voucherValue": 0,
       "grandTotalValue": 3978.75,
@@ -353,7 +354,10 @@ Content-type: application/json
             "name": "Some voucher",
             "priceOff": "-150.00 USD",
             "priceOffAsANumber": -150.0,
-            "description": "This is VIP code description"
+            "description": "This is VIP code description",
+            "isCredit": false,
+            "originalPriceOff": "-150.00 USD",
+            "originalPriceOffAsNumber": -150.0
           }
         ],
         "automaticDiscounts": [

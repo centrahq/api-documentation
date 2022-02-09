@@ -134,14 +134,31 @@ Response if `createOnly` is `true`:
 
 ## Error examples
 
+Errors will always be returned with "status" as "no" it will also contain a code and a message with more details
+the codes and their general meaning is as follows
+
+
+|Code|Description|
+|---|-------|
+|-1|Some of the provided products are not possible to add to the order, product status, market or pricelist might not be properly configured inside centra.|
+|-2|Stock error, one or more products are missing stock|
+|-3|Order is empty|
+|-4|One or more required fields are missing|
+|-5|An order with the provided order number already exists|
+|-6|Customer registration failed|
+|-7|General error, see message for details|
+
+
 ```json
 {
   "x123": {
     "status": "no",
+    "code": -7,
     "msg": "Message about why the order failed to be created."
   },
   "a1": {
     "status": "no",
+    "code": -7,
     "msg": "Message about why the order failed to be created."
   }
 }
@@ -153,10 +170,12 @@ Since you can insert multiple orders at the same time, some orders might succeed
 {
   "x123": {
     "status": "no",
+    "code": -7,
     "msg": "Message about why the order failed to be created."
   },
   "a1": {
     "status": "no",
+    "code": -7,
     "msg": "Message about why the order failed to be created."
   },
   "a2": {
