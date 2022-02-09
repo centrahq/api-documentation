@@ -1530,6 +1530,7 @@ query getWeight {
       id
       name
       productSizes {
+      description
         weight {
           ...weightFields
         }
@@ -1564,6 +1565,7 @@ fragment weightFields on Weight {
           "name": "First variant",
           "productSizes": [
             {
+	      "description": "One Size",
               "weight": {
                 "value": 1,
                 "unit": "KILOGRAMS",
