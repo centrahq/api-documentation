@@ -61,7 +61,13 @@ The request you send can contain these fields, everything is optional:
     "uri":{
         "uri":"jeans\/black",
         "for":["product", "category"]
-    }
+    },
+    "sortOrder": [
+        {
+            "field": "priceAsNumber",
+            "order": "desc"
+        }
+    ]
 }
 ```
 - skipFirst + limit: for paging
@@ -70,8 +76,9 @@ The request you send can contain these fields, everything is optional:
 - relatedProducts: when a product has relatedProducts and this is true, you get the complete data for those releated products. Otherwise you will get a small subset of the data back: only the media and product id.
 - swatch.desc: filtering based on the color swatch (This is a client specific field, and not all Centra instances will have this field)
 - items.name: filtering on specific item names
-- onlyAvailable: true means you only get back products that are in stock or available for preorder. If you also specify items.name, those items must be available.
+- onlyAvailable: true means you only get back products that are in stock or available for preorder. If you also specify items.name, those items must be available
 - uri: filter on a product or category with a specific URI
+- sortOrder: Sort returned products based on the specified field, ascending or descending. Currently you can filter on: `uri`, `categoryItemSort`, `collectionUri`, `priceAsNumber`, `createdAt` and `modifiedAt`, in either `asc` or `desc` order
 
 If you select more "Product Filter Fields" in the Centra plugin settings, you can send them in the request and also get them back in the response in the "filter".
 
