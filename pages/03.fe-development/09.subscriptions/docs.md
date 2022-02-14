@@ -67,7 +67,7 @@ For each product there is one new field - `subscription_plans` of type `array`.
 - `intervalType` is string representing the unit of time used; can be any of: `day`, `week`, `month`, `year`
 
 ## Checking out
-Checkout process is the same implementation-wise.
+Checkout process is the same implementation-wise, read more in [Checkout API Order flow guide](https://docs.centra.com/api-references/checkout-api/order-flow).
 
 # ShopAPI
 We assume configured url for ShopAPI is `/api/shop/`
