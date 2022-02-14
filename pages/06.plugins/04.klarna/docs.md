@@ -96,7 +96,7 @@ To test the flow, you first need to make sure the `Test-Mode` is enabled and tha
 You will need to disable test-mode for the plugin in Centra when you run it in production.
 [/notice-box]
 
-You can then use the [test-users provided by Klarna](https://developers.klarna.com/en/testing/invoice-and-account) to place test orders.
+You can then use the [sample data provided by Klarna](https://docs.klarna.com/resources/test-environment/sample-data) to place test orders.
 
 #### Required configuration
 

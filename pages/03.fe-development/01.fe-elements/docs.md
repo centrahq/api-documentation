@@ -100,7 +100,13 @@ Another method is the [POST /products](https://docs.centra.com/swagger-ui/?api=C
     "uri": {
         "uri": "jeans\/black",
         "for": ["product", "category"]
-    }
+    },
+    "sortOrder": [
+        {
+            "field": "priceAsNumber",
+            "order": "desc"
+        }
+    ]
 }
 ```
 
@@ -110,8 +116,9 @@ Another method is the [POST /products](https://docs.centra.com/swagger-ui/?api=C
 * `relatedProducts` controls whether you get the complete data for those releated products. When `false`, you will only get a small subset of the data back: the media and related product ID, which is useful to present FE elements like "You may also like these products" or "".
 * `swatch.desc` enables filtering based on the color swatch or any other custom attribute. The name of the attribute is a client specific.
 * `items.name` filters on specific item names.
-* `onlyAvailable`, when true, only returns products that are in stock or available for preorder. If you also specify `items.name`, those items must be available.
-* `uri` filters on a product or category with a specific URI.
+* `onlyAvailable`, when true, only returns products that are in stock or available for preorder. If you also specify `items.name`, those items must be available
+* `uri` filters on a product or category with a specific URI
+* `sortOrder`: Sort returned products based on the specified field, ascending or descending. Currently you can filter on: `uri`, `categoryItemSort`, `collectionUri`, `priceAsNumber`, `createdAt` and `modifiedAt`, in either `asc` or `desc` order. As you can see, `sortOrder` is an array, so you can apply more than one sorting order, like sort by Collection first, and by Price then
 
 [notice-box=info]
 Remember that you can expand the Product model by defining [Custom Attributes](/overview/custom-attributes) for your Products and Variants. These attributes can then also be used as product filters in the API, as described in the [Search and filtering](#search-and-filtering) chapter.
