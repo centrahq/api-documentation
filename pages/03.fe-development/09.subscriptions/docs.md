@@ -6,11 +6,11 @@ taxonomy:
   category: docs
 ---
 
-### How do Subscriptions work in Centra?
-
 [notice-box=info]
-This feature is still in development.
+Please note that this feature is still in development.
 [/notice-box]
+
+### How do Subscriptions work in Centra?
 
 Merchant is allowed to setup a `subscription plan` to select an interval and which product variants should be available in such plan. This can be done via AMS. Once a shopper checks out a product variant available in subscription plan, they can decide to enroll into subscription plan for this variant. It is not mandatory and you can mix subscription and non-subscription variants in one basket. You can even have the same variant in different (including none) subscription plans in one basket. Upon checkout shopper can't decide on the start date of the subscription - they start immediately.
 
