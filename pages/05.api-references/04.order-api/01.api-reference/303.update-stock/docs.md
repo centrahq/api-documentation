@@ -8,7 +8,7 @@ taxonomy:
 
 # Update stock
 
-Endpoint: `PUT  *base*/stock`  
+Endpoint: `POST  *base*/stock`  
 Authentication: [API Key](/api-references/api-intro#authentication)
 
 This updates the `physicalStock` quantities in Centra. This is the number of products in stock including those that are reserved for orders.
