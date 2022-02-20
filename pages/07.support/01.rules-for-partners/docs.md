@@ -23,7 +23,7 @@ TL;DR: We are here to help, but we are also here to educate and guide where ever
 | - | Once again, teaching you to run stress tests without our help is a much more effecient way to develop skillsets with our partners, and once you know how you have those skills in house.  |
 </div>
 
-## Our work - general guidence
+## Our work - general guidance
 
 #### Philosophy #1: We are here to help
 
