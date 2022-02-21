@@ -93,47 +93,20 @@ Which is the one that will trigger now.
 
 The following data is returned in this event:
 
-```eval_rst
-.. list-table::
-   :widths: auto
-   :class: small-table
-   :header-rows: 1
-
-   * - Field
-     - Type
-     - Comment
-   * - ``responseEventRequired``
-     - boolean
-     - Always ``false`` for PayPal.
-   * - ``addressIncluded``
-     - boolean
-     - Always ``false`` for PayPal.
-   * - ``paymentMethodSpecificFields``
-     - object
-     - | This data should be sent to the ``POST /payment`` call
-       | in Centra for the payment to be validated.
-   * - ``paymentMethod``
-     - string
-     - The selected payment method used.
-   * - ``billingAddress``
-     - object
-     - Data containing the address for billing. for PayPal just contains country and state
-   * - ``billingAddress.state``
-     - string
-     - Optional, can be empty for countries not supporting states.
-   * - ``billingAddress.country``
-     - string
-     - Country code
-   * - ``shippingAddress``
-     - object
-     - Data containing the address for shipping. For PayPal just contains country and state
-   * - ``shippingAddress.state``
-     - string
-     - Optional, can be empty for countries not supporting states.
-   * - ``shippingAddress.country``
-     - string
-     - Country code
-```
+<div class="tableWrapper" markdown='1'>
+Field | Type | Comment
+---|---|---
+`responseEventRequired` | boolean | Always `false` for PayPal.
+`addressIncluded` | boolean | Always ``false`` for PayPal.
+`paymentMethodSpecificFields` | object | This data should be sent to the ``POST /payment`` call in Centra for the payment to be validated.
+`paymentMethod` | string | The selected payment method used.
+`billingAddress` | object | Data containing the address for billing. for PayPal just contains country and state.
+`billingAddress.state` | string | Optional, can be empty for countries not supporting states.
+`billingAddress.country` | string | Country code
+`shippingAddress` | object | Data containing the address for shipping. For PayPal just contains country and state.
+`shippingAddress.state` | string | Optional, can be empty for countries not supporting states.
+`shippingAddress.country` | string | Country code
+</div>
 
 We would take the event data, and create a `checkoutRequest` based on the data provided. This data would then be sent to the `POST /payment` in the Centra API.
 
