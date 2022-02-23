@@ -39,4 +39,4 @@ When an order is created, for each order line (each item in the order) the follo
 
 ***
 
-To learn more about configuring Taxes in Centra, see articles about [Tax Groups](https://support.centra.com/centra-sections/settings/tax-groups) and [Tax Classes](https://support.centra.com/centra-sections/settings/tax-classes) on our Suppoprt site.
+To learn more about configuring Taxes in Centra, see articles about [Tax Groups](https://support.centra.com/centra-sections/settings/taxes/tax-groups) and [Tax Classes](https://support.centra.com/centra-sections/settings/taxes/tax-classes) on our Suppoprt site.
