@@ -156,7 +156,7 @@ The following element types exist today. Not all of them are supported for the D
 | `input` | ![](attribute-input.png) | Mapped/Dynamic | Set class of the input (double the size of the input): `'class' => 'double'` |
 | `textarea` | ![](attribute-textarea.png) | Mapped/Dynamic | Set class of the textarea: `'class' => 'double'` |
 | `readonly` | ![](attribute-readonly.png) | Dynamic | Allows a field without the ability to edit it. Used for showing up IDs or things that should not be changed. |
-| `boolean` | ![](attribute-boolean.png) | Mapped/Dynamic | Options for the radio inputs (default is always 0): `'options' => [['0','No'],['1','Yes']]` |
+| `boolean` | ![](attribute-boolean.png) | Dynamic | Options for the radio inputs (default is always 0): `'options' => [['0','No'],['1','Yes']]` |
 | `select` | ![](attribute-select.png) | Mapped/Dynamic | Default selected is always first option, so keep it as `['0','Select']` |
 | `image` | ![](attribute-image.png) | Mapped | Size of the image: `'size' => '600x400'`. Allowed image formats: JPG, JPEG, PNG, GIF, SVG |
 | `file` | ![](attribute-file.png) | Mapped | No options available |
