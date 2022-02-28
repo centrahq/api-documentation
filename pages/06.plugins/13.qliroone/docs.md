@@ -40,6 +40,21 @@ You will need to disable test-mode for the plugin in Centra when you run it in p
 Notification endpoints for all kinds of incoming notifications: customer checkout status, order management status and order validation are defined dynamically and provided for Qliro by the integration plugin.
 There is no need to explicitly define them in plugin settings.
 
+#### Payment flow
+
+When customer makes a successful payment and is redirected to payment success page POST /payment-result is sent from frontend to Centra. 
+The order will be placed and visible in AMS with Waiting for Payment flag and HOLD status like on the screenshot below:
+
+
+![img.png](qliro-waiting-for-payment.png)
+
+It will stay this way until the CustomerCheckoutStatus notification arrives with status="Completed" which means that the payment has succeeded and we now have confirmation from Qliro.
+
+For debit/credit card payments Waiting for Payment flag and HOLD status are usually cleared within minutes after order placement.
+
+For other types of payments that allow to customer to pay later in the process e.g. INVOICE the notification with status="Completed" might take longer time to be sent which will keep Waiting for Payment flag for longer time.
+
+
 #### Require success validation
 
 Optional order validation step fired when customer submits the order in the payment widget.  
