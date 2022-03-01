@@ -70,7 +70,7 @@ You can also specify the URL for each product when you add items to the selectio
 To add the correct URL for the product getting added to the selection, use the `productUrl`-property when posting to `/selection/items`:
 
 * [POST /selection/items in ShopAPI](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_selections__selection__items__item_)
-* [POST /items in CheckoutAPI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/default/post_items__item_)
+* [POST /items in CheckoutAPI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_)
 
 #### Product Image size
 
@@ -88,7 +88,7 @@ When you're done editing the plugin in Centra, save it. This will trigger the in
 
 This data also contains the script you need to put on your website to connect the site with Mailchimp. After putting the snippet on your website, follow the guide on [Mailchimp about connecting your site](https://mailchimp.com/help/about-connected-sites/#Connect_Your_Custom_Website).
 
-Now, to enable Automation in Mailchimp, go to [Campaigns / Automation](https://admin.mailchimp.com/campaigns/#f_assigned:unassigned;f_type:automation;t:campaigns-list)
+Now, to enable Automation in Mailchimp, go to [Campaigns / All Campaigns / Automation](https://admin.mailchimp.com/campaigns/#f_assigned:unassigned;f_type:automation;t:campaigns-list)
 
 ![mailchimp-automation.png](mailchimp-automation.png)
 
