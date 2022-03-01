@@ -1,5 +1,5 @@
 ---
-title: Pay your due: Tax groups, classes and rules
+title: Pay your due: Tax classes, groups and rules
 altTitle: Taxes
 excerpt: Learn about how Centra handles taxes: Tax groups, tax classes, tax rules.
 taxonomy:
