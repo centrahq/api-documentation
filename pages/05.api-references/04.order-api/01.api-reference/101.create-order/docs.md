@@ -177,6 +177,10 @@ The variant name of the product.
 The size name for this product. To make sure all visual representations in Centra looks good, please make sure this size exists on the sizechart selected for the product you used inside ``id``, ``ean`` or ``sku``.
 [/parameter]
 
+[parameter data="shippingList" datatype="string" isRequired=false sublevel=1]
+Shipping option URI, for example: `ups-standard`, without this one, the default shipping option for the products and country will be used.
+[/parameter]
+
 [parameter data="shippingValue" datatype="decimal2 (0.00)" isRequired=false sublevel=1]
 Shipping cost, for example: `12.43`, without this one, the default shipping cost for the products and country will be used.
 [/parameter]
