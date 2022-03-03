@@ -186,7 +186,7 @@ Shipping cost, for example: `12.43`, without this one, the default shipping cost
 [/parameter]
 
 [parameter data="voucherValue" datatype="decimal2 (0.00)" isRequired=false sublevel=1]
-Voucher value, should always be positive value, even though the value ends up reducing the order value. Without this one, the default shipping cost for the products and country will be used.
+Voucher value, should be a positive value or zero, even though the value ends up reducing the order value.
 [/parameter]
 
 [parameter data="orderNumber" datatype="int" isRequired=false sublevel=1]
