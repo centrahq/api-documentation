@@ -20,11 +20,11 @@ During payment process Centra will detect if there are subscribed products in th
 
 Getting subscription plans is pretty much the same for ShopAPI(`GET` `/api/shop/products`) and CheckoutAPI(`GET` `/api/checkout/products`).
 
-For each product there is one new field - `subscription_plans` of type `array`.
+For each product there is one new field - `subscriptionPlans` of type `array`.
 
 #### Example
 
-`subscription_plans` field content example for product with defined 5 subscription plans:
+`subscriptionPlans` field content example for product with defined 5 subscription plans:
 ```json
 [
     {
