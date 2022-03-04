@@ -64,6 +64,6 @@ Currently, GraphQL works mostly in read-only mode, but we are adding new functio
 
 Many customers use the ERP systems, like Navision, to store the master of the data for Products, Customers, Pricelists and so on. If you need to integrate to those systems, you may be interested in our [SOAP API](/api-references/soap-integration-api). Since in this case Centra works in a slave mode, this is currently the only API that allows you to modify Centra Products, Pricelists, Shipping, Invoices, etc. We very rarely add new features to this API, but we also have comprehensive docs covering most of use cases required when working with an ERP system. They are all described in our [ERP integration guide](/guides/erp-integration).
 
-### [REST] Subscription API
+### [REST] Subscription API (deprecated)
 
-This API is used for recurring sales where the orders are created automatically using a specified subscription period. Using the API you are able to create new subscriptions that will authorize the payment provider and enable orders to be created. To read more, see the [Subscription API reference](/api-references/subscription-api/api-reference).
+This API was replaced by the [new subscriptions functionality](/fe-development/subscriptions).
