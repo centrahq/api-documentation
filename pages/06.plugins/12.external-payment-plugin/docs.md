@@ -84,7 +84,7 @@ This endpoint is intended for receiving authorization information. It can be cal
 | `signature` | string | Base64 encoded signed payload (details below) |
 | `currency` | string | Currency code (ISO 4217) |
 | `amount` | string | Numeric string with dot as decimal separator |
-| `timestamp` | int | Signature unix timestamp in UTC |
+| `timestamp` | int | Signature unix timestamp in UTC. Must be provided in seconds. The value is validated so you need to provide the current timestamp each time you send a request. |
 | `transactionReference` | string | Transaction identifier from  PSP|
 | `success` | boolean | Successful or failed result of payment authorization|
 | `transaction` | object | All the transaction details that were received from PSP|
@@ -93,9 +93,16 @@ This endpoint is intended for receiving authorization information. It can be cal
 #### Signature
 
 The signature is a base64 encoded HMAC SHA256 hash.
-Example code using JavaScript and CryptoJS library:
+Browser snippet using JavaScript and CryptoJS library:
 ```javascript
-btoa(CryptoJS.HmacSHA256($payload, secret).toString(CryptoJS.digest));
+btoa(CryptoJS.HmacSHA256(payload, secret).toString(CryptoJS.digest));
+```
+
+Node snippet using popular npm package `crypto-js`:
+```javascript
+let hashedSignature = HmacSHA256(str, secret); //CryptoJS.lib.WordArray
+let hashedSignatureHex = hashedSignature.toString(); //hex encoded string
+let base64encodedSignature = Buffer.from(hashedSignatureHex).toString('base64'); //base64 encoded signature string
 ```
 
 ##### Signature payload fields
