@@ -88,12 +88,25 @@ Adding an item with subscription to basket is the same as usual, using [POST /ap
 
 ### Log in
 
-Log the customer into your system. You can verify the customer credentials in [POST /customers/{{email}}/login](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__login). Once you have the customer authenticated you should indicate that in `POST /payment` request by adding `loggedIn` property:
+Log the customer into your system. You can verify the customer credentials in [POST /api/shop/customers/{{email}}/login](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__login). Once you have the customer authenticated you should indicate that in `POST /api/shop/selections/{{selectionId}}/payment` request by adding `loggedIn` property:
 
 ```json
 {
     "address": {
         "loggedIn": true
+    }
+}
+```
+
+### Registration
+
+If the email address is not taken by a registered customer then it is possible to register during checkout by adding registration specific fields to `POST /api/shop/selections/{{selectionId}}/payment` request:
+
+```json
+{
+    "address": {
+        "register": true,
+        "password": "password for the user"
     }
 }
 ```
@@ -122,4 +135,17 @@ We can also add subscription plan without item into basked using [POST /api/chec
 
 ### Log in
 
-Log the customer into your system. You can verify the customer credentials in [POST /login/{{email}}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_login__email_). If the credentials are correct the customer will be logged in in current shopping session (for current API-Token).
+Log the customer into your system. You can verify the customer credentials in [POST /api/checkout/login/{{email}}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_login__email_). If the credentials are correct the customer will be logged in in current shopping session (for current API-Token).
+
+### Registration
+
+If the email address is not taken by a registered customer then it is possible to register during checkout by adding registration specific fields to `POST /api/checkout/selections/{{selectionId}}/payment` request:
+
+```json
+{
+    "address": {
+        "register": true,
+        "password": "password for the user"
+    }
+}
+```
