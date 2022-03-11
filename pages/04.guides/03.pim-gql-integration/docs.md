@@ -2796,6 +2796,58 @@ fragment attributes on ObjectWithAttributes {
 }
 ```
 
+### Modifying custom attributes through updateProduct mutation
+
+Alternatively to what's described above, you can also set and un-set attribute values using the `updateProduct` mutation:
+
+#### Request - set
+
+```gql
+mutation setAttributesOnProduct {
+  updateProduct(id: 1, input: {
+    assignMappedAttributes: [
+      {
+        attributeTypeName: "pr_materials"
+        attributeId: 7
+      }
+      {
+        attributeTypeName: "pr_materials"
+        attributeId: 9
+      }
+    ]
+  }) {
+    userErrors {
+      message
+      path
+    }
+  }
+}
+```
+
+#### Request - unset
+
+```gql
+mutation unsetAttributesOnProduct {
+  updateProduct(id: 1, input: {
+    unassignMappedAttributes: [
+      {
+        attributeTypeName: "pr_materials"
+        attributeId: 7
+      }
+      {
+        attributeTypeName: "pr_materials"
+        attributeId: 9
+      }
+    ]
+  }) {
+    userErrors {
+      message
+      path
+    }
+  }
+}
+```
+
 <!--
 #### Request
 
