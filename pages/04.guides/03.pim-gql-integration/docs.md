@@ -2547,7 +2547,7 @@ Fragment `attributes` is identical to previous examples.
 mutation setProductAttribute {
   assignAttributes(input: {
     objectType: Product
-    objectId: 343
+    objectId: 1
     mappedAttributes: [
       {
         attributeTypeName: "pr_materials"
@@ -2702,7 +2702,7 @@ You can the `unassignAttributes` mutation in order to clear the `Long External P
 mutation unsetProductAttribute {
   unassignAttributes(input: {
     objectType: Product
-    objectId: 343
+    objectId: 1
     mappedAttributes: [
       {
         attributeTypeName: "pr_materials"
@@ -2778,7 +2778,7 @@ fragment attributes on ObjectWithAttributes {
     "unassignAttributes": {
       "userErrors": [],
       "object": {
-        "id": 343,
+        "id": 1,
         "name": "testproduct1",
         "createdAt": "2022-03-09T12:22:26+0100",
         "updatedAt": "2022-03-11T15:54:32+0100",
