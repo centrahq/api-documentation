@@ -2439,24 +2439,130 @@ Please note attributes `Long External Product Name` on the Product level and `Sh
 }
 ```
 
-### Modifying custom attributes
+### Fetching pre-defined mapped attributes
 
-Here's how you can modify the `Long External Product Name` attribute on our test Product.
+Mapped custom attributes are different, in that we first define their values in Catalog -> Attributes, and then select those on the product/variant. This means that instead of an attribute value we should send the mapped attribute ID, which will be common for every product/variant it's selected on.
+
+#### Request
+
+For this example I have created an attribute called `Product materials` and pre-defined 3 values of this attribute in Centra -> Catalog -> Attributes.
+
+```gql
+query getMappedAttributes{
+  mappedAttributes(where: {typeName: {equals: "pr_materials"}}){
+    id
+    name
+    description
+    objectType
+    type { name }
+    elements{
+      key
+      description
+      kind
+      ... on AttributeStringElement {
+        value
+      }
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "mappedAttributes": [
+      {
+        "id": 7,
+        "name": "Wood",
+        "description": "Product materials",
+        "objectType": "Product",
+        "type": {
+          "name": "pr_materials"
+        },
+        "elements": [
+          {
+            "key": "text",
+            "description": "Material description",
+            "kind": "INPUT",
+            "value": "Wood"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Steel",
+        "description": "Product materials",
+        "objectType": "Product",
+        "type": {
+          "name": "pr_materials"
+        },
+        "elements": [
+          {
+            "key": "text",
+            "description": "Material description",
+            "kind": "INPUT",
+            "value": "Steel"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "name": "Plastic",
+        "description": "Product materials",
+        "objectType": "Product",
+        "type": {
+          "name": "pr_materials"
+        },
+        "elements": [
+          {
+            "key": "text",
+            "description": "Material description",
+            "kind": "INPUT",
+            "value": "Plastic"
+          }
+        ]
+      }
+    ]
+  },
+  "extensions": {
+    "complexity": 232,
+    "permissionsUsed": [
+      "Attribute:read"
+    ]
+  }
+}
+```
+
+### Setting/modifying custom attributes values
+
+Here's how you can modify the `Long External Product Name` attribute on our test Product, while at the same time selecting two pre-existing values for `Product materials` attribute.
 
 #### Request
 
 Fragment `attributes` is identical to previous examples.
 
 ```gql
-mutation editProductAttribute {
+mutation setProductAttribute {
   assignAttributes(input: {
     objectType: Product
-    objectId: 1
+    objectId: 343
+    mappedAttributes: [
+      {
+        attributeTypeName: "pr_materials"
+        attributeId: 7
+      }
+      {
+        attributeTypeName: "pr_materials"
+        attributeId: 9
+      }
+    ]
     dynamicAttributes: [
       {
         attributeTypeName: "pr_long_name"
         attributeElementKey: "text"
-        attributeElementValue: "A very long name, indeed!"
+        attributeElementValue: "A very, very long name, indeed!"
       }
     ]
   }) {
@@ -2520,8 +2626,8 @@ fragment attributes on ObjectWithAttributes {
       "object": {
         "id": 1,
         "name": "First Product",
-        "createdAt": "2021-12-31T13:44:23+0100",
-        "updatedAt": "2022-01-03T13:03:17+0100",
+        "createdAt": "2022-03-09T12:22:26+0100",
+        "updatedAt": "2022-03-11T15:33:17+0100",
         "attributes": [
           {
             "type": {
@@ -2535,7 +2641,39 @@ fragment attributes on ObjectWithAttributes {
                 "key": "text",
                 "description": "Long External Product Name",
                 "kind": "INPUT",
-                "value": "A very long name, indeed!"
+                "value": "A very, very long name, indeed!"
+              }
+            ]
+          },
+          {
+            "type": {
+              "name": "pr_materials",
+              "isMapped": true
+            },
+            "description": "Product materials",
+            "objectType": "Product",
+            "elements": [
+              {
+                "key": "text",
+                "description": "Material description",
+                "kind": "INPUT",
+                "value": "Wood"
+              }
+            ]
+          },
+          {
+            "type": {
+              "name": "pr_materials",
+              "isMapped": true
+            },
+            "description": "Product materials",
+            "objectType": "Product",
+            "elements": [
+              {
+                "key": "text",
+                "description": "Material description",
+                "kind": "INPUT",
+                "value": "Plastic"
               }
             ]
           }
@@ -2544,11 +2682,115 @@ fragment attributes on ObjectWithAttributes {
     }
   },
   "extensions": {
-    "complexity": 112,
+    "complexity": 232,
     "permissionsUsed": [
       "Attribute:write",
       "Product.Attribute:read",
       "Attribute:read"
+    ]
+  }
+}
+```
+
+### Modifying and/or un-selecting custom attributes
+
+You can the `unassignAttributes` mutation in order to clear the `Long External Product Name` attribute on our test Product, or de-select the previously chosen values. Remember, when un-assigning a dynamic text value, you just need to tell Centra which attribute to clear. For pre-selected mapped attributes, you must tell Centra which specific values you'd like to de-select.
+
+#### Request
+
+```gql
+mutation unsetProductAttribute {
+  unassignAttributes(input: {
+    objectType: Product
+    objectId: 343
+    mappedAttributes: [
+      {
+        attributeTypeName: "pr_materials"
+        attributeId: 7
+      }
+      {
+        attributeTypeName: "pr_materials"
+        attributeId: 9
+      }
+    ]
+    dynamicAttributes: [
+      {
+        attributeTypeName: "pr_long_name"
+        attributeElementKey: "text"
+      }
+    ]
+  }) {
+    userErrors {
+      message
+      path
+    }
+    object {
+      ...on Product {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      ...attributes
+    }
+  }
+}
+
+fragment attributes on ObjectWithAttributes {
+  attributes {
+    type {
+      name
+      isMapped
+    }
+    description
+    objectType
+    elements {
+      key
+      description
+      kind
+      ... on AttributeStringElement {
+        value
+      }
+      ... on AttributeChoiceElement {
+        isMulti
+        selectedValue
+        selectedValueName
+      }
+      ... on AttributeFileElement {
+        url
+      }
+      ... on AttributeImageElement {
+        url
+        width
+        height
+        mimeType
+      }
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "unassignAttributes": {
+      "userErrors": [],
+      "object": {
+        "id": 343,
+        "name": "testproduct1",
+        "createdAt": "2022-03-09T12:22:26+0100",
+        "updatedAt": "2022-03-11T15:54:32+0100",
+        "attributes": []
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 232,
+    "permissionsUsed": [
+      "Attribute:write",
+      "Product.Attribute:read"
     ]
   }
 }
