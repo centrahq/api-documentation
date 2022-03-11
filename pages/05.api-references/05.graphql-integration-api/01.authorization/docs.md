@@ -211,7 +211,7 @@ Response:
 
 ## New, simplified permissions
 
-In the upcoming Centra 3.6 version we will release changes simplifying permissions in Integration API (GraphQL).
+In the upcoming Centra 3.7 version we will release changes simplifying permissions in Integration API (GraphQL).
 
 ### Previous convention
 

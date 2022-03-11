@@ -2779,7 +2779,7 @@ fragment attributes on ObjectWithAttributes {
       "userErrors": [],
       "object": {
         "id": 1,
-        "name": "testproduct1",
+        "name": "First Product",
         "createdAt": "2022-03-09T12:22:26+0100",
         "updatedAt": "2022-03-11T15:54:32+0100",
         "attributes": []
