@@ -208,3 +208,76 @@ Response:
   }
 }
 ```
+
+## New, simplified permissions
+
+In the upcoming Centra 3.6 version we will release changes simplifying permissions in Integration API (GraphQL).
+
+### Previous convention
+
+Most of the main types have a permission associated with it, like `Product:read` and `Product:write`. On top of that, relations between types were also secured separately. For example, `Product.Brand:read` would allow you to read brands associated with a product, but wouldn’t affect your ability to read other brands – for that there was `Brand:read`. This convention resulted in many granular permissions.
+
+### Why and what we change
+
+Reason 1: Such granularity is not actually needed. If a token is granted permission to `Account:read`, it should be enough to read accounts from `Invoice.account`, `Return.account`, or `SalesRepresentative.accounts`. Thus instead of `Invoice.Account:read`, `Return.Account:read` and `SalesRepresentative.Account:read` there will be the only permission `Account:read`. It will significantly reduce the number of permissions used, and therefore their management will be simplified.
+
+Reason 2: Inconsistency of sub-permissions. Sometimes scalar fields are guarded, sometimes sub-types are guarded, but they look the same: `Product.InternalComment:read` (scalar) `Product.Attribute:read` (type).  
+The new release will use a field name instead of a return type. The aforementioned permissions will become `Product.attributes:read` and `Product.internalComment:read` for `attributes` and `internalComment`.  
+It would also make it clear, which field it is about when there are two fields with the same return type. For example, different addresses `PurchaseOrder.shippingAddress:read` and `PurchaseOrder.supplierAddress:read` instead of `PurchaseOrder.Address:read` for both. And make it clear that `Purchaser.Order:read` is actually about `Purchaser.totalOrders:read`.
+
+Reason 3: Currently, it’s not possible to secure the same type with separate permissions. The changes will enable this possibility as for `shippingAddress` and `supplierAddress`.
+
+### New convention
+
+Nested permissions will be used only for:
+
+* Attributes  
+* Internal comments  
+* Stock  
+* Addresses  
+* Other sensitive information, like `AdminUser.email`
+
+The second part of nested permissions will always match the field name.
+
+### Deprecated permission handling
+
+The old permissions will still work for now but will be marked as deprecated. In case of using a deprecated permission, a new section in responses will appear: `extensions` > `deprecatedPermissionsUsed`.
+
+We will monitor the usage of the deprecated permissions to make sure they are not used, before we delete them completely.
+
+### How to prepare
+
+Recommended actions:  
+* Run all GQL queries, which are in use, towards updated QA servers,  
+* Note down all (new) permissions used, then add them to your tokens.
+
+### Roadmap
+
+* 21.03.2022 – release of the new + deprecated permissions on QA servers  
+* 04.04.2022 – release on production servers  
+* 16.05.2022 – release of removing deprecated permissions on QA servers  
+* 30.05.2022 – release on production servers
+
+### Additional notes
+
+Please note, some fields don’t have permissions on nested fields yet (e.g. `Invoice.billingAddress`), they are accessible through the top type permission (e.g. `Invoice:read`). In the upcoming changes such fields will receive explicit permissions and the previous top type permissions will be marked as deprecated. It will only mean the permission is deprecated for this specific field, but the permission itself could be still active and it will be clearly stated in the new `deprecatedPermissionsUsed` section. For example, the query
+
+```gql
+{
+  invoices(limit: 1) {
+    billingAddress {city}
+  }
+}
+```
+
+...will tell `Invoice:read` is deprecated but it’s only for `Invoice.billingAddress`. `Invoice:read` is still an active permission.
+
+```gql
+    "permissionsUsed": [
+      "Invoice:read",
+      "Invoice.billingAddress:read"
+    ],
+    "deprecatedPermissionsUsed": [
+      "Field: Invoice.billingAddress, deprecated: Invoice:read, current: Invoice.billingAddress:read"
+    ],
+```

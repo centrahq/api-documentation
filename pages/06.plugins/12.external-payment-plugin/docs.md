@@ -40,19 +40,47 @@ The integration with Payment Service Provider, order creation and management mus
 ```
 
 You should store the `selection` field value. It needs to be included in signature payload when finalizing the payment.
+At the same time you will most probably initiate the payment session with Payment Service you're integrating, so you should associate the selection id from Centra
+with payment session identifier from Payment Service.
+
+```javascript
+//this will be needed to finalize the order
+[paymentSessionIdentifier, selectionId]
+```
+
 
 ## Order finalization
 
-There are 2 ways described below to provide information about successful or failed authorization or capture.
-In both ways you need to provide the signature which is base64 encoded HMAC SHA256 signature. The payload is signed using shared secret configurable in External Payment Plugin settings in Centra AMS.
+ - Redirect 
 
-The first request (either `POST /payment-result` or push notification) with successful (`success=true`) authorization triggers order creation. If the first authorization to arrive is a failed one it will be accepted by Centra and shown on the order transcation history later, when the order is created.
+When user finalizes the payment in html widget and gets redirected to the success page you will send data provided by Payment Service back to your backend
+so that it can be signed and forwarded to Centra's payment-result endpoint. At this point you should use the value pair stored before to map payment result you've obtained from Payment Service to its associated
+selection id:
+
+```javascript
+[paymentSessionIdentifier, selectionId]
+```
+
+Sign the payload and send a `POST /payment-result` (as shown in details below).
+
+- Authorisation push notification
+
+Authorisation result will be also send to your backend by Payment Service through webhook or so-called push notification.
+Here you should also use value pair:
+```javascript
+[paymentSessionIdentifier, selectionId]
+```
+to trace back selection id from paymentSessionIdentifier. You should forward this request to Centra push notification endpoint (details below). 
+
 
 [notice-box=alert]
 There is no way to provide or update the customer address using requests finalizing the payment.
-Centra needs to know the customer address before. Not providing the address before might result in invalid orders with empty address.
+Centra needs to know the customer address before. Not providing the address before will result in invalid orders with empty address.
 [/notice-box]
 
+## Captures
+
+Captures must be handled outside of Centra within your own integration with Payment Service. Result of capture should be sent towards push notification endpoint using signed request with `intent=capture`.
 
 ### Checkout API `POST /payment-result`:
 
@@ -84,7 +112,7 @@ This endpoint is intended for receiving authorization information. It can be cal
 | `signature` | string | Base64 encoded signed payload (details below) |
 | `currency` | string | Currency code (ISO 4217) |
 | `amount` | string | Numeric string with dot as decimal separator |
-| `timestamp` | int | Signature unix timestamp in UTC |
+| `timestamp` | int | Signature unix timestamp in UTC. Must be provided in seconds. The value is validated so you need to provide the current timestamp each time you send a request. |
 | `transactionReference` | string | Transaction identifier from  PSP|
 | `success` | boolean | Successful or failed result of payment authorization|
 | `transaction` | object | All the transaction details that were received from PSP|
@@ -92,10 +120,17 @@ This endpoint is intended for receiving authorization information. It can be cal
 
 #### Signature
 
-The signature is a base64 encoded HMAC SHA256 hash.
-Example code using JavaScript and CryptoJS library:
+The signature is a base64 encoded HMAC SHA256 hash. Shared secret is configurable in External Payment Plugin settings in Centra AMS.
+Browser snippet using JavaScript and CryptoJS library:
 ```javascript
-btoa(CryptoJS.HmacSHA256($payload, secret).toString(CryptoJS.digest));
+btoa(CryptoJS.HmacSHA256(payload, secret).toString(CryptoJS.digest));
+```
+
+Node snippet using popular npm package `crypto-js`:
+```javascript
+let hashedSignature = HmacSHA256(str, secret); //CryptoJS.lib.WordArray
+let hashedSignatureHex = hashedSignature.toString(); //hex encoded string
+let base64encodedSignature = Buffer.from(hashedSignatureHex).toString('base64'); //base64 encoded signature
 ```
 
 ##### Signature payload fields
@@ -216,8 +251,7 @@ Only one successful (success=true) authorization and one successful (success=tru
 
 ## Captures and refunds:
 
-Captures and refunds should be done manually in your PSP dashboard.
-
+Captures and refunds should be handled outside of Centra.
 Captures and refunds triggered by Order API or AMS are forbidden for orders paid with External Payment Plugin and will result in following error:
 
 ![img.png](external-payment-plugin-capture-error.png)

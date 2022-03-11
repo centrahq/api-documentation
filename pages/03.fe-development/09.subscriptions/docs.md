@@ -67,7 +67,7 @@ For each product there is one new field - `subscriptionPlans` of type `array`.
 - `intervalType` is string representing the unit of time used; can be any of: `day`, `week`, `month` or `year`.
 
 ### Checking out
-Checkout process is the same when it comes to implementation, you can read more in [Checkout API Order flow guide](https://docs.centra.com/api-references/checkout-api/order-flow).
+Checkout process is the same when it comes to implementation, you can read more in [Checkout API Order flow guide](https://docs.centra.com/api-references/checkout-api/order-flow). The only difference is that the customer has to be a registered client in order to be able to subscribe to an item. The user can log in before the checkout or create the account during the checkout. Keep in mind that it is only possible to create an account if the email is not already associated with any created account. If the account with given email already exists it is mandatory to log in before checking out with a subscription.
 
 ## ShopAPI
 We assume configured url for ShopAPI is `/api/shop/`.
@@ -85,6 +85,31 @@ Adding an item with subscription to basket is the same as usual, using [POST /ap
 
 ### Deleting subscription plan from item
 [DELETE /api/shop/selections/{{selection}}/lines/{{selectionLineItem}}/subscription-plan/](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/delete_selections__selection__lines__line__subscription_plan)
+
+### Log in
+
+Log the customer into your system. You can verify the customer credentials in [POST /api/shop/customers/{{email}}/login](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__login). Once you have the customer authenticated you should indicate that in `POST /api/shop/selections/{{selectionId}}/payment` request by adding `loggedIn` property:
+
+```json
+{
+    "address": {
+        "loggedIn": true
+    }
+}
+```
+
+### Registration
+
+If the email address is not taken by a registered customer then it is possible to register during checkout by adding registration specific fields to `POST /api/shop/selections/{{selectionId}}/payment` request:
+
+```json
+{
+    "address": {
+        "register": true,
+        "password": "password for the user"
+    }
+}
+```
 
 ## CheckoutAPI
 We assume configured url for CheckoutAPI is `/api/checkout/`.
@@ -107,3 +132,20 @@ We can also add subscription plan without item into basked using [POST /api/chec
 
 ### Deleting subscription plan from item
 [DELETE /api/checkout/lines/{{subscriptionLineItem}}/subscription-plan/](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/delete_lines__line__subscription_plan)
+
+### Log in
+
+Log the customer into your system. You can verify the customer credentials in [POST /api/checkout/login/{{email}}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_login__email_). If the credentials are correct the customer will be logged in in current shopping session (for current API-Token).
+
+### Registration
+
+If the email address is not taken by a registered customer then it is possible to register during checkout by adding registration specific fields to `POST /api/checkout/selections/{{selectionId}}/payment` request:
+
+```json
+{
+    "address": {
+        "register": true,
+        "password": "password for the user"
+    }
+}
+```
