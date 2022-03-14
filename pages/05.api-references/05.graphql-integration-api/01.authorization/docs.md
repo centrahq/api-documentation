@@ -260,7 +260,7 @@ Recommended actions:
 
 ### Additional notes
 
-Please note, some fields don’t have permissions on nested fields yet (e.g. `Invoice.billingAddress`), they are accessible through the top type permission (e.g. `Invoice:read`). In the upcoming changes such fields will receive explicit permissions and the previous top type permissions will be marked as deprecated. It will only mean the permission is deprecated for this specific field, but the permission itself could be still active and it will be clearly stated in the new `deprecatedPermissionsUsed` section. For example, the query
+Please note, some types have new sub-permissions, and using top type permissions on them is marked as deprecated. It only means the usage of this permission is deprecated for this specific field, but the permission itself could be still active and it will be clearly stated in the new `deprecatedPermissionsUsed` section. For example, the query
 
 ```gql
 {
@@ -281,3 +281,27 @@ Please note, some fields don’t have permissions on nested fields yet (e.g. `In
       "Field: Invoice.billingAddress, deprecated: Invoice:read, current: Invoice.billingAddress:read"
     ],
 ```
+
+### Full list of permissions
+
+<!--
+```eval_rst
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Permission
+     - Status
+     - Comment
+
+   * - ``Account:read``
+     - &#10004;
+     -
+
+   * - ``Account.AddressBook:read``
+     - &#10060;
+     - Address book is part of Account, use ``Account:read``
+
+```
+-->
+
