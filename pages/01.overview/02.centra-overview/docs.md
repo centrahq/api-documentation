@@ -23,7 +23,7 @@ Markets divide your store into logical entities, which can be based on Geo-locat
 Markets also control which campaigns and vouchers are available, which shipping options are available, and which Allocation Rule is used to display stock level.
 
 Market can be set by:
-* (Prio 1) Store API `PUT /markets/switch`
+* (Prio 1) Store API `PUT /markets/{ID}`
 * (Prio 2) Saved cookie
 * (Prio 3) Geo-IP based location
 * (Prio 4) Fallback to Store's default Market
@@ -33,7 +33,7 @@ Market can be set by:
 Locale defines the user's language. For items that are translatable, like custom product attributes, locale controls which translation will be returned via API.
 
 Locale can be set by:
-* (Prio 1) Store API `PUT /languages/switch`
+* (Prio 1) Store API `PUT /languages/{code}`
 * (Prio 2) Geo-IP based location
 * (Prio 3) Fallback to Store's default Locale
 
@@ -48,7 +48,7 @@ Pricelists control how much your products cost in each Currency and in each Stor
 You can only configure one Pricelist per one Store per one geo-location. This means you cannot have two EUR pricelists selected for geo-location "Spain". However, you can still configure Pricelists using the same Currency for different Markets, for example one SEK Pricelist set for geo-location "Sweden" and one SEK Pricelist with no geo-location connected to Market "VIP clients".
 
 Pricelist can be set by:
-* (Prio 1) Store API `PUT /countries/switch`
+* (Prio 1) Store API `PUT /countries/{code}`
 * (Prio 2) Geo-IP based location
 * (Prio 3) Fallback to Store's default Pricelist
 
