@@ -293,13 +293,11 @@ Please note, some types have new sub-permissions, and using top type permissions
    * - Permission
      - Status
      - Comment
-
    * - ``Account:read``
-     - &#10004;
+     - v 
      -
-
    * - ``Account.AddressBook:read``
-     - &#10060;
+     - x
      - Address book is part of Account, use ``Account:read``
 
 ```
