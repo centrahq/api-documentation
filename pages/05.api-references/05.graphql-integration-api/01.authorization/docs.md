@@ -291,15 +291,22 @@ Please note, some types have new sub-permissions, and using top type permissions
    :header-rows: 1
 
    * - Permission
+   
      - Status
+   
      - Comment
+
    * - ``Account:read``
-     - v 
+   
+     - &#10004;
+   
      -
+
    * - ``Account.AddressBook:read``
-     - x
+   
+     - &#10060;
+   
      - Address book is part of Account, use ``Account:read``
 
 ```
 -->
-

@@ -20,7 +20,7 @@ See [readme](docs/run-locally.md).
 
 Deployment is handled using continuous deployment.
 
-Successful builds on the `master` branch will be automatically deployed.
+Successful builds on the `production` branch will be automatically deployed.
 
 ## Working at Centra
 
