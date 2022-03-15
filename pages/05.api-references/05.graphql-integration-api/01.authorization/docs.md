@@ -284,411 +284,409 @@ Please note, some types have new sub-permissions, and using top type permissions
 
 ### Full list of permissions
 
-| Permission  |  Status  | Comment  |
-|:------------|:--------:|:---------|
-| ``Account:read`` | &#10004; |  |
-| ``Account.AddressBook:read`` | &#10060; | Address book is part of Account, use ``Account:read`` |
-| ``Account.AllocationRule:read`` | &#10060; | Use ``AllocationRule:read`` |
-| ``Account.Attribute:read`` | &#10060; | Use ``Account.attributes:read`` |
-| ``Account.attributes:read`` | &#10071; | New permission, use instead of ``Account.Attribute:read`` |
-| ``Account.Brand:read`` | &#10060; | Use ``Brand:read`` |
-| ``Account.DeliveryWindowDiscount:read`` | &#10060; | DeliveryWindowDiscount is a part of Account model, use ``Account:read`` |
-| ``Account.EmailHistory:read`` | &#10060; | Use ``EmailHistory:read`` |
-| ``Account.InternalComment:read`` | &#10060; | Use ``Account.internalComment:read`` |
-| ``Account.internalComment:read`` | &#10071; | New permission, use instead of ``Account.InternalComment:read`` |
-| ``Account.Invoice:read`` | &#10060; | Use ``Invoice:read`` |
-| ``Account.Market:read`` | &#10060; | Use ``Market:read`` |
-| ``Account.Order:read`` | &#10060; | Use ``Order:read`` |
-| ``Account.PaymentTerms:read`` | &#10060; | Use ``PaymentTerms:read`` |
-| ``Account.Pricelist:read`` | &#10060; | Use ``Pricelist:read`` |
-| ``Account.Purchaser:read`` | &#10060; | Use ``Purchaser:read`` |
-| ``Account.Return:read`` | &#10060; | Use ``Return:read`` |
-| ``Account.SalesRepresentative:read`` | &#10060; | Use ``SalesRepresentative:read`` |
-| ``Account.ShippingTerms:read`` | &#10060; | Use ``ShippingTerms:read`` |
-| ``Account.TaxClass:read`` | &#10060; | Use ``TaxClass:read`` |
-| ``Account.Warehouse:read`` | &#10060; | Use ``Warehouse:read`` |
-| ``Account:write`` | &#10004; |  |
-| ``AddressBook:read`` | &#10060; | AddressBook is a part of Account, use ``Account:read`` |
-| ``AdminDiscount.AdminUser:read`` | &#10060; | Use ``AdminUser:read`` |
-| ``AdminUser:read`` | &#10004; |  |
-| ``AdminUser.Account:read`` | &#10060; | Use ``Account:read`` |
-| ``AdminUser.Brand:read`` | &#10060; | Use ``Brand:read`` |
-| ``AdminUser.Email:read`` | &#10060; | Use ``AdminUser.email:read`` |
-| ``AdminUser.email:read`` | &#10071; | New permission, use instead of ``AdminUser.Email:read`` |
-| ``AdminUser.Market:read`` | &#10060; | Use ``Market:read`` |
-| ``AdminUser.Pricelist:read`` | &#10060; | Use ``Pricelist:read`` |
-| ``AdminUser.SalesRepresentative:read`` | &#10060; | Use ``SalesRepresentative:read`` |
-| ``Affiliate:read`` | &#10004; |  |
-| ``Affiliate.Order:read`` | &#10060; | Use ``Order:read`` |
-| ``Affiliate.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``Allocation:read`` | &#10004; |  |
-| ``AllocationRule:read`` | &#10004; |  |
-| ``AllocationRule.Account:read`` | &#10060; | Use ``Account:read`` |
-| ``AllocationRule.DeliveryWindow:read`` | &#10060; | Use ``DeliveryWindow:read`` |
-| ``AllocationRule.GeographyAllocationPriority:read`` | &#10060; | GeographyAllocationPriority is a part of AllocationRule model, use ``AllocationRule:read`` |
-| ``AllocationRule.Market:read`` | &#10060; | Use ``Market:read`` |
-| ``AllocationRule.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``AllocationRule.Warehouse:read`` | &#10060; | Use ``Warehouse:read`` |
-| ``AppliedDiscount.Discount:read`` | &#10060; | Use ``Discount:read`` |
-| ``AppliedDiscount.Order:read`` | &#10060; | Use ``Order:read`` |
-| ``Attribute:read`` | &#10004; |  |
-| ``Attribute:write`` | &#10004; |  |
-| ``Brand:read`` | &#10004; |  |
-| ``Brand.Product:read`` | &#10060; | Use ``Product:read`` |
-| ``Brand.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``Brand:write`` | &#10004; |  |
-| ``BrickAndMortar:read`` | &#10004; |  |
-| ``BrickAndMortar.AllocationRule:read`` | &#10060; | Use ``AllocationRule:read`` |
-| ``BrickAndMortar.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``BrickAndMortar.Warehouse:read`` | &#10060; | Use ``Warehouse:read`` |
-| ``Bundle:read`` | &#10004; |  |
-| ``Bundle.SizeChart:read`` | &#10060; | Use ``SizeChart:read`` |
-| ``Bundle:write`` | &#10004; |  |
-| ``Campaign:read`` | &#10004; |  |
-| ``Campaign.CampaignVariant:read`` | &#10060; | Use ``CampaignVariant:read`` |
-| ``Campaign.DeliveryWindow:read`` | &#10060; | Use ``DeliveryWindow:read`` |
-| ``Campaign.Market:read`` | &#10060; | Use ``Market:read`` |
-| ``Campaign.Pricelist:read`` | &#10060; | Use ``Pricelist:read`` |
-| ``Campaign.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``Campaign:write`` | &#10004; |  |
-| ``CampaignVariant.Campaign:read`` | &#10060; | Use ``Campaign:read`` |
-| ``CampaignVariant:read`` | &#10060; | CampaignVariant is a part of Campaign, use ``Campaign:read`` |
-| ``Category:read`` | &#10004; |  |
-| ``Category.Display:read`` | &#10060; | Use ``Display:read`` |
-| ``Category.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``Collection:read`` | &#10004; |  |
-| ``Collection.totalProducts:read`` | &#10071; | New permission |
-| ``Collection.Product:read`` | &#10060; | Use ``Product:read`` |
-| ``Collection:write`` | &#10004; |  |
-| ``Commission:read`` | &#10004; |  |
-| ``Commission.Invoice:read`` | &#10060; | Use ``Invoice:read`` |
-| ``Commission.Order:read`` | &#10060; | Use ``Order:read`` |
-| ``Commission.SalesRepresentative:read`` | &#10060; | Use ``SalesRepresentative:read`` |
-| ``Country:read`` | &#10004; |  |
-| ``Currency.Pricelist:read`` | &#10060; | Use ``Pricelist:read`` |
-| ``Currency.ShippingOption:read`` | &#10060; | Use ``ShippingOption:read`` |
-| ``Currency:read`` | &#10004; |  |
-| ``Customer.Attribute:read`` | &#10060; | Use ``Purchaser.Attribute:read`` |
-| ``Customer.EmailHistory:read`` | &#10060; | Use ``EmailHistory:read`` |
-| ``DeliveryWindow:read`` | &#10004; |  |
-| ``DeliveryWindow.AllocationRule:read`` | &#10060; | Use ``AllocationRule:read`` |
-| ``DeliveryWindow.Campaign:read`` | &#10060; | Use ``Campaign:read`` |
-| ``DeliveryWindow.DeliveryWindowVariant:read`` | &#10060; | Use ``DeliveryWindowVariant:read`` |
-| ``DeliveryWindow.Market:read`` | &#10060; | Use ``Market:read`` |
-| ``DeliveryWindow:write`` | &#10004; |  |
-| ``DeliveryWindowDiscount:read`` | &#10060; | DeliveryWindowDiscount is a part of Account model, use ``Account:read`` |
-| ``DeliveryWindowDiscount.Account:read`` | &#10060; | Use ``Account:read`` |
-| ``DeliveryWindowDiscount.DeliveryWindow:read`` | &#10060; | Use ``DeliveryWindow:read`` |
-| ``DeliveryWindowVariant:read`` | &#10060; | DeliveryWindowVariant is a part of DeliveryWindow model, use ``DeliveryWindow:read`` |
-| ``DeliveryWindowVariant.DeliveryWindow:read`` | &#10060; | Use ``DeliveryWindow:read`` |
-| ``DeliveryWindowVariant.Product:read`` | &#10060; | Use ``Product:read`` |
-| ``DeliveryWindowVariant.ProductVariant:read`` | &#10060; | Use ``ProductVariant:read`` |
-| ``DeliveryWindowVariant:write`` | &#10060; | DeliveryWindowVariant is a part of DeliveryWindow model, use ``DeliveryWindow:write`` |
-| ``Discount:read`` | &#10004; |  |
-| ``Discount.AdminUser:read`` | &#10060; | Use ``AdminUser:read`` |
-| ``Discount.AppliedDiscount:read`` | &#10060; | AppliedDiscount is a part of Order model, use ``Order:read`` |
-| ``Discount.GiftCertificateGenerator:read`` | &#10060; | Use ``GiftCertificateGenerator:read`` |
-| ``Discount.Market:read`` | &#10060; | Use ``Market:read`` |
-| ``Discount.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``Display:read`` | &#10004; |  |
-| ``Display.Attribute:read`` | &#10060; | Unused |
-| ``Display.CampaignVariant:read`` | &#10060; | Use ``CampaignVariant:read`` |
-| ``Display.Category:read`` | &#10060; | Use ``Category:read`` |
-| ``Display.Comment:read`` | &#10060; | Use ``Display.comment:read`` |
-| ``Display.comment:read`` | &#10071; | New permission, use instead of ``Display.Comment:read`` |
-| ``Display.DisplayRelation:read`` | &#10060; | DisplayRelation is a part of Display model, use ``Display:read`` |
-| ``Display.Market:read`` | &#10060; | use ``Market:read`` |
-| ``Display.Price:read`` | &#10060; | Use ``Price:read`` |
-| ``Display.Product:read`` | &#10060; | Use ``Product:read`` |
-| ``Display.ProductMedia:read`` | &#10060; | Use ``ProductMedia:read`` |
-| ``Display.ProductVariant:read`` | &#10060; | Use ``ProductVariant:read`` |
-| ``Display.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``Display.TaxGroup:read`` | &#10060; | Use ``TaxGroup:read`` |
-| ``Display:write`` | &#10004; |  |
-| ``DisplayRelation:write`` | &#10060; | DisplayRelation is a part of Display model, use ``Display:write`` |
-| ``DocumentTemplate:read`` | &#10004; |  |
-| ``EmailHistory:read`` | &#10004; |  |
-| ``EmailHistory.AdminUser:read`` | &#10060; | Use ``AdminUser:read`` |
-| ``EmailHistory.Order:read`` | &#10060; | Use ``Order:read`` |
-| ``EmailHistory.Purchaser:read`` | &#10060; | Use ``Purchaser:read`` |
-| ``Folder:read`` | &#10004; |  |
-| ``Folder.Product:read`` | &#10060; | Use ``Product:read`` |
-| ``Folder:write`` | &#10004; |  |
-| ``GeographyAllocationPriority:read`` | &#10060; | GeographyAllocationPriority is a part of AllocationRule model, use ``AllocationRule:read`` |
-| ``GiftCertificateGenerator:read`` | &#10004; |  |
-| ``GiftCertificateGenerator.Discount:read`` | &#10060; | Use ``Discount:read`` |
-| ``GiftCertificateGenerator.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``Invoice:read`` | &#10004; |  |
-| ``Invoice.billingAddress:read`` | &#10071; | New permission |
-| ``Invoice.shippingAddress:read`` | &#10071; | New permission |
-| ``Invoice.Account:read`` | &#10060; | Use ``Account:read`` |
-| ``Invoice.AdminUser:read`` | &#10060; | Use ``AdminUser:read`` |
-| ``Invoice.Commission:read`` | &#10060; | Use ``Commission:read`` |
-| ``Invoice.PaymentTerms:read`` | &#10060; | Use ``PaymentTerms:read`` |
-| ``Invoice.Purchaser:read`` | &#10060; | Use ``Purchaser:read`` |
-| ``Invoice.ShippingTerms:read`` | &#10060; | Use ``ShippingTerms:read`` |
-| ``Invoice.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``InvoiceLine.countryOfOrigin:read`` | &#10071; | New permission |
-| ``InvoiceLine.OrderLine:read`` | &#10060; | Use ``Order:read`` |
-| ``InvoiceLine.Product:read`` | &#10060; | Use ``Product:read`` |
-| ``InvoiceLine.ProductVariant:read`` | &#10060; | Use ``ProductVariant:read`` |
-| ``InvoiceLine.ShipmentLine:read`` | &#10060; | Use ``ShipmentLine:read`` |
-| ``Language:read`` | &#10004; |  |
-| ``Language.Country:read`` | &#10060; | Use ``Country:read`` |
-| ``Localization:read`` | &#10004; |  |
-| ``Localization:write`` | &#10004; |  |
-| ``Market:read`` | &#10004; |  |
-| ``Market.AllocationRule:read`` | &#10060; | Use ``AllocationRule:read`` |
-| ``Market.Campaign:read`` | &#10060; | Use ``Campaign:read`` |
-| ``Market.Comment:read`` | &#10060; | Use ``Market.comment:read`` |
-| ``Market.comment:read`` | &#10071; | New permission, use instead of ``Market.Comment:read`` |
-| ``Market.Country:read`` | &#10060; | Use ``Country:read`` |
-| ``Market.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``MeasurementChart:read`` | &#10004; |  |
-| ``MeasurementChart:write`` | &#10004; |  |
-| ``MediaBatch:read`` | &#10004; |  |
-| ``MediaBatch:write`` | &#10004; |  |
-| ``NewsletterSubscription:read`` | &#10004; |  |
-| ``NewsletterSubscription.Country:read`` | &#10060; | Use ``Country:read`` |
-| ``NewsletterSubscription.ProductSize:read`` | &#10060; | Use ``ProductSize:read`` |
-| ``NewsletterSubscription.ProductVariant:read`` | &#10060; | Use ``ProductVariant:read`` |
-| ``NewsletterSubscription.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``Order:read`` | &#10004; |  |
-| ``Order.Account:read`` | &#10060; | Use ``Account:read`` |
-| ``Order.Affiliate:read`` | &#10060; | Use ``Affiliate:read`` |
-| ``Order.Attribute:read`` | &#10060; | Use ``Order.attributes:read`` |
-| ``Order.attributes:read`` | &#10071; | New permission |
-| ``Order.billingAddress:read`` | &#10071; | New permission |
-| ``Order.Commission:read`` | &#10060; | Use ``Commission:read`` |
-| ``Order.DeliveryWindow:read`` | &#10060; | Use ``DeliveryWindow:read`` |
-| ``Order.Discount:read`` | &#10060; | Use ``Discount:read`` |
-| ``Order.EmailHistory:read`` | &#10060; | Use ``EmailHistory:read`` |
-| ``Order.InternalComment:read`` | &#10060; | Use ``Order.internalComment:read`` |
-| ``Order.internalComment:read`` | &#10071; | New permission, use  instead of ``Order.InternalComment:read`` |
-| ``Order.Market:read`` | &#10060; | Use ``Market:read`` |
-| ``Order.OrderDocument:read`` | &#10060; | Use ``Order:read`` |
-| ``Order.OrderHistory:read`` | &#10060; | Use ``OrderHistory:read`` |
-| ``Order.PaymentHistory:read`` | &#10060; | Use ``PaymentHistory:read`` |
-| ``Order.PaymentMethod:read`` | &#10060; | Use ``PaymentMethod:read`` |
-| ``Order.PaymentTerms:read`` | &#10060; | Use ``PaymentTerms:read`` |
-| ``Order.Pricelist:read`` | &#10060; | Use ``Pricelist:read`` |
-| ``Order.Purchaser:read`` | &#10060; | Use ``Purchaser:read`` |
-| ``Order.Return:read`` | &#10060; | Use ``Return:read`` |
-| ``Order.SalesRepresentative:read`` | &#10060; | Use ``SalesRepresentative:read`` |
-| ``Order.Shipment:read`` | &#10060; | Use ``Shipment:read`` |
-| ``Order.shippingAddress:read`` | &#10071; | New permission |
-| ``Order.ShippingPriceGroup:read`` | &#10060; | Use ``ShippingPriceGroup:read`` |
-| ``Order.ShippingTerms:read`` | &#10060; | Use ``ShippingTerms:read`` |
-| ``Order.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``Order.userIP:read`` | &#10071; | New permission |
-| ``OrderHistory:read`` | &#10004; |  |
-| ``OrderHistory.AdminUser:read`` | &#10060; | Use ``AdminUser:read`` |
-| ``OrderHistory.Purchaser:read`` | &#10060; | Use ``Purchaser:read`` |
-| ``OrderLine.Brand:read`` | &#10060; | Use ``Brand:read`` |
-| ``OrderLine.Campaign:read`` | &#10060; | Use ``Campaign:read`` |
-| ``OrderLine.Category:read`` | &#10060; | Use ``Category:read`` |
-| ``OrderLine.Collection:read`` | &#10060; | Use ``Collection:read`` |
-| ``OrderLine.DeliveryWindow:read`` | &#10060; | Use ``DeliveryWindow:read`` |
-| ``OrderLine.Discount:read`` | &#10060; | Unused |
-| ``OrderLine.Display:read`` | &#10060; | Use ``Display:read`` |
-| ``OrderLine.Folder:read`` | &#10060; | Use ``Folder:read`` |
-| ``OrderLine.GiftCertificateGenerator:read`` | &#10060; | Use ``GiftCertificateGenerator:read`` |
-| ``OrderLine.InvoiceLine:read`` | &#10060; | Use ``InvoiceLine:read`` |
-| ``OrderLine.Product:read`` | &#10060; | Use ``Product:read`` |
-| ``OrderLine.ProductVariant:read`` | &#10060; | Use ``ProductVariant:read`` |
-| ``OrderLine.TaxGroup:read`` | &#10060; | TaxGroup is a group of TaxRules, use ``TaxRule:read`` |
-| ``PaymentHistory:read`` | &#10004; |  |
-| ``PaymentHistoryEntry.AdminUser:read`` | &#10060; | Use ``AdminUser:read`` |
-| ``PaymentHistoryEntry.StorePlugin:read`` | &#10060; | Use ``StorePlugin:read`` |
-| ``PaymentTerms:read`` | &#10004; |  |
-| ``Price:read`` | &#10004; |  |
-| ``Price:write`` | &#10004; |  |
-| ``Pricelist:read`` | &#10004; |  |
-| ``Pricelist.Campaign:read`` | &#10060; | Use ``Campaign:read`` |
-| ``Pricelist.Comment:read`` | &#10060; | Use ``Pricelist.comment:read`` |
-| ``Pricelist.comment:read`` | &#10071; | New permission, use instead of ``Pricelist.Comment:read`` |
-| ``Pricelist.Country:read`` | &#10060; | Use ``Country:read`` |
-| ``Pricelist.Price:read`` | &#10060; | Use ``Price:read`` |
-| ``Pricelist.ShippingOption:read`` | &#10060; | Use ``ShippingOption:read`` |
-| ``Pricelist.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``Product:read`` | &#10004; |  |
-| ``Product.Attribute:read`` | &#10060; | Use ``Product.attributes:read`` |
-| ``Product.attributes:read`` | &#10071; | New permission, use instead of ``Product.Attribute:read`` |
-| ``Product.Attribute:write`` | &#10060; | Use ``Product.attributes:write`` |
-| ``Product.attributes:write`` | &#10071; | New permission, use instead of ``Product.Attribute:write`` |
-| ``Product.Brand:read`` | &#10060; | Use ``Brand:read`` |
-| ``Product.Bundle:read`` | &#10060; | Use ``Bundle:read`` |
-| ``Product.Collection:read`` | &#10060; | Use ``Collection:read`` |
-| ``Product.CountryOfOrigin:read`` | &#10060; | Use ``Product.countryOfOrigin:read`` |
-| ``Product.countryOfOrigin:read`` | &#10071; | New permission, use instead of ``Product.CountryOfOrigin:read`` |
-| ``Product.Display:read`` | &#10060; | Use ``Display:read`` |
-| ``Product.Folder:read`` | &#10060; | Use ``Folder:read`` |
-| ``Product.InternalComment:read`` | &#10060; | Use ``Product.internalComment:read`` |
-| ``Product.internalComment:read`` | &#10071; | New permission, use instead of ``Product.InternalComment:read`` |
-| ``Product.MeasurementTable:read`` | &#10060; | Use ``MeasurementChart:read`` |
-| ``Product.ProductMedia:read`` | &#10060; | Use ``ProductMedia:read`` |
-| ``Product.ProductVariant:read`` | &#10060; | Use ``ProductVariant:read`` |
-| ``Product:write`` | &#10004; |  |
-| ``ProductMedia:read`` | &#10004; |  |
-| ``ProductMedia.Product:read`` | &#10060; | Use ``Product:read`` |
-| ``ProductMedia:delete`` | &#10060; | Use ``ProductMedia:write`` |
-| ``ProductMedia:write`` | &#10004; |  |
-| ``ProductSize:read`` | &#10004; |  |
-| ``ProductSize.ProductVariant:read`` | &#10060; | Use ``ProductVariant:read`` |
-| ``ProductSize.PurchaseOrder:read`` | &#10060; | Use ``PurchaseOrder:read`` |
-| ``ProductSize.PurchaseOrderDelivery:read`` | &#10060; | Use ``PurchaseOrderDelivery:read`` |
-| ``ProductSize.Stock:read`` | &#10060; | Use ``ProductSize.stock:read`` and/or ``ProductSize.stockTotals:read`` |
-| ``ProductSize.stock:read`` | &#10071; | New permission, use instead of ``ProductSize.Stock:read`` |
-| ``ProductSize.stockTotals:read`` | &#10071; | New permission, use instead of ``ProductSize.Stock:read`` |
-| ``ProductSize.WarehouseDeliveryLine:read`` | &#10060; | Use ``WarehouseDelivery:read`` |
-| ``ProductVariant:read`` | &#10004; |  |
-| ``ProductVariant.Attribute:read`` | &#10060; | Use ``ProductVariant.attributes:read`` |
-| ``ProductVariant.attributes:read`` | &#10071; | New permission, use instead of ``ProductVariant.Attribute:read`` |
-| ``ProductVariant.Attribute:write`` | &#10060; | Use ``ProductVariant.attributes:write`` |
-| ``ProductVariant.attributes:write`` | &#10071; | New permission, use instead of ``ProductVariant.Attribute:write`` |
-| ``ProductVariant.CampaignVariant:read`` | &#10060; | CampaignVariant is a part of Campaign, use ``Campaign:read`` |
-| ``ProductVariant.Display:read`` | &#10060; | Use ``Display:read`` |
-| ``ProductVariant.InternalName:read`` | &#10060; | Use ``ProductVariant.internalName:read`` |
-| ``ProductVariant.internalName:read`` | &#10071; | New permission, use instead of ``ProductVariant.InternalName:read`` |
-| ``ProductVariant.Product:read`` | &#10060; | Use ``Product:read`` |
-| ``ProductVariant.ProductMedia:read`` | &#10060; | Use ``ProductMedia:read`` |
-| ``ProductVariant.ProductVariantSupply:read`` | &#10060; | Use ``ProductVariantSupply:read`` |
-| ``ProductVariant.PurchaseOrder:read`` | &#10060; | Use ``PurchaseOrder:read`` |
-| ``ProductVariant.PurchaseOrderDelivery:read`` | &#10060; | Use ``PurchaseOrderDelivery:read`` |
-| ``ProductVariant.SizeChart:read`` | &#10060; | Use ``SizeChart:read`` |
-| ``ProductVariant.Stock:read`` | &#10060; | Use ``ProductVariant.stock:read`` and/or ``ProductVariant.stockTotals:read`` |
-| ``ProductVariant.stock:read`` | &#10071; | New permission, use instead of ``ProductVariant.Stock:read`` |
-| ``ProductVariant.stockTotals:read`` | &#10071; | New permission, use instead of ``ProductVariant.Stock:read`` |
-| ``ProductVariant:write`` | &#10004; |  |
-| ``ProductVariantSupply:read`` | &#10004; |  |
-| ``ProductVariantSupply.PurchaseOrder:read`` | &#10060; | Use ``PurchaseOrder:read`` |
-| ``ProductVariantSupply.PurchaseOrderDelivery:read`` | &#10060; | Use ``PurchaseOrderDelivery:read`` |
-| ``PurchaseOrder:read`` | &#10004; |  |
-| ``PurchaseOrder.Address:read`` | &#10060; | Use ``PurchaseOrder.shippingAddress:read`` and/or ``PurchaseOrder.supplierAddress:read`` |
-| ``PurchaseOrder.InternalComment:read`` | &#10060; | Use ``PurchaseOrder.internalComment:read`` |
-| ``PurchaseOrder.internalComment:read`` | &#10071; | New permission, use instead of ``PurchaseOrder.InternalComment:read`` |
-| ``PurchaseOrder.PaymentTerms:read`` | &#10060; | Use ``PaymentTerms:read`` |
-| ``PurchaseOrder.PurchaseOrderDelivery:read`` | &#10060; | Use ``PurchaseOrderDelivery:read`` |
-| ``PurchaseOrder.shippingAddress:read`` | &#10071; | New permission, use instead of ``PurchaseOrder.Address:read`` |
-| ``PurchaseOrder.ShippingTerms:read`` | &#10060; | Use ``ShippingTerms:read`` |
-| ``PurchaseOrder.Supplier:read`` | &#10060; | Use ``Supplier:read`` |
-| ``PurchaseOrder.supplierAddress:read`` | &#10071; | New permission, use instead of ``PurchaseOrder.Address:read`` |
-| ``PurchaseOrder.Warehouse:read`` | &#10060; | Use ``Warehouse:read`` |
-| ``PurchaseOrderDelivery:read`` | &#10004; |  |
-| ``PurchaseOrderDelivery.AdminUser:read`` | &#10060; | Use ``AdminUser:read`` |
-| ``PurchaseOrderDelivery.PurchaseOrder:read`` | &#10060; | Use ``PurchaseOrder:read`` |
-| ``PurchaseOrderDelivery.Supplier:read`` | &#10060; | Use ``Supplier:read`` |
-| ``PurchaseOrderDelivery.Warehouse:read`` | &#10060; | Use ``Warehouse:read`` |
-| ``PurchaseOrderDelivery.WarehouseDelivery:read`` | &#10060; | Use ``WarehouseDelivery:read`` |
-| ``PurchaseOrderDeliveryLine.OrderLine:read`` | &#10060; | Use ``Order:read`` |
-| ``PurchaseOrderDeliveryLine.Product:read`` | &#10060; | Use ``Product:read`` |
-| ``PurchaseOrderDeliveryLine.ProductSize:read`` | &#10060; | Use ``ProductSize:read`` |
-| ``PurchaseOrderDeliveryLine.ProductVariant:read`` | &#10060; | Use ``ProductVariant:read`` |
-| ``PurchaseOrderLine.OrderLine:read`` | &#10060; | Use ``Order:read`` |
-| ``PurchaseOrderLine.Product:read`` | &#10060; | Use ``Product:read`` |
-| ``PurchaseOrderLine.ProductSize:read`` | &#10060; | Use ``ProductSize:read`` |
-| ``PurchaseOrderLine.ProductVariant:read`` | &#10060; | Use ``ProductVariant:read`` |
-| ``Purchaser:read`` | &#10004; |  |
-| ``Purchaser.Account:read`` | &#10060; | Use ``Account:read`` |
-| ``Purchaser.attributes:read`` | &#10071; | New permission, use instead of ``Customer.Attribute:read`` |
-| ``Purchaser.billingAddress:read`` | &#10071; | New permission |
-| ``Purchaser.EmailHistory:read`` | &#10060; | Use ``EmailHistory:read`` |
-| ``Purchaser.Market:read`` | &#10060; | Use ``Market:read`` |
-| ``Purchaser.NewsletterSubscription:read`` | &#10060; | Use ``NewsletterSubscription:read`` |
-| ``Purchaser.Order:read`` | &#10060; | Use ``Order:read`` |
-| ``Purchaser.Pricelist:read`` | &#10060; | Use ``Pricelist:read`` |
-| ``Purchaser.Return:read`` | &#10060; | Use ``Return:read`` |
-| ``Purchaser.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``Purchaser.TaxClass:read`` | &#10060; | Use ``TaxClass:read`` |
-| ``Purchaser.TotalOrder:read`` | &#10060; | Use ``Purchaser.totalOrders:read`` |
-| ``Purchaser.totalOrders:read`` | &#10071; | New permission, use instead of ``Purchaser.TotalOrder:read`` |
-| ``Return:read`` | &#10004; |  |
-| ``Return.Account:read`` | &#10060; | Use ``Account:read`` |
-| ``Return.AdminUser:read`` | &#10060; | Use ``AdminUser:read`` |
-| ``Return.Comment:read`` | &#10060; | Use ``Return.comment:read`` |
-| ``Return.comment:read`` | &#10071; | New permission, use instead of ``Return.Comment:read`` |
-| ``Return.Order:read`` | &#10060; | Use ``Order:read`` |
-| ``Return.OrderDiscount:read`` | &#10060; | Use ``Order:read`` |
-| ``Return.Purchaser:read`` | &#10060; | Use ``Purchaser:read`` |
-| ``Return.Shipment:read`` | &#10060; | Use ``Shipment:read`` |
-| ``Return.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``Return.Warehouse:read`` | &#10060; | Use ``Warehouse:read`` |
-| ``ReturnLine.OrderLine:read`` | &#10060; | Use ``Order:read`` |
-| ``ReturnLine.ShipmentLine:read`` | &#10060; | Use ``Shipment:read`` |
-| ``SalesRepresentative:read`` | &#10004; |  |
-| ``SalesRepresentative.Account:read`` | &#10060; | Use ``Account:read`` |
-| ``SalesRepresentative.Commission:read`` | &#10060; | Use ``Commission:read`` |
-| ``Shipment:read`` | &#10004; |  |
-| ``Shipment.AdminUser:read`` | &#10060; | Use ``AdminUser:read`` |
-| ``Shipment.Invoice:read`` | &#10060; | Use ``Invoice:read`` |
-| ``Shipment.Order:read`` | &#10060; | Use ``Order:read`` |
-| ``Shipment.OrderDiscount:read`` | &#10060; | Use ``Order:read`` |
-| ``Shipment.Return:read`` | &#10060; | Use ``Return:read`` |
-| ``Shipment.ShipmentPlugin:read`` | &#10060; | Use ``StorePlugin:read`` |
-| ``Shipment.shippingAddress:read`` | &#10071; | New permission |
-| ``Shipment.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``ShipmentLine.InvoiceLine:read`` | &#10060; | Use ``Invoice:read`` |
-| ``ShipmentLine.OrderLine:read`` | &#10060; | Use ``Order:read`` |
-| ``ShippingOption:read`` | &#10004; |  |
-| ``ShippingOption.Comment:read`` | &#10060; | Use ``ShippingOption.comment:read`` |
-| ``ShippingOption.comment:read`` | &#10071; | New permission, use instead of ``ShippingOption.Comment:read`` |
-| ``ShippingOption.Market:read`` | &#10060; | Use ``Market:read`` |
-| ``ShippingOption.ShippingPriceGroup:read`` | &#10060; | ShippingPriceGroup is a part of ShippingOption, use ``ShippingOption:read`` |
-| ``ShippingOption.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``ShippingPriceGroup:read`` | &#10060; | ShippingPriceGroup is a part of ShippingOption, use ``ShippingOption:read`` |
-| ``ShippingTerms:read`` | &#10004; |  |
-| ``Size:read`` | &#10004; |  |
-| ``Size.ProductSize:read`` | &#10060; | Use ``ProductSize:read`` |
-| ``Size.SizeChart:read`` | &#10060; | Use ``SizeChart:read`` |
-| ``SizeChart:read`` | &#10004; |  |
-| ``SizeChart:write`` | &#10004; |  |
-| ``StockChange:write`` | &#10004; |  |
-| ``Store:read`` | &#10004; |  |
-| ``Store.Affiliate:read`` | &#10060; | Use ``Affiliate:read`` |
-| ``Store.AllocationRule:read`` | &#10060; | Use ``AllocationRule:read`` |
-| ``Store.Brand:read`` | &#10060; | Use ``Brand:read`` |
-| ``Store.Campaign:read`` | &#10060; | Use ``Campaign:read`` |
-| ``Store.Category:read`` | &#10060; | Use ``Category:read`` |
-| ``Store.Market:read`` | &#10060; | Use ``Market:read`` |
-| ``Store.Order:read`` | &#10060; | Use ``Order:read`` |
-| ``Store.Pricelist:read`` | &#10060; | Use ``Pricelist:read`` |
-| ``Store.ShippingOption:read`` | &#10060; | Use ``ShippingOption:read`` |
-| ``Store.StorePlugin:read`` | &#10060; | Use ``StorePlugin:read`` |
-| ``Store.TaxGroup:read`` | &#10060; | TaxGroup is a group of TaxRules, use ``TaxRule:read`` |
-| ``Store.TotalOrder:read`` | &#10060; | Deleted, Store.totalOrders is deprecated |
-| ``Store.TotalPurchaser:read`` | &#10060; | Deleted, Store.totaPurchasers is deprecated |
-| ``StorePlugin:read`` | &#10004; |  |
-| ``StorePlugin.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``Subscription:read`` | &#10004; |  |
-| ``Subscription.internalComment:read`` | &#10071; | New permission |
-| ``SubscriptionPlan:read`` | &#10004; |  |
-| ``SubscriptionPlan.internalComment:read`` | &#10071; | New permission |
-| ``SubscriptionPlan:write`` | &#10004; |  |
-| ``Supplier:read`` | &#10004; |  |
-| ``Supplier.Address:read`` | &#10060; | Use ``Supplier.address:read`` |
-| ``Supplier.address:read`` | &#10071; | New permission, use instead of ``Supplier.Address:read`` |
-| ``Supplier.Comment:read`` | &#10060; | Use ``Supplier.comment:read`` |
-| ``Supplier.comment:read`` | &#10071; | New permission, use instead of ``Supplier.Comment:read`` |
-| ``Supplier.PaymentTerms:read`` | &#10060; | Use ``PaymentTerms:read`` |
-| ``Supplier.ProductVariantSupply:read`` | &#10060; | Use ``ProductVariantSupply:read`` |
-| ``Supplier.PurchaseOrder:read`` | &#10060; | Use ``PurchaseOrder:read`` |
-| ``Supplier.PurchaseOrderDelivery:read`` | &#10060; | Use ``PurchaseOrderDelivery:read`` |
-| ``Supplier.ShippingTerms:read`` | &#10060; | Use ``ShippingTerms:read`` |
-| ``Supplier.Warehouse:read`` | &#10060; | Use ``Warehouse:read`` |
-| ``TaxClass:read`` | &#10004; |  |
-| ``TaxGroup:read`` | &#10060; | TaxGroup is a group of TaxRules, use ``TaxRule:read`` |
-| ``TaxGroup.Store:read`` | &#10060; | Use ``Store:read`` |
-| ``TaxGroup.TaxRule:read`` | &#10060; | Use ``TaxRule:read`` |
-| ``TaxRule:read`` | &#10004; |  |
-| ``Warehouse:read`` | &#10004; |  |
-| ``Warehouse.AllocationRule:read`` | &#10060; | Use ``AllocationRule:read`` |
-| ``Warehouse.Stock:read`` | &#10060; | Use ``Warehouse.stock:read`` and/or ``Warehouse.stockTotals:read`` |
-| ``Warehouse.stock:read`` | &#10071; | New permission, use instead of ``Warehouse.Stock:read`` |
-| ``Warehouse.stockTotals:read`` | &#10071; | New permission, use instead of ``Warehouse.Stock:read`` |
-| ``Warehouse.WarehouseDelivery:read`` | &#10060; | Use ``WarehouseDelivery:read`` |
-| ``WarehouseDelivery:read`` | &#10004; |  |
-| ``WarehouseDelivery.AdminUser:read`` | &#10060; | Use ``AdminUser:read`` |
-| ``WarehouseDeliveryLine.ShipmentLine:read`` | &#10060; | Use ``Shipment:read`` |
-| ``WarehouseDeliveryLine.Warehouse:read`` | &#10060; | Use ``Warehouse:read`` |
-| ``WarehouseDeliveryLine.WarehouseDelivery:read`` | &#10060; | Use ``WarehouseDelivery:read`` |
+* &#10004; ``Account:read``
+* &#10060; ``Account.AddressBook:read`` – Address book is part of Account, use ``Account:read`` 
+* &#10060; ``Account.AllocationRule:read`` – Use ``AllocationRule:read`` 
+* &#10060; ``Account.Attribute:read`` – Use ``Account.attributes:read`` 
+* &#10071; ``Account.attributes:read`` – New permission, use instead of ``Account.Attribute:read`` 
+* &#10060; ``Account.Brand:read`` – Use ``Brand:read`` 
+* &#10060; ``Account.DeliveryWindowDiscount:read`` – DeliveryWindowDiscount is a part of Account model, use ``Account:read`` 
+* &#10060; ``Account.EmailHistory:read`` – Use ``EmailHistory:read`` 
+* &#10060; ``Account.InternalComment:read`` – Use ``Account.internalComment:read`` 
+* &#10071; ``Account.internalComment:read`` – New permission, use instead of ``Account.InternalComment:read`` 
+* &#10060; ``Account.Invoice:read`` – Use ``Invoice:read`` 
+* &#10060; ``Account.Market:read`` – Use ``Market:read`` 
+* &#10060; ``Account.Order:read`` – Use ``Order:read`` 
+* &#10060; ``Account.PaymentTerms:read`` – Use ``PaymentTerms:read`` 
+* &#10060; ``Account.Pricelist:read`` – Use ``Pricelist:read`` 
+* &#10060; ``Account.Purchaser:read`` – Use ``Purchaser:read`` 
+* &#10060; ``Account.Return:read`` – Use ``Return:read`` 
+* &#10060; ``Account.SalesRepresentative:read`` – Use ``SalesRepresentative:read`` 
+* &#10060; ``Account.ShippingTerms:read`` – Use ``ShippingTerms:read`` 
+* &#10060; ``Account.TaxClass:read`` – Use ``TaxClass:read`` 
+* &#10060; ``Account.Warehouse:read`` – Use ``Warehouse:read`` 
+* &#10004; ``Account:write``
+* &#10060; ``AddressBook:read`` – AddressBook is a part of Account, use ``Account:read`` 
+* &#10060; ``AdminDiscount.AdminUser:read`` – Use ``AdminUser:read`` 
+* &#10004; ``AdminUser:read``
+* &#10060; ``AdminUser.Account:read`` – Use ``Account:read`` 
+* &#10060; ``AdminUser.Brand:read`` – Use ``Brand:read`` 
+* &#10060; ``AdminUser.Email:read`` – Use ``AdminUser.email:read`` 
+* &#10071; ``AdminUser.email:read`` – New permission, use instead of ``AdminUser.Email:read`` 
+* &#10060; ``AdminUser.Market:read`` – Use ``Market:read`` 
+* &#10060; ``AdminUser.Pricelist:read`` – Use ``Pricelist:read`` 
+* &#10060; ``AdminUser.SalesRepresentative:read`` – Use ``SalesRepresentative:read`` 
+* &#10004; ``Affiliate:read``
+* &#10060; ``Affiliate.Order:read`` – Use ``Order:read`` 
+* &#10060; ``Affiliate.Store:read`` – Use ``Store:read`` 
+* &#10004; ``Allocation:read``
+* &#10004; ``AllocationRule:read``
+* &#10060; ``AllocationRule.Account:read`` – Use ``Account:read`` 
+* &#10060; ``AllocationRule.DeliveryWindow:read`` – Use ``DeliveryWindow:read`` 
+* &#10060; ``AllocationRule.GeographyAllocationPriority:read`` – GeographyAllocationPriority is a part of AllocationRule model, use ``AllocationRule:read`` 
+* &#10060; ``AllocationRule.Market:read`` – Use ``Market:read`` 
+* &#10060; ``AllocationRule.Store:read`` – Use ``Store:read`` 
+* &#10060; ``AllocationRule.Warehouse:read`` – Use ``Warehouse:read`` 
+* &#10060; ``AppliedDiscount.Discount:read`` – Use ``Discount:read`` 
+* &#10060; ``AppliedDiscount.Order:read`` – Use ``Order:read`` 
+* &#10004; ``Attribute:read``
+* &#10004; ``Attribute:write``
+* &#10004; ``Brand:read``
+* &#10060; ``Brand.Product:read`` – Use ``Product:read`` 
+* &#10060; ``Brand.Store:read`` – Use ``Store:read`` 
+* &#10004; ``Brand:write``
+* &#10004; ``BrickAndMortar:read``
+* &#10060; ``BrickAndMortar.AllocationRule:read`` – Use ``AllocationRule:read`` 
+* &#10060; ``BrickAndMortar.Store:read`` – Use ``Store:read`` 
+* &#10060; ``BrickAndMortar.Warehouse:read`` – Use ``Warehouse:read`` 
+* &#10004; ``Bundle:read``
+* &#10060; ``Bundle.SizeChart:read`` – Use ``SizeChart:read`` 
+* &#10004; ``Bundle:write``
+* &#10004; ``Campaign:read``
+* &#10060; ``Campaign.CampaignVariant:read`` – Use ``CampaignVariant:read`` 
+* &#10060; ``Campaign.DeliveryWindow:read`` – Use ``DeliveryWindow:read`` 
+* &#10060; ``Campaign.Market:read`` – Use ``Market:read`` 
+* &#10060; ``Campaign.Pricelist:read`` – Use ``Pricelist:read`` 
+* &#10060; ``Campaign.Store:read`` – Use ``Store:read`` 
+* &#10004; ``Campaign:write``
+* &#10060; ``CampaignVariant.Campaign:read`` – Use ``Campaign:read`` 
+* &#10060; ``CampaignVariant:read`` – CampaignVariant is a part of Campaign, use ``Campaign:read`` 
+* &#10004; ``Category:read``
+* &#10060; ``Category.Display:read`` – Use ``Display:read`` 
+* &#10060; ``Category.Store:read`` – Use ``Store:read`` 
+* &#10004; ``Collection:read``
+* &#10071; ``Collection.totalProducts:read`` – New permission 
+* &#10060; ``Collection.Product:read`` – Use ``Product:read`` 
+* &#10004; ``Collection:write``
+* &#10004; ``Commission:read``
+* &#10060; ``Commission.Invoice:read`` – Use ``Invoice:read`` 
+* &#10060; ``Commission.Order:read`` – Use ``Order:read`` 
+* &#10060; ``Commission.SalesRepresentative:read`` – Use ``SalesRepresentative:read`` 
+* &#10004; ``Country:read``
+* &#10060; ``Currency.Pricelist:read`` – Use ``Pricelist:read`` 
+* &#10060; ``Currency.ShippingOption:read`` – Use ``ShippingOption:read`` 
+* &#10004; ``Currency:read``
+* &#10060; ``Customer.Attribute:read`` – Use ``Purchaser.Attribute:read`` 
+* &#10060; ``Customer.EmailHistory:read`` – Use ``EmailHistory:read`` 
+* &#10004; ``DeliveryWindow:read``
+* &#10060; ``DeliveryWindow.AllocationRule:read`` – Use ``AllocationRule:read`` 
+* &#10060; ``DeliveryWindow.Campaign:read`` – Use ``Campaign:read`` 
+* &#10060; ``DeliveryWindow.DeliveryWindowVariant:read`` – Use ``DeliveryWindowVariant:read`` 
+* &#10060; ``DeliveryWindow.Market:read`` – Use ``Market:read`` 
+* &#10004; ``DeliveryWindow:write``
+* &#10060; ``DeliveryWindowDiscount:read`` – DeliveryWindowDiscount is a part of Account model, use ``Account:read`` 
+* &#10060; ``DeliveryWindowDiscount.Account:read`` – Use ``Account:read`` 
+* &#10060; ``DeliveryWindowDiscount.DeliveryWindow:read`` – Use ``DeliveryWindow:read`` 
+* &#10060; ``DeliveryWindowVariant:read`` – DeliveryWindowVariant is a part of DeliveryWindow model, use ``DeliveryWindow:read`` 
+* &#10060; ``DeliveryWindowVariant.DeliveryWindow:read`` – Use ``DeliveryWindow:read`` 
+* &#10060; ``DeliveryWindowVariant.Product:read`` – Use ``Product:read`` 
+* &#10060; ``DeliveryWindowVariant.ProductVariant:read`` – Use ``ProductVariant:read`` 
+* &#10060; ``DeliveryWindowVariant:write`` – DeliveryWindowVariant is a part of DeliveryWindow model, use ``DeliveryWindow:write`` 
+* &#10004; ``Discount:read``
+* &#10060; ``Discount.AdminUser:read`` – Use ``AdminUser:read`` 
+* &#10060; ``Discount.AppliedDiscount:read`` – AppliedDiscount is a part of Order model, use ``Order:read`` 
+* &#10060; ``Discount.GiftCertificateGenerator:read`` – Use ``GiftCertificateGenerator:read`` 
+* &#10060; ``Discount.Market:read`` – Use ``Market:read`` 
+* &#10060; ``Discount.Store:read`` – Use ``Store:read`` 
+* &#10004; ``Display:read``
+* &#10060; ``Display.Attribute:read`` – Unused 
+* &#10060; ``Display.CampaignVariant:read`` – Use ``CampaignVariant:read`` 
+* &#10060; ``Display.Category:read`` – Use ``Category:read`` 
+* &#10060; ``Display.Comment:read`` – Use ``Display.comment:read`` 
+* &#10071; ``Display.comment:read`` – New permission, use instead of ``Display.Comment:read`` 
+* &#10060; ``Display.DisplayRelation:read`` – DisplayRelation is a part of Display model, use ``Display:read`` 
+* &#10060; ``Display.Market:read`` – use ``Market:read`` 
+* &#10060; ``Display.Price:read`` – Use ``Price:read`` 
+* &#10060; ``Display.Product:read`` – Use ``Product:read`` 
+* &#10060; ``Display.ProductMedia:read`` – Use ``ProductMedia:read`` 
+* &#10060; ``Display.ProductVariant:read`` – Use ``ProductVariant:read`` 
+* &#10060; ``Display.Store:read`` – Use ``Store:read`` 
+* &#10060; ``Display.TaxGroup:read`` – Use ``TaxGroup:read`` 
+* &#10004; ``Display:write``
+* &#10060; ``DisplayRelation:write`` – DisplayRelation is a part of Display model, use ``Display:write`` 
+* &#10004; ``DocumentTemplate:read``
+* &#10004; ``EmailHistory:read``
+* &#10060; ``EmailHistory.AdminUser:read`` – Use ``AdminUser:read`` 
+* &#10060; ``EmailHistory.Order:read`` – Use ``Order:read`` 
+* &#10060; ``EmailHistory.Purchaser:read`` – Use ``Purchaser:read`` 
+* &#10004; ``Folder:read``
+* &#10060; ``Folder.Product:read`` – Use ``Product:read`` 
+* &#10004; ``Folder:write``
+* &#10060; ``GeographyAllocationPriority:read`` – GeographyAllocationPriority is a part of AllocationRule model, use ``AllocationRule:read`` 
+* &#10004; ``GiftCertificateGenerator:read``
+* &#10060; ``GiftCertificateGenerator.Discount:read`` – Use ``Discount:read`` 
+* &#10060; ``GiftCertificateGenerator.Store:read`` – Use ``Store:read`` 
+* &#10004; ``Invoice:read``
+* &#10071; ``Invoice.billingAddress:read`` – New permission 
+* &#10071; ``Invoice.shippingAddress:read`` – New permission 
+* &#10060; ``Invoice.Account:read`` – Use ``Account:read`` 
+* &#10060; ``Invoice.AdminUser:read`` – Use ``AdminUser:read`` 
+* &#10060; ``Invoice.Commission:read`` – Use ``Commission:read`` 
+* &#10060; ``Invoice.PaymentTerms:read`` – Use ``PaymentTerms:read`` 
+* &#10060; ``Invoice.Purchaser:read`` – Use ``Purchaser:read`` 
+* &#10060; ``Invoice.ShippingTerms:read`` – Use ``ShippingTerms:read`` 
+* &#10060; ``Invoice.Store:read`` – Use ``Store:read`` 
+* &#10071; ``InvoiceLine.countryOfOrigin:read`` – New permission 
+* &#10060; ``InvoiceLine.OrderLine:read`` – Use ``Order:read`` 
+* &#10060; ``InvoiceLine.Product:read`` – Use ``Product:read`` 
+* &#10060; ``InvoiceLine.ProductVariant:read`` – Use ``ProductVariant:read`` 
+* &#10060; ``InvoiceLine.ShipmentLine:read`` – Use ``ShipmentLine:read`` 
+* &#10004; ``Language:read``
+* &#10060; ``Language.Country:read`` – Use ``Country:read`` 
+* &#10004; ``Localization:read``
+* &#10004; ``Localization:write``
+* &#10004; ``Market:read``
+* &#10060; ``Market.AllocationRule:read`` – Use ``AllocationRule:read`` 
+* &#10060; ``Market.Campaign:read`` – Use ``Campaign:read`` 
+* &#10060; ``Market.Comment:read`` – Use ``Market.comment:read`` 
+* &#10071; ``Market.comment:read`` – New permission, use instead of ``Market.Comment:read`` 
+* &#10060; ``Market.Country:read`` – Use ``Country:read`` 
+* &#10060; ``Market.Store:read`` – Use ``Store:read`` 
+* &#10004; ``MeasurementChart:read``
+* &#10004; ``MeasurementChart:write``
+* &#10004; ``MediaBatch:read``
+* &#10004; ``MediaBatch:write``
+* &#10004; ``NewsletterSubscription:read``
+* &#10060; ``NewsletterSubscription.Country:read`` – Use ``Country:read`` 
+* &#10060; ``NewsletterSubscription.ProductSize:read`` – Use ``ProductSize:read`` 
+* &#10060; ``NewsletterSubscription.ProductVariant:read`` – Use ``ProductVariant:read`` 
+* &#10060; ``NewsletterSubscription.Store:read`` – Use ``Store:read`` 
+* &#10004; ``Order:read``
+* &#10060; ``Order.Account:read`` – Use ``Account:read`` 
+* &#10060; ``Order.Affiliate:read`` – Use ``Affiliate:read`` 
+* &#10060; ``Order.Attribute:read`` – Use ``Order.attributes:read`` 
+* &#10071; ``Order.attributes:read`` – New permission 
+* &#10071; ``Order.billingAddress:read`` – New permission 
+* &#10060; ``Order.Commission:read`` – Use ``Commission:read`` 
+* &#10060; ``Order.DeliveryWindow:read`` – Use ``DeliveryWindow:read`` 
+* &#10060; ``Order.Discount:read`` – Use ``Discount:read`` 
+* &#10060; ``Order.EmailHistory:read`` – Use ``EmailHistory:read`` 
+* &#10060; ``Order.InternalComment:read`` – Use ``Order.internalComment:read`` 
+* &#10071; ``Order.internalComment:read`` – New permission, use  instead of ``Order.InternalComment:read`` 
+* &#10060; ``Order.Market:read`` – Use ``Market:read`` 
+* &#10060; ``Order.OrderDocument:read`` – Use ``Order:read`` 
+* &#10060; ``Order.OrderHistory:read`` – Use ``OrderHistory:read`` 
+* &#10060; ``Order.PaymentHistory:read`` – Use ``PaymentHistory:read`` 
+* &#10060; ``Order.PaymentMethod:read`` – Use ``PaymentMethod:read`` 
+* &#10060; ``Order.PaymentTerms:read`` – Use ``PaymentTerms:read`` 
+* &#10060; ``Order.Pricelist:read`` – Use ``Pricelist:read`` 
+* &#10060; ``Order.Purchaser:read`` – Use ``Purchaser:read`` 
+* &#10060; ``Order.Return:read`` – Use ``Return:read`` 
+* &#10060; ``Order.SalesRepresentative:read`` – Use ``SalesRepresentative:read`` 
+* &#10060; ``Order.Shipment:read`` – Use ``Shipment:read`` 
+* &#10071; ``Order.shippingAddress:read`` – New permission 
+* &#10060; ``Order.ShippingPriceGroup:read`` – Use ``ShippingPriceGroup:read`` 
+* &#10060; ``Order.ShippingTerms:read`` – Use ``ShippingTerms:read`` 
+* &#10060; ``Order.Store:read`` – Use ``Store:read`` 
+* &#10071; ``Order.userIP:read`` – New permission 
+* &#10004; ``OrderHistory:read``
+* &#10060; ``OrderHistory.AdminUser:read`` – Use ``AdminUser:read`` 
+* &#10060; ``OrderHistory.Purchaser:read`` – Use ``Purchaser:read`` 
+* &#10060; ``OrderLine.Brand:read`` – Use ``Brand:read`` 
+* &#10060; ``OrderLine.Campaign:read`` – Use ``Campaign:read`` 
+* &#10060; ``OrderLine.Category:read`` – Use ``Category:read`` 
+* &#10060; ``OrderLine.Collection:read`` – Use ``Collection:read`` 
+* &#10060; ``OrderLine.DeliveryWindow:read`` – Use ``DeliveryWindow:read`` 
+* &#10060; ``OrderLine.Discount:read`` – Unused 
+* &#10060; ``OrderLine.Display:read`` – Use ``Display:read`` 
+* &#10060; ``OrderLine.Folder:read`` – Use ``Folder:read`` 
+* &#10060; ``OrderLine.GiftCertificateGenerator:read`` – Use ``GiftCertificateGenerator:read`` 
+* &#10060; ``OrderLine.InvoiceLine:read`` – Use ``InvoiceLine:read`` 
+* &#10060; ``OrderLine.Product:read`` – Use ``Product:read`` 
+* &#10060; ``OrderLine.ProductVariant:read`` – Use ``ProductVariant:read`` 
+* &#10060; ``OrderLine.TaxGroup:read`` – TaxGroup is a group of TaxRules, use ``TaxRule:read`` 
+* &#10004; ``PaymentHistory:read``
+* &#10060; ``PaymentHistoryEntry.AdminUser:read`` – Use ``AdminUser:read`` 
+* &#10060; ``PaymentHistoryEntry.StorePlugin:read`` – Use ``StorePlugin:read`` 
+* &#10004; ``PaymentTerms:read``
+* &#10004; ``Price:read``
+* &#10004; ``Price:write``
+* &#10004; ``Pricelist:read``
+* &#10060; ``Pricelist.Campaign:read`` – Use ``Campaign:read`` 
+* &#10060; ``Pricelist.Comment:read`` – Use ``Pricelist.comment:read`` 
+* &#10071; ``Pricelist.comment:read`` – New permission, use instead of ``Pricelist.Comment:read`` 
+* &#10060; ``Pricelist.Country:read`` – Use ``Country:read`` 
+* &#10060; ``Pricelist.Price:read`` – Use ``Price:read`` 
+* &#10060; ``Pricelist.ShippingOption:read`` – Use ``ShippingOption:read`` 
+* &#10060; ``Pricelist.Store:read`` – Use ``Store:read`` 
+* &#10004; ``Product:read``
+* &#10060; ``Product.Attribute:read`` – Use ``Product.attributes:read`` 
+* &#10071; ``Product.attributes:read`` – New permission, use instead of ``Product.Attribute:read`` 
+* &#10060; ``Product.Attribute:write`` – Use ``Product.attributes:write`` 
+* &#10071; ``Product.attributes:write`` – New permission, use instead of ``Product.Attribute:write`` 
+* &#10060; ``Product.Brand:read`` – Use ``Brand:read`` 
+* &#10060; ``Product.Bundle:read`` – Use ``Bundle:read`` 
+* &#10060; ``Product.Collection:read`` – Use ``Collection:read`` 
+* &#10060; ``Product.CountryOfOrigin:read`` – Use ``Product.countryOfOrigin:read`` 
+* &#10071; ``Product.countryOfOrigin:read`` – New permission, use instead of ``Product.CountryOfOrigin:read`` 
+* &#10060; ``Product.Display:read`` – Use ``Display:read`` 
+* &#10060; ``Product.Folder:read`` – Use ``Folder:read`` 
+* &#10060; ``Product.InternalComment:read`` – Use ``Product.internalComment:read`` 
+* &#10071; ``Product.internalComment:read`` – New permission, use instead of ``Product.InternalComment:read`` 
+* &#10060; ``Product.MeasurementTable:read`` – Use ``MeasurementChart:read`` 
+* &#10060; ``Product.ProductMedia:read`` – Use ``ProductMedia:read`` 
+* &#10060; ``Product.ProductVariant:read`` – Use ``ProductVariant:read`` 
+* &#10004; ``Product:write``
+* &#10004; ``ProductMedia:read``
+* &#10060; ``ProductMedia.Product:read`` – Use ``Product:read`` 
+* &#10060; ``ProductMedia:delete`` – Use ``ProductMedia:write`` 
+* &#10004; ``ProductMedia:write``
+* &#10004; ``ProductSize:read``
+* &#10060; ``ProductSize.ProductVariant:read`` – Use ``ProductVariant:read`` 
+* &#10060; ``ProductSize.PurchaseOrder:read`` – Use ``PurchaseOrder:read`` 
+* &#10060; ``ProductSize.PurchaseOrderDelivery:read`` – Use ``PurchaseOrderDelivery:read`` 
+* &#10060; ``ProductSize.Stock:read`` – Use ``ProductSize.stock:read`` and/or ``ProductSize.stockTotals:read`` 
+* &#10071; ``ProductSize.stock:read`` – New permission, use instead of ``ProductSize.Stock:read`` 
+* &#10071; ``ProductSize.stockTotals:read`` – New permission, use instead of ``ProductSize.Stock:read`` 
+* &#10060; ``ProductSize.WarehouseDeliveryLine:read`` – Use ``WarehouseDelivery:read`` 
+* &#10004; ``ProductVariant:read``
+* &#10060; ``ProductVariant.Attribute:read`` – Use ``ProductVariant.attributes:read`` 
+* &#10071; ``ProductVariant.attributes:read`` – New permission, use instead of ``ProductVariant.Attribute:read`` 
+* &#10060; ``ProductVariant.Attribute:write`` – Use ``ProductVariant.attributes:write`` 
+* &#10071; ``ProductVariant.attributes:write`` – New permission, use instead of ``ProductVariant.Attribute:write`` 
+* &#10060; ``ProductVariant.CampaignVariant:read`` – CampaignVariant is a part of Campaign, use ``Campaign:read`` 
+* &#10060; ``ProductVariant.Display:read`` – Use ``Display:read`` 
+* &#10060; ``ProductVariant.InternalName:read`` – Use ``ProductVariant.internalName:read`` 
+* &#10071; ``ProductVariant.internalName:read`` – New permission, use instead of ``ProductVariant.InternalName:read`` 
+* &#10060; ``ProductVariant.Product:read`` – Use ``Product:read`` 
+* &#10060; ``ProductVariant.ProductMedia:read`` – Use ``ProductMedia:read`` 
+* &#10060; ``ProductVariant.ProductVariantSupply:read`` – Use ``ProductVariantSupply:read`` 
+* &#10060; ``ProductVariant.PurchaseOrder:read`` – Use ``PurchaseOrder:read`` 
+* &#10060; ``ProductVariant.PurchaseOrderDelivery:read`` – Use ``PurchaseOrderDelivery:read`` 
+* &#10060; ``ProductVariant.SizeChart:read`` – Use ``SizeChart:read`` 
+* &#10060; ``ProductVariant.Stock:read`` – Use ``ProductVariant.stock:read`` and/or ``ProductVariant.stockTotals:read`` 
+* &#10071; ``ProductVariant.stock:read`` – New permission, use instead of ``ProductVariant.Stock:read`` 
+* &#10071; ``ProductVariant.stockTotals:read`` – New permission, use instead of ``ProductVariant.Stock:read`` 
+* &#10004; ``ProductVariant:write``
+* &#10004; ``ProductVariantSupply:read``
+* &#10060; ``ProductVariantSupply.PurchaseOrder:read`` – Use ``PurchaseOrder:read`` 
+* &#10060; ``ProductVariantSupply.PurchaseOrderDelivery:read`` – Use ``PurchaseOrderDelivery:read`` 
+* &#10004; ``PurchaseOrder:read``
+* &#10060; ``PurchaseOrder.Address:read`` – Use ``PurchaseOrder.shippingAddress:read`` and/or ``PurchaseOrder.supplierAddress:read`` 
+* &#10060; ``PurchaseOrder.InternalComment:read`` – Use ``PurchaseOrder.internalComment:read`` 
+* &#10071; ``PurchaseOrder.internalComment:read`` – New permission, use instead of ``PurchaseOrder.InternalComment:read`` 
+* &#10060; ``PurchaseOrder.PaymentTerms:read`` – Use ``PaymentTerms:read`` 
+* &#10060; ``PurchaseOrder.PurchaseOrderDelivery:read`` – Use ``PurchaseOrderDelivery:read`` 
+* &#10071; ``PurchaseOrder.shippingAddress:read`` – New permission, use instead of ``PurchaseOrder.Address:read`` 
+* &#10060; ``PurchaseOrder.ShippingTerms:read`` – Use ``ShippingTerms:read`` 
+* &#10060; ``PurchaseOrder.Supplier:read`` – Use ``Supplier:read`` 
+* &#10071; ``PurchaseOrder.supplierAddress:read`` – New permission, use instead of ``PurchaseOrder.Address:read`` 
+* &#10060; ``PurchaseOrder.Warehouse:read`` – Use ``Warehouse:read`` 
+* &#10004; ``PurchaseOrderDelivery:read``
+* &#10060; ``PurchaseOrderDelivery.AdminUser:read`` – Use ``AdminUser:read`` 
+* &#10060; ``PurchaseOrderDelivery.PurchaseOrder:read`` – Use ``PurchaseOrder:read`` 
+* &#10060; ``PurchaseOrderDelivery.Supplier:read`` – Use ``Supplier:read`` 
+* &#10060; ``PurchaseOrderDelivery.Warehouse:read`` – Use ``Warehouse:read`` 
+* &#10060; ``PurchaseOrderDelivery.WarehouseDelivery:read`` – Use ``WarehouseDelivery:read`` 
+* &#10060; ``PurchaseOrderDeliveryLine.OrderLine:read`` – Use ``Order:read`` 
+* &#10060; ``PurchaseOrderDeliveryLine.Product:read`` – Use ``Product:read`` 
+* &#10060; ``PurchaseOrderDeliveryLine.ProductSize:read`` – Use ``ProductSize:read`` 
+* &#10060; ``PurchaseOrderDeliveryLine.ProductVariant:read`` – Use ``ProductVariant:read`` 
+* &#10060; ``PurchaseOrderLine.OrderLine:read`` – Use ``Order:read`` 
+* &#10060; ``PurchaseOrderLine.Product:read`` – Use ``Product:read`` 
+* &#10060; ``PurchaseOrderLine.ProductSize:read`` – Use ``ProductSize:read`` 
+* &#10060; ``PurchaseOrderLine.ProductVariant:read`` – Use ``ProductVariant:read`` 
+* &#10004; ``Purchaser:read``
+* &#10060; ``Purchaser.Account:read`` – Use ``Account:read`` 
+* &#10071; ``Purchaser.attributes:read`` – New permission, use instead of ``Customer.Attribute:read`` 
+* &#10071; ``Purchaser.billingAddress:read`` – New permission 
+* &#10060; ``Purchaser.EmailHistory:read`` – Use ``EmailHistory:read`` 
+* &#10060; ``Purchaser.Market:read`` – Use ``Market:read`` 
+* &#10060; ``Purchaser.NewsletterSubscription:read`` – Use ``NewsletterSubscription:read`` 
+* &#10060; ``Purchaser.Order:read`` – Use ``Order:read`` 
+* &#10060; ``Purchaser.Pricelist:read`` – Use ``Pricelist:read`` 
+* &#10060; ``Purchaser.Return:read`` – Use ``Return:read`` 
+* &#10060; ``Purchaser.Store:read`` – Use ``Store:read`` 
+* &#10060; ``Purchaser.TaxClass:read`` – Use ``TaxClass:read`` 
+* &#10060; ``Purchaser.TotalOrder:read`` – Use ``Purchaser.totalOrders:read`` 
+* &#10071; ``Purchaser.totalOrders:read`` – New permission, use instead of ``Purchaser.TotalOrder:read`` 
+* &#10004; ``Return:read``
+* &#10060; ``Return.Account:read`` – Use ``Account:read`` 
+* &#10060; ``Return.AdminUser:read`` – Use ``AdminUser:read`` 
+* &#10060; ``Return.Comment:read`` – Use ``Return.comment:read`` 
+* &#10071; ``Return.comment:read`` – New permission, use instead of ``Return.Comment:read`` 
+* &#10060; ``Return.Order:read`` – Use ``Order:read`` 
+* &#10060; ``Return.OrderDiscount:read`` – Use ``Order:read`` 
+* &#10060; ``Return.Purchaser:read`` – Use ``Purchaser:read`` 
+* &#10060; ``Return.Shipment:read`` – Use ``Shipment:read`` 
+* &#10060; ``Return.Store:read`` – Use ``Store:read`` 
+* &#10060; ``Return.Warehouse:read`` – Use ``Warehouse:read`` 
+* &#10060; ``ReturnLine.OrderLine:read`` – Use ``Order:read`` 
+* &#10060; ``ReturnLine.ShipmentLine:read`` – Use ``Shipment:read`` 
+* &#10004; ``SalesRepresentative:read``
+* &#10060; ``SalesRepresentative.Account:read`` – Use ``Account:read`` 
+* &#10060; ``SalesRepresentative.Commission:read`` – Use ``Commission:read`` 
+* &#10004; ``Shipment:read``
+* &#10060; ``Shipment.AdminUser:read`` – Use ``AdminUser:read`` 
+* &#10060; ``Shipment.Invoice:read`` – Use ``Invoice:read`` 
+* &#10060; ``Shipment.Order:read`` – Use ``Order:read`` 
+* &#10060; ``Shipment.OrderDiscount:read`` – Use ``Order:read`` 
+* &#10060; ``Shipment.Return:read`` – Use ``Return:read`` 
+* &#10060; ``Shipment.ShipmentPlugin:read`` – Use ``StorePlugin:read`` 
+* &#10071; ``Shipment.shippingAddress:read`` – New permission 
+* &#10060; ``Shipment.Store:read`` – Use ``Store:read`` 
+* &#10060; ``ShipmentLine.InvoiceLine:read`` – Use ``Invoice:read`` 
+* &#10060; ``ShipmentLine.OrderLine:read`` – Use ``Order:read`` 
+* &#10004; ``ShippingOption:read``
+* &#10060; ``ShippingOption.Comment:read`` – Use ``ShippingOption.comment:read`` 
+* &#10071; ``ShippingOption.comment:read`` – New permission, use instead of ``ShippingOption.Comment:read`` 
+* &#10060; ``ShippingOption.Market:read`` – Use ``Market:read`` 
+* &#10060; ``ShippingOption.ShippingPriceGroup:read`` – ShippingPriceGroup is a part of ShippingOption, use ``ShippingOption:read`` 
+* &#10060; ``ShippingOption.Store:read`` – Use ``Store:read`` 
+* &#10060; ``ShippingPriceGroup:read`` – ShippingPriceGroup is a part of ShippingOption, use ``ShippingOption:read`` 
+* &#10004; ``ShippingTerms:read``
+* &#10004; ``Size:read``
+* &#10060; ``Size.ProductSize:read`` – Use ``ProductSize:read`` 
+* &#10060; ``Size.SizeChart:read`` – Use ``SizeChart:read`` 
+* &#10004; ``SizeChart:read``
+* &#10004; ``SizeChart:write``
+* &#10004; ``StockChange:write``
+* &#10004; ``Store:read``
+* &#10060; ``Store.Affiliate:read`` – Use ``Affiliate:read`` 
+* &#10060; ``Store.AllocationRule:read`` – Use ``AllocationRule:read`` 
+* &#10060; ``Store.Brand:read`` – Use ``Brand:read`` 
+* &#10060; ``Store.Campaign:read`` – Use ``Campaign:read`` 
+* &#10060; ``Store.Category:read`` – Use ``Category:read`` 
+* &#10060; ``Store.Market:read`` – Use ``Market:read`` 
+* &#10060; ``Store.Order:read`` – Use ``Order:read`` 
+* &#10060; ``Store.Pricelist:read`` – Use ``Pricelist:read`` 
+* &#10060; ``Store.ShippingOption:read`` – Use ``ShippingOption:read`` 
+* &#10060; ``Store.StorePlugin:read`` – Use ``StorePlugin:read`` 
+* &#10060; ``Store.TaxGroup:read`` – TaxGroup is a group of TaxRules, use ``TaxRule:read`` 
+* &#10060; ``Store.TotalOrder:read`` – Deleted, Store.totalOrders is deprecated 
+* &#10060; ``Store.TotalPurchaser:read`` – Deleted, Store.totaPurchasers is deprecated 
+* &#10004; ``StorePlugin:read``
+* &#10060; ``StorePlugin.Store:read`` – Use ``Store:read`` 
+* &#10004; ``Subscription:read``
+* &#10071; ``Subscription.internalComment:read`` – New permission 
+* &#10004; ``SubscriptionPlan:read``
+* &#10071; ``SubscriptionPlan.internalComment:read`` – New permission 
+* &#10004; ``SubscriptionPlan:write``
+* &#10004; ``Supplier:read``
+* &#10060; ``Supplier.Address:read`` – Use ``Supplier.address:read`` 
+* &#10071; ``Supplier.address:read`` – New permission, use instead of ``Supplier.Address:read`` 
+* &#10060; ``Supplier.Comment:read`` – Use ``Supplier.comment:read`` 
+* &#10071; ``Supplier.comment:read`` – New permission, use instead of ``Supplier.Comment:read`` 
+* &#10060; ``Supplier.PaymentTerms:read`` – Use ``PaymentTerms:read`` 
+* &#10060; ``Supplier.ProductVariantSupply:read`` – Use ``ProductVariantSupply:read`` 
+* &#10060; ``Supplier.PurchaseOrder:read`` – Use ``PurchaseOrder:read`` 
+* &#10060; ``Supplier.PurchaseOrderDelivery:read`` – Use ``PurchaseOrderDelivery:read`` 
+* &#10060; ``Supplier.ShippingTerms:read`` – Use ``ShippingTerms:read`` 
+* &#10060; ``Supplier.Warehouse:read`` – Use ``Warehouse:read`` 
+* &#10004; ``TaxClass:read``
+* &#10060; ``TaxGroup:read`` – TaxGroup is a group of TaxRules, use ``TaxRule:read`` 
+* &#10060; ``TaxGroup.Store:read`` – Use ``Store:read`` 
+* &#10060; ``TaxGroup.TaxRule:read`` – Use ``TaxRule:read`` 
+* &#10004; ``TaxRule:read``
+* &#10004; ``Warehouse:read``
+* &#10060; ``Warehouse.AllocationRule:read`` – Use ``AllocationRule:read`` 
+* &#10060; ``Warehouse.Stock:read`` – Use ``Warehouse.stock:read`` and/or ``Warehouse.stockTotals:read`` 
+* &#10071; ``Warehouse.stock:read`` – New permission, use instead of ``Warehouse.Stock:read`` 
+* &#10071; ``Warehouse.stockTotals:read`` – New permission, use instead of ``Warehouse.Stock:read`` 
+* &#10060; ``Warehouse.WarehouseDelivery:read`` – Use ``WarehouseDelivery:read`` 
+* &#10004; ``WarehouseDelivery:read``
+* &#10060; ``WarehouseDelivery.AdminUser:read`` – Use ``AdminUser:read`` 
+* &#10060; ``WarehouseDeliveryLine.ShipmentLine:read`` – Use ``Shipment:read`` 
+* &#10060; ``WarehouseDeliveryLine.Warehouse:read`` – Use ``Warehouse:read`` 
+* &#10060; ``WarehouseDeliveryLine.WarehouseDelivery:read`` – Use ``WarehouseDelivery:read`` 
 
