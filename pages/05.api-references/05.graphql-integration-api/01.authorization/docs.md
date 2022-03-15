@@ -284,7 +284,8 @@ Please note, some types have new sub-permissions, and using top type permissions
 
 ### Full list of permissions
 
-| Permission        |  Status   |          Comment |
-|:------------------|:---------:|-----------------:|
-| ``Account:read``  | &#10004;  |   |
-| ``Account.AddressBook:read`` | &#10060;  |  Address book is part of Account, use ``Account:read`` |
+| Permission        |  Status  | Comment                                               |
+|:------------------|:--------:|:------------------------------------------------------|
+| ``Account:read``  | &#10004; |                                                       |
+| ``Account.AddressBook:read`` | &#10060; | Address book is part of Account, use ``Account:read`` |
+| ``Account.AllocationRule:read`` | &#10060; | Use AllocationRule:read                               |
