@@ -467,14 +467,18 @@ See our Swagger for detailed examples of [POST /payment](https://docs.centra.com
 #### Payment plugins
 
 See the implementation details for:
+* [PayPal](/plugins/paypal)
 * [Stripe Checkout](/plugins/stripe)
 * [Klarna Checkout v3](/plugins/klarna)
-* [PayPal](/plugins/paypal)
 * [Adyen Drop-In](/plugins/adyen-drop-in)
 
 #### Payment country
 
-Since so much depends on the shipping country, like prices, shipping costs, taxes and product availability, `address.country` is one of the only two checkout fields that is required by default (next to `address.email`, which uniquely identifies a Customer in Centra). Furthermore, some countries will additionally require `address.state` to apply appropriate taxes.
+Since so much depends on the shipping country, like prices, shipping costs, taxes and product availability, `address.country` is one of the only two checkout fields that is required by default (next to `address.email`, which uniquely identifies a Customer in Centra). Furthermore, some countries will additionally require `address.state` to apply appropriate taxes. You can always check country and state codes by fetching [GET /countries](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/1.%20general%20settings/get_countries).
+
+[notice-box=alert]
+If you change the country of the selection after the payment has already been initialised, it is _imperative_ that you call the `POST /payment` endpoint again, to re-initialise it. Changing country can affect products availability, prices, taxes and order totals, so you have to update the payment provider with most up-to-date data.
+[/notice-box]
 
 [notice-box=alert]
 Some integrations, like DHL shipping, require that you format the zip code (postal code) in a format that is commonly used in the shipping country. If you pass the zip code in a different format, creating a shipment can fail. It is therefore important that you follow the zip code formatting recommendation for every country you intend to ship to. For example, Swedish codes are formatted as NNN NN (with a space), in Germany you have: NNNNN, in Poland: NN-NNN, in Denmark: NNNN. [A full list of postal codes formats by country can be found on Wikipedia](https://en.wikipedia.org/wiki/List_of_postal_codes). If you encounter any problems after following these guidelines, we recommend to contact DHL support.

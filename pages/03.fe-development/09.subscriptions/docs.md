@@ -31,31 +31,36 @@ For each product there is one new field - `subscriptionPlans` of type `array`.
         "id": "1",
         "name": "1 month subscription",
         "intervalValue": "1",
-        "intervalType": "month"
+        "intervalType": "month",
+        "discountPercent": 10
     },
     {
         "id": "2",
         "name": "3 months subscription",
         "intervalValue": "3",
-        "intervalType": "month"
+        "intervalType": "month",
+        "discountPercent": 10
     },
     {
         "id": "3",
         "name": "1 year subscription",
         "intervalValue": "1",
-        "intervalType": "year"
+        "intervalType": "year",
+        "discountPercent": 10
     },
     {
         "id": "4",
         "name": "6 months subscription",
         "intervalValue": "6",
-        "intervalType": "month"
+        "intervalType": "month",
+        "discountPercent": 10
     },
     {
         "id": "5",
         "name": "2 weeks subscription",
         "intervalValue": "2",
-        "intervalType": "week"
+        "intervalType": "week",
+        "discountPercent": 10
     }
 ]
 ```
@@ -64,7 +69,8 @@ For each product there is one new field - `subscriptionPlans` of type `array`.
 - `id` is unique number representing subscription plan,
 - `name` is subscription plan name defined when creating subscription plan,
 - `intervalValue` is a numeric field specifying the number of units of time,
-- `intervalType` is string representing the unit of time used; can be any of: `day`, `week`, `month` or `year`.
+- `intervalType` is a string representing the unit of time used; can be any of: `day`, `week`, `month` or `year`,
+- `discountPercent` is a numeric value of flat rate discount set on the subscription plan.
 
 ### Checking out
 Checkout process is the same when it comes to implementation, you can read more in [Checkout API Order flow guide](https://docs.centra.com/api-references/checkout-api/order-flow). The only difference is that the customer has to be a registered client in order to be able to subscribe to an item. The user can log in before the checkout or create the account during the checkout. Keep in mind that it is only possible to create an account if the email is not already associated with any created account. If the account with given email already exists it is mandatory to log in before checking out with a subscription.

@@ -1709,9 +1709,189 @@ fragment pricelistCustomDetails on Pricelist {
 }
 ```
 
-### Creating a new Pricelist
+### Creating or modifying a Pricelist
 
-[TBD]
+You can create it with any status, connected to any Stores and optionally select country codes of countries which should geo-locate to this Pricelist by default.
+
+#### Request - create pricelist
+
+```gql
+mutation CreatePricelist {
+  createPricelist(input: {
+    name: "Test pricelist SEK"
+    status: INACTIVE
+    store: {
+      id: 1
+    }
+    currencyIsoCode: "SEK"
+    defaultShippingOption: {
+      id: 1
+    },
+    addCountries: [
+      {
+        code: "SE"
+      }
+    ]
+  }) {
+    pricelist {
+      id
+      name
+      status
+      store { id name type }
+      currency { code }
+      assignedToCountries { id name }
+      defaultShippingOption { id name }
+    }
+    userErrors { message path }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "createPricelist": {
+      "pricelist": {
+        "id": 36,
+        "name": "Test pricelist SEK",
+        "status": "INACTIVE",
+        "store": {
+          "id": 1,
+          "name": "Retail Store",
+          "type": "DIRECT_TO_CONSUMER"
+        },
+        "currency": {
+          "code": "SEK"
+        },
+        "assignedToCountries": [
+          {
+            "id": 6,
+            "name": "Sweden"
+          }
+        ],
+        "defaultShippingOption": {
+          "id": 1,
+          "name": "SEK"
+        }
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 125,
+    "permissionsUsed": [
+      "Pricelist:write",
+      "Pricelist:read",
+      "Store:read",
+      "Country:read",
+      "ShippingOption:read"
+    ],
+    "appVersion": "v0.16.1"
+  }
+}
+```
+
+#### Request - update
+
+Use to activate the new pricelist, for instance.
+
+```gql
+mutation UpdatePricelist {
+  updatePricelist(id: 36, input: {
+    status: ACTIVE
+  }) {
+    pricelist {
+      id
+      name
+      status
+      store { id name type }
+      currency { code }
+      assignedToCountries { id name }
+      defaultShippingOption { id name }
+    }
+    userErrors { message path }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "updatePricelist": {
+      "pricelist": {
+        "id": 36,
+        "name": "Test pricelist SEK",
+        "status": "ACTIVE",
+        "store": {
+          "id": 1,
+          "name": "Retail Store",
+          "type": "DIRECT_TO_CONSUMER"
+        },
+        "currency": {
+          "code": "SEK"
+        },
+        "assignedToCountries": [
+          {
+            "id": 6,
+            "name": "Sweden"
+          }
+        ],
+        "defaultShippingOption": {
+          "id": 1,
+          "name": "SEK"
+        }
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 125,
+    "permissionsUsed": [
+      "Pricelist:write",
+      "Pricelist:read",
+      "Store:read",
+      "Country:read",
+      "ShippingOption:read"
+    ],
+    "appVersion": "v0.16.1"
+  }
+}
+```
+
+#### Request - delete
+
+You can only delete a pricelist when it's not in use.
+
+```gql
+mutation DeletePricelist {
+  deletePricelist(id: 36) {
+    userErrors { message path }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "deletePricelist": {
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 111,
+    "permissionsUsed": [
+      "Pricelist:write"
+    ],
+    "appVersion": "v0.16.1"
+  }
+}
+```
 
 ## Fetching Products
 
