@@ -1,4 +1,4 @@
----
+  ---
 title: Integrating Centra with PIM systems using GraphQL Integration API
 altTitle: PIM integration with GQL
 excerpt: Centra can be configured to integrate with your Product Information Management systems using GraphQL API. As GQL is still in Beta, more functionality is still under development
@@ -20,7 +20,7 @@ GraphQL is used to Send a query to Centra API and get exactly what you need, not
 
 ## Quick note about API tokens
 
-GraphQL is different from other Centra APIs, especially when it comes to authentication. Whereas both SOAP and REST APIs used shared API secret password to authenticate, identical for every API consumer, GQL authentication is based on personal API tokens. Each Production token should be assigned to a specific user name or an API function, and have only enough permissions to run the designed function. In QA, you are welcome to create test tokens will all permissions, but that is _only_ allowed for development purposes. Every time you make a GQL API call, the API response will include a full list of permissions that were used by this call. With this information, once you're done with testing, you can create a Production token with _minimal_ required permissions and re-test.
+GraphQL is different from other Centra APIs, especially when it comes to authentication. Whereas the SOAP and REST APIs used shared API secret password to authenticate, identical for every API consumer, GQL authentication is based on personal API tokens. Each Production token should be assigned to a specific user name or an API function, and have only enough permissions to run the designed function. In QA, you are welcome to create test tokens will all permissions, but that is _only_ allowed for development purposes. Every time you make a GQL API call, the API response will include a full list of permissions that were used by this call. With this information, once you're done with testing, you can create a Production token with _minimal_ required permissions and re-test.
 
 It is _not allowed_ to use a full-permissions API tokens in Production. This is simply not safe, as GraphQL gives you granular access to almost every part of Centra. It's also not allowed to share your tokens with others - every Centra admin user can create a new test token in a matter of seconds. Centra monitors the usage of those API tokens, so if you abuse those rules, we might contact you and ask that you address it.
 
@@ -1892,6 +1892,283 @@ mutation DeletePricelist {
   }
 }
 ```
+
+### Creating or modifying price alterations
+
+Price Alterations allow you to create temporary prices for products sold in your Wholesale (B2B) stores. You can only have one active price alteration object per store.
+
+#### Request - create
+
+To start with, let's create an inactive alteration:
+
+```gql
+mutation CreatePriceAlteration {
+  createPriceAlteration(
+    input: {
+      name: "First price alteration"
+      status: INACTIVE
+      store: {
+        id: 2
+      }
+      startDate: "2022-03-29T00:00:00+0000"
+    }
+  ) {
+    priceAlteration {
+      id
+      name
+      startDate
+      status
+      store { id }
+      deliveryWindows { id }
+    }
+    userErrors { message path }
+  }
+}
+```
+
+#### Response - create
+
+```json
+{
+  "data": {
+    "createPriceAlteration": {
+      "priceAlteration": {
+        "id": 1,
+        "name": "First price alteration",
+        "startDate": "2022-03-29",
+        "status": "INACTIVE",
+        "store": {
+          "id": 2
+        },
+        "deliveryWindows": []
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 123,
+    "permissionsUsed": [
+      "Price:write",
+      "Price:read",
+      "Store:read",
+      "DeliveryWindow:read"
+    ],
+    "appVersion": "unknown"
+  }
+}
+```
+
+#### Request - update
+
+We can update alterations to change any of its setup, like changing the status to `ACTIVE`:
+
+```gql
+mutation UpdatePriceAlteration {
+  updatePriceAlteration(
+    id: 1
+    input: {
+      status: ACTIVE
+    }
+  ) {
+    priceAlteration { id
+      name
+      startDate
+      status
+      store {
+        id
+      }
+      deliveryWindows {
+        id
+      }
+    }
+    userErrors { message path }
+  }
+}
+```
+
+#### Response - update
+
+```json
+{
+  "data": {
+    "updatePriceAlteration": {
+      "priceAlteration": {
+        "id": 1,
+        "name": "First price alteration",
+        "startDate": "2022-03-29",
+        "status": "ACTIVE",
+        "store": {
+          "id": 2
+        },
+        "deliveryWindows": []
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 123,
+    "permissionsUsed": [
+      "Price:write",
+      "Price:read",
+      "Store:read",
+      "DeliveryWindow:read"
+    ],
+    "appVersion": "unknown"
+  }
+}
+```
+
+### Adding time-altered prices to B2B products
+
+Once the store, pricelist and products are configured, you can add their temporary prices to your price alteration objects:
+
+#### Request
+
+```gql
+mutation SetAlteredPrices {
+  setAlteredPrices(input: {
+    priceAlteration: {
+      id: 1
+    },
+    pricelist: {
+      id: 21
+    },
+    productPrices: [
+      {
+        product: {
+          id: 1
+        }
+        price: {
+          value: 1000
+          currencyIsoCode: "SEK"
+        }
+      }
+    ]
+  }){
+    priceAlteration {
+      id
+    }
+    pricelist {
+      id
+    }
+    products {
+      id name
+    }
+    userErrors {
+      message path
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "setAlteredPrices": {
+      "priceAlteration": {
+        "id": 1
+      },
+      "pricelist": {
+        "id": 21
+      },
+      "products": [
+        {
+          "id": 1,
+          "name": "First Product"
+        }
+      ],
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 123,
+    "permissionsUsed": [
+      "Price:write",
+      "Price:read",
+      "Pricelist:read",
+      "Product:read"
+    ],
+    "appVersion": "unknown"
+  }
+}
+```
+
+### Reading time-altered B2B prices
+
+If current datetime is after the start of the price alteration, pricelist prices will be overridden and altered prices will be returned.
+
+#### Request
+
+```gql
+query PriceAlteration {
+  priceAlteration(id: 1) {
+    name
+    startDate
+    status
+    store { id }
+    prices(where: { pricelistId: 21, productId: 1 }) {
+      id
+      price { formattedValue }
+      recommendedRetailPrice { formattedValue }
+      pricelist { id, name }
+      product { id, name }
+      productVariant { id, name}
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "priceAlteration": {
+      "name": "First price alteration",
+      "startDate": "2022-03-29",
+      "status": "ACTIVE",
+      "store": {
+        "id": 2
+      },
+      "prices": [
+        {
+          "id": 4,
+          "price": {
+            "formattedValue": "1 000.00 SEK"
+          },
+          "recommendedRetailPrice": null,
+          "pricelist": {
+            "id": 21,
+            "name": "SEK"
+          },
+          "product": {
+            "id": 1,
+            "name": "First Product"
+          },
+          "productVariant": {
+            "id": 2,
+            "name": "First Product"
+          }
+        }
+      ]
+    }
+  },
+  "extensions": {
+    "complexity": 122,
+    "permissionsUsed": [
+      "Price:read",
+      "Store:read"
+    ],
+    "appVersion": "unknown"
+  }
+}
+```
+
+This checks out with the AMS prices displayed on the product displays:
+
+![AlteredPrice](altered-price.png)
 
 ## Fetching Products
 
