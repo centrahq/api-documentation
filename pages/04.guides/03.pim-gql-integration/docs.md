@@ -1933,7 +1933,7 @@ mutation CreatePriceAlteration {
   "data": {
     "createPriceAlteration": {
       "priceAlteration": {
-        "id": 14,
+        "id": 1,
         "name": "First price alteration",
         "startDate": "2022-03-29",
         "status": "INACTIVE",
@@ -1965,7 +1965,7 @@ We can update alterations to change any of its setup, like changing the status t
 ```gql
 mutation UpdatePriceAlteration {
   updatePriceAlteration(
-    id: 14
+    id: 1
     input: {
       status: ACTIVE
     }
@@ -1993,7 +1993,7 @@ mutation UpdatePriceAlteration {
   "data": {
     "updatePriceAlteration": {
       "priceAlteration": {
-        "id": 14,
+        "id": 1,
         "name": "First price alteration",
         "startDate": "2022-03-29",
         "status": "ACTIVE",
@@ -2028,7 +2028,7 @@ Once the store, pricelist and products are configured, you can add their tempora
 mutation SetAlteredPrices {
   setAlteredPrices(input: {
     priceAlteration: {
-      id: 14
+      id: 1
     },
     pricelist: {
       id: 21
@@ -2036,7 +2036,7 @@ mutation SetAlteredPrices {
     productPrices: [
       {
         product: {
-          id: 345
+          id: 1
         }
         price: {
           value: 1000
@@ -2068,14 +2068,14 @@ mutation SetAlteredPrices {
   "data": {
     "setAlteredPrices": {
       "priceAlteration": {
-        "id": 14
+        "id": 1
       },
       "pricelist": {
         "id": 21
       },
       "products": [
         {
-          "id": 345,
+          "id": 1,
           "name": "First Product"
         }
       ],
@@ -2103,12 +2103,12 @@ If current datetime is after the start of the price alteration, pricelist prices
 
 ```gql
 query PriceAlteration {
-  priceAlteration(id: 14) {
+  priceAlteration(id: 1) {
     name
     startDate
     status
     store { id }
-    prices(where: { pricelistId: 21, productId: 345 }) {
+    prices(where: { pricelistId: 21, productId: 1 }) {
       id
       price { formattedValue }
       recommendedRetailPrice { formattedValue }
@@ -2144,11 +2144,11 @@ query PriceAlteration {
             "name": "SEK"
           },
           "product": {
-            "id": 345,
+            "id": 1,
             "name": "First Product"
           },
           "productVariant": {
-            "id": 1850,
+            "id": 2,
             "name": "First Product"
           }
         }
