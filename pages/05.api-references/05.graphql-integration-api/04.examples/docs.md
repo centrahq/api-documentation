@@ -229,6 +229,143 @@ Use this query to fetch a Display, filtering by id.
 }
 ```
 
+### Creating a B2B Account
+
+https://docs.centra.com/graphql/account.html
+
+#### Request
+
+Adding Delivery Window level discounts is optional.
+
+```gql
+mutation createAccount {
+    createAccount(input: {
+        status: INACTIVE
+        name: "Test Account"
+        market: {id: 2}
+        pricelist: {id: 21}
+        discounts: {
+            generalDiscount: {
+                discountPercent: 14.3
+                isVisible: true
+            }
+#           addDeliveryWindowDiscounts: [
+#               {deliveryWindow: {id: 1} discountPercent: 12.3}
+#               {deliveryWindow: {id: 2} discountPercent: 23.4}
+#           ]
+        }
+    }) {
+        userErrors {
+            message path
+        }
+        account {
+            id
+            discountPercent
+            isDiscountVisible
+            deliveryWindowDiscounts {
+                deliveryWindow {
+                    id
+                }
+                discountPercent
+            }
+        }
+    }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "createAccount": {
+      "userErrors": [],
+      "account": {
+        "id": 5,
+        "discountPercent": 14.3,
+        "isDiscountVisible": true,
+        "deliveryWindowDiscounts": []
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 132,
+    "permissionsUsed": [
+      "Account:write",
+      "Account:read"
+    ],
+    "appVersion": "unknown"
+  }
+}
+```
+
+### Modifying a B2B Account
+
+Can be used, among others, for changing account status or modifying discounts.
+
+#### Request
+
+```gql
+mutation updateAccount {
+    updateAccount(id: 5, input: {
+        status: ACTIVE
+        discounts: {
+            generalDiscount: {
+                discountPercent: 10.0
+                isVisible: true
+            }
+#            addDeliveryWindowDiscounts: [
+#                {deliveryWindow: {id: 1} discountPercent: 12.3}
+#            ]
+#            removeDeliveryWindowDiscounts: [
+#                {id: 2}
+#            ]
+        }
+    }) {
+        userErrors {
+            message path
+        }
+        account {
+            id
+            discountPercent
+            isDiscountVisible
+            deliveryWindowDiscounts {
+                deliveryWindow {
+                    id
+                }
+                discountPercent
+            }
+        }
+    }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "updateAccount": {
+      "userErrors": [],
+      "account": {
+        "id": 5,
+        "discountPercent": 10,
+        "isDiscountVisible": true,
+        "deliveryWindowDiscounts": []
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 132,
+    "permissionsUsed": [
+      "Account:write",
+      "Account:read"
+    ],
+    "appVersion": "unknown"
+  }
+}
+```
+
 ---
 
 ### Fetching ALL the data
