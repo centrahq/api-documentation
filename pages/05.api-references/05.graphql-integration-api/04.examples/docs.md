@@ -231,7 +231,7 @@ Use this query to fetch a Display, filtering by id.
 
 ### Creating a B2B Account
 
-https://docs.centra.com/graphql/account.html
+[https://docs.centra.com/graphql/account.html](https://docs.centra.com/graphql/account.html)
 
 #### Request
 

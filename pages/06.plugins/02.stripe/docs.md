@@ -6,7 +6,8 @@ taxonomy:
     category: docs
 ---
 
-The Stripe Checkout-plugin is a hosted payment page by Stripe. It supports Apple Pay and Credit Card payments.  
+The Stripe Checkout-plugin is a hosted payment page by Stripe. It supports Credit Card payments, Apple Pay, iDeal, Cartes Bancaires, JCB, Sofort, Klarna and Giropay (only when using `Direct Capture` store setting).
+
 Stripe Checkout looks like this:
 
 ![stripe-checkout-preview.png](stripe-checkout-preview.png)
