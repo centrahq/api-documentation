@@ -85,6 +85,19 @@ If there is a product with age limit restriction in the basket, the `minimumCust
 
 ![img.png](qliro-age-restrict.png)
 
+#### High fraud risk flag "HasRisk"
+
+Limits the list of available payment methods in Qliro checkout. Typically used for products that could potentially be targeted for fraudulent purchases.
+In Centra it's a boolean value configurable on product level. The parameter is passed to Qliro in the checkout when product marked as risky is added to cart. When risky product is removed from cart then all available payment methods will be shown.
+
+"HasRisk" feature can be enabled in Qliro payment plugin settings:
+
+![img.png](qliro-hasrisk-plugin.png)
+
+When "HasRisk" feature is enabled in Qliro payment plugin settings - a custom attribute appears on product configuration page and allows a product to be marked as risky:
+
+![img.png](qliro-hasrisk-product-attribute.png)
+
 #### Verify identity with BankID - Sweden Only
 
 Set to "Yes" if you want BankID to be required for customer to be able to complete purchase.
