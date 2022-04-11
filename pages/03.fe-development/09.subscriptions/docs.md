@@ -85,7 +85,7 @@ Once subscription is created it is possible to browse customer's subscritpions a
 Interval on which items should be delivered can only be changes if the same item is currently available in a subscription plan. One can choose any of currenlty available plans. Keep in mind that all plan's properties will be transered to subscribed item: interval and discount. Each subscription can have its own interval and they can be modified separately.
 
 #### Changing status
-Subscription might be paused at any given time with no consequences. In such case orders are not generated if they fall on the send interval. After resuming the subscription next send interval will be calculated and orders will resume from that interval. No items will be shipped to make up for pause period.
+Subscription might be paused at any given time with no consequences. In such case orders are not generated if they fall on the send interval. After resuming the subscription next send interval will be calculated and orders will resume from that interval. No items will be shipped to make up for pause period. When you cancell a subscription it is not possible to bring it back. When all contract's subscriptions are cancelled then payment details will be purged for safety reasons. Be careful not to cancell all subscriptions if you plan to have this contract going in the future.
 
 #### Changing address
 Address is set on contract level and therefore it is only possible to change shipping address for all subscriptions on that contract. It is only possible to change addres inside the same destination country as oroginal subscription order. If the shopper wishes to ship subscription to a different country they have to cancel the current subscription and  check out with subscribed items again in different country.
@@ -138,10 +138,11 @@ Customer's current subscriptions can be listed using [POSY /customer/{{email}}/s
 
 ### Changing contract address
 
-To edit shipping address you have to provide the contract id that will be modified and use Shop API endpoint [PUT /subscriptions/address](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/put_subscription_address).
+To edit shipping address you have to provide the contract id that will be modified and use Shop API endpoint [PUT /subscriptions/address](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/put_subscription_address). You should provide a customer for which you modify the contract.
 
 ```json
 {
+  "customer": "example@example.com",
   "contract": 1,
   "firstName": "First Name",
   "lastName": "Last Name",
@@ -212,5 +213,49 @@ If the email address is not taken by a registered customer then it is possible t
         "register": true,
         "password": "password for the user"
     }
+}
+```
+
+### Browsing subscriptions
+
+Customer's current subscriptions can be listed using [POST /customer/subscriptions](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_customer_subscriptions) endpoint. Because Checkout API maintains user session, you can only access that endpoint once you are logged in.
+
+### Changing contract address
+
+To edit shipping address you have to provide the contract id that will be modified and use Shop API endpoint [PUT /subscriptions/address](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/put_subscription_address).
+
+```json
+{
+  "contract": 1,
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "address1": "Address1",
+  "address2": "Address2",
+  "zipCode": "12345",
+  "city": "City",
+  "phoneNumber": "123123123",
+  "email": "example@example.com"
+}
+```
+
+### Changing interval
+
+Changing subscription interval is only possible by providing a new subscription plan id. All plan properties will be copied onto subscription: [PUT /subscription/interval](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/put_subscription_interval)
+
+```json
+{
+  "subscription": 123,
+  "subscriptionPlan": 32
+}
+```
+
+### Changing status
+
+Status modifications use a [POST /subscription/status](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/put_subscription_status) endpoint. You need to provide a subscription id as well as new status:
+
+```json
+{
+  "subscription": 1,
+  "status": "active"
 }
 ```
