@@ -72,6 +72,9 @@ For each product there is one new field - `subscriptionPlans` of type `array`.
 - `intervalType` is a string representing the unit of time used; can be any of: `day`, `week`, `month` or `year`,
 - `discountPercent` is a numeric value of flat rate discount set on the subscription plan.
 
+### Subscription contract
+While working with subscriptions it is essential to grasp the concept of subscription contract. This is what binds together all the things: the customer, the payment method, shipping address and a set of products the customer subscribed to. Each checkout event generates one subscription contract that may contain multiple subscriptions.
+
 ### Checking out
 Checkout process is the same when it comes to implementation, you can read more in [Checkout API Order flow guide](https://docs.centra.com/api-references/checkout-api/order-flow). The only difference is that the customer has to be a registered client in order to be able to subscribe to an item. The user can log in before the checkout or create the account during the checkout. Keep in mind that it is only possible to create an account if the email is not already associated with any created account. If the account with given email already exists it is mandatory to log in before checking out with a subscription.
 
@@ -79,13 +82,13 @@ Checkout process is the same when it comes to implementation, you can read more 
 Once subscription is created it is possible to browse customer's subscritpions as well as manage their state and shipping address or change subscription plan. Keep in mind that shipping country cannot be changed. If the customer wishes to change destination country they have to cancel the subscription and check out again with new address.
 
 #### Changing interval
-Interval on which items should be delivered can only be changes if the same item is currently available in a subscription plan. One can choose any of currenlty available plans. Keep in mind that all plan's properties will be transered to subscribed item: interval and discount.
+Interval on which items should be delivered can only be changes if the same item is currently available in a subscription plan. One can choose any of currenlty available plans. Keep in mind that all plan's properties will be transered to subscribed item: interval and discount. Each subscription can have its own interval and they can be modified separately.
 
 #### Changing status
 Subscription might be paused at any given time with no consequences. In such case orders are not generated if they fall on the send interval. After resuming the subscription next send interval will be calculated and orders will resume from that interval. No items will be shipped to make up for pause period.
 
 #### Changing address
-Address might be changed only inside the same destination country as oroginal subscription order. If the shopper wishes to ship subscription to a different country they have to cancel the current subscription and  check out with subscribed items again in different country.
+Address is set on contract level and therefore it is only possible to change shipping address for all subscriptions on that contract. It is only possible to change addres inside the same destination country as oroginal subscription order. If the shopper wishes to ship subscription to a different country they have to cancel the current subscription and  check out with subscribed items again in different country.
 
 ## ShopAPI
 We assume configured url for ShopAPI is `/api/shop/`.
@@ -126,6 +129,50 @@ If the email address is not taken by a registered customer then it is possible t
         "register": true,
         "password": "password for the user"
     }
+}
+```
+
+### Browsing subscriptions
+
+Customer's current subscriptions can be listed using [POSY /customer/{{email}}/subscriptions](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__subscriptions) endpoint. Because Shop API works in stateless manner you do not have to log in as customer. Authorization should be handled by frontend. Subscriptions are groupped by the contract they belong to.
+
+### Changing contract address
+
+To edit shipping address you have to provide the contract id that will be modified and use Shop API endpoint [PUT /subscriptions/address](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/put_subscription_address).
+
+```json
+{
+  "contract": 1,
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "address1": "Address1",
+  "address2": "Address2",
+  "zipCode": "12345",
+  "city": "City",
+  "phoneNumber": "123123123",
+  "email": "example@example.com"
+}
+```
+
+### Changing interval
+
+Changing subscription interval is only possible by providing a new subscription plan id. All plan properties will be copied onto subscription: [PUT /subscription/interval](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/put_subscription_interval)
+
+```json
+{
+  "subscription": 123,
+  "subscriptionPlan": 32
+}
+```
+
+### Changing status
+
+Status modifications use a [POST /subscription/status](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/put_subscription_status) endpoint. You need to provide a subscription id as well as new status:
+
+```json
+{
+  "subscription": 1,
+  "status": "active"
 }
 ```
 
