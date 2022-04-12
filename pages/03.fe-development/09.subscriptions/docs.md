@@ -88,7 +88,7 @@ Interval on which items should be delivered can only be changed if the same item
 Subscription might be paused at any given time with no consequences. In such case orders are not generated if they fall on the send interval. After resuming the subscription next send interval will be calculated and orders will resume from that interval. No items will be shipped to make up for pause period. When you cancell a subscription it is not possible to bring it back. When all contract's subscriptions are cancelled then payment details will be purged for safety reasons. Be careful not to cancell all subscriptions if you plan to have this contract going in the future.
 
 #### Changing address
-Address is set on contract level and therefore it is only possible to change shipping address for all subscriptions on that contract. It is only possible to change addres inside the same destination country as oroginal subscription order. If the shopper wishes to ship subscription to a different country they have to cancel the current subscription and  check out with subscribed items again in different country.
+Address is set on contract level and therefore it is only possible to change shipping address for all subscriptions on that contract. It is only possible to change address inside the same destination country as original subscription order. If the shopper wishes to ship subscription to a different country they have to cancel the current subscription and check out with subscribed items again in different country.
 
 ## ShopAPI
 We assume configured url for ShopAPI is `/api/shop/`.
