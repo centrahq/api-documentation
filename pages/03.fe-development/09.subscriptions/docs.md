@@ -134,7 +134,7 @@ If the email address is not taken by a registered customer then it is possible t
 
 ### Browsing subscriptions
 
-Customer's current subscriptions can be listed using [POSY /customer/{{email}}/subscriptions](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__subscriptions) endpoint. Because Shop API works in stateless manner you do not have to log in as customer. Authorization should be handled by frontend. Subscriptions are groupped by the contract they belong to.
+Customer's current subscriptions can be listed using [POST /customer/{{email}}/subscriptions](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__subscriptions) endpoint. Because Shop API works in stateless manner you do not have to log in as customer. Authorization should be handled by frontend. Subscriptions are grouped by the contract they belong to.
 
 ### Changing contract address
 
