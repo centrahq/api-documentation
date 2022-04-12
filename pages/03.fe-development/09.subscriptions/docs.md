@@ -82,7 +82,7 @@ Checkout process is the same when it comes to implementation, you can read more 
 Once subscription is created it is possible to browse customer's subscriptions as well as manage their state and shipping address or change subscription plan. Keep in mind that shipping country cannot be changed. If the customer wishes to change destination country they have to cancel the subscription and check out again with new address.
 
 #### Changing interval
-Interval on which items should be delivered can only be changes if the same item is currently available in a subscription plan. One can choose any of currenlty available plans. Keep in mind that all plan's properties will be transered to subscribed item: interval and discount. Each subscription can have its own interval and they can be modified separately.
+Interval on which items should be delivered can only be changed if the same item is currently available in a subscription plan. One can choose any of currently available plans. Keep in mind that all plan's properties will be transferred to subscribed item: interval and discount. Each subscription can have its own interval and they can be modified separately.
 
 #### Changing status
 Subscription might be paused at any given time with no consequences. In such case orders are not generated if they fall on the send interval. After resuming the subscription next send interval will be calculated and orders will resume from that interval. No items will be shipped to make up for pause period. When you cancell a subscription it is not possible to bring it back. When all contract's subscriptions are cancelled then payment details will be purged for safety reasons. Be careful not to cancell all subscriptions if you plan to have this contract going in the future.
