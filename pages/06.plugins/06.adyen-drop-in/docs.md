@@ -164,6 +164,12 @@ The `Default Locale` defines which language it should use. `Send Billing Address
 
 You can also define if Adyen Drop-In should be allowed for buying gift cards (if this is supported by the website). The gift cards are not being fulfilled by the warehouse, but directly issued and emailed to the customer if the payment goes through.
 
+The `3D Secure verification method` setting allows you to choose if 3D-secured payment verification should be rendered in the same window, or if you'd like the user to be redirected to their bank confirmation page. Changing this option does not affect the payment flow otherwise.
+
+[notice-box=info]
+Because 3DS confirmations are not available in Adyen's test environment, you will only be able to test 3DS payments in Production environment.
+[/notice-box]
+
 ### Market/Pricelist/Country/Language restrictions
 
 You can also restrict the Adyen Drop-In to only work for specified markets, pricelists, countries or languages. This is good if you want to use different Locales for the Adyen Drop-In. You can use the same `uri` for the Adyen Drop-In plugin using different restrictions.
