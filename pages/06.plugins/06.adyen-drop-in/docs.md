@@ -167,7 +167,7 @@ You can also define if Adyen Drop-In should be allowed for buying gift cards (if
 The `3D Secure verification method` setting allows you to choose if 3D-secured payment verification should be rendered in the same window, or if you'd like the user to be redirected to their bank confirmation page. Changing this option does not affect the payment flow otherwise.
 
 [notice-box=info]
-Because 3DS confirmations are not available in Adyen's test environment, you will only be able to test 3DS payments in Production environment.
+The 3DS confirmation pages differ in Adyen's test environment compared to the live environment and will not reflect exactly how they work in production. It might be wise to also test this setting using real 3DS-steps in production.
 [/notice-box]
 
 ### Market/Pricelist/Country/Language restrictions
