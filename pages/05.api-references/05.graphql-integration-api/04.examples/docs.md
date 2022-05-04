@@ -366,6 +366,209 @@ mutation updateAccount {
 }
 ```
 
+### Creating a B2B buyer
+
+Buyers are created under specific B2B accounts.
+
+#### Request
+
+```gql
+mutation createBuyer {
+    createBuyer(input: {
+        store: {id: 2}
+        status: ACTIVE
+        account: {id: 5}
+        websiteUrl: "Example URL"
+        receiveAutoEmails: true
+        billingAddress: {
+            firstName: "Jon"
+            lastName: "Snow"
+            address1: "Address 1"
+            address2: "Address 2"
+            country: {code: "US"}
+            stateOrProvince: "Alaska"
+            city: "Winterfell"
+            zipCode: "54152"
+            phoneNumber: "987654321"
+            cellPhoneNumber: "246813579"
+            faxNumber: "123456789"
+            email: "jon.snow@centra.com"
+        }
+    }) {
+        userErrors { message path }
+        buyer {
+            id
+            status
+            account { id name }
+            receiveAutoEmails
+            websiteUrl
+            billingAddress {
+                firstName
+                lastName
+                address1
+                address2
+                country {code}
+                stateOrProvince
+                city
+                zipCode
+                phoneNumber
+                cellPhoneNumber
+                faxNumber
+                email
+            }
+        }
+    }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "createBuyer": {
+      "userErrors": [],
+      "buyer": {
+        "id": 1257,
+        "status": "ACTIVE",
+        "account": {
+          "id": 5,
+          "name": "Test Account"
+        },
+        "receiveAutoEmails": true,
+        "websiteUrl": "Example URL",
+        "billingAddress": {
+          "firstName": "Jon",
+          "lastName": "Snow",
+          "address1": "Address 1",
+          "address2": "Address 2",
+          "country": {
+            "code": "US"
+          },
+          "stateOrProvince": "AK",
+          "city": "Winterfell",
+          "zipCode": "54152",
+          "phoneNumber": "987654321",
+          "cellPhoneNumber": "246813579",
+          "faxNumber": "123456789",
+          "email": "jon.snow@centra.com"
+        }
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 115,
+    "permissionsUsed": [
+      "Buyer:write",
+      "Purchaser:read",
+      "Account:read",
+      "Purchaser.billingAddress:read"
+    ],
+    "appVersion": "unknown"
+  }
+}
+```
+
+### Modifying a B2B buyer
+
+Once created, you can modify buyer data, like address or website URL.
+
+#### Request
+
+```gql
+mutation editBuyer {
+    updateBuyer(id: 1257, input: {
+        store: {id: 2}
+        status: ACTIVE
+        websiteUrl: "Different URL"
+        billingAddress: {
+            firstName: "Jon"
+            lastName: "Snow"
+            address1: "Address 1"
+            address2: "Address 2"
+            country: {code: "US"}
+            stateOrProvince: "Alaska"
+            city: "TheWall"
+            zipCode: "54152"
+            phoneNumber: "987654321"
+            cellPhoneNumber: "246813579"
+            faxNumber: "123456789"
+            email: "jon.snow@centra.com"
+        }
+    }) {
+        userErrors { message path }
+        buyer {
+            id
+            status
+            account { id name }
+            receiveAutoEmails
+            billingAddress {
+                firstName
+                lastName
+                address1
+                address2
+                country {code}
+                stateOrProvince
+                city
+                zipCode
+                phoneNumber
+                cellPhoneNumber
+                faxNumber
+                email
+            }
+        }
+    }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "updateBuyer": {
+      "userErrors": [],
+      "buyer": {
+        "id": 1257,
+        "status": "ACTIVE",
+        "account": {
+          "id": 5,
+          "name": "Test Account"
+        },
+        "receiveAutoEmails": true,
+        "websiteUrl": "Different URL",
+        "billingAddress": {
+          "firstName": "Jon",
+          "lastName": "Snow",
+          "address1": "Address 1",
+          "address2": "Address 2",
+          "country": {
+            "code": "US"
+          },
+          "stateOrProvince": "AK",
+          "city": "TheWall",
+          "zipCode": "54152",
+          "phoneNumber": "987654321",
+          "cellPhoneNumber": "246813579",
+          "faxNumber": "123456789",
+          "email": "jon.snow@centra.com"
+        }
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 115,
+    "permissionsUsed": [
+      "Buyer:write",
+      "Purchaser:read",
+      "Account:read",
+      "Purchaser.billingAddress:read"
+    ],
+    "appVersion": "unknown"
+  }
+}
+```
+
 ---
 
 ### Fetching ALL the data
