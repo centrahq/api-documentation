@@ -318,3 +318,49 @@ Status modifications use a [POST /subscription/status](https://docs.centra.com/s
   "status": "active"
 }
 ```
+
+### Fetching available stored payment methods
+
+To fetch available payment methods that can be used for subscription payment update use Checkout API endpoint [POST /api/checkout/customer/stored/payment-methods](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_customer_stored_payment_methods).
+In the request body, send the subscription contract that you want to update.
+
+```json
+{
+  "contract": 1
+}
+```
+
+### Subscription payment update initialization
+
+To initialize subscription payment update use Checkout API endpoint [POST /api/checkout/customers/stored/payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_customer_stored_payment_methods).
+This endpoint behaves similarly as the endpoint for initiating standard checkout.
+In the request body, you should send an array of subscription contract ids that you want to update with new subscription payment.
+Contracts need to belong to a single customer. Selected payment method needs to be available to use on each of the specified contracts.
+
+```json
+{
+    "contracts": [1,2,3],
+    "paymentMethod": "kco3",
+    "paymentReturnPage": "https://payment-result.com/success",
+    "paymentFailedPage": "https://payment-result.com/failure"
+}
+```
+
+### Subscription payment update result
+
+To finalize subscription payment update use Checkout API endpoint [POST /api/shop/customer/stored/payment-result](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_customer_stored_payment_methods).
+This endpoint behaves similarly as the endpoint for finalizing standard checkout.
+When the customer comes back to the website from the payment method and ends up on "paymentReturnPage" the website is supposed to send all variables it got to our API to stored/payment-result.
+In the request body, you should send an object with all the key/value properties coming from PSP under "paymentMethodFields" key.
+
+```json
+{
+  "paymentMethodFields": {
+    "centraPaymentMethod":"kco3",
+    "order_id": "7288f118-a63d-4ec2-2137-e36ac0e1445f"
+  }
+}
+```
+
+After receiving the response, the update should be reflected on the subscription contract response. Newly created subscription payment depending on the status can/cannot/cannot be used yet for placing recurring orders.
+
