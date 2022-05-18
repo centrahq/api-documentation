@@ -249,11 +249,7 @@ In the response, the "thank you page" HTML snippet coming from Payment Service P
 {
   "status": "ok",
   "paymentHtml": "<div id=\"klarna-checkout-container\" (...) </div>",
-  "contractIds": [
-    1,
-    2,
-    3
-  ]
+  "contractIds": [1, 2, 3]
 }
 ```
 
@@ -401,11 +397,7 @@ In the response, the "thank you page" HTML snippet coming from Payment Service P
   "token": "aeea9561d2653df51017ccdac3cdac38",
   "status": "ok",
   "paymentHtml": "<div id=\"klarna-checkout-container\" (...) </div>",
-  "contractIds": [
-    1,
-    2,
-    3
-  ]
+  "contractIds": [1, 2, 3]
 }
 ```
 
