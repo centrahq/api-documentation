@@ -78,6 +78,16 @@ While working with subscriptions it is essential to grasp the concept of subscri
 ### Subscription
 Each product (or bundle) added to the contract is called "subscription". One subscription always means one item of deliverables (product or bundle). Subscription has it's own delivery schedule that can be modified (if current plans allow that). If deliveries of multiple subscriptions in one contract fall on the same day they will be shipped as one order.
 
+### Subscription payment
+Subscription payment is a property of subscription contract which is necessary for recurring order placement. It may have one of the three statuses:
+1. active - Can be used to place recurring order successfully 
+2. pending - Cannot be used to place recurring order yet. Centra is waiting for asynchronous Payment Service Provider response to obtain valid tokenized payment information.
+3. failed - Cannot be used to place recurring order. Tokenization of payment information has failed.
+
+Subscription payment can be updated on subscription contract. A single subscription payment can be connected to many subscription contracts that belong to the same customer.
+Only one active subscription payment can be connected to a particular subscription contract.
+
+
 ### Checking out
 Checkout process is the same when it comes to implementation, you can read more in [Checkout API Order flow guide](https://docs.centra.com/api-references/checkout-api/order-flow). The only difference is that the customer has to be a registered client in order to be able to subscribe to an item. The user can log in before the checkout or create the account during the checkout. Keep in mind that it is only possible to create an account if the email is not already associated with any created account. If the account with given email already exists it is mandatory to log in before checking out with a subscription.
 
