@@ -194,7 +194,7 @@ Status modifications use a [POST /subscription/status](https://docs.centra.com/s
 ### Fetching available stored payment methods
 
 To fetch available payment methods that can be used for subscription payment update use Shop API endpoint [POST /api/shop/customers/{{email}}/stored/payment-methods](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__stored_payment_methods).
-In the request body, send the subscription contract that you want to update.
+In the request body, send the subscription contract that you want to update. Centra will run the validations using the customer and specified subscription contract information and respond with available payment methods list.
 
 ```json
 {
@@ -215,6 +215,15 @@ Contracts need to belong to a single customer. Selected payment method needs to 
     "paymentMethod": "kco3",
     "paymentReturnPage": "https://payment-result.com/success",
     "paymentFailedPage": "https://payment-result.com/failure"
+}
+```
+
+In a response you will receive `action` property indicating what should be done with the response. In the attached example the `action` property equals `form`, which means that you're supposed to render html snippet that is available under `formHtml` key on the frontend page for the customer to proceed with their payment.
+
+```json
+{
+  "action": "form",
+  "formHtml": "<div id=\"klarna-checkout-container\" (...)"
 }
 ```
 
@@ -322,7 +331,7 @@ Status modifications use a [POST /subscription/status](https://docs.centra.com/s
 ### Fetching available stored payment methods
 
 To fetch available payment methods that can be used for subscription payment update use Checkout API endpoint [POST /api/checkout/customer/stored/payment-methods](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_customer_stored_payment_methods).
-In the request body, send the subscription contract that you want to update.
+In the request body, send the subscription contract that you want to update. Centra will run the validations using the customer and specified subscription contract information and respond with available payment methods list.
 
 ```json
 {
@@ -343,6 +352,15 @@ Contracts need to belong to a single customer. Selected payment method needs to 
     "paymentMethod": "kco3",
     "paymentReturnPage": "https://payment-result.com/success",
     "paymentFailedPage": "https://payment-result.com/failure"
+}
+```
+
+In a response you will receive `action` property indicating what should be done with the response. In the attached example the `action` property equals `form`, which means that you're supposed to render html snippet that is available under `formHtml` key on the frontend page for the customer to proceed with their payment.
+```json
+{
+  "token": "aeea9561d2653df51017ccdac3cdac38",
+  "action": "form",
+  "formHtml": "<div id=\"klarna-checkout-container\" (...)"
 }
 ```
 
