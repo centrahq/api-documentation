@@ -223,7 +223,7 @@ In a response you will receive `action` property indicating what should be done 
 ```json
 {
   "action": "form",
-  "formHtml": "<div id=\"klarna-checkout-container\" (...)"
+  "formHtml": "<div id=\"klarna-checkout-container\" (...) </div>"
 }
 ```
 
@@ -240,6 +240,20 @@ In the request body, you should send an object with all the key/value properties
     "centraPaymentMethod":"kco3",
     "order_id": "7288f118-a63d-4ec2-2137-e36ac0e1445f"
   }
+}
+```
+
+In the response, the "thank you page" HTML snippet coming from Payment Service Provider will be available under `paymentHtml` key and can be rendered for the customer on the receipt page.  
+
+```json
+{
+  "status": "ok",
+  "paymentHtml": "<div id=\"klarna-checkout-container\" (...) </div>",
+  "contractIds": [
+    1,
+    2,
+    3
+  ]
 }
 ```
 
@@ -377,6 +391,21 @@ In the request body, you should send an object with all the key/value properties
     "centraPaymentMethod":"kco3",
     "order_id": "7288f118-a63d-4ec2-2137-e36ac0e1445f"
   }
+}
+```
+
+In the response, the "thank you page" HTML snippet coming from Payment Service Provider will be available under `paymentHtml` key and can be rendered for the customer on the receipt page.
+
+```json
+{
+  "token": "aeea9561d2653df51017ccdac3cdac38",
+  "status": "ok",
+  "paymentHtml": "<div id=\"klarna-checkout-container\" (...) </div>",
+  "contractIds": [
+    1,
+    2,
+    3
+  ]
 }
 ```
 
