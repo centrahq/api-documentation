@@ -82,9 +82,9 @@ Each product (or bundle) added to the contract is called "subscription". One sub
 Subscription payment is a property of subscription contract which is necessary for recurring order placement. It is created as a result of subscription checkout, exactly like subscription contract or as a result of subscription payment update. 
 
 It may have one of the three statuses:
-1. active - Can be used to place recurring order successfully 
-2. pending - Cannot be used to place recurring order yet. Centra is waiting for asynchronous Payment Service Provider response to obtain valid tokenized payment information.
-3. failed - Cannot be used to place recurring order. Tokenization of payment information has failed.
+1. Active - Can be used to place recurring order successfully 
+2. Pending - Cannot be used to place recurring order yet. Centra is waiting for asynchronous Payment Service Provider response to obtain valid tokenized payment information.
+3. Failed - Cannot be used to place recurring order. Tokenization of payment information has failed.
 
 Subscription payment can be updated on subscription contract (example use case - credit card expiration). A single subscription payment can be connected to many subscription contracts that belong to the same customer.
 Only one active subscription payment can be connected to a particular subscription contract.
@@ -218,7 +218,7 @@ Contracts need to belong to a single customer. Selected payment method needs to 
 }
 ```
 
-In a response you will receive `action` property indicating what should be done with the response. In the attached example the `action` property equals `form`, which means that you're supposed to render html snippet that is available under `formHtml` key on the frontend page for the customer to proceed with their payment.
+In a response you will receive `action` property indicating what should be done with the response. In the attached example the `action` property equals `form`, which means that you're supposed to render HTML snippet that is available under `formHtml` key on the frontend page for the customer to proceed with their payment.
 
 ```json
 {
@@ -243,7 +243,7 @@ In the request body, you should send an object with all the key/value properties
 }
 ```
 
-In the response, the "thank you page" HTML snippet coming from Payment Service Provider will be available under `paymentHtml` key and can be rendered for the customer on the receipt page.  
+In the response, the "Thank you page" HTML snippet coming from Payment Service Provider will be available under `paymentHtml` key and can be rendered for the customer on the receipt page.  
 
 ```json
 {
@@ -365,7 +365,7 @@ Contracts need to belong to a single customer. Selected payment method needs to 
 }
 ```
 
-In a response you will receive `action` property indicating what should be done with the response. In the attached example the `action` property equals `form`, which means that you're supposed to render html snippet that is available under `formHtml` key on the frontend page for the customer to proceed with their payment.
+In a response you will receive `action` property indicating what should be done with the response. In the attached example the `action` property equals `form`, which means that you're supposed to render HTML snippet that is available under `formHtml` key on the frontend page for the customer to proceed with their payment.
 ```json
 {
   "token": "aeea9561d2653df51017ccdac3cdac38",
@@ -390,7 +390,7 @@ In the request body, you should send an object with all the key/value properties
 }
 ```
 
-In the response, the "thank you page" HTML snippet coming from Payment Service Provider will be available under `paymentHtml` key and can be rendered for the customer on the receipt page.
+In the response, the "Thank you page" HTML snippet coming from Payment Service Provider will be available under `paymentHtml` key and can be rendered for the customer on the receipt page.
 
 ```json
 {
