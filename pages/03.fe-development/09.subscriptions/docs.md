@@ -253,7 +253,7 @@ In the response, the "Thank you page" HTML snippet coming from Payment Service P
 }
 ```
 
-After receiving the response, the update should be reflected on the subscription contract response. Newly created subscription payment depending on the status can/cannot/cannot be used yet for placing recurring orders.
+After receiving the response, the update should be reflected on the subscription contract response. The status of subscription payment indicates whether it can be used for recurring order placement.
 
 ## CheckoutAPI
 We assume configured url for CheckoutAPI is `/api/checkout/`.
@@ -351,7 +351,7 @@ In the request body, send the subscription contract that you want to update. Cen
 
 ### Subscription payment update initialization
 
-To initialize subscription payment update use Checkout API endpoint [POST /api/checkout/customers/stored/payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_customer_stored_payment_methods).
+To initialize subscription payment update use Checkout API endpoint [POST /api/checkout/customer/stored/payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_customer_stored_payment_methods).
 This endpoint behaves similarly as the endpoint for initiating standard checkout.
 In the request body, you should send an array of subscription contract ids that you want to update with new subscription payment.
 Contracts need to belong to a single customer. Selected payment method needs to be available to use on each of the specified contracts.
@@ -401,5 +401,5 @@ In the response, the "Thank you page" HTML snippet coming from Payment Service P
 }
 ```
 
-After receiving the response, the update should be reflected on the subscription contract response. Newly created subscription payment depending on the status can/cannot/cannot be used yet for placing recurring orders.
+After receiving the response, the update should be reflected on the subscription contract response. The status of subscription payment indicates whether it can be used for recurring order placement.
 
