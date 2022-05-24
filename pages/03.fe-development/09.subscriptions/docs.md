@@ -376,7 +376,7 @@ In a response you will receive `action` property indicating what should be done 
 
 ### Subscription payment update result
 
-To finalize subscription payment update use Checkout API endpoint [POST /api/shop/customer/stored/payment-result](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_customer_stored_payment_methods).
+To finalize subscription payment update use Checkout API endpoint [POST /api/checkout/customer/stored/payment-result](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_customer_stored_payment_methods).
 This endpoint behaves similarly as the endpoint for finalizing standard checkout.
 When the customer comes back to the website from the payment method and ends up on "paymentReturnPage" the website is supposed to send all variables it got to our API to stored/payment-result.
 In the request body, you should send an object with all the key/value properties coming from PSP under "paymentMethodFields" key.
