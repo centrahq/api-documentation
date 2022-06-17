@@ -31,7 +31,7 @@ Get all products added after a certain date. Allowed formats ``YYYY-mm-dd`` and 
 Get a product with specified EAN code.
 [/parameter]
 
-[parameter data="productId variantId stockItemID" datatype="int" isRequired=false sublevel=1]
+[parameter data="productId variantId stockItemId" datatype="int" isRequired=false sublevel=1]
 Filter products based on product, variant and stock item IDs.
 [/parameter]
 
