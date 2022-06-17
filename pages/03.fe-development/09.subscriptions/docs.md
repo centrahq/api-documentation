@@ -193,7 +193,7 @@ Status modifications use a [POST /subscription/status](https://docs.centra.com/s
 
 ### Fetching available stored payment methods
 
-To fetch available payment methods that can be used for subscription payment update use Shop API endpoint [POST /api/shop/customers/{{email}}/stored/payment-methods](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__stored_payment_methods).
+(Since `v3.13`) To fetch available payment methods that can be used for subscription payment update use Shop API endpoint [POST /api/shop/customers/{{email}}/stored/payment-methods](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__stored_payment_methods).
 In the request body, send the subscription contract that you want to update. Centra will run the validations using the customer and specified subscription contract information and respond with available payment methods list.
 
 ```json
@@ -204,7 +204,7 @@ In the request body, send the subscription contract that you want to update. Cen
 
 ### Subscription payment update initialization
 
-To initialize subscription payment update use Shop API endpoint [POST /api/shop/customers/{{email}}/stored/payment](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__stored_payment_methods).
+(Since `v3.13`) To initialize subscription payment update use Shop API endpoint [POST /api/shop/customers/{{email}}/stored/payment](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__stored_payment_methods).
 This endpoint behaves similarly as the endpoint for initiating standard checkout. 
 In the request body, you should send an array of subscription contract ids that you want to update with new subscription payment. 
 Contracts need to belong to a single customer. Selected payment method needs to be available to use on each of the specified contracts.
@@ -229,7 +229,7 @@ In a response you will receive `action` property indicating what should be done 
 
 ### Subscription payment update result
 
-To finalize subscription payment update use Shop API endpoint [POST /api/shop/customers/{{email}}/stored/payment-result](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__stored_payment_methods).
+(Since `v3.13`) To finalize subscription payment update use Shop API endpoint [POST /api/shop/customers/{{email}}/stored/payment-result](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__stored_payment_methods).
 This endpoint behaves similarly as the endpoint for finalizing standard checkout.
 When the customer comes back to the website from the payment method and ends up on "paymentReturnPage" the website is supposed to send all variables it got to our API to stored/payment-result.
 In the request body, you should send an object with all the key/value properties coming from PSP under "paymentMethodFields" key.
@@ -340,7 +340,7 @@ Status modifications use a [POST /subscription/status](https://docs.centra.com/s
 
 ### Fetching available stored payment methods
 
-To fetch available payment methods that can be used for subscription payment update use Checkout API endpoint [POST /api/checkout/customer/stored/payment-methods](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_customer_stored_payment_methods).
+(Since `v3.13`) To fetch available payment methods that can be used for subscription payment update use Checkout API endpoint [POST /api/checkout/customer/stored/payment-methods](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_customer_stored_payment_methods).
 In the request body, send the subscription contract that you want to update. Centra will run the validations using the customer and specified subscription contract information and respond with available payment methods list.
 
 ```json
@@ -351,7 +351,7 @@ In the request body, send the subscription contract that you want to update. Cen
 
 ### Subscription payment update initialization
 
-To initialize subscription payment update use Checkout API endpoint [POST /api/checkout/customer/stored/payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_customer_stored_payment_methods).
+(Since `v3.13`) To initialize subscription payment update use Checkout API endpoint [POST /api/checkout/customer/stored/payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_customer_stored_payment_methods).
 This endpoint behaves similarly as the endpoint for initiating standard checkout.
 In the request body, you should send an array of subscription contract ids that you want to update with new subscription payment.
 Contracts need to belong to a single customer. Selected payment method needs to be available to use on each of the specified contracts.
@@ -376,7 +376,7 @@ In a response you will receive `action` property indicating what should be done 
 
 ### Subscription payment update result
 
-To finalize subscription payment update use Checkout API endpoint [POST /api/checkout/customer/stored/payment-result](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_customer_stored_payment_methods).
+(Since `v3.13`) To finalize subscription payment update use Checkout API endpoint [POST /api/checkout/customer/stored/payment-result](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_customer_stored_payment_methods).
 This endpoint behaves similarly as the endpoint for finalizing standard checkout.
 When the customer comes back to the website from the payment method and ends up on "paymentReturnPage" the website is supposed to send all variables it got to our API to stored/payment-result.
 In the request body, you should send an object with all the key/value properties coming from PSP under "paymentMethodFields" key.
