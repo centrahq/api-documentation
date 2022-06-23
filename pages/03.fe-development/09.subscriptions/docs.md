@@ -205,6 +205,32 @@ Status modifications use a [POST /subscription/status](https://docs.centra.com/s
 }
 ```
 
+### Adding subscription
+
+(Since `v3.15`) To add a new subscription you have to specify the customer and the contract to which it be added to, as well as provide the product (display item and size), plan and start date for this subscription. Here is an example:
+
+[POST '/api/shop/customer/{email}/contracts/{contract}/subscription](https://docs.centra.com/swagger-ui/?api=ShopAPI)
+
+```json
+{
+    "item": "132-13",
+    "subscriptionPlan": 2,
+    "nextOrderDate": "2022-07-01"
+}
+```
+
+### Changing quantity
+
+(Since `v3.15`) It is enough to provide a quantity (no less than 1). If the item is no longer available in the same subscription plan, or subscription plan parameters have changed you will not be able to change the quantity. The contract must match the customer as well as the subscription.
+
+[PUT '/api/shop/customer/{email}/contracts/{contract}/subscription/{subscription}](https://docs.centra.com/swagger-ui/?api=ShopAPI)
+
+```json
+{
+    "quantity": 2
+}
+```
+
 ### Fetching available stored payment methods
 
 (Since `v3.13`) To fetch available payment methods that can be used for subscription payment update use Shop API endpoint [POST /api/shop/customers/{{email}}/stored/payment-methods](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__stored_payment_methods).
@@ -349,6 +375,32 @@ Status modifications use a [POST /subscription/status](https://docs.centra.com/s
 {
   "subscription": 1,
   "status": "active"
+}
+```
+
+### Adding subscription
+
+(Since `v3.15`) To add a new subscription you have to specify which contract should it be added to, as well as provide the product (display item and size), plan and start date for this subscription. You have to log the customer in first. Here is an example:
+
+[POST '/api/checkout/customer/contracts/{contract}/subscription](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling)
+
+```json
+{
+    "item": "132-13",
+    "subscriptionPlan": 2,
+    "nextOrderDate": "2022-07-01"
+}
+```
+
+### Changing quantity
+
+(Since `v3.15`) Changing quantity requires logged in customer as well. It is enough to provide a quantity (no less than 1). If the item is no longer available in the same subscription plan, or subscription plan parameters have changed you will not be able to change the quantity.
+
+[PUT '/api/checkout/customer/contracts/{contract}/subscription/{subscription}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling)
+
+```json
+{
+    "quantity": 2
 }
 ```
 
