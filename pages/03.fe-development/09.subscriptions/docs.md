@@ -104,6 +104,20 @@ Subscription might be paused at any given time with no consequences. In such cas
 #### Changing address
 Address is set on contract level and therefore it is only possible to change shipping address for all subscriptions on that contract. It is only possible to change address inside the same destination country as original subscription order. If the shopper wishes to ship subscription to a different country they have to cancel the current subscription and check out with subscribed items again in different country.
 
+#### Adding new subscription to a contract
+Once the customer has created a contract with appropriate shipping address and a valid payment method it is possible to add new items to that contract. They will be shipped according to their own interval starting from the provided date. New subscription cannot start sooner than the next day. It is only possible to add an item that currently belongs to some subscription plan. If the product is not currently added to a subscription plan then one cannot add it to a contract (even it it was possible before).
+
+When adding subscription to a contract one has to provide:
+ - the plan for this subscription,
+ - date when this subscription starts,
+ - quantity of products subscribed for.
+
+#### Changing subscription quantity
+The customer is allowed to subscribe to more than one unit of the product if she or he wishes. During subscription lifetime it is also possible to adjust that quantity. It is always possible do decrease the quantity down to 1. If the custome wishes to change product quantity to 0 they should pause or cancel the subscription.
+
+It is only possible to increase the product quantity if subscribed item is still available in the same plan with the same plan properties (discount, interval). If any of those values is changed one should add a subscription to a contract instead. 
+
+
 ## ShopAPI
 We assume configured url for ShopAPI is `/api/shop/`.
 
