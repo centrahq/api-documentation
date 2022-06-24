@@ -113,9 +113,9 @@ When adding subscription to a contract one has to provide:
  - quantity of products subscribed for.
 
 #### Changing subscription quantity
-The customer is allowed to subscribe to more than one unit of the product if she or he wishes. During subscription lifetime it is also possible to adjust that quantity. It is always possible do decrease the quantity down to 1. If the custome wishes to change product quantity to 0 they should pause or cancel the subscription.
+The customer is allowed to subscribe to more than one unit of the product if she or he wishes. During subscription lifetime it is also possible to adjust that quantity. It is always possible do decrease the quantity down to 1. If the customer wishes to change product quantity to 0 they should pause or cancel the subscription.
 
-It is only possible to increase the product quantity if subscribed item is still available in the same plan with the same plan properties (discount, interval). If any of those values is changed one should add a subscription to a contract instead. 
+It is only possible to increase the product quantity if the subscribed item is still available in the same plan with the same plan properties (discount, interval). If any of those values is changed one should add a subscription to a contract instead. 
 
 
 ## ShopAPI
@@ -207,7 +207,7 @@ Status modifications use a [POST /subscription/status](https://docs.centra.com/s
 
 ### Adding subscription
 
-(Since `v3.15`) To add a new subscription you have to specify the customer and the contract to which it be added to, as well as provide the product (display item and size), plan and start date for this subscription. Here is an example:
+(Since `v3.15`) To add a new subscription you have to specify the customer and the contract to which it is added to, as well as provide the product (display item and size), plan and start date for this subscription. Here is an example:
 
 [POST '/api/shop/customer/{email}/contracts/{contract}/subscription](https://docs.centra.com/swagger-ui/?api=ShopAPI)
 
