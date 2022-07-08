@@ -129,6 +129,7 @@ The `group` on the attribute inside the `config.php` specifies where the attribu
 | `customer` | Listed under each Customer. |
 | `account` | Listed under each Account (B2B). |
 | `sizechart` | Listed under each size in a sizechart. |
+| `product_media` | Not listed in UI. Exposed in Checkout & Shop API. Assignable through Integration API. |
 
 ### Attribute element types
 
@@ -277,6 +278,43 @@ This is how it looks like in the API:
     "attribute_name": "This is the text"
 }
 ```
+
+Media object attributes (group=product_media)
+
+```php
+<?php
+$usr_conf['ATTRIBUTE_TYPES'] = [
+    'caption' => [
+        'desc' => 'Image caption',
+        'group' => 'product_media',
+        'readonly' => false,
+        'elements' => [
+            'description' => [
+                'desc' => 'Caption',
+                'type' => 'input'
+            ],
+        ]
+    ],
+];
+```
+
+
+Response from the Checkout API:
+
+        "mediaObjects": [
+                {
+                    "media": "1",
+                    "sources": {
+                        "standard": [
+                            {
+                                "url": "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg"
+                            }
+                        ]
+                    },
+                    "attributes": {
+                        "caption_description": "Example caption"
+                    }
+                }]
 
 The [dynamic attribute element types](#attribute-element-types) supported are all returning simple strings, so they look the same as per above.
 
