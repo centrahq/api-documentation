@@ -279,8 +279,9 @@ This is how it looks like in the API:
 }
 ```
 
-Media object attributes (group=product_media)
+Media object attributes. 
 
+Configuration of an example dynamic attribute for product media of type `caption`:
 ```php
 <?php
 $usr_conf['ATTRIBUTE_TYPES'] = [
@@ -301,20 +302,48 @@ $usr_conf['ATTRIBUTE_TYPES'] = [
 
 Response from the Checkout API:
 
-        "mediaObjects": [
-                {
-                    "media": "1",
-                    "sources": {
-                        "standard": [
-                            {
-                                "url": "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg"
-                            }
-                        ]
-                    },
-                    "attributes": {
-                        "caption_description": "Example caption"
-                    }
-                }]
+```JSON
+{
+  "mediaObjects": [
+    {
+      "media": "1",
+      "sources": {
+        "standard": [
+          {
+            "url": "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg"
+          }
+        ]
+      },
+      "attributes": {
+        "caption_description": "Example caption"
+      }
+    }
+  ]
+}
+```
+
+Response from the Shop API:
+
+```JSON
+{
+  "media": [
+    {
+      "type": "image",
+      "sources": {
+        "standard": {
+          "url": "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg",
+          "width": 0,
+          "height": 600,
+          "mimeType": "image/jpeg"
+        }
+      },
+      "attributes": {
+        "caption_description": "Example caption"
+      }
+    }
+  ]
+}
+```
 
 The [dynamic attribute element types](#attribute-element-types) supported are all returning simple strings, so they look the same as per above.
 
