@@ -129,6 +129,7 @@ The `group` on the attribute inside the `config.php` specifies where the attribu
 | `customer` | Listed under each Customer. |
 | `account` | Listed under each Account (B2B). |
 | `sizechart` | Listed under each size in a sizechart. |
+| `product_media` | Not listed in UI. Exposed in Checkout & Shop API. Assignable through Integration API. |
 
 ### Attribute element types
 
@@ -275,6 +276,72 @@ This is how it looks like in the API:
 ```json
 {
     "attribute_name": "This is the text"
+}
+```
+
+Media object attributes. 
+
+Configuration of an example dynamic attribute for product media of type `caption`:
+```php
+<?php
+$usr_conf['ATTRIBUTE_TYPES'] = [
+    'caption' => [
+        'desc' => 'Image caption',
+        'group' => 'product_media',
+        'readonly' => false,
+        'elements' => [
+            'description' => [
+                'desc' => 'Caption',
+                'type' => 'input'
+            ],
+        ]
+    ],
+];
+```
+
+
+Response from the Checkout API:
+
+```JSON
+{
+  "mediaObjects": [
+    {
+      "media": "1",
+      "sources": {
+        "standard": [
+          {
+            "url": "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg"
+          }
+        ]
+      },
+      "attributes": {
+        "caption_description": "Example caption"
+      }
+    }
+  ]
+}
+```
+
+Response from the Shop API:
+
+```JSON
+{
+  "media": [
+    {
+      "type": "image",
+      "sources": {
+        "standard": {
+          "url": "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg",
+          "width": 0,
+          "height": 600,
+          "mimeType": "image/jpeg"
+        }
+      },
+      "attributes": {
+        "caption_description": "Example caption"
+      }
+    }
+  ]
 }
 ```
 
