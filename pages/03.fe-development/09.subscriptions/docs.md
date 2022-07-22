@@ -162,11 +162,11 @@ If the email address is not taken by a registered customer then it is possible t
 
 ### Browsing subscriptions
 
-Customer's current subscriptions can be listed using [POST /customer/{{email}}/subscriptions](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__subscriptions) endpoint. Because Shop API works in stateless manner you do not have to log in as customer. Authorization should be handled by frontend. Subscriptions are grouped by the contract they belong to.
+Customer's current subscriptions can be listed using [POST /customers/{{email}}/subscriptions](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/post_customers__email__subscriptions) endpoint. Because Shop API works in stateless manner you do not have to log in as customer. Authorization should be handled by frontend. Subscriptions are grouped by the contract they belong to.
 
 ### Changing contract address
 
-To edit shipping address you have to provide the contract id that will be modified and use Shop API endpoint [PUT /subscriptions/address](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/put_subscription_address). You should provide a customer for which you modify the contract.
+To edit shipping address you have to provide the contract id that will be modified and use Shop API endpoint [PUT /subscription/address](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/put_subscription_address). You should provide a customer for which you modify the contract.
 
 ```json
 {
@@ -196,7 +196,7 @@ Changing subscription interval is only possible by providing a new subscription 
 
 ### Changing status
 
-Status modifications use a [POST /subscription/status](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/put_subscription_status) endpoint. You need to provide a subscription id as well as new status:
+Status modifications use a [PUT /subscription/status](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/put_subscription_status) endpoint. You need to provide a subscription id as well as new status:
 
 ```json
 {
@@ -209,7 +209,7 @@ Status modifications use a [POST /subscription/status](https://docs.centra.com/s
 
 (Since `v3.15`) To add a new subscription you have to specify the customer and the contract to which it is added to, as well as provide the product (display item and size), plan and start date for this subscription. Here is an example:
 
-[POST '/api/shop/customer/{email}/contracts/{contract}/subscription](https://docs.centra.com/swagger-ui/?api=ShopAPI)
+[POST '/api/shop/customers/{email}/contracts/{contract}/subscription](https://docs.centra.com/swagger-ui/?api=ShopAPI)
 
 ```json
 {
@@ -223,7 +223,7 @@ Status modifications use a [POST /subscription/status](https://docs.centra.com/s
 
 (Since `v3.15`) It is enough to provide a quantity (no less than 1). If the item is no longer available in the same subscription plan, or subscription plan parameters have changed you will not be able to change the quantity. The contract must match the customer as well as the subscription.
 
-[PUT '/api/shop/customer/{email}/contracts/{contract}/subscription/{subscription}](https://docs.centra.com/swagger-ui/?api=ShopAPI)
+[PUT '/api/shop/customers/{email}/contracts/{contract}/subscription/{subscription}](https://docs.centra.com/swagger-ui/?api=ShopAPI)
 
 ```json
 {
@@ -369,7 +369,7 @@ Changing subscription interval is only possible by providing a new subscription 
 
 ### Changing status
 
-Status modifications use a [POST /subscription/status](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/put_subscription_status) endpoint. You need to provide a subscription id as well as new status:
+Status modifications use a [PUT /subscription/status](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/put_subscription_status) endpoint. You need to provide a subscription id as well as new status:
 
 ```json
 {
