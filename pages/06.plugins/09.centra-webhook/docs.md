@@ -8,6 +8,14 @@ taxonomy:
 
 The Centra Webhook plugin allows you to create webhooks for certain events whenever data changes in Centra. This allows you to be notified and fetch data only when it is actually added or modified.
 
+#### How do webhooks work in Centra
+
+Webhooks in Centra are triggered by events. An event is any change happening in Centra - a new order comes in, a product description is changed, new product displays are added to a category - those are all events. If your webhook plugin is active and registers to those types of events (`Order`, `Product`, `Category`), Centra will generate an apropriate webhook and send it to your URL defined in the plugin. This way different webhook plugins can be used to handle different functions, and be used by different integrations.
+
+Technically speaking, webhooks are simple HTTPS POST messages, containing info about a number of IDs and their types. Remember, webhooks are all about timing, so we will only attempt to send them for 5 seconds before dropping them and moving to the next webhook event. This might seem a short time at first, but since 5 seconds is a very long time in modern networks, if your endpoint cannot receive a simple HTTPS message for 5 seconds, we will assume it's probably down.
+
+This is why, in addition to relying on webhooks to fetch resources from Centra only when necessary, you should also build a "fetch everything" function meant to restore the data after a network or application failure. After the data is synced, you can switch back to only fetching new or updated resources when receiving webhooks.
+
 ### Setup
 
 You can find the webhook plugin under Webhooks in the plugin list.
