@@ -154,8 +154,8 @@ The following element types exist today. Not all of them are supported for the D
 
 | **Type** | **Look** | **Support** | **Options** |
 | --- | --- | --- | --- |
-| `input` | ![](attribute-input.png) | Mapped/Dynamic | Set class of the input (double the size of the input): `'class' => 'double'` |
-| `textarea` | ![](attribute-textarea.png) | Mapped/Dynamic | Set class of the textarea: `'class' => 'double'` |
+| `input` | ![](attribute-input.png) | Mapped/Dynamic | One-line text field |
+| `textarea` | ![](attribute-textarea.png) | Mapped/Dynamic | Multi-line text field |
 | `readonly` | ![](attribute-readonly.png) | Dynamic | Allows a field without the ability to edit it. Used for showing up IDs or things that should not be changed. |
 | `boolean` | ![](attribute-boolean.png) | Dynamic | Options for the radio inputs (default is always 0): `'options' => [['0','No'],['1','Yes']]` |
 | `select` | ![](attribute-select.png) | Mapped/Dynamic | Default selected is always first option, so keep it as `['0','Select']` |
@@ -547,28 +547,6 @@ For attributes which are pre-defined, multiple values can be made selectable at 
 
 Multi-select snippet looks like this in Centra:  
 ![ProductMaterialMulti](example-product-material-multi.png)
-
-#### Double-sized input field
-
-With element `class: double` you can make your text fields (both `input` and `textarea`) twice as wide, so they take up the entire row. For example:
-
-```php
-'pr_long_name' => [
-    'desc' => 'Long Product Name',
-    'group' => 'product',
-    'readonly' => false,
-    'elements' => [
-        'text' => [
-            'desc' => 'Long Product Name',
-            'type' => 'input',
-            'class' => 'double'
-        ]
-    ]
-]
-```
-
-...is displayed like this:  
-![InputClassDouble](attribute-class-double.png)
 
 <!--
 #### [Template]
