@@ -8,7 +8,7 @@ child_type: docs
 
 ![education-over-support.png](education-over-support.png)
 
-We strive to be fast, effecient and friendly when working with our Partners. After all, if our cooperation is succesfull our shared clients will be too.
+We strive to be fast, effecient and friendly when working with our Partners. After all, if our cooperation is succesfull, our shared clients will be too.
 
 TL;DR: We are here to help, but we are also here to educate and guide where ever possible. Below is a short list of the types of things we can support you with, but we've also noted down some things that we try to coach you to learn instead.
 
@@ -16,11 +16,11 @@ TL;DR: We are here to help, but we are also here to educate and guide where ever
 | What we do | What we don't do |
 | --- | --- |
 | **Products catalog** |
-| We will show you example products and point to our documentation for creating new ones, [like this Support article](https://support.centra.com/centra-sections/general/catalog/adding-a-product) | We prefer not to import entire product groups or catalogues, instead we'll tell you how to complete bulk actions in Centra UI, in this example our [products import](https://support.centra.com/centra-sections/general/catalog/importing-updating-products-from-an-excel-file) function |
+| We will show you example products and point to our documentation for creating new ones, [like this Support article](https://support.centra.com/centra-sections/general/catalog/adding-a-product) | We prefer not to import entire product groups or catalogues, instead we'll show you how to use bulk actions in Centra UI, as described in [this example on our support website](https://support.centra.com/centra-sections/general/catalog/importing-updating-products-from-an-excel-file) |
 | **Custom attributes** |
 | We'll help you to understand the concept of attributes and share some examples with you [in our Custom Attributes docs](/overview/custom-attributes) | However, we will not build multiple attribute definitions for you, reviewing one you've created yourself and then advising you on the best outcome is much more effecient for us all.  |
 | **Test orders** |
-| We are happy to guide you on creating test orders, we can explain the [order flow](/overview/orderflow) and even teach you how to [create / complete shipments](https://support.centra.com/centra-sections/retail-b2c/sales/expediting-a-b2c-order). | Creating multiple test order variations though is something you'll benifit from learning to do yourself. We'll also show the client how of course. Based on required use-cases.
+| We are happy to guide you on creating test orders, we can explain the [order flow](/overview/orderflow) or teach you how to [create / complete shipments](https://support.centra.com/centra-sections/retail-b2c/sales/expediting-a-b2c-order). | Creating multiple test order variations, though, is something you'll benifit from learning to do yourself. We'll also show the client how to do it, of course, based on required use-cases.
 | **Stress and performance tests** |
 | - | Once again, teaching you to run stress tests without our help is a much more effecient way to develop skillsets with our partners, and once you know how you have those skills in house.  |
 </div>
@@ -92,7 +92,7 @@ What we don't do:
 
 * **Application design advice**  
 
-  Questions related to the architecture of a store such as how many Warehouses should be set up, is something our Clients will need to decide. There for this type of question should be feilded to the client. 
+  Questions related to the architecture of a store such as how many Warehouses should be set up, is something our Clients will need to decide. Therefore, this type of question should be addressed to the client. 
 
 ## How we co-operate - communicating via Slack
 
