@@ -6,10 +6,13 @@ taxonomy:
     category: docs
 ---
 
-The Adyen Checkout-plugin is a bit different from the existing Adyen-plugin in Centra.  
 Adyen Checkout looks like this:
 
 ![adyen-preview.png](adyen-preview.png)
+
+[notice-box=info]
+Adyen Checkout is deprecated and shouldn't be used with new integrations. Please consider upgrading to [Adyen Drop-In](/plugins/adyen-drop-in) instead.
+[/notice-box]
 
 ### Flow
 
