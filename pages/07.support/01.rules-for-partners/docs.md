@@ -8,7 +8,7 @@ child_type: docs
 
 ![education-over-support.png](education-over-support.png)
 
-We strive to be fast, effecient and friendly when working with our Partners. After all, if our cooperation is succesfull our shared clients will be too.
+We strive to be fast, effecient and friendly when working with our Partners. After all, if our cooperation is succesfull, our shared clients will be too.
 
 TL;DR: We are here to help, but we are also here to educate and guide where ever possible. Below is a short list of the types of things we can support you with, but we've also noted down some things that we try to coach you to learn instead.
 
@@ -92,7 +92,7 @@ What we don't do:
 
 * **Application design advice**  
 
-  Questions related to the architecture of a store such as how many Warehouses should be set up, is something our Clients will need to decide. There for this type of question should be feilded to the client. 
+  Questions related to the architecture of a store such as how many Warehouses should be set up, is something our Clients will need to decide. Therefore, this type of question should be addressed to the client. 
 
 ## How we co-operate - communicating via Slack
 
