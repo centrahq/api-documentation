@@ -1,13 +1,13 @@
 GRAV_VERSION="1.7.26"
 
-# Read auth token from env file
-if [ -f "$ENV_DIR/GITHUB_AUTH_TOKEN" ]; then
+# Read environment variables from env file
+if [[ -f "$ENV_DIR/GITHUB_AUTH_TOKEN" && -f "$ENV_DIR/GRAV_THEMES_REPOSITORY" ]]; then
     GITHUB_AUTH_TOKEN=$(cat $ENV_DIR/GITHUB_AUTH_TOKEN)
+    GRAV_THEMES_REPOSITORY=$(cat $ENV_DIR/GRAV_THEMES_REPOSITORY)
 else
-    echo 'Github auth token not provided!'
+    echo 'Required variables not provided!'
     exit 1;
 fi
-
 
 # Install grav
 mkdir html
@@ -28,7 +28,7 @@ mv ../pages ./user/pages
 rm -rf ./user/themes
 
 mkdir temp && \
-curl -H "Authorization: token $GITHUB_AUTH_TOKEN" -L https://api.github.com/repos/centrahq/centra-grav-themes/tarball/master | \
+curl -H "Authorization: token $GITHUB_AUTH_TOKEN" -L $GRAV_THEMES_REPOSITORY | \
 tar -xz --strip-components=1 -C temp && \
 mv ./temp/themes ./user/themes && \
 mv ./temp/shortcodes ./user/shortcodes && \
