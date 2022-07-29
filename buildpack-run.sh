@@ -28,7 +28,7 @@ mv ../pages ./user/pages
 rm -rf ./user/themes
 
 mkdir temp && \
-curl -H "Authorization: token $GITHUB_AUTH_TOKEN" -L $GRAV_THEMES_REPOSITORY | \
+curl -H "Authorization: token $GITHUB_AUTH_TOKEN" -L "$GRAV_THEMES_REPOSITORY" | \
 tar -xz --strip-components=1 -C temp && \
 mv ./temp/themes ./user/themes && \
 mv ./temp/shortcodes ./user/shortcodes && \
