@@ -156,7 +156,7 @@ The following element types exist today. Not all of them are supported for the D
 | --- | --- | --- | --- |
 | `input` | ![](attribute-input.png) | Mapped/Dynamic | One-line text field |
 | `textarea` | ![](attribute-textarea.png) | Mapped/Dynamic | Multi-line text field |
-| `readonly` | ![](attribute-readonly.png) | Dynamic | Allows a field without the ability to edit it. Used for showing up IDs or things that should not be changed. |
+| `readonly` | ![](attribute-readonly.png) | Dynamic | Allows a field without the ability to edit it. Used for showing IDs or things that should not be changed. |
 | `boolean` | ![](attribute-boolean.png) | Dynamic | Options for the radio inputs (default is always 0): `'options' => [['0','No'],['1','Yes']]` |
 | `select` | ![](attribute-select.png) | Mapped/Dynamic | Default selected is always first option, so keep it as `['0','Select']` |
 | `image` | ![](attribute-image.png) | Mapped | Size of the image: `'size' => '600x400'`. Allowed image formats: JPG, JPEG, PNG, GIF, SVG |
@@ -501,7 +501,7 @@ Booleans are normally dynamic, not pre-defined. Remember, default value(s) (inde
 The difference between this and Static attribute is that the `select` options cannot be adjusted/expanded without a code change.
 
 [notice-box=info]
-Please notice, the keys are enums, not integers. It's `['0','Select']`, not `[0,'Select']`.
+Please notice, the keys are enums, not integers. Use `['0','Select']`, not `[0,'Select']`.
 [/notice-box]
 
 ```php
