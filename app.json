@@ -20,6 +20,9 @@
     "GITHUB_AUTH_TOKEN": {	
       "required": true,	
       "description": "Inherited from parent app"	
+    },
+    "GRAV_THEMES_REPOSITORY": {
+      "required": true
     }
   }
 }
