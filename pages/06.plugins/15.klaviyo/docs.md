@@ -44,7 +44,6 @@ Image size you want to send over to Klaviyo for all the products. Select a prope
 
 ## Transactional emails
 
-
 ### Transactional flows configuration
 
 In Klaviyo transactional and non-transactional automation is triggered off of the same metrics (events).
@@ -67,7 +66,7 @@ Metric types currently supported by Centra:
   - `Started Checkout`
 
 [notice-box=info]
-When creating a flow for a certain metric in Klaviyo, tags needs to be matching the tags listed above in Centra.
+When creating a flow for a certain metric in Klaviyo, tags needs to be matching the tags listed above.
 [/notice-box]
 
 List of all the synchronised events is visible in your account's activity feed:
@@ -81,4 +80,25 @@ When at least one event with a certain metric is sent to Klaviyo, you can choose
 
 ### Configuring email templates
 
+In order to send transactional email content in the language of the customer you will need one email template per supported language. To make it work, proper conditions based on profile's language need to be added. 
+Example flow for `Placed Order` event could look like this:
 
+![conditional_flow.png](conditional_flow.png)
+
+In the synchronised events data, Centra is sending prices both in base currency selected in Centra store plugin and in customer currency.
+In the email template following variables should to be used in order to use prices in customer currency in the email communication:
+
+Item level variables:
+
+- `{{ item.GrossPaidPricePerUnitInCustomerCurrency }}` - item price per piece in customer currency
+- `{{ item.GrossPaidPriceInCustomerCurrency }}` - price for item line in customer currency
+- `{{ item.TaxAmountInCustomerCurrency }}` - tax amount per item in customer currency
+- `{{ item.DiscountValueInCustomerCurrency }}` - discounted value in customer currency
+- `{{ item.OriginalPriceInCustomerCurrency }}` - original price for item line in customer currency
+
+Event level variables:
+
+- `{{ event.GrossPaidPricePerUnitInCustomerCurrency }}` - order total in customer currency
+- `{{ event.DiscountValueInCustomerCurrency }}`- discount total in customer currency
+
+You can browse all the item and event level variables on the details of certain event in activity feed.
