@@ -66,7 +66,7 @@ Metric types currently supported by Centra:
   - `Started Checkout`
 
 [notice-box=info]
-When creating a flow for a certain metric in Klaviyo, tags needs to be matching the tags listed above.
+When creating a flow for a certain metric in Klaviyo, tags need to be matching the tags listed above.
 [/notice-box]
 
 List of all the synchronised events is visible in your account's activity feed:
@@ -81,6 +81,7 @@ When at least one event with a certain metric is sent to Klaviyo, you can choose
 ### Configuring email templates
 
 In order to send transactional email content in the language of the customer you will need one email template per supported language. To make it work, proper conditions based on profile's language need to be added. 
+
 Example flow for `Placed Order` event could look like this:
 
 ![conditional_flow.png](conditional_flow.png)
