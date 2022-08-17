@@ -12,7 +12,7 @@ The Centra Webhook plugin allows you to create webhooks for certain events whene
 
 Webhooks in Centra are triggered by events. An event is any change happening in Centra - a new order comes in, a product description is changed, new product displays are added to a category - those are all events. If your webhook plugin is active and registers to those types of events (`Order`, `Product`, `Category`), Centra will generate an apropriate webhook and send it to your URL defined in the plugin. This way different webhook plugins can be used to handle different functions, and be used by different integrations.
 
-Technically speaking, webhooks are simple HTTPS POST messages, containing info about a number of IDs and their types. Remember, webhooks are all about timing, so we will only attempt to send them for 5 seconds before dropping them and moving to the next webhook event. This might seem a short time at first, but since 5 seconds is a very long time in modern networks, if your endpoint cannot receive a simple HTTPS message for 5 seconds, we will assume it's probably down.
+Technically speaking, webhooks are simple HTTPS POST messages, containing info about a number of IDs and their types. By default, Centra will attempt to send the webhook for 5 seconds before timing out and re-trying. You can configure your webhooks to try re-sending that webhook up to 3 times, each time with increasing delay. If that still fails, Centra will assume your server or network is down, give up on sending that webhook and move to the next one in queue.
 
 This is why, in addition to relying on webhooks to fetch resources from Centra only when necessary, you should also build a "fetch everything" function meant to restore the data after a network or application failure. After the data is synced, you can switch back to only fetching new or updated resources when receiving webhooks.
 
@@ -27,6 +27,11 @@ These are the settings available for the webhook:
 We only allow the Webhook notification to be posted to HTTP or HTTPS using the ports 80 and 443.
 
 You are allowed to set an Endpoint-secret to be able to validate that the webhooks are originating from Centra, you're also able to decide if we should validate your SSL-certificate or not.
+
+Other options:
+* `Max number of events per webhook call` defines how many separate Centra events can be packed into a single webhook. Default: 100  
+* `Timeout in seconds` defines for how many seconds Centra will wait until timing out and giving up on sending each webhook  
+* `Number of retries after failure` defines whether or not Centra should attempt to re-send webhooks after a timeout. Disabled by default
 
 ### Webhook versions
 
