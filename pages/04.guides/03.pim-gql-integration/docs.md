@@ -3305,6 +3305,419 @@ mutation unsetAttributesOnProduct {
 }
 ```
 
+## Product / Variant / Display translations - read and write
+
+You need to know a few items before you can add translations:
+
+### Get languages list
+
+#### Request
+
+```gql
+query languages {
+  languages(where: {isAvailableForLocalization: true}) {
+    id
+    name
+    languageCode
+    countryCode
+    isActive
+  }
+}
+```
+
+#### Response
+
+Remember, the list of IDs will vary depending on which languages were added and in which order.
+
+```json
+{
+  "data": {
+    "languages": [
+      {
+        "id": 5,
+        "name": "German",
+        "languageCode": "de",
+        "countryCode": "DE",
+        "isActive": true
+      },
+      {
+        "id": 2,
+        "name": "Swedish",
+        "languageCode": "sv",
+        "countryCode": "SE",
+        "isActive": true
+      }
+    ]
+  },
+  "extensions": {
+    "complexity": 232,
+    "permissionsUsed": [
+      "Language:read"
+    ],
+    "appVersion": "v0.26.0"
+  }
+}
+```
+
+### Find your Product / Variant / Display IDs
+
+#### Request
+
+```gql
+query findProduct {
+  products (where: {name: {contains: "Test Product"}}) {
+    id
+    name
+    variants {
+      id
+      name
+    }
+    displays {
+      id
+      name
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "products": [
+      {
+        "id": 4204,
+        "name": "Test Product",
+        "variants": [
+          {
+            "id": 7861,
+            "name": "Test Variant"
+          }
+        ],
+        "displays": [
+          {
+            "id": 222,
+            "name": "Test Product Display"
+          }
+        ]
+      }
+    ]
+  },
+  "extensions": {
+    "complexity": 232,
+    "permissionsUsed": [
+      "Product:read",
+      "ProductVariant:read",
+      "Display:read"
+    ],
+    "appVersion": "v0.26.0"
+  }
+}
+```
+
+### Find out which fields on Product / Variant / Display are translatable
+
+#### Request
+
+```gql
+query productTranslations {
+  product(id: 4204) {
+    name
+    ...translations
+  }
+}
+
+query variantTranslations {
+  productVariant(id: 7861) {
+    name
+    ...translations
+  }
+}
+
+query displayTranslations {
+  display(id: 222) {
+    name
+    uri
+    ...translations
+  }
+}
+
+fragment translations on Localizable {
+  localized {
+    language { id, languageCode, countryCode }
+    translations {
+      field
+      value
+    }
+  }
+}
+```
+
+#### Response
+
+Example for Display translations:
+
+```json
+{
+  "data": {
+    "display": {
+      "name": "Test Product",
+      "uri": "test-product-uri",
+      "localized": [
+        {
+          "language": {
+            "id": 5,
+            "languageCode": "de",
+            "countryCode": "DE"
+          },
+          "translations": [
+            {
+              "field": "name",
+              "value": null
+            },
+            {
+              "field": "uri",
+              "value": null
+            },
+            {
+              "field": "metaDescription",
+              "value": null
+            },
+            {
+              "field": "metaKeywords",
+              "value": null
+            },
+            {
+              "field": "metaTitle",
+              "value": null
+            },
+            {
+              "field": "shortDescription",
+              "value": null
+            },
+            {
+              "field": "description",
+              "value": null
+            },
+            {
+              "field": "attributes.prd_meta_title.text",
+              "value": null
+            },
+            {
+              "field": "attributes.prd_short_description.text",
+              "value": null
+            }
+          ]
+        },
+        {
+          "language": {
+            "id": 2,
+            "languageCode": "sv",
+            "countryCode": "SE"
+          },
+          "translations": [
+            {
+              "field": "name",
+              "value": null
+            },
+            {
+              "field": "uri",
+              "value": null
+            },
+            {
+              "field": "metaDescription",
+              "value": null
+            },
+            {
+              "field": "metaKeywords",
+              "value": null
+            },
+            {
+              "field": "metaTitle",
+              "value": null
+            },
+            {
+              "field": "shortDescription",
+              "value": null
+            },
+            {
+              "field": "description",
+              "value": null
+            },
+            {
+              "field": "attributes.prd_meta_title.text",
+              "value": null
+            },
+            {
+              "field": "attributes.prd_short_description.text",
+              "value": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "extensions": {
+    "complexity": 232,
+    "permissionsUsed": [
+      "Display:read",
+      "Localization:read",
+      "Language:read"
+    ],
+    "appVersion": "v0.26.0"
+  }
+}
+```
+
+[notice-box=info]
+Please note how every translation field returns `null`. This means that this field doesn't have any translations yet, and when fetched, default English text will be returned instead of the translation.
+[/notice-box]
+
+### Adding a translation - display example
+
+Now that we have the language and display IDs, and we know which fields are translatable, we can add the actual translations.
+
+#### Request
+
+```gql
+mutation addOrEditTranslations {
+  localize(input: {
+    objectType: Display
+    objectId: 222
+    language: { id: 5 }
+    translations: [
+      { field: "name", value: "Name auf deutsch" },
+      { field: "uri", value: "german-display-uri" },
+    ]
+  }) {
+    userErrors {
+      message
+      path
+    }
+    localizedObject {
+      ...translations
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "display": {
+      "name": "Key-Point Boot",
+      "uri": "key-point-boot-3202156",
+      "localized": [
+        {
+          "language": {
+            "id": 5,
+            "languageCode": "de",
+            "countryCode": "DE"
+          },
+          "translations": [
+            {
+              "field": "name",
+              "value": "Name auf deutsch"
+            },
+            {
+              "field": "uri",
+              "value": "german-display-uri"
+            },
+            {
+              "field": "metaDescription",
+              "value": null
+            },
+            {
+              "field": "metaKeywords",
+              "value": null
+            },
+            {
+              "field": "metaTitle",
+              "value": null
+            },
+            {
+              "field": "shortDescription",
+              "value": null
+            },
+            {
+              "field": "description",
+              "value": null
+            },
+            {
+              "field": "attributes.prd_meta_title.text",
+              "value": null
+            },
+            {
+              "field": "attributes.prd_short_description.text",
+              "value": null
+            }
+          ]
+        },
+        {
+          "language": {
+            "id": 2,
+            "languageCode": "sv",
+            "countryCode": "SE"
+          },
+          "translations": [
+            {
+              "field": "name",
+              "value": null
+            },
+            {
+              "field": "uri",
+              "value": null
+            },
+            {
+              "field": "metaDescription",
+              "value": null
+            },
+            {
+              "field": "metaKeywords",
+              "value": null
+            },
+            {
+              "field": "metaTitle",
+              "value": null
+            },
+            {
+              "field": "shortDescription",
+              "value": null
+            },
+            {
+              "field": "description",
+              "value": null
+            },
+            {
+              "field": "attributes.prd_meta_title.text",
+              "value": null
+            },
+            {
+              "field": "attributes.prd_short_description.text",
+              "value": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "extensions": {
+    "complexity": 232,
+    "permissionsUsed": [
+      "Display:read",
+      "Localization:read",
+      "Language:read"
+    ],
+    "appVersion": "v0.26.0"
+  }
+}
+```
+
+To remove translations of any field, simply send in `{ field: "name", value: null }`.
+
 <!--
 #### Request
 
