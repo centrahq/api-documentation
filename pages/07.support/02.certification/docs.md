@@ -32,6 +32,6 @@ Lorem ipsum
 | Webinar topic | Webinar date | Target audience |
 | --- | --- | --- |
 | Centra fundamentals | 13.09.2022 | All Centra users, mostly non-technical |
-| Integration APIs - SOAP | 19.09.2022 | Integration/SOAP developers |
-| Integration APIs - GraphQL | 20.09.2022 | Integration/GQL developers |
+| Integration APIs - SOAP | 7.09.2022 | Integration/SOAP developers |
+| Integration APIs - GraphQL | 8.09.2022 | Integration/GQL developers |
 | Building a webshop using Checkout API | 21-22.09.2022 | FE developers, optionally project managers (mostly technical) |
