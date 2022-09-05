@@ -23,9 +23,9 @@ Lorem ipsum
 | **Certification level** | **What's required** | **What we offer** |
 | --- | --- | --- |
 | Centra beginner | Complete introduction webinars | Slack support |
-| ![](cert-lvl-1.png) | At least one common customer is live | Check-up meetings every 6 months |
-| ![](cert-lvl-2.png) | At 2-3 common customers are live | Check-up meetings every 3 months |
-| ![](cert-lvl-3.png) | At 5 customers are live | Check-up meetings every 1 month |
+| ![](cert-lvl-1.png) | At least one common customer is live | Check-up meetings every 6 months + access to Centra community |
+| ![](cert-lvl-2.png) | At 2-3 common customers are live | Check-up meetings every 3 months + previews and beta access to new features |
+| ![](cert-lvl-3.png) | At 5 customers are live | Check-up meetings every 1 month + access to exclusive VIP events |
 
 ### Closest incoming webinar dates
 
