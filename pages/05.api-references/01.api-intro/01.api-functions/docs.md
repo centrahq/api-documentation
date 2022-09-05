@@ -44,12 +44,11 @@ Many customers use the ERP systems, like Navision, to store the master of the da
 
 This API was replaced by the [new subscriptions functionality](/fe-development/subscriptions).
 
-
 ## Centra APIs vs functions
 
-![Centra APIs vs functions](APIs.png)
+![Centra APIs vs functions](APIs.svg)
 
-### Limitations
+### Existing Limitations
 
 <a id="LimitOrderWriteStock"></a>
 Order API can be used to update stock values, but only for one Warehouse in each plugin instance.
