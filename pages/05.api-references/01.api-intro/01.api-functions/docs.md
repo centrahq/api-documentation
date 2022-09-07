@@ -6,11 +6,8 @@ taxonomy:
   category: docs
 ---
 
-Centra has a few different APIs used for different purposes. This documentation explains the functions and use cases that are covered by all the different APIs used to connect to Centra.
 
-## Choosing the right API for your integration
-
-Here are some examples which you can consider when planning your integration with Centra. If none of those covers your use case, let us know and we will advise!
+Centra has a few different APIs used for different purposes. This documentation explains the functions and use cases that are covered by all the different APIs used to connect to Centra. Below are some examples which you can consider when planning your integration with Centra. If none of those covers your use case, let us know and we will advise!
 
 ### [REST] DTC webshop API (Checkout API)
 
