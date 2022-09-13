@@ -52,7 +52,7 @@ The Adyen Drop-In needs its own Server Communication URL set up in Adyen. If you
 You need to contact Adyen Support at ``support@adyen.com`` to make sure they have activated Adyen Drop-In for your Merchant Account before you begin.
 [/notice-box]
 
-To validate that you are able to use the Adyen Drop-In, go to Accounts -> API Credentials, look at your user called `ws@Company.[YourCompanyAccount]` and make sure that these roles are enabled:
+To validate that you are able to use the Adyen Drop-In, go to Developers -> API Credentials, look at your user called `ws@Company.[YourCompanyAccount]` and make sure that these roles are enabled under Roles -> Uncategorized:
 
 ![adyen-drop-in-role.png](adyen-drop-in-role.png)
 
@@ -66,8 +66,8 @@ The `Merchant Account` should be set for the Merchant Account you want to use fo
 
 The `API Username` and `API Password` should be for the Web Service user called `ws@Company.[YourCompanyAccount]` at:
 
-* Adyen Test: `https://ca-test.adyen.com/ca/ca/config/api_credentials.shtml`
-* Adyen Live: `https://ca-live.adyen.com/ca/ca/config/api_credentials.shtml`
+* Adyen Test: `https://ca-test.adyen.com/ca/ca/config/api_credentials_new.shtml`
+* Adyen Live: `https://ca-live.adyen.com/ca/ca/config/api_credentials_new.shtml`
 
 The `API key` previously used for CSE (Client Side Encryption) is now also used for Adyen Drop-In. [There's an article in Adyen Docs](https://docs.adyen.com/user-management/how-to-get-the-api-key/) on how to get it. 
 
@@ -77,7 +77,7 @@ It will be the same user and API-key for all your merchant accounts if you have 
 
 #### Client key and allowed origins
 
-The `Client key`-field contains the key generated on the Webservice user called `ws@Company.[YourCompanyAccount]`. This key is connected to the allowed origins specified on the same page. You will see the Client key section on the user settings page in Adyen:
+The `Client key`-field contains the key generated on the Webservice user called `ws@Company.[YourCompanyAccount]`. This key is connected to the allowed origins specified on the same page. You will see the Client key section under the Client settings page in Adyen:
 
 ![adyen-drop-in-client-key.png](adyen-drop-in-client-key.png)
 
