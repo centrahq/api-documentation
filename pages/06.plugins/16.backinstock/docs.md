@@ -22,7 +22,7 @@ Required information
 * ShipTo: country and if available state. since  we allow for different warehouses to serve different parts of the world we need to know whre the customer is so we only notify when item is available in this region. 
 
 Optional:
-* Language: the language to use. using CheckoutAPI language will be taken from session if not provided.
+* Language: the language to use. When using CheckoutAPI it will be taken from session if not provided.
 
 ### Getting notified
 
