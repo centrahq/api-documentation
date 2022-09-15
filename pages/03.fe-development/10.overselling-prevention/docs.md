@@ -47,7 +47,7 @@ Overselling prevention will remove missing stock from basket and add `unavailabl
 
 **Responses:**
 
-When only part of requested items is out of stock `HTTP 200 OK` wil be returned with `unavailable` data.
+When only part of requested items is out of stock `HTTP 200 OK` will be returned with `unavailable` data.
 ```json
 {
   "unavailable": [
@@ -62,7 +62,7 @@ When only part of requested items is out of stock `HTTP 200 OK` wil be returned 
 }
 ```
 
-When all requested items are out of stock `HTTP 410 Gone` wil be returned with `unavailable items` error.
+When all requested items are out of stock `HTTP 410 Gone` will be returned with `unavailable items` error.
 ```json
 {
   "errors": {
@@ -83,7 +83,7 @@ When all requested items are out of stock `HTTP 410 Gone` wil be returned with `
 ### Initialize payment `POST /payment` (standard and aggressive mode)
 
 **Responses:**
-When any requested items are out of stock `HTTP 410 Gone` wil be returned with `unavailable items` error.
+When any requested items are out of stock `HTTP 410 Gone` will be returned with `unavailable items` error.
 ```json
 {
   "errors": {
@@ -112,7 +112,7 @@ To finalize the order new payment initialization has to be called `POST /payment
 [/notice-box]
 
 **Responses:**
-When any requested items are out of stock `HTTP 410 Gone` wil be returned with `unavailable items` error.
+When any requested items are out of stock `HTTP 410 Gone` will be returned with `unavailable items` error.
 ```json
 {
   "errors": {
