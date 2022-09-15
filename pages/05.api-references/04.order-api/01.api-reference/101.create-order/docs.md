@@ -332,7 +332,11 @@ Content-type: application/json
           "qty": 1,
           "sku": "SKUASKUBSKUC",
           "unitPrice": 12.11,
-          "originalPrice": 50.22
+          "originalPrice": 50.22,
+          "localizedProdSize": {
+            "localizationDefinitionName": "Test order api definition name",
+            "localizedSize": "Test order api size"
+          }
       }
   ],
   "payment": {
