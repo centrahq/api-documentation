@@ -16,13 +16,13 @@ An E-mail trigger plugin with Back in stock support
 
 Customers can subscribe to products using both [Shop API](https://docs.centra.com/swagger-ui/?api=ShopAPI&urls.primaryName=ShopAPI#/6.%20customer%20handling/post_customers__email__back_in_stock_subscription) and [CheckoutAPI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_back_in_stock_subscription) store fronts. This information is then forwarded to the provider used. 
 
-Requiered information
-* E-mail: which e-mail to notify, when using CheckoutAPI with a logged in customer e-mail is not required input, logged in cust7omers e-mail will be used.
+Required information
+* E-mail: which e-mail to notify. when CheckoutAPI is used, this can be left out if customer has logged in.
 * Item: the item to be notified about.
 * ShipTo: country and if available state. since  we allow for different warehouses to serve different parts of the world we need to know whre the customer is so we only notify when item is available in this region. 
 
 Optional:
-* Language: the language the customer wished to be communcated to in. is checkoutAPI is used language can be taken from session, for ShopAPI it should be provided. 
+* Language: the language to use. using CheckoutAPI language will be taken from session if not provided.
 
 ### Getting notified
 
@@ -43,10 +43,10 @@ When stock is added in centra we will check if the modified item has any susbcri
 
 When a subscriber requests to be notified of an item the tag `Rule - Waiting For Product Alert`  will be applied, and then when stock is updated and the subscriber should be notified the tag is replaced with `Rule - Product Alert Triggered`, theese tags can be used to setup automation for notifying your subscribers.
 
-The fields that are available as localised will be separate fields named as the normal field followed by an `_` and the language ISO 639-1 code. 
+The fields that are available as localised will be separate fields named as the normal field followed by an `_` and the language ISO 639-1 code. if the product has not yet been translated to this language this field will contain the unlocalised product name, making it always safe to use the localised field so long as teh language remains active in centra.
 
 example: 
-> if you have German localisation configured in centra the field `DisplayName_de` will be available and will contain the german localised version of the display name, if the product has not yet been localised to german the field will contain the same as `DisplayName` making it always safe to use the localised version of the field so long as the language remains active in centra. 
+> if you have German localisation configured and set in centra the field `DisplayName_de` will be available and will contain the german localised version of the display name. if you also have Spanish as language but have not yet added localisation for this the field `DisplayName_es` will be available and contain the same text as the `DisplayName` field.
 
 
 #### Available Fields
