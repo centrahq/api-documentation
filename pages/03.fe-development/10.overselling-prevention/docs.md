@@ -15,8 +15,8 @@ In Store Setting you can find overselling prevention configuration.
 
 Options available:
 * **Off** - No stock checks will be made; backorders are possible.
-* **Standard** - product availability check will be made when the system is initializing a payment authorisation.
-* **Aggressive** - an additional out-of-stock verification steps will be made.
+* **Standard** - Product availability check will be made when the system is initializing a payment authorisation.
+* **Aggressive** - Additional out-of-stock verification steps will be made.
 The first is when a user adds a product to the basket, and the second is right after the payment authorisation and stock allocation.
 
 [notice-box=alert]
