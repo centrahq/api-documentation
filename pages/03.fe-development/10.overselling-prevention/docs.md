@@ -8,7 +8,7 @@ taxonomy:
 
 ## How to turn on overselling prevention
 
-The Overselling Protection functionality helps to prevent overselling your stock and affects backorders setting.
+The Overselling Prevention functionality helps to prevent overselling your stock and affects backorders setting.
 In Store Setting you can find overselling prevention configuration.
 
 ![ProductIDs](overselling-prevention-store-settings.png)
