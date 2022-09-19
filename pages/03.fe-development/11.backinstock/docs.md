@@ -43,15 +43,15 @@ When stock is added in Centra we will check if the modified item has any susbcri
 
 When a subscriber requests to be notified of an item the tag `Rule - Waiting For Product Alert`  will be applied, and then when stock is updated and the subscriber should be notified the tag is replaced with `Rule - Product Alert Triggered`, theese tags can be used to setup automation for notifying your subscribers. Refer to Rule documentation for details.
 
-The fields that are available as localised will be separate fields named as the normal field followed by an `_` and the language ISO 639-1 code. if the product has not yet been translated to this language this field will contain the unlocalised product name, making it always safe to use the localised field so long as teh language remains active in centra.
+The fields that are available as localised will be separate fields named as the normal field followed by an `_` and the language ISO 639-1 code. If the product has not yet been translated to this language this field will contain the unlocalised product name, making it always safe to use the localised field so long as the language remains active in Centra.
 
-example: 
+Example: 
 > If you have German localisation configured and set in centra the field `DisplayName_de` will be available and will contain the german localised version of the display name. If you also have Spanish as language but have not yet added localisation for this the field `DisplayName_es` will be available and contain the same text as the `DisplayName` field.
 
 
 #### Available Fields
 
-| Field name | Contains | localised? |
+| Field name | Contains | Localized? |
 |---|---|---|
 | DisplayName | Display name | yes |
 | DisplayUri | Display URI | yes |
@@ -67,6 +67,3 @@ example:
 | PriceInRegion | Item price in subscribers region + currency, formated as defined in centra | no |
 | PriceInRegionAmount | ietm price for subscribers region as a number | no |
 | CurrencyInRegion | currency ISO code for subscribers region |
-
-
-
