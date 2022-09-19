@@ -323,7 +323,7 @@ You can only configure one default Language per Country, but you can change the 
 
 ### Consents
 
-`Here are the terms and conditions.`
+`Here are the terms and conditions`
 
 Don't forget that for a proper payment you need to add a Front End consent checkbox (or checkboxes). This needs to be verified by sending a boolean `"termsAndConditions": true` in your [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) call. Otherwise, you will receive the below error, which you should handle by displaying a message about consents being required for checkout process to complete.
 
@@ -382,11 +382,15 @@ Be mindful to properly parse and encode the e-mail subscription field in your Fr
 
 #### How to avoid bots - a short remark on honeypots
 
+`Are you sure you're a human?`
+
 You may notice that the [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint accepts a parameter called `email_field`. This value is meant as a honeypot field for spam bots or web crawlers. In your front end, next to the subscribe form, you should implement a field or a checkbox which is not visible to the end user, but clearly part of the form from the source code perspective. Any value passed to this form element should be passed to that variable. It's a signal to Centra, as well as to external mailer systems, that this subscription was filled out by a bot, so it should be ignored. At the same time, the API behaviour looks the same to the user, so the bot will not get any information back letting it know it failed to subscribe.
 
 To read more and see some examples, check out [Rule article about email honey pots](https://en.docs.rule.se/article/283-rule-botstop-spamskydd-via-api).
 
 ### Newsletter sign-up for "Let me know when the product is back in stock"
+
+`Sorry, we don't have this product right now, but we can let you know when we do`
 
 If product which is out of stock shows "Notify me when back in stock", the customer can be registered under Customers > Newsletter with their e-mail address and the product that they wish to be notified about.
 
@@ -396,7 +400,7 @@ To register products or specific product sizes for customer newsletter, call [PO
 * `product` - sent as `[displayID]` registers customer e-mail in the Newsletter list with a specific product,
 * `item` - sent as `[displayID]-[sizeID]`, same as in [POST /items/{item}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_) or [POST /items/{item}/quantity/{quantity}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item__quantity__quantity_), registers customer e-mail in the Newsletter list with a specific product size.
 
-So far this feature is only available when using Rulemailer as your MSP. [Click here to find out how to configure it](/fe-development/backinstock).
+[Click here to find out how to configure this feature using Rulemailer as your MSP](/fe-development/backinstock).
 
 ### Basket / selection
 
@@ -420,7 +424,7 @@ The line ID is also necessary for creating returns for completed orders - you wi
 
 ### Shipping options
 
-`How quickly you can get your stuff, and how much it would cost.`
+`How quickly you can get your stuff, and how much it will cost`
 
 With every selection response, the API will include a `shippingMethods` table. In it you will receive all available shipping methods based on the current country of the selection. You can choose any of them using the [PUT /shipping-methods/{shippingMethod}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/3.%20selection%20handling%2C%20modify%20selection/put_shipping_methods__shippingMethod_) call.
 
