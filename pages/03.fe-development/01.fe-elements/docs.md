@@ -323,7 +323,7 @@ You can only configure one default Language per Country, but you can change the 
 
 ### Consents
 
-`Here are the terms and conditions.`
+`Here are the terms and conditions`
 
 Don't forget that for a proper payment you need to add a Front End consent checkbox (or checkboxes). This needs to be verified by sending a boolean `"termsAndConditions": true` in your [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) call. Otherwise, you will receive the below error, which you should handle by displaying a message about consents being required for checkout process to complete.
 
@@ -424,7 +424,7 @@ The line ID is also necessary for creating returns for completed orders - you wi
 
 ### Shipping options
 
-`How quickly you can get your stuff, and how much it would cost.`
+`How quickly you can get your stuff, and how much it will cost`
 
 With every selection response, the API will include a `shippingMethods` table. In it you will receive all available shipping methods based on the current country of the selection. You can choose any of them using the [PUT /shipping-methods/{shippingMethod}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/3.%20selection%20handling%2C%20modify%20selection/put_shipping_methods__shippingMethod_) call.
 
