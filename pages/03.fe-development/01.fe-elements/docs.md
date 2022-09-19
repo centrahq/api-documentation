@@ -396,7 +396,7 @@ To register products or specific product sizes for customer newsletter, call [PO
 * `product` - sent as `[displayID]` registers customer e-mail in the Newsletter list with a specific product,
 * `item` - sent as `[displayID]-[sizeID]`, same as in [POST /items/{item}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_) or [POST /items/{item}/quantity/{quantity}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item__quantity__quantity_), registers customer e-mail in the Newsletter list with a specific product size.
 
-So far this feature is only available when using Rulemailer as your MSP. [Click here to find out how to configure it](/fe-development/backinstock).
+[Click here to find out how to configure this feature using Rulemailer as your MSP](/fe-development/backinstock).
 
 ### Basket / selection
 
