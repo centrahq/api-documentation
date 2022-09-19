@@ -388,13 +388,15 @@ To read more and see some examples, check out [Rule article about email honey po
 
 ### Newsletter sign-up for "Let me know when the product is back in stock"
 
-If product which is out of stock shows "Notify me when back in stock", the customer can be registered under Customers > Newsletter with their e-mail address and the product that they wish to be notified about. This list  should automatically go to your audience ID or mailing list inside your ESP (E-mail Service Provider). However, there is no automation from Centra in terms of when stock is added, this is something that you would have to manually handle. So when the stock is back, you would go to the ESP and send e-mails to customers with that product and/or size.
+If product which is out of stock shows "Notify me when back in stock", the customer can be registered under Customers > Newsletter with their e-mail address and the product that they wish to be notified about.
 
-To register products or specific product sizes for customer newsletter, you should call [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint with optional parameters:
-* `country` - allows you to specify the country for the newsletter, which can affect the products availability you display based on the Market,
+To register products or specific product sizes for customer newsletter, call [POST /newsletter-subscription/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription__email_) endpoint with optional parameters:
+* `country` - allows you to specify the country for the newsletter, which can affect the products availability you return based on the Market,
 * `language` - allows you to specify the language of the newsletter, which helps you send a correct translation to specific customers,
 * `product` - sent as `[displayID]` registers customer e-mail in the Newsletter list with a specific product,
 * `item` - sent as `[displayID]-[sizeID]`, same as in [POST /items/{item}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_) or [POST /items/{item}/quantity/{quantity}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item__quantity__quantity_), registers customer e-mail in the Newsletter list with a specific product size.
+
+So far this feature is only available when using Rulemailer as your MSP. [Click here to find out how to configure it](/fe-development/backinstock).
 
 ### Basket / selection
 
