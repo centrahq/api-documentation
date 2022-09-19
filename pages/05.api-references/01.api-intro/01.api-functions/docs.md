@@ -69,7 +69,7 @@ Order API can be used to create very basic vouchers, or to clone voucher templat
 Checkout API can only be used to view the historical orders of currently logged in user. As a webshop API, it doesn't have access to other orders unrelated to the shopper.
 
 <a id="LimitShopReadOrders"></a>
-Checkout API can only be used to view the historical orders of currently logged in user. It has also be noted that this API is legacy, not recommended for new implementations.
+Shop API can only be used to view the historical orders of currently logged in user. It has also be noted that this API is legacy, not recommended for new implementations.
 
 <a id="LimitSoapReadAll"></a>
 With SOAP, each event should only be fetched once, synced with the ERP and then marked as done in Centra. After that, you can no longer fetch it from Centra directly, unless there's been changes that need to be synced to the ERP as well.
