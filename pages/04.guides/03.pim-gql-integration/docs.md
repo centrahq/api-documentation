@@ -88,26 +88,59 @@ query getStores {
 
 As you can see, not only does GQL API return _precisely_ the data you asked for, nothing more, it also tells you which permissions were used, so that you know precisely how to configure your Prod API token in the future.
 
-## Markets - read and create
+## Markets - create and read
 
 [https://docs.centra.com/graphql/query.html#markets](https://docs.centra.com/graphql/query.html#markets)
 
 Markets in Centra decide which Products are visible to the API consumer. [Click here to learn more](https://docs.centra.com/overview/centra-overview#market).
 
-### Fetching Markets
+### Creating a new Market
+
+Currently, adding countries to a Market is only available in DTC (Retail) stores.
 
 #### Request
 
 ```gql
-query getMarkets {
-  markets {
+mutation createMarket {
+    createMarket(input: {
+        name: "First Market"
+      	store: {id: 1}
+      	comment: "comment"
+        addCountries: [
+          {id: 125}
+        ]
+    }) {
+        userErrors {
+            message path
+        }
+        market {
+            ...marketFields
+        }
+    }
+}
+
+fragment marketFields on Market {
+  id
+  name
+  comment
+  campaigns {
     id
     name
-    assignedToCountries {
-      code
-      name
-      isEU
-    }
+  }
+  displays {
+    id
+    name
+  }
+  allocationRule {
+    id
+    name
+  }
+  store {
+    id
+    name
+  }
+  assignedToCountries {
+    id
   }
 }
 ```
@@ -117,82 +150,174 @@ query getMarkets {
 ```json
 {
   "data": {
-    "markets": [
-      {
-        "id": 1,
-        "name": "Sweden",
+    "createMarket": {
+      "userErrors": [],
+      "market": {
+        "id": 29,
+        "name": "First Market",
+        "comment": "comment",
+        "campaigns": [],
+        "displays": [],
+        "allocationRule": null,
+        "store": {
+          "id": 1,
+          "name": "Retail Store"
+        },
         "assignedToCountries": [
           {
-            "code": "SE",
-            "name": "Sweden",
-            "isEU": true
+            "id": 125
           }
         ]
-      },
-      {
-        "id": 2,
-        "name": "USA",
-        "assignedToCountries": [
-          {
-            "code": "US",
-            "name": "United States",
-            "isEU": false
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "name": "World",
-        "assignedToCountries": [
-          {
-            "code": "AX",
-            "name": "Aland Islands",
-            "isEU": false
-          },
-          {
-            "code": "AL",
-            "name": "Albania",
-            "isEU": false
-          },
-          {
-            "code": "AD",
-            "name": "Andorra",
-            "isEU": false
-          },
-          {
-            "code": "AT",
-            "name": "Austria",
-            "isEU": true
-          },
-
-          // ...truncated
-
-          ]
-      },
-      {
-        "id": 4,
-        "name": "Amazon",
-        "assignedToCountries": []
-      },
-    ]
+      }
+    }
   },
   "extensions": {
-    "complexity": 121,
+    "complexity": 164,
     "permissionsUsed": [
+      "Market:write",
       "Market:read",
-      "Market.Country:read"
-    ]
+      "Market.comment:read",
+      "Campaign:read",
+      "Display:read",
+      "AllocationRule:read",
+      "Store:read",
+      "Country:read"
+    ],
+    "appVersion": "v0.27.0"
   }
 }
 ```
 
-As you can see, not all Markets have to be assigned to Countries. Some are hidden, like VIP sales, others (like Amazon) can be used in other ways.
+### Fetching Markets
+
+#### Request
+
+Fetching a specific Market:
+
+```gql
+query singleMarket {
+  market(id: 29) {
+    ...marketFields
+  }
+}
+```
+
+Fetching multiple Markets:
+
+```gql
+query multipleMarkets {
+  markets {
+    ...marketFields
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "market": {
+      "id": 29,
+      "name": "First Market",
+      "comment": "comment",
+      "campaigns": [],
+      "displays": [],
+      "allocationRule": null,
+      "store": {
+        "id": 1,
+        "name": "Retail Store"
+      },
+      "assignedToCountries": [
+        {
+          "id": 125
+        }
+      ]
+    }
+  },
+  "extensions": {
+    "complexity": 53,
+    "permissionsUsed": [
+      "Market:read",
+      "Market.comment:read",
+      "Campaign:read",
+      "Display:read",
+      "AllocationRule:read",
+      "Store:read",
+      "Country:read"
+    ],
+    "appVersion": "v0.27.0"
+  }
+}
+```
 
 Please note, reading Markets and reading Market Countries use different permissions. Remember, if your integration doesn't need to know about Market countries, there's no reason to enable that permission in your integration token setup.
 
-### Creating new Markets
+### Updating a Market
 
-[TBD]
+The market can be updated with updateMarket mutation. name must be unique, but only across markets for the specified store.
+
+#### Request
+
+```gql
+mutation updateMarket {
+    updateMarket(id: 29, input: {
+        name: "update"
+      	addCountries: [{id: 122}]
+      	removeCountries: [{id: 125}]
+    }) {
+        userErrors {
+            message path
+        }
+        market {
+            ...marketFields
+        }
+    }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "updateMarket": {
+      "userErrors": [],
+      "market": {
+        "id": 29,
+        "name": "update",
+        "comment": "comment",
+        "campaigns": [],
+        "displays": [],
+        "allocationRule": null,
+        "store": {
+          "id": 1,
+          "name": "Retail Store"
+        },
+        "assignedToCountries": [
+          {
+            "id": 122
+          }
+        ]
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 164,
+    "permissionsUsed": [
+      "Market:write",
+      "Market:read",
+      "Market.comment:read",
+      "Campaign:read",
+      "Display:read",
+      "AllocationRule:read",
+      "Store:read",
+      "Country:read"
+    ],
+    "appVersion": "v0.27.0"
+  }
+}
+```
 
 ## Folders - read and create
 
