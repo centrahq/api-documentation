@@ -125,6 +125,7 @@ The `group` on the attribute inside the `config.php` specifies where the attribu
 | --- | --- |
 | `product` | Listed under General Attributes on all Products. |
 | `variation` | Listed under each Variant on all Products. |
+| `display` | Listed on each product display |
 | `order` | Listed on each Order. |
 | `customer` | Listed under each Customer. |
 | `account` | Listed under each Account (B2B). |
@@ -547,6 +548,27 @@ For attributes which are pre-defined, multiple values can be made selectable at 
 
 Multi-select snippet looks like this in Centra:  
 ![ProductMaterialMulti](example-product-material-multi.png)
+
+#### Product display additional text
+
+You can also define custom attributes on a display level:
+
+```php
+'dis_extra' => [
+    'desc' => 'Extra text',
+    'group' => 'display',
+    'readonly' => false,
+    'elements' => [
+        'text' => [
+            'desc' => 'Extra text',
+            'type' => 'input'
+        ]
+    ]
+],
+```
+
+This renders like this:  
+![ProductDisplayAttribute](attribute-display.png)
 
 <!--
 #### [Template]
