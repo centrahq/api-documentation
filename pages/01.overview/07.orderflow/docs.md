@@ -30,24 +30,24 @@ Here's the basic order flow as seen in Centra backend.
 
 ![OrderFlow](order-flow.png)
 
-### Order statuses
+### Order status explained
 
 * **Incomplete** (0)  
-  This is a selection before the checkout is completed. It contains the list of selected items, information about language and currency, discounts, plus a list of optional shipping methods.
+  This is a selection before the checkout is completed. It contains the list of selected items and quantities, information about language and currency, prices and discounts, plus a list of optional shipping and payment methods.
 * **Pending** (1)  
-  This order has been checked out, with [payment authorization](/overview/glossary#payment-authorization) being completed. Depending on the Store settings, [payment capture](/overview/glossary#payment-capture) attempt may follow immediately, otherwise capture will be done on order shipment. In addition to the incomplete order, it contains information on customer, selected shipping and payment. This step can be skipped by enabling the Store option "Autoconfirm Orders".
+  This order has been checked out, with [payment authorization](/overview/glossary#payment-authorization) completed. Depending on the Store settings, [payment capture](/overview/glossary#payment-capture) attempt may follow immediately (practivally - within minutes), otherwise capture will be done on order shipment. In addition to the incomplete order, it contains information on customer, selected shipping and payment. This step can be skipped by enabling the Store option "Autoconfirm Orders".
 * **Confirmed** (2)  
-  This order has been manually confirmed in the Centra admin panel, or confirmed automatically by appropriate Store setting. Only confirmed orders can have shipments created. This step can be skipped by enabling store option “Direct to Shipment”, in which case the checked out order will transfer to status Processing (3) with a shipment created and marked Good-To-Go.
+  This order has been manually confirmed in the Centra admin panel, or confirmed automatically by appropriate Store setting. Only confirmed orders can have shipments created and stock allocated. This step can be skipped by enabling store option “Direct to Shipment”, in which case the checked out order will transfer to status Processing (3) with a shipment created and marked Good-To-Go.
 * **Processing** (3)  
-  This order has at least one related shipment, and at least one of those shipments is not completed. Ordered items can be split into multiple shipments depending on availability and other factors.
+  This order has at least one related shipment, and at least one of those shipments is not completed. Ordered items can be split into multiple shipments, depending on availability and other factors.
 * **Completed** (4)  
-  This order has completed payment capture and expedited all related shipments. Additional information on shipping details and tracking number can be added when completing each shipment.
+  This order has been successfully captured and all related shipments have been expedited. Additional information on shipping details and tracking number can be added when completing each shipment.
 * **Archived** (5)  
   This order has been archived and will not show up in search results in Centra by default. Depending on API plugin configuration, it may also be hidden in API responses.
 * **Cancelled** (6)  
-  This ordered has been cancelled at any stage before the payment was captured (once the payment capture has been successful, a refund should be made instead of cancelling the order). Cancelled orders have the option to be fully and irreversibly deleted from the database.
+  This ordered has been cancelled at any stage before the payment was captured. Remember, once the payment capture has been successful, a refund should be made instead of cancelling the order. Cancelled orders have the option to be fully and irreversibly deleted from the database.
 * **Hold** (flag)  
-  This order is on hold by manual intervention in Centra backend, by Payment methods where fraud is suspected, or if the order is waiting for a notification from the Payment Service Provider. Its details can still be edited, but it cannot proceed with shipment or payment until resumed.
+  This order is on hold by manual intervention in Centra backend, by Payment methods where fraud is suspected, or if the order is waiting for a notification from the Payment Service Provider. Its details can still be edited, but it cannot proceed with shipment or payment until resumed. Another variation of such pseudo-status is `Waiting for Payment` (WfP) flag, which can be set when Centra is waiting on payment authorization or capture (depending on configuration). Orders with either flag `Hold` or `WfP` will not be returned in the APIs by default, and shouldn't be processed until the flag is lifted.
 
 ## Creating and completing a return
 
@@ -57,6 +57,6 @@ Here's the basic return flow as seen in Centra backend.
 
 Returns in Centra are directly tied to order shipments. When browsing a shipment, you can select to return one, many or all items in that shipment.
 
-After selecting items to return, you need to decide if you want to put them back into stock or remove them. This depends on your business logic and the state of the returned goods. If you choose to insert the items back into stock, you can either re-add it to the warehouse it was originally allocated from, or select to which warehouse to return the items into.
+After selecting items to return, you need to decide if you want to put them back into stock or remove them. This depends on your business logic and the state of the returned goods. If you choose to insert the items back into stock, you can either re-add them to the warehouse they were originally allocated from, or select to which warehouse to return the items into.
 
-Once the return is created, it will have "Pending" status which in API will show as `"completed": false`. From this point the return can be completed without a refund, or completed with sending a refund request to the Payment Service Provider. Additionally, at any point (both before and after completing the return) you can create selection based on that return, which can be used to easily create an exchange order.
+Once the return is created, it will have "Pending" status, which in API will show as `"completed": false`. From this point the return can be completed directly, or a Refund can be initiated, which will trigger a request to the Payment Service Provider associated with the original order. Additionally, at any point (both before and after completing the return) you can create selection based on that return, which can be used to easily create an exchange order.
