@@ -28,6 +28,10 @@ Optional:
 
 When stock is added in Centra we will check if the modified item has any susbcribers waiting for notification and if so we tell the provider how much stock is available which allows them to send an appropriate amount of notifications.
 
+### What about the old newsletter subscribe with products ?
+
+It is still possible to pass a product to our [`/newsletter-subscribe` endpoint](https://docs.centra.com/swagger-ui/#/6.%20customer%20handling/post_newsletter_subscription__email_). But there is no automation available when using this endpoint. It only remains for backwards compatibility with existing sites. For new sites use the new back-in-stock endpoints.
+
 ## E-mail providers with support for back in stock
 
 ### Rule
