@@ -515,13 +515,14 @@ After [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20
 [POST /payment](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment) response:
 ```json
 {
-  "token": "0ms3rnl09a4i4brtbitt1o0cu1",
+  "token": "be37e53c31dc3d0e66933560e187ef72",
   "action": "redirect",
-  "url": "https:\/\/ecommerce.externaltest.payex.com\/CreditCard\/Pay?orderRef=45bf8288461fa82be9014758f341f1b930"
+  "url": "https://www.sandbox.paypal.com/checkoutnow?token=20E81578H46162301",
+  "orderId": "20E81578H46162301"
 }
 ```
 
-This means you should redirect the visitor to the URL provided, the payment page of Payex. The `paymentReturnPage` and `paymentFailedPage` in the request is where the visitor will return after the payment at Payex. You must have these pages in your front end.
+This means you should redirect the visitor to the URL provided, the payment page of PayPal. The `paymentReturnPage` and `paymentFailedPage` in the request is where the visitor will return after the payment at PayPal. You must have these pages in your front end.
 
 [notice-box=alert]
 The `paymentReturnPage` should always collect all URL-parameters from both the query string in the URL and the POST-data and send it to Centra. This is the way to validate if the payment went through successfully or not. Some payment methods will use POST-data instead of sending back the parameters as query string parameters, so it is important that your page can handle POST requests as well.
@@ -534,14 +535,14 @@ When the customer ends up on `paymentFailedPage`, you know that payment failed. 
 {
     "paymentMethodFields": {
         "orderNum": "1114",
-        "paymentMethod": "payex",
+        "paymentMethod": "paypal",
         "orderRef": "ad0eccd6a1e9402facf09f6ac49e848f"
     }
 }
 ```
 
 [notice-box=alert]
-Be mindful to keep the original formatting of the parameters you receive from payment provider and pass on to Centra. Depending on the payment method they may be written in camelCase (like orderRef in Payex) or in snake_case (like klarna_order in Klarna). Sending wrong parameter names to Centra may cause problems with receiving order confirmation and prevent you from displaying a proper receipt.
+Be mindful to keep the original formatting of the parameters you receive from payment provider and pass on to Centra. Depending on the payment method they may be written in camelCase (like orderRef in PayPal) or in snake_case (like klarna_order in Klarna). Sending wrong parameter names to Centra may cause problems with receiving order confirmation and prevent you from displaying a proper receipt.
 [/notice-box]
 
 Response (fragment):
