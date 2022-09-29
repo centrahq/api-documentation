@@ -60,9 +60,9 @@ You get back the same structure as in 1. This can change prices/currency and in 
 
 ### 3: (optional) select a specific payment method
 
-`PUT https://example.com/api/checkout/payment-methods/payex`
+`PUT https://example.com/api/checkout/payment-methods/paypal`
 
-`payex` here is from the `paymentMethods` in the previous responses. You get back the same structure as in #1.
+`paypal` here is from the `paymentMethods` in the previous responses. You get back the same structure as in #1.
 
 ### 4: Begin payment
 
@@ -94,14 +94,15 @@ Response:
 
 ```json
 {
-  "token": "0ms3rnl09a4i4brtbitt1o0cu1",
+  "token": "be37e53c31dc3d0e66933560e187ef72",
   "action": "redirect",
-  "url": "https:\/\/ecommerce.externaltest.payex.com\/CreditCard\/Pay?orderRef=45bf8288461fa82be9014758f341f1b930"
+  "url": "https://www.sandbox.paypal.com/checkoutnow?token=20E81578H46162301",
+  "orderId": "20E81578H46162301"
 }
 ```
 
-This means you should redirect the visitor to the URL, to the payment page of `payex`.
-The `paymentReturnPage` and `paymentFailedPage` in the request is where the visitor will return after the payment at `payex`. These must on your frontend.
+This means you should redirect the visitor to the URL, to the payment page of `paypal`.
+The `paymentReturnPage` and `paymentFailedPage` in the request is where the visitor will return after the payment at `paypal`. These must on your frontend.
 
  When the customer ends up on `paymentFailedPage`, you know that payment failed.
 
@@ -115,7 +116,7 @@ The `paymentReturnPage` and `paymentFailedPage` in the request is where the visi
 {
     "paymentMethodFields": {
         "orderNum": "1114",
-        "paymentMethod": "payex",
+        "paymentMethod": "paypal",
         "orderRef": "ad0eccd6a1e9402facf09f6ac49e848f"
     }
 }
@@ -124,7 +125,7 @@ The `paymentReturnPage` and `paymentFailedPage` in the request is where the visi
 You take the GET and POST variables that visitor had when it returned to the "paymentReturnPage" and send them to the API inside "paymentMethodFields".
 
 [notice-box=alert]
-Be mindful to keep the original formatting of the parameters you receive from payment provider and pass on to Centra. Depending on the payment method they may be written in camelCase (like `orderRef` in Payex) or in snake_case (like `klarna_order` in Klarna). Sending wrong parameter names to Centra may cause problems with receiving order confirmation and prevent you from displaying a proper receipt.
+Be mindful to keep the original formatting of the parameters you receive from payment provider and pass on to Centra. Depending on the payment method they may be written in camelCase (like `orderRef` in PayPal) or in snake_case (like `klarna_order` in Klarna). Sending wrong parameter names to Centra may cause problems with receiving order confirmation and prevent you from displaying a proper receipt.
 [/notice-box]
 
 Response (cut down):
@@ -177,14 +178,14 @@ This response has a different `action` called `form`, and a `formHtml`. You need
 Klarna checkout gives us the customers address after the payment is done, so you only need to send the country to the API. We need the country to calculate prices correctly.
 
 ### 5: Get the result of the payment
-This should be exactly like for payex. You will get different data from klarna, but just pass it on to the API and it will tell you if the payment was successful
+This should be exactly like for PayPal. You will get different data from klarna, but just pass it on to the API and it will tell you if the payment was successful
 
 
 ## Payment response cases:
 
 `POST https://example.com/api/checkout/payment` can respond with an error, or one of 4 different actions:
 
-- `"action":"redirect"` like payex above, redirect the client to the `url` in the response.
+- `"action":"redirect"` like PayPal above, redirect the client to the `url` in the response.
 - `"action":"form"` like klarna-checkout above, display this `htmlForm` HTML-snippet. The HTML you get for klarna checkout i unusual, for other payment methods that have this response it is a HTML form that you need to POST in the visitors browser. This requires a server side page on the frontend since you cannot POST a form like this with Javascript (as far as i know).
 - `"action":"success"` this means the payment succeeded at once (no need for step 5 from above). It happens with some invoice payments or when the credit card number is integrated in our checkout page. The response contains the order data that you would otherwise get from step 5.
 - `"action":"failed"` this means the payment failed at once.

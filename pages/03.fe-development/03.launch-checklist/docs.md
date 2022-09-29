@@ -26,7 +26,7 @@ Here is a list of things to consider and make sure work when testing the site be
 | Modules | What modules will the client use? SOAP? Google Map locator? |
 | Integrations | What type of integrations will be used by the client in frontend? |
 | | Customer loyalty (Abalon, Nosto etc?) |
-| | Newsletter subscription (Rulemailer, MailChimp, Apsis?) |
+| | Newsletter subscription (Rulemailer, MailChimp?) |
 | | Social Media (Storify, Instagram etc?) |
 | Media | What is the format of the Product images? How many image sizes will be used on the website? |
 | Product feeds | Will you be integrating either with Google or Facebook feeds? |
@@ -36,7 +36,7 @@ Here is a list of things to consider and make sure work when testing the site be
 | Where | What |
 | --- | --- |
 | Design | Make sure there is design for error message handling and 404s |
-| | Any hosted payment pages that needs customization (Adyen, DIBS?) |
+| | Any hosted payment pages that needs customization (Adyen? PayPal?) |
 | | Will you offer 100% discounts? Does your payment setup support [payments with 0 total](/fe-development/payments/handling-0-payments)? Have you tested it? |
 | Redirects | If a previous version of the webstore exists, should old URLs redirect to the new website? |
 
