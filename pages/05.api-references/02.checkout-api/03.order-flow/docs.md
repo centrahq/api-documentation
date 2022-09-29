@@ -227,12 +227,6 @@ Creates a new selection (equivalent to a "basket") when a first item is added. `
             "handlingCostAsNumber": 0
         },
         {
-            "paymentMethod": "dibs-paywin",
-            "name": "dibs",
-            "handlingCost": "0.00 SEK",
-            "handlingCostAsNumber": 0
-        },
-        {
             "paymentMethod": "dummy",
             "name": "dummy",
             "handlingCost": "0.00 SEK",
@@ -894,12 +888,6 @@ Adding another item to selection, because we can.
             "clientSide": {
                 "externalScript": "https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSDK.1.9.5.min.js"
             },
-            "handlingCost": "0.00 SEK",
-            "handlingCostAsNumber": 0
-        },
-        {
-            "paymentMethod": "dibs-paywin",
-            "name": "dibs",
             "handlingCost": "0.00 SEK",
             "handlingCostAsNumber": 0
         },
@@ -1569,12 +1557,6 @@ View the selection, perhaps to review it on the Checkout page.
             "handlingCostAsNumber": 0
         },
         {
-            "paymentMethod": "dibs-paywin",
-            "name": "dibs",
-            "handlingCost": "0.00 SEK",
-            "handlingCostAsNumber": 0
-        },
-        {
             "paymentMethod": "dummy",
             "name": "dummy",
             "handlingCost": "0.00 SEK",
@@ -2236,12 +2218,6 @@ Customer can change shipping country, which would affect the shipping options an
             "clientSide": {
                 "externalScript": "https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSDK.1.9.5.min.js"
             },
-            "handlingCost": "0.00 USD",
-            "handlingCostAsNumber": 0
-        },
-        {
-            "paymentMethod": "dibs-paywin",
-            "name": "dibs",
             "handlingCost": "0.00 USD",
             "handlingCostAsNumber": 0
         },
@@ -2920,12 +2896,6 @@ Changing the country back, because we can.
             "clientSide": {
                 "externalScript": "https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSDK.1.9.5.min.js"
             },
-            "handlingCost": "0.00 SEK",
-            "handlingCostAsNumber": 0
-        },
-        {
-            "paymentMethod": "dibs-paywin",
-            "name": "dibs",
             "handlingCost": "0.00 SEK",
             "handlingCostAsNumber": 0
         },
