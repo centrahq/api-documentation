@@ -1087,6 +1087,148 @@ mutation unsetVariants {
 }
 ```
 
+## Locking and unlocking orders
+
+Locked orders are not possible to modify in the AMS, they should only be handled via the API.
+
+### Lock one or more orders
+
+#### Request
+
+```gql
+mutation lockOrders {
+  setOrdersLock(
+    input: {
+      orders: [{ number: 39514 }, { number: 39515 }]
+      isLocked: true }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    orders {
+      number
+      status
+      isLocked
+      shippingAddress {
+        firstName
+        lastName
+      }
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "setOrdersLock": {
+      "userErrors": [],
+      "orders": [
+        {
+          "number": 39514,
+          "status": "PROCESSING",
+          "isLocked": true,
+          "shippingAddress": {
+            "firstName": "Pio",
+            "lastName": "Sym"
+          }
+        },
+        {
+          "number": 39515,
+          "status": "PROCESSING",
+          "isLocked": true,
+          "shippingAddress": {
+            "firstName": "Pio",
+            "lastName": "Sym"
+          }
+        }
+      ]
+    }
+  },
+  "extensions": {
+    "complexity": 131,
+    "permissionsUsed": [
+      "Order.isLocked:write",
+      "Order:read",
+      "Order.shippingAddress:read"
+    ],
+    "appVersion": "v0.30.0"
+  }
+}
+```
+
+### Un-lock one or more orders
+
+#### Request
+
+```gql
+mutation lockOrders {
+  setOrdersLock(
+    input: {
+      orders: [{ number: 39514 }, { number: 39515 }]
+      isLocked: false }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    orders {
+      number
+      status
+      isLocked
+      shippingAddress {
+        firstName
+        lastName
+      }
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "setOrdersLock": {
+      "userErrors": [],
+      "orders": [
+        {
+          "number": 39514,
+          "status": "PROCESSING",
+          "isLocked": false,
+          "shippingAddress": {
+            "firstName": "Pio",
+            "lastName": "Sym"
+          }
+        },
+        {
+          "number": 39515,
+          "status": "PROCESSING",
+          "isLocked": false,
+          "shippingAddress": {
+            "firstName": "Pio",
+            "lastName": "Sym"
+          }
+        }
+      ]
+    }
+  },
+  "extensions": {
+    "complexity": 131,
+    "permissionsUsed": [
+      "Order.isLocked:write",
+      "Order:read",
+      "Order.shippingAddress:read"
+    ],
+    "appVersion": "v0.30.0"
+  }
+}
+```
+
 
 <!--
 #### Request
