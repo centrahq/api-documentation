@@ -42,6 +42,25 @@ Include variant name in product name.
 
 Image size you want to send over to Klaviyo for all the products. Select a proper image size that works for your product catalog.
 
+### Cart link
+Cart link: should be set to the URL your webshop uses for cart abandonment, e.g. https://example.com/abandoned-cart/{selection}
+
+### Historical data export
+Our integration allow you to export your data to Klaviyo. This action base on customer account, and customer account is main entrance to data. What does it mean? By choosing date in Transfer historical date starting from, you are choosing the date in history when the customer account was created. For example, from the image above, customer accounts newer than (or exactly this date) 05-10-2022 00:00:00 will be transferred to Klaviyo.
+
+In the Synchronization status line, you will see current transfer status.
+
+When synchronization is pending, you will not be able to set it up again. Synchronization settings are in read mode only:
+
+![historical_data_pending.png](historical_data_pending.png)
+
+During data export, the following event types will be sent:
+- Placed Order
+- Ordered Product
+- Confirmed Order
+- Cancelled Order
+- Refunded Order
+
 ## Transactional emails
 
 ### Transactional flows configuration
@@ -103,3 +122,203 @@ Event level variables:
 - `{{ event.DiscountValueInCustomerCurrency }}`- discount total in customer currency
 
 You can browse all the item and event level variables on the details of certain event in activity feed.
+
+## Available data for events
+
+#### Placed Order, Confirmed Order, Refunded Order
+```json
+{
+    "$event_id": 102,
+    "$value": 215,
+    "CustomerCurrency": "EUR",
+    "GrossPaidPriceInCustomerCurrency": "215.00",
+    "TaxAmount": "43.00",
+    "TaxAmountInCustomerCurrency": "43.00",
+    "Categories": [
+        "shop"
+    ],
+    "ItemNames": [
+        "Test Product"
+    ],
+    "Brands": [
+        "Brand"
+    ],
+    "DiscountValue": -0,
+    "Items": [
+        {
+            "ProductID": "1-1",
+            "SKU": "123456789",
+            "ProductName": "Test Product",
+            "Quantity": 2,
+            "VariantName": "Blue jeans",
+            "GrossPaidPrice": "200.00",
+            "GrossPaidPriceInCustomerCurrency": "200.00",
+            "OriginalPrice": "200.00",
+            "OriginalPriceInCustomerCurrency": "200.00",
+            "GrossPaidPricePerUnit": "100.00",
+            "GrossPaidPricePerUnitInCustomerCurrency": "100.00",
+            "ProductURL": "",
+            "ImageURL": "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg",
+            "Categories": {
+                "1": "shop"
+            },
+            "Brand": "Brand",
+            "TaxAmount": "40.00",
+            "TaxAmountInCustomerCurrency": "40.00",
+            "TaxPercent": 25,
+            "Discounted": false,
+            "DiscountValue": "0.00",
+            "DiscountValueInCustomerCurrency": "0.00"
+        }
+    ],
+    "BillingAddress": {
+        "FirstName": "Jane",
+        "LastName": "Doe",
+        "Company": "Centra",
+        "Address1": "Sveavägen 9",
+        "Address2": "Address Two",
+        "City": "Stockholm",
+        "Region": "",
+        "Region_code": "",
+        "Country": "Sweden",
+        "CountryCode": "SE",
+        "Zip": "111 57",
+        "Phone": "123456789",
+        "Email": "test@centra.com"
+    },
+    "ShippingAddress": {
+        "FirstName": "Jane",
+        "LastName": "Doe",
+        "Company": "Centra",
+        "Address1": "Sveavägen 9",
+        "Address2": "Address Two",
+        "City": "Stockholm",
+        "Region": "",
+        "Region_code": "",
+        "Country": "Sweden",
+        "CountryCode": "SE",
+        "Zip": "111 57",
+        "Phone": "123456789",
+        "Email": "test@centra.com"
+    },
+    "Shipping": {
+        "Method": "pnl-bua (Ingrid)",
+        "Cost": "10.00",
+        "CostInCustomerCurrency": "10.00",
+        "TaxAmount": "2.00",
+        "TaxAmountInCustomerCurrency": "2.00"
+    },
+    "MethodForPayment": "dummy"
+} 
+```
+
+#### Started Checkout
+
+Started Checkout event data structure is the same as for Placed Order event but with extra field “AbandonedCartURL”
+
+```json
+{
+    [...],
+    "AbandonedCartURL": "https://example.com/abandoned-cart/{selection}"
+}
+```
+
+#### Cancelled Order
+
+Cancelled Order event data structure is the same as for Placed Order event but with extra field “Reason”
+
+```json
+{
+    [...],
+    "Reason": "Size too small"
+}
+```
+
+#### Shipping Update
+
+```json
+{
+    "$event_id": "Shipped-113-1",
+    "OrderId": 113,
+    "ShipmentId": "Shipped-113-1",
+    "UpdateType": "Shipped",
+    "Items": [
+        {
+            "ProductID": 1,
+            "SKU": "123456789",
+            "ProductName": "Test Product",
+            "Quantity": 1,
+            "GTIN": "ABCDEFGHIJKL",
+            "Size": "",
+            "VariantName": "Red",
+            "GrossPaidPrice": "100.00",
+            "GrossPaidPriceInCustomerCurrency": "100.00",
+            "OriginalPrice": "100.00",
+            "OriginalPriceInCustomerCurrency": "100.00",
+            "GrossPaidPricePerUnit": "100.00",
+            "GrossPaidPricePerUnitInCustomerCurrency": "100.00",
+            "ProductURL": "",
+            "ImageURL": "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg",
+            "Categories": {
+                "1": "shop"
+            },
+            "Brand": "Brand",
+            "TaxAmount": "20.00",
+            "TaxAmountInCustomerCurrency": "20.00",
+            "TaxPercent": 25,
+            "Discounted": false,
+            "DiscountValue": "0.00",
+            "DiscountValueInCustomerCurrency": "0.00"
+        }
+    ],
+    "ShippingAddress": {
+        "FirstName": "Jane",
+        "LastName": "Doe",
+        "Company": "Centra",
+        "Address1": "Sveavägen 9",
+        "Address2": "Address Two",
+        "City": "Stockholm",
+        "Region": "",
+        "Region_code": "",
+        "Country": "Sweden",
+        "CountryCode": "SE",
+        "Zip": "111 57",
+        "Phone": "123456789",
+        "Email": "test@centra.com"
+    },
+    "ShippingMethod": "EUR",
+    "TrackingNumber": "ABC123",
+    "TrackingUrl": "https://test-tracking-delivery.com/ABC123",
+    "PackagesAmount": 1,
+    "ShippingDate": "2022-09-28 15:12:57",
+    "MethodForPayment": "Third Party Payment"
+} 
+```
+
+#### Gift Certificate
+
+```json
+{
+    "$eventId": "123",
+    "Name": "Some name",
+    "Code": "Some_code",
+    "Link": "https://test.com/",
+    "Message": "Hello there!",
+    "Date": "2022-01-01 00:00:00",
+    "DueDate": "2022-01-01 00:00:00",
+    "Description": "Your gift card!",
+    "Friend": "Jane Doe",
+    "$value": "100.00",
+    "ValueInCustomerCurrency": "100.00",
+    "CustomerCurrency": "EUR"    
+}
+```
+
+#### Reset Password
+
+```json
+{
+    "$event_id": "123",
+    "PasswordResetLink": "https://localhost/password-reset?[...]"
+}
+```
