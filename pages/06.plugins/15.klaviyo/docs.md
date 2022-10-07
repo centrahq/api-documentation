@@ -213,7 +213,9 @@ You can browse all the item and event level variables on the details of certain 
 } 
 ```
 
-- ProductType var in Item can take one of two values: "product" or "bundle"
+[notice-box=info]
+ProductType variable in Item object can take one of two values: "product" or "bundle".
+[/notice-box]
 
 #### Started Checkout
 
