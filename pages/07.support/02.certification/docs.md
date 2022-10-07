@@ -31,7 +31,7 @@ Lorem ipsum
 
 | Webinar topic | Webinar date | Target audience |
 | --- | --- | --- |
-| Building a webshop using Checkout API | 21-22.09.2022 | FE developers, optionally project managers (mostly technical) |
 | Centra fundamentals | 11.10.2022 | All Centra users, mostly non-technical |
 | Integration APIs - SOAP | 19.10.2022 | Integration/SOAP developers |
 | Integration APIs - GraphQL | 20.10.2022 | Integration/GQL developers |
+| Building a webshop using Checkout API | 2-3.11.2022 | FE developers, optionally project managers (mostly technical) |
