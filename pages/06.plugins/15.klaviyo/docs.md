@@ -168,7 +168,8 @@ You can browse all the item and event level variables on the details of certain 
             "TaxPercent": 25,
             "Discounted": false,
             "DiscountValue": "0.00",
-            "DiscountValueInCustomerCurrency": "0.00"
+            "DiscountValueInCustomerCurrency": "0.00",
+            "ProductType": "product"
         }
     ],
     "BillingAddress": {
@@ -211,6 +212,10 @@ You can browse all the item and event level variables on the details of certain 
     "MethodForPayment": "dummy"
 } 
 ```
+
+[notice-box=info]
+ProductType variable in Item object can take one of two values: "product" or "bundle".
+[/notice-box]
 
 #### Started Checkout
 
@@ -268,7 +273,8 @@ Cancelled Order event data structure is the same as for Placed Order event but w
             "TaxPercent": 25,
             "Discounted": false,
             "DiscountValue": "0.00",
-            "DiscountValueInCustomerCurrency": "0.00"
+            "DiscountValueInCustomerCurrency": "0.00",
+            "ProductType": "product"
         }
     ],
     "ShippingAddress": {
