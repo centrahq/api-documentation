@@ -26,7 +26,7 @@ Optional:
 
 ### Getting notified
 
-When stock is added in Centra we will check if the modified item has any susbcribers waiting for notification and if so we tell the provider how much stock is available which allows them to send an appropriate amount of notifications.
+When stock is added in Centra we will check if the modified item has any susbcribers waiting for notification and if so we tell the provider how much stock is available which allows them to send an appropriate amount of notifications. Keep in mind that Centra does not control when and how many notifications are sent. That mechanics is implemented and depends solely on the notification service provider.
 
 ### What about the old newsletter subscribe with products ?
 
@@ -46,6 +46,8 @@ It is still possible to pass a product to our [`/newsletter-subscribe` endpoint]
 #### How to use
 
 When a subscriber requests to be notified of an item the tag `Rule - Waiting For Product Alert`  will be applied, and then when stock is updated and the subscriber should be notified the tag is replaced with `Rule - Product Alert Triggered`, theese tags can be used to setup automation for notifying your subscribers. Refer to Rule documentation for details.
+
+Email templates used in the automation can use custom fields set for the notification. Fields are accessible in the template as `CustomField:Rule-ProductAlert.<field_name>`. Refer to the [list](#Available fields) below to see what data is available for back in stock email templates.
 
 The fields that are available as localised will be separate fields named as the normal field followed by an `_` and the language ISO 639-1 code. If the product has not yet been translated to this language this field will contain the unlocalised product name, making it always safe to use the localised field so long as the language remains active in Centra.
 
@@ -71,3 +73,8 @@ Example:
 | PriceInRegion | Item price in subscribers region + currency, formated as defined in centra | no |
 | PriceInRegionAmount | ietm price for subscribers region as a number | no |
 | CurrencyInRegion | currency ISO code for subscribers region |
+
+
+#### Sending Notifications
+
+Since it is Rule that contains the notification sending logic we encourage to familiarize oneself with [Rule Product Alerts](https://integrationdocs.rule.io/productalert/#header-triggering-alerts) documentation. Centra does not control when and how many notifications are sent, but updates stock information for subscribed products in Rule.
