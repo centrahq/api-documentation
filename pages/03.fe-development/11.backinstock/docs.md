@@ -28,6 +28,10 @@ Optional:
 
 When stock is added in Centra we will check if the modified item has any susbcribers waiting for notification and if so we tell the provider how much stock is available which allows them to send an appropriate amount of notifications. Keep in mind that Centra does not control when and how many notifications are sent. That mechanics is implemented and depends solely on the notification service provider.
 
+[notice-box=info]
+You need to have at least 11 FTA stock available. If you have 10 or less stock, Centra will not trigger a back-in-stock update for your product.
+[/notice-box]
+
 ### What about the old newsletter subscribe with products ?
 
 It is still possible to pass a product to our [`/newsletter-subscribe` endpoint](https://docs.centra.com/swagger-ui/#/6.%20customer%20handling/post_newsletter_subscription__email_). But there is no automation available when using this endpoint. It only remains for backwards compatibility with existing sites. For new sites use the new back-in-stock endpoints.
