@@ -74,15 +74,17 @@ Metric types currently supported by Centra:
   - `Reset Password`
   - `Created Account`
   - `Placed Order`
+  - `Ordered Product`
   - `Confirmed Order`
   - `Cancelled Order`
   - `Shipping Update`
-  - `Delivered`
-  - `Out for delivery`
-  - `Shipped`
   - `Refunded Order`
   - `Gift Certificate`
   - `Started Checkout`
+  - `Changed Subscription Status`
+  - `Failed Subscription Payment`
+  - `Failed Subscription Payment Update`
+  - `Successful Subscription Payment Update`
 
 [notice-box=info]
 When creating a flow for a certain metric in Klaviyo, tags need to be matching the tags listed above.
@@ -118,14 +120,15 @@ Item level variables:
 
 Event level variables:
 
-- `{{ event.GrossPaidPricePerUnitInCustomerCurrency }}` - order total in customer currency
+- `{{ event.GrossPaidPriceInCustomerCurrency }}` - order total in customer currency
+- `{{ event.TaxAmountInCustomerCurrency }}` - order total in customer currency
 - `{{ event.DiscountValueInCustomerCurrency }}`- discount total in customer currency
 
 You can browse all the item and event level variables on the details of certain event in activity feed.
 
-## Available data for events
+## Event data reference
 
-#### Placed Order, Confirmed Order, Refunded Order
+#### Confirmed Order, Refunded Order
 ```json
 {
     "$event_id": 102,
@@ -217,9 +220,28 @@ You can browse all the item and event level variables on the details of certain 
 ProductType variable in Item object can take one of two values: "product" or "bundle".
 [/notice-box]
 
+#### Placed Order
+
+Placed Order event data structure is the same as for `Confirmed Order` and `Refunded Order` events but with extra field `OrderType`
+
+```json
+{
+    [...],
+    "OrderType": "One-time Purchase"
+}
+```
+[notice-box=info]
+OrderType variable in Item object can take one of three values:
+- "One-time Purchase" (for one-time orders)
+- "New Subscription" (for newly started subscriptions)
+- "Recurring Subscription Payment" (for renewal or recurring orders for pre-existing subscriptions)
+
+"New Subscription" type of order will contain additional properties with subscription information on items purchased in subscription model. See `Subscription orders` section for more information.
+[/notice-box]
+
 #### Started Checkout
 
-Started Checkout event data structure is the same as for Placed Order event but with extra field “AbandonedCartURL”
+Started Checkout event data structure is the same as for `Confirmed Order` and `Refunded Order` events but with extra field “AbandonedCartURL”
 
 ```json
 {
@@ -230,7 +252,7 @@ Started Checkout event data structure is the same as for Placed Order event but 
 
 #### Cancelled Order
 
-Cancelled Order event data structure is the same as for Placed Order event but with extra field “Reason”
+Cancelled Order event data structure is the same as for `Confirmed Order` and `Refunded Order` events but with extra field “Reason”
 
 ```json
 {
@@ -328,3 +350,151 @@ Cancelled Order event data structure is the same as for Placed Order event but w
     "PasswordResetLink": "https://localhost/password-reset?[...]"
 }
 ```
+
+## Subscription orders
+
+`Placed Order` event supports 3 `OrderType` values:
+
+- One-time Purchase (for one-time orders)
+- New Subscription (for newly started subscriptions)
+- Recurring Subscription Payment (for renewal or recurring orders for pre-existing subscriptions)
+
+Only `OrderType` of value `New Subscription` contains additional subscription information included on event item level.
+Item level boolean property `item.IsSubscription` can be used to dynamically render or skip additional `item.Subscription.*` properties containing subscription information.
+
+Centra allows for combining subscription purchases with one time purchases in single checkout.
+Example payload of `Placed Order` event created as a result of such combined checkout:
+```json
+{
+    "OrderId": "123",
+    "CustomerCurrency": "SEK",
+    "GrossPaidPriceInCustomerCurrency": 200,
+    "TaxAmount": 40,
+    "TaxAmountInCustomerCurrency": 40,
+    "Categories": [
+        "shop"
+    ],
+    "ItemNames": [
+        "Test Product"
+    ],
+    "Brands": [
+        "Brand"
+    ],
+    "DiscountValue": 0,
+    "DiscountValueInCustomerCurrency": 0,
+    "Items": [
+        {
+            "ProductID": 1,
+            "SKU": "123456789",
+            "ProductName": "Test Product",
+            "Quantity": 1,
+            "GTIN": "ABCDEFGHIJKL",
+            "Size": "",
+            "VariantName": "Red",
+            "GrossPaidPrice": 100,
+            "GrossPaidPriceInCustomerCurrency": 100,
+            "OriginalPrice": 100,
+            "OriginalPriceInCustomerCurrency": 100,
+            "GrossPaidPricePerUnit": 100,
+            "GrossPaidPricePerUnitInCustomerCurrency": 100,
+            "ProductURL": "",
+            "ImageURL": "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg",
+            "Categories": {
+                "1": "shop"
+            },
+            "Brand": "Brand",
+            "TaxAmount": 20,
+            "TaxAmountInCustomerCurrency": 20,
+            "TaxPercent": 25,
+            "Discounted": false,
+            "DiscountValue": 0,
+            "DiscountValueInCustomerCurrency": 0,
+            "Subscription": {
+                "NextOrderDate": "2022-11-12",
+                "DiscountPercent": 0,
+                "IntervalType": "month",
+                "IntervalValue": 1,
+                "IntervalFormatted": "every 1 month"
+            },
+            "IsSubscription": true
+        },
+        {
+            "ProductID": 1,
+            "SKU": "123456789",
+            "ProductName": "Test Product",
+            "Quantity": 1,
+            "GTIN": "ABCDEFGHIJKL",
+            "Size": "",
+            "VariantName": "Red",
+            "GrossPaidPrice": 100,
+            "GrossPaidPriceInCustomerCurrency": 100,
+            "OriginalPrice": 100,
+            "OriginalPriceInCustomerCurrency": 100,
+            "GrossPaidPricePerUnit": 100,
+            "GrossPaidPricePerUnitInCustomerCurrency": 100,
+            "ProductURL": "",
+            "ImageURL": "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg",
+            "Categories": {
+                "1": "shop"
+            },
+            "Brand": "Brand",
+            "TaxAmount": 20,
+            "TaxAmountInCustomerCurrency": 20,
+            "TaxPercent": 25,
+            "Discounted": false,
+            "DiscountValue": 0,
+            "DiscountValueInCustomerCurrency": 0
+        }
+    ],
+    "BillingAddress": {
+        "FirstName": "Test Billing",
+        "LastName": "Testson Billing",
+        "Company": "",
+        "Address1": "Address One",
+        "Address2": "Address Two",
+        "City": "Malmo",
+        "Region": "",
+        "Region_code": "",
+        "Country": "Sweden",
+        "CountryCode": "SE",
+        "Zip": "12345",
+        "Phone": "123456789",
+        "Email": "hubert.strychalski@centra.com"
+    },
+    "ShippingAddress": {
+        "FirstName": "Test Billing",
+        "LastName": "Testson Billing",
+        "Company": "",
+        "Address1": "Address One",
+        "Address2": "Address Two",
+        "City": "Malmo",
+        "Region": "",
+        "Region_code": "",
+        "Country": "Sweden",
+        "CountryCode": "SE",
+        "Zip": "12345",
+        "Phone": "123456789",
+        "Email": "hubert.strychalski@centra.com"
+    },
+    "Shipping": {
+        "Method": "SEK",
+        "Cost": 0,
+        "CostInCustomerCurrency": 0,
+        "TaxAmount": 0,
+        "TaxAmountInCustomerCurrency": 0
+    },
+    "MethodForPayment": "Third Party Payment",
+    "CreatedDate": "2022-10-12 12:52:03",
+    "OrderType": "New Subscription",
+    "$value": 200
+}
+```
+
+### Example flow trigger configuration with recurring orders support 
+
+`OrderType` of values `One-time Purchase` and `Recurring Subscription Payment` are combined in the single flow as those do not contain any additional subscription information.
+
+`OrderType` of value `New Subscription` is processed by separate flow because it contains additional subscription data.
+
+![subscription_transactional_triggers.png](subscription_transactional_triggers.png)
+
