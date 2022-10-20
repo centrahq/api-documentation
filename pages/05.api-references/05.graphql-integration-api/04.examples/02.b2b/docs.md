@@ -1229,6 +1229,110 @@ mutation lockOrders {
 }
 ```
 
+## Putting the orders on "Hold"
+
+The "Hold" is a flag that can be applied to any in-completed order. An order that is on hold will display in orange in Centra AMS, and won't be returned by Centra APIs by default.
+
+Changing the "Hold" flag doesn't change the order status. After removing "Hold", order is returned to its previous state. [Click here to learn more about order statuses](https://docs.centra.com/overview/orderflow#order-flow).
+
+### Put one or more orders on Hold
+
+#### Request
+
+```gql
+mutation orderOnHold {
+  updateWholesaleOrder(
+    order: { number: 39266 }
+    input: { isOnHold: true, holdStatusChangeReason: "Message logged in order history." }
+  ) {
+    userErrors {
+      message
+      message
+    }
+    order {
+      number
+      status
+      isOnHold
+    }
+  }
+}
+
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "updateWholesaleOrder": {
+      "userErrors": [],
+      "order": {
+        "number": 39266,
+        "status": "PROCESSING",
+        "isOnHold": true
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 12,
+    "permissionsUsed": [
+      "Order:write",
+      "Order:read"
+    ],
+    "appVersion": "v0.31.0"
+  }
+}
+```
+
+### Remove Hold flag from order(s)
+
+#### Request
+
+```gql
+mutation orderOnHold {
+  updateWholesaleOrder(
+    order: { number: 39266 }
+    input: { isOnHold: false, holdStatusChangeReason: "Different message logged in order history." }
+  ) {
+    userErrors {
+      message
+      message
+    }
+    order {
+      number
+      status
+      isOnHold
+    }
+  }
+}
+
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "updateWholesaleOrder": {
+      "userErrors": [],
+      "order": {
+        "number": 39266,
+        "status": "PROCESSING",
+        "isOnHold": false
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 12,
+    "permissionsUsed": [
+      "Order:write",
+      "Order:read"
+    ],
+    "appVersion": "v0.31.0"
+  }
+}
+```
+
 
 <!--
 #### Request
