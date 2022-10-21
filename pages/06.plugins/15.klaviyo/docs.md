@@ -45,6 +45,16 @@ Image size you want to send over to Klaviyo for all the products. Select a prope
 ### Cart link
 Cart link: should be set to the URL your webshop uses for cart abandonment, e.g. https://example.com/abandoned-cart/{selection}
 
+### Product page URL
+
+If you want to use URLs to the products, you can either provide the URL to the product when the product is added to the selection in the APIs ([CheckoutAPI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI&urls.primaryName=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_), [ShopAPI](https://docs.centra.com/swagger-ui/?api=ShopAPI&urls.primaryName=ShopAPI#/default/post_selections__selection__items__item_)), or you can define a `Product page URL` which will be combined with the display URI of the product from Centra. 
+For product page URL and bundle product, we will use bundle URI for all items connected with bundle. We will replace `{display_uri}` part with correct product URI.
+Example URL: https://example.com/product/{display_uri}.
+
+[notice-box=info]
+Parameter productUrl has higher priority than product page URL.
+[/notice-box]
+
 ### Historical data export
 Our integration allow you to export your data to Klaviyo. This action base on customer account, and customer account is main entrance to data. What does it mean? By choosing date in Transfer historical date starting from, you are choosing the date in history when the customer account was created. For example, from the image above, customer accounts newer than (or exactly this date) 05-10-2022 00:00:00 will be transferred to Klaviyo.
 
