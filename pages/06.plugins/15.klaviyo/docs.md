@@ -48,7 +48,7 @@ Cart link: should be set to the URL your webshop uses for cart abandonment, e.g.
 ### Product page URL
 
 If you want to use URLs to the products, you can either provide the URL to the product when the product is added to the selection in the APIs ([CheckoutAPI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI&urls.primaryName=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_), [ShopAPI](https://docs.centra.com/swagger-ui/?api=ShopAPI&urls.primaryName=ShopAPI#/default/post_selections__selection__items__item_)), or you can define a `Product page URL` which will be combined with the display URI of the product from Centra. 
-For product page URL and bundle product, we will use bundle URI for all items connected with bundle. We will replace `{display_uri}` part with correct product URI.
+For product page URL and bundle product, we will use bundle URI for all items connected with bundle. We will replace `{display_uri}` part with correct display URI.
 Example URL: https://example.com/product/{display_uri}.
 
 [notice-box=info]
