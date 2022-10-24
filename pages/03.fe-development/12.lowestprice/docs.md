@@ -16,9 +16,38 @@ These prices are calculated for each valid combination of:
 - price list
 - product variant
 
+Only buyable product prices will be recorded.
+That means that all the following conditions must be met for a price to be considered during calculations:
+- active product display
+- store is retail
+- product variant is enabled for market
+- product variant is active
+- price list is active
+
+Recorded prices will be adjusted by any relevant campaigns that met the following conditions:
+- the campaign is enabled for market
+- product variant is enabled for the campaign
+- campaign status is active
+- campaign date restrictions are satisfied (start and end dates)
+
+**Vouchers are not considered**.
+
+### What about correcting price errors?
+There is no mechanism in place to correct the historic price. If a price was available, even for a split second, then it will show no matter what.
+That also applies to setting the price to `0` - it will show as `0` in the API.
+
+### When are the prices calculated?
+They are calculated asynchronously on any modification to:
+- campaign
+- market
+- price list
+- product variant
+
+They are also verified daily around midnight.
+
 ### Where can the lowest price be accessed?
 
-In Checkout and Shop APIs.
+In Checkout and Shop APIs. Prices are recorded **only for retail stores**.
 
 In all the places where a product or selection response is returned:
 * Product listing (`POST /products`)
