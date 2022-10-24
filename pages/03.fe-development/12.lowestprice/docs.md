@@ -9,9 +9,9 @@ taxonomy:
 
 ### Price calculation
 
-The lowest price is calculated as the minimal price of the product attainable by using any active campaigns.
+The lowest price is calculated as the minimal price of a product attainable by using any active campaigns.
 
-Those prices are calculated for each valid combination of:
+These prices are calculated for each valid combination of:
 - market
 - price list
 - product variant
@@ -20,7 +20,7 @@ Those prices are calculated for each valid combination of:
 
 In Checkout and Shop APIs.
 
-In all the places where standard product response is returned:
+In all the places where a product or selection response is returned:
 * Product listing (`POST /products`)
 * Product details (`GET /products/{productId}`)
 * Bundles (`GET/POST /bundles/{productId}`)
