@@ -9,25 +9,52 @@ taxonomy:
 
 ### Price calculation
 
-Lowest price is calculated as minimal price of product attainable by using any active campaigns.
+The lowest price is calculated as the minimal price of a product attainable by using any active campaigns.
 
-Those prices are calculated for each valid combination of:
-- store
+These prices are calculated for each valid combination of:
 - market
 - price list
-- product
 - product variant
+
+Only buyable product prices will be recorded.
+That means that all the following conditions must be met for a price to be considered during calculations:
+- active product display
+- store is direct to consumer
+- product display is enabled for given market
+- product variant is active
+- price list is active
+
+Recorded prices will be adjusted by any relevant campaigns that met the following conditions:
+- the campaign is enabled for market
+- product variant is enabled for the campaign
+- campaign status is active
+- campaign date restrictions are satisfied (start and end dates)
+
+**Vouchers are not considered**.
+
+### What about correcting price errors?
+There is no mechanism in place to correct a historical price. If a price was available, even for a split second, then it will show no matter what.
+That also applies to setting the price to `0` - it will show as `0` in the API.
+
+### When are the prices calculated?
+They are calculated asynchronously on any modification to a:
+- campaign
+- market
+- price list
+- product variant
+
+They are also verified daily around midnight.
 
 ### Where can the lowest price be accessed?
 
-In Checkout and Shop APIs.
+In Checkout and Shop APIs. Prices are recorded **only for direct to consumer stores**.
 
-In all the places where standard product response is returned:
-* product listing (`POST /products`)
-* product details (`GET /products/{productId}`)
-* bundles (`GET/PUT /bundles/{productId}`)
-* receipt items (`GET /recipt`)
-* selection items (`GET/PUT /selection`, `POST /items/{item}`, `POST/DELETE /lines/{line}`)
+In all the places where a product or selection response is returned:
+* Product listing (`POST /products`)
+* Product details (`GET /products/{productId}`)
+* Bundles (`GET/POST /bundles/{productId}`)
+* Receipt (`GET /receipt`)
+* Selection (`GET/PUT /selection`, `POST /items/{item}`, `POST/DELETE /lines/{line}`)
 * etc.
 
 There will be a new field `lowestPrice` in the response:
