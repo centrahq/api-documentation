@@ -42,7 +42,7 @@ New config:
 
 ### Custom relation types
 
-[https://docs.centra.com/fe-development/fe-elements#custom-relation-types-for-product-displays](Learn how to configure custom display relations in our FE guide).
+[Learn how to configure custom display relations in our FE guide](/fe-development/fe-elements#custom-relation-types-for-product-displays).
 
 Relation types should have been moved from the `PRODUCT` section to a separate entry.
 
@@ -54,7 +54,7 @@ New config:
 
 ### Custom attribute types
 
-[https://docs.centra.com/overview/custom-attributes](Learn how to configure custom attributes).
+[Learn how to configure custom attributes](/overview/custom-attributes).
 
 Every attribute type definition is editable separately. The configuration structure remains the same.
 
