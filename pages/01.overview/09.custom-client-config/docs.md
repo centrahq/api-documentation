@@ -1,5 +1,5 @@
 ---
-title: Add more details: Custom client configuration in Centra backend
+title: Custom client configuration in Centra backend
 altTitle: Custom client config
 excerpt: Add custom settings and attributes based on customer's requirements
 taxonomy:
