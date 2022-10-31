@@ -44,7 +44,7 @@ New config:
 
 [Learn how to configure custom display relations in our FE guide](/fe-development/fe-elements#custom-relation-types-for-product-displays).
 
-Relation types should have been moved from the `PRODUCT` section to a separate entry.
+Relation types have been moved from the `PRODUCT` section to a separate entry.
 
 Old config:  
 ![](custom-relationtypes-old.png)
