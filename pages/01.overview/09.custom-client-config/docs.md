@@ -24,7 +24,7 @@ If you can’t see it, it may be because:
 ### The new config update process
 
 0. (One time) Use a shared Slack channel to let us know you want to turn this feature on.  
-1. Do config changes in a QA instance.  
+1. Make config changes in a QA instance.  
 2. Test the changes in the QA instance.  
 3. Notify us that the config should be copied to production.
 
