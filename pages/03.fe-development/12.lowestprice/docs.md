@@ -13,7 +13,7 @@ The lowest price is calculated as the minimal price of a product attainable by u
 
 These prices are calculated for each valid combination of:
 - market
-- price list
+- pricelist
 - product variant
 
 Only buyable product prices will be recorded.
