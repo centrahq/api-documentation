@@ -71,6 +71,80 @@ During data export, the following event types will be sent:
 - Cancelled Order
 - Refunded Order
 
+### Product catalog synchronization
+You are able to run catalog synchronization with Klaviyo account. To run synchronization, in Klaviyo plugin, change `Synchronize product catalog to Klaviyo` to `Yes` (default `No`) and save plugin. 
+
+In the Product catalog synchronisation status line, you will see current transfer status.
+
+![catalog_sync_plugin.png](catalog_sync_plugin.png)
+
+[notice-box=info]
+Catalog synchronization cannot be run simultaneously with historical data export or during historical data import. Please wait until the end of historical data synchronization to be able to run catalog synchronization.
+[/notice-box]
+
+#### Catalog update synchronization
+We run changes synchronization right after saving the product in Centra, but this may take a while to see changes in Klaviyo catalog. 
+
+### Catalog product data reference
+
+```json
+{
+    "external_id" : "1",
+    "title" : "Test Product",
+    "description" : "desc",
+    "url" : "http://localhost/product/test-product",
+    "image_thumbnail_url" : "http://localhost/client/dynamic//images/1_9adfeff6f2-red-amsbig.jpg",
+    "image_full_url" : "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg",
+    "custom_metadata" : {
+        "ProductName": {
+            "default": "Test Product",
+            "de": "Produkt testen"
+        },
+        "VariantName": {
+            "default": "Red",
+            "de": "Rot"
+        },
+        "Description": {
+            "default": "Product description",
+            "de": "Produkt bezeichnung"
+        },
+        "CanonicalCategory": {
+            "sv": "Handla",
+            "en": "Shop",
+            "de": "Shop",
+            "default": "Shop"
+        },
+        "Price": {
+            "USD": 9.00,
+            "SEK": 100,
+            "JPY": 32400
+        },
+        "Brand": "Brand",
+        "Collection": "Collection",
+        "ProductType": "product"
+    }
+}
+```
+
+### Catalog product data in template
+
+To find full documentation about building email template in Klaviyo please check Klaviyo documentation site. 
+
+#### Localized product data 
+
+Our Klaviyo plugin allows you to send localized data with your emails. You can use static lookup (like `|lookup:"SEK"`) or more dynamic, based on variable (like `|lookup:customer_lang`)
+
+```html
+{% with customer_lang=person|lookup:"Language"%}
+    {% catalog event.ItemID %}
+        Description: {{ catalog_item.metadata.Description|lookup:"default"}} <br />
+        Title: {{ catalog_item.title }}<br /><br /><br />
+        Price SEK: {{ catalog_item.metadata|lookup:"Price"|string_to_object|lookup:"SEK"}}<br />
+        Product name in customer language: {{ catalog_item.metadata|lookup:"ProductName"|string_to_object|lookup:customer_lang}}<br /><br />
+    {% endcatalog %}
+{% endwith %}
+```
+
 ## Transactional emails
 
 ### Transactional flows configuration
