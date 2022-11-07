@@ -85,6 +85,10 @@ Catalog synchronization cannot be run simultaneously with historical data export
 #### Catalog update synchronization
 We run changes synchronization right after saving the product in Centra, but this may take a while to see changes in Klaviyo catalog. 
 
+[notice-box=info]
+You can run full synchronization more than once if needed, but in general synchronization of changes should be handled automatically.
+[/notice-box]
+
 ### Catalog product data reference
 
 ```json
