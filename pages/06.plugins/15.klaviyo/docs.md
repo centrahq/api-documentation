@@ -361,6 +361,118 @@ Cancelled Order event data structure is the same as for `Confirmed Order` and `R
 }
 ```
 
+#### Changed Subscription Status
+
+```json
+{
+    "$event_id": "1-1666600262",
+    "PaymentType": "cc",
+    "PaymentDescription": "Mastercard",
+    "ShippingCostInCustomerCurrency": 0,
+    "Reason": "manual user change",
+    "OldStatus": "active",
+    "NewStatus": "active",
+    "Subscription": {
+        "SubscriptionId": 1,
+        "CreatedAt": "2022-10-24 10:31:02",
+        "IntervalType": "day",
+        "IntervalValue": 30,
+        "IntervalFormatted": "Every 30 days",
+        "DiscountPercent": 0
+    },
+    "SubscriptionContractAddress": {
+        "FirstName": "Jane",
+        "LastName": "Doe",
+        "Company": "",
+        "Address1": "Sveavägen 9",
+        "Address2": "",
+        "City": "Stockholm",
+        "Region": "",
+        "RegionCode": "",
+        "Country": "Sweden",
+        "CountryCode": "SE",
+        "Zip": "111 57",
+        "Phone": "+4687203333",
+        "Email": "support@centra.com"
+    }
+}
+```
+
+#### Failed Subscription Payment
+
+```json
+{
+    "$event_id": "11-12-1666600262",
+    "PaymentType": "cc",
+    "PaymentDescription": "Mastercard",
+    "ShippingCostInCustomerCurrency": 0,
+    "Subscriptions": [
+        {
+            "SubscriptionId": 1,
+            "CreatedAt": "2022-10-24 10:31:02",
+            "IntervalType": "day",
+            "IntervalValue": 30,
+            "IntervalFormatted": "Every 30 days",
+            "DiscountPercent": 0
+        }
+    ],
+    "SubscriptionContractAddress": {
+        "FirstName": "Jane",
+        "LastName": "Doe",
+        "Company": "",
+        "Address1": "Sveavägen 9",
+        "Address2": "",
+        "City": "Stockholm",
+        "Region": "",
+        "RegionCode": "",
+        "Country": "Sweden",
+        "CountryCode": "SE",
+        "Zip": "111 57",
+        "Phone": "+4687203333",
+        "Email": "support@centra.com"
+    },
+    "ManageSubscriptionPaymentMethodsUrl": "https://example.com/subscription/payment/?id=123"
+}
+```
+
+#### Failed Subscription Payment Update and Successful Subscription Payment Update
+
+```json
+{
+  "$event_id": "11-1666600262",
+  "SubscriptionContractId": 11,
+  "PaymentType": "cc",
+  "PaymentDescription": "Mastercard",
+  "ShippingCostInCustomerCurrency": 0,
+  "Subscriptions": [
+    {
+      "SubscriptionId": 1,
+      "CreatedAt": "2022-10-24 10:31:02",
+      "IntervalType": "day",
+      "IntervalValue": 30,
+      "IntervalFormatted": "Every 30 days",
+      "DiscountPercent": 0
+    }
+  ],
+  "SubscriptionContractAddress": {
+    "FirstName": "Jane",
+    "LastName": "Doe",
+    "Company": "",
+    "Address1": "Sveavägen 9",
+    "Address2": "",
+    "City": "Stockholm",
+    "Region": "",
+    "RegionCode": "",
+    "Country": "Sweden",
+    "CountryCode": "SE",
+    "Zip": "111 57",
+    "Phone": "+4687203333",
+    "Email": "support@centra.com"
+  },
+  "ManageSubscriptionPaymentMethodsUrl": "https://example.com/subscription/payment/?id=123"
+}
+```
+
 ## Subscription orders
 
 `Placed Order` event supports 3 `OrderType` values:
