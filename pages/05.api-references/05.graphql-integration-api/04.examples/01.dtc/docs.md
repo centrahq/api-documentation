@@ -426,3 +426,139 @@ Use this query to fetch a Display, filtering by id.
 
 ---
 
+## Post-sale order processing
+
+### Common code fragments
+
+Use those with any and all of the below examples!
+
+```gql
+fragment orderInfo on Order {
+  id
+  number
+  isOnHold
+
+  lines(includeFullyCancelled: true) {
+    id
+    product { name }
+    quantity
+    taxPercent
+    unitPrice {
+      ...basicMonetaryFields
+    }
+    hasAnyDiscount
+    unitOriginalPrice {
+      ...basicMonetaryFields
+    }
+    lineValue { 
+      ...basicMonetaryFields
+    }
+  }
+  discountsApplied {
+    value {
+      ...basicMonetaryFields
+    }
+    date
+  }
+  shippingAddress { ...fullAddress }
+  billingAddress { ...fullAddress }
+
+  ... on DirectToConsumerOrder {
+    customer {
+      email
+      firstName
+      lastName
+    }
+  }
+}
+
+fragment customerId on DirectToConsumerOrder {
+  customer {
+    id
+    email
+  }
+}
+
+fragment fullAddress on Address {
+  firstName
+  lastName
+  address1
+  address2
+  city
+  zipCode
+  stateOrProvince
+  cellPhoneNumber
+  phoneNumber
+  faxNumber
+  email
+  companyName
+  attention
+  vatNumber
+
+  country { id name }
+  state { id name }
+}
+
+fragment basicMonetaryFields on MonetaryValue {
+  value
+  currency { id code }
+  conversionRate
+}
+```
+
+### Getting a specific order
+
+This would likely be the first API call you make in a response to receiving an `order` type webhook with the order number. Remember, the integer order `number` is different from the hash order `id`. You can use them both to uniquely identify the order.
+
+#### Request
+
+```gql
+query getOrders {
+  orders(where: { number: 14 }) {
+    number
+    status
+    isOnHold
+    shippingAddress {
+      firstName
+      lastName
+      city
+    }
+    ...customerId
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "orders": [
+      {
+        "number": 14,
+        "status": "PENDING",
+        "isOnHold": true,
+        "shippingAddress": {
+          "firstName": "Jon",
+          "lastName": "Snow",
+          "city": "Winterfell"
+        },
+        "customer": {
+          "id": 4,
+          "email": "jon.snow@example.com"
+        }
+      }
+    ]
+  },
+  "extensions": {
+    "complexity": 229,
+    "permissionsUsed": [
+      "Order:read",
+      "Order.shippingAddress:read",
+      "Purchaser:read"
+    ],
+    "appVersion": "v0.32.3"
+  }
+}
+```
+
