@@ -563,3 +563,410 @@ query getOrders {
 }
 ```
 
+### Putting order on hold
+
+Before we move forward, remember that you can always put a `Hold` flag on the your order at any order status before it's completed (remember, [Hold is not a status](/overview/orderflow#order-status-explained)), so that you can have a perfectly controllable way of halting/resuming order processing at any stage through your integration. Same order can be resumed either via the API, or by manually clicking the "Resume" button in the AMS order view.
+
+```gql
+mutation updateDtcPutOnHold {
+  updateDirectToConsumerOrder(
+    order: {
+      number: 14
+    }
+    input: {
+      isOnHold: true
+      holdStatusChangeReason: "Reason to hold, e.g. suspicious payment"
+    }
+  ) {
+    order {
+      number
+      status
+      isOnHold
+    }
+    userErrors { message path }
+  }
+}
+```
+
+### Updating basic order fields
+
+If you wish to update fields like shipping/billing address (except country), purchaser info and/or `isInternal` flag, they can do so by simply providing those fields in the input. For DTC orders, it is also possible to change customer.
+
+#### Request
+
+```gql
+mutation updateDtcBasicFields {
+  updateDirectToConsumerOrder(
+    order: {
+      # id: "1497ccf644db871e1e4026d101bde6f3"
+      number: 14
+    }
+    input: {
+      shippingAddress: {
+        firstName: "Jon"
+        lastName: "Snow"
+        address1: "Teststr. 1"
+        address2: "1b"
+        city: "Stockholm"
+        zipCode: "12345"
+        email: "jon.snow@example.com"
+      }
+      billingAddress: {
+        firstName: "Jon"
+        lastName: "Snow"
+        address1: "Teststr. 1"
+        address2: "1b"
+        city: "Stockholm"
+        zipCode: "12345"
+        email: "jon.snow@example.com"
+      }
+      customer: {
+        id: 4
+      }
+      customerInfo: {
+        firstName: "Jon"
+        lastName: "Snow"
+        email: "jon.snow@example.com"
+      }
+      isInternal: false
+    }
+  ) {
+    order {
+      ...orderInfo
+    }
+    userErrors { message path }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "updateDirectToConsumerOrder": {
+      "order": {
+        "id": "1497ccf644db871e1e4026d101bde6f3",
+        "number": 14,
+        "isOnHold": true,
+        "lines": [
+          {
+            "id": 68,
+            "product": {
+              "name": "Basic Jacket"
+            },
+            "quantity": 10,
+            "taxPercent": 25,
+            "unitPrice": {
+              "value": 675,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            },
+            "hasAnyDiscount": false,
+            "unitOriginalPrice": {
+              "value": 675,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            },
+            "lineValue": {
+              "value": 6750,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            }
+          }
+        ],
+        "discountsApplied": [
+          {
+            "value": {
+              "value": 0,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            },
+            "date": "2022-11-09T13:15:11+01:00"
+          }
+        ],
+        "shippingAddress": {
+          "firstName": "Jon",
+          "lastName": "Snow",
+          "address1": "Teststr. 1",
+          "address2": "1b",
+          "city": "Stockholm",
+          "zipCode": "12345",
+          "stateOrProvince": null,
+          "cellPhoneNumber": null,
+          "phoneNumber": "+4684026100",
+          "faxNumber": null,
+          "email": "jon.snow@example.com",
+          "companyName": null,
+          "attention": null,
+          "vatNumber": null,
+          "country": {
+            "id": 6,
+            "name": "Sweden"
+          },
+          "state": null
+        },
+        "billingAddress": {
+          "firstName": "Jon",
+          "lastName": "Snow",
+          "address1": "Teststr. 1",
+          "address2": "1b",
+          "city": "Stockholm",
+          "zipCode": "12345",
+          "stateOrProvince": null,
+          "cellPhoneNumber": null,
+          "phoneNumber": "+4684026100",
+          "faxNumber": null,
+          "email": "jon.snow@example.com",
+          "companyName": null,
+          "attention": null,
+          "vatNumber": null,
+          "country": {
+            "id": 6,
+            "name": "Sweden"
+          },
+          "state": null
+        },
+        "customer": {
+          "email": "jon.snow@example.com",
+          "firstName": "Jon",
+          "lastName": "Snow"
+        }
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 229,
+    "permissionsUsed": [
+      "Order:write",
+      "Order:read",
+      "Order.shippingAddress:read",
+      "Order.billingAddress:read",
+      "Purchaser:read",
+      "Product:read"
+    ],
+    "appVersion": "v0.32.3"
+  }
+}
+```
+
+### Cancelling lines on an order
+
+It is possible to cancel lines of an order, those that are yet to be shipped, using an update mutation. In this case DTC and wholesale flows are the same. Along with decreasing quantity of a corresponding line, it also unallocates allocated items (according to the selected strategy) and/or unlinks cancelled items from the supplier module. If given quantity is full quantity of the line, it will be cancelled fully, gaining cancelled status and disappearing from certain views. Affected lines must exist and belong to the order, quantities must not be negative or exceed unshipped quantity.
+
+#### Request
+
+If you wish, you can replace `stockAction: RELEASE_BACK_TO_WAREHOUSE` with `REMOVE_FROM_STOCK`.
+
+```gql
+mutation updateDtcCancel {
+  updateDirectToConsumerOrder(
+    order: {
+      number: 14
+    }
+    input: {
+      cancelLines: [
+        {
+          line: {
+            id: 68
+          }
+          quantity: 1
+          stockAction: RELEASE_BACK_TO_WAREHOUSE
+        }
+      ]
+      cancellationComment: "Some good reason"
+    }
+  ) {
+    order {
+      ...orderInfo
+    }
+    userErrors { message path }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "updateDirectToConsumerOrder": {
+      "order": {
+        "id": "1497ccf644db871e1e4026d101bde6f3",
+        "number": 14,
+        "status": "PENDING",
+        "isOnHold": true,
+        "lines": [
+          {
+            "id": 68,
+            "product": {
+              "name": "Basic Jacket"
+            },
+            "quantity": 9,
+            "taxPercent": 25,
+            "unitPrice": {
+              "value": 675,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            },
+            "hasAnyDiscount": false,
+            "unitOriginalPrice": {
+              "value": 675,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            },
+            "lineValue": {
+              "value": 6075,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            }
+          }
+        ],
+        "discountsApplied": [
+          {
+            "value": {
+              "value": 0,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            },
+            "date": "2022-11-09T13:15:11+01:00"
+          }
+        ],
+        "shippingAddress": {
+          "firstName": "Jon",
+          "lastName": "Snow",
+          "address1": "Teststr. 1",
+          "address2": "1b",
+          "city": "Stockholm",
+          "zipCode": "12345",
+          "stateOrProvince": null,
+          "cellPhoneNumber": null,
+          "phoneNumber": "+4684026100",
+          "faxNumber": null,
+          "email": "jon.snow@example.com",
+          "companyName": null,
+          "attention": null,
+          "vatNumber": null,
+          "country": {
+            "id": 6,
+            "name": "Sweden"
+          },
+          "state": null
+        },
+        "billingAddress": {
+          "firstName": "Jon",
+          "lastName": "Snow",
+          "address1": "Teststr. 1",
+          "address2": "1b",
+          "city": "Stockholm",
+          "zipCode": "12345",
+          "stateOrProvince": null,
+          "cellPhoneNumber": null,
+          "phoneNumber": "+4684026100",
+          "faxNumber": null,
+          "email": "jon.snow@example.com",
+          "companyName": null,
+          "attention": null,
+          "vatNumber": null,
+          "country": {
+            "id": 6,
+            "name": "Sweden"
+          },
+          "state": null
+        },
+        "customer": {
+          "email": "jon.snow@example.com",
+          "firstName": "Jon",
+          "lastName": "Snow"
+        }
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 229,
+    "permissionsUsed": [
+      "Order:write",
+      "Order:read",
+      "Order.shippingAddress:read",
+      "Order.billingAddress:read",
+      "Purchaser:read",
+      "Product:read"
+    ],
+    "appVersion": "v0.32.3"
+  }
+}
+```
+
+### Confirming the order
+
+This is the only time in Centra when you set the order status directly. Once triggered, order confirmation e-mail will be sent. Next status change will be to Processing when you create the first shipment, and then to Completed, once the final shipment is completed and all order lines items have been either shipped or cancelled. [Click here if you need a refresher on the standard order flow in Centra](/overview/orderflow#order-flow).
+
+#### Request
+
+```gql
+mutation confirmOrder {
+  confirmOrder(
+    input: {
+      order: {
+        number: 14
+      }
+    }
+  ) {
+    order {
+      number
+      status
+    }
+    userErrors { message path }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "confirmOrder": {
+      "order": {
+        "number": 14,
+        "status": "CONFIRMED"
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 112,
+    "permissionsUsed": [
+      "Order:write",
+      "Order:read"
+    ],
+    "appVersion": "v0.32.3"
+  }
+}
+```
