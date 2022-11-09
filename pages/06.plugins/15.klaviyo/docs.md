@@ -96,7 +96,7 @@ Metric types currently supported by Centra:
   - `Failed Subscription Payment Update`
   - `Successful Subscription Payment Update`
 
-Extra metrics for manual resend email from Centra, with exactly the same logic as regular ones, but requires own event type:
+Extra metrics for manual resend email from Centra, with exactly the same data as regular ones, but requires own event type:
 
 - `Placed Order - resend`
 - `Ordered Product - resend`
