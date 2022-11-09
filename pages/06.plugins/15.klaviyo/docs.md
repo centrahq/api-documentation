@@ -96,6 +96,18 @@ Metric types currently supported by Centra:
   - `Failed Subscription Payment Update`
   - `Successful Subscription Payment Update`
 
+Extra metrics for manual resend email from Centra, with exactly the same logic as regular ones, but requires own event type:
+
+- `Placed Order - resend`
+- `Ordered Product - resend`
+- `Confirmed Order - resend`
+- `Cancelled Order - resend`
+- `Shipping Update - resend`
+- `Refunded Order - resend`
+- `Gift Certificate - resend`
+
+Because we have additional event types for resend, it will not have impact for your regular reports.
+
 [notice-box=info]
 When creating a flow for a certain metric in Klaviyo, tags need to be matching the tags listed above.
 [/notice-box]
