@@ -1869,6 +1869,421 @@ mutation confirmOrder {
 }
 ```
 
+### Creating a shipment
+
+If you have an order that you wish to expedite you can proceed to create a shipment for it. The order has to be confirmed and can not be locked or on hold.
+
+#### Request
+
+In this example, we will create a single shipment for all remaining order lines and quantities of our example B2B order. If you wish to create partial shipments, simply skip some of the order lines and quantities you are not prepared to ship at this time.
+
+```gql
+mutation createShipment {
+  createShipment (
+    input: {
+      order: { number: 3957 }
+      lines: [{ orderLine: { id: 17231 }, quantity: 1 }]
+      shipmentInfo: {
+        carrier: "Carrier name"
+        service: "Service name"
+        packagesNumber: 1
+        trackingNumber: "1234trackingcode"
+        returnTrackingNumber: "1234returncode"
+        internalShippingCost: { currencyIsoCode: "SEK", value: 12 }
+      }
+      isGoodToGo: true
+      isPaid: false
+      createdAt: "2022-06-23 15:47:12"
+      shippedAt: null
+      sendEmail: false
+      additionalMessage: "Additional message"
+      allocateDemand: true
+      shipmentMethod: { pluginId: 47 }
+    }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    shipment {
+      ...shipmentDetails
+    }
+  }
+}
+
+fragment shipmentDetails on Shipment {  
+  id
+  number
+  createdAt
+  updatedAt
+  isGoodToGo
+  isShipped
+  isPaid
+  paidAt
+  additionalMessage
+  isShipped
+  shippedAt
+  numberOfPackages  
+  trackingNumber
+  returnTrackingNumber
+  internalShippingCost {
+    value
+  }  
+  grandTotal(includingTax: true) {
+    value
+  }
+  carrierInformation {
+    carrierName
+    serviceName
+  }
+  adminUser {
+    id
+  }
+  discountsApplied {
+    value {
+      formattedValue
+    }
+  }
+  lines {
+    id
+    quantity
+    lineValue {
+      formattedValue
+    }
+  }
+  shippingAddress {
+    firstName
+    lastName
+    country {
+      name
+      code
+    }
+    state {
+      name
+      code
+    }
+    address1
+    address2
+    city
+    zipCode
+    stateOrProvince
+    cellPhoneNumber
+    phoneNumber
+    faxNumber
+    email
+  }
+  shipmentPlugin {
+    id
+    status
+    name
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "createShipment": {
+      "userErrors": [],
+      "shipment": {
+        "id": 314,
+        "number": "3957-1",
+        "createdAt": "2022-06-23T15:47:12+02:00",
+        "updatedAt": "2022-11-09T14:55:27+01:00",
+        "isGoodToGo": true,
+        "isShipped": false,
+        "isPaid": false,
+        "paidAt": null,
+        "additionalMessage": "Additional message",
+        "shippedAt": null,
+        "numberOfPackages": 1,
+        "trackingNumber": "1234trackingcode",
+        "returnTrackingNumber": "1234returncode",
+        "internalShippingCost": {
+          "value": 12
+        },
+        "grandTotal": {
+          "value": 1500
+        },
+        "carrierInformation": {
+          "carrierName": "Carrier name",
+          "serviceName": "Service name"
+        },
+        "adminUser": null,
+        "discountsApplied": [],
+        "lines": [
+          {
+            "id": 410,
+            "quantity": 1,
+            "lineValue": {
+              "formattedValue": "1 500.00 SEK"
+            }
+          }
+        ],
+        "shippingAddress": {
+          "firstName": "Jon",
+          "lastName": "Snow",
+          "country": {
+            "name": "Sweden",
+            "code": "SE"
+          },
+          "state": null,
+          "address1": "Teststr. 1",
+          "address2": "1b",
+          "city": "Stockholm",
+          "zipCode": "12345",
+          "stateOrProvince": null,
+          "cellPhoneNumber": null,
+          "phoneNumber": "123456789",
+          "faxNumber": null,
+          "email": "jon.snow@example.com"
+        },
+        "shipmentPlugin": null
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 111,
+    "permissionsUsed": [
+      "Shipment:write",
+      "Shipment:read",
+      "AdminUser:read",
+      "Order:read",
+      "Shipment.shippingAddress:read",
+      "StorePlugin:read"
+    ],
+    "appVersion": "v0.32.3"
+  }
+}
+```
+
+### Updating a shipment - mark as paid
+
+We assume you've collected the payment outside Centra.
+
+#### Request
+
+```gql
+mutation updateShipmentMarkPaid {
+  updateShipment (
+    id: 314
+    input: {
+      isPaid: true
+    }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    shipment {
+      ...shipmentDetails
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "updateShipment": {
+      "userErrors": [],
+      "shipment": {
+        "id": 314,
+        "number": "3957-1",
+        "createdAt": "2022-06-23T15:47:12+02:00",
+        "updatedAt": "2022-11-09T15:15:33+01:00",
+        "isGoodToGo": true,
+        "isShipped": false,
+        "isPaid": true,
+        "paidAt": "2022-11-09T15:15:33+01:00",
+        "additionalMessage": "Additional message",
+        "shippedAt": null,
+        "numberOfPackages": 1,
+        "trackingNumber": "1234trackingcode",
+        "returnTrackingNumber": "1234returncode",
+        "internalShippingCost": {
+          "value": 12
+        },
+        "grandTotal": {
+          "value": 1500
+        },
+        "carrierInformation": {
+          "carrierName": "Carrier name",
+          "serviceName": "Service name"
+        },
+        "adminUser": null,
+        "discountsApplied": [],
+        "lines": [
+          {
+            "id": 410,
+            "quantity": 1,
+            "lineValue": {
+              "formattedValue": "1 500.00 SEK"
+            }
+          }
+        ],
+        "shippingAddress": {
+          "firstName": "Jon",
+          "lastName": "Snow",
+          "country": {
+            "name": "Sweden",
+            "code": "SE"
+          },
+          "state": null,
+          "address1": "Teststr. 1",
+          "address2": "1b",
+          "city": "Stockholm",
+          "zipCode": "12345",
+          "stateOrProvince": null,
+          "cellPhoneNumber": null,
+          "phoneNumber": "123456789",
+          "faxNumber": null,
+          "email": "jon.snow@example.com"
+        },
+        "shipmentPlugin": null
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 111,
+    "permissionsUsed": [
+      "Shipment:write",
+      "Shipment:read",
+      "AdminUser:read",
+      "Order:read",
+      "Shipment.shippingAddress:read",
+      "StorePlugin:read"
+    ],
+    "appVersion": "v0.32.3"
+  }
+}
+```
+
+### Completing a shipment
+
+Finally, when shipment is good to go and paid for, you can complete it - logically, it means the package left your warehouse. This is also the right moment to trigger a shipment confirmation e-mail to your purchaser.
+
+#### Request
+
+```gql
+mutation completeShipment {
+  completeShipment (
+    id: 314
+    input: {
+      shippedAt: "2022-11-09T15:18:33+01:00"
+      sendEmail: true
+    }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    shipment {
+      ...shipmentDetails
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "completeShipment": {
+      "userErrors": [],
+      "shipment": {
+        "id": 314,
+        "number": "3957-1",
+        "createdAt": "2022-06-23T15:47:12+02:00",
+        "updatedAt": "2022-11-09T15:19:26+01:00",
+        "isGoodToGo": true,
+        "isShipped": true,
+        "isPaid": true,
+        "paidAt": "2022-11-09T15:15:33+01:00",
+        "additionalMessage": "Additional message",
+        "shippedAt": "2022-11-09T15:18:33+01:00",
+        "numberOfPackages": 1,
+        "trackingNumber": "1234trackingcode",
+        "returnTrackingNumber": "1234returncode",
+        "internalShippingCost": {
+          "value": 12
+        },
+        "grandTotal": {
+          "value": 1500
+        },
+        "carrierInformation": {
+          "carrierName": "Carrier name",
+          "serviceName": "Service name"
+        },
+        "adminUser": null,
+        "discountsApplied": [],
+        "lines": [
+          {
+            "id": 410,
+            "quantity": 1,
+            "lineValue": {
+              "formattedValue": "1 500.00 SEK"
+            }
+          }
+        ],
+        "shippingAddress": {
+          "firstName": "Jon",
+          "lastName": "Snow",
+          "country": {
+            "name": "Sweden",
+            "code": "SE"
+          },
+          "state": null,
+          "address1": "Teststr. 1",
+          "address2": "1b",
+          "city": "Stockholm",
+          "zipCode": "12345",
+          "stateOrProvince": null,
+          "cellPhoneNumber": null,
+          "phoneNumber": "123456789",
+          "faxNumber": null,
+          "email": "jon.snow@example.com"
+        },
+        "shipmentPlugin": null
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 111,
+    "permissionsUsed": [
+      "Shipment:write",
+      "Shipment:read",
+      "AdminUser:read",
+      "Order:read",
+      "Shipment.shippingAddress:read",
+      "StorePlugin:read"
+    ],
+    "appVersion": "v0.32.3"
+  }
+}
+```
+
+### Deleting a shipment
+
+You can only do that if the shipment is not yet shipped and paid for. Otherwise, the shipment should be returned.
+
+#### Request
+
+```gql
+mutation deleteShipment {
+  deleteShipment(id: 312) {
+    userErrors {
+      message
+      path
+    }
+  }
+}
+```
 
 <!--
 #### Request
