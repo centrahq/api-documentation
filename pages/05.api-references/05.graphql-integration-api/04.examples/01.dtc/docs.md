@@ -590,7 +590,7 @@ mutation updateDtcPutOnHold {
 
 ### Updating basic order fields
 
-If you wish to update fields like shipping/billing address (except country), purchaser info and/or `isInternal` flag, they can do so by simply providing those fields in the input. For DTC orders, it is also possible to change customer.
+If you wish to update fields like shipping/billing address (except country), purchaser info and/or `isInternal` flag, you can do so by simply providing those fields in the input. For DTC orders, it is also possible to change customer.
 
 #### Request
 
