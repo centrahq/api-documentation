@@ -6,6 +6,201 @@ category: docs
 ---
 
 
+### Fetching ALL the data
+
+We hope this query can be used as a basis and inspiration for your new integration, and convince you how powerful GraphQL really is. :)  
+For those of you who are looking to re-write their SOAP PIM/ERP integrations, this example would be _somewhat_ similar to how much order details you are used to seeing in your `order` SOAP events. Enjoy!
+
+```GraphQL
+query orders ($page: Int) {
+  orders (limit: 10, page: $page) {
+    id
+    number
+    store {
+      type
+      id
+    }
+    status
+    grandTotal {
+      value
+      currency {
+        code
+      }
+    }
+    currencyBaseRate
+    createdAt
+
+    ...buyerData
+    ...accountData
+    ...delwinData
+
+    totals {
+      shipping { ...monetary }
+      handling { ...monetary }
+      taxAdded { ...monetary }
+      taxDeducted { ...monetary }
+      taxIncluded { ...monetary }
+    }
+    
+    shippingPriceGroup {
+      shippingOption {
+        name
+        uri
+        id
+      }
+    }
+
+    ...vouchers
+    ...paymentInfo
+    
+    lines {
+      ...orderLine
+    }
+    
+    shippingAddress {
+      ...address
+    }
+    billingAddress {
+      ...address
+    }
+    
+    internalComment
+    
+    ...on WholesaleOrder {
+      purchaseOrderNumber
+    }
+    
+    market { id, name }
+    pricelist { id, name }
+  }
+
+  baseCurrency: currencies(where: { isBase: true }) {
+    code
+  }
+}
+
+fragment monetary on MonetaryValue {
+  value
+}
+
+fragment buyerData on WholesaleOrder {
+  buyer {
+    id
+    firstName
+    lastName
+    email
+  }
+}
+
+fragment accountData on WholesaleOrder {
+  account {
+    id
+    name
+    salesRepresentative {
+      id
+      email
+      name
+      commissionPercent
+    }
+    paymentTerms {
+      id
+      description
+    }
+    shippingTerms {
+      id
+      description
+    }
+    carrierInformation {
+      carrierName
+      serviceName
+      accountIdentifier
+      taxId
+    }
+    websiteUrl
+  }
+}
+
+fragment delwinData on WholesaleOrder {
+  deliveryWindows {
+    id
+    name
+    __typename
+    ... on PreorderDeliveryWindow {
+      deliveryStartDate
+      deliveryEndDate
+    }
+  }
+}
+
+fragment vouchers on Order {
+  discountsApplied {
+    value {
+      ...monetary 
+    }
+    ... on AppliedDiscount {
+      discount {
+        name
+        code
+        type
+      }
+    }
+  }
+}
+
+fragment paymentInfo on Order {
+  paymentMethod {
+    uri
+    plugin
+  }
+
+  paymentHistory {
+    id
+    createdAt
+    status
+    entryType
+    externalReference
+    value {
+      ...monetary 
+    }
+    currencyBaseRate
+  }
+}
+
+fragment orderLine on OrderLine {
+  id
+  taxPercent
+  product { id, name }
+  productVariant { id, name }
+  productSize { SKU, GTIN, description, preorder }
+  brand { id, name }
+  unitOriginalPrice { ...monetary }
+  unitPrice { ...monetary }
+  discountPercent
+  quantity
+  cancelledQuantity
+  lineValue { ...monetary }
+  comment
+}
+
+fragment address on Address {
+  companyName
+  attention
+  firstName
+  lastName
+  address1
+  address2
+  city
+  stateOrProvince
+  zipCode
+  country { name, code }
+  email
+  phoneNumber
+  cellPhoneNumber
+  faxNumber
+  vatNumber
+}
+```
+
 ### All markets with countries for store ID 1
 
 ```GraphQL
@@ -231,196 +426,3 @@ Use this query to fetch a Display, filtering by id.
 
 ---
 
-### Fetching ALL the data
-
-We hope this query can be used as a basis and inspiration for your new integration, and convince you how powerful GraphQL really is. :)
-
-```GraphQL
-query orders ($page: Int) {
-  orders (limit: 10, page: $page) {
-    id
-    number
-    store {
-      type
-      id
-    }
-    status
-    grandTotal {
-      value
-      currency {
-        code
-      }
-    }
-    currencyBaseRate
-    createdAt
-
-    ...buyerData
-    ...accountData
-    ...delwinData
-
-    totals {
-      shipping { ...monetary }
-      handling { ...monetary }
-      taxAdded { ...monetary }
-      taxDeducted { ...monetary }
-      taxIncluded { ...monetary }
-    }
-    
-    shippingPriceGroup {
-      shippingOption {
-        name
-        uri
-        id
-      }
-    }
-
-    ...vouchers
-    ...paymentInfo
-    
-    lines {
-      ...orderLine
-    }
-    
-    shippingAddress {
-      ...address
-    }
-    billingAddress {
-      ...address
-    }
-    
-    internalComment
-    
-    ...on WholesaleOrder {
-      purchaseOrderNumber
-    }
-    
-    market { id, name }
-    pricelist { id, name }
-  }
-
-  baseCurrency: currencies(where: { isBase: true }) {
-    code
-  }
-}
-
-fragment monetary on MonetaryValue {
-  value
-}
-
-fragment buyerData on WholesaleOrder {
-  buyer {
-    id
-    firstName
-    lastName
-    email
-  }
-}
-
-fragment accountData on WholesaleOrder {
-  account {
-    id
-    name
-    salesRepresentative {
-      id
-      email
-      name
-      commissionPercent
-    }
-    paymentTerms {
-      id
-      description
-    }
-    shippingTerms {
-      id
-      description
-    }
-    carrierInformation {
-      carrierName
-      serviceName
-      accountIdentifier
-      taxId
-    }
-    websiteUrl
-  }
-}
-
-fragment delwinData on WholesaleOrder {
-  deliveryWindows {
-    id
-    name
-    __typename
-    ... on PreorderDeliveryWindow {
-      deliveryStartDate
-      deliveryEndDate
-    }
-  }
-}
-
-fragment vouchers on Order {
-  discountsApplied {
-    value {
-      ...monetary 
-    }
-    ... on AppliedDiscount {
-      discount {
-        name
-        code
-        type
-      }
-    }
-  }
-}
-
-fragment paymentInfo on Order {
-  paymentMethod {
-    uri
-    plugin
-  }
-
-  paymentHistory {
-    id
-    createdAt
-    status
-    entryType
-    externalReference
-    value {
-      ...monetary 
-    }
-    currencyBaseRate
-  }
-}
-
-fragment orderLine on OrderLine {
-  id
-  taxPercent
-  product { id, name }
-  productVariant { id, name }
-  productSize { SKU, GTIN, description, preorder }
-  brand { id, name }
-  unitOriginalPrice { ...monetary }
-  unitPrice { ...monetary }
-  discountPercent
-  quantity
-  cancelledQuantity
-  lineValue { ...monetary }
-  comment
-}
-
-fragment address on Address {
-  companyName
-  attention
-  firstName
-  lastName
-  address1
-  address2
-  city
-  stateOrProvince
-  zipCode
-  country { name, code }
-  email
-  phoneNumber
-  cellPhoneNumber
-  faxNumber
-  vatNumber
-}
-```
