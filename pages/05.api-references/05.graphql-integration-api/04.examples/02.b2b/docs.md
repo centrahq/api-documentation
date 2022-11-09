@@ -1333,6 +1333,542 @@ mutation orderOnHold {
 }
 ```
 
+---
+
+## Post-sale order processing
+
+### Common code fragments
+
+Use those with any and all of the below examples!
+
+```gql
+fragment orderInfo on Order {
+  id
+  number
+  status
+  isOnHold
+
+  lines(includeFullyCancelled: true) {
+    id
+    product { name }
+    quantity
+    taxPercent
+    unitPrice {
+      ...basicMonetaryFields
+    }
+    hasAnyDiscount
+    unitOriginalPrice {
+      ...basicMonetaryFields
+    }
+    lineValue { 
+      ...basicMonetaryFields
+    }
+  }
+  discountsApplied {
+    value {
+      ...basicMonetaryFields
+    }
+    date
+  }
+  shippingAddress { ...fullAddress }
+  billingAddress { ...fullAddress }
+}
+
+fragment fullAddress on Address {
+  firstName
+  lastName
+  address1
+  address2
+  city
+  zipCode
+  stateOrProvince
+  cellPhoneNumber
+  phoneNumber
+  faxNumber
+  email
+  companyName
+  attention
+  vatNumber
+
+  country { id name }
+  state { id name }
+}
+
+fragment basicMonetaryFields on MonetaryValue {
+  value
+  currency { id code }
+  conversionRate
+}
+```
+
+### Getting a specific order
+
+This would likely be the first API call you make in a response to receiving an `order` type webhook with the order number. Remember, the integer order `number` is different from the hash order `id`. You can use them both to uniquely identify the order.
+
+#### Request
+
+```gql
+query getOrders {
+  orders(where: { number: 3957 }) {
+    number
+    status
+    isOnHold
+    shippingAddress {
+      companyName
+      attention
+      city
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "orders": [
+      {
+        "number": 3957,
+        "status": "PENDING",
+        "isOnHold": false,
+        "shippingAddress": {
+          "companyName": "CENTRA",
+          "attention": "Johan",
+          "city": "City"
+        }
+      }
+    ]
+  },
+  "extensions": {
+    "complexity": 229,
+    "permissionsUsed": [
+      "Order:read",
+      "Order.shippingAddress:read"
+    ],
+    "appVersion": "v0.32.3"
+  }
+}
+```
+
+### Updating basic order fields
+
+If you wish to update fields like shipping/billing address (except country) and/or `isInternal` flag, you can do so by simply providing those fields in the input.
+
+#### Request
+
+```gql
+mutation updateWholesaleBasicFields {
+  updateWholesaleOrder(
+    order: {
+      # id: "c8b6e87b1d9408f845a0440d226696df"
+      number: 3957
+    }
+    input: {
+      shippingAddress: {
+        firstName: "Jon"
+        lastName: "Snow"
+        address1: "Teststr. 1"
+        address2: "1b"
+        city: "Stockholm"
+        zipCode: "12345"
+        email: "jon.snow@example.com"
+      }
+      billingAddress: {
+        firstName: "Jon"
+        lastName: "Snow"
+        address1: "Teststr. 1"
+        address2: "1b"
+        city: "Stockholm"
+        zipCode: "12345"
+        email: "jon.snow@example.com"
+      }
+      buyerInfo: {
+        firstName: "Jon"
+        lastName: "Snow"
+        email: "jon.snow@example.com"
+      }
+      isInternal: false
+    }
+  ) {
+    order {
+      ...orderInfo
+    }
+    userErrors { message path }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "updateWholesaleOrder": {
+      "order": {
+        "id": "c8b6e87b1d9408f845a0440d226696df",
+        "number": 3957,
+        "status": "PENDING",
+        "isOnHold": false,
+        "lines": [
+          {
+            "id": 17231,
+            "product": {
+              "name": "90's boot leg "
+            },
+            "quantity": 2,
+            "taxPercent": 0,
+            "unitPrice": {
+              "value": 1500,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            },
+            "hasAnyDiscount": false,
+            "unitOriginalPrice": {
+              "value": 1500,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            },
+            "lineValue": {
+              "value": 3000,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            }
+          }
+        ],
+        "discountsApplied": [
+          {
+            "value": {
+              "value": 30,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            },
+            "date": "2021-03-04T09:05:52+01:00"
+          }
+        ],
+        "shippingAddress": {
+          "firstName": "Jon",
+          "lastName": "Snow",
+          "address1": "Teststr. 1",
+          "address2": "1b",
+          "city": "Stockholm",
+          "zipCode": "12345",
+          "stateOrProvince": null,
+          "cellPhoneNumber": null,
+          "phoneNumber": "123456789",
+          "faxNumber": null,
+          "email": "jon.snow@example.com",
+          "companyName": "CENTRA",
+          "attention": "Johan",
+          "vatNumber": null,
+          "country": {
+            "id": 6,
+            "name": "Sweden"
+          },
+          "state": null
+        },
+        "billingAddress": {
+          "firstName": "Jon",
+          "lastName": "Snow",
+          "address1": "Teststr. 1",
+          "address2": "1b",
+          "city": "Stockholm",
+          "zipCode": "12345",
+          "stateOrProvince": null,
+          "cellPhoneNumber": null,
+          "phoneNumber": "123456789",
+          "faxNumber": null,
+          "email": "jon.snow@example.com",
+          "companyName": "CENTRA",
+          "attention": "Johan",
+          "vatNumber": null,
+          "country": {
+            "id": 6,
+            "name": "Sweden"
+          },
+          "state": null
+        }
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 228,
+    "permissionsUsed": [
+      "Order:write",
+      "Order:read",
+      "Order.shippingAddress:read",
+      "Order.billingAddress:read",
+      "Product:read"
+    ],
+    "appVersion": "v0.32.3"
+  }
+}
+```
+
+### Adding lines to an order
+
+It is possible to add new lines to an order via an update mutation. The logic is really simple: either a completely new line is added, or an existing one is updated (quantity increased) if given item is already present in the order. Like in other integration APIs, unit to add is defined by display and product size. Here's an example:
+
+```gql
+mutation updateWholesaleAddProducts {
+  updateWholesaleOrder(
+    order: {
+      # id: "c8b6e87b1d9408f845a0440d226696df"
+      number: 3957
+    }
+    input: {
+      addLines: [
+        {
+          display: {
+            id: 1
+          }
+          productSize: {
+            id: 1
+          }
+          quantity: 1
+          unitPrice: {
+            value: 110.00
+            currencyIsoCode: "SEK"
+          }
+          taxGroup: {
+            id: 2
+          }
+        }
+      ]
+    }
+  ) {
+    order {
+      ...orderInfo
+    }
+    userErrors { message path }
+  }
+}
+```
+
+### Cancelling lines on an order
+
+It is possible to cancel lines of an order, those that are yet to be shipped, using an update mutation. Along with decreasing quantity of a corresponding line, it also unallocates allocated items (according to the selected strategy) and/or unlinks cancelled items from the supplier module. If given quantity is full quantity of the line, it will be cancelled fully, gaining cancelled status and disappearing from certain views. Affected lines must exist and belong to the order, quantities must not be negative or exceed unshipped quantity.
+
+#### Request
+
+If you wish, you can replace `stockAction: RELEASE_BACK_TO_WAREHOUSE` with `REMOVE_FROM_STOCK`. Below mutation will decrease the first order line quantity by 1.
+
+```gql
+mutation updateWholesaleCancel {
+  updateWholesaleOrder(
+    order: {
+      # id: "c8b6e87b1d9408f845a0440d226696df"
+      number: 3957
+    }
+    input: {
+      cancelLines: [
+        {
+          line: {
+            id: 17231
+          }
+          quantity: 1
+          stockAction: RELEASE_BACK_TO_WAREHOUSE
+        }
+      ]
+      cancellationComment: "Some good reason"
+    }
+  ) {
+    order {
+      ...orderInfo
+    }
+    userErrors { message path }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "updateWholesaleOrder": {
+      "order": {
+        "id": "c8b6e87b1d9408f845a0440d226696df",
+        "number": 3957,
+        "status": "PENDING",
+        "isOnHold": false,
+        "lines": [
+          {
+            "id": 17231,
+            "product": {
+              "name": "90's boot leg "
+            },
+            "quantity": 1,
+            "taxPercent": 0,
+            "unitPrice": {
+              "value": 1500,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            },
+            "hasAnyDiscount": false,
+            "unitOriginalPrice": {
+              "value": 1500,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            },
+            "lineValue": {
+              "value": 1500,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            }
+          }
+        ],
+        "discountsApplied": [
+          {
+            "value": {
+              "value": 30,
+              "currency": {
+                "id": 3,
+                "code": "SEK"
+              },
+              "conversionRate": 1
+            },
+            "date": "2021-03-04T09:05:52+01:00"
+          }
+        ],
+        "shippingAddress": {
+          "firstName": "Jon",
+          "lastName": "Snow",
+          "address1": "Teststr. 1",
+          "address2": "1b",
+          "city": "Stockholm",
+          "zipCode": "12345",
+          "stateOrProvince": null,
+          "cellPhoneNumber": null,
+          "phoneNumber": "123456789",
+          "faxNumber": null,
+          "email": "jon.snow@example.com",
+          "companyName": "CENTRA",
+          "attention": "Johan",
+          "vatNumber": null,
+          "country": {
+            "id": 6,
+            "name": "Sweden"
+          },
+          "state": null
+        },
+        "billingAddress": {
+          "firstName": "Jon",
+          "lastName": "Snow",
+          "address1": "Teststr. 1",
+          "address2": "1b",
+          "city": "Stockholm",
+          "zipCode": "12345",
+          "stateOrProvince": null,
+          "cellPhoneNumber": null,
+          "phoneNumber": "123456789",
+          "faxNumber": null,
+          "email": "jon.snow@example.com",
+          "companyName": "CENTRA",
+          "attention": "Johan",
+          "vatNumber": null,
+          "country": {
+            "id": 6,
+            "name": "Sweden"
+          },
+          "state": null
+        }
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 228,
+    "permissionsUsed": [
+      "Order:write",
+      "Order:read",
+      "Order.shippingAddress:read",
+      "Order.billingAddress:read",
+      "Product:read"
+    ],
+    "appVersion": "v0.32.3"
+  }
+}
+```
+
+### Confirming the order
+
+This is the only time in Centra when you set the order status directly. Once triggered, order confirmation e-mail will be sent. Next status change will be to Processing when you create the first shipment, and then to Completed, once the final shipment is completed and all order lines items have been either shipped or cancelled. [Click here if you need a refresher on the standard order flow in Centra](/overview/orderflow#order-flow).
+
+[notice-box=info]
+You can skip this step and status by enabling the Store Setting `Autoconfirm orders`.
+[/notice-box]
+
+#### Request
+
+```gql
+mutation confirmOrder {
+  confirmOrder(
+    input: {
+      order: {
+        # id: "c8b6e87b1d9408f845a0440d226696df"
+        number: 3957
+      }
+    }
+  ) {
+    order {
+      number
+      status
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "confirmOrder": {
+      "order": {
+        "number": 3957,
+        "status": "CONFIRMED"
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 112,
+    "permissionsUsed": [
+      "Order:write",
+      "Order:read"
+    ],
+    "appVersion": "v0.32.3"
+  }
+}
+```
+
 
 <!--
 #### Request
