@@ -436,6 +436,7 @@ Use those with any and all of the below examples!
 fragment orderInfo on Order {
   id
   number
+  status
   isOnHold
 
   lines(includeFullyCancelled: true) {
