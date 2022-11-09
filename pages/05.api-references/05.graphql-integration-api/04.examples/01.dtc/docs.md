@@ -538,7 +538,7 @@ query getOrders {
       {
         "number": 14,
         "status": "PENDING",
-        "isOnHold": true,
+        "isOnHold": false,
         "shippingAddress": {
           "firstName": "Jon",
           "lastName": "Snow",
@@ -648,7 +648,7 @@ mutation updateDtcBasicFields {
       "order": {
         "id": "1497ccf644db871e1e4026d101bde6f3",
         "number": 14,
-        "isOnHold": true,
+        "isOnHold": false,
         "lines": [
           {
             "id": 68,
@@ -808,7 +808,7 @@ mutation updateDtcCancel {
         "id": "1497ccf644db871e1e4026d101bde6f3",
         "number": 14,
         "status": "PENDING",
-        "isOnHold": true,
+        "isOnHold": false,
         "lines": [
           {
             "id": 68,
