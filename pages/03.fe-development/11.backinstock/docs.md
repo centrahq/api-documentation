@@ -29,7 +29,7 @@ Optional:
 When stock is added in Centra we will check if the modified item has any susbcribers waiting for notification and if so we tell the provider how much stock is available which allows them to send an appropriate amount of notifications. Keep in mind that Centra does not control when and how many notifications are sent. That mechanics is implemented and depends solely on the notification service provider.
 
 [notice-box=info]
-You need to have more FTA stock available than `Minimum stock level`. If you have less stock, Centra will not trigger a back-in-stock update for your product. By default minimum stock value is 10.
+You need to have as much FTA stock as the `Minimum stock level`. If you have less stock, Centra will not trigger a back-in-stock update for your product. Minimum stock value is 10 by default.
 [/notice-box]
 
 ### What about the old newsletter subscribe with products?
