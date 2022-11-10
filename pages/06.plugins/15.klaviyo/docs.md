@@ -1,5 +1,5 @@
 ---
-title: Klaviyo CRM plugin (Beta)
+title: Klaviyo CRM plugin
 altTitle: Klaviyo
 excerpt: Learn all about the Klaviyo CRM plugin.
 taxonomy:
