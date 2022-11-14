@@ -333,6 +333,20 @@ Cancelled Order event data structure is the same as for `Confirmed Order` and `R
 } 
 ```
 
+Additional shipment fields available when Ingrid shipping plugin is enabled and order was placed with this plugin.
+```json
+{
+  "$event_id": "Shipped-113-1",
+  [...]
+  "IngridMethod": "pnl-bua",
+  "IngridConvertedId": "PickupPoint",
+  "IngridPickup": "123",
+  "IngridDoorCode": "",
+  "IngridDeliveryTime": "2022-11-11",
+  "IngridCourierInstruction": ""
+}
+```
+
 #### Gift Certificate
 
 ```json
