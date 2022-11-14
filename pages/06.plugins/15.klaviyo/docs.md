@@ -230,6 +230,24 @@ You can browse all the item and event level variables on the details of certain 
 ProductType variable in Item object can take one of two values: "product" or "bundle".
 [/notice-box]
 
+[notice-box=info]
+Additional shipping fields for Confirmed Order available when Ingrid shipping plugin is enabled and order was placed with this plugin.
+
+```json
+{
+    [...],
+    "Shipping": {
+        [...],
+        "IngridPickupPointAddress": "Grepgatan 40, 25448 Helsingborg, SE",
+        "IngridExpectedDeliveryDate": "2022-11-09 - 2022-11-10",
+        "IngridCarrier": "Instabox",
+        "IngridProduct": "Instabox Express",
+        "IngridShippingMethod": "isb-express"
+    }
+}
+```
+[/notice-box]
+
 #### Placed Order
 
 Placed Order event data structure is the same as for `Confirmed Order` and `Refunded Order` events but with extra field `OrderType`
@@ -247,6 +265,24 @@ OrderType variable in Item object can take one of three values:
 - "Recurring Subscription Payment" (for renewal or recurring orders for pre-existing subscriptions)
 
 "New Subscription" type of order will contain additional properties with subscription information on items purchased in subscription model. See `Subscription orders` section for more information.
+[/notice-box]
+
+[notice-box=info]
+Additional shipping fields available when Ingrid shipping plugin is enabled and order was placed with this plugin.
+
+```json
+{
+    [...],
+    "Shipping": {
+        [...],    
+        "IngridPickupPointAddress": "Grepgatan 40, 25448 Helsingborg, SE",
+        "IngridExpectedDeliveryDate": "2022-11-09 - 2022-11-10",
+        "IngridCarrier": "Instabox",
+        "IngridProduct": "Instabox Express",
+        "IngridShippingMethod": "isb-express"
+    }
+}
+```
 [/notice-box]
 
 #### Started Checkout
@@ -333,19 +369,26 @@ Cancelled Order event data structure is the same as for `Confirmed Order` and `R
 } 
 ```
 
+[notice-box=info]
 Additional shipment fields available when Ingrid shipping plugin is enabled and order was placed with this plugin.
+
 ```json
 {
-  "$event_id": "Shipped-113-1",
-  [...]
-  "IngridMethod": "pnl-bua",
-  "IngridConvertedId": "PickupPoint",
-  "IngridPickup": "123",
-  "IngridDoorCode": "",
-  "IngridDeliveryTime": "2022-11-11",
-  "IngridCourierInstruction": ""
+    [...]
+    "IngridMethod": "pnl-bua",
+    "IngridConvertedId": "PickupPoint",
+    "IngridPickup": "123",
+    "IngridDoorCode": "",
+    "IngridDeliveryTime": "2022-11-11",
+    "IngridCourierInstruction": "",
+    "IngridPickupPointAddress": "Grepgatan 40, 25448 Helsingborg, SE",
+    "IngridExpectedDeliveryDate": "2022-11-09 - 2022-11-10",
+    "IngridCarrier": "Instabox",
+    "IngridProduct": "Instabox Express",
+    "IngridShippingMethod": "isb-express"
 }
 ```
+[/notice-box]
 
 #### Gift Certificate
 
