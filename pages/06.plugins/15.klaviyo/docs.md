@@ -156,7 +156,7 @@ You can browse all the item and event level variables on the details of certain 
     "Brands": [
         "Brand"
     ],
-    "DiscountValue": -0,
+    "DiscountValue": "0.00",
     "Items": [
         {
             "ProductID": "1-1",
@@ -302,7 +302,7 @@ Cancelled Order event data structure is the same as for `Confirmed Order` and `R
             "Brand": "Brand",
             "TaxAmount": "20.00",
             "TaxAmountInCustomerCurrency": "20.00",
-            "TaxPercent": 25,
+            "TaxPercent": "25.00",
             "Discounted": false,
             "DiscountValue": "0.00",
             "DiscountValueInCustomerCurrency": "0.00",
@@ -329,7 +329,19 @@ Cancelled Order event data structure is the same as for `Confirmed Order` and `R
     "TrackingUrl": "https://test-tracking-delivery.com/ABC123",
     "PackagesAmount": 1,
     "ShippingDate": "2022-09-28 15:12:57",
-    "MethodForPayment": "Third Party Payment"
+    "MethodForPayment": "Third Party Payment",
+    "CustomerCurrency": "EUR",
+    "GrossPaidPrice": "215.00",
+    "GrossPaidPriceInCustomerCurrency": "215.00",
+    "TaxAmount": "43.00",
+    "TaxAmountInCustomerCurrency": "43.00", 
+    "DiscountValue": "0.00",
+    "DiscountValueInCustomerCurrency": "0.00",
+    "ShippingCost": "0.00",
+    "ShippingCostInCustomerCurrency": "0.00",
+    "ShippingTaxAmount": "0.00",
+    "ShippingTaxAmountInCustomerCurrency": "0.00",
+    "OrderDate": "2022-11-11 21:37:00"
 } 
 ```
 
@@ -504,9 +516,9 @@ Example payload of `Placed Order` event created as a result of such combined che
 {
     "OrderId": "123",
     "CustomerCurrency": "SEK",
-    "GrossPaidPriceInCustomerCurrency": 200,
-    "TaxAmount": 40,
-    "TaxAmountInCustomerCurrency": 40,
+    "GrossPaidPriceInCustomerCurrency": "200.00",
+    "TaxAmount": "40.00",
+    "TaxAmountInCustomerCurrency": "40.00",
     "Categories": [
         "shop"
     ],
@@ -516,8 +528,8 @@ Example payload of `Placed Order` event created as a result of such combined che
     "Brands": [
         "Brand"
     ],
-    "DiscountValue": 0,
-    "DiscountValueInCustomerCurrency": 0,
+    "DiscountValue": "0.00",
+    "DiscountValueInCustomerCurrency": "0.00",
     "Items": [
         {
             "ProductID": 1,
@@ -527,24 +539,24 @@ Example payload of `Placed Order` event created as a result of such combined che
             "GTIN": "ABCDEFGHIJKL",
             "Size": "",
             "VariantName": "Red",
-            "GrossPaidPrice": 100,
-            "GrossPaidPriceInCustomerCurrency": 100,
-            "OriginalPrice": 100,
-            "OriginalPriceInCustomerCurrency": 100,
-            "GrossPaidPricePerUnit": 100,
-            "GrossPaidPricePerUnitInCustomerCurrency": 100,
+            "GrossPaidPrice": "100.00",
+            "GrossPaidPriceInCustomerCurrency": "100.00",
+            "OriginalPrice": "100.00",
+            "OriginalPriceInCustomerCurrency": "100.00",
+            "GrossPaidPricePerUnit": "100.00",
+            "GrossPaidPricePerUnitInCustomerCurrency": "100.00",
             "ProductURL": "",
             "ImageURL": "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg",
             "Categories": {
                 "1": "shop"
             },
             "Brand": "Brand",
-            "TaxAmount": 20,
-            "TaxAmountInCustomerCurrency": 20,
-            "TaxPercent": 25,
+            "TaxAmount": "20.00",
+            "TaxAmountInCustomerCurrency": "20.00",
+            "TaxPercent": "25.00",
             "Discounted": false,
-            "DiscountValue": 0,
-            "DiscountValueInCustomerCurrency": 0,
+            "DiscountValue": "0.00",
+            "DiscountValueInCustomerCurrency": "0.00",
             "Subscription": {
                 "NextOrderDate": "2022-11-12",
                 "DiscountPercent": 0,
@@ -562,24 +574,24 @@ Example payload of `Placed Order` event created as a result of such combined che
             "GTIN": "ABCDEFGHIJKL",
             "Size": "",
             "VariantName": "Red",
-            "GrossPaidPrice": 100,
-            "GrossPaidPriceInCustomerCurrency": 100,
-            "OriginalPrice": 100,
-            "OriginalPriceInCustomerCurrency": 100,
-            "GrossPaidPricePerUnit": 100,
-            "GrossPaidPricePerUnitInCustomerCurrency": 100,
+            "GrossPaidPrice": "100.00",
+            "GrossPaidPriceInCustomerCurrency": "100.00",
+            "OriginalPrice": "100.00",
+            "OriginalPriceInCustomerCurrency": "100.00",
+            "GrossPaidPricePerUnit": "100.00",
+            "GrossPaidPricePerUnitInCustomerCurrency": "100.00",
             "ProductURL": "",
             "ImageURL": "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg",
             "Categories": {
                 "1": "shop"
             },
             "Brand": "Brand",
-            "TaxAmount": 20,
-            "TaxAmountInCustomerCurrency": 20,
-            "TaxPercent": 25,
+            "TaxAmount": "20.00",
+            "TaxAmountInCustomerCurrency": "20.00",
+            "TaxPercent": "25.00",
             "Discounted": false,
-            "DiscountValue": 0,
-            "DiscountValueInCustomerCurrency": 0
+            "DiscountValue": "0.00",
+            "DiscountValueInCustomerCurrency": "0.00"
         }
     ],
     "BillingAddress": {
@@ -614,10 +626,10 @@ Example payload of `Placed Order` event created as a result of such combined che
     },
     "Shipping": {
         "Method": "SEK",
-        "Cost": 0,
-        "CostInCustomerCurrency": 0,
-        "TaxAmount": 0,
-        "TaxAmountInCustomerCurrency": 0
+        "Cost": "0.00",
+        "CostInCustomerCurrency": "0.00",
+        "TaxAmount": "0.00",
+        "TaxAmountInCustomerCurrency": "0.00"
     },
     "MethodForPayment": "Third Party Payment",
     "CreatedDate": "2022-10-12 12:52:03",
