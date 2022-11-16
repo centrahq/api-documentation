@@ -34,7 +34,7 @@ You need to have at least 11 FTA stock available. If you have 10 or less stock, 
 
 ### What about the old newsletter subscribe with products?
 
-It is still possible to pass a product to our [`/newsletter-subscription` endpoint](https://docs.centra.com/swagger-ui/#/6.%20customer%20handling/post_newsletter_subscription__email_). Once the user registered to newsletter, Centra created a subscriber with special tag in Rule. Then added additional fields with product details. When the stock was replenished, merchant was able to filter subscribers manually and send the notifications that way. It means there is no automation available when using this endpoint. It only remains for backwards compatibility with existing sites. For new sites use the new back-in-stock endpoints (eg. [`/back-in-stock-subscription`](https://docs.centra.com/swagger-ui/#/6.%20customer%20handling/post_back_in_stock_subscription).
+It is still possible to pass a product to our [`/newsletter-subscription` endpoint](https://docs.centra.com/swagger-ui/#/6.%20customer%20handling/post_newsletter_subscription__email_). Once the user registers for the newsletter, Centra creates a subscriber with a special tag in Rule and adds product details fields. When the stock is replenished, a merchant is able to filter subscribers manually and send the notifications that way. It means there is no automation available when using this endpoint. It only remains for backwards compatibility with existing sites. For new sites use the new back-in-stock endpoints (eg. [`/back-in-stock-subscription`](https://docs.centra.com/swagger-ui/#/6.%20customer%20handling/post_back_in_stock_subscription).
 
 ## E-mail providers with support for back in stock
 
