@@ -217,6 +217,9 @@ You can browse all the item and event level variables on the details of certain 
     },
     "Shipping": {
         "Method": "pnl-bua (Ingrid)",
+        "Service": "pnl-bua (Ingrid)",
+        "Carrier": "",
+        "CentraShippingMethod": "SEK",
         "Cost": "10.00",
         "CostInCustomerCurrency": "10.00",
         "TaxAmount": "2.00",
@@ -228,6 +231,10 @@ You can browse all the item and event level variables on the details of certain 
 
 [notice-box=info]
 ProductType variable in Item object can take one of two values: "product" or "bundle".
+[/notice-box]
+
+[notice-box=info]
+Value of Shipping.Method field is concatinated string of Shipping.Service and Shipping.Carrier, when Shipping.Service and Shipping.Carrier fields are empty we use Shipping.CentraShippingMethod value.
 [/notice-box]
 
 [notice-box=info]
@@ -361,6 +368,9 @@ Cancelled Order event data structure is the same as for `Confirmed Order` and `R
         "Email": "test@centra.com"
     },
     "ShippingMethod": "EUR",
+    "ShippingService": "",
+    "ShippingCarrier": "",
+    "CentraShippingMethod": "SEK",
     "TrackingNumber": "ABC123",
     "TrackingUrl": "https://test-tracking-delivery.com/ABC123",
     "PackagesAmount": 1,
@@ -380,6 +390,10 @@ Cancelled Order event data structure is the same as for `Confirmed Order` and `R
     "OrderDate": "2022-11-11 21:37:00"
 } 
 ```
+
+[notice-box=info]
+Value of ShippingMethod field is concatinated string of ShippingService and ShippingCarrier, when ShippingService and ShippingCarrier fields are empty we use CentraShippingMethod value.
+[/notice-box]
 
 [notice-box=info]
 Additional shipment fields available when Ingrid shipping plugin is enabled and order was placed with this plugin.
@@ -669,6 +683,9 @@ Example payload of `Placed Order` event created as a result of such combined che
     },
     "Shipping": {
         "Method": "SEK",
+        "Service": "",
+        "Carrier": "",     
+        "CentraShippingMethod": "SEK",
         "Cost": "0.00",
         "CostInCustomerCurrency": "0.00",
         "TaxAmount": "0.00",
@@ -680,6 +697,10 @@ Example payload of `Placed Order` event created as a result of such combined che
     "$value": 200
 }
 ```
+
+[notice-box=info]
+Value of Shipping.Method field is concatinated string of Shipping.Service and Shipping.Carrier, when Shipping.Service and Shipping.Carrier fields are empty we use Shipping.CentraShippingMethod value.
+[/notice-box]
 
 ### Example flow trigger configuration with recurring orders support 
 
