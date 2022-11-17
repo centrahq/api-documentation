@@ -6,7 +6,10 @@ taxonomy:
 category: docs
 ---
 
-Klaviyo is a CRM plugin in Centra. The core functionality is sending events to Klaviyo that can be used for transactional emails and email and SMS marketing automation.
+Klaviyo is a CRM plugin in Centra. The core functionality is sending events to Klaviyo that can be used for transactional emails and email marketing automation with language based customization.
+In your Klaviyo account, you can apply various advanced segmentation strategies based on event data and customer information that is synchronized from Centra to Klaviyo.
+
+The recommended setup is a single Klaviyo account and single store plugin for all markets that are enabled in Centra. 
 
 
 ## Flow
@@ -136,7 +139,9 @@ To find full documentation about building email template in Klaviyo please check
 
 #### Localized product data 
 
-Our Klaviyo plugin allows you to send localized data with your emails. You can use static lookup (like `|lookup:"SEK"`) or more dynamic, based on variable (like `|lookup:customer_lang`)
+Our Klaviyo plugin allows you to send localized data with your emails. 
+Translated multi-language fields and multi-currency prices are send as JSON strings from which you can extract proper values using built in email template functions.
+You can use static lookup (like `|lookup:"SEK"`) or more dynamic, based on variable (like `|lookup:customer_lang`)
 
 ```html
 {% with customer_lang=person|lookup:"Language"%}
