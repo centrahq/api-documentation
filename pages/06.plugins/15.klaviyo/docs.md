@@ -234,7 +234,8 @@ ProductType variable in Item object can take one of two values: "product" or "bu
 [/notice-box]
 
 [notice-box=info]
-Value of Shipping.Method field is concatinated string of Shipping.Service and Shipping.Carrier, when Shipping.Service and Shipping.Carrier fields are empty we use Shipping.CentraShippingMethod value.
+Value of Shipping.Method field is concatenated string of Shipping.Service and Shipping.Carrier, when Shipping.Service and Shipping.Carrier fields are empty we use Shipping.CentraShippingMethod value.
+Shipping.Service and Shipping.Carrier fields are present when shipment has been completed - value of these fields in most cases will be available on `Shipping Update` event.
 [/notice-box]
 
 [notice-box=info]
@@ -392,7 +393,8 @@ Cancelled Order event data structure is the same as for `Confirmed Order` and `R
 ```
 
 [notice-box=info]
-Value of ShippingMethod field is concatinated string of ShippingService and ShippingCarrier, when ShippingService and ShippingCarrier fields are empty we use CentraShippingMethod value.
+Value of ShippingMethod field is concatenated string of ShippingService and ShippingCarrier, when ShippingService and ShippingCarrier fields are empty we use CentraShippingMethod value.
+ShippingService and ShippingCarrier fields are present when shipment has been completed - value of these fields in most cases will be available on `Shipping Update` event. 
 [/notice-box]
 
 [notice-box=info]
@@ -699,7 +701,8 @@ Example payload of `Placed Order` event created as a result of such combined che
 ```
 
 [notice-box=info]
-Value of Shipping.Method field is concatinated string of Shipping.Service and Shipping.Carrier, when Shipping.Service and Shipping.Carrier fields are empty we use Shipping.CentraShippingMethod value.
+Value of Shipping.Method field is concatenated string of Shipping.Service and Shipping.Carrier, when Shipping.Service and Shipping.Carrier fields are empty we use Shipping.CentraShippingMethod value.
+Shipping.Service and Shipping.Carrier fields are present when shipment has been completed - value of these fields in most cases will be available on `Shipping Update` event.
 [/notice-box]
 
 ### Example flow trigger configuration with recurring orders support 
