@@ -99,7 +99,6 @@ Metric types currently supported by Centra:
 Extra metrics for manual resend email from Centra, with exactly the same data as regular ones, but requires own event type:
 
 - `Placed Order - resend`
-- `Ordered Product - resend`
 - `Confirmed Order - resend`
 - `Cancelled Order - resend`
 - `Shipping Update - resend`
