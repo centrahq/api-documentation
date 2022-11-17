@@ -11,7 +11,6 @@ In your Klaviyo account, you can apply various advanced segmentation strategies 
 
 The recommended setup is a single Klaviyo account and single store plugin for all markets that are enabled in Centra. 
 
-
 ## Flow
 
 1. You set up your Klaviyo account's API credentials (API key & API private key) and settings in Klaviyo store plugin. 
@@ -34,8 +33,8 @@ Currency used as a default currency in Klaviyo account. This currency will be us
 
 ### Language selected from
 
-- Delivery country
-- Site language
+- Delivery country - language will be matched based on customer's delivery country.
+- Site language - language selected by customer or matched by geo ip in webshop
 
 ### Use short product name
 
