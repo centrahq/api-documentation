@@ -459,6 +459,19 @@ Cancelled Order event data structure is the same as for `Confirmed Order` and `R
 }
 ```
 
+## Activity tracking
+
+Although as headless platform, Centra does not control activity tracking through integration with Klaviyo it is still possible to send activity tracking events directly from the website.
+
+You can track following events:
+- Active on Site
+- Added to Cart
+- Viewed Product
+
+For `Added to Cart` and `Viewed Product` events you should use the same top level product id that is used on events sent directly from Centra. You can find more information about it [here](#top-level-product-id-in-product-catalog).
+
+For authorization public api key should be used. You can find details about activity tracking implementation in [Klaviyo documentation section](https://developers.klaviyo.com/en/v1-2/docs/guide-to-integrating-a-platform-without-a-pre-built-klaviyo-integration#javascript-track-api-for-onsite-metrics).
+
 ## Subscription orders
 
 `Placed Order` event supports 3 `OrderType` values:
