@@ -105,6 +105,10 @@ Bundle id
 Array of containing items for bundle
 [/parameter]
 
+[parameter data="localizedSize" datatype="object" sublevel=3]
+The localized size information for this product size. It contains the localized size ``localizedSize`` and localized size chart name ``localizationDefinitionName``.
+[/parameter]
+
 [parameter data="taxBreakdown" datatype="array" sublevel=2]
 Lists all tax rules applied to the order.
 [/parameter]

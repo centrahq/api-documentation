@@ -56,11 +56,11 @@ Content-type: application/json
 {
   "products": [
     {
-      "product": "1234567890123",
+      "product": "12312378901",  # <- Combined product number (SKU) "123123" + variant number "789" + size number "01"
       "quantity": 54
     },
     {
-      "product": "9876543210123",
+      "product": "9876543210123",  # <- Size-level EAN "9876543210123"
       "quantity": 55
     },
     {

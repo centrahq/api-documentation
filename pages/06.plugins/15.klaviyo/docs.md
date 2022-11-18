@@ -1,5 +1,5 @@
 ---
-title: Klaviyo CRM plugin (Beta)
+title: Klaviyo CRM plugin
 altTitle: Klaviyo
 excerpt: Learn all about the Klaviyo CRM plugin.
 taxonomy:
@@ -254,7 +254,7 @@ You can browse all the item and event level variables on the details of certain 
     "Brands": [
         "Brand"
     ],
-    "DiscountValue": -0,
+    "DiscountValue": "0.00",
     "Items": [
         {
             "ProductID": "1-1",
@@ -315,6 +315,9 @@ You can browse all the item and event level variables on the details of certain 
     },
     "Shipping": {
         "Method": "pnl-bua (Ingrid)",
+        "Service": "pnl-bua (Ingrid)",
+        "Carrier": "",
+        "CentraShippingMethod": "SEK",
         "Cost": "10.00",
         "CostInCustomerCurrency": "10.00",
         "TaxAmount": "2.00",
@@ -326,6 +329,29 @@ You can browse all the item and event level variables on the details of certain 
 
 [notice-box=info]
 ProductType variable in Item object can take one of two values: "product" or "bundle".
+[/notice-box]
+
+[notice-box=info]
+Value of Shipping.Method field is concatenated string of Shipping.Service and Shipping.Carrier, when Shipping.Service and Shipping.Carrier fields are empty we use Shipping.CentraShippingMethod value.
+Shipping.Service and Shipping.Carrier fields are present when shipment has been completed - value of these fields in most cases will be available on `Shipping Update` event.
+[/notice-box]
+
+[notice-box=info]
+Additional shipping fields for Confirmed Order available when Ingrid shipping plugin is enabled and order was placed with this plugin.
+
+```json
+{
+    [...],
+    "Shipping": {
+        [...],
+        "IngridPickupPointAddress": "Grepgatan 40, 25448 Helsingborg, SE",
+        "IngridExpectedDeliveryDate": "2022-11-09 - 2022-11-10",
+        "IngridCarrier": "Instabox",
+        "IngridProduct": "Instabox Express",
+        "IngridShippingMethod": "isb-express"
+    }
+}
+```
 [/notice-box]
 
 #### Placed Order
@@ -345,6 +371,24 @@ OrderType variable in Item object can take one of three values:
 - "Recurring Subscription Payment" (for renewal or recurring orders for pre-existing subscriptions)
 
 "New Subscription" type of order will contain additional properties with subscription information on items purchased in subscription model. See `Subscription orders` section for more information.
+[/notice-box]
+
+[notice-box=info]
+Additional shipping fields available when Ingrid shipping plugin is enabled and order was placed with this plugin.
+
+```json
+{
+    [...],
+    "Shipping": {
+        [...],    
+        "IngridPickupPointAddress": "Grepgatan 40, 25448 Helsingborg, SE",
+        "IngridExpectedDeliveryDate": "2022-11-09 - 2022-11-10",
+        "IngridCarrier": "Instabox",
+        "IngridProduct": "Instabox Express",
+        "IngridShippingMethod": "isb-express"
+    }
+}
+```
 [/notice-box]
 
 #### Started Checkout
@@ -400,7 +444,7 @@ Cancelled Order event data structure is the same as for `Confirmed Order` and `R
             "Brand": "Brand",
             "TaxAmount": "20.00",
             "TaxAmountInCustomerCurrency": "20.00",
-            "TaxPercent": 25,
+            "TaxPercent": "25.00",
             "Discounted": false,
             "DiscountValue": "0.00",
             "DiscountValueInCustomerCurrency": "0.00",
@@ -423,13 +467,54 @@ Cancelled Order event data structure is the same as for `Confirmed Order` and `R
         "Email": "test@centra.com"
     },
     "ShippingMethod": "EUR",
+    "ShippingService": "",
+    "ShippingCarrier": "",
+    "CentraShippingMethod": "SEK",
     "TrackingNumber": "ABC123",
     "TrackingUrl": "https://test-tracking-delivery.com/ABC123",
     "PackagesAmount": 1,
     "ShippingDate": "2022-09-28 15:12:57",
-    "MethodForPayment": "Third Party Payment"
+    "MethodForPayment": "Third Party Payment",
+    "CustomerCurrency": "EUR",
+    "GrossPaidPrice": "215.00",
+    "GrossPaidPriceInCustomerCurrency": "215.00",
+    "TaxAmount": "43.00",
+    "TaxAmountInCustomerCurrency": "43.00", 
+    "DiscountValue": "0.00",
+    "DiscountValueInCustomerCurrency": "0.00",
+    "ShippingCost": "0.00",
+    "ShippingCostInCustomerCurrency": "0.00",
+    "ShippingTaxAmount": "0.00",
+    "ShippingTaxAmountInCustomerCurrency": "0.00",
+    "OrderDate": "2022-11-11 21:37:00"
 } 
 ```
+
+[notice-box=info]
+Value of ShippingMethod field is concatenated string of ShippingService and ShippingCarrier, when ShippingService and ShippingCarrier fields are empty we use CentraShippingMethod value.
+ShippingService and ShippingCarrier fields are present when shipment has been completed - value of these fields in most cases will be available on `Shipping Update` event. 
+[/notice-box]
+
+[notice-box=info]
+Additional shipment fields available when Ingrid shipping plugin is enabled and order was placed with this plugin.
+
+```json
+{
+    [...]
+    "IngridMethod": "pnl-bua",
+    "IngridConvertedId": "PickupPoint",
+    "IngridPickup": "123",
+    "IngridDoorCode": "",
+    "IngridDeliveryTime": "2022-11-11",
+    "IngridCourierInstruction": "",
+    "IngridPickupPointAddress": "Grepgatan 40, 25448 Helsingborg, SE",
+    "IngridExpectedDeliveryDate": "2022-11-09 - 2022-11-10",
+    "IngridCarrier": "Instabox",
+    "IngridProduct": "Instabox Express",
+    "IngridShippingMethod": "isb-express"
+}
+```
+[/notice-box]
 
 #### Gift Certificate
 
@@ -472,6 +557,118 @@ For `Added to Cart` and `Viewed Product` events you should use the same top leve
 
 For authorization public api key should be used. You can find details about activity tracking implementation in [Klaviyo documentation section](https://developers.klaviyo.com/en/v1-2/docs/guide-to-integrating-a-platform-without-a-pre-built-klaviyo-integration#javascript-track-api-for-onsite-metrics).
 
+#### Changed Subscription Status
+
+```json
+{
+    "$event_id": "1-1666600262",
+    "PaymentType": "cc",
+    "PaymentDescription": "Mastercard",
+    "ShippingCostInCustomerCurrency": 0,
+    "Reason": "manual user change",
+    "OldStatus": "active",
+    "NewStatus": "active",
+    "Subscription": {
+        "SubscriptionId": 1,
+        "CreatedAt": "2022-10-24 10:31:02",
+        "IntervalType": "day",
+        "IntervalValue": 30,
+        "IntervalFormatted": "Every 30 days",
+        "DiscountPercent": 0
+    },
+    "SubscriptionContractAddress": {
+        "FirstName": "Jane",
+        "LastName": "Doe",
+        "Company": "",
+        "Address1": "Sveavägen 9",
+        "Address2": "",
+        "City": "Stockholm",
+        "Region": "",
+        "RegionCode": "",
+        "Country": "Sweden",
+        "CountryCode": "SE",
+        "Zip": "111 57",
+        "Phone": "+4687203333",
+        "Email": "support@centra.com"
+    }
+}
+```
+
+#### Failed Subscription Payment
+
+```json
+{
+    "$event_id": "11-12-1666600262",
+    "PaymentType": "cc",
+    "PaymentDescription": "Mastercard",
+    "ShippingCostInCustomerCurrency": 0,
+    "Subscriptions": [
+        {
+            "SubscriptionId": 1,
+            "CreatedAt": "2022-10-24 10:31:02",
+            "IntervalType": "day",
+            "IntervalValue": 30,
+            "IntervalFormatted": "Every 30 days",
+            "DiscountPercent": 0
+        }
+    ],
+    "SubscriptionContractAddress": {
+        "FirstName": "Jane",
+        "LastName": "Doe",
+        "Company": "",
+        "Address1": "Sveavägen 9",
+        "Address2": "",
+        "City": "Stockholm",
+        "Region": "",
+        "RegionCode": "",
+        "Country": "Sweden",
+        "CountryCode": "SE",
+        "Zip": "111 57",
+        "Phone": "+4687203333",
+        "Email": "support@centra.com"
+    },
+    "ManageSubscriptionPaymentMethodsUrl": "https://example.com/subscription/payment/?id=123"
+}
+```
+
+#### Failed Subscription Payment Update and Successful Subscription Payment Update
+
+```json
+{
+  "$event_id": "11-1666600262",
+  "SubscriptionContractId": 11,
+  "PaymentType": "cc",
+  "PaymentDescription": "Mastercard",
+  "ShippingCostInCustomerCurrency": 0,
+  "Subscriptions": [
+    {
+      "SubscriptionId": 1,
+      "CreatedAt": "2022-10-24 10:31:02",
+      "IntervalType": "day",
+      "IntervalValue": 30,
+      "IntervalFormatted": "Every 30 days",
+      "DiscountPercent": 0
+    }
+  ],
+  "SubscriptionContractAddress": {
+    "FirstName": "Jane",
+    "LastName": "Doe",
+    "Company": "",
+    "Address1": "Sveavägen 9",
+    "Address2": "",
+    "City": "Stockholm",
+    "Region": "",
+    "RegionCode": "",
+    "Country": "Sweden",
+    "CountryCode": "SE",
+    "Zip": "111 57",
+    "Phone": "+4687203333",
+    "Email": "support@centra.com"
+  },
+  "ManageSubscriptionPaymentMethodsUrl": "https://example.com/subscription/payment/?id=123"
+}
+```
+
 ## Subscription orders
 
 `Placed Order` event supports 3 `OrderType` values:
@@ -489,9 +686,9 @@ Example payload of `Placed Order` event created as a result of such combined che
 {
     "OrderId": "123",
     "CustomerCurrency": "SEK",
-    "GrossPaidPriceInCustomerCurrency": 200,
-    "TaxAmount": 40,
-    "TaxAmountInCustomerCurrency": 40,
+    "GrossPaidPriceInCustomerCurrency": "200.00",
+    "TaxAmount": "40.00",
+    "TaxAmountInCustomerCurrency": "40.00",
     "Categories": [
         "shop"
     ],
@@ -501,8 +698,8 @@ Example payload of `Placed Order` event created as a result of such combined che
     "Brands": [
         "Brand"
     ],
-    "DiscountValue": 0,
-    "DiscountValueInCustomerCurrency": 0,
+    "DiscountValue": "0.00",
+    "DiscountValueInCustomerCurrency": "0.00",
     "Items": [
         {
             "ProductID": 1,
@@ -512,24 +709,24 @@ Example payload of `Placed Order` event created as a result of such combined che
             "GTIN": "ABCDEFGHIJKL",
             "Size": "",
             "VariantName": "Red",
-            "GrossPaidPrice": 100,
-            "GrossPaidPriceInCustomerCurrency": 100,
-            "OriginalPrice": 100,
-            "OriginalPriceInCustomerCurrency": 100,
-            "GrossPaidPricePerUnit": 100,
-            "GrossPaidPricePerUnitInCustomerCurrency": 100,
+            "GrossPaidPrice": "100.00",
+            "GrossPaidPriceInCustomerCurrency": "100.00",
+            "OriginalPrice": "100.00",
+            "OriginalPriceInCustomerCurrency": "100.00",
+            "GrossPaidPricePerUnit": "100.00",
+            "GrossPaidPricePerUnitInCustomerCurrency": "100.00",
             "ProductURL": "",
             "ImageURL": "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg",
             "Categories": {
                 "1": "shop"
             },
             "Brand": "Brand",
-            "TaxAmount": 20,
-            "TaxAmountInCustomerCurrency": 20,
-            "TaxPercent": 25,
+            "TaxAmount": "20.00",
+            "TaxAmountInCustomerCurrency": "20.00",
+            "TaxPercent": "25.00",
             "Discounted": false,
-            "DiscountValue": 0,
-            "DiscountValueInCustomerCurrency": 0,
+            "DiscountValue": "0.00",
+            "DiscountValueInCustomerCurrency": "0.00",
             "Subscription": {
                 "NextOrderDate": "2022-11-12",
                 "DiscountPercent": 0,
@@ -547,24 +744,24 @@ Example payload of `Placed Order` event created as a result of such combined che
             "GTIN": "ABCDEFGHIJKL",
             "Size": "",
             "VariantName": "Red",
-            "GrossPaidPrice": 100,
-            "GrossPaidPriceInCustomerCurrency": 100,
-            "OriginalPrice": 100,
-            "OriginalPriceInCustomerCurrency": 100,
-            "GrossPaidPricePerUnit": 100,
-            "GrossPaidPricePerUnitInCustomerCurrency": 100,
+            "GrossPaidPrice": "100.00",
+            "GrossPaidPriceInCustomerCurrency": "100.00",
+            "OriginalPrice": "100.00",
+            "OriginalPriceInCustomerCurrency": "100.00",
+            "GrossPaidPricePerUnit": "100.00",
+            "GrossPaidPricePerUnitInCustomerCurrency": "100.00",
             "ProductURL": "",
             "ImageURL": "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg",
             "Categories": {
                 "1": "shop"
             },
             "Brand": "Brand",
-            "TaxAmount": 20,
-            "TaxAmountInCustomerCurrency": 20,
-            "TaxPercent": 25,
+            "TaxAmount": "20.00",
+            "TaxAmountInCustomerCurrency": "20.00",
+            "TaxPercent": "25.00",
             "Discounted": false,
-            "DiscountValue": 0,
-            "DiscountValueInCustomerCurrency": 0
+            "DiscountValue": "0.00",
+            "DiscountValueInCustomerCurrency": "0.00"
         }
     ],
     "BillingAddress": {
@@ -599,10 +796,13 @@ Example payload of `Placed Order` event created as a result of such combined che
     },
     "Shipping": {
         "Method": "SEK",
-        "Cost": 0,
-        "CostInCustomerCurrency": 0,
-        "TaxAmount": 0,
-        "TaxAmountInCustomerCurrency": 0
+        "Service": "",
+        "Carrier": "",     
+        "CentraShippingMethod": "SEK",
+        "Cost": "0.00",
+        "CostInCustomerCurrency": "0.00",
+        "TaxAmount": "0.00",
+        "TaxAmountInCustomerCurrency": "0.00"
     },
     "MethodForPayment": "Third Party Payment",
     "CreatedDate": "2022-10-12 12:52:03",
@@ -610,6 +810,11 @@ Example payload of `Placed Order` event created as a result of such combined che
     "$value": 200
 }
 ```
+
+[notice-box=info]
+Value of Shipping.Method field is concatenated string of Shipping.Service and Shipping.Carrier, when Shipping.Service and Shipping.Carrier fields are empty we use Shipping.CentraShippingMethod value.
+Shipping.Service and Shipping.Carrier fields are present when shipment has been completed - value of these fields in most cases will be available on `Shipping Update` event.
+[/notice-box]
 
 ### Example flow trigger configuration with recurring orders support 
 

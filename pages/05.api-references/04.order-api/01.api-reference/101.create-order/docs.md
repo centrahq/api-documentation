@@ -177,6 +177,10 @@ The variant name of the product.
 The size name for this product. To make sure all visual representations in Centra looks good, please make sure this size exists on the sizechart selected for the product you used inside ``id``, ``ean`` or ``sku``.
 [/parameter]
 
+[parameter data="localizedProdSize" datatype="object" isRequired=false sublevel=3]
+The localized size information for this product size. It contains the localized size ``localizedSize`` and localized size chart name ``localizationDefinitionName``.
+[/parameter]
+
 [parameter data="shippingList" datatype="string" isRequired=false sublevel=1]
 Shipping option URI, for example: `ups-standard`, without this one, the default shipping option for the products and country will be used.
 [/parameter]
@@ -328,7 +332,11 @@ Content-type: application/json
           "qty": 1,
           "sku": "SKUASKUBSKUC",
           "unitPrice": 12.11,
-          "originalPrice": 50.22
+          "originalPrice": 50.22,
+          "localizedProdSize": {
+            "localizationDefinitionName": "Test order api definition name",
+            "localizedSize": "Test order api size"
+          }
       }
   ],
   "payment": {
