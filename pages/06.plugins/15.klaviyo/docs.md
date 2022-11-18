@@ -84,8 +84,18 @@ In the Product catalog synchronisation status line, you will see current transfe
 Catalog synchronization cannot be run simultaneously with historical data export or during historical data import. Please wait until the end of historical data synchronization to be able to run catalog synchronization.
 [/notice-box]
 
-#### Catalog update synchronization
-We run changes synchronization right after saving the product in Centra, but this may take a while to see changes in Klaviyo catalog. 
+You can browse synchronized products in your Klaviyo account here: https://www.klaviyo.com/catalog/items
+
+![product_list.png](product_list.png)
+
+#### Catalog updates synchronization
+We run updates synchronization right after saving the product in Centra, but this may take a while to see changes in Klaviyo catalog. 
+
+### BackInStock category of products
+
+If you're using back in stock feature with Klaviyo plugin, virtual products might appear on your list with the following title format {productName} - [DO NOT USE][Back in stock automation].
+They also have a special category assigned - `BackInStock automation`
+Those are products created merely for the purpose of back in stock subscription and are not supposed to be used in any emails using catalog lookup function, so you can ignore them.
 
 [notice-box=info]
 You can run full synchronization more than once if needed, but in general synchronization of changes should be handled automatically.
