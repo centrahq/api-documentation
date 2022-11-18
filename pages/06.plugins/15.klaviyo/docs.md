@@ -30,6 +30,7 @@ Copy the values of the API keys from [https://www.klaviyo.com/account#api-keys-t
 ### Base currency
 
 Currency used as a default currency in Klaviyo account. This currency will be used in all reports across the account.
+All the synchronized events will also contain price values in customer currency so that they can be used in all sorts of email communication.
 
 ### Language selected from
 
@@ -141,6 +142,11 @@ You can run full synchronization more than once if needed, but in general synchr
     }
 }
 ```
+
+### Top-level product id in product catalog
+
+Top-level catalog product id is a display item identifier from Centra. This is also matching the id of the order items that are send along with events for all the metrics (e.g. `Placed Order` or `Ordered Product`).
+Display item in Centra is a variant activated on a display, the concept is described in details [here](https://docs.centra.com/fe-development/fe-elements#why-do-i-see-different-product-ids-in-the-centra-backend-and-in-checkout-api).
 
 ### Catalog product data in template
 
