@@ -47,7 +47,8 @@ Cart link: should be set to the URL your webshop uses for cart abandonment, e.g.
 
 ### Newsletter
 
-Newsletter lists to which customers will be opt-in. Also, our integration will check this list in context of customer opt-out. In case of opt-out newsletter setting on customer profile in Centra will be updated. 
+Newsletter lists to which customers will be opt-in. Also, our integration will check this list in context of customer opt-out. In case of opt-out newsletter setting on customer profile in Centra will be updated.
+Customer can opt-in (subscribe and resubscribe) through API, by newsletter endpoint, and while placing the order. As a Centra user, you can save customer profile with setting _Newsletter: Yes_.
 You can create/find existing lists in Klaviyo Dashboard, under Audience -> Lists & Segments, type: Lists.
 
 ### Product page URL
