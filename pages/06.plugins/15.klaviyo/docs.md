@@ -45,6 +45,12 @@ Image size you want to send over to Klaviyo for all the products. Select a prope
 ### Cart link
 Cart link: should be set to the URL your webshop uses for cart abandonment, e.g. https://example.com/abandoned-cart/{selection}
 
+### Newsletter
+
+Newsletter lists to which customers will be opt-in. Also, our integration will check this list in context of customer opt-out. In case of opt-out newsletter setting on customer profile in Centra will be updated.
+Customer can opt-in (subscribe and resubscribe) through API, by newsletter endpoint, and while placing the order. As a Centra user, you can save customer profile with setting _Newsletter: Yes_.
+You can create/find existing lists in Klaviyo Dashboard, under Audience -> Lists & Segments, type: Lists.
+
 ### Product page URL
 
 If you want to use URLs to the products, you can either provide the URL to the product when the product is added to the selection in the APIs ([CheckoutAPI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI&urls.primaryName=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_), [ShopAPI](https://docs.centra.com/swagger-ui/?api=ShopAPI&urls.primaryName=ShopAPI#/default/post_selections__selection__items__item_)), or you can define a `Product page URL` which will be combined with the display URI of the product from Centra. 
