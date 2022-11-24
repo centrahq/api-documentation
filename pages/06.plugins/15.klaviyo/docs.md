@@ -136,6 +136,29 @@ Event level variables:
 
 You can browse all the item and event level variables on the details of certain event in activity feed.
 
+#### Back-in-stock example flow configuration
+
+When customer will subscribe through API, we create fake catalog product just to store back-in-stock subscriptions. After restock, Centra will trigger back in stock event from Klaviyo. This trigger is for our fake product, so in the email template you need to get access to the original catalog item. To get access to original catalog data, you need to add extra parenthesis in template, with this part, you are able to use catalog_item data provided by Klaviyo.
+You need to use parenthis part like that:
+
+```html
+{% with idParts=event.VariantId|split:"_" %}
+{% catalog idParts.0 %}
+  < Template content >
+{% endcatalog %}
+{% endwith %}
+```
+
+Example of usage:
+```html
+{% with idParts=event.VariantId|split:"_" %}
+{% catalog idParts.0 %}
+  <p>The {{ catalog_item.title }} Is Back!</p>
+  <p>Custom description: {{ catalog_item.metadata.Description }}</p>
+{% endcatalog %}
+{% endwith %}
+```
+
 ## Event data reference
 
 #### Confirmed Order, Refunded Order
