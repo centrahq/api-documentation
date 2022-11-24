@@ -226,7 +226,8 @@ Metric types currently supported by Centra:
 - `Refunded Order`
 - `Gift Certificate`
 - `Started Checkout`
-- `Changed Subscription Status`
+- `Started Subscription`
+  - `Changed Subscription Status`
 - `Failed Subscription Payment`
 - `Failed Subscription Payment Update`
 - `Successful Subscription Payment Update`
@@ -453,9 +454,9 @@ Additional shipping fields for Confirmed Order available when Ingrid shipping pl
 ```
 [/notice-box]
 
-#### Placed Order
+#### Placed Order and Started Subscription
 
-Placed Order event data structure is the same as for `Confirmed Order` and `Refunded Order` events but with extra field `OrderType`
+Placed Order and Started Subscription events data structure is the same as for `Confirmed Order` and `Refunded Order` events but with extra field `OrderType`
 
 ```json
 {
@@ -470,6 +471,7 @@ OrderType variable in Item object can take one of three values:
 - "Recurring Subscription Payment" (for renewal or recurring orders for pre-existing subscriptions)
 
 "New Subscription" type of order will contain additional properties with subscription information on items purchased in subscription model. See `Subscription orders` section for more information.
+For Started Subscription event only "New Subscription" type is available.
 [/notice-box]
 
 [notice-box=info]
@@ -763,11 +765,13 @@ Additional shipment fields available when Ingrid shipping plugin is enabled and 
 - New Subscription (for newly started subscriptions)
 - Recurring Subscription Payment (for renewal or recurring orders for pre-existing subscriptions)
 
+We send additional event `Started Subscription` for subscription orders.
+
 Only `OrderType` of value `New Subscription` contains additional subscription information included on event item level.
 Item level boolean property `item.IsSubscription` can be used to dynamically render or skip additional `item.Subscription.*` properties containing subscription information.
 
 Centra allows for combining subscription purchases with one time purchases in single checkout.
-Example payload of `Placed Order` event created as a result of such combined checkout:
+Example payload of `Placed Order` and `Started Subscription` event created as a result of such combined checkout:
 ```json
 {
     "OrderId": "123",
