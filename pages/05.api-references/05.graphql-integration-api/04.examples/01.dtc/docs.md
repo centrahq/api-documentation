@@ -26,8 +26,8 @@ query orders ($page: Int) {
       currency {
         code
       }
+      conversionRate
     }
-    currencyBaseRate
     createdAt
 
     ...buyerData
@@ -161,8 +161,8 @@ fragment paymentInfo on Order {
     externalReference
     value {
       ...monetary 
+      conversionRate
     }
-    currencyBaseRate
   }
 }
 
