@@ -6,8 +6,10 @@ taxonomy:
 category: docs
 ---
 
-Klaviyo is a CRM plugin in Centra. The core functionality is sending events to Klaviyo that can be used for transactional emails and email and SMS marketing automation.
+Klaviyo is a CRM plugin in Centra. The core functionality is sending events to Klaviyo that can be used for transactional emails and email marketing automation with language based customization.
+In your Klaviyo account, you can apply various advanced segmentation strategies based on event data and customer information that is synchronized from Centra to Klaviyo.
 
+The recommended setup is a single Klaviyo account and single store plugin for all markets that are enabled in Centra. 
 
 ## Flow
 
@@ -28,11 +30,12 @@ Copy the values of the API keys from [https://www.klaviyo.com/account#api-keys-t
 ### Base currency
 
 Currency used as a default currency in Klaviyo account. This currency will be used in all reports across the account.
+All the synchronized events will also contain price values in customer currency so that they can be used in all sorts of email communication.
 
 ### Language selected from
 
-- Delivery country
-- Site language
+- Delivery country - language will be matched based on customer's delivery country.
+- Site language - language selected by customer or matched by geo ip in webshop
 
 ### Use short product name
 
@@ -76,6 +79,160 @@ During data export, the following event types will be sent:
 - Confirmed Order
 - Cancelled Order
 - Refunded Order
+
+### Product catalog synchronization (QA only until January)
+You are able to run catalog synchronization with Klaviyo account. To run synchronization, in Klaviyo plugin, change `Synchronize product catalog to Klaviyo` to `Yes` (default `No`) and save plugin. 
+
+In the Product catalog synchronisation status line, you will see current transfer status.
+
+![catalog_sync_plugin.png](catalog_sync_plugin.png)
+
+[notice-box=info]
+Catalog synchronization cannot be run simultaneously with historical data export or during historical data import. Please wait until the end of historical data synchronization to be able to run catalog synchronization.
+[/notice-box]
+
+You can browse synchronized products in your Klaviyo account here: https://www.klaviyo.com/catalog/items
+
+![product_list.png](product_list.png)
+
+#### Catalog updates synchronization
+We run updates synchronization right after saving the product in Centra, but this may take a while to see changes in Klaviyo catalog. 
+
+#### BackInStock category of products
+
+If you're using back in stock feature with Klaviyo plugin, virtual products might appear on your list with the following title format {productName} - [DO NOT USE][Back in stock automation].
+They also have a special category assigned - `BackInStock automation`
+Those are products created merely for the purpose of back in stock subscription and are not supposed to be used in any emails using catalog lookup function, so you can ignore them.
+
+[notice-box=info]
+You can run full synchronization more than once if needed, but in general synchronization of changes should be handled automatically.
+[/notice-box]
+
+### Catalog product data reference
+
+```json
+{
+    "external_id" : "1",
+    "title" : "Test Product",
+    "description" : "desc",
+    "url" : "http://localhost/product/test-product",
+    "image_thumbnail_url" : "http://localhost/client/dynamic//images/1_9adfeff6f2-red-amsbig.jpg",
+    "image_full_url" : "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg",
+    "custom_metadata" : {
+        "ProductName": {
+            "default": "Test Product",
+            "de": "Produkt testen"
+        },
+        "VariantName": {
+            "default": "Red",
+            "de": "Rot"
+        },
+        "Description": {
+            "default": "Product description",
+            "de": "Produkt bezeichnung"
+        },
+        "CanonicalCategory": {
+            "sv": "Handla",
+            "en": "Shop",
+            "de": "Shop",
+            "default": "Shop"
+        },
+        "Price": {
+            "USD": 9.00,
+            "SEK": 100,
+            "JPY": 32400
+        },
+        "Brand": "Brand",
+        "Collection": "Collection",
+        "ProductType": "product"
+    }
+}
+```
+
+### Top-level product id in product catalog
+
+Top-level catalog product id is a display item identifier from Centra. This is also matching the id of the order items that are send along with events for all the metrics (e.g. `Placed Order` or `Ordered Product`).
+Display item in Centra is a variant activated on a display, the concept is described in details [here](https://docs.centra.com/fe-development/fe-elements#why-do-i-see-different-product-ids-in-the-centra-backend-and-in-checkout-api).
+
+### Catalog product data in template
+
+To find full documentation about building email template in Klaviyo please check Klaviyo documentation site. 
+
+#### Localized product data 
+
+Our Klaviyo plugin allows you to send localized data with your emails. 
+Translated multi-language fields and multi-currency prices are send as JSON strings from which you can extract proper values using built in email template functions.
+You can use static lookup (like `|lookup:"SEK"`) or more dynamic, based on variable (like `|lookup:customer_lang`)
+
+```html
+{% with customer_lang=person|lookup:"Language"%}
+    {% catalog event.ItemID %}
+        Description: {{ catalog_item.metadata.Description|lookup:"default"}} <br />
+        Title: {{ catalog_item.title }}<br /><br /><br />
+        Price SEK: {{ catalog_item.metadata|lookup:"Price"|string_to_object|lookup:"SEK"}}<br />
+        Product name in customer language: {{ catalog_item.metadata|lookup:"ProductName"|string_to_object|lookup:customer_lang}}<br /><br />
+    {% endcatalog %}
+{% endwith %}
+```
+
+### Back in stock subscriptions (QA only until January)
+
+In order to enable back in stock feature you need to perform initial product catalog synchronisation first. 
+Once it's done you can enable back in stock and access product catalog information in back in stock emails using catalog lookup feature.
+
+![back_in_stock_disabled.png](back_in_stock_disabled.png)
+
+![back_in_stock_enabled.png](back_in_stock_enabled.png)
+
+Back in stock requires frontend implementation against Checkout API or Shop API. The specification of endpoint is available in our swagger docs:
+- [Back in stock in Checkout API](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_back_in_stock_subscription)
+- [Back in stock in Shop API](https://docs.centra.com/swagger-ui/?api=ShopAPI&urls.primaryName=ShopAPI#/6.%20customer%20handling/post_back_in_stock_subscription)
+
+#### Back in stock flow
+1. POST request towards Checkout API/Shop API
+ 
+```json
+POST https://centra-instance.com/api/checkout-api/back-in-stock-subscription
+{   
+    "item": "12366-23400",
+    "shipTo": {
+        "country": "SE"
+    },
+    "email": "test@email.com",
+    "language": "sv"
+}
+```
+
+2. Centra creates back in stock product
+
+Back in stock products are assigned with a special category and are supposed to be used only for internal purposes of back in stock automation.
+Concept of back in stock products is described in details [here](#backinstock-category-of-products).
+
+Back in stock product identifier consists of multiple parts, which on the example of `12366_SE_00` are:
+- 12366 - display item id in Centra, which is top-level product identifier in Klaviyo
+- SE - ISO code of ship-to location country
+- 00 - ISO code of ship-to location state (Sweden does not have states, placeholder `00` is used)
+
+![back_in_stock_product.png](back_in_stock_product.png)
+
+3. Centra creates back in stock variant
+
+Variants are divided across ship-to locations supported in your retail store and across available sizes.
+Variant identifier consists of multiple parts, which on the example of `12366_SE_00_23400` are:
+- 12366 - display item id in Centra, which is top-level product identifier in Klaviyo
+- SE - ISO code of ship-to location country
+- 00 - ISO code of ship-to location state (Sweden does not have states, placeholder `00` is used)
+- 23401 - size identifier in Centra
+
+![back_in_stock_variant.png](back_in_stock_variant.png)
+
+
+4. Centra sends customer's back in stock subscription towards variant
+
+To see active back in stock subscriptions in Klaviyo go to [Back In Stock Report](https://www.klaviyo.com/catalog/reports/back-in-stock)
+
+![back_in_stock_report.png](back_in_stock_report.png)
+
 
 ## Transactional emails
 
@@ -141,6 +298,29 @@ Event level variables:
 - `{{ event.DiscountValueInCustomerCurrency }}`- discount total in customer currency
 
 You can browse all the item and event level variables on the details of certain event in activity feed.
+
+#### Back-in-stock example flow configuration
+
+When customer will subscribe through API, we create back in stock catalog product just to store back-in-stock subscriptions. After restock, Centra will trigger back in stock event from Klaviyo. This trigger is for our back in stock product, so in the email template you need to get access to the original catalog product. To get access to original product data, you need to add extra parenthesis in template, with this part, you are able to use catalog_item data provided by Klaviyo.
+To extract original catalog product data, you need to use parenthis part like below:
+
+```html
+{% with idParts=event.VariantId|split:"_" %}
+{% catalog idParts.0 %}
+  < Template content >
+{% endcatalog %}
+{% endwith %}
+```
+
+Example of usage:
+```html
+{% with idParts=event.VariantId|split:"_" %}
+{% catalog idParts.0 %}
+  <p>The {{ catalog_item.title }} Is Back!</p>
+  <p>Custom description: {{ catalog_item.metadata.Description }}</p>
+{% endcatalog %}
+{% endwith %}
+```
 
 ## Event data reference
 
@@ -452,6 +632,19 @@ Additional shipment fields available when Ingrid shipping plugin is enabled and 
 }
 ```
 
+## Activity tracking
+
+Although as headless platform, Centra does not control activity tracking through integration with Klaviyo it is still possible to send activity tracking events directly from the website.
+
+You can track following events:
+- Active on Site
+- Added to Cart
+- Viewed Product
+
+For `Added to Cart` and `Viewed Product` events you should use the same top level product id that is used on events sent directly from Centra. You can find more information about it [here](#top-level-product-id-in-product-catalog).
+
+For authorization public api key should be used. You can find details about activity tracking implementation in [Klaviyo documentation section](https://developers.klaviyo.com/en/v1-2/docs/guide-to-integrating-a-platform-without-a-pre-built-klaviyo-integration#javascript-track-api-for-onsite-metrics).
+
 #### Changed Subscription Status
 
 ```json
@@ -718,4 +911,5 @@ Shipping.Service and Shipping.Carrier fields are present when shipment has been 
 `OrderType` of value `New Subscription` is processed by separate flow because it contains additional subscription data.
 
 ![subscription_transactional_triggers.png](subscription_transactional_triggers.png)
+
 
