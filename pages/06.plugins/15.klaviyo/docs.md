@@ -643,19 +643,6 @@ Additional shipment fields available when Ingrid shipping plugin is enabled and 
 }
 ```
 
-## Activity tracking
-
-Although as headless platform, Centra does not control activity tracking through integration with Klaviyo it is still possible to send activity tracking events directly from the website.
-
-You can track following events:
-- Active on Site
-- Added to Cart
-- Viewed Product
-
-For `Added to Cart` and `Viewed Product` events you should use the same top level product id that is used on events sent directly from Centra. You can find more information about it [here](#top-level-product-id-in-product-catalog).
-
-For authorization public api key should be used. You can find details about activity tracking implementation in [Klaviyo documentation section](https://developers.klaviyo.com/en/v1-2/docs/guide-to-integrating-a-platform-without-a-pre-built-klaviyo-integration#javascript-track-api-for-onsite-metrics).
-
 #### Changed Subscription Status
 
 ```json
@@ -923,4 +910,43 @@ Shipping.Service and Shipping.Carrier fields are present when shipment has been 
 
 ![subscription_transactional_triggers.png](subscription_transactional_triggers.png)
 
+## Newsletter subscription
+
+When newsletter list is selected in store plugin settings Centra will push newsletter list subscriptions to Klaviyo when newsletter opt-in is received in Centra in one of the following ways:
+
+- Checkout API/Shop API newsletter subscribe endpoints
+- Newsletter field update on customer level
+- Newsletter opt-in during checkout
+
+Additionally, once a day global unsubscribes and selected list unsubscribes will be fetched from Klaviyo API and newsletter flag on customer level in Centra will be updated accordingly.
+
+[notice-box=info]
+Centra does not fetch newsletter list subscriptions that were made outside of Centra's control e.g. CSV import to Klaviyo based on data exported from another integration or direct integration to Klaviyo working ouside of Centra.
+
+In order to keep the opt-in status in sync with Klaviyo we recommend sending customer newsletter subscriptions to Checkout API/Shop API newsletter endpoints:
+
+- Checkout API: https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription
+- Shop API: https://docs.centra.com/swagger-ui/?api=CheckoutAPI&urls.primaryName=ShopAPI#/default/post_customers__email__newsletter_subscription
+[/notice-box]
+
+[notice-box=info]
+Centra does not subscribe customers to selected newsletter list during historical data transfer. If you want to transfer newsletter subscriptions from Centra to Klaviyo in bulk, you can export newsletter list from Centra and import customers to newsletter list in Klaviyo using CSV import.
+[CSV import in Klaviyo](https://help.klaviyo.com/hc/en-us/articles/115005078967-How-to-create-and-add-subscribers-to-a-new-list) allows to safely import newsletter list subscriptions without triggering any email communication. 
+[/notice-box]
+
+![customer_newsletter_export.png](customer_newsletter_export.png)
+
+
+## Activity tracking
+
+Although as headless platform, Centra does not control activity tracking through integration with Klaviyo it is still possible to send activity tracking events directly from the website.
+
+You can track following events:
+- Active on Site
+- Added to Cart
+- Viewed Product
+
+For `Added to Cart` and `Viewed Product` events you should use the same top level product id that is used on events sent directly from Centra. You can find more information about it [here](#top-level-product-id-in-product-catalog).
+
+For authorization public api key should be used. You can find details about activity tracking implementation in [Klaviyo documentation section](https://developers.klaviyo.com/en/v1-2/docs/guide-to-integrating-a-platform-without-a-pre-built-klaviyo-integration#javascript-track-api-for-onsite-metrics).
 
