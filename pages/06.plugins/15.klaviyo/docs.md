@@ -938,7 +938,7 @@ Centra does not subscribe customers to selected newsletter list during historica
 
 ### Localized content in newsletter list campaigns
 
-If you want to send out campaign emails for a list that contains customers with different langauges you can either: 
+If you want to send out campaign emails for a list that contains customers with different languages you can either: 
 1. Dynamically render localized content based on customer profile language using a single template.
 2. Configure separate campaign with static template for each language on the list using segment exclusions.
 
