@@ -212,28 +212,41 @@ To see active back in stock subscriptions in Klaviyo go to [Back In Stock Report
 
 ## Transactional emails
 
+### Supported metrics
+
+Metric types currently supported by Centra:
+
+- `Reset Password`
+- `Created Account`
+- `Placed Order`
+- `Ordered Product`
+- `Confirmed Order`
+- `Cancelled Order`
+- `Shipping Update`
+- `Refunded Order`
+- `Gift Certificate`
+- `Started Checkout`
+- `Changed Subscription Status`
+- `Failed Subscription Payment`
+- `Failed Subscription Payment Update`
+- `Successful Subscription Payment Update`
+
+#### Sending sample data to Klaviyo
+
+You can send sample events to Klaviyo directly from store plugin configuration in Centra by clicking on link presented on the screenshot below.
+This will populate supported metrics listed above in your Klaviyo account and you will be able to browse sample data in the activity dashboard.
+
+After synchronisation of sample data you can remove sample profile so that the data does not affect any reporting functionalities. 
+
+![sample_data_link.png](sample_data_link.png)
+
+![sample_data_popup.png](sample_data_popup.png)
+
 ### Transactional flows configuration
 
 In Klaviyo transactional and non-transactional automation is triggered off of the same metrics (events).
 In order to setup transactional flows in Klaviyo refer to the [following guide](https://help.klaviyo.com/hc/en-us/articles/360003165732).
-When plugin is activated, Centra will synchronize all the supported types of metrics, but you can choose which ones you want to listen to in your flows setup on your Klaviyo account.
-
-Metric types currently supported by Centra:
-
-  - `Reset Password`
-  - `Created Account`
-  - `Placed Order`
-  - `Ordered Product`
-  - `Confirmed Order`
-  - `Cancelled Order`
-  - `Shipping Update`
-  - `Refunded Order`
-  - `Gift Certificate`
-  - `Started Checkout`
-  - `Changed Subscription Status`
-  - `Failed Subscription Payment`
-  - `Failed Subscription Payment Update`
-  - `Successful Subscription Payment Update`
+When plugin is activated, Centra will start sending all the supported types of metrics when events occur, but you can choose which ones you want to listen to in your flows setup on your Klaviyo account.
 
 [notice-box=info]
 When creating a flow for a certain metric in Klaviyo, tags need to be matching the tags listed above.
