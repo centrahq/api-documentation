@@ -50,7 +50,7 @@ Cart link: should be set to the URL your webshop uses for cart abandonment, e.g.
 
 ### Newsletter
 
-Newsletter lists to which customers will be opt-in. Also, our integration will check this list in context of customer opt-out. In case of opt-out newsletter setting on customer profile in Centra will be updated.
+Newsletter lists to which customers will be opted in. Also, our integration will check this list in context of customer opt-out. In case of opt-out newsletter setting on customer profile in Centra will be updated.
 Customer can opt-in (subscribe and resubscribe) through API, by newsletter endpoint, and while placing the order. As a Centra user, you can save customer profile with setting _Newsletter: Yes_.
 You can create/find existing lists in Klaviyo Dashboard, under Audience -> Lists & Segments, type: Lists.
 
@@ -91,7 +91,7 @@ In the Product catalog synchronisation status line, you will see current transfe
 Catalog synchronization cannot be run simultaneously with historical data export or during historical data import. Please wait until the end of historical data synchronization to be able to run catalog synchronization.
 [/notice-box]
 
-You can browse synchronized products in your Klaviyo account here: https://www.klaviyo.com/catalog/items
+You can browse synchronized products in your Klaviyo account [here on your Klaviyo account](https://www.klaviyo.com/catalog/items).
 
 ![product_list.png](product_list.png)
 
@@ -100,7 +100,7 @@ We run updates synchronization right after saving the product in Centra, but thi
 
 #### BackInStock category of products
 
-If you're using back in stock feature with Klaviyo plugin, virtual products might appear on your list with the following title format {productName} - [DO NOT USE][Back in stock automation].
+If you're using back in stock feature with Klaviyo plugin, virtual products might appear on your list with the following title format `{productName} - [DO NOT USE][Back in stock automation]`.
 They also have a special category assigned - `BackInStock automation`
 Those are products created merely for the purpose of back in stock subscription and are not supposed to be used in any emails using catalog lookup function, so you can ignore them.
 
@@ -149,35 +149,14 @@ You can run full synchronization more than once if needed, but in general synchr
 }
 ```
 
-### Top-level product id in product catalog
+#### Top-level product id in product catalog
 
 Top-level catalog product id is a display item identifier from Centra. This is also matching the id of the order items that are send along with events for all the metrics (e.g. `Placed Order` or `Ordered Product`).
 Display item in Centra is a variant activated on a display, the concept is described in details [here](https://docs.centra.com/fe-development/fe-elements#why-do-i-see-different-product-ids-in-the-centra-backend-and-in-checkout-api).
 
-### Catalog product data in template
-
-To find full documentation about building email template in Klaviyo please check Klaviyo documentation site. 
-
-#### Localized product data 
-
-Our Klaviyo plugin allows you to send localized data with your emails. 
-Translated multi-language fields and multi-currency prices are send as JSON strings from which you can extract proper values using built in email template functions.
-You can use static lookup (like `|lookup:"SEK"`) or more dynamic, based on variable (like `|lookup:customer_lang`)
-
-```html
-{% with customer_lang=person|lookup:"Language"%}
-    {% catalog event.ItemID %}
-        Description: {{ catalog_item.metadata.Description|lookup:"default"}} <br />
-        Title: {{ catalog_item.title }}<br /><br /><br />
-        Price SEK: {{ catalog_item.metadata|lookup:"Price"|string_to_object|lookup:"SEK"}}<br />
-        Product name in customer language: {{ catalog_item.metadata|lookup:"ProductName"|string_to_object|lookup:customer_lang}}<br /><br />
-    {% endcatalog %}
-{% endwith %}
-```
-
 ### Back in stock subscriptions (QA only until January)
 
-In order to enable back in stock feature you need to perform initial product catalog synchronisation first. 
+In order to enable back in stock feature you need to perform initial product catalog synchronisation first.
 Once it's done you can enable back in stock and access product catalog information in back in stock emails using catalog lookup feature.
 
 ![back_in_stock_disabled.png](back_in_stock_disabled.png)
@@ -190,7 +169,6 @@ Back in stock requires frontend implementation against Checkout API or Shop API.
 
 #### Back in stock flow
 1. POST request towards Checkout API/Shop API
- 
 ```json
 POST https://centra-instance.com/api/checkout-api/back-in-stock-subscription
 {   
@@ -202,7 +180,6 @@ POST https://centra-instance.com/api/checkout-api/back-in-stock-subscription
     "language": "sv"
 }
 ```
-
 2. Centra creates back in stock product
 
 Back in stock products are assigned with a special category and are supposed to be used only for internal purposes of back in stock automation.
@@ -232,7 +209,6 @@ Variant identifier consists of multiple parts, which on the example of `12366_SE
 To see active back in stock subscriptions in Klaviyo go to [Back In Stock Report](https://www.klaviyo.com/catalog/reports/back-in-stock)
 
 ![back_in_stock_report.png](back_in_stock_report.png)
-
 
 ## Transactional emails
 
@@ -299,15 +275,37 @@ Event level variables:
 
 You can browse all the item and event level variables on the details of certain event in activity feed.
 
+#### Catalog product data in template
+
+To find full documentation about building email template in Klaviyo please check [Klaviyo template guide](https://help.klaviyo.com/hc/en-us/articles/4408802648731-Guide-to-Template-Tags-and-Variable-Syntax-new-editor-).
+
+#### Localized product data
+
+Our Klaviyo plugin allows you to send localized data with your emails.
+Translated multi-language fields and multi-currency prices are send as JSON strings from which you can extract proper values using built in email template functions.
+You can use static lookup (like `|lookup:"SEK"`) or more dynamic, based on variable (like `|lookup:customer_lang`)
+
+```html
+{% with customer_lang=person|lookup:"Language"%}
+    {% catalog event.ItemID %}
+        Description: {{ catalog_item.metadata.Description|lookup:"default"}} <br />
+        Title: {{ catalog_item.title }}<br /><br /><br />
+        Price SEK: {{ catalog_item.metadata|lookup:"Price"|string_to_object|lookup:"SEK"}}<br />
+        Product name in customer language: {{ catalog_item.metadata|lookup:"ProductName"|string_to_object|lookup:customer_lang}}<br /><br />
+    {% endcatalog %}
+{% endwith %}
+```
+
 #### Back-in-stock example flow configuration
 
-When customer will subscribe through API, we create back in stock catalog product just to store back-in-stock subscriptions. After restock, Centra will trigger back in stock event from Klaviyo. This trigger is for our back in stock product, so in the email template you need to get access to the original catalog product. To get access to original product data, you need to add extra parenthesis in template, with this part, you are able to use catalog_item data provided by Klaviyo.
-To extract original catalog product data, you need to use parenthis part like below:
+Catalog lookup tag can be also used to pull product data from catalog in back in stock emails. In order to fetch product information, [top-level product id](#top-level-product-id-in-product-catalog) needs to be extracted from VariantID.
+
+Following snippet will split the compound VariantID like `12366_SE_00_23400` and use extracted top-level product id `12366` to fetch catalog product data.
 
 ```html
 {% with idParts=event.VariantId|split:"_" %}
 {% catalog idParts.0 %}
-  < Template content >
+    <p>The {{ catalog_item.title }} Is Back!</p>
 {% endcatalog %}
 {% endwith %}
 ```
