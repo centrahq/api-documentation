@@ -910,7 +910,7 @@ Shipping.Service and Shipping.Carrier fields are present when shipment has been 
 
 ![subscription_transactional_triggers.png](subscription_transactional_triggers.png)
 
-## Newsletter subscription
+## Newsletter list subscription
 
 When newsletter list is selected in store plugin settings Centra will push newsletter list subscriptions to Klaviyo when newsletter opt-in is received in Centra in one of the following ways:
 
@@ -925,8 +925,8 @@ Centra does not fetch newsletter list subscriptions that were made outside of Ce
 
 In order to keep the opt-in status in sync with Klaviyo we recommend sending customer newsletter subscriptions to Checkout API/Shop API newsletter endpoints:
 
-- Checkout API: https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription
-- Shop API: https://docs.centra.com/swagger-ui/?api=CheckoutAPI&urls.primaryName=ShopAPI#/default/post_customers__email__newsletter_subscription
+- Checkout API: [swagger documentation](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_newsletter_subscription)
+- Shop API: [swagger documentation ](https://docs.centra.com/swagger-ui/?api=CheckoutAPI&urls.primaryName=ShopAPI#/default/post_customers__email__newsletter_subscription)
 [/notice-box]
 
 [notice-box=info]
@@ -936,6 +936,21 @@ Centra does not subscribe customers to selected newsletter list during historica
 
 ![customer_newsletter_export.png](customer_newsletter_export.png)
 
+### Localized content in newsletter list campaigns
+
+If you want to send out campaign emails for a list that contains customers with different languages you can either: 
+1. Dynamically render localized content based on customer profile language using a single template.
+2. Configure separate campaign with static template for each language on the list using segment exclusions.
+
+Example for method 2: 
+
+Segment excluding non-Swedish speaking customers:
+
+![segment_example.png](segment_example.png)
+
+Campaign targeted for Swedish speaking customers:
+
+![example_campaign_swedish.png](example_campaign_swedish.png)
 
 ## Activity tracking
 
