@@ -356,16 +356,14 @@ You can find the Webhook as a separate plugin, and how to set it up is explained
 
 As mentioned above, the Checkout API has a `/uri`-endpoint that allows you to send in the current path (URI) where Centra will respond with the content for the page provided. This allows you to use Centra as a fallback routing option to allow rendering of product, category and CMS-pages. This also opens up preview-modes directly from the Centra backend.
 
-## Performance
+## Performance and caching
 
-The Checkout API is built to fetch as little data as possible. For a regular consumer of the Checkout API, without any external plugins installed, our response times looks a bit like this:
+The Checkout API is built to fetch as little data as possible. For a regular consumer of the Checkout API, endpoints fetching data stored in Centra, like `/products`, `/uri`, `/items`, `/countries` and `/selection` should respond in and around 100 ms. Other endpoints, especially ones involving 3rd party APIs (like payment and shipping providers) introduce additional delay, not controlled by Centra directly. This is why `/payment` and `/payment-result` endpoints may likely take longer to respond, still likely no longer than 250 ms in normal circumstances. Please only treat those numbers as rough estimates, as the precise times may depend on the complexity of the features enabled in your Centra instance, and the unpredictable nature of Internet routing.
 
-**NB:** Remember, when external plugins are installed that is affecting the checkout-flow, such as payment methods like Klarna Checkout or shipping plugins like Ingrid, some of the requests made to Centra are actually also making requests to the third-party, this might skew the average speeds a bit. You are able to modify timeouts for each plugin to allow Centra to fallback to a normal flow if the third-party would respond too slow.
+[notice-box=info]
+Checkout API is great at quickly serving data, but to a reasonable number of sources. Unless you run a really small online store, with very few concurrent customers, we highly recommend you to design your own cache, and mostly use Checkout API to feed the data into it. Having your own server-side cache in case of larger websites is a hard requirement, without which you may have trouble scaling up the performance of your solution as customer numbers increase.
+[/notice-box]
 
-* `/products` ~ **100ms**
-* `/countries` ~ **80ms**
-* `/selection` ~ **80ms**
-* `/items` ~ **100ms**
-* `/payment` ~ **150ms**
-* `/payment-results` ~ **250ms**
-* `/uri` ~ **100ms**
+We mostly recommend you to mostly cache the `/products` data, with descriptions, categories, translations and related products. You can choose to pre-load products images, which in Centra are served from CDN caches spread around the globe.
+
+How can you know when the data in Centra has changed and your cache needs to be updated? [By using our Centra webhook plugin](/plugins/centra-webhook), of course! First, use the webhooks to only update the relevant parts of cache on demand. Add to that a method to completely re-build your cache from scratch in case of recovery after a critical application or network failure. With both solutions, your cache should be both light to run, which will work great with Checkout API, as well as resiliant to issues, when you have the big red button to refresh it completely. And if you're planning to integrate with external search engines in the future, building your own cache is a great first step to take.
