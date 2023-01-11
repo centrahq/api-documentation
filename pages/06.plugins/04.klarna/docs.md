@@ -76,6 +76,22 @@ When using Klarna Checkout in test mode, you need to make sure the PayPal plugin
 
 As with all payment plugins if you want to pricelist/market/country restrict the plugin you have the ability to select this in the bottom of the setup.
 
+### Upsell
+[notice-box=info]
+Upsell option allows customers to buy more products or services from your store in one transaction.
+[/notice-box]
+
+This enables Klarna Upsell
+
+![klarna-product-urls.png](klarna-upsell.png)
+
+Klarna Upsell `time limit` - time in minutes after which the upsell will not be possible. 
+* Default value is 30 minutes
+* Minimum value is 1 minute
+* Maximum value is 20 minutes
+
+When upsell `time limit` is out Centra sends Order Confirmation email to the customer.
+
 #### Customization of Klarna Checkout widget
 
 You are able to customize colors in Klarna Checkout widget - you are able to set colors of
