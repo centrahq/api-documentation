@@ -7,15 +7,14 @@ excerpt: It provides a great way to recommend additional products to customers t
 ---
 
 ## Overview
+
 Upsell is an effective marketing tactic used by many stores to increase sales and revenues.
 It is a type of sales technique that encourages customers to purchase additional items when making a purchase. 
 This feature allows customers to add products the order in one click, after they have already completed their checkout.
 
 ## What is required to enable Upsell?
 
-Currently, Upsell feature available in CheckoutAPI and ShopAPI for [Klarna Checkout v3 plugin](/centra-sections/settings/plugins/klarnacheckoutv3)
-
-Read how to enable Upsell feature for [Klarna Checkout v3 plugin](/centra-sections/settings/plugins/klarnacheckoutv3) 
+Currently, Upsell feature available in CheckoutAPI and ShopAPI when using Klarna Checkout v3. Read how to enable Upsell feature for [Klarna Checkout v3 plugin](/centra-sections/settings/plugins/klarnacheckoutv3).
 
 ## How does Upsell feature work?
 
@@ -40,6 +39,7 @@ Upsell feature allows to add additional products to the order in one click, afte
 5. When upsell time out is over Centra sends Order Confirmation email to customer
 
 ### Which products can be added to order?
+
 For upsell products work the same rules as for the products that can be added to basket.
 The only exception - flexible bundles are not available for upselling.
 
@@ -58,14 +58,15 @@ Order History section contains data about upsold products.
 ![ams-upsell-order-history.png](ams-upsell-order-history.png)
 
 #### Order with failed upsell transaction
-In case when Upsell transaction failed Centra:
+
+In case when Upsell transaction failed, Centra:
 - reverts Order to the state before adding new Line Item
 - logs failed transaction
 - logs data to Order history
 - Order Receipt email is sent after upsell time out limit is over
 
 [notice-box=info]
-The previous successful transaction remains active and can be captured.
+The previous successful transaction remains active and can be captured as usual.
 [/notice-box]
 
 ![ams-order-with-failed-upsell-transaction.png](ams-order-with-failed-upsell-transaction.png)
@@ -85,4 +86,4 @@ Important note: Sometimes the increase might be rejected as we are not allowed t
 Update the total order amount flow
 ![klarna-update-order-amount-flow.png](klarna-update-order-amount-flow.png)
 
-More information read in documentation [Klarna. Update order amount](https://docs.klarna.com/order-management/pre-delivery/update-order-amount/) 
+More information read in documentation [Klarna. Update order amount](https://docs.klarna.com/order-management/pre-delivery/update-order-amount/).
