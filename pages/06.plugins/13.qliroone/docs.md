@@ -43,12 +43,7 @@ There is no need to explicitly define them in plugin settings.
 #### Payment flow
 
 When customer makes a successful payment and is redirected to payment success page POST /payment-result is sent from frontend to Centra. 
-The order will be placed and visible in AMS with Waiting for Payment flag and HOLD status like on the screenshot below:
-
-
-![img.png](qliro-waiting-for-payment.png)
-
-It will stay this way until the CustomerCheckoutStatus notification arrives with status="Completed" which means that the payment has succeeded and we now have confirmation from Qliro.
+The order will be placed and visible in AMS with Waiting for Payment flag and HOLD status. It will stay this way until the CustomerCheckoutStatus notification arrives with status="Completed" which means that the payment has succeeded and we now have confirmation from Qliro.
 
 For debit/credit card payments Waiting for Payment flag and HOLD status are usually cleared within minutes after order placement.
 
