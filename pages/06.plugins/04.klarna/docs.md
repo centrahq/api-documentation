@@ -90,7 +90,7 @@ Klarna Upsell `time limit` - time in minutes after which the upsell will not be 
 * Minimum value is 1 minute
 * Maximum value is 20 minutes
 
-When upsell `time limit` is out Centra sends Order Confirmation email to the customer.
+When upsell `time limit` runs out, Centra sends Order Confirmation email to the customer.
 
 #### Customization of Klarna Checkout widget
 
