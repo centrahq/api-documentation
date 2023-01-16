@@ -970,3 +970,402 @@ mutation confirmOrder {
   }
 }
 ```
+
+### Creating a shipment
+
+In order to complete the order, all the order lines must be shipped, and each shipment must be marked as Paid. You can choose to split those order lines over multiple shipments, but in this example we will simply ship both order items in a single shipment.
+
+#### Request
+
+```gql
+mutation createShipment {
+  createShipment (
+    input: {
+      order: { number: 39790 }
+      lines: [{ orderLine: { id: 17635 }, quantity: 2 }]
+      isGoodToGo: true
+      isPaid: false
+      createdAt: "2022-06-23 15:47:12"
+      shippedAt: null
+      sendEmail: false
+      additionalMessage: "Additional message"
+      allocateDemand: true
+    }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    shipment {
+      ...shipmentDetails
+    }
+  }
+}
+
+fragment shipmentDetails on Shipment {  
+  id
+  number
+  createdAt
+  updatedAt
+  isGoodToGo
+  isShipped
+  isPaid
+  paidAt
+  additionalMessage
+  isShipped
+  shippedAt
+  numberOfPackages  
+  trackingNumber
+  returnTrackingNumber
+  internalShippingCost {
+    value
+  }  
+  grandTotal(includingTax: true) {
+    value
+  }
+  carrierInformation {
+    carrierName
+    serviceName
+  }
+  adminUser {
+    id
+  }
+  discountsApplied {
+    value {
+      formattedValue
+    }
+  }
+  lines {
+    id
+    quantity
+    lineValue {
+      formattedValue
+    }
+  }
+  shippingAddress {
+    firstName
+    lastName
+    country {
+      name
+      code
+    }
+    state {
+      name
+      code
+    }
+    address1
+    address2
+    city
+    zipCode
+    stateOrProvince
+    cellPhoneNumber
+    phoneNumber
+    faxNumber
+    email
+  }
+  shipmentPlugin {
+    id
+    status
+    name
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "createShipment": {
+      "userErrors": [],
+      "shipment": {
+        "id": 345,
+        "number": "39790-1",
+        "createdAt": "2022-06-23T15:47:12+02:00",
+        "updatedAt": "2023-01-16T10:31:34+01:00",
+        "isGoodToGo": true,
+        "isShipped": false,
+        "isPaid": false,
+        "paidAt": null,
+        "additionalMessage": "Additional message",
+        "shippedAt": null,
+        "numberOfPackages": 0,
+        "trackingNumber": null,
+        "returnTrackingNumber": null,
+        "internalShippingCost": {
+          "value": 0
+        },
+        "grandTotal": {
+          "value": 900
+        },
+        "carrierInformation": null,
+        "adminUser": null,
+        "discountsApplied": [],
+        "lines": [
+          {
+            "id": 465,
+            "quantity": 2,
+            "lineValue": {
+              "formattedValue": "700.00 SEK"
+            }
+          }
+        ],
+        "shippingAddress": {
+          "firstName": "Pio",
+          "lastName": "Sym",
+          "country": {
+            "name": "Sweden",
+            "code": "SE"
+          },
+          "state": null,
+          "address1": "Addr 1",
+          "address2": null,
+          "city": "City",
+          "zipCode": "12345",
+          "stateOrProvince": "State",
+          "cellPhoneNumber": "123456789",
+          "phoneNumber": null,
+          "faxNumber": null,
+          "email": "test@test.com"
+        },
+        "shipmentPlugin": null
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 131,
+    "permissionsUsed": [
+      "Shipment:write",
+      "Shipment:read",
+      "AdminUser:read",
+      "Order:read",
+      "Shipment.shippingAddress:read",
+      "StorePlugin:read"
+    ],
+    "appVersion": "v0.34.6"
+  }
+}
+```
+
+### Updating a shipment - marking as Paid
+
+For now, you can manually mark the shipment as Paid. In the future, you will be able to instead trigger a payment capture for shipment items and shipping cost.
+
+Please remember that there's a difference between shipment ID and number. The shipment "number" is the human-friendly name including order number and shipment prefix. The ID is a unique integer, and should be used to identify the shipment in the API:
+
+```text
+  "id": 345,
+  "number": "39790-1",
+```
+
+#### Request
+
+```gql
+mutation updateShipmentMarkPaid {
+  updateShipment (
+    id: 345
+    input: {
+      isPaid: true
+    }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    shipment {
+      ...shipmentDetails
+    }
+  }
+}
+```
+
+#### Response
+
+Note the shipment is now `"isPaid": true`.
+
+```json
+{
+  "data": {
+    "updateShipment": {
+      "userErrors": [],
+      "shipment": {
+        "id": 345,
+        "number": "39790-1",
+        "createdAt": "2022-06-23T15:47:12+02:00",
+        "updatedAt": "2023-01-16T10:35:35+01:00",
+        "isGoodToGo": true,
+        "isShipped": false,
+        "isPaid": true,
+        "paidAt": "2023-01-16T10:35:35+01:00",
+        "additionalMessage": "Additional message",
+        "shippedAt": null,
+        "numberOfPackages": 0,
+        "trackingNumber": null,
+        "returnTrackingNumber": null,
+        "internalShippingCost": {
+          "value": 0
+        },
+        "grandTotal": {
+          "value": 900
+        },
+        "carrierInformation": null,
+        "adminUser": null,
+        "discountsApplied": [],
+        "lines": [
+          {
+            "id": 465,
+            "quantity": 2,
+            "lineValue": {
+              "formattedValue": "700.00 SEK"
+            }
+          }
+        ],
+        "shippingAddress": {
+          "firstName": "Pio",
+          "lastName": "Sym",
+          "country": {
+            "name": "Sweden",
+            "code": "SE"
+          },
+          "state": null,
+          "address1": "Addr 1",
+          "address2": null,
+          "city": "City",
+          "zipCode": "12345",
+          "stateOrProvince": "State",
+          "cellPhoneNumber": "123456789",
+          "phoneNumber": null,
+          "faxNumber": null,
+          "email": "test@test.com"
+        },
+        "shipmentPlugin": null
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 131,
+    "permissionsUsed": [
+      "Shipment:write",
+      "Shipment:read",
+      "AdminUser:read",
+      "Order:read",
+      "Shipment.shippingAddress:read",
+      "StorePlugin:read"
+    ],
+    "appVersion": "v0.34.6"
+  }
+}
+```
+
+### Completing a shipment
+
+Now that the shipment is paid for and good to go, we can hand it over to the shipping company and complete the shipment in Centra, while adding optional tracking info and triggering a shipping confirmation e-mail.
+
+#### Request
+
+```gql
+mutation completeShipment {
+  completeShipment (
+    id: 345
+    input: {
+      shippedAt: "2023-01-09T15:18:33+01:00"
+      sendEmail: true
+      shipmentInfo: {
+        carrier: "Carrier name"
+        service: "Service name"
+        packagesNumber: 1
+        trackingNumber: "1234trackingcode"
+        returnTrackingNumber: "1234returncode"
+        internalShippingCost: { currencyIsoCode: "SEK", value: 12 }
+      }
+    }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    shipment {
+      ...shipmentDetails
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "completeShipment": {
+      "userErrors": [],
+      "shipment": {
+        "id": 346,
+        "number": "39790-1",
+        "createdAt": "2022-06-23T15:47:12+02:00",
+        "updatedAt": "2023-01-16T10:39:23+01:00",
+        "isGoodToGo": true,
+        "isShipped": true,
+        "isPaid": true,
+        "paidAt": "2023-01-16T10:39:17+01:00",
+        "additionalMessage": "Additional message",
+        "shippedAt": "2023-01-09T15:18:33+01:00",
+        "numberOfPackages": 1,
+        "trackingNumber": "1234trackingcode",
+        "returnTrackingNumber": "1234returncode",
+        "internalShippingCost": {
+          "value": 12
+        },
+        "grandTotal": {
+          "value": 900
+        },
+        "carrierInformation": {
+          "carrierName": "Carrier name",
+          "serviceName": "Service name"
+        },
+        "adminUser": null,
+        "discountsApplied": [],
+        "lines": [
+          {
+            "id": 466,
+            "quantity": 2,
+            "lineValue": {
+              "formattedValue": "700.00 SEK"
+            }
+          }
+        ],
+        "shippingAddress": {
+          "firstName": "Pio",
+          "lastName": "Sym",
+          "country": {
+            "name": "Sweden",
+            "code": "SE"
+          },
+          "state": null,
+          "address1": "Addr 1",
+          "address2": null,
+          "city": "City",
+          "zipCode": "12345",
+          "stateOrProvince": "State",
+          "cellPhoneNumber": "123456789",
+          "phoneNumber": null,
+          "faxNumber": null,
+          "email": "test@test.com"
+        },
+        "shipmentPlugin": null
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 131,
+    "permissionsUsed": [
+      "Shipment:write",
+      "Shipment:read",
+      "AdminUser:read",
+      "Order:read",
+      "Shipment.shippingAddress:read",
+      "StorePlugin:read"
+    ],
+    "appVersion": "v0.34.6"
+  }
+}
+```
