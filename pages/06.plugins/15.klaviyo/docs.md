@@ -65,7 +65,7 @@ Parameter productUrl has higher priority than product page URL.
 [/notice-box]
 
 ### Historical data export
-Our integration allow you to export your data to Klaviyo. This action base on customer account, and customer account is main entrance to data. What does it mean? By choosing date in Transfer historical date starting from, you are choosing the date in history when the customer account was created. For example, from the image above, customer accounts newer than (or exactly this date) 05-10-2022 00:00:00 will be transferred to Klaviyo.
+Our integration allow you to export your data to Klaviyo. This action base on customer account, and customer account is main entrance to data. What does it mean? By choosing date in Transfer historical date starting from, you are choosing the date in history when the customer account was created. For example, from the image below, customer accounts newer than (or exactly this date) 01-09-2022 00:00:00 will be transferred to Klaviyo.
 
 In the Synchronization status line, you will see current transfer status.
 
