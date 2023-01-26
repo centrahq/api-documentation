@@ -34,7 +34,7 @@ You need to have as much FTA stock as the `Minimum stock level`. If you have les
 
 ### What about the old newsletter subscribe with products?
 
-It is still possible to pass a product to our [`/newsletter-subscribe` endpoint](https://docs.centra.com/swagger-ui/#/6.%20customer%20handling/post_newsletter_subscription__email_). But there is no automation available when using this endpoint. It only remains for backwards compatibility with existing sites. For new sites use the new back-in-stock endpoints.
+It is still possible to pass a product to our [`/newsletter-subscription` endpoint](https://docs.centra.com/swagger-ui/#/6.%20customer%20handling/post_newsletter_subscription__email_). Once the user registers for the newsletter, Centra creates a subscriber with a special tag in Rule and adds product details fields. When the stock is replenished, a merchant is able to filter subscribers manually and send the notifications that way. It means there is no automation available when using this endpoint. It only remains for backwards compatibility with existing sites. For new sites use the new back-in-stock endpoints (eg. [`/back-in-stock-subscription`](https://docs.centra.com/swagger-ui/#/6.%20customer%20handling/post_back_in_stock_subscription).
 
 ## E-mail providers with support for back in stock
 
@@ -51,7 +51,7 @@ It is still possible to pass a product to our [`/newsletter-subscribe` endpoint]
 
 When a subscriber requests to be notified of an item the tag `Rule - Waiting For Product Alert` will be applied, and then when stock is updated and the subscriber should be notified the tag is replaced with `Rule - Product Alert Triggered`, theese tags can be used to setup automation for notifying your subscribers. Refer to Rule documentation for details. Centra syncronises stock with rule every 15 minutes and only if stock level of the product is above declared minimum.
 
-Email templates used in the automation can use custom fields set for the notification. Fields are accessible in the template as `CustomField:Rule-ProductAlert.<field_name>`. Refer to the [list](#Available fields) below to see what data is available for back in stock email templates.
+Email templates used in the automation can use custom fields set for the notification. Fields are accessible in the template as `CustomField:Rule-ProductAlert.<field_name>`. Refer to the [list](#available-fields) below to see what data is available for back in stock email templates.
 
 The fields that are available as localised will be separate fields named as the normal field followed by an `_` and the language ISO 639-1 code. If the product has not yet been translated to this language this field will contain the unlocalised product name, making it always safe to use the localised field so long as the language remains active in Centra.
 
