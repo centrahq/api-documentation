@@ -24,6 +24,16 @@ An important part for deciding upon how you will use the Checkout API is to unde
 
 3. A product without a price inside a pricelist will still be visible, however it will not be possible to purchase (`price` will be defined as `null`. You can always filter out the non-available items by using `onlyAvailable: true`, more on this below).
 
+### Backend
+
+While theoretically you could build a client-side only shoppable website on top of Checkout API using only HTML, JavaScript and CSS, **any practical implementation requires a backend**.
+The backend communicates server-to-server with the Checkout API. While you have great freedom to design your backend the way you like, features likely include:
+* Caching of the product catalog and other infrequently changing data (trying to call Checkout API on every page load would result in rate limiting/errors and/or API usage overage charges)
+* Tracking using server-to-server tracking services for analytics and marketing purposes
+* Accessing data through the Checkout API that is not available in client-side mode
+
+The backend can be implemented in any technology you prefer as a full scale application or a serverless function.
+
 ### Installation
 
 The Checkout API is a plugin that can be enabled on a B2C-store. You can select whatever URI (part of the URL) you want it located on. The URI set the plugin will enable the plugin under `/api/X` (Where `X` is the URI of the plugin).

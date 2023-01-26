@@ -23,6 +23,16 @@ To read about and test the most commonly used endpoints, visit our [Swagger for 
 Most of the concepts below are described in [Centra overview](/overview) chapters. It's worth reading before you dive into specifics of Checkout API implementation.
 [/notice-box]
 
+### Backend
+
+While theoretically you could build a client-side only shoppable website on top of Checkout API using only HTML, JavaScript and CSS, **any practical implementation requires a backend**.
+The backend communicates server-to-server with the Checkout API. While you have great freedom to design your backend the way you like, features likely include:
+* Caching of the product catalog and other infrequently changing data (trying to call Checkout API on every page load would result in rate limiting/errors and/or API usage overage charges)
+* Tracking using server-to-server tracking services for analytics and marketing purposes
+* Accessing data through the Checkout API that is not available in client-side mode
+
+The backend can be implemented in any technology you prefer as a full scale application or a serverless function.
+
 ### How does it work?
 
 When using Checkout API, the end-user's session context is controlled by three main aspects:
