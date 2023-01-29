@@ -13,7 +13,7 @@ Centra has a few different APIs used for different purposes. This documentation 
 
 If you are building a front end for your brand or DTC store, either as a website or a mobile app, you should look into using Checkout API. It's our hybrid webshop API, able to operate both in Client and Server mode, giving you access to products catalog, prices, payments, checkout, shipping options, vouchers, anything you need to build a webshop. To read more about building a front end using Checkout API, visit [Creating Front End for Centra store](/fe-development) section.
 
-#### [REST] Shop API
+### [REST] Shop API
 
 Shop API is an older webshop API, which only works in authenticated Server mode. It is stateless, operates directly on selections (instead of sessions), and is not aware of the end-user context the way Checkout API is. It's not recommended to be used to build webshops directly, but due to its nature of always serving all of the data, it becomes very useful when implemented on server middle-ware for cache building and/or static page generation.
 
