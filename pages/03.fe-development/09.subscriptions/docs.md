@@ -98,6 +98,17 @@ Once subscription is created it is possible to browse customer's subscriptions a
 #### Changing interval
 Interval on which items should be delivered can only be changed if the same item is currently available in a subscription plan. One can choose any of currently available plans. Keep in mind that all plan's properties will be transferred to subscribed item: interval and discount. Each subscription can have its own interval and they can be modified separately.
 
+Once the subscription interval is changed it will remain the same regardless of changes to the original subscription plan, eg.:
+ - Subscription Plan A is set to `1 month` interval with `10%` discount.
+ - Subscription with id 100 is changed to that plan, so from the next order date it will be sent monthly with 10% discount.
+ - After that the plan A is changed to `4 weeks` with `15%` discount.
+ - Subscription id 100 still is sent monthly (not every 4 weeks) and contains `10%` discount (not `15%`).
+
+Switching the interval for existing subscription will take place on the next scheduled order date. For example, for a monthly subscription that renews on 10th day of the month:
+ - Order is created on Jan 10, next order is scheduled on Feb 10.
+ - The consumer decides to switch to tri-monthly on Jan 20.
+ - The next order is created on Feb 10 (as scheduled originally), and next order after that will happen on May 10 (in 3 months).
+
 #### Changing status
 Subscription might be paused at any given time with no consequences. In such case orders are not generated if they fall on the send interval. After resuming the subscription next send interval will be calculated and orders will resume from that interval. No items will be shipped to make up for pause period. When you cancel a subscription it is not possible to bring it back. When all contract's subscriptions are cancelled then payment details will be purged for safety reasons. Be careful not to cancel all subscriptions if you plan to have this contract going in the future.
 
