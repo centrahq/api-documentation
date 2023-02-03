@@ -2285,6 +2285,85 @@ mutation deleteShipment {
 }
 ```
 
+### Fetching a B2B invoice
+
+In B2B, GraphQL allows you to find invoices and mark them as paid. Here's a simple example of how to do it:
+
+#### Request
+
+```gql
+query invoices {
+  invoices (where: {type: INVOICE, number: 1004}) {
+    id
+    number
+    type
+    store {name}
+    grandTotal { formattedValue }
+    orders { number }
+    shipments { number }
+    payments {
+      id
+      invoice { id }
+      value { formattedValue }
+      paymentDate
+      type
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "invoices": [
+      {
+        "id": 16,
+        "number": 1004,
+        "type": "INVOICE",
+        "store": {
+          "name": "Wholesale"
+        },
+        "grandTotal": {
+          "formattedValue": "0.00 SEK"
+        },
+        "orders": [],
+        "shipments": [],
+        "payments": []
+      }
+    ]
+  },
+  "extensions": {
+    "complexity": 1060,
+    "permissionsUsed": [
+      "Invoice:read",
+      "Store:read",
+      "Order:read",
+      "Shipment:read"
+    ],
+    "appVersion": "v0.36.1"
+  }
+}
+```
+
+### Marking an invoice as paid
+
+Use the invoice ID returned in the previous call. Remember, invoice numbers can be changed, while their IDs can not.
+
+#### Request
+
+```gql
+
+```
+
+#### Response
+
+```json
+
+```
+
+
 <!--
 #### Request
 
