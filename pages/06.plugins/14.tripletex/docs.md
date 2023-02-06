@@ -6,6 +6,10 @@ taxonomy:
     category: docs
 ---
 
+[notice-box=info]
+Tripletex is a module, not a plugin. If you need it enabled, please contact Support, or ping us in Slack.
+[/notice-box]
+
 ### Installation
 
 To enable Tripletex module in Centra, you will need to create a user in Tripletex, or create an API-token for an existing user. The user needs to be allowed to create invoices and orders in Tripletex.
