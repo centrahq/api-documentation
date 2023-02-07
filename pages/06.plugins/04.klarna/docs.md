@@ -50,6 +50,16 @@ Only enable this if you are validating fraud outside of Klarna, as Klarna does n
 
 ![klarna-shipping-address.png](klarna-shipping-address.png)
 
+#### Enable address update call from Klarna
+
+![Klarna address update call](kco-address-update-call.png)
+
+This is sometimes required when Centra reliably needs to get the full address from Klarna. In simple scenarios, the address entry and payment processing can be all processed inside the Klarna widget, and Centra is only later informed about the result of the payment after the authorization is complete. However, there are two use cases when enabling this setting is recommended:
+
+- If you're using PayPal inside Klarna, especially when Override shipping address setting is enabled, Centra will need to be informed about address change coming from PayPal to Klarna
+- If you have any tax rules based on zip codes (city/county tax), Centra needs the full address from Klarna in order to apply the right tax rules
+
+
 #### Send product images and URLs
 
 You can enable product images and URLs to be sent to Klarna. Select the preferred image size to send to Klarna.
