@@ -20,7 +20,7 @@ TL;DR: We are here to help, but we are also here to educate and guide where ever
 | **Custom attributes** |
 | We'll help you to understand the concept of attributes and share some examples with you [in our Custom Attributes docs](/overview/custom-attributes) | However, we will not build multiple attribute definitions for you, reviewing one you've created yourself and then advising you on the best outcome is much more effecient for us all.  |
 | **Test orders** |
-| We are happy to guide you on creating test orders, we can explain the [order flow](/overview/orderflow) or teach you how to [create / complete shipments](https://support.centra.com/centra-sections/retail-b2c/sales/expediting-a-b2c-order). | Creating multiple test order variations, though, is something you'll benifit from learning to do yourself. We'll also show the client how to do it, of course, based on required use-cases.
+| We are happy to guide you on creating test orders, we can explain the [order flow](/overview/orderflow) or teach you how to [create / complete shipments](https://support.centra.com/centra-sections/retail-b2c/sales/expediting-a-b2c-order). | Creating multiple test order variations, though, is something you'll benefit from learning to do yourself. We'll also show the client how to do it, of course, based on required use-cases.
 | **Stress and performance tests** |
 | - | Once again, teaching you to run stress tests without our help is a much more effecient way to develop skillsets with our partners, and once you know how you have those skills in house.  |
 </div>
