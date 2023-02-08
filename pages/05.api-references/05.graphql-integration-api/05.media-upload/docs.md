@@ -86,9 +86,9 @@ Save the queueId value returned from the mutation if you want to check the progr
 
 Beside your own values, the product media metadata will have some additional keys added automatically by this process. They are especially useful to determine, whether given ProductMedia is the same image you want, or not.
 
-originalUrl – the imported url 
-originalSha1 – an SHA-1 checksum of the original file contents
-originalWidth + originalHeight – dimensions of the originally uploaded image
+- originalUrl – the imported url.
+- originalSha1 – an SHA-1 checksum of the original file contents.
+- originalWidth + originalHeight – dimensions of the originally uploaded image.
 
 Check the batch status
 Because processing of your batch upload is asynchronous, you may want to check its progress.
