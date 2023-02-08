@@ -250,13 +250,13 @@ mutation createMB {
 ```
 A few important notes:
 
-You can connect media directly to a product variant if it only applies to one variant.
+1. You can connect media directly to a product variant if it only applies to one variant.
 
-The maximum number of media to be imported at once is 100.
+2. The maximum number of media to be imported at once is 100.
 
-You can add your own metadata and later read it back from a ProductMedia object. Metadata should be a JSON object (not a list or a scalar), but the keys can store any type of value.
+3. You can add your own metadata and later read it back from a ProductMedia object. Metadata should be a JSON object (not a list or a scalar), but the keys can store any type of value.
 
-Save the queueId value returned from the mutation if you want to check the progress.
+4. Save the queueId value returned from the mutation if you want to check the progress.
 
 Beside your own values, the product media metadata will have some additional keys added automatically by this process. They are especially useful to determine, whether given ProductMedia is the same image you want, or not.
 
