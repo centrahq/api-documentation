@@ -50,6 +50,7 @@ To initiate a new batch, call the createMediaBatch mutation:
 
 There is only one requirement: imported images must be accessible via the Internet by a URL.
 
+```gql
 mutation createMB {
   createMediaBatch(input: {
     productMedia: [ 
@@ -72,6 +73,7 @@ mutation createMB {
     }
   }
 }
+```
 A few important notes:
 
 You can connect media directly to a product variant if it only applies to one variant.
@@ -93,7 +95,7 @@ originalWidth + originalHeight – dimensions of the originally uploaded image
 Check the batch status
 Because processing of your batch upload is asynchronous, you may want to check its progress.
 
-
+```gql
 query MBstatus {
   mediaBatch(queueId: "acd5518727f54c5c9a5b2e31d6d742d2") { # insert your queueId
     status
@@ -107,12 +109,13 @@ query MBstatus {
     } 
   }
 }
+```
 See the BatchStatus enum values for possible statuses.
 
 Fetch the new media from a product query
 When your batch is COMPLETED, you should see the new media on a product:
 
-
+```gql
 query lastMedia {
   product(id: 1) {
     media(sort: id_DESC, limit: 1) {
@@ -131,7 +134,7 @@ query lastMedia {
     }
   }
 }
-
+```
 
 ### Code examples:
 
