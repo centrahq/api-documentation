@@ -90,7 +90,8 @@ Beside your own values, the product media metadata will have some additional key
 - originalSha1 – an SHA-1 checksum of the original file contents.
 - originalWidth + originalHeight – dimensions of the originally uploaded image.
 
-Check the batch status
+### Check the batch status
+
 Because processing of your batch upload is asynchronous, you may want to check its progress.
 
 ```gql
@@ -110,7 +111,8 @@ query MBstatus {
 ```
 See the BatchStatus enum values for possible statuses.
 
-Fetch the new media from a product query
+### Fetch the new media from a product query
+
 When your batch is COMPLETED, you should see the new media on a product:
 
 ```gql
