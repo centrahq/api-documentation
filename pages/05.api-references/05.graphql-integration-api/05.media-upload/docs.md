@@ -45,6 +45,95 @@ Required permission is `ProductMedia:write`
 - Supported file formats are png, jpg and gif.
 - Successful response from S3 file upload request is indicated by 204 status code.
 
+### Create a new batch upload
+To initiate a new batch, call the createMediaBatch mutation:
+
+There is only one requirement: imported images must be accessible via the Internet by a URL.
+
+```gql
+mutation createMB {
+  createMediaBatch(input: {
+    productMedia: [ 
+      {
+        productId: 1
+        variantId: 1445
+        url: "https://picsum.photos/id/1072/3872/2592"
+        metaDataJSON: "{\"my-data\": \"Anything can go here\"}"
+      },
+      {
+        productId: 1
+        url: "https://picsum.photos/id/1003/1181/1772"
+      }
+    ]
+  }) {
+    queueId
+    userErrors {
+      message
+      path
+    }
+  }
+}
+```
+A few important notes:
+
+You can connect media directly to a product variant if it only applies to one variant.
+
+The maximum number of media to be imported at once is 100.
+
+You can add your own metadata and later read it back from a ProductMedia object. Metadata should be a JSON object (not a list or a scalar), but the keys can store any type of value.
+
+Save the queueId value returned from the mutation if you want to check the progress.
+
+Beside your own values, the product media metadata will have some additional keys added automatically by this process. They are especially useful to determine, whether given ProductMedia is the same image you want, or not.
+
+originalUrl – the imported url 
+originalSha1 – an SHA-1 checksum of the original file contents
+originalWidth + originalHeight – dimensions of the originally uploaded image
+
+Check the batch status
+Because processing of your batch upload is asynchronous, you may want to check its progress.
+
+```gql
+query MBstatus {
+  mediaBatch(queueId: "acd5518727f54c5c9a5b2e31d6d742d2") { # insert your queueId
+    status
+    productMedia {
+      productId
+      variantId
+      mediaType
+      url
+      key
+      completed
+    } 
+  }
+}
+```
+See the BatchStatus enum values for possible statuses.
+
+Fetch the new media from a product query
+When your batch is COMPLETED, you should see the new media on a product:
+
+```gql
+query lastMedia {
+  product(id: 1) {
+    media(sort: id_DESC, limit: 1) {
+      id
+      source(sizeName: "standard") {
+        mediaSize {
+          name
+          quality
+          maxWidth
+          maxHeight
+        }
+        url
+        mimeType
+      }
+      metaDataJSON
+    }
+  }
+}
+```
+
 ### Code examples:
 
 - JavaScript upload function using XHR request:
