@@ -31,8 +31,8 @@ Lorem ipsum
 
 | Webinar topic | Webinar date | Target audience |
 | --- | --- | --- |
-| Centra fundamentals | 06.12.2022 13:00 - 15:00 CET | All Centra users, mostly non-technical |
-| Integration APIs - SOAP | 11.01.2023 10:00 - 12:00 CET | Integration/SOAP developers |
-| Integration APIs - GraphQL | 12.01.2023 10:00 - 12:00 CET | Integration/GQL developers |
-| How to build a storefront on Checkout API - Pt. 1 | 14.12.2022 09:00 - 12:00 CET | FE developers, optionally project managers (mostly technical) |
-| How to build a storefront on Checkout API - Pt. 2 | 15.12.2022 12:00 - 15:00 CET | FE developers, optionally project managers (mostly technical) |
+| Centra fundamentals | 28.02.2023 13:00 - 15:00 CET | All Centra users, mostly non-technical |
+| Integration APIs - SOAP | 22.02.2023 10:00 - 12:00 CET | Integration/SOAP developers |
+| Integration APIs - GraphQL | 23.02.2023 10:00 - 12:00 CET | Integration/GQL developers |
+| How to build a storefront on Checkout API - Pt. 1 | 08.03.2023 09:00 - 12:00 CET | FE developers, optionally project managers (mostly technical) |
+| How to build a storefront on Checkout API - Pt. 2 | 08.03.2023 12:00 - 15:00 CET | FE developers, optionally project managers (mostly technical) |
