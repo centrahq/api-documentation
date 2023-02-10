@@ -30,35 +30,35 @@ This allows for real-time updates to be reflected on the cached data without the
 ![product-name-edit-ams.gif](product-name-edit-ams.gif)
 2. Payload received at configured webhook url
 
-```http
-POST /configured/webhook/url HTTP/1.1
-Host: your-backend.eu
-Content-Length: 36
-Accept: */*
-Content-Type: application/x-www-form-urlencoded
-X-Centra-Signature: t=1676025421,v1=fd2fbb2453344f4cc5eb0e56ba12db7f4727981a7d33c50e0c08eac5bbe93d2a
-Accept-Encoding: gzip
-
-payload=%7B%22products%22%3A%5B%221%22%5D%7D
-```
-
-Raw parsed data:
-```json
-{"products":["1"]}
-```
-
+    ```http
+    POST /configured/webhook/url HTTP/1.1
+    Host: your-backend.eu
+    Content-Length: 36
+    Accept: */*
+    Content-Type: application/x-www-form-urlencoded
+    X-Centra-Signature: t=1676025421,v1=fd2fbb2453344f4cc5eb0e56ba12db7f4727981a7d33c50e0c08eac5bbe93d2a
+    Accept-Encoding: gzip
+    
+    payload=%7B%22products%22%3A%5B%221%22%5D%7D
+    ```
+   
+    Raw parsed data:
+    ```json
+    {"products":["1"]}
+    ```
+   
 3. Payload from this webhook can be directly used in `POST /products` to get the updated data:
-```json
-...,
-"products": [
-    {
-        "product": "1",
-        "name": "Test",
-        ...,
-    }
-],
-...
-```
+    ```json
+    ...,
+    "products": [
+        {
+            "product": "1",
+            "name": "Test",
+            ...,
+        }
+    ],
+    ...
+    ```
 
 #### Webhook repeating explained
 
