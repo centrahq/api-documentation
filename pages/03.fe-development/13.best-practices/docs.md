@@ -29,7 +29,7 @@ This allows for real-time updates to be reflected on the cached data without the
 1. Edit product name in AMS
 ![product-name-edit-ams.gif](product-name-edit-ams.gif)
 2. Payload received at configured webhook url 
-```
+```text
 POST /configured/webhook/url HTTP/1.1
 Host: your-backend.eu
 Content-Length: 36
@@ -44,11 +44,7 @@ Raw parsed data:
 ```json
 {"products":["1"]}
 ```
-3. Payload from this webhook can be used in `POST /products` to get the updated data:
-```
-POST /products
-{
-```
+3. Payload from this webhook can be directly used in `POST /products` to get the updated data:
 Response:
 ```json
 ...,
