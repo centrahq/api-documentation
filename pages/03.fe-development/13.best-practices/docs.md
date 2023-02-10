@@ -48,7 +48,6 @@ Raw parsed data:
 ```
 
 3. Payload from this webhook can be directly used in `POST /products` to get the updated data:
-Response:
 ```json
 ...,
 "products": [
