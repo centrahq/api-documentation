@@ -25,6 +25,43 @@ Webhooks can be used for cache invalidation by sending a request to a cache serv
 which triggers the cache server to invalidate its cached version of the data and retrieve a fresh copy. 
 This allows for real-time updates to be reflected on the cached data without the need for manual intervention or scheduled cache refreshes.
 
+#### Example flow
+1. Edit product name in AMS
+![product-name-edit-ams.gif](product-name-edit-ams.gif)
+2. Payload received at configured webhook url 
+```
+POST /configured/webhook/url HTTP/1.1
+Host: your-backend.eu
+Content-Length: 36
+Accept: */*
+Content-Type: application/x-www-form-urlencoded
+X-Centra-Signature: t=1676025421,v1=fd2fbb2453344f4cc5eb0e56ba12db7f4727981a7d33c50e0c08eac5bbe93d2a
+Accept-Encoding: gzip
+
+payload=%7B%22products%22%3A%5B%221%22%5D%7D
+```
+Raw parsed data:
+```json
+{"products":["1"]}
+```
+3. Payload from this webhook can be used in `POST /products` to get the updated data:
+```
+POST /products
+{
+```
+Response:
+```json
+...,
+"products": [
+    {
+        "product": "1",
+        "name": "Test",
+        ...,
+    }
+],
+...
+```
+
 #### Webhook repeating explained
 
 Webhook retrying refers to the process of attempting to resend a failed webhook request multiple times, 
