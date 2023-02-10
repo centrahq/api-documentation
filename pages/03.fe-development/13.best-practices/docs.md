@@ -36,6 +36,12 @@ The retrying logic can be configured to adjust the retry interval, the number of
 and the conditions for determining if a retry is necessary. 
 Retrying helps to ensure that important data is not lost and that the receiver can receive the latest updates in a timely manner.
 
+##### How to enable webhook repeating in Centra:
+- go to webhook plugin settings
+- enable `Number of retries after failure` setting
+
+More on it [here](/plugins/centra-webhook).
+
 ### Mechanism for rebuilding the whole cache
 
 A mechanism to rebuild the whole cache may be necessary in scenarios where the cache becomes stale 
@@ -48,6 +54,11 @@ Cache rebuilding can be triggered manually, such as through an administrative in
 such as through a scheduled task or when certain conditions are met, such as the detection of stale data 
 or a failure of the webhook mechanism. This ensures that the cache remains fresh and consistent with the underlying data,
 even in the face of network issues or other unexpected events.
+
+It's worth mentioning that **Centra's webhook implementation does not guarantee that all webhooks will be delivered 
+and does not guarantee the specific order of those webhooks**.  For this reason it is necessary to prepare a mechanism 
+for whole cache rebuilt. The rebuilt might take some time and for that time the old cache should be used, 
+until the rebuild is done. Then after completion the out-of-date cache should be swapped for an up-to-date one.
 
 ### Requirement of caching for larger clients
 
@@ -63,6 +74,9 @@ and reduces the amount of data that needs to be transferred over the network.
 By reducing the amount of data that needs to be transmitted and processed, 
 caching can also help to reduce the load on the underlying systems, 
 which can improve the overall stability and reliability of the system.
+
+Although theoretically possible to use Checkout API directly from the end-customer's browser,
+for medium to large clients additional caching layer is a must.
 
 ### How caching can avoid limiting the API requests in the future?
 
@@ -80,6 +94,10 @@ Caching can also help to conserve bandwidth, as it reduces the amount of data th
 This can be especially important for applications that rely on API data and need to make frequent requests. 
 By reducing the number of API requests, caching can help to ensure that the application remains within 
 the API's rate limits and that the API data remains available and reliable.
+
+Although Checkout and Shop APIs are not rate limited right now we might add that limitation in the near future 
+and then the caching will be a requirement. Implementing the caching of your own can help you prepare for any future
+API rate limiting that will be imposed.
 
 ## Webhook handling
 
@@ -144,6 +162,8 @@ unless requests are proxied by your backend.
 When we confirm exposing a shared secret (i.e. by detecting a direct browser usage) we will revoke the questioned key, rendering it useless for the intended purpose. 
 This can result in downtime, loss of data, and other adverse effects.
 
+Secret rotation will be required in such case.
+
 ### Rotating the secret
 
 Secret rotation helps reduce the risk of a shared secret being compromised. 
@@ -165,11 +185,23 @@ overwhelming the API server or the client's own processing capabilities.
 APIs often deal with large amounts of data, such as lists of products, images, or other information. 
 Retrieving all of this data at once can cause performance issues for both the API server and the client, 
 as it can result in slow response times, increased network traffic, and increased memory usage.
+In some occasions it can also trigger server side failures due to memory exhaustion.
 
 Pagination solves this problem by allowing the API to return only a portion of the data at a time.
 The client can then request additional pages of data as needed. This reduces the amount of data that needs 
 to be transmitted and processed at any given time, improving performance and reducing the risk of errors or failures.
 It allows the client to retrieve only the data it needs and to process the data in a way that is most efficient for their use case.
+
+Pagination is prerequisite in product listing, otherwise the responses might miss products or return errors.
+
+Example paginated request to `POST /products`:
+```json
+{
+    "market": 1,
+    "limit": 50,
+    "skipFirst": 250
+}
+```
 
 ### Keep limits low
 
@@ -189,4 +221,3 @@ You should always specify a reasonable page limit (<u>**surely not</u> `99999`**
 
 There is no strict limit to the maximum size of a REST API response,
 but it is generally recommended to keep response sizes small to improve performance and avoid timeouts.
-Therefore, we recommend that **responses should be limited to a few kilobytes in size**
