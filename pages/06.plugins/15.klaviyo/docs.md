@@ -248,6 +248,18 @@ In Klaviyo transactional and non-transactional automation is triggered off of th
 In order to setup transactional flows in Klaviyo refer to the [following guide](https://help.klaviyo.com/hc/en-us/articles/360003165732).
 When plugin is activated, Centra will start sending all the supported types of metrics when events occur, but you can choose which ones you want to listen to in your flows setup on your Klaviyo account.
 
+Extra metrics for manual resend email from Centra, with exactly the same data as regular ones, but requires own event type:
+
+- `Placed Order - resend`
+- `Confirmed Order - resend`
+- `Cancelled Order - resend`
+- `Shipping Update - resend`
+- `Refunded Order - resend`
+- `Gift Certificate - resend`
+
+Listed metrics for the email resend purposes require additional email trigger configuration for email resending to work.
+Resend metrics listed above will not impact flows and reporting based on regular metrics.
+
 [notice-box=info]
 When creating a flow for a certain metric in Klaviyo, tags need to be matching the tags listed above.
 [/notice-box]
