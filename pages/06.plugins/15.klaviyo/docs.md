@@ -80,7 +80,7 @@ During data export, the following event types will be sent:
 - Cancelled Order
 - Refunded Order
 
-### Product catalog synchronization (QA only until January)
+### Product catalog synchronization
 You are able to run catalog synchronization with Klaviyo account. To run synchronization, in Klaviyo plugin, change `Synchronize product catalog to Klaviyo` to `Yes` (default `No`) and save plugin. 
 
 In the Product catalog synchronisation status line, you will see current transfer status.
@@ -154,7 +154,7 @@ You can run full synchronization more than once if needed, but in general synchr
 Top-level catalog product id is a display item identifier from Centra. This is also matching the id of the order items that are send along with events for all the metrics (e.g. `Placed Order` or `Ordered Product`).
 Display item in Centra is a variant activated on a display, the concept is described in details [here](https://docs.centra.com/fe-development/fe-elements#why-do-i-see-different-product-ids-in-the-centra-backend-and-in-checkout-api).
 
-### Back in stock subscriptions (QA only until January)
+### Back in stock subscriptions
 
 In order to enable back in stock feature you need to perform initial product catalog synchronisation first.
 Once it's done you can enable back in stock and access product catalog information in back in stock emails using catalog lookup feature.
