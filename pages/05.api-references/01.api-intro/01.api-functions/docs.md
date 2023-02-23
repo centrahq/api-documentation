@@ -9,17 +9,13 @@ taxonomy:
 
 Centra has a few different APIs used for different purposes. This documentation explains the functions and use cases that are covered by all the different APIs used to connect to Centra. Below are some examples which you can consider when planning your integration with Centra. If none of those covers your use case, let us know and we will advise!
 
-### [REST] DTC webshop API (Checkout API)
+### [REST] Checkout API
 
-If you are building a front end for your brand or DTC store, either as a website or a mobile app, you should probably look into using Checkout API. It's our hybrid webshop API, able to operate both in Client and Server mode, giving you access to products catalog, prices, payments, checkout, shipping options, vouchers, anything you need to build a webshop. To read more about building a front end using Checkout API, visit [Creating Front End for Centra store](/fe-development) section.
+If you are building a front end for your brand or DTC store, either as a website or a mobile app, you should look into using Checkout API. It's our hybrid webshop API, able to operate both in Client and Server mode, giving you access to products catalog, prices, payments, checkout, shipping options, vouchers, anything you need to build a webshop. To read more about building a front end using Checkout API, visit [Creating Front End for Centra store](/fe-development) section.
 
-#### Shop API [deprecated]
+### [REST] Shop API
 
-Shop API is an older, soon to be deprecated webshop API, which only works in authenticated Server mode. It operates directly on selections (instead of sessions), is not aware of the end-user context, and is less capable performance-wise, since it doesn't use ES cache internally, like Checkout API does.
-
-[notice-box=info]
-Checkout API is highly recommended for any new implementations. Shop API will be deprecated in the near future.
-[/notice-box]
+Shop API is an older webshop API, which only works in authenticated Server mode. It is stateless, operates directly on selections (instead of sessions), and is not aware of the end-user context the way Checkout API is. It's not recommended to be used to build webshops directly, but due to its nature of always serving all of the data, it becomes very useful when implemented on server middle-ware for cache building and/or static page generation.
 
 ### [REST] Integration API (Order API)
 
@@ -48,7 +44,7 @@ This API was replaced by the [new subscriptions functionality](/fe-development/s
 ### Existing Limitations
 
 <a id="LimitOrderWriteStock"></a>
-Order API can be used to update stock values, but only for one Warehouse in each plugin instance.
+Order API can be used to update stock values, but only for one Warehouse per each plugin instance.
 
 <a id="LimitOrderReadAttributes"></a>
 Order API only supports attributes on `product` and `variant` level. They are only returned through the `GET /products` endpoint.
@@ -60,7 +56,7 @@ SOAP API only supports custom attributes built into existing plugins, like Ingri
 Checkout API has limited support for Wholesale stores. We can recommend Centra Showroom for your B2B store, if you'd like.
 
 <a id="LimitShopB2B"></a>
-Shop API has limited support for Wholesale stores. It has also be noted that this API is legacy, not recommended for new implementations.
+Shop API has limited support for Wholesale stores. Again, we have B2B Showroom. It's great.
 
 <a id="LimitOrderWriteVouchers"></a>
 Order API can be used to create very basic vouchers, or to clone voucher templates previously defined in the Centra AMS.
@@ -69,7 +65,7 @@ Order API can be used to create very basic vouchers, or to clone voucher templat
 Checkout API can only be used to view the historical orders of currently logged in user. As a webshop API, it doesn't have access to other orders unrelated to the shopper.
 
 <a id="LimitShopReadOrders"></a>
-Shop API can only be used to view the historical orders of currently logged in user. It has also be noted that this API is legacy, not recommended for new implementations.
+Shop API can only be used to view the historical orders of currently logged in user.
 
 <a id="LimitSoapReadAll"></a>
 With SOAP, each event should only be fetched once, synced with the ERP and then marked as done in Centra. After that, you can no longer fetch it from Centra directly, unless there's been changes that need to be synced to the ERP as well.

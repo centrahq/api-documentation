@@ -104,6 +104,12 @@ If you have PayPal enabled as your payment method and the plugin is configured a
 
 This might also cause address mismatches between Ingrid and Centra since there is little control over what the client enters in the widgets when set in this mode.
 
+One more setting which can be useful in this scenario is `Enable address update call from Klarna`. This is sometimes required when Centra reliably needs to get the full address from Klarna. In simple scenarios, the address entry and payment processing can be all processed inside the Klarna widget, and Centra is only later informed about the result of the payment after the authorization is complete. However, there are two use cases when enabling this setting is recommended:
+- If you're using PayPal inside Klarna, especially when `Override shipping address` setting is enabled, Centra will need to be informed about address change coming from PayPal to Klarna
+- If you have any tax rules based on zip codes (city/county tax), Centra needs the full address from Klarna in order to apply the right tax rules
+
+![Klarna address update call](kco-address-update-call.png)
+
 ## Problems that can occur
 
 ### Different address in Ingrid and Centra

@@ -65,7 +65,7 @@ Parameter productUrl has higher priority than product page URL.
 [/notice-box]
 
 ### Historical data export
-Our integration allow you to export your data to Klaviyo. This action base on customer account, and customer account is main entrance to data. What does it mean? By choosing date in Transfer historical date starting from, you are choosing the date in history when the customer account was created. For example, from the image above, customer accounts newer than (or exactly this date) 05-10-2022 00:00:00 will be transferred to Klaviyo.
+Our integration allow you to export your data to Klaviyo. This action base on customer account, and customer account is main entrance to data. What does it mean? By choosing date in Transfer historical date starting from, you are choosing the date in history when the customer account was created. For example, from the image below, customer accounts newer than (or exactly this date) 01-09-2022 00:00:00 will be transferred to Klaviyo.
 
 In the Synchronization status line, you will see current transfer status.
 
@@ -80,7 +80,7 @@ During data export, the following event types will be sent:
 - Cancelled Order
 - Refunded Order
 
-### Product catalog synchronization (QA only until January)
+### Product catalog synchronization
 You are able to run catalog synchronization with Klaviyo account. To run synchronization, in Klaviyo plugin, change `Synchronize product catalog to Klaviyo` to `Yes` (default `No`) and save plugin. 
 
 In the Product catalog synchronisation status line, you will see current transfer status.
@@ -154,7 +154,7 @@ You can run full synchronization more than once if needed, but in general synchr
 Top-level catalog product id is a display item identifier from Centra. This is also matching the id of the order items that are send along with events for all the metrics (e.g. `Placed Order` or `Ordered Product`).
 Display item in Centra is a variant activated on a display, the concept is described in details [here](https://docs.centra.com/fe-development/fe-elements#why-do-i-see-different-product-ids-in-the-centra-backend-and-in-checkout-api).
 
-### Back in stock subscriptions (QA only until January)
+### Back in stock subscriptions
 
 In order to enable back in stock feature you need to perform initial product catalog synchronisation first.
 Once it's done you can enable back in stock and access product catalog information in back in stock emails using catalog lookup feature.
@@ -247,6 +247,18 @@ After synchronisation of sample data you can remove sample profile so that the d
 In Klaviyo transactional and non-transactional automation is triggered off of the same metrics (events).
 In order to setup transactional flows in Klaviyo refer to the [following guide](https://help.klaviyo.com/hc/en-us/articles/360003165732).
 When plugin is activated, Centra will start sending all the supported types of metrics when events occur, but you can choose which ones you want to listen to in your flows setup on your Klaviyo account.
+
+Extra metrics for manual resend email from Centra, with exactly the same data as regular ones, but requires own event type:
+
+- `Placed Order - resend`
+- `Confirmed Order - resend`
+- `Cancelled Order - resend`
+- `Shipping Update - resend`
+- `Refunded Order - resend`
+- `Gift Certificate - resend`
+
+Listed metrics for the email resend purposes require additional email trigger configuration for email resending to work.
+Resend metrics listed above will not impact flows and reporting based on regular metrics.
 
 [notice-box=info]
 When creating a flow for a certain metric in Klaviyo, tags need to be matching the tags listed above.
