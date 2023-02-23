@@ -34,6 +34,8 @@ The backend communicates server-to-server with the Checkout API. While you have 
 
 The backend can be implemented in any technology you prefer as a full scale application or a serverless function.
 
+More about best practices can be found [here](/fe-development/best-practices)
+
 ### Installation
 
 The Checkout API is a plugin that can be enabled on a B2C-store. You can select whatever URI (part of the URL) you want it located on. The URI set the plugin will enable the plugin under `/api/X` (Where `X` is the URI of the plugin).
