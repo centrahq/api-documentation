@@ -9,6 +9,8 @@ category: docs
 Klaviyo is a CRM plugin in Centra. The core functionality is sending events to Klaviyo that can be used for transactional emails and email marketing automation with language based customization.
 In your Klaviyo account, you can apply various advanced segmentation strategies based on event data and customer information that is synchronized from Centra to Klaviyo.
 
+Click [here](https://www.klaviyo.com/partners/signup?utm_source=0013o00002aq4sWAAQ&utm_medium=partner) to learn more about how to start using Klaviyo.
+
 The recommended setup is a single Klaviyo account and single store plugin for all markets that are enabled in Centra. 
 
 ## Flow
@@ -311,14 +313,18 @@ Translated multi-language fields and multi-currency prices are send as JSON stri
 You can use static lookup (like `|lookup:"SEK"`) or more dynamic, based on variable (like `|lookup:customer_lang`)
 
 ```html
-{% with customer_lang=person|lookup:"Language"%}
-    {% catalog event.ItemID %}
-        Description: {{ catalog_item.metadata.Description|lookup:"default"}} <br />
-        Title: {{ catalog_item.title }}<br /><br /><br />
-        Price SEK: {{ catalog_item.metadata|lookup:"Price"|string_to_object|lookup:"SEK"}}<br />
-        Product name in customer language: {{ catalog_item.metadata|lookup:"ProductName"|string_to_object|lookup:customer_lang}}<br /><br />
-    {% endcatalog %}
-{% endwith %}
+{% catalog event.ItemID %}
+    {% with customer_lang=person|lookup:"Language" %}
+        {% with customer_currency=person|lookup:"Currency" %}
+            Description: {{ catalog_item.metadata.Description|lookup:"default"}}  
+            Title: {{ catalog_item.title }}  
+
+            Static price in SEK: {{ catalog_item.metadata|lookup:"Price"|string_to_object|lookup:"SEK"}}
+            Dynamic product name in customer language: {{ catalog_item.metadata|lookup:"ProductName"|string_to_object|lookup:customer_lang}}
+            Dynamic price in customer currency: {{ catalog_item.metadata|lookup:"Price"|string_to_object|lookup:customer_currency}}
+        {% endwith %}
+    {% endwith %}
+{% endcatalog %}
 ```
 
 #### Back-in-stock example flow configuration
