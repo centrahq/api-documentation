@@ -14,6 +14,7 @@ There are three payment methods that use `AddressAfterPayment`:
 - Klarna Checkout v2/v3,
 - Pilibaba,
 - PayPal (only when plugin setting `Override Shipping Address` is set to `No`).
+- Qliro (only when plugin setting `Use customer addresses from Qliro One` is set to `Yes`)
 
 If the payment method you used is a `AddressAfterPayment` method, Centra will continue to send the order to the PSP even though the amount is 0. This, however, requires the payment provider to allow a 0 amount order to pass through their flow.
 

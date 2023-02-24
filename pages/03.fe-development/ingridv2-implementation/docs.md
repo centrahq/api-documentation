@@ -81,14 +81,26 @@ Centra will save the ID of the initialized Ingrid session, and update the shippi
 
 In this configuration address from Ingrid will be the one that is saved on the order in Centra.
 
-#### Scenario 2: Address form feature in Ingrid enabled + "Address after payment" (Paypal / KCO)
+#### Scenario 2: Address form feature in Ingrid enabled + "Address after payment" (Paypal / KCO / Qliro)
 
-1. Load Ingrid widget on the frontend
+In `Address after payment` mode which is explained [here](https://docs.centra.com/fe-development/payments/handling-0-payments) the address on the order in Centra is the one that is filled in by customer in the PSP widget.
+For Paypal this would be the customer's address coming from Paypal, for other solutions like KCO or Qliro, if any address has been entered to Ingrid - Centra will try to pre-fill PSP widget with address information.
+
+
+[notice-box=alert]
+Operating in this mode can cause different addresses on the order in Centra and Ingrid, as there is usually no way to control customer's input in the PSP widget's address form.
+(with the exception of Qliro's `Lock customer information` option)
+[/notice-box]
+
+The example flow is following:
+
+1. Ingrid widget is loaded on the frontend
 2. Customer fills in address in the widget or address is pre-filled by Ingrid automatically if it was stored in Ingrid's address book in the past
-3. Address update is sent to Centra
-4. Centra initiates KCO session and prefills address coming from Centra
+3. Address update is sent from Ingrid to Centra (via client side events and Centra CheckoutScript)
+4. Centra initiates KCO session and pre-fills address coming from Centra
 5. Customer submits the address in KCO
-6. Customer finalises the payment in KCO
+6. Customer finalizes the payment in KCO
+7. Order lands in Centra with address information from KCO
 
 In this configuration address is propagated in following way: Ingrid -> Centra -> KCO
 Note that if customer changes the address in KCO, then this updated address from Klarna will be the one visible on Centra order.

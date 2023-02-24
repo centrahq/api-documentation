@@ -98,7 +98,7 @@ NOTE: if another address than the one provided in `PUT /payment-fields` is sent 
 In this scenario you are likely to run into missmatches in the address between Ingrid and Centra since people might not enter the address in Ingrid when they see the address field.
 If the address is entered in Ingrid there should be a `centra_checkout_callback` event triggered containing the address data, which will override the `address` data in Centra. The address form should be updated with this information, if it's not already filled out.
 
-#### Scenario 3: "Address after payment" (PayPal / KCO) + Ingrid showing at the same time
+#### Scenario 3: "Address after payment" (PayPal / KCO / Qliro) + Ingrid showing at the same time
 
 If you have PayPal enabled as your payment method and the plugin is configured as `Override Shipping Address: No` the address data will be taken from the address the customer added into PayPal. For Klarna Checkout, if any address has been entered into Ingrid, we will try to prefill Klarna Checkout with the data we've already received, however this might not populate it sometimes if you have the cookie and getting the address prefilled by them in the widget.
 
