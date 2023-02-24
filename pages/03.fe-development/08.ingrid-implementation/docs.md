@@ -57,7 +57,7 @@ When the Ingrid session is initialized Centra will save the ID of the session, a
 ### When does Centra update Ingrid?
 
 - All item changes will be communicated to Ingrid if Centra has an active Ingrid session for the selection, as well as voucher changes.
-- Centra will update the the shipping cost of the selection with the cost returned by Ingrid after the update.
+- Centra will update the shipping cost of the selection with the cost returned by Ingrid after the update.
 - Address updates on the selection are only sent to Ingrid if they are made by the [PUT payment-fields](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields) endpoint in Centra's CheckoutAPI (or [PUT /selections/{selection}/checkout-fields](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/put_selections__selection__checkout_fields) in ShopAPI) and if the `Update address in Ingrid's widget from address stored on basket in Centra:` option in the Ingrid plugin is set to `On address pre-fill (default)`. This is to prevent Centra from overriding any choice made in the Ingrid widget by the user, which could cause a change of Shipping option, depending on the setup. If Centra already has address data at the time when the Ingrid session is created, this will be sent to Ingrid (since there is nothing to override).
 - On country / state change.
 - All data is sent to Ingrid after the order is placed in Centra, including the final cart and customer address. Centra saves the data returned from Ingrid as `Custom Attributes` on the order.
@@ -98,7 +98,7 @@ NOTE: if another address than the one provided in `PUT /payment-fields` is sent 
 In this scenario you are likely to run into missmatches in the address between Ingrid and Centra since people might not enter the address in Ingrid when they see the address field.
 If the address is entered in Ingrid there should be a `centra_checkout_callback` event triggered containing the address data, which will override the `address` data in Centra. The address form should be updated with this information, if it's not already filled out.
 
-#### Scenario 3: "Address after payment" (PayPal / KCO) + Ingrid showing at the same time
+#### Scenario 3: "Address after payment" (PayPal / KCO / Qliro) + Ingrid showing at the same time
 
 If you have PayPal enabled as your payment method and the plugin is configured as `Override Shipping Address: No` the address data will be taken from the address the customer added into PayPal. For Klarna Checkout, if any address has been entered into Ingrid, we will try to prefill Klarna Checkout with the data we've already received, however this might not populate it sometimes if you have the cookie and getting the address prefilled by them in the widget.
 
