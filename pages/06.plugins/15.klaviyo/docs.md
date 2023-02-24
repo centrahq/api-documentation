@@ -9,6 +9,8 @@ category: docs
 Klaviyo is a CRM plugin in Centra. The core functionality is sending events to Klaviyo that can be used for transactional emails and email marketing automation with language based customization.
 In your Klaviyo account, you can apply various advanced segmentation strategies based on event data and customer information that is synchronized from Centra to Klaviyo.
 
+Click [here](https://www.klaviyo.com/partners/signup?utm_source=0013o00002aq4sWAAQ&utm_medium=partner) to learn more about how to start using Klaviyo.
+
 The recommended setup is a single Klaviyo account and single store plugin for all markets that are enabled in Centra. 
 
 ## Flow
