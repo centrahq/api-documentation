@@ -14,7 +14,7 @@ This feature allows customers to add products the order in one click, after they
 
 ## What is required to enable Upsell?
 
-Currently, Upsell feature available in CheckoutAPI and ShopAPI when using Klarna Checkout v3. Read how to enable Upsell feature for [Klarna Checkout v3 plugin](/centra-sections/settings/plugins/klarnacheckoutv3).
+Currently, Upsell feature available in CheckoutAPI and ShopAPI when using Klarna Checkout v3. Read how to enable Upsell feature for [Klarna Checkout v3 plugin](https://support.centra.com/centra-sections/settings/plugins/klarnacheckoutv3).
 
 ## How does Upsell feature work?
 
