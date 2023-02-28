@@ -9,7 +9,7 @@ excerpt: It provides a great way to recommend additional products to customers t
 ## Overview
 
 Upsell is an effective marketing tactic used by many stores to increase sales and revenues.
-It is a type of sales technique that encourages customers to purchase additional items when making a purchase. 
+It is a type of sales technique that encourages customers to purchase additional items when making a purchase.
 This feature allows customers to add products the order in one click, after they have already completed their checkout.
 
 ## What is required to enable Upsell?
@@ -23,13 +23,13 @@ Upsell feature allows to add additional products to the order in one click, afte
 ![upsell-flow.png](upsell-flow.png)
 
 1. Store customer finished checkout and was redirected to thank you page by payment provider
-2. Your website calls `PUT /payment-result` response to the call contains object `upsell` which provides information whether payment provider supports upsell: 
+2. Your website calls `PUT /payment-result` response to the call contains object `upsell` which provides information whether payment provider supports upsell:
     ```json
       {
         // ...
         "upsell": {
           "isAllowed":  true, // Is post purchase upselling allowed
-          "timeLimit": 3 // Upsell time limit in minutes"
+          "timeLimit": 3 // Upsell time limit in minutes
         }
         // ...
       }
