@@ -43,6 +43,278 @@ Upsell feature allows to add additional products to the order in one click, afte
 For upsell products work the same rules as for the products that can be added to basket.
 The only exception - flexible bundles are not available for upselling.
 
+### Getting products information through APIs
+
+Getting upsell products information is the same for both Checkout API and Shop API.
+
+The product information should be identical to a standard products call.
+It includes all the pricing information like:
+* `price`
+* `priceAsNumber`
+* `priceWithoutTax`
+* `priceWithoutTaxAsNumber`
+* `priceBeforeDiscount`
+* `priceBeforeDiscountAsNumber`
+
+You can get the upsold products information by calling following endpoint:
+
+`POST <api-url>/orders/<order-number>/items`
+
+ie. `POST /checkout-api/orders/69/items`
+
+with body specifying which products should the API return:
+```json
+{
+  "products": [1, 2, 3, 4, 5]
+}
+```
+
+You must specify which product data to return.
+
+#### Success
+If all the products are found then the response will be:
+```json
+{
+  "token": "...",
+  "products": [
+    {
+      "product": "1",
+      "name": "Test Product",
+      "uri": "test-product",
+      "sku": "123456",
+      ...
+    },
+    ...
+  ]
+}
+```
+#### Partial success
+If products will be fetched partially, then the response will be:
+```json
+{
+  "token": "...",
+  "successfullyFetched": [
+    1,
+    2,
+    5
+  ],
+  "failedToFetch": [
+    3,
+    4
+  ],
+  "products": [
+    {
+      "product": "1",
+      "name": "Test Product",
+      "uri": "test-product",
+      "sku": "123456",
+      ...
+    },
+    ...
+  ]
+}
+```
+#### Failure
+If no products can be found an error will be returned:
+```json
+{
+    "token": "...",
+    "errors": {
+        "products": "products not found"
+    }
+}
+```
+
+#### Full response example
+```json
+{
+    "token": "...",
+    "products": [
+        {
+            "product": "1",
+            "name": "Test Product",
+            "uri": "test-product",
+            "sku": "123456",
+            "productSku": "123",
+            "brand": "1",
+            "brandName": "Brand",
+            "brandUri": "brand",
+            "collection": "1",
+            "collectionName": "Collection",
+            "collectionUri": "collection",
+            "variantName": "Red",
+            "countryOrigin": "",
+            "excerpt": "",
+            "excerptHtml": "",
+            "description": "",
+            "descriptionHtml": "",
+            "metaTitle": "",
+            "metaDescription": "",
+            "metaKeywords": "",
+            "stockUnit": "",
+            "category": "1",
+            "centraProduct": "1",
+            "centraVariant": "1445",
+            "itemQuantityMinimum": 1,
+            "itemQuantityMultipleOf": 1,
+            "price": "100.00 SEK",
+            "priceAsNumber": 100,
+            "priceWithoutTax": "80.00 SEK",
+            "priceWithoutTaxAsNumber": 80,
+            "priceBeforeDiscount": "100.00 SEK",
+            "priceBeforeDiscountAsNumber": 100,
+            "discountPercent": 0,
+            "showAsOnSale": false,
+            "showAsNew": false,
+            "itemTable": {
+                "unit": "",
+                "original": {
+                    "x": [
+                        ""
+                    ],
+                    "y": []
+                },
+                "x": [
+                    ""
+                ],
+                "y": [],
+                "dividerSymbol": "x",
+                "desc": "One Size"
+            },
+            "items": [
+                {
+                    "sizeId": "1",
+                    "item": "1-1",
+                    "ean": "ABCDEFGHIJKL",
+                    "itemTableY": 0,
+                    "itemTableX": 0,
+                    "name": "",
+                    "sku": "123456789"
+                }
+            ],
+            "categoryName": [
+                "Shop"
+            ],
+            "categoryUri": "shop",
+            "categories": [
+                {
+                    "pathIds": [],
+                    "uri": "shop",
+                    "sortOrder": 1000001,
+                    "name": [
+                        "Shop"
+                    ],
+                    "category": "1"
+                }
+            ],
+            "media": {
+                "standard": [
+                    "https://example.com/client/dynamic/images/1_9adfeff6f2-red.jpg",
+                    "https://example.com/client/dynamic/images/1_3a541eaec0-no-connect.jpg"
+                ]
+            },
+            "mediaObjects": [
+                {
+                    "media": 1,
+                    "sources": {
+                        "standard": [
+                            {
+                                "url": "https://example.com/client/dynamic/images/1_9adfeff6f2-red.jpg"
+                            }
+                        ]
+                    },
+                    "attributes": {
+                        "test_media_attribute_test": "test attribute"
+                    }
+                },
+                {
+                    "media": 2,
+                    "sources": {
+                        "standard": [
+                            {
+                                "url": "https://example.com/client/dynamic/images/1_3a541eaec0-no-connect.jpg"
+                            }
+                        ]
+                    },
+                    "attributes": []
+                }
+            ],
+            "subscriptionPlans": [
+                {
+                    "intervalType": "month",
+                    "discountPercent": 0,
+                    "subscriptionPlan": 1,
+                    "name": "1 month subscription",
+                    "shippingType": "DYNAMIC",
+                    "id": "1",
+                    "intervalValue": 1,
+                    "status": "ACTIVE"
+                }
+            ],
+            "modifiedAt": "2023-02-23 12:38:42",
+            "createdAt": "2020-02-01 12:00:00",
+            "campaigns": [
+                {
+                    "pricelists": [
+                        23
+                    ],
+                    "markets": [
+                        1
+                    ],
+                    "showAsNew": false,
+                    "flags": 1,
+                    "percent": 23400.5,
+                    "startDate": "2018-12-17T12:00:00+0100",
+                    "stopDate": "2024-02-09T15:54:35+0100",
+                    "showAsOnSale": false
+                },
+                {
+                    "pricelists": [
+                        19
+                    ],
+                    "markets": [
+                        3
+                    ],
+                    "showAsNew": false,
+                    "flags": 0,
+                    "percent": 50,
+                    "startDate": "2019-01-04T13:00:00+0100",
+                    "stopDate": "2023-03-09T15:54:35+0100",
+                    "showAsOnSale": true
+                }
+            ],
+            "measurementChart": [],
+            "some_variation_attribute_text": "red variation value",
+            "relation": "variant",
+            "relatedProducts": [
+                {
+                    "product": "10",
+                    "media": {
+                        "standard": [
+                            "https://example.com/client/dynamic/images/1_3a541eaec0-no-connect.jpg"
+                        ]
+                    },
+                    "mediaObjects": [
+                        {
+                            "media": 2,
+                            "sources": {
+                                "standard": [
+                                    {
+                                        "url": "https://example.com/client/dynamic/images/1_3a541eaec0-no-connect.jpg"
+                                    }
+                                ]
+                            },
+                            "attributes": []
+                        }
+                    ],
+                    "relation": "variant"
+                }
+            ]
+        }
+    ]
+}
+```
+
 ### Centra AMS
 
 #### Order with upsell products
