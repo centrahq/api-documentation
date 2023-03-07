@@ -96,7 +96,7 @@ This enables Klarna Upsell
 ![klarna-product-urls.png](klarna-upsell.png)
 
 Klarna Upsell `time limit` - time in minutes after which the upsell will not be possible. 
-* Default value is 30 minutes
+* Default value is 3 minutes
 * Minimum value is 1 minute
 * Maximum value is 20 minutes
 
