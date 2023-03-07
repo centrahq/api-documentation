@@ -7,8 +7,11 @@ category: docs
 ---
 
 Ingrid is a shipping platform that can be used together with Centra in order to present your shoppers with rich shipping options, including a number of delivery providers, address searching, support for free shipping vouchers and more.
+
 In version 2 of Ingrid integration, it also comes with an optional address form feature which is used for collecting customer addresses and customer information required for delivery processing purposes. 
-Built-in address form is designed to handle and validate regional address formats. In order to enable address form feature on Ingrid side you should contact Ingrid support.
+Built-in address form is designed to handle and validate regional address formats.
+
+In order to enable address form feature on Ingrid side you should contact Ingrid support.
 
 ## Setting up the Ingrid plugin in Centra
 
