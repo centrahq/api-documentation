@@ -8,7 +8,7 @@ category: docs
 
 Ingrid is a shipping platform that can be used together with Centra in order to present your shoppers with rich shipping options, including a number of delivery providers, address searching, support for free shipping vouchers and more.
 In version 2 of Ingrid integration, it also comes with an optional address form feature which is used for collecting customer addresses and customer information required for delivery processing purposes. 
-Built-in address form is designed to handle and validate regional address formats. 
+Built-in address form is designed to handle and validate regional address formats. In order to enable address form feature on Ingrid side you should contact Ingrid support.
 
 ## Setting up the Ingrid plugin in Centra
 
@@ -25,6 +25,9 @@ The settings in the plugin affect the integration in the following way:
 - **Test**: If set to `yes` Centra will connect to Ingrid's `stage` environment, if set to `no` Centra will connect to Ingrid's `production` environment.
 - **Default Locale**: The locale (language) the widget will be shown in by default, if a proper locale is set on the selection Centra will tell Ingrid to try to use the selection's language instead. If Ingrid doesn't support the locale on the selection, the default locale will be used.
 - **Is address feature enabled**: Enabled by default. If set to `yes` Ingrid's widget will present address form for the customer to provide their address and information required for delivery processing purposes. Updates of the address information are send to Centra using Centra CheckoutScript that is a handler of client side events.
+  [notice-box=info]
+  In order to enable address feature on Ingrid side, you should contact Ingrid support.
+  [/notice-box]
 - **Suspend Ingrid widget on shipping option changed**: If set to `yes` Ingrid's widget will be put into a "loading state" whenever the shipping option is changed by the user until Centra has recevied the update. It is important that your front end picks up those changes and resumes the widget when ready.
 - **Update address in Ingrid's widget from address stored on basket in Centra**:
   [notice-box=info]
