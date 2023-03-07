@@ -42,6 +42,7 @@ Upsell feature allows to add additional products to the order in one click, afte
 
 For upsell products work the same rules as for the products that can be added to basket.
 The only exception - flexible bundles are not available for upselling.
+When a product already exists in the order and is also added as a post-purchase upsell product, the newly added upsell product will appear as a separate order line.
 
 ### Getting products information through APIs
 
