@@ -50,5 +50,5 @@ Each of those will be calculated within two timeframes:
 * 1 hour - ensures that there is no prolonged pressure on the server
 
 [notice-box=alert]
-Using rate-limited API versions will be required in the future. Once we deploy API version with rate-limits introduced, we will keep the old ones working for 6 months to make the transition possible.
+You have 6 months to test the rate limits in QA. It will be enabled in all Production environments on 2023-09-04.
 [/notice-box]
