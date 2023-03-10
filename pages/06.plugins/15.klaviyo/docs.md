@@ -341,12 +341,31 @@ Following snippet will split the compound VariantID like `12366_SE_00_23400` and
 {% endwith %}
 ```
 
-Example of usage:
+Due to 2-level product model in Klaviyo in order to access complete set of fields useful for back in stock emails you will need to access both product level and variant level data.
+Below you will find a list of commonly requested fields and how to access them.
+
+In below list `catalog_item` refers to the back in stock parent product that is pulled by extracting [top-level product id](#top-level-product-id-in-product-catalog) from VariantID like in snippet above.
+
+- display name `{{ event.VariantName }}`  
+- size name `{{ event.SKU|split:" "|last }}`
+- product url `{{ catalog_item.url }}`
+- product image (thumbnail) `{{ catalog_item.featured_image.thumbnail.src }}`
+- product image (full) `{{ catalog_item.featured_image.full.src }}`
+- product price (in customer currency) `{% with customer_currency=person|lookup:"Currency" %}{{ catalog_item.metadata|lookup:"Price"|string_to_object|lookup:customer_currency }}
+{% endwith %}`
+
+Example structure of email and accessing fields listed above:
 ```html
 {% with idParts=event.VariantId|split:"_" %}
 {% catalog idParts.0 %}
   <p>The {{ catalog_item.title }} Is Back!</p>
   <p>Custom description: {{ catalog_item.metadata.Description }}</p>
+  <p>Product image: {{ catalog_item.featured_image.full.src }}</p>
+  <p>Size: {{ event.SKU|split:" "|last }}</p>
+  <p>Price in customer currency:
+        {% with customer_currency=person|lookup:"Currency" %}
+            {{ catalog_item.metadata|lookup:"Price"|string_to_object|lookup:customer_currency }} 
+        {% endwith %}</p>
 {% endcatalog %}
 {% endwith %}
 ```
