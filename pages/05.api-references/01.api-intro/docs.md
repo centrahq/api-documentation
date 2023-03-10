@@ -40,7 +40,7 @@ Rate limiting is a mechanism which protects our APIs and underlaying servers fro
 For now, rate limits are only introduced to our GraphQL API. In the future, we will introduce them in future versions of other APIs as well.
 [/notice-box]
 
-Types of limits introduced:  
+Types of rate limits introduced:  
 * **Total number of requests** - to avoid too many requests to the server, we limit their number
 * **Sum of query complexities of those requests** - more complex query generally requires more time and resources to be processed
 * **Total number of mutations among those requests** - another layer of complexity that can’t be calculated, so we limit their number
