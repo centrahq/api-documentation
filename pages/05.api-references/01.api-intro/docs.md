@@ -37,7 +37,7 @@ Example request:
 Rate limiting is a mechanism which protects our APIs and underlaying servers from being overloaded. We try to detect both sudden bursts of requests, which can overflow our receive queues, as well as prolonged increased series of API requests, threatening to overload our internal server resources over longer period of time. Monitoring of those rate limits can also give Centra a good idea of how much resources your integration needs, and how scalable it will be in the future.
 
 [notice-box=info]
-For now, rate limits are only introduced to our GraphQL API. In the future, we will introduce them in future versions of other APIs as well.
+For now, rate limits are only introduced to our GraphQL API. In the future, we will introduce them in other APIs as well.
 [/notice-box]
 
 Types of rate limits introduced:  
