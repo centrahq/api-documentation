@@ -351,8 +351,7 @@ In below list `catalog_item` refers to the back in stock parent product that is 
 - product url `{{ catalog_item.url }}`
 - product image (thumbnail) `{{ catalog_item.featured_image.thumbnail.src }}`
 - product image (full) `{{ catalog_item.featured_image.full.src }}`
-- product price (in customer currency) `{% with customer_currency=person|lookup:"Currency" %}{{ catalog_item.metadata|lookup:"Price"|string_to_object|lookup:customer_currency }}
-{% endwith %}`
+- product price (in customer currency) `{% with customer_currency=person|lookup:"Currency" %}{{ catalog_item.metadata|lookup:"Price"|string_to_object|lookup:customer_currency }}{% endwith %}`
 
 Example structure of email and accessing fields listed above:
 ```html
