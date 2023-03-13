@@ -1,5 +1,5 @@
 ---
-title: Authorization
+title: Introduction
 excerpt: 
 taxonomy:
 category: docs
@@ -619,3 +619,203 @@ Please note, some types have new sub-permissions, and using top type permissions
 * &#10060; ``WarehouseDeliveryLine.Warehouse:read`` – Use ``Warehouse:read`` 
 * &#10060; ``WarehouseDeliveryLine.WarehouseDelivery:read`` – Use ``WarehouseDelivery:read`` 
 
+## Deprecations in the latest GQL API versions
+
+We're making some changes to our GraphQL Integration API because we want it to reflect business concepts better and need to align the naming.
+
+We are doing our best not to introduce breaking changes so that existing queries still work, but you can switch to using new names at any time. For example, when a field is renamed, a new field is added, and the old one still works. When a returned type changes, the old type is turned into an interface so that fragments explicitly specifying types are not broken.
+
+Moreover, we are now returning a list of deprecated fields used under extensions, so you can see exactly whether your queries use deprecated fields and when they will be deleted.
+
+Example response:
+```json
+{
+  "data": {
+     ...
+  },
+  "extensions": {
+    "deprecatedFieldsUsed": [
+      "Field: Query.displays, reason: Use ObjectWithTranslations instead of Localizable, date of removal: 2023-09-04",
+      "Field: Display.localized, reason: Renamed localized to translations, date of removal: 2023-09-04",
+      "Field: LanguageTranslation.translations, reason: Renamed to fields, date of removal: 2023-09-04"
+    ],
+  }
+}
+```
+
+These are the changes that will be made:
+
+### Date and time scalars
+
+All input and output fields using dates and date-times have been changed to using custom scalar types: `Date` and (in most cases) `DateTimeTz`. This change was announced in October 2022 and required us to disable strict type checks of variables until all partners stop type-hinting dates as `String`.
+
+Before:
+
+```gql
+query lastOrders($fromDate: String!) {
+  orders(where: {orderDate: {from: $fromDate}}) {
+    ...
+  }
+}
+```
+
+After:
+
+```gql
+query lastOrders($fromDate: DateTimeTz!) {
+  orders(where: {orderDate: {from: $fromDate}}) {
+    ...
+  }
+}
+```
+
+### Rename of WarehouseDelivery to StockChange
+
+Due to the fact that `WarehouseDelivery` does not cover all use cases that are available and that will come in the future. There are multiple ways stock balance can be changed, where only some are warehouse deliveries (a.k.a inbound deliveries). Thus, `WarehouseDelivery` will be renamed to `StockChange`.
+
+Before:
+
+```gql
+query stockChanges($filter: WarehouseDeliveryFilter!) {
+  warehouseDeliveryConnection(where: $filter, last: 10) {
+    ...
+  }
+}
+```
+
+After:
+
+```gql
+query stockChanges($filter: StockChangeFilter!) {
+  stockChangeConnection(where: $filter, last: 10) {
+    ...
+  }
+}
+```
+
+### Rename Localization to Translation
+
+As localization is much more of a general term that includes time zones, currency, etc., we've decided to rename `Localization` to `Translation`. This will also be consistent with naming in Centra's admin panel.
+
+Before:
+
+```gql
+query displayTranslations {
+  displays {
+    id
+    name
+    ...translations
+  }
+}
+
+fragment translations on Localizable { # deprecated interface
+  localized {
+    language { code }
+    translations {
+      field
+      value
+    }
+  }
+}
+```
+
+After:
+
+```gql
+query displayTranslations {
+  displays {
+    id
+    name
+    ...translations
+  }
+}
+
+fragment translations on ObjectWithTranslations {
+  translations {
+    language { code }
+    fields {
+      field
+      value
+    }
+  }
+}
+```
+
+### Separation of Customer and Buyer - Purchaser will be deprecated
+
+Centra has two different "customer" types. One in DTC, called `Customer`, and one in Wholesale, called `Buyer` (which is connected to `Account`). Because the two types have mostly the same fields, they have been grouped under a common interface named `Purchaser`. This, after communication with several parties, has been deemed to be somewhat confusing, and therefore it's been decided to deprecate `Purchaser`.
+
+Since `Purchaser` will no longer be there, types referencing it are now split into DTC and Wholesale subtypes: `Shipment` is now an interface shared by `DirectToConsumerShipment` and `WholesaleShipment`. Similarly, `Return`, `Invoice`, `OrderHistoryEntry`, and `EmailHistoryEntry` are now interfaces with two implementations each.
+
+Before:
+
+```gql
+query returns {
+  returns(where: {purchaserId: 1, storeType: DIRECT_TO_CONSUMER}) {
+    id
+    purchaser {
+      email
+    }
+  }
+}
+```
+
+After:
+
+```gql
+query returns {
+  returns(where: {customerId: 1, storeType: DIRECT_TO_CONSUMER}) {
+    id
+    ...on DirectToConsumerReturn {
+      customer {
+        email
+      }
+    }
+  }
+}
+```
+
+### Discount renamed to Voucher
+
+Discounts can be given in multiple ways in Centra. For example, campaigns discount product prices, but also a manual discount on an order line may be given by a Centra admin user. In order to create less confusion, `Discount`, which represents vouchers in Centra, will be renamed to `Voucher`.
+
+Before:
+
+```gql
+mutation addVoucher($input: DiscountCreateInput!) {
+	createDiscount(input: $input) {
+    discount {
+      id
+    }
+    userErrors { message, path }
+  }
+}
+```
+
+After:
+
+```gql
+mutation addVoucher($input: VoucherCreateInput!) {
+	createVoucher(input: $input) {
+    voucher {
+      id
+    }
+    userErrors { message, path }
+  }
+}
+```
+
+### Additional changes
+
+These fields were deprecated before but now received a concrete date of removal:  
+* `AllocationRule.warehouses` – warehouses are now under geo-priorities; there may be a different set of warehouses depending on the country
+* `Address.otherPhoneNumber` – renamed to `phoneNumber`
+* `Purchaser/Buyer/Customer.otherPhoneNumber` – also renamed to `phoneNumber`
+* `Customer.sex` – renamed to `gender`
+* `Shipment.emailSentAt` – use `shippedAt`, which contains the same date
+* `SizeChart.isEnabled` – will always return `true` since we don’t disable size charts
+* `Mutation.removeProductMedia` – renamed to `deleteProductMedia`
+* `Currency.shippingOptions` – this direct relation is not supported anymore; one can filter `shippingOptions` by `currencyId` instead
+* `Size.productSizes` – this relation is also not supported anymore; one can filter `productSizes` by `sizeId`
+* `Store.totalPurchasers` – this can be achieved with `Query.counters.customers` filtered by `storeId`
+* `Store.totalOrders` – similarly, this is also available from `Query.counters.orders` filtered by `storeId`
