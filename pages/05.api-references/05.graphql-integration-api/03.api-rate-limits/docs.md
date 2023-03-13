@@ -61,7 +61,7 @@ It requires no permissions and the result returned is an array of 6 (currently) 
 * `remainingQuota` – how many tokens remain in the bucket and are available for consumption.
 
 [notice-box=info]
-It is easy to see that quota = usedQuota + remainingQuota
+It's easy to see that quota = usedQuota + remainingQuota
 [/notice-box]
 
 [notice-box=alert]
@@ -126,7 +126,7 @@ An example response for a fresh instance would be like this:
 }
 ```
 
-### Rate limiting guidelines:
+### Rate limiting guidelines
 
 Now, knowing what rate limiting is and how it works for the API, here are some tips to avoid unnecessary bucket depletions and stressing the API:
 * First and foremost: try to reduce query complexity as much as possible. The easiest way to do this is to only select fields that are necessary, especially for nested objects and lists of them, as they are the most expensive in terms of complexity. Query complexity is always visible in the API response in the `extensions` object.
