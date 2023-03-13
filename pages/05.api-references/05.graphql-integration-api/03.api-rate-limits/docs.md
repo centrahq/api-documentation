@@ -6,7 +6,7 @@ taxonomy:
   category: docs
 ---
 
-## What is rate limiting?
+### What is rate limiting?
 
 Rate limiting is a way to control the rate at which requests are sent to our API. It is done to prevent DoS attacks and abuse of the API. There are many ways to implement such a feature, but all they have in common is that they try to limit the number of requests that can be performed in a given time window. In our case, the best fit is a token bucket algorithm. It roughly works like this:  
 * There is a bucket that contains tokens with a set capacity; it can be represented in any way and structure depending on the implementation;
@@ -22,7 +22,7 @@ The below diagram shows a token bucket of size 4 that is filled with a rate of 1
 
 Reading it from left to right, at 10:15 there was only one request, and it was topped up in the next timeframe. At 10:45 there were two requests, so the next window has the two remaining plus one available token. At 11:00 all three remaining tokens were used, and one token was replenished at 11:15. At 11:30, this token was used and one was replenished. At 11:45, another token was added to the bucket, but as we can see, a third request is denied because the bucket does not have enough tokens at this point, thus protecting the server from another load spike.
 
-## Rate limits in Centra GraphQL API
+### Rate limits in Centra GraphQL API
 
 Currently, we limit requests based on 3 things (in the given timeframe):  
 * Total number of requests
@@ -37,7 +37,7 @@ Currently, there are 2 timeframes: 10 seconds and 1 hour. The first one ensures 
 
 It is very easy to detect which requests are limited by this mechanic, because the response has status code `429 Too Many Requests`. Furthermore, it contains a `Retry-After` header that points at a timestamp at which it is possible to try again without being blocked.
 
-## The `rateLimits` query
+### The `rateLimits` query
 
 In order to be transparent about the way we rate limit requests and to help API users plan their load accordingly, a query was introduced to share all necessary data about rate limiting buckets:
 
@@ -126,7 +126,7 @@ An example response for a fresh instance would be like this:
 }
 ```
 
-## Rate limiting guidelines:
+### Rate limiting guidelines:
 
 Now, knowing what rate limiting is and how it works for the API, here are some tips to avoid unnecessary bucket depletions and stressing the API:
 * First and foremost: try to reduce query complexity as much as possible. The easiest way to do this is to only select fields that are necessary, especially for nested objects and lists of them, as they are the most expensive in terms of complexity. Query complexity is always visible in the API response in the `extensions` object.
@@ -136,6 +136,6 @@ Now, knowing what rate limiting is and how it works for the API, here are some t
 * Requests that result in user errors (ideally all types of errors) should be handled appropriately in order to prevent spamming the API with erroneous requests that deplete the limit for nothing.
 * If there is some data that is accessed frequently but not changed often (for example, markets, stores, countries, pricelists), it is encouraged to cache it to save tokens for managing frequently changing data (for example, orders).
 
-## I am following all guidelines and still hitting rate limits, what should I do?
+### I am following all guidelines and still hitting rate limits, what should I do?
 
 Please get in touch with us via Slack or partner channel. We will investigate your API usage and make a decision about whether to increase limits or assist in further optimization.
