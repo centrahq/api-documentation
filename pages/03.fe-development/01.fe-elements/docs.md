@@ -599,6 +599,10 @@ Klarna checkout behaves slightly different, as it renders its own checkout form 
 
 After payment is completed, you should finalize the order in the same manner as in previous example, by sending all fields returned by Klarna to [POST /payment-result](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/post_payment_result) endpoint.
 
+[notice-box=alert]
+If you are attaching the ID of the selection (ShopAPI) or token (CheckoutAPI) as part of the `paymentReturnPage` url, make sure that this is something non-generic (like "order" or "token") so it doesn’t clash with query parameters the PSP might add.
+[/notice-box]
+
 ### Receipt page
 
 `Thanks for your order!`
