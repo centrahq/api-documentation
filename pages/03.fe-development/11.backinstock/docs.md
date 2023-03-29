@@ -7,8 +7,8 @@ excerpt: It is possible to set up the Back in stock feature to e-mail your custo
 ---
 
 [notice-box=info]
-This is a new feature allowing for automatic back-in-stock notifications. This feature is not to be confused with newsletter
-subscription with optional product data which is still available in our [`/newsletter-subscription` endpoint](https://docs.centra.com/swagger-ui/#/6.%20customer%20handling/post_newsletter_subscription__email_).
+This "Back in stock notifications" feature is not to be confused with newsletter
+subscription with optional product data. The latter is still available through our [`/newsletter-subscription` endpoint](https://docs.centra.com/swagger-ui/#/6.%20customer%20handling/post_newsletter_subscription__email_).
 Please take note of the differences between the two before starting your implementation.
 [/notice-box]
 
@@ -18,8 +18,8 @@ While doing so it adds product details fields to the subscriber in Rule. When th
 able to filter subscribers **manually** using the tag and send the notifications that way.
 It means there is no automation available when using this endpoint. Stock update **will not** trigger any automatic action.
 
-For new sites we recommend you use the new back-in-stock endpoint (eg. [`/back-in-stock-subscription`](https://docs.centra.com/swagger-ui/#/6.%20customer%20handling/post_back_in_stock_subscription)
-which provides automation and also takes into account shopper's ship-to location to send notifications only when the
+For new sites we recommend you use the new back-in-stock feature (eg. [`/back-in-stock-subscription`](https://docs.centra.com/swagger-ui/#/6.%20customer%20handling/post_back_in_stock_subscription)
+which provides automatic back-in-stock notifications and also takes into account shopper's ship-to location to send notifications only when the
 product is indeed available for the end-customer.
 
 ## What is required to enable Back in stock?
