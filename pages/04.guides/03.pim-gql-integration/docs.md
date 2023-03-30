@@ -1633,6 +1633,215 @@ mutation editProduct {
 }
 ```
 
+## Product display - create, read and modify
+
+The Display is an abstract concept of Centra. You can think about it as a presentation layer for your products. Beyond the product data itself, it provides much more useful information to show on a product page. Since displays are configured per Store, you can choose to present your product in a different way in each Store - with separate URIs, different categories, market visibility, etc.
+
+### Common display fields
+
+Here’s a list of available fields for Displays. If you’re not familiar with some of them, please take a look at [Creating displays article in our Support Docs](https://support.centra.com/centra-sections/general/catalog/creating-a-display).
+
+```gql
+fragment displayFields on Display {
+    # basic fields
+    id
+    name
+    status
+    uri
+    minimumOrderQuantity
+    orderQuantityDenominator
+    description
+    shortDescription
+    metaTitle
+    metaDescription
+    metaKeywords
+    comment
+    tags
+    updatedAt
+
+    # relations
+    categories { id name }
+    canonicalCategory { id name }
+    displayItems { id productVariant { id name } }
+    localized {
+        language { id name }
+        translations { value field }
+    }
+    markets { id name }
+    media { id }
+    prices { id }
+    campaignVariants { id }
+    product { id name }
+    productVariants { id name }
+    related { id }
+    store { id name }
+    taxGroup { id name}
+}
+```
+
+We will use the same code fragment in the examples that follow.
+
+### Fetching displays
+
+There are two ways of listing existing displays.  
+
+The first one is a displays query with classic pagination:
+
+```gql
+query listDisplays {
+    displays(limit: 10) {
+        ...displayFields
+    }
+}
+```
+
+The second one is using a cursor connection:
+
+```gql
+query scrollDisplays {
+    displayConnection(first: 10) {
+        edges {
+            node {
+                ...displayFields
+            }
+        }
+        pageInfo {
+            hasNextPage
+            endCursor
+        }
+    }
+}
+```
+
+[notice-box=info]
+The concept of relay connections is new and only available in GraphQL API. If you wish to learn more on how to use this feature, see: https://relay.dev/graphql/connections.htm
+[/notice-box]
+
+### Creating a display
+
+Display type has pretty a lot of parameters and most of them can be provided while creating one. Fortunately, most of them are optional, so in order to create a basic display you can use such a simple mutation:
+
+```gql
+mutation create {
+    createDisplay(input: {
+        name: "New display!"
+        status: ACTIVE
+        store: {id: 1}
+        product: {id: 12}
+    }) {
+        userErrors {
+            message path
+        }
+        display {
+            ...displayFields
+        }
+    }
+}
+```
+
+You can also specify a lot more as you can see in the input type below:
+
+```gql
+input DisplayCreateInput {
+    # basic required fields
+    store: StoreInput!
+    product: ProductInput!
+    name: String!
+    status: Status!
+
+    # basic optional fields
+    "If not provided, it will be auto-generated based on display name."
+    uri: String
+    minimumOrderQuantity: Int
+    orderQuantityDenominator: Int
+    description: String
+    shortDescription: String
+    metaTitle: String
+    metaDescription: String
+    metaKeywords: String
+    comment: String
+    tags: [String!]
+
+    # relations to other types
+    canonicalCategory: CategoryInput
+    addCategories: [CategoryInput!]
+    addMarkets: [MarketInput!]
+    addProductMedia: [ProductMediaAddInput!]
+    addProductVariants: [ProductVariantAddInput!]
+    taxGroup: TaxGroupInput
+}
+```
+
+### Activating a product variant on a display
+
+This is how you control which of the product variants should be enabled on the display:
+
+```gql
+mutation addVariantsToDisplay {
+  updateDisplay(
+    id: 345
+    input: { addProductVariants: { productVariant: { id: 1913 } } }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    display {
+      ...displayFields
+    }
+  }
+}
+```
+
+### Updating a display
+
+To update a display you can use updateDisplay mutation:
+
+```gql
+mutation update {
+    updateDisplay(id: 1 input: {
+        # ... fields to be updated
+    }) {
+        userErrors {
+            message path
+        }
+        display {
+            ...displayFields
+        }
+    }
+}
+```
+
+Similarly to create mutation, `updateDisplay` has a lot of possible parameters to be updated with a few differences.
+
+```gql
+input DisplayUpdateInput {
+    name: String
+    status: Status
+    uri: String    # If empty string is provided, it will be auto-generated based on display name
+    minimumOrderQuantity: Int
+    orderQuantityDenominator: Int
+    description: String
+    shortDescription: String
+    metaTitle: String
+    metaDescription: String
+    metaKeywords: String
+    comment: String
+    tags: [String!]
+
+    canonicalCategory: CategoryInput
+    addCategories: [CategoryInput!]
+    removeCategories: [CategoryInput!]
+    addMarkets: [MarketInput!]
+    removeMarkets: [MarketInput!]
+    addProductMedia: [ProductMediaAddInput!]
+    removeProductMedia: [ProductMediaInput!]
+    addProductVariants: [ProductVariantAddInput!]
+    removeProductVariants: [ProductVariantInput!]
+    taxGroup: TaxGroupInput
+}
+```
+
 ## Product weight - read and modify
 
 Historically, weight has always been configured on the Product level in the Centra AMS. However, since different sizes of products can reasonably have different weights, we also expose it on the Size level. In the future, we will add the option to differentiate between sizes' weights.
