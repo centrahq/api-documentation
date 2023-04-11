@@ -40,5 +40,5 @@ redirects:
   /reference/stable/checkout-api/index: '/api-references/checkout-api/api-reference/overview'
   /reference/stable/checkout-api/(.*): '/api-references/checkout-api/api-reference/$1'
   /guides/erp-with-gql: '/guides/pim-gql-integration'
-  /plugins/%20post-purchase-upsell: '/fe-development/post-purchase-upsell'
-  /plugins/post-purchase-upsell: '/fe-development/post-purchase-upsell'
+  /plugins/%20post-purchase-upsell: '/fe-development/cross-sell'
+  /plugins/post-purchase-upsell: '/fe-development/cross-sell'

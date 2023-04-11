@@ -86,21 +86,21 @@ When using Klarna Checkout in test mode, you need to make sure the PayPal plugin
 
 As with all payment plugins if you want to pricelist/market/country restrict the plugin you have the ability to select this in the bottom of the setup.
 
-### Upsell
+### Cross-sell
 [notice-box=info]
-Upsell option allows customers to buy more products or services from your store in one transaction.
+Cross-sell option allows customers to buy more products or services from your store in one transaction.
 [/notice-box]
 
-This enables Klarna Upsell
+This enables Klarna Cross-sell
 
-![klarna-product-urls.png](klarna-upsell.png)
+![klarna-cross-sell.png](klarna-cross-sell.png)
 
-Klarna Upsell `time limit` - time in minutes after which the upsell will not be possible. 
+Klarna Cross-sell `time limit` - time in minutes after which the cross-sell will not be possible. 
 * Default value is 30 minutes
 * Minimum value is 1 minute
 * Maximum value is 20 minutes
 
-When upsell `time limit` runs out, Centra sends Order Confirmation email to the customer.
+When cross-sell `time limit` runs out, Centra sends Order Confirmation email to the customer.
 
 #### Customization of Klarna Checkout widget
 

@@ -156,7 +156,7 @@ As Centra sends all cart updates to Ingrid the widget needs to know when it shou
 Cart modifications are the following:
 
 - Modifying the order items (changing quantity / removing) in the checkout,
-- Adding an "upsell product" to cart in the checkout,
+- Adding a "cross-sell product" to cart in the checkout,
 - Adding / removing a voucher in the checkout,
 - Updating the address via [PUT payment-fields](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields), if the address form is used to initiate a payment widget.
 
