@@ -192,7 +192,7 @@ This should be exactly like for PayPal. You will get different data from klarna,
 
 So far, these 4 cases have covered all payment integrations we have. If we implement these, the checkout should work with lots of payment providers. Klarna checkout is the most odd one, that probably needs specific treatment in the frontend.
 
-## Out of stock errors:
+## Out of stock errors
 
 The API does a stock check at `POST https://example.com/api/checkout/payment`
 
@@ -223,6 +223,77 @@ Content-type: application/json
     "paymentMethod": "adyen-256",
     "..."
 ```
+
+## Selection lines bulk update
+
+Checkout API selection bulk update allows efficiently make multiple changes to a selection in a single request.
+
+Features list:
+- Decreasing item quantity: reduce the quantity of an existing item in the selection.
+- Removing item from selection: remove an item from the selection by setting its quantity to 0.
+- Adding item quantity: increase the quantity of an existing item in the selection.
+- Adding item to selection: you can also add new items to the selection with a specified quantity.
+
+By consolidating these functionalities into a single request, the API endpoint fosters efficient and user-friendly management of items in a selection, accommodating a wide range of use cases and requirements.
+
+### Endpoint
+
+`PUT /selections/{{selection}}/items`
+
+### Request body
+
+The request body is split into 2 parts:
+1. `lines` - array of line objects representing existing selection lines that will be updated. Each object consists of:
+    * line - [String] Selection line identifier.
+    * quantity - [Integer] Could be 0.
+2. `items` - array of item objects representing items that will be added to the selection. Each object consists of:
+   * item - [String] Shop item identifier (pdi_id-psi_id).
+   * quantity [Integer] Must be greater than 0.
+
+[notice-box=info]
+"items" cannot contain items that are already part of already existing selection line - in such case line quantity should be increased using "lines"
+[/notice-box]
+
+#### Example request body
+```json
+{
+  "lines": [
+    {
+      "line": "501272086e441ac629c578f5dea8d7b79f03b4c1",
+      "quantity": 1
+    },
+    {
+      "line": "7a5e4bd0d41684a550c772eb681299104b06c1d4",
+      "quantity": 0
+    }
+  ],
+  "items": [
+    {
+      "item": "5-6",
+      "quantity": 1
+    },
+    {
+      "item": "12345-6789",
+      "quantity": 2
+    }
+  ]
+}
+```
+
+### Response codes
+* `200 OK` - when the request is successful and items have been updated successfully, even partially.
+* `400 Bad Request` - when the request body is malformed or missing required fields, such as the items array or itemId and quantity fields in each item.
+* `404 Not Found` - when one or more items in the request body cannot be found in the basket.
+* `406 Not Acceptable` - when validations fail, e.g. an attempt to add an item that is already part of the selection and line update should be used.
+
+Partial success is possible if request payload validation passes but for some reason line update or selection item addition fails.
+In such case selection response will contain additional field errors that will contain a list of failed operations.
+
+[notice-box=info]
+Note that we don’t have a detailed reason of failure of either line update or item addition, because our service returns only boolean result.
+[/notice-box]
+
+For more information about error handling and responses, please refer to our [Checkout API](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_items) documentation.
 
 ## Location
 
