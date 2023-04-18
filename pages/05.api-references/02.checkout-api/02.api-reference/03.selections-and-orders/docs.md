@@ -251,7 +251,7 @@ The request body is split into 2 parts:
    * quantity [Integer] Must be greater than 0.
 
 [notice-box=info]
-"items" cannot contain items that are already part of already existing selection line - in such case line quantity should be increased using "lines"
+"items" cannot contain items that are already part of the existing selection line - in such case, line quantity should be increased using "lines"
 [/notice-box]
 
 #### Example request body
