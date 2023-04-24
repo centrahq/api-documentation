@@ -128,13 +128,18 @@ An example response for a fresh instance would be like this:
 
 ### Rate limiting guidelines
 
-Now, knowing what rate limiting is and how it works for the API, here are some tips to avoid unnecessary bucket depletions and stressing the API:
-* First and foremost: try to reduce query complexity as much as possible. The easiest way to do this is to only select fields that are necessary, especially for nested objects and lists of them, as they are the most expensive in terms of complexity. Query complexity is always visible in the API response in the `extensions` object.
-* It is encouraged to smoothen out the rate of requests, because sudden spikes will be most likely blocked.
-* Use `rateLimits` query to gather useful data about API usage.
-* It is encouraged to wait until there are enough tokens to make a request in case it is blocked by the rate limiter. The timestamp when API becomes available is located under `Retry-After` header.
-* Requests that result in user errors (ideally all types of errors) should be handled appropriately in order to prevent spamming the API with erroneous requests that deplete the limit for nothing.
-* If there is some data that is accessed frequently but not changed often (for example, markets, stores, countries, pricelists), it is encouraged to cache it to save tokens for managing frequently changing data (for example, orders).
+Here are some tips to avoid unnecessary bucket depletions and stressing the API:
+* First and foremost, remember: The rate limits are used to prevent abuse and ensure the performance and stability of the system. We believe it's better for some of your queries to fail, rather than risk overloading the entire server and affecting other running integrations. Therefore, if you hit the rate limits, you should see it first as a good reason to look into optimising your queries and mutations. Optimising them might seem difficult at first, but it will save you a lot of problems in the future.
+* Plan Your API Requests: Before making any API requests, plan your queries and mutations carefully to ensure that they are necessary and efficient. Avoid making unnecessary or redundant requests, and group multiple requests into a single query or mutation whenever possible.
+* Minimize Query Complexity: GraphQL APIs often have limits on the complexity of queries to prevent excessive resource usage. To minimize query complexity, avoid deeply nested queries and mutations, and use aliases to avoid duplicate fields in your queries. Query complexity is always visible in the API response in the `extensions` object.
+* Use pagination (or better - Relays): When requesting large amounts of data, use pagination or relay connections to limit the number of results returned per request. This can help reduce the complexity of the query and avoid hitting rate limits.
+* Try not to spike: It is encouraged to smoothen out the rate of requests, because sudden spikes would likely be blocked.
+* Analyse your own usage: Use `rateLimits` query to gather useful data about API usage. Keep track of your API usage and monitor the rate limits to ensure that you are not exceeding them. Use tools such as GraphQL Playground or GraphiQL to test your queries and mutations and check the response headers for rate limit information.
+* Take your time: When running large batch jobs, introduce wait times between requests to avoid hitting rate limits. For example, you can add a sleep function in your code to pause execution between requests.
+* Don't re-try too quick: It is encouraged to wait until there are enough tokens to make a request in case it is blocked by the rate limiter. The timestamp when API becomes available is located under `Retry-After` header.
+* Don't repeat errors: Requests that result in user errors (ideally all types of errors) should be handled appropriately in order to prevent spamming the API with erroneous requests that deplete the limit for nothing.
+* Cache it if you can: If there is some data that is accessed frequently but not changed often (for example, markets, stores, countries, pricelists), caching API responses can help reduce the number of requests and minimize the impact of rate limits. Use a caching solution such as Redis or Memcached to cache responses and set appropriate cache headers to ensure that cached responses are not stale.
+* Test carefully before releasing to Production: If you need to run large batch jobs that require a large number of requests, it is important to plan for how long the job will take and provide users with appropriate feedback. For example, you can provide a progress bar or estimate the remaining time to completion. Additionally, it is important to not query or mutate data that is already up to date, but instead focus on the delta, or the changes that have occurred since the last update. This can help reduce the number of requests and minimize the impact of rate limits.
 
 ### I am following all guidelines and still hitting rate limits, what should I do?
 
