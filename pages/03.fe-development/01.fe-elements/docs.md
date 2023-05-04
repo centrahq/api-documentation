@@ -124,6 +124,8 @@ query productDataByItemId {    # item 4566-38
 }
 ```
 
+Finally, the same display item ID (`product` in Checkout API) is also returned on orders, for each order line we save it as [orderLine.frontendItemId](https://docs.centra.com/graphql/orderline.html#frontendItemId).
+
 ### Product catalog
 
 `Welcome to the store! Feel free to browse around.`
