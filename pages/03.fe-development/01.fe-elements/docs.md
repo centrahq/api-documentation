@@ -101,7 +101,7 @@ query frontendIds {
 }
 ```
 
-Checkout API `product` is the GraphQL `displayItems.id`
+Checkout API `product` is the GraphQL `displayItems.id`  
 Checkout API `item` is a concatenation of `displayItems.id`-`displayItems.productVariant.productSizes.id`
 
 ### Product catalog
