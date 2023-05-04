@@ -73,6 +73,37 @@ Now, on the Checkout API side, new Product IDs will be added when you activate n
 
 When you add an `item` to your selection, it becomes an Order Line ID (`line` in the API). This is important to understand, because two identical `items` can have different details in your selection. For example, you may add a `comment` to one of the Items (like an engraving text for a ring), but not to another, in which case you would have two `lines` in that Order - one with Item with the comment, and one without. Another common example is using Vouchers, like "Buy one, get one free" - in this case, when you add two idential `items` to your selection, you will end up with two separate Order Lines - one with a full Price, and one free. It's especially important when considering Returns in the future - in Centra, you don't return an Item, you return a specific Order Line, so it's important to know which Item is being returned - the free one, or the full-priced one.
 
+#### Getting Checkout product and item IDs using GraphQL API
+
+This is just a sidenote, because webshop functions are not (yet) available in GraphQL API. However, since many people are already using it today for product management functions, it's worth knowing how to get the Checkout API `product` ID and `item` ID:
+
+```gql
+query frontendIds {
+  products (where: {status: ACTIVE}, sort: id_DESC, page: 1) {
+    id
+    name
+    displays (where: {status: ACTIVE}) {
+      id
+      uri
+      displayItems {
+        id             # THIS
+        productVariant {
+          id
+          name
+          productSizes {
+            id        # THIS
+            description
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Checkout API `product` is the GraphQL `displayItems.id`
+Checkout API `item` is a concatenation of `displayItems.id`-`displayItems.productVariant.productSizes.id`
+
 ### Product catalog
 
 `Welcome to the store! Feel free to browse around.`
