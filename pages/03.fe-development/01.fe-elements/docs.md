@@ -104,6 +104,26 @@ query frontendIds {
 Checkout API `product` is the GraphQL `displayItems.id`  
 Checkout API `item` is a concatenation of `displayItems.id`-`displayItems.productVariant.productSizes.id`
 
+On the other hand, you may want to find the GQL product based on Checkout API `item` ID. Let's take item `4566-38` for example:
+
+```gql
+query productDataByItemId {    # item 4566-38
+  displayItems(where: {id: 4566}) {
+    display {
+      name
+      uri
+    }
+    productVariant {
+      id
+      productSizes(where: {id: 38}) {
+        description
+        GTIN
+      }
+    }
+  }
+}
+```
+
 ### Product catalog
 
 `Welcome to the store! Feel free to browse around.`
