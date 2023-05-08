@@ -971,7 +971,81 @@ mutation confirmOrder {
 }
 ```
 
-### Creating a shipment
+### General notes on payment captures in GQL
+
+Some providers (Adyen and Klarna) use capture requests. It means when any of these mutations capture money, the actual capturing doesn’t happen at that moment. The provider will process the request on its side and then send a webhook to Centra. This process can take time, even up to a few days. There is a chance the provider will reject the capture request and it will result in failed capture on the Centra side.
+
+#### Description of the `PaymentHistoryEntry` type
+
+Most important fields of [PaymentHistoryEntry](https://docs.centra.com/graphql/paymenthistoryentry.html) to look at:  
+* `status` - will be:
+** `FAILED` for unsuccessful capture or capture request,  
+** `PENDING` for successful capture request (Adyen and Klarna),  
+** `SUCCESS` for successful capture (the other providers).  
+* entryType - it will be  
+** `CAPTURE_REQUEST` for capture request (Adyen and Klarna),  
+** `CAPTURE` for capture (the others),  
+** other types, if the entry is not about capturing.  
+* `externalReference` - an identifier of a transaction from the provider side. In many cases, this identifier will be equal to an identifier of an auth entry.  
+* `paymentMethod` - by default, it’s a Centra plugin name, but some providers can override this value.  
+* `paramsJSON` - contains a raw response from the provider. In particular, all transaction and error details are stored there.
+
+[notice-box=readMore]
+If capturing an order or shipment failed, check what information you can find in `paymentHistoryEntry.paramsJSON` - in many cases, the providers tell what was wrong (for example, incorrect currency code or expired authorization). The same information can be found in AMS in the order payment history section.
+[/notice-box]
+
+The following payment providers are supported in the GraphQL Integration API:  
+* Adyen Drop-In (capture requests)  
+* Klarna Checkout V3 (capture requests)  
+* Qliro One  
+* PayPal Commerce  
+* Stripe Checkout  
+* Stripe Payments Intents  
+* Stripe Wholesale Invoices
+
+All are configurable as plugins in the AMS backend.
+
+### Capturing an entire order amount
+
+If your integration needs to, you have the option to capture the entire order amount upon order creation. This will be required if you sell gift cards, for example. However, the standard flow in Centra is that you create shipment or shipments first, and then capture them once they are being shipped. 
+
+[!notice-box=alert]
+Remember, that in some countries, especially for DtC orders, you may be legally forbidden from actually capturing the money before you ship the items. Be really cautios about the moment you perform payment captures, and if required - split the code between integrations capturing order totals vs integrations capturing individual shipments.
+[/notice-box]
+
+#### Request
+
+```gql
+mutation captureOrder {
+  captureOrder(order: {id: "05ac658a8e815571fdba2984eb358932"
+                       # number: 10 }) {    
+    userErrors {
+      message 
+      path
+    }
+    paymentHistoryEntry {      
+      createdAt
+      status
+      entryType
+      externalReference
+      value {value}
+      paymentMethod
+      paramsJSON
+    }
+    order {
+      id
+    }
+  }
+}
+```
+
+When the order has an already captured amount not assigned to any shipment, all these mutations will try to assign this amount to a shipment. For example, the order was created and captured with `captureOrder`, then if a new shipment is added to the order with `capture: true`, it will automatically be completely captured. What’s important in this case is that no requests to providers will be sent, so no real capturing will happen because it was done at `captureOrder`.
+
+[notice-box=info]
+Note: If the capture fails, the mutation will fail as well. Nothing else about the order will change in this case, other than the new log in `paymentHistory`.
+[/notice-box]
+
+### Creating an unpaid shipment
 
 In order to complete the order, all the order lines must be shipped, and each shipment must be marked as Paid. You can choose to split those order lines over multiple shipments, but in this example we will simply ship both order items in a single shipment.
 
@@ -1147,9 +1221,9 @@ fragment shipmentDetails on Shipment {
 }
 ```
 
-### Updating a shipment - marking as Paid
+### Creating and capturing a shipment
 
-For now, you can manually mark the shipment as Paid. In the future, you will be able to instead trigger a payment capture for shipment items and shipping cost.
+Useful if you are creating completed shipments. In this case you do not specify the `paid` parameter, but instead instruct GQL API to trigger the payment capture to the external PSP.
 
 Please remember that there's a difference between shipment ID and number. The shipment "number" is the human-friendly name including order number and shipment prefix. The ID is a unique integer, and should be used to identify the shipment in the API:
 
@@ -1157,6 +1231,58 @@ Please remember that there's a difference between shipment ID and number. The sh
   "id": 345,
   "number": "39790-1",
 ```
+
+#### Request
+
+```gql
+mutation createShipmentWithCapturing {
+  createShipment(
+    input: {
+      order: {
+        id: "05ac658a8e815571fdba2984eb358932"
+        # number: 10
+      }
+      lines: [
+        { orderLine: { id: 10 }, quantity: 1 }
+      ]
+      capture: true   # this will enable capturing 
+    }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    shipment {
+      id
+      isCaptured
+      capturedAt
+      order {
+        paymentHistory(where: {entryType: [CAPTURE, CAPTURE_REQUEST]}) {
+          createdAt
+          status
+          entryType
+          externalReference
+          value {value}
+          paymentMethod
+          paramsJSON
+        }
+      }
+    }
+  }
+}
+```
+
+If capture fails, it won’t fail the whole mutation so the shipment can still be created, also `shipment.isCaptured` will be `false`. If capture goes successfully, `shipment.isCaptured` will be `true`. Use this flag to make sure the shipment was successfully captured.
+
+`shipment.order.paymentHistory` contains a result of capturing, read below the description of the `PaymentHistoryEntry` type. 
+
+`paymentHistory(where: {entryType: [CAPTURE, CAPTURE_REQUEST]})` means this element will only contain history entries related to capturing. An order can have more of them (e.g. `AUTH`) and we don't need to fetch them after capturing to see whether it went successfully or not.
+
+Please note, there is no `capture` field for `updateShipment` mutation. Instead, use `captureShipment` on existing shipments.
+
+### Updating a shipment - marking as Paid
+
+Use this if your integration performs payment capture outside Centra.
 
 #### Request
 
@@ -1256,6 +1382,42 @@ Note the shipment is now `"isPaid": true`.
   }
 }
 ```
+
+### Capturing a shipment
+
+Use it when a shipment can be created without capturing and needs to be captured later. Most commonly in DtC you would capture the shipment upon its completion in Centra - when the package is actually handled to the shipping company.
+
+#### Request
+
+```gql
+mutation captureShipment {
+  captureShipment(id: 123) {
+    userErrors {
+      message 
+      path
+    }
+    paymentHistoryEntry {
+      createdAt
+      status
+      entryType
+      externalReference
+      value {value}
+      paymentMethod
+      paramsJSON
+    }
+    shipment {
+      id
+      number
+      isCaptured
+      capturedAt
+    }
+  }  
+}
+```
+
+[notice-box=info]
+Other than the `createShipment` mutation with `capture: true`, here a failed capturing will fail the mutation.
+[/notice-box]
 
 ### Completing a shipment
 
