@@ -1009,7 +1009,7 @@ All are configurable as plugins in the AMS backend.
 
 If your integration needs to, you have the option to capture the entire order amount upon order creation. This will be required if you sell gift cards, for example. However, the standard flow in Centra is that you create shipment or shipments first, and then capture them once they are being shipped. 
 
-[!notice-box=alert]
+[notice-box=alert]
 Remember, that in some countries, especially for DtC orders, you may be legally forbidden from actually capturing the money before you ship the items. Be really cautios about the moment you perform payment captures, and if required - split the code between integrations capturing order totals vs integrations capturing individual shipments.
 [/notice-box]
 
