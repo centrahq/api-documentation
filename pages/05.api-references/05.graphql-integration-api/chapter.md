@@ -35,7 +35,7 @@ Content-Type: application/json
 
 ## Requirements
 - Access to Centra AMS
-- Authentication token (see section `Authorization` how to obtain one)
+- Authentication token - [see section Authorization to learn how to obtain one](https://docs.centra.com/api-references/graphql-integration-api/authorization#obtaining-access-token-via-ams)
 - Correct permissions
 
 ## Read more
