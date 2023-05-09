@@ -1,6 +1,6 @@
 ---
-title: Back in stock feature
-altTitle: Back in stock
+title: Back in stock feature using Rulemailer
+altTitle: Back in stock with Rule
 taxonomy:
     category: docs
 excerpt: It is possible to set up the Back in stock feature to e-mail your customers reminders when an item is back in stock. Here's how you can configure it.
@@ -111,5 +111,3 @@ In a basic scenario Centra contacts Rule twice:
 
 On both occasions product details [mentioned above](#available-fields) are sent to Rule to make it possible to
 send a confirmation message containing the product details.
-
-### Klaviyo
