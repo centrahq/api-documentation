@@ -112,6 +112,7 @@ Response:
   "token": "esf1p3tgchfg5ggtpqdpgqjtt6",
   "products": [
     {
+      "product": "22068",
       "variant": "30372",
       "name": "Avery solid mohair beanie ice blue",
       "uri": "avery-solid-mohair-beanie-ice-blue",
