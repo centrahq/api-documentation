@@ -61,7 +61,8 @@ If wishlist found for the end user, then the response will be:
 }
 ```
 #### Success, empty wishlist
-If customer doesn't have a wishlist yet, then the response will be:
+If the customer doesn't have a wishlist yet, the response will be:
+
 ```json
 {
   "token": "...",
@@ -73,7 +74,8 @@ If customer doesn't have a wishlist yet, then the response will be:
 }
 ```
 #### Failure
-If not existing wishlist id provided, then an error will be returned:
+If a non-existing wishlist identifier is provided, an error will be returned:
+
 ```json
 {
     "token": "...",
@@ -85,8 +87,8 @@ If not existing wishlist id provided, then an error will be returned:
 
 ### Adding the product to wishlist through the Checkout API
 
-By default, each user has wishlist, but it's not stored in database, before we add the product to wishlist.
-To create the wishlist, we need to add the item using the following API endpoint.
+By default, each user has a wishlist, but it's not stored in the database until a product is added to the wishlist. 
+To create the wishlist, use the following API endpoint:
 
 `POST <api-url>/customer/wishlists/0/items/<product-id>`
 
@@ -94,7 +96,7 @@ where <product-id> is identifier of display item.
 
 ### Validation errors
 
-Endpoint has a validation for several cases like:
+The endpoint has validation for several cases, including:
 
 #### Display item not found
 ```json
@@ -168,7 +170,7 @@ where <product-id> is identifier of display item.
 
 ### Validation errors
 
-Endpoint has a validation for several cases like:
+The endpoint has validation for several cases, including:
 
 #### Display item not found
 ```json
