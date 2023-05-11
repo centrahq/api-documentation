@@ -3,32 +3,39 @@ title: Customer wishlists
 altTitle: Wishlists
 taxonomy:
     category: docs
-excerpt: Feature that allows customers (shoppers) to save things to a list for later viewing.
+excerpt: Feature that allows customers to save products to a list for later viewing.
 ---
 
 ## Overview
 
-Customer wishlists is a valuable feature that enhances the shopping experience by allowing
-customers to add desired products to the wishlist. Wishlists serve as a
-convenient way for customers to save products they are interested in, making it easier for them to track and revisit those items at a later time.
+Customer wishlists is a feature that enhances the shopping experience by allowing customers to
+add desired products to the wishlist. Wishlists serve as a convenient way for customers to save
+products they are interested in, making it easier for them to track and revisit those items at a later time.
+
+The scope of the wishlist feature currently includes
+* Ability to have one wishlist per customer
+* Ability to add products to a wishlist
+* Ability to remove products from a wishlist
 
 ## What is required to enable Customer wishlists?
 
-Currently, Customer wishlists feature available in CheckoutAPI under the feature flag.
+Currently, Customer wishlists feature available in CheckoutAPI under the feature flag. Please contact our support to request enabling the feature.
 
 ## How does Customer wishlists work?
 
-Customer wishlists feature allows to add products to the list in one click and review those items at a later time and track the prices and other information. 
+Customer wishlists feature allows users to add products to the list in one click,review those items at a later time and track the prices and other information.
 
 ### Which products can be added to wishlist?
 
-For customer wishlist products work the same rules as for the products that can be added to basket.
-The only exception - flexible bundles are not available for wishlist.
+The lone exception is that flexible bundles are not possible to add to the wishlist.
+Currently, wishlist supports 10000 products in 1 wishlist.
 
 ### Getting wishlist information through APIs
 
-Currently, API supports 1 wishlist per user.
-Default wishlist can be requested by identifier 0 in request.
+Currently, functionality supports one wishlist per user.
+Default wishlist can be requested by identifier 0 in the request to get customer wishlist send
+
+`GET <api-url>/customer/wishlists/0` request.
 
 It includes all the needed information to display wishlist data like:
 * `id`
@@ -38,9 +45,12 @@ It includes all the needed information to display wishlist data like:
 
 You can filter the items using the paginator query parameters:
 
-`POST <api-url>/customer/wishlists/<wishlist-id>?page=<items-page>&limit=<items-limit>`
+`GET <api-url>/customer/wishlists/<wishlist-id>?page=<items-page>&limit=<items-limit>`
 
-where <wishlist-id> it can be sent as 0 to fetch the default wishlist.
+Parameters:
+<wishlist-id> - Id of wishlist, it can be sent as 0 to fetch the default wishlist.
+<items-page> - Number of page of results to return.
+<items-limit> - Limit the number of wishlist items returned.
 
 #### Success
 If wishlist found for the end user, then the response will be:
@@ -158,7 +168,7 @@ If we pass, not the 0 as <wishlist-id> and if we found a wishlist of different u
 ```
 
 
-### Remove the product from the wishlist through the Checkout API
+### Removing the product from the wishlist through the Checkout API
 
 [notice-box=info]
 Here we have to pass exact id of wishlist to remove the product from there
