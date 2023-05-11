@@ -27,8 +27,9 @@ Customer wishlists feature allows users to add products to the list in one click
 
 ### Which products can be added to wishlist?
 
+All products are possible to add to the wishlist, including the out of the stock ones.
 The lone exception is that flexible bundles are not possible to add to the wishlist.
-Currently, wishlist supports 10000 products in 1 wishlist.
+Currently, wishlist supports 10000 products in a single wishlist.
 
 ### Getting wishlist information through APIs
 
@@ -41,7 +42,6 @@ It includes all the needed information to display wishlist data like:
 * `id`
 * `isDefault`
 * `items`
-* `createdAt`
 
 You can filter the items using the paginator query parameters:
 
