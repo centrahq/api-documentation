@@ -113,3 +113,12 @@ On both occasions product details [mentioned above](#available-fields) are sent 
 send a confirmation message containing the product details.
 
 ### Klaviyo
+
+To gain a comprehensive understanding of how to integrate the Back in Stock feature with Klaviyo, including necessary prerequisites, please refer to the following sections:
+
+[Back in stock prerequisites and step by step workflow](https://docs.centra.com/plugins/klaviyo#back-in-stock-flow)
+
+[Back in stock flow configuration in Klaviyo](https://docs.centra.com/plugins/klaviyo#back-in-stock-example-flow-configuration)
+
+[Back in stock category of products](https://docs.centra.com/plugins/klaviyo#backinstock-category-of-products)
+
