@@ -182,6 +182,7 @@ POST https://centra-instance.com/api/checkout-api/back-in-stock-subscription
     "language": "sv"
 }
 ```
+
 2. Centra creates back in stock product
 
 Back in stock products are assigned with a special category and are supposed to be used only for internal purposes of back in stock automation.
@@ -193,6 +194,7 @@ Back in stock product identifier consists of multiple parts, which on the exampl
 - 00 - ISO code of ship-to location state (Sweden does not have states, placeholder `00` is used)
 
 ![back_in_stock_product.png](back_in_stock_product.png)
+
 
 3. Centra creates back in stock variant
 
