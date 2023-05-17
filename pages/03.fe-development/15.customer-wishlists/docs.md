@@ -2,7 +2,7 @@
 title: Customer wishlists
 altTitle: Wishlists
 taxonomy:
-    category: docs
+  category: docs
 excerpt: Feature that allows customers to save products to a list for later viewing.
 ---
 
@@ -13,6 +13,7 @@ add desired products to the wishlist. Wishlists serve as a convenient way for cu
 products they are interested in, making it easier for them to track and revisit those items at a later time.
 
 The scope of the wishlist feature currently includes
+
 * Ability to have one wishlist per customer
 * Ability to add products to a wishlist
 * Ability to remove products from a wishlist
@@ -39,6 +40,7 @@ Default wishlist can be requested by identifier 0 in the request to get customer
 `GET <api-url>/customer/wishlists/0` request.
 
 It includes all the needed information to display wishlist data like:
+
 * `id`
 * `isDefault`
 * `items`
@@ -53,7 +55,9 @@ Parameters:
 <items-limit> - Limit the number of wishlist items returned.
 
 #### Success
+
 If wishlist found for the end user, then the response will be:
+
 ```json
 {
   "token": "...",
@@ -70,7 +74,9 @@ If wishlist found for the end user, then the response will be:
   }
 }
 ```
+
 #### Success, empty wishlist
+
 If the customer doesn't have a wishlist yet, the response will be:
 
 ```json
@@ -83,15 +89,17 @@ If the customer doesn't have a wishlist yet, the response will be:
   }
 }
 ```
+
 #### Failure
+
 If a non-existing wishlist identifier is provided, an error will be returned:
 
 ```json
 {
-    "token": "...",
-    "errors": {
-       "wishlist": "not found"
-    }
+  "token": "...",
+  "errors": {
+    "wishlist": "not found"
+  }
 }
 ```
 
@@ -109,16 +117,18 @@ where <product-id> is identifier of display item.
 The endpoint has validation for several cases, including:
 
 #### Display item not found
+
 ```json
 {
-    "token": "...",
-    "errors": {
-      "displayItem": "display item not found"
-    }
+  "token": "...",
+  "errors": {
+    "displayItem": "display item not found"
+  }
 }
 ```
 
 #### Wishlist not found
+
 ```json
 {
   "token": "...",
@@ -129,6 +139,7 @@ The endpoint has validation for several cases, including:
 ```
 
 #### Duplicate item in wishlist
+
 ```json
 {
   "token": "...",
@@ -139,7 +150,9 @@ The endpoint has validation for several cases, including:
 ```
 
 #### Current user is not owner of selected wishlist
+
 If we pass, not the 0 as <wishlist-id> and if we found a wishlist of different user
+
 ```json
 {
   "token": "...",
@@ -150,6 +163,7 @@ If we pass, not the 0 as <wishlist-id> and if we found a wishlist of different u
 ```
 
 #### Success
+
 ```json
 {
   "token": "...",
@@ -167,7 +181,6 @@ If we pass, not the 0 as <wishlist-id> and if we found a wishlist of different u
 }
 ```
 
-
 ### Removing the product from the wishlist through the Checkout API
 
 [notice-box=info]
@@ -183,16 +196,18 @@ where <product-id> is identifier of display item.
 The endpoint has validation for several cases, including:
 
 #### Display item not found
+
 ```json
 {
-    "token": "...",
-    "errors": {
-      "displayItem": "display item not found"
-    }
+  "token": "...",
+  "errors": {
+    "displayItem": "display item not found"
+  }
 }
 ```
 
 #### Wishlist not found
+
 ```json
 {
   "token": "...",
@@ -203,6 +218,7 @@ The endpoint has validation for several cases, including:
 ```
 
 #### Current user is not owner of selected wishlist
+
 ```json
 {
   "token": "...",
@@ -213,13 +229,14 @@ The endpoint has validation for several cases, including:
 ```
 
 #### Success
+
 ```json
 {
   "token": "...",
   "wishlist": {
     "wishlist": 1,
     "isDefault": true,
-    "items": [] // items removed
+    "items": []
   }
 }
 ```
