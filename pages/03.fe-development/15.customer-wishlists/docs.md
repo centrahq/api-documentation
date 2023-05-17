@@ -8,56 +8,50 @@ excerpt: Feature that allows customers to save products to a list for later view
 
 ## Overview
 
-Customer wishlists is a feature that enhances the shopping experience by allowing customers to
-add desired products to the wishlist. Wishlists serve as a convenient way for customers to save
-products they are interested in, making it easier for them to track and revisit those items at a later time.
+Customer wishlists is a feature that enhances the shopping experience by allowing customers to add desired products to the wishlist. Wishlists serve as a convenient way for customers to save products they are interested in, making it easier for them to track and revisit those items at a later time.
 
-The scope of the wishlist feature currently includes
+The scope of the wishlist feature currently includes:
 
-* Ability to have one wishlist per customer
-* Ability to add products to a wishlist
-* Ability to remove products from a wishlist
+- Ability to have one wishlist per customer
+- Ability to add products to a wishlist
+- Ability to remove products from a wishlist
 
 ## What is required to enable Customer wishlists?
 
-Currently, Customer wishlists feature available in CheckoutAPI under the feature flag. Please contact our support to request enabling the feature.
+Currently, the Customer wishlists feature is available in CheckoutAPI under the feature flag. Please contact our support to request enabling the feature.
 
 ## How does Customer wishlists work?
 
-Customer wishlists feature allows users to add products to the list in one click,review those items at a later time and track the prices and other information.
+Customer wishlists feature allows users to add products to the list in one click, review those items at a later time, and track the prices and other information.
 
-### Which products can be added to wishlist?
+### Which products can be added to the wishlist?
 
-All products are possible to add to the wishlist, including the out of the stock ones.
-The lone exception is that flexible bundles are not possible to add to the wishlist.
-Currently, wishlist supports 10000 products in a single wishlist.
+All products are possible to add to the wishlist, including the out-of-stock ones. The lone exception is that flexible bundles are not possible to add to the wishlist. Currently, the wishlist supports 10,000 products in a single wishlist.
 
 ### Getting wishlist information through APIs
 
-Currently, functionality supports one wishlist per user.
-Default wishlist can be requested by identifier 0 in the request to get customer wishlist send
+Currently, the functionality supports one wishlist per user. The default wishlist can be requested by identifier 0 in the request to get the customer wishlist:
 
-`GET <api-url>/customer/wishlists/0` request.
+`GET <api-url>/customer/wishlists/0`
 
 It includes all the needed information to display wishlist data like:
 
-* `id`
-* `isDefault`
-* `items`
+- `id`
+- `isDefault`
+- `items`
 
 You can filter the items using the paginator query parameters:
 
 `GET <api-url>/customer/wishlists/<wishlist-id>?page=<items-page>&limit=<items-limit>`
 
 Parameters:
-<wishlist-id> - Id of wishlist, it can be sent as 0 to fetch the default wishlist.
-<items-page> - Number of page of results to return.
-<items-limit> - Limit the number of wishlist items returned.
+- `<wishlist-id>`: The ID of the wishlist, it can be sent as 0 to fetch the default wishlist.
+- `<items-page>`: The page number of the results to return.
+- `<items-limit>`: Limit the number of wishlist items returned.
 
 #### Success
 
-If wishlist found for the end user, then the response will be:
-
+If the wishlist is found for the end user, the response will be:
 ```json
 {
   "token": "...",
@@ -78,7 +72,6 @@ If wishlist found for the end user, then the response will be:
 #### Success, empty wishlist
 
 If the customer doesn't have a wishlist yet, the response will be:
-
 ```json
 {
   "token": "...",
@@ -93,7 +86,6 @@ If the customer doesn't have a wishlist yet, the response will be:
 #### Failure
 
 If a non-existing wishlist identifier is provided, an error will be returned:
-
 ```json
 {
   "token": "...",
