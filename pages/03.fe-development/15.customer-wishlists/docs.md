@@ -54,6 +54,7 @@ Parameters:
 
 #### Success
 If wishlist found for the end user, then the response will be:
+
 ```json
 {
   "token": "...",
@@ -70,6 +71,7 @@ If wishlist found for the end user, then the response will be:
   }
 }
 ```
+
 #### Success, empty wishlist
 If the customer doesn't have a wishlist yet, the response will be:
 
@@ -83,6 +85,7 @@ If the customer doesn't have a wishlist yet, the response will be:
   }
 }
 ```
+
 #### Failure
 If a non-existing wishlist identifier is provided, an error will be returned:
 
@@ -109,6 +112,7 @@ where <product-id> is identifier of display item.
 The endpoint has validation for several cases, including:
 
 #### Display item not found
+
 ```json
 {
     "token": "...",
@@ -119,6 +123,7 @@ The endpoint has validation for several cases, including:
 ```
 
 #### Wishlist not found
+
 ```json
 {
   "token": "...",
@@ -129,6 +134,7 @@ The endpoint has validation for several cases, including:
 ```
 
 #### Duplicate item in wishlist
+
 ```json
 {
   "token": "...",
@@ -140,6 +146,7 @@ The endpoint has validation for several cases, including:
 
 #### Current user is not owner of selected wishlist
 If we pass, not the 0 as <wishlist-id> and if we found a wishlist of different user
+
 ```json
 {
   "token": "...",
@@ -150,6 +157,7 @@ If we pass, not the 0 as <wishlist-id> and if we found a wishlist of different u
 ```
 
 #### Success
+
 ```json
 {
   "token": "...",
@@ -183,6 +191,7 @@ where <product-id> is identifier of display item.
 The endpoint has validation for several cases, including:
 
 #### Display item not found
+
 ```json
 {
     "token": "...",
@@ -193,6 +202,7 @@ The endpoint has validation for several cases, including:
 ```
 
 #### Wishlist not found
+
 ```json
 {
   "token": "...",
@@ -203,6 +213,7 @@ The endpoint has validation for several cases, including:
 ```
 
 #### Current user is not owner of selected wishlist
+
 ```json
 {
   "token": "...",
@@ -213,13 +224,14 @@ The endpoint has validation for several cases, including:
 ```
 
 #### Success
+
 ```json
 {
   "token": "...",
   "wishlist": {
     "wishlist": 1,
     "isDefault": true,
-    "items": [] // items removed
+    "items": []
   }
 }
 ```
