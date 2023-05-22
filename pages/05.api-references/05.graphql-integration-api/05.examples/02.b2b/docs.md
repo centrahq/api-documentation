@@ -2285,16 +2285,6 @@ mutation deleteShipment {
 }
 ```
 
-<!--
-#### Request
+### Creating and manipulating Returns
 
-```gql
-
-```
-
-#### Response
-
-```json
-
-```
--->
+B2B Returns work exactly the same as [DtC Returns mutations](/api-references/graphql-integration-api/examples/dtc#creating-a-return).
