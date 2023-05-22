@@ -1531,3 +1531,129 @@ mutation completeShipment {
   }
 }
 ```
+
+### Creating a Return
+
+If you have a shipment that you wish to return you can do it by running the mutation below. You will have to specify the shipment, shipment lines and the stock policy which will affect how the items will be relocated. There are three possible options:
+
+- `releaseItemsBackToWarehouse` → the items will be sent back to the warehouse they originally came from  
+- `sendItemsToDifferentWarehouse` → items will be sent to a warehouse specified by the user  
+- `removeItemsFromStock` → physical products will not be returned, there will be no increase in stock for any warehouse  
+
+Additional costs, such as handling fees, shipping costs, or voucher value, can also be specified in this mutation.These values can not be greater the the remaining value of these costs on shipment.
+
+```gql
+mutation createreturn {
+  createReturn(
+    input: {
+      shipment: { id: 1338 }
+      lines: [
+        { shipmentLine: { id: 2943 }, quantity: 2 }
+        { shipmentLine: { id: 2944 }, quantity: 2 }
+      ]
+      returnStockActionPolicy: { releaseItemsBackToWarehouse: true }
+      shippingCost: { value: { currencyIsoCode: "SEK", value: 10.00 } }
+      voucherValue: { fromShipment: true }
+      handlingCost: { fromShipment: true }
+      comment: "new comment"
+    }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    return {
+      id
+      lines {
+        id
+      }
+    }
+  }
+}
+```
+
+### Completing a return
+
+If you would like to complete a return using the Integration API you can do it by running `completeReturn` mutation. First you can query the returns to find the needed id.
+
+```gql
+query returns {
+  returns {
+    id
+    status
+    lines {
+      shipmentLine {
+        id
+      }
+    }
+  }
+}
+```
+
+In the `completeReturn` mutation you can also pass the information on whether an email with return confirmation should be sent to the customer. You can’t complete a return that already has a `completed` status.
+
+```gql
+mutation completereturn {
+  completeReturn(
+    id: 315
+    input: {
+      sendEmail:true
+    }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    return {
+      id
+      status
+    }
+  }
+}
+```
+
+### Un-completing a return
+
+If you wish to un-do the previously described mutation you can do it by running this mutation:
+
+```gql
+mutation uncompletereturn {
+  uncompleteReturn(id: 315) {
+    userErrors {
+      message
+      path
+    }
+    return {
+      id
+      status
+    }
+  }
+}
+```
+
+### Deleting a return
+
+If you wish to delete a return you can do it by running this mutation:
+
+```gql
+mutation deleteReturn {
+  deleteReturn(id: 436) {
+    userErrors {
+      message
+      path
+    }
+    return {
+      id
+      lines {
+        id
+      }
+    }
+  }
+}
+```
+
+All you need to provide is the return ID. The stock will be re-allocated according to the policy that was selected when creating the return. If the return was created using the `releaseItemsBackToWarehouse` stock policy, the order and shipment lines will be re-allocated based on the allocation rule assigned to the order.
+
+`sendItemsToDifferentWarehouse` → the order and shipment lines will be re-allocated, the stock will be re-allocated from the warehouse specified by the user when creating the return.
+
+`removeItemsFromStock` → the shipment lines quantity will be updated to reflect the change but there will be no re-allocation. The idea is that the items were not added back to stock, the user can decide whether to re-allocate it again.
