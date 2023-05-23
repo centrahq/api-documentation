@@ -375,6 +375,7 @@ A multi-line dynamic text field for entering additional information about the Pr
 This displays like this:  
 ![](attribute-dynamic-multiline.png)
 
+<!--
 #### Product category video
 
 File upload is easy to manage for a limited number of videos.
@@ -395,10 +396,11 @@ File upload is easy to manage for a limited number of videos.
 
 After you add and upload the video files in Catalog -> Attributes, you will see the list of options in the Product page:  
 ![ProductCategoryVideo](example-product-category-video.png)
+-->
 
 #### Product video
 
-When the amount of videos is un-manageable, like one video per product, it might be better to use a dynamic input field to store video URL instead of a file
+Since products videos will be different on each product, we use a dynamic input field to store video URL
 
 ```php
 'pr_video' => [
