@@ -27,9 +27,14 @@ The settings in the plugin affect the integration in the following way:
 
 - **Test**: If set to `yes` Centra will connect to Ingrid's `stage` environment, if set to `no` Centra will connect to Ingrid's `production` environment.
 - **Default Locale**: The locale (language) the widget will be shown in by default, if a proper locale is set on the selection Centra will tell Ingrid to try to use the selection's language instead. If Ingrid doesn't support the locale on the selection, the default locale will be used.
-- **Is address feature enabled**: Enabled by default. If set to `yes` Ingrid's widget will present address form for the customer to provide their address and information required for delivery processing purposes. Updates of the address information are send to Centra using Centra CheckoutScript that is a handler of client side events.
+- **Is Address Form Feature Enabled:** This feature is enabled by default. If set to `yes`, it signifies your confirmation that the address feature is activated for your Ingrid merchant account. Ingrid widget will present an address form for the customer to provide their address and information required for delivery processing purposes. Updates of the address information are sent to Centra using the Centra CheckoutScript, which handles client-side events.
   [notice-box=info]
-  In order to enable address feature on Ingrid side, you should contact Ingrid support.
+  Before enabling address form feature setting in the plugin, please contact Ingrid support to enable it on Ingrid's side.
+  [/notice-box]
+- **Is Billing Form Feature Enabled**: Disabled by default. If set to `yes`, it signifies your confirmation that the billing form feature is activated for your Ingrid merchant account. When enabled, Ingrid will present a "Billing to" section and a "Same as delivery" checkbox. If the checkbox is selected, it indicates that the billing address is the same as the delivery address. If the checkbox is unmarked, a separate billing form will be presented for customers to provide specific billing information.
+  Updates to the address information are sent to Centra using the Centra CheckoutScript, which handles client-side events. Please note, the billing form feature is only available when the address form feature is enabled.
+  [notice-box=info]
+  Before enabling billing form feature setting in the plugin, please contact Ingrid support to enable it on Ingrid's side.
   [/notice-box]
 - **Suspend Ingrid widget on shipping option changed**: If set to `yes` Ingrid's widget will be put into a "loading state" whenever the shipping option is changed by the user until Centra has recevied the update. It is important that your front end picks up those changes and resumes the widget when ready.
 - **Update address in Ingrid's widget from address stored on basket in Centra**:
@@ -67,15 +72,58 @@ Centra will save the ID of the initialized Ingrid session, and update the shippi
 
 - All selection item and voucher updates are send as Ingrid session updates from Centra 
 - Centra will update the shipping cost of the selection with the cost returned by Ingrid after the update.
-- Address updates on the selection are only sent to Ingrid if they are made by the [PUT payment-fields](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields) endpoint in Centra's CheckoutAPI (or [PUT /selections/{selection}/checkout-fields](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/put_selections__selection__checkout_fields) in ShopAPI) and if the `Update address in Ingrid's widget from address stored on basket in Centra:` option in the Ingrid plugin is set to `On address pre-fill (default)`. This is to prevent Centra from overriding any choice made in the Ingrid widget by the user, which could cause a change of Shipping option, depending on the setup. If Centra already has address data at the time when the Ingrid session is created, this will be sent to Ingrid (since there is nothing to override).
+- [*When address feature is disabled*] Address updates on the selection are only sent to Ingrid if they are made by the [PUT payment-fields](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields) endpoint in Centra's CheckoutAPI (or [PUT /selections/{selection}/checkout-fields](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/put_selections__selection__checkout_fields) in ShopAPI) and if the `Update address in Ingrid's widget from address stored on basket in Centra:` option in the Ingrid plugin is set to `On address pre-fill (default)`. This is to prevent Centra from overriding any choice made in the Ingrid widget by the user, which could cause a change of Shipping option, depending on the setup. If Centra already has address data at the time when the Ingrid session is created, this will be sent to Ingrid (since there is nothing to override).
 - When Ingrid address form is updated and events are forwarded from Frontend to Centra
 - On country / state change.
 - All data is sent to Ingrid after the order is placed in Centra, including the final cart and customer address. Centra saves the data returned from Ingrid as `Custom Attributes` on the order.
 
 ### When does Ingrid update Centra?
 
-- On events from the widget forwarded to Centra from the frontend partner (see Frontend Implementation).
-- Centra always updates shipping price based on what Ingrid respond when Centra updates Ingrid.
+In the checkout process, Centra checkout script listens to events emitted by the Ingrid widget and forwards them to Centra.
+
+#### Events Tracked by Centra's Checkout Script
+
+1. **"summary_changed" Event:** Triggered whenever there are updates in the summary details, such as changes in the delivery or billing addresses. On detecting this event, Centra's script sends an `ingrid_v2_address_change` event request to Centra to reflect these changes.
+
+2. **"data_changed" Event:** Fires when there are modifications in the checkout data.
+Centra's script scans for updates in several key attributes including: 
+   - `delivery_type_changed`,
+   - `external_method_id_changed`, 
+   - `price_changed`, 
+   - `search_address_changed`, 
+   - `shipping_method_changed`
+
+If any of these attributes have changes, an `ingrid_v2_shipping_option_changed` event request is sent to Centra.
+
+## Fallback Form During Ingrid API Service Unavailability
+
+Centra provides a fallback form when the Ingrid API service is unavailable under certain circumstances. This ensures the continuity of the customer checkout experience without interruption.
+
+### Scenarios for Fallback Form Usage
+
+The fallback form is presented in the following situations when the Ingrid API service is unavailable:
+
+1. When a customer adds an item to an empty selection.
+2. When a customer updates their selection.
+3. When a customer changes their shipping/billing address.
+4. When a customer changes their shipping option.
+
+During these scenarios, Centra includes visible `address` and `shippingAddress` fields in the `paymentFields` response. The frontend implementation should use these fields to construct the fallback form.
+
+### Error Response Indicating Fallback Form Usage
+
+In response, the `selection.pluginFields` property contains the following object:
+
+```json
+"pluginFields": {
+  "ingrid": {
+    "version": 2,
+    "error": "No Ingrid-session created",
+    "deliveryOptionsAvailable": false
+  }
+}
+```
+This response indicates that the Ingrid widget is unavailable, which prompts the frontend to construct a fallback form. Consequently, customers can continue with their checkout experience smoothly, even when the Ingrid API service is temporarily unavailable.
 
 ## Frontend implementation
 
