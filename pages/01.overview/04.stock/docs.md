@@ -23,7 +23,7 @@ Physical | FTA | Allocated | Linked | Demand | Unshipped | Available Now | Unlin
 </div>
 
 * **Physical** = FTA + Allocated  
-This is the quantity that you have on the shelf in the warehouse. If there are any differences, Centra wouldn’t know about it.
+This is the quantity that you have on the shelf in the warehouse. If there are any discrepancies, Centra wouldn’t know about it.
 * **FTA** = Physical - Allocated (- Warehouse Threshold/Product Variant offset)  
 Free to Allocate. This is the quantity of said product which is available to allocate on orders, or simply, this is the quantity available. You can sell that quantity without affecting existing orders.   
 Quantity might be protected from being sold by "Warehouse Threshold" or "Product variant offset" setting. If product offset is greater than 0, it overrides warehouse threshold settings.
