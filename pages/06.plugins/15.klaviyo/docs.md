@@ -528,6 +528,55 @@ Additional shipping fields available when Ingrid shipping plugin is enabled and 
 ```
 [/notice-box]
 
+#### Ordered Product
+
+Ordered Product is not a transactional type of metric, but is used for the purposes of [personalized recommendations](https://developers.klaviyo.com/en/v1-2/docs/custom-integration-faqs#how-do-i-enable-personalized-recommendations) and segmenting customers based on the items they purchase.
+They can also be used to create product-specific up-sell and cross-sell flows.
+They include detailed information about item that has been purchased.
+
+> Ordered Product: this metric is tracked when a customer places an order. 
+> NOTE: One Ordered Product event is tracked for each item purchased.
+> If someone purchases three items in a single order, there will be one Placed Order event and three corresponding Ordered Product events recorded.
+
+
+```json
+{
+    "$event_id": "551-ABCDEFGHIJKL-1",
+    "$value": 100,
+    "OrderId": "551",
+    "ProductID": 1,
+    "SKU": "123456789",
+    "ProductName": "Test Product",
+    "Quantity": 1,
+    "GTIN": "ABCDEFGHIJKL",
+    "Size": "",
+    "VariantName": "Red",
+    "GrossPaidPrice": "100.00",
+    "GrossPaidPriceInCustomerCurrency": "100.00",
+    "OriginalPrice": "100.00",
+    "OriginalPriceInCustomerCurrency": "100.00",
+    "GrossPaidPricePerUnit": "100.00",
+    "GrossPaidPricePerUnitInCustomerCurrency": "100.00",
+    "ProductURL": "https://test.com/product/test-product",
+    "ImageURL": "http://localhost/client/dynamic/images/1_9adfeff6f2-red.jpg",
+    "Categories": [
+      "shop"
+    ],  
+    "Brand": "Brand",
+    "TaxAmount": "20.00",
+    "TaxAmountInCustomerCurrency": "20.00",
+    "TaxPercent": "25.00",
+    "Discounted": false,
+    "DiscountValue": "0.00",
+    "DiscountValueInCustomerCurrency": "0.00",
+    "ProductType": "product"
+}
+```
+
+[notice-box=info]
+ProductType variable in event data can take one of two values: "product" or "bundle".
+[/notice-box]
+
 #### Started Checkout
 
 Started Checkout event data structure is the same as for `Confirmed Order` and `Refunded Order` events but with extra field “AbandonedCartURL”
