@@ -574,7 +574,7 @@ They include detailed information about item that has been purchased.
 ```
 
 [notice-box=info]
-ProductType variable in Item object can take one of two values: "product" or "bundle".
+ProductType variable in event data can take one of two values: "product" or "bundle".
 [/notice-box]
 
 #### Started Checkout
