@@ -123,7 +123,7 @@ In response, the `selection.pluginFields` property contains the following object
   }
 }
 ```
-This response indicates that the Ingrid widget is unavailable, which prompts the frontend to construct a fallback form. Consequently, customers can continue with their checkout experience smoothly, even when the Ingrid API service is temporarily unavailable.
+This response indicates that the Ingrid widget is unavailable, which prompts the frontend to construct a fallback form. Frontend implementation should check for existence of `error` property in returned dictionary and if truthy, should fallback to a standard shipping form. Consequently, customers can continue with their checkout experience smoothly, even when the Ingrid API service is temporarily unavailable.
 
 ## Frontend implementation
 
