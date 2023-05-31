@@ -354,7 +354,6 @@ The functionality for the Checkout API consist of the following sections:
 * **Selection handling**. The selection handling allows you to finalize an order with third-party payment methods, by following our defined integration flows you're able to support all payment methods currently available in Centra without the need of doing too much of customization per each payment method.
 * **Routing**. You can use the Checkout API to handle routing, giving you different options on what to render based on the URI being accessed. This allows you to use Centra's routing as a fallback to make sure the proper page is shown when navigating on your page.
 * **Customer handling**. The API allows customer to register, modify their customer details, sign in, forgot password/reset password and sign out. This will also make sure the customer can maintain its cart across multiple sessions and browsers.
-* **CMS articles/pages**. If the CMS-module is installed on the Centra-instance, the Checkout API allows you to extract CMS-articles, both using the routing mechanism, but also based on a similar filter like the product data. You are allowed to disable the CMS-endpoints completely in the plugin if you do not want the data to be public.
 
 ## Webhooks
 
