@@ -1,14 +1,14 @@
 ---
-title: Customer wishlists
-altTitle: Wishlists
+title: Customer wishlist
+altTitle: Wishlist
 taxonomy:
   category: docs
-excerpt: Feature that allows customers to save products to a list for later viewing.
+excerpt: Wishlists allows customers to save products to a list for later viewing or purchase
 ---
 
 ## Overview
 
-Customer wishlists is a feature that enhances the shopping experience by allowing customers to add desired products to the wishlist. Wishlists serve as a convenient way for customers to save products they are interested in, making it easier for them to track and revisit those items at a later time.
+The wishlist feature allows shoppers to add products to the list in one click, review those items at a later time and keep track of the prices and other product information. In this article we describe how to set it up.
 
 The scope of the wishlist feature currently includes:
 
@@ -16,19 +16,37 @@ The scope of the wishlist feature currently includes:
 - Ability to add products to a wishlist
 - Ability to remove products from a wishlist
 
+## Reasons customers love wishlists
+
+- Saving items for later so that they are not lost or forgotten  
+- Tracking items that are currently out of the shopper's price range but might be on sale in the future  
+- Creating lists for special events such as a holiday or a birthday  
+
+While these are important reasons for customers, the additional benefit of the wishlist is that it allows e-comm merchants to limit cart abandonment by encouraging customers to use the wishlist for item organization instead of using the cart. This is because a large part of shoppers use the cart with an intention to organize items for later purchasing, essentially as a wishlist, which is reflected in high cart abandonment rate. Customer wishlists feature allows users to add products to the list in one click, review those items at a later time, and track the prices and other information.
+
 ## What is required to enable Customer wishlists?
 
-Currently, the Customer wishlists feature is available in CheckoutAPI under the feature flag. Please contact our support to request enabling the feature.
+For now, the wishlist feature is only available in our Checkout API. It needs Frontend implementation to work. Here is how to implement it in your Frontend.
 
-## How does Customer wishlists work?
-
-Customer wishlists feature allows users to add products to the list in one click, review those items at a later time, and track the prices and other information.
+## Wishlist functionalities
 
 ### Which products can be added to the wishlist?
 
-All products are possible to add to the wishlist, including the out-of-stock ones. The lone exception is that flexible bundles are not possible to add to the wishlist. Currently, the wishlist supports 10,000 products in a single wishlist.
+All products can be added to the wishlist, including the ones currently out of stock. The only exception is flexible bundles. Currently, the wishlist feature supports up to 10000 products in a single wishlist.
 
-### Getting wishlist information through APIs
+### One wishlist per shopper
+
+Each shopper can have one wishlist connected to their account on your website. Your shopper must be logged in. Read here on [how to handle customer registration, login and password reset email flow](/fe-development/fe-elements#customer-registration-and-login).
+
+### Allow customers to add products to their wishlist
+
+You can allow customers to add products to the wishlist from any place in the purchasing journey: product listing page, product details page, basket, checkout etc. However, the place from which the end customer adds products to a wishlist is determined by your frontend implementation. At the moment, it is only possible to add products to a wishlist one item at a time.
+
+### Allow customers to remove products from their wishlist
+
+You can allow customers to remove products from the wishlist. Typically this is done from the customer account section on the wishlist level.
+
+## Getting wishlist information through APIs
 
 Currently, the functionality supports one wishlist per user. The default wishlist can be requested by identifier 0 in the request to get the customer wishlist:
 
@@ -36,18 +54,18 @@ Currently, the functionality supports one wishlist per user. The default wishlis
 
 It includes all the needed information to display wishlist data like:
 
-- `id`
-- `isDefault`
-- `items`
+- `id`  
+- `isDefault`  
+- `items`  
 
 You can filter the items using the paginator query parameters:
 
 `GET <api-url>/customer/wishlists/<wishlist-id>?page=<items-page>&limit=<items-limit>`
 
-Parameters:
-- `<wishlist-id>`: The ID of the wishlist, it can be sent as 0 to fetch the default wishlist.
-- `<items-page>`: The page number of the results to return.
-- `<items-limit>`: Limit the number of wishlist items returned.
+Parameters are:  
+- `<wishlist-id>`: The ID of the wishlist, it can be sent as 0 to fetch the default wishlist  
+- `<items-page>`: The page number of the results to return  
+- `<items-limit>`: Limit the number of wishlist items returned  
 
 #### Success
 
@@ -100,9 +118,9 @@ If a non-existing wishlist identifier is provided, an error will be returned:
 By default, each user has a wishlist, but it's not stored in the database until a product is added to the wishlist. 
 To create the wishlist, use the following API endpoint:
 
-`POST <api-url>/customer/wishlists/0/items/<product-id>`
+`POST <api-url>/customer/wishlists/0/items/<item-id>`
 
-where <product-id> is identifier of display item.
+where <item-id> is [identifier of display item](/fe-development/fe-elements#why-do-i-see-different-product-ids-in-the-centra-backend-and-in-checkout-api).
 
 ### Validation errors
 
@@ -173,19 +191,17 @@ If we pass, not the 0 as <wishlist-id> and if we found a wishlist of different u
 }
 ```
 
-### Removing the product from the wishlist through the Checkout API
+### Removing the product from the wishlist
 
-[notice-box=info]
-Here we have to pass exact id of wishlist to remove the product from there
-[/notice-box]
+Here we have to pass exact id of wishlist to remove the product from
 
-`DELETE <api-url>/customer/wishlists/1/items/<product-id>`
+`DELETE <api-url>/customer/wishlists/1/items/<item-id>`
 
-where <product-id> is identifier of display item.
+where <item-id> is identifier of display item.
 
 ### Validation errors
 
-The endpoint has validation for several cases, including:
+The endpoint provides validation for several cases, including:
 
 #### Display item not found
 
