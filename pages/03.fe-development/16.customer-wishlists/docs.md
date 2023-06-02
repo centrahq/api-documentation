@@ -63,7 +63,7 @@ You can filter the items using the paginator query parameters:
 `GET <api-url>/customer/wishlists/<wishlist-id>?page=<items-page>&limit=<items-limit>`
 
 Parameters are:  
-- `<wishlist-id>`: The ID of the wishlist, it can be sent as 0 to fetch the default wishlist  
+- `<wishlist-id>`: The ID of the wishlist, currently only one wishlist ID `0` is supported per customer  
 - `<items-page>`: The page number of the results to return  
 - `<items-limit>`: Limit the number of wishlist items returned  
 
@@ -74,7 +74,7 @@ If the wishlist is found for the end user, the response will be:
 {
   "token": "...",
   "wishlist": {
-    "wishlist": 1,
+    "wishlist": 0,
     "isDefault": true,
     "items": [
       {
@@ -115,13 +115,12 @@ If a non-existing wishlist identifier is provided, an error will be returned:
 
 ### Adding the product to wishlist through the Checkout API
 
-By default, each user has a wishlist, but it's not stored in the database until a product is added to the wishlist. 
-To create the wishlist, use the following API endpoint:
+By default, each user has a wishlist, but it's not stored in the database until a product is added to the wishlist. To create the wishlist, use the following API endpoint:
 
 `POST <api-url>/customer/wishlists/0/items/<item-id>`
 
-where <item-id> is [identifier of display item](/fe-development/fe-elements#why-do-i-see-different-product-ids-in-the-centra-backend-and-in-checkout-api).
-
+Where `<item-id>` is [identifier of display item](/fe-development/fe-elements#why-do-i-see-different-product-ids-in-the-centra-backend-and-in-checkout-api).
+  
 ### Validation errors
 
 The endpoint has validation for several cases, including:
@@ -159,26 +158,13 @@ The endpoint has validation for several cases, including:
 }
 ```
 
-#### Current user is not owner of selected wishlist
-
-If we pass, not the 0 as <wishlist-id> and if we found a wishlist of different user
-
-```json
-{
-  "token": "...",
-  "errors": {
-    "wishlist": "Invalid customer ID: 1, expected customer ID: 2"
-  }
-}
-```
-
 #### Success
 
 ```json
 {
   "token": "...",
   "wishlist": {
-    "wishlist": 1,
+    "wishlist": 0,
     "isDefault": true,
     "items": [
       {
@@ -193,11 +179,11 @@ If we pass, not the 0 as <wishlist-id> and if we found a wishlist of different u
 
 ### Removing the product from the wishlist
 
-Here we have to pass exact id of wishlist to remove the product from
+Use endpoint:
 
-`DELETE <api-url>/customer/wishlists/1/items/<item-id>`
+`DELETE <api-url>/customer/wishlists/0/items/<item-id>`
 
-where <item-id> is identifier of display item.
+Where `<item-id>` is identifier of display item.
 
 ### Validation errors
 
@@ -242,7 +228,7 @@ The endpoint provides validation for several cases, including:
 {
   "token": "...",
   "wishlist": {
-    "wishlist": 1,
+    "wishlist": 0,
     "isDefault": true,
     "items": []
   }
