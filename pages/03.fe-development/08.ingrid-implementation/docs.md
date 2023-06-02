@@ -1,6 +1,6 @@
 ---
 title: How to implement Ingrid in your Checkout
-altTitle: Ingrid implementation
+altTitle: Ingrid v1 implementation
 excerpt: Ingrid provides the ability to present a shipping option widget in the checkout. Here is how to implement it.
 taxonomy:
   category: docs
