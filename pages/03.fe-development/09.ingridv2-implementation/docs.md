@@ -30,7 +30,7 @@ The settings in the plugin affect the integration in the following way:
 - **Is address form feature enabled**: This feature is enabled by default - set to Yes. It signifies your confirmation that the address feature is activated for your Ingrid merchant account. Its function is to present an address form in the Ingrid widget, where customers can provide their address and information required for delivery processing purposes. Updates of the address information are sent to Centra using the Centra CheckoutScript, which handles client-side events.
 
 [notice-box=info]
-Before activating the plugin, please contact Ingrid support to enable this function on Ingrid's side.
+Please contact Ingrid support to also enable this functionality on Ingrid’s side.
 [/notice-box]
 
 - **Is Billing Form Feature Enabled**: This is set to No by default. If set to yes, it signifies your confirmation that the billing form feature is activated in Centra. To activate it in your Ingrid merchant account, please reach out to Ingrid.  Its function is to present a “Billing to” section and a “Same as delivery” checkbox in the Ingrid widget. If the checkbox is selected, it indicates that the billing address is the same as the delivery address. If the checkbox is unmarked, a separate billing form will be presented for customers to provide specific billing information. Updates to the address information are sent to Centra using the Centra CheckoutScript, which handles client-side events.
