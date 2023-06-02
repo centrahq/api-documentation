@@ -27,23 +27,19 @@ The settings in the plugin affect the integration in the following way:
 
 - **Test**: If set to `yes` Centra will connect to Ingrid's `stage` environment, if set to `no` Centra will connect to Ingrid's `production` environment.
 - **Default Locale**: The locale (language) the widget will be shown in by default, if a proper locale is set on the selection Centra will tell Ingrid to try to use the selection's language instead. If Ingrid doesn't support the locale on the selection, the default locale will be used.
-- **Is Address Form Feature Enabled:** This feature is enabled by default. If set to `yes`, it signifies your confirmation that the address feature is activated for your Ingrid merchant account. Ingrid widget will present an address form for the customer to provide their address and information required for delivery processing purposes. Updates of the address information are sent to Centra using the Centra CheckoutScript, which handles client-side events.
-  [notice-box=info]
-  Before enabling address form feature setting in the plugin, please contact Ingrid support to enable it on Ingrid's side.
-  [/notice-box]
-- **Is Billing Form Feature Enabled**: Disabled by default. If set to `yes`, it signifies your confirmation that the billing form feature is activated for your Ingrid merchant account. When enabled, Ingrid will present a "Billing to" section and a "Same as delivery" checkbox. If the checkbox is selected, it indicates that the billing address is the same as the delivery address. If the checkbox is unmarked, a separate billing form will be presented for customers to provide specific billing information.
-  Updates to the address information are sent to Centra using the Centra CheckoutScript, which handles client-side events. Please note, the billing form feature is only available when the address form feature is enabled.
-  [notice-box=info]
-  Before enabling billing form feature setting in the plugin, please contact Ingrid support to enable it on Ingrid's side.
-  [/notice-box]
+- **Is address form feature enabled**: This feature is enabled by default - set to Yes. It signifies your confirmation that the address feature is activated for your Ingrid merchant account. Its function is to present an address form in the Ingrid widget, where customers can provide their address and information required for delivery processing purposes. Updates of the address information are sent to Centra using the Centra CheckoutScript, which handles client-side events.
+
+[notice-box=info]
+Before activating the plugin, please contact Ingrid support to enable this function on Ingrid's side.
+[/notice-box]
+
+- **Is Billing Form Feature Enabled**: This is set to No by default. If set to yes, it signifies your confirmation that the billing form feature is activated in Centra. To activate it in your Ingrid merchant account, please reach out to Ingrid.  Its function is to present a “Billing to” section and a “Same as delivery” checkbox in the Ingrid widget. If the checkbox is selected, it indicates that the billing address is the same as the delivery address. If the checkbox is unmarked, a separate billing form will be presented for customers to provide specific billing information. Updates to the address information are sent to Centra using the Centra CheckoutScript, which handles client-side events.
+
+[notice-box=info]
+Before enabling billing form feature setting in the plugin, please contact Ingrid support to enable it on Ingrid's side.
+[/notice-box]
+
 - **Suspend Ingrid widget on shipping option changed**: If set to `yes` Ingrid's widget will be put into a "loading state" whenever the shipping option is changed by the user until Centra has recevied the update. It is important that your front end picks up those changes and resumes the widget when ready.
-- **Update address in Ingrid's widget from address stored on basket in Centra**:
-  [notice-box=info]
-  Search address will not be used when address form is enabled (`Is address feature enabled=yes`). Following setting is only relevant when address form feature is disabled.
-  [/notice-box]
-  Centra will always try to populate the Ingrid widget with the selection address if Centra has received it before Ingrid, however other address updates will depend on this setting.
-    - If set to `On address pre-fill (default)` the address the widget uses to present the shipping options will be updated from Centra on the [PUT /payment-fields endpoint](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields)
-    - If set to `Only if Ingrid does not have an address set on the session` - prevents the [PUT /payment-fields endpoint](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields) from updating the address in the Ingrid session.
 - **Restrict pricelists**: Only use this plugin instance for the selected pricelist(s), empty means it's available for all.
 - **Restrict markets**: Only use this plugin instance for the selected market(s), empty means it's available for all.
 - **Restrict countries**: Only use this plugin instance for the selected shipping countries, empty means it's available for all.
