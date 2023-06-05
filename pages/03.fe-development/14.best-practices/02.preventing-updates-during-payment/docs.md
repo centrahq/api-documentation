@@ -5,7 +5,8 @@ taxonomy:
 category: docs
 ---
 
-This guide explains the proper use of the POST /payment-result endpoint in the Checkout API or Shop API, which is triggered after payment is submitted by the customer in the checkout.
+This guide aims to explain the proper use of the `POST /payment-result` endpoint in the Checkout API or Shop API, which is called after payment has been submitted by the customer in the checkout. 
+It also aims to ensure understanding of potential risks posed by improper implementation and minimizing their impact.
 
 ### POST /payment-result
 
@@ -18,10 +19,11 @@ The time slot during which updates should be prevented is marked red on the belo
 
 ![img.png](img.png)
 
-An example could be shopper that leaves the payment success page before the response from `POST /payment-result` request is back and triggers for example one of the following:
+For instance, a situation may arise where a customer leaves the payment success page before the response from `POST /payment-result` request is back, triggering for example one of the following scenarios:
 
 - update of the selection's country to a different one than the one used in the checkout
 - update of the selection's currency to a different one than the one used in the checkout
 - update of the selection's shipping method to a default one which was different than the one used in the checkout
 
-All of these scenarios introduce risk of altering the order total in Centra and causing an inconsistency between state of the order on PSP side and state of the order in Centra.
+All of these scenarios introduce risk of altering the order total in Centra and causing a discrepancy between state of the order on PSP side and state of the order in Centra.
+This could ultimately result in the undesirable outcome of charging the customer without properly placing an order in Centra.
