@@ -1,0 +1,26 @@
+@startuml
+
+actor Shopper
+participant Frontend
+participant Klarna
+participant Centra
+
+group Updates in the checkout
+Shopper -> Frontend: update address
+activate Frontend
+Frontend -> Centra: PUT /payment-fields (address)
+activate Centra
+Centra -> Centra: calculate order total based on shipTo location
+Centra -> Klarna: update session
+activate Klarna
+Klarna -> Centra: update session response
+|||
+deactivate Klarna
+Centra -> Frontend: PUT /payment-fields response (client_token, klarnaReplaceSnippet, authorizePayload)
+deactivate Centra
+Frontend -> Shopper: display order total
+|||
+deactivate Frontend
+end
+
+@enduml

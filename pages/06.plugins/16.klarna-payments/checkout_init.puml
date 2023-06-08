@@ -1,0 +1,36 @@
+@startuml
+actor Shopper
+participant Frontend
+participant Klarna
+participant Centra
+
+group Checkout init
+Frontend -> Centra: POST /payment
+activate Frontend
+activate Centra
+Centra -> Klarna: create session
+activate Klarna
+Klarna -> Centra: create session response (client_token)
+deactivate Klarna
+Centra -> Frontend: POST /payment response (client_token)
+deactivate Centra
+|||
+Frontend -> Klarna: SDK.init(client_token)
+
+activate Klarna
+Klarna -> Frontend: SDK init callback
+deactivate Klarna
+
+|||
+
+Frontend -> Klarna: SDK.load()
+activate Klarna
+Klarna -> Frontend: SDK load callback
+deactivate Klarna
+
+Frontend -> Shopper: display payment widget
+deactivate Frontend
+|||
+end
+
+@enduml
