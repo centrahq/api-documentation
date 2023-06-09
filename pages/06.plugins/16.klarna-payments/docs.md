@@ -61,7 +61,123 @@ API references:
 3. Frontend calls `SDK.init()` with `client_token` obtained from `POST /payment` response
 4. Frontend calls `SDK.load()` and Klarna Payments widget is presented to the shopper in the proper container
 
-### Updates in the checkout
+### Handling updates in the checkout
+
+This section refers to any kind of update that happens in the checkout, which means that session has been already initiated with Klarna Payments via `POST /payment` endpoint.
+This includes:
+- Item quantity updates
+- Selection line updates
+- Address updates
+- Applying/removing voucher
+- Selection country update
+
+![updates_in_the_checkout.png](updates_in_the_checkout.png)
+
+Once the session has been initiated with Klarna, on each selection response there will be an object at path `selection.pluginFields.klarnaPayments`
+including all the fields that are required to display or reload the payment widget and start the authorisation process:
+
+- `client_token` - Required to call `SDK.init(client_token)` that initiates SDK library
+- `replaceSnippet` - Indicates whether SDK needs to be reinitialized by calling `SDK.init(client_token)` again
+- `authorizePayload` - Payload required for the authorisation call [SDK.authorize(authorizePayload)](https://docs.klarna.com/klarna-payments/integrate-with-klarna-payments/step-2-check-out/22-get-authorization/#authorize-call). Authorization process itself will be described in details in the next section. 
+
+Here's an example of `klarnaPayments` object on the selection response:
+
+```json
+{
+    "selection": {
+      "pluginFields": {
+        "klarnaPayments": {
+          "client_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjgyMzA1ZWJjLWI4MTasasEtMzYzNy1..CbYhjSt---1dzmTgvo3vDRA",
+          "replaceSnippet": false,
+          "authorizePayload": {
+            "purchase_country": "se",
+            "purchase_currency": "sek",
+            "locale": "sv-SE",
+            "order_amount": 20000,
+            "order_tax_amount": 4000,
+            "order_lines": [
+              {
+                "name": "Brand Test Product Red",
+                "quantity": 2,
+                "reference": "123_1",
+                "tax_rate": 2500,
+                "total_amount": 20000,
+                "total_discount_amount": 0,
+                "total_tax_amount": 4000,
+                "type": "physical",
+                "unit_price": 10000
+              }
+            ],
+            "billing_address": {
+              "given_name": "Test Billing",
+              "family_name": "Testson Billing",
+              "email": "abc123@example.com",
+              "street_address": "Address One",
+              "street_address2": "Address Two",
+              "postal_code": "12345",
+              "city": "Malmo",
+              "region": "",
+              "phone": "123456789",
+              "country": "SE"
+            },
+            "shipping_address": {
+              "given_name": "Test Billing",
+              "family_name": "Testson Billing",
+              "email": "abc123@example.com",
+              "street_address": "Address One",
+              "street_address2": "Address Two",
+              "postal_code": "12345",
+              "city": "Malmo",
+              "region": "",
+              "phone": "123456789",
+              "country": "SE"
+            }
+          }
+        }
+      }
+    }
+}
+```
+
+### Reinitialization of the payment widget
+
+Once a Klarna Payments widget has been displayed on the checkout page, on every update to selection listen to `klarnaReplaceSnippet` field indicating whether the SDK needs to be reinitialized.
+Following code snippet is an example of how to properly handle `klarnaReplaceSnippet` flag on the selection response.
+
+```js
+ function handleKlarnaReplaceSnippet(response) {
+        const klarnaReplaceSnippet = response.selection.pluginFields.klarnaPayments.replaceSnippet;
+        if (klarnaReplaceSnippet === false) {
+            Klarna.Payments.load(
+                {
+                    container: '#payment-container',
+                    payment_method_category: 'klarna'
+                },
+                function (res) {
+                    console.log('Klarna Payments widget loaded without re-initialization');
+                }
+            );
+        } else {
+            document.getElementById('payment-container').innerHTML = ''; //clear old one entirely
+            Klarna.Payments.init(
+                {
+                    client_token: response.selection.pluginFields.klarnaPayments.client_token
+                }
+            );
+            Klarna.Payments.load(
+                {
+                    container: '#payment-container',
+                    payment_method_category: 'klarna'
+                },
+                function () {
+                    console.log('Klarna Payments widget loaded with re-initialization after client_token update');
+                }
+            );
+        }
+    }
+```
+
+### Authorization and order placement
 
 
 

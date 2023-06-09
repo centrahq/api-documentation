@@ -1,26 +1,42 @@
 @startuml
 
+@startuml
 actor Shopper
-participant Frontend
+participant FE
 participant Klarna
 participant Centra
 
-group Updates in the checkout
-Shopper -> Frontend: update address
-activate Frontend
-Frontend -> Centra: PUT /payment-fields (address)
+Shopper -> FE: Increase item qty
+activate FE
+FE -> Centra: PUT /items/{item}/quantity/1
 activate Centra
-Centra -> Centra: calculate order total based on shipTo location
+Centra -> Centra: recalculate totals
+
 Centra -> Klarna: update session
 activate Klarna
 Klarna -> Centra: update session response
+deactivate Klarna
+|||
+Centra -> Klarna: get session
+activate Klarna
+Klarna -> Centra: get session response(client_token)
 |||
 deactivate Klarna
-Centra -> Frontend: PUT /payment-fields response (client_token, klarnaReplaceSnippet, authorizePayload)
-deactivate Centra
-Frontend -> Shopper: display order total
+Centra -> Centra: check if client_token has changed
+note left : Change of client_token value requires\ncalling init() on the Frontend side again.
 |||
-deactivate Frontend
-end
+Centra -> FE: Updated selection response (klarnaPaymentsReplaceSnippet:false)
+deactivate Centra
+FE -> Shopper: display updated totals
+|||
+FE -> Klarna: KP SDK load()
+activate Klarna
+Klarna -> FE: KP SDK load() callback
+deactivate Klarna
+FE -> Shopper: refresh KP widget
+deactivate FE
+
+
+@enduml
 
 @enduml
