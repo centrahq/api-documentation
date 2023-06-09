@@ -1,7 +1,7 @@
 ---
 title: Klarna Payments
 altTitle: Klarna Payments
-excerpt: Learn how to use Klarna Payments plugin.
+excerpt: Learn how to integrate Klarna Payments plugin.
 taxonomy:
 category: docs
 ---
@@ -179,8 +179,6 @@ Following code snippet is an example of how to properly handle `klarnaReplaceSni
 
 ### Authorization and order placement
 
-[//]: # (Handling errors on authorization - accordingly to Klarna recommendations https://docs.klarna.com/klarna-payments/integrate-with-klarna-payments/step-2-check-out/22-get-authorization/#responses)
-
 ![authorisation.png](authorisation.png)
 
 1. Customer proceeds to payment
@@ -205,8 +203,6 @@ To properly handle user interaction with the widget on the Frontend side and err
 6. Centra creates order in Klarna using `authorization_token` received from the Frontend - customer is charged at this moment
 7. Centra responds to Frontend with order response and params from Klarna including `redirect_url`
 8. Frontend reads `response.order.paymentMethodData.redirect_url` and redirects Shopper to paymentSuccessPage 
-
-
 
 ## Best practices
 
