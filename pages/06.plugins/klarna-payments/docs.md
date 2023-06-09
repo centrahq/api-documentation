@@ -210,4 +210,8 @@ To properly handle user interaction with the widget on the Frontend side and err
 
 
 
-## Onsite messaging
+### Onsite messaging
+
+Onsite messaging is a way to inform customers about Klarna's payment methods availability before they reach the checkout.
+Integration of onsite messaging is outside of Centra's integration scope, however it can be integrated from the client side.
+This [guide](https://docs.klarna.com/on-site-messaging/integrate-with-on-site-messaging/) provides step-by-step integration instructions.
