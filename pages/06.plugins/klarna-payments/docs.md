@@ -40,7 +40,7 @@ For testing, set `Test mode` to `Yes`
 - Frontend prefix for product URLs 
 - Send product sizes to Klarna
 
-## Integration parties (APIs) SDK/Server side etc.
+## APIs used in the integration
 
 ![integration_apis.png](integration_apis.png)
 
@@ -185,12 +185,6 @@ Following code snippet is an example of how to properly handle `klarnaReplaceSni
 2. Frontend calls `SDK.authorize(authorizePayload)` where `authorizePayload` is coming from the latest selection response `selection.pluginFields.klarnaPayments.authorizePayload`
 3. `SDK.authorize()` callback is fired with `authorization_token` as a parameter
 4. Shopper submits the payment in Klarna widget.
-
-To properly handle user interaction with the widget on the Frontend side and error handling, refer to following Klarna guides:
-
-- [User interaction during the call](https://docs.klarna.com/klarna-payments/integrate-with-klarna-payments/step-2-check-out/22-get-authorization/#authorize-call-user-interaction-during-the-call)
-- [Responses](https://docs.klarna.com/klarna-payments/integrate-with-klarna-payments/step-2-check-out/22-get-authorization/#responses)
-
 5. Frontend calls `POST /payment-result` Centra endpoint with `authorization_token` to finalize authorisation and place an order in Centra
    `POST payment-result`
 ```json
@@ -203,6 +197,11 @@ To properly handle user interaction with the widget on the Frontend side and err
 6. Centra creates order in Klarna using `authorization_token` received from the Frontend - customer is charged at this moment
 7. Centra responds to Frontend with order response and params from Klarna including `redirect_url`
 8. Frontend reads `response.order.paymentMethodData.redirect_url` and redirects Shopper to paymentSuccessPage 
+
+To properly handle user interaction with the widget on the Frontend side and error handling, refer to following Klarna guides:
+
+- [User interaction during the call](https://docs.klarna.com/klarna-payments/integrate-with-klarna-payments/step-2-check-out/22-get-authorization/#authorize-call-user-interaction-during-the-call)
+- [Responses](https://docs.klarna.com/klarna-payments/integrate-with-klarna-payments/step-2-check-out/22-get-authorization/#responses)
 
 ## Best practices
 
@@ -222,4 +221,5 @@ This ensures that there is no inconsistencies between what customer has paid for
 
 Onsite messaging is a way to inform customers about Klarna's payment methods availability before they reach the checkout.
 Integration of onsite messaging is outside of Centra's integration scope, however it can be integrated from the client side.
+
 This [guide](https://docs.klarna.com/on-site-messaging/integrate-with-on-site-messaging/) provides step-by-step integration instructions.
