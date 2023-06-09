@@ -40,7 +40,7 @@ For testing, set `Test mode` to `Yes`
 - Frontend prefix for product URLs 
 - Send product sizes to Klarna
 
-## Integration parties (APIs) SDK/Server side etc.
+## APIs used in the integration
 
 ![integration_apis.png](integration_apis.png)
 
@@ -222,4 +222,5 @@ This ensures that there is no inconsistencies between what customer has paid for
 
 Onsite messaging is a way to inform customers about Klarna's payment methods availability before they reach the checkout.
 Integration of onsite messaging is outside of Centra's integration scope, however it can be integrated from the client side.
+
 This [guide](https://docs.klarna.com/on-site-messaging/integrate-with-on-site-messaging/) provides step-by-step integration instructions.
