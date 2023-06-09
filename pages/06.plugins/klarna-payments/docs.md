@@ -37,7 +37,7 @@ For testing, set `Test mode` to `Yes`
 - Send product images to Klarna 
 - Product image size
 - Send product URLs to Klarna
-- Frontend prefix for product URLs
+- Frontend prefix for product URLs 
 - Send product sizes to Klarna
 
 ## Integration parties (APIs) SDK/Server side etc.
@@ -206,8 +206,16 @@ To properly handle user interaction with the widget on the Frontend side and err
 
 ## Best practices
 
-### Locking the checkout to prevent updates during ongoing API calls
+### Locking the payment widget during selection updates in the Checkout
 
+As shown on the below diagram, once session with Klarna has been initialized, whenever selection is updated in the checkout using Shop API/Checkout API endpoints, Centra sends session updates to Klarna.
+It's important to prevent customer from finalizing the payment during the time in which the update is being processed by Centra and Klarna.
+In case of Klarna Payments integration this kind of locking needs to be implemented on the Frontend side by making the widget non-interactive during the processing of the update.
+
+This ensures that there is no inconsistencies between what customer has paid for and the order is placed in Centra.
+
+
+![locking_checkout_for_updates.png](locking_checkout_for_updates.png)
 
 
 ### Onsite messaging
