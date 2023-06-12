@@ -244,7 +244,7 @@ Use this query to fetch a Display, filtering by id.
 
 A detailed API specification can be found here: [https://docs.centra.com/graphql/](https://docs.centra.com/graphql/)
 
-If you are confused by the discrepancy between Centra backend Product IDs and the Display IDs (also named `product` in the Checkout Webshop API), you can [read up on Products, Displays, Sizes and Items relation in Centra](/fe-development/fe-elements#why-do-i-see-different-product-ids-in-the-centra-backend-and-in-checkout-api).
+If you are confused by the discrepancy between Centra backend Product IDs and the Display IDs (also named `product` in the Checkout API), you can [read up on Products, Displays, Sizes and Items relation in Centra](/fe-development/fe-elements#why-do-i-see-different-product-ids-in-the-centra-backend-and-in-checkout-api).
 
 ## Routing
 
