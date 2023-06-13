@@ -1,6 +1,6 @@
 ---
-title: Best practices
-altTitle: Best practices
+title: Caching
+altTitle: Caching
 taxonomy:
     category: docs
 ---
