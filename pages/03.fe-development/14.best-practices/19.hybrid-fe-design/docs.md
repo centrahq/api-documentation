@@ -18,9 +18,14 @@ Today we find ourselves in a new Internet, where static page generation and smar
 
 ![](fe-hybrid-design.png)
 
-In short:
-* Shop API builds the shop's backend, the backbone of your front end
-* Checkout API builds the shop's checkout experience, from entering the website to a successful checkout (or at least a Cart Abandonment email)
+In short:  
+* Shop API builds the shop's backend, the backbone of your front end  
+* Checkout API builds the shop's checkout experience, from entering the website to a successful checkout (or at least a [Cart Abandonment](/plugins/cartabandonment) email)  
+* Centra Webhooks are used to only trigger updates of relevant data  
+
+[notice-box=info]
+In case of a network or application failure, remember to always include a mechanism to completely re-build your middle-ware cache from scratch. Use it as a failsafe after unplanned outages, where individual webhooks might have been lost.
+[/notice-box]
 
 ## The one big thing in common
 
