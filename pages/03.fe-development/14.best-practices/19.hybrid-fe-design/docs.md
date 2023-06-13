@@ -16,7 +16,7 @@ Today we find ourselves in a new Internet, where static page generation and smar
 
 ## The high-level concept of a hybrid FE solution
 
-![](hybrid.png)
+![](fe-hybrid-design.png)
 
 In short:
 * Shop API builds the shop's backend, the backbone of your front end
