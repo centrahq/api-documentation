@@ -1,0 +1,38 @@
+@startuml
+
+actor Shopper
+participant FE
+participant Centra
+participant PSP
+
+group Payment result handling
+
+Shopper -> PSP: submit payment
+activate PSP
+
+PSP -> FE: redirect to payment success page
+deactivate PSP
+activate FE
+
+|||
+
+FE -> Centra: POST /payment-result
+deactivate FE
+
+activate Centra #FFBBBB
+Centra -> PSP: finalise payment
+
+
+activate PSP
+PSP -> Centra: authorisation confirmed
+
+deactivate PSP
+|||
+Centra -> Centra: place order
+
+Centra -> FE: centra order response
+
+deactivate Centra
+FE -> Shopper: Display thank you page
+
+@enduml
