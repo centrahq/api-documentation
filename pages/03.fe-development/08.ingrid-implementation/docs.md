@@ -1,5 +1,5 @@
 ---
-title: How to implement Ingrid in your Checkout
+title: How to implement Ingrid v1 in your Checkout
 altTitle: Ingrid v1 implementation
 excerpt: Ingrid provides the ability to present a shipping option widget in the checkout. Here is how to implement it.
 taxonomy:
@@ -23,7 +23,6 @@ The settings in the plugin affect the integration in the following way:
 - **Test-Mode**: If set to `yes` Centra will connect to Ingrid's `stage` environment, if set to `no` Centra will connect to Ingrid's `production` environment.
 - **Convert method**: A legacy option to convert the shipping method codes from Ingrid into the codes used by the 3PL, this is however handled in Ingrid's admin nowadays.
 - **Default Locale**: The locale (language) the widget will be shown in by default, if a proper locale is set on the selection Centra will tell Ingrid to try to use the selection's language instead. If Ingrid doesn't support the locale on the selection, the default locale will be used.
-- **Clear zip code on error**: If set to `yes`, the zip code set on the selection will be emptied on the selection every time Centra receives an error from Ingrid when trying to create the session. This often helps with checkout issues, since the end-user will be forced to re-enter their address details from scratch.
 - **Suspend Ingrid widget on shipping option changed**: If set to `yes` Ingrid's widget will be put into a "loading state" whenever the shipping option is changed by the user until Centra has recevied the update. It is important that your front end picks up those changes and resumes the widget when ready.
 - **Update address in Ingrid's widget from address stored on basket in Centra**: Centra will always try to populate the Ingrid widget with the selection address if Centra has received it before Ingrid, however other address updates will depend on this setting.
   - If set to `On address prefill (default)` the address the widget uses to present the shipping options will be updated from Centra on the [PUT /payment-fields endpoint](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields)
@@ -176,3 +175,9 @@ const itemUpdate = async (item, quantity) => {
     window.centraCHeckout.resume();
 }
 ```
+## Limitations
+
+### Subscriptions
+
+Ingrid v1 integration does not support subscriptions.
+When a subscription is added to the basket, the Ingrid v1 widget will not load in the checkout. This is designed to prevent any interference or conflicts between the widget and the subscription management process.
