@@ -68,7 +68,6 @@ Centra will save the ID of the initialized Ingrid session, and update the shippi
 
 - All selection item and voucher updates are send as Ingrid session updates from Centra 
 - Centra will update the shipping cost of the selection with the cost returned by Ingrid after the update.
-- [*When address feature is disabled*] Address updates on the selection are only sent to Ingrid if they are made by the [PUT payment-fields](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_payment_fields) endpoint in Centra's CheckoutAPI (or [PUT /selections/{selection}/checkout-fields](https://docs.centra.com/swagger-ui/?api=ShopAPI#/default/put_selections__selection__checkout_fields) in ShopAPI) and if the `Update address in Ingrid's widget from address stored on basket in Centra:` option in the Ingrid plugin is set to `On address pre-fill (default)`. This is to prevent Centra from overriding any choice made in the Ingrid widget by the user, which could cause a change of Shipping option, depending on the setup. If Centra already has address data at the time when the Ingrid session is created, this will be sent to Ingrid (since there is nothing to override).
 - When Ingrid address form is updated and events are forwarded from Frontend to Centra
 - On country / state change.
 - All data is sent to Ingrid after the order is placed in Centra, including the final cart and customer address. Centra saves the data returned from Ingrid as `Custom Attributes` on the order.
@@ -206,3 +205,11 @@ const itemUpdate = async (item, quantity) => {
     window.centraCHeckout.resume();
 }
 ```
+
+## Limitations
+
+### Subscriptions
+
+Ingrid v2 integration does not support subscriptions.
+When a subscription is added to the basket, the Ingrid v2 widget will not load in the checkout. This is designed to prevent any interference or conflicts between the widget and the subscription management process.
+
