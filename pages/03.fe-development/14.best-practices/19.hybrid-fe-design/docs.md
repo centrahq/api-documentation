@@ -41,7 +41,7 @@ Same `product` and `item` IDs are used by [GET/POST /products](https://docs.cent
     + Small API response sizes  
     + Includes all most recent webshop functions  
 
-    - Difficult to poll multiple markets / pricelists / warehouses / languages at once  
+    - Difficult to poll multiple markets / pricelists / warehouses / languages at once  
     - Building a cache / static page generation requires multiple API calls per each product  
 
 ## Characteristics of Shop API
@@ -55,7 +55,7 @@ Same `product` and `item` IDs are used by [GET/POST /products](https://docs.cent
     + By design returns products in all markets / pricelists / warehouses / languages at once  
     + Building a cache / static page generation requires much fewer number of API calls  
 
-Basically, in Shop API each [GET /products/{productId}](https://docs.centra.com/swagger-ui/?urls.primaryName=ShopAPI#/default/get_products__product_) API call returns product data in every market / pricelist / warehouse / language  
+Basically, in Shop API each [GET /products/{productId}](https://docs.centra.com/swagger-ui/?urls.primaryName=ShopAPI#/default/get_products__product_) API call returns product information in every market / pricelist / warehouse / language  
 
 ### Known limitations of Shop API
 
