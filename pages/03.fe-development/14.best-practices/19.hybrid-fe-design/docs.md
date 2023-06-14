@@ -8,9 +8,9 @@ taxonomy:
 
 ## Why does Centra provide two different webshop APIs
 
-Shop API is our original webshop API, designed in the times when the Internet was older. Stateless REST APIs were taking over, and no one really understood the need to go stateful, respecting the context of the webshop user.
+Shop API is our original webshop API, designed in the times when the Internet was older. Stateless REST APIs were taking over, and no one really cared about respecting the context of the webshop user. It was OK to serve all data to everybody.
 
-Few years later we realised that stateless is not great in the world where you try your best to save up on bandwidth, while you're also exposing too much unnecessary data to too many actors. We therefore wrote Checkout API, which was stateful and more byte-conservative, which gave us great options to optimise your API responses based on the context of your selection.
+Few years later we realised that stateless is not great in the world where you try your best to save up on bandwidth, while you're also exposing too much unnecessary data to too many actors. We therefore wrote Checkout API, which was stateful and more byte-conservative, which gave us great options to optimise your API responses based on location and language of your session.
 
 Today we find ourselves in a new Internet, where static page generation and smart caching are very much desired, and we realised that stateful Checkout API is not always the best solution to feed the middle-ware servers with data, where the output of the API depends on the context of the shopper. Once again, we realise that a stateless API that serves all available data, always, actually posesses a true value when it comes to fetching all required data, like when you're building your caches.
 
@@ -24,7 +24,7 @@ In short:
 * [Centra Webhooks](/plugins/centra-webhook) are used to only trigger updates of relevant data  
 
 [notice-box=info]
-In case of a network or application failure, remember to always include a mechanism to completely re-build your middle-ware cache from scratch. Use it as a failsafe after unplanned outages, where individual webhooks might have been lost.
+In case of a network or application issues, remember to always include a mechanism to completely re-build your middle-ware cache from scratch. Use it as a failsafe after unplanned outages, where individual webhooks might have been lost.
 [/notice-box]
 
 ## The one big thing in common
