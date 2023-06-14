@@ -29,7 +29,7 @@ In case of a network or application issues, remember to always include a mechani
 
 ## The one big thing in common
 
-Both Shop and Checkout APIs use the same `product` IDs (which are [display item IDs](/fe-development/fe-elements#why-do-i-see-different-product-ids-in-the-centra-backend-and-in-checkout-api), meaning the product variants activated on a store display. These are the same IDs that are returned by the [Centra Webhook plugin](/plugins/centra-webhook) activated in a `Checkout API` mode. Therefore, same webhook events can be used by both APIs, for both back-end (Shop API) and front-end (Checkout API) functions.
+Both Shop and Checkout APIs use the same `product` IDs (which are [display item IDs](/fe-development/fe-elements#why-do-i-see-different-product-ids-in-the-centra-backend-and-in-checkout-api), meaning the product variants activated on a store display). These are the same IDs that are returned by the [Centra Webhook plugin](/plugins/centra-webhook) activated in a `Checkout API` mode. Therefore, same webhook events can be used by both APIs, for both back-end (Shop API) and front-end (Checkout API) functions.
 
 Same `product` and `item` IDs are used by [GET/POST /products](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/5.%20product%20catalog/post_products) and [POST /items](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_) endpoints in both Shop and Checkout APIs.
 
