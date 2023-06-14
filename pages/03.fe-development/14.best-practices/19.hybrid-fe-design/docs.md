@@ -8,7 +8,7 @@ taxonomy:
 
 ## Why does Centra provide two different webshop APIs
 
-Shop API is our original webshop API, designed in the times when the Internet was older. Stateless REST APIs were taking over, and no one really cared about respecting the context of the webshop user. It was OK to serve all data to everybody.
+Shop API is our original webshop API, designed in the times when the Internet was older. Stateless REST APIs were taking over, and no one really cared about respecting the context of the webshop user. It was OK to serve the same data to everybody.
 
 Few years later we realised that stateless is not great in the world where you try your best to save up on bandwidth, while you're also exposing too much unnecessary data to too many actors. We therefore wrote Checkout API, which was stateful and more byte-conservative, which gave us great options to optimise your API responses based on location and language of your session.
 
