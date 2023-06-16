@@ -33,7 +33,7 @@ The settings in the plugin affect the integration in the following way:
 - **Country restrict**: Only use this plugin instance for the selected shipping countries, empty means it's available for all.
 - **Locale restrict**: Only use this plugin instance for the selected locale(s), empty means it's available for all.
 
-![IngridPluginSettings](ingrid-plugin.png)
+![IngridPluginSettings](ingrid-plugin-a.png)
 
 ## Which functionality from Ingrid does Centra implement?
 
