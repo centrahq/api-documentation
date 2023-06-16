@@ -45,7 +45,7 @@ Before enabling billing form feature setting in the plugin, please contact Ingri
 - **Restrict countries**: Only use this plugin instance for the selected shipping countries, empty means it's available for all.
 - **Restrict locale**: Only use this plugin instance for the selected locale(s), empty means it's available for all.
 
-![IngridPluginSettings](ingrid-v2-plugin.png)
+![IngridPluginSettings](ingrid-v2-plugin-a.png)
 
 Functionality of integration between Centra and Ingrid's Delivery Checkout v2 API:
 
