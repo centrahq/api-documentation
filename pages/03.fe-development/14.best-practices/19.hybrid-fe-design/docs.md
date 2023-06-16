@@ -8,11 +8,11 @@ taxonomy:
 
 ## Why does Centra provide two different webshop APIs
 
-Shop API is our original webshop API, designed in the times when the Internet was older. Stateless REST APIs were taking over, and no one really cared about respecting the context of the webshop user. It was OK to serve the same data to everybody.
+Shop API is our original webshop API, which was developed during a time when the Internet was in its earlier stages. Stateless REST APIs were becoming popular, and there wasn't much emphasis on considering the context of the webshop user, it was acceptable to serve the same data to everyone.
 
-Few years later we realised that stateless is not great in the world where you try your best to save up on bandwidth, while you're also exposing too much unnecessary data to too many actors. We therefore wrote Checkout API, which was stateful and more byte-conservative, which gave us great options to optimise your API responses based on location and language of your session.
+As time went on and Centra continued to progress, we recognized the limitations of stateless APIs where conserving bandwidth and minimizing unnecessary data exposure were becoming more important. To address this, we introduced the Checkout API, which was stateful and more byte-conservative to optimise the API responses based on the user's location and language.
 
-Today we find ourselves in a new Internet, where static page generation and smart caching are very much desired, and we realised that stateful Checkout API is not always the best solution to feed the middle-ware servers with data, where the output of the API depends on the context of the shopper. Once again, we realise that a stateless API that serves all available data, always, actually posesses a true value when it comes to fetching all required data, like when you're building your caches.
+In the present day we find that the demands have changed again, static page and smart caching are highly desired, stateful APIs such as Checkout API is not the best solution to feed middle-ware servers with data when that data depends on the context of the individual shopper. A stateless API that consistently serves all available data can prove valuable, particularly when building caches and retrieving all the necessary data.
 
 ## The high-level concept of a hybrid FE solution
 
