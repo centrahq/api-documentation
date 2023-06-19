@@ -236,9 +236,7 @@ Features list:
 
 By consolidating these functionalities into a single request, the API endpoint fosters efficient and user-friendly management of items in a selection, accommodating a wide range of use cases and requirements.
 
-### Endpoint
-
-`PUT /selections/{{selection}}/items`
+The new API endpoint built for that purpose is [PUT /items](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/4.%20selection%20handling%2C%20checkout%20flow/put_items).
 
 ### Request body
 
