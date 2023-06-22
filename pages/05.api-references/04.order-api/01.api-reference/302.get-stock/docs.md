@@ -35,6 +35,10 @@ Get all products added after a certain date. Allowed formats ``YYYY-mm-dd`` and 
 Get a product with specified EAN code.
 [/parameter]
 
+[parameter data="upc" datatype="string" isRequired=false sublevel=1]
+Get a product with specified UPC code.
+[/parameter]
+
 [parameter data="productId variantId stockItemId" datatype="int" isRequired=false sublevel=1]
 Get a product with specified productId, variantId or stockItemId.
 [/parameter]
@@ -109,6 +113,10 @@ ID for this specific stock item.
 The EAN for this product item size.
 [/parameter]
 
+[parameter data="upc" datatype="string" sublevel=2]
+The UPC for this product item size.
+[/parameter]
+
 [parameter data="weight" datatype="decimal2 (0.00)" sublevel=2]
 The weight specified for this product.
 [/parameter]
@@ -172,6 +180,7 @@ Will contain a URL to the next page.
       "size": "ONE SIZE",
       "stockItemId": 3131,
       "ean": "1234567890123",
+      "upc": "123456",
       "weight": 22,
       "weightUnit": "kg",
       "countryOfOrigin": "",
@@ -195,6 +204,7 @@ Will contain a URL to the next page.
       "size": "ONE SIZE",
       "stockItemId": 3132,
       "ean": "9876543210123",
+      "upc": "123456",
       "weight": 22,
       "weightUnit": "kg",
       "countryOfOrigin": "",

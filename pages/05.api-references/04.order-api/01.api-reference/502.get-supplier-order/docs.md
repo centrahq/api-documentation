@@ -100,6 +100,7 @@ The currency code for the cost / pcs. ISO-Alpha-2 (``SE``, ``US``, ``GB`` etc).
         "variant": "SVART",
         "size": "ONE SIZE",
         "ean": "898989891212",
+        "upc": "123456",
         "weight": 22,
         "weightUnit": "kg",
         "quantity": 122
@@ -116,6 +117,7 @@ The currency code for the cost / pcs. ISO-Alpha-2 (``SE``, ``US``, ``GB`` etc).
         "variant": "BLUE",
         "size": "ONE SIZE",
         "ean": "898989891213",
+        "upc": "123456",
         "weight": 22,
         "weightUnit": "kg",
         "quantity": 342,

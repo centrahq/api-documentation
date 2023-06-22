@@ -53,6 +53,7 @@ Content-type: application/json
       {
       "qty": 2,
       "ean": "ABCDEFGHIJKL",
+      "upc": "123456",
       "unitPrice": 14.11,
       "originalPrice": 100.11,
       "itemText" : {

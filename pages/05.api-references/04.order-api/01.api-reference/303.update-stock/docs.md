@@ -27,7 +27,7 @@ Array of products to update stock on
 [/parameter]
 
 [parameter data="product" datatype="string" isRequired=true sublevel=2]
-String to update a product item. Use ``ean`` or a combination of ``sku``, ``variantSku`` and ``sizeSku`` to update the quantity for each product.
+String to update a product item. Use ``ean``, ``upc`` or a combination of ``sku``, ``variantSku`` and ``sizeSku`` to update the quantity for each product.
 [/parameter]
 
 [parameter data="quantity" datatype="int" isRequired=true sublevel=2]
