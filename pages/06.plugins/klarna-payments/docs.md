@@ -9,6 +9,38 @@ category: docs
 Klarna Payments is a PSP solution designed to incorporate Klarna's payment methods to existing checkout.
 By integrating with Klarna Payments, merchants retain control over the checkout experience, while also offering customers the convenience of Klarna's payment options to finalize their purchases.
 
+## Klarna Payments vs Klarna Checkout - ownership of the components
+
+Klarna Payments is an addition of payment methods to the existing merchant checkout, while Klarna Checkout is a complete checkout solution provided by Klarna including address collection.
+While the same payment methods are available in both solutions, there are differences in ownership of the components of the integration.
+
+| Integration Component                              | Ownership in Klarna Checkout      | Ownership in Klarna Payments | Comments                                         |
+|----------------------------------------------------|-----------------------------------|------------------------------|--------------------------------------------------|
+| Address Collection                                 | Klarna                            | Frontend                     |                                                  |
+| B2B customer information collection                | Klarna                            | Frontend                     |                                                  |
+| Customer national identification number collection | Klarna                            | Klarna                       | Required for certain payment methods e.g. credit |
+| Payment Methods                                    | Klarna                            | Klarna                       |                                                  |
+| Payment widget handling (display/lock/unlock)      | Frontend via CentraCheckoutScript | Frontend                     |                                                  |
+| Klarna session API Integration                     | Centra                            | Centra                       |                                                  |
+| Klarna order API Integration                       | Centra                            | Centra                       |                                                  |
+| Klarna server side callback handling               | Centra                            | Centra                       |                                                  |
+
+## Klarna Payments vs Klarna Checkout - supported use cases
+
+| Use Case                                    | Klarna Payments                           | Klarna Checkout                                                      | Comments                                                                                                                          |
+|---------------------------------------------|-------------------------------------------|----------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| Age verification                            | No                                        | Yes                                                                  |                                                                                                                                   |
+| Subscriptions                               | No                                        | Yes                                                                  |                                                                                                                                   |
+| B2B Checkout                                | Yes                                       | Yes                                                                  |                                                                                                                                   |
+| Paypal in Klarna as external payment method | No                                        | Yes                                                                  |                                                                                                                                   |
+| Post-purchase cross-sell                    | No                                        | Yes                                                                  |                                                                                                                                   |
+| Customer gender and birthdate collection    | Yes                                       | Yes                                                                  |                                                                                                                                   |
+| Sending product images                      | Yes                                       | Yes                                                                  |                                                                                                                                   |
+| Sending product sizes                       | Yes                                       | Yes                                                                  |                                                                                                                                   |
+| Payment method cost                         | Yes                                       | Yes                                                                  |                                                                                                                                   |
+| US Tax calculation in the checkout          | Only in multistep checkout implementation | Multistep checkout implementation or through address update callback |                                                                                                                                   |
+| Validation callback                         | No                                        | Yes                                                                  | Allows for additional validations in late stage of the checkout when payment is submitted by customer e.g. additional stock check |
+
 ## Store plugin configuration 
 
 ![store_plugin.png](store_plugin.png)
