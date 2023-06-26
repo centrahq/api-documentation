@@ -9,7 +9,7 @@ category: docs
 Klarna Payments is a PSP solution designed to incorporate Klarna's payment methods to existing checkout.
 By integrating with Klarna Payments, merchants retain control over the checkout experience, while also offering customers the convenience of Klarna's payment options to finalize their purchases.
 
-## Klarna Payments vs Klarna Checkout - ownership of the components
+## Klarna Payments vs Klarna Checkout - ownership of the integration components
 
 Klarna Payments is an addition of payment methods to the existing merchant checkout, while Klarna Checkout is a complete checkout solution provided by Klarna including address collection.
 While the same payment methods are available in both solutions, there are differences in ownership of the components of the integration.
@@ -171,7 +171,7 @@ Here's an example of `klarnaPayments` object on the selection response:
 }
 ```
 
-### Reinitialization of the payment widget
+#### Reinitialization of the payment widget
 
 Once a Klarna Payments widget has been displayed on the checkout page, on every update to selection listen to `klarnaReplaceSnippet` field indicating whether the SDK needs to be reinitialized.
 Following code snippet is an example of how to properly handle `klarnaReplaceSnippet` flag on the selection response.
@@ -230,6 +230,8 @@ Following code snippet is an example of how to properly handle `klarnaReplaceSni
 7. Centra responds to Frontend with order response and params from Klarna including `redirect_url`
 8. Frontend reads `response.order.paymentMethodData.redirect_url` and redirects Shopper to paymentSuccessPage 
 
+#### Error handling
+
 To properly handle user interaction with the widget on the Frontend side and error handling, refer to following Klarna guides:
 
 - [User interaction during the call](https://docs.klarna.com/klarna-payments/integrate-with-klarna-payments/step-2-check-out/22-get-authorization/#authorize-call-user-interaction-during-the-call)
@@ -248,6 +250,14 @@ This ensures that there is no inconsistencies between what customer has paid for
 
 ![locking_checkout_for_updates.png](locking_checkout_for_updates.png)
 
+### Collecting customer address data
+
+Klarna Payments uses customer address data for fraud prevention and to determine available payment options. This data must be included in the SDK.authorize() call. The formatted payload for this call comes from selection.pluginFields.klarnaPayments.authorizePayload in the selection response. It's crucial to ensure that all customer data is correctly filled in and sent to Centra before the customer proceeds to payment. This ensures that the authorizePayload on the selection matches the checkout state.
+
+There are two possible implementation scenarios:
+
+- Multistep checkout: In this case, customers must provide all their address data before they can view available payment methods or proceed to payment.
+- Single step checkout: Here, customers are shown available payment methods, including the Klarna Payments widget, as soon as the checkout page loads. However, the widget remains locked until all address data is correctly filled in.
 
 ### Onsite messaging
 
