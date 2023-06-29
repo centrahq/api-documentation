@@ -194,6 +194,14 @@ Size SKU
 EAN of the item.
 [/parameter]
 
+[parameter data="upc" datatype="string" sublevel=3]
+UPC of the item.
+[/parameter]
+
+[parameter data="upc" datatype="string" sublevel=3]
+UPC of the item.
+[/parameter]
+
 [parameter data="quantity" datatype="int" sublevel=3]
 Quantity of this specific product item returned.
 [/parameter]
@@ -249,6 +257,7 @@ If ``status`` returns ``no``, this value should send back a message why it faile
                 "variantSku": "",
                 "sizeSku": "",
                 "ean": "StockTestEAN",
+                "upc": "123456",
                 "quantity": 1,
                 "price": 100
             }
