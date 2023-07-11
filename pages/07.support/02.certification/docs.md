@@ -18,8 +18,6 @@ If you're interested in learning GraphQL, start with out [PIM guide](/guides/pim
 
 ### Certification levels and benefits
 
-Lorem ipsum
-
 | **Certification level** | **What's required** | **What we offer** |
 | --- | --- | --- |
 | Centra beginner | Complete introduction webinars | Slack support |
