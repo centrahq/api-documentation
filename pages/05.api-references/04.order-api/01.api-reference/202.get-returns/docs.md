@@ -209,6 +209,14 @@ Size SKU.
 EAN of the item.
 [/parameter]
 
+[parameter data="upc" datatype="string" sublevel=3]
+UPC of the item.
+[/parameter]
+
+[parameter data="upc" datatype="string" sublevel=3]
+UPC of the item.
+[/parameter]
+
 [parameter data="quantity" datatype="int" sublevel=3]
 Quantity of this specific product item returned.
 [/parameter]
@@ -264,6 +272,7 @@ Content-type: application/json
                     "variantSku": "",
                     "sizeSku": "",
                     "ean": "7340112910426",
+                    "upc": "123456",
                     "quantity": 1,
                     "price": 124.1
                 }
@@ -306,6 +315,7 @@ Content-type: application/json
                     "variantSku": "",
                     "sizeSku": "",
                     "ean": "7340082321862",
+                    "upc": "123456",
                     "quantity": 1,
                     "price": 54.5
                 }
