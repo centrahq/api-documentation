@@ -17,13 +17,14 @@ While the same payment methods are available in both solutions, there are differ
 | Integration Component                              | Ownership in Klarna Checkout      | Ownership in Klarna Payments | Comments                                         |
 |----------------------------------------------------|-----------------------------------|------------------------------|--------------------------------------------------|
 | Address Collection                                 | Klarna                            | Frontend                     |                                                  |
-| B2B customer information collection                | Klarna                            | Frontend                     |                                                  |
+| B2B customer information collection *              | Klarna                            | Frontend                     |                                                  |
 | Customer national identification number collection | Klarna                            | Klarna                       | Required for certain payment methods e.g. credit |
 | Payment Methods                                    | Klarna                            | Klarna                       |                                                  |
 | Payment widget handling (display/lock/unlock)      | Frontend via CentraCheckoutScript | Frontend                     |                                                  |
 | Klarna session API Integration                     | Centra                            | Centra                       |                                                  |
 | Klarna order API Integration                       | Centra                            | Centra                       |                                                  |
 | Klarna server side callback handling               | Centra                            | Centra                       |                                                  |
+_* Please note that this describes Wholesale/B2B cases used in Direct to consumer (DTC). This is not to be confused with the Wholesale stores in Centra and the Digital Showroom._
 
 ## Klarna Payments vs Klarna Checkout - supported use cases
 
@@ -40,7 +41,6 @@ While the same payment methods are available in both solutions, there are differ
 | Payment method cost                         | Yes                                       | Yes                                                                  |                                                                                                                                   |
 | US Tax calculation in the checkout          | Only in multistep checkout implementation | Multistep checkout implementation or through address update callback |                                                                                                                                   |
 | Validation callback                         | No                                        | Yes                                                                  | Allows for additional validations in late stage of the checkout when payment is submitted by customer e.g. additional stock check |
-
 _* Please note that this describes Wholesale/B2B cases used in Direct to consumer (DTC). This is not to be confused with the Wholesale stores in Centra and the Digital Showroom._
 
 ## Store plugin configuration 
