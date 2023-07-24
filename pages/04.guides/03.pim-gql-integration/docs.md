@@ -2675,17 +2675,112 @@ In GraphQL API, SKU field is read-only, it's combined of `productNumber` + `vari
 }
 ```
 
-## Product Stock update
+## Product Stock fetching and update
 
 [https://docs.centra.com/graphql/stock.html](https://docs.centra.com/graphql/stock.html)
 
 Once Products with Variants are Sizes are activated with Displays, and the Warehouses exist, you can start adding stock amounts of your products in each warehouse. Once those are connected into groups in Warehouses -> Allocation Rules, they will be automatically returned as Stock for customers connecting from specific Markets, closing the part of the configuration required to have your Products available in your Store.
 
-Remember, by default Centra expects you to send your physical stock - the amount you have physically on the shelf of your warehouse. We will calculate the availability based on the existing un-fulfilled orders or incoming Supplier Orders, and serve back the FTA - Free to Allocate - stock amount. This is the amount you can sell right now.
+Remember, by default Centra expects you to send your physical stock - the amount you have physically in your warehouse. We will calculate the availability based on the existing un-fulfilled orders or incoming Supplier Orders, and serve back the FTA - Free to Allocate - stock amount. This is the amount you can sell right now.
+
+### Fetching Product Stock
+
+You can list the stock values using this query:
 
 #### Request
 
-Use the previously known Variant, Size and Warehouse ID. You need to iterate through all the sizes.
+Stock is stored on the Size level, so you can access it using a `products` call similar to previous examples. Note the `stockTotals` section, which requires additional permissions.
+
+```
+query productList(
+  $status: [ProductStatus!]! = [INACTIVE, ACTIVE]
+  $page: Int! = 1
+) {
+  products(
+    where: { status: $status }
+    sort: [updatedAt_DESC]
+    limit: 10
+    page: $page
+  ) {
+    ...basicProductFields
+    variants {
+      ...basicVariantFields
+      productSizes {
+        ...basicSizeFields
+        stockTotals {
+          availableQuantity
+          physicalQuantity
+          demandQuantity
+          allocatedQuantity
+          unshippedQuantity
+          onDeliveryQuantity
+          linkedIncomingQuantity
+          unlinkedIncomingQuantity
+        }
+      }
+    }
+  }
+
+  counters {
+    products(where: { status: $status })
+  }
+}
+fragment basicProductFields on Product {
+  id
+  name
+  status
+  productNumber
+  harmonizedCommodityCode
+  harmonizedCommodityCodeDescription
+  internalComment
+  isBundle
+  isSerializableProduct
+  harmonizedCommodityCode
+  harmonizedCommodityCodeDescription
+  createdAt
+  updatedAt
+}
+fragment basicVariantFields on ProductVariant {
+  id
+  name
+  status
+  variantNumber
+  internalName
+  unitCost {
+    value
+    currency {
+      code
+    }
+    formattedValue
+  }
+  updatedAt(format: "Y-m-d\\TH:i:sO")
+}
+fragment basicSizeFields on ProductSize {
+  id
+  description
+  sizeNumber
+  GTIN
+  SKU
+}
+```
+
+With this you can get the the list of product variants and the amount of different stock types per the variant’s size. If you want to find out what theses types represent, click on the type to read it’s description:
+* [availableQuantity](/overview/glossary#available-now-stock)
+* [physicalQuantity](/overview/glossary#physical-stock)
+* [demandQuantity](/overview/glossary#demand-stock)
+* [allocatedQuantity](/overview/glossary#allocated-stock)
+* [unshippedQuantity](/overview/glossary#unshipped-stock)
+* [onDeliveryQuantity](/overview/glossary#on-delivery-stock)
+* [linkedIncomingQuantity](/overview/glossary#linked-stock)
+* [unlinkedIncomingQuantity](/overview/glossary#unlinked-stock)
+
+You can manage your stock by adding, removing, or moving it to a different warehouse. Below you will find example mutations that allow that.
+
+### Adding product stock
+
+#### Request
+
+For these types of mutations you will have to specify the warehouse, product variant and the variant’s size you want to effect as well as state the deliveredQuantity which is the value of stock you want to add or remove. Using `intoWarehouse` input param ensures that we will add the stock values.
 
 One size:
 
@@ -2767,82 +2862,36 @@ mutation addStock {
 }
 ```
 
-After you're done, you can verify the stock levels in Centra AMS:
+### Removing product stock
 
-![StockLevels](product-stock-ready.png)
-
-### Fetching Product Stock
-
-You can also read the Stock levels using the API. Remember, "physical" quantity is the amount you have physically on the shelf in your Warehouse, available stock (FTA - Free to Allocate) is calculated by Centra based on existing orders.
+Similar to the above, this time we're manipulating stock `outFromWarehouse`, which ensures its deletion
 
 #### Request
 
-Stock is stored on the Size level, so you can access it using a `products` call similar to previous examples. Note the `stockTotals` section, which requires additional permissions.
-
-```gql
-query productList(
-  $status: [ProductStatus!]! = [INACTIVE, ACTIVE]
-  $page: Int! = 1
-) {
-  products(
-    where: { status: $status }
-    sort: [updatedAt_DESC]
-    limit: 10
-    page: $page
-  ) {
-    ...basicProductFields
-    variants {
-      ...basicVariantFields
-      productSizes {
-        ...basicSizeFields
-        stockTotals{
-          availableQuantity
-          physicalQuantity
+```
+mutation removeStock {
+  changeStock (
+    input: {
+      outFromWarehouse: { id: 1 }
+      description: "Remove stock"
+      productVariants: [
+        {
+          productVariant: {id: 1}
+          unitCost: {
+            value: 41
+            currencyIsoCode: "EUR"
+          }
+          sizeChanges: {
+            size: {id: 1}   # One Size
+            deliveredQuantity: 5
+          }
         }
-      }
+      ]
     }
+  ) {
+    stockChange {id}
+    userErrors {message}
   }
-  
-  counters {
-    products(where: { status: $status })
-  }
-}
-fragment basicProductFields on Product {
-  id
-  name
-  status
-  productNumber
-  harmonizedCommodityCode
-  harmonizedCommodityCodeDescription
-  internalComment
-  isBundle
-  isSerializableProduct
-  harmonizedCommodityCode
-  harmonizedCommodityCodeDescription
-  createdAt
-  updatedAt
-}
-fragment basicVariantFields on ProductVariant {
-  id
-  name
-  status
-  variantNumber
-  internalName
-  unitCost {
-    value
-    currency {
-      code
-    }
-    formattedValue
-  }
-  updatedAt(format: "Y-m-d\\TH:i:sO")
-}
-fragment basicSizeFields on ProductSize {
-  id
-  description
-  sizeNumber
-  GTIN
-  SKU
 }
 ```
 
@@ -2851,117 +2900,123 @@ fragment basicSizeFields on ProductSize {
 ```json
 {
   "data": {
-    "products": [
-      {
-        "id": 1,
-        "name": "First Product",
-        "status": "ACTIVE",
-        "productNumber": "Prod123",
-        "harmonizedCommodityCode": "HCC123",
-        "harmonizedCommodityCodeDescription": "Harm Code Description",
-        "internalComment": null,
-        "isBundle": false,
-        "isSerializableProduct": false,
-        "createdAt": "2021-12-31T13:44:23+0100",
-        "updatedAt": "2022-01-04T11:54:21+0100",
-        "variants": [
-          {
-            "id": 1,
-            "name": "Chair",
-            "status": "ACTIVE",
-            "variantNumber": "Var123",
-            "internalName": "vrnt",
-            "unitCost": {
-              "value": 41,
-              "currency": {
-                "code": "EUR"
-              },
-              "formattedValue": "41.00 EUR"
-            },
-            "updatedAt": "2022-01-03T12:35:25+0100",
-            "productSizes": [
-              {
-                "id": 279,
-                "description": null,
-                "sizeNumber": "789S",
-                "GTIN": "EAN123456789S",
-                "SKU": "Prod123Var123789S",
-                "stockTotals": {
-                  "availableQuantity": 10,
-                  "physicalQuantity": 10
-                }
-              }
-            ]
-          },
-          {
-            "id": 2,
-            "name": "Shirt",
-            "status": "ACTIVE",
-            "variantNumber": "Var456",
-            "internalName": "vrnt2",
-            "unitCost": {
-              "value": 60,
-              "currency": {
-                "code": "EUR"
-              },
-              "formattedValue": "60.00 EUR"
-            },
-            "updatedAt": "2022-01-03T12:35:33+0100",
-            "productSizes": [
-              {
-                "id": 280,
-                "description": "S",
-                "sizeNumber": "789S",
-                "GTIN": "EAN123456789S",
-                "SKU": "Prod123Var456789S",
-                "stockTotals": {
-                  "availableQuantity": 4,
-                  "physicalQuantity": 4
-                }
-              },
-              {
-                "id": 281,
-                "description": "M",
-                "sizeNumber": "789M",
-                "GTIN": "EAN123456789M",
-                "SKU": "Prod123Var456789M",
-                "stockTotals": {
-                  "availableQuantity": 8,
-                  "physicalQuantity": 8
-                }
-              },
-              {
-                "id": 282,
-                "description": "L",
-                "sizeNumber": "789L",
-                "GTIN": "EAN123456789L",
-                "SKU": "Prod123Var456789L",
-                "stockTotals": {
-                  "availableQuantity": 20,
-                  "physicalQuantity": 20
-                }
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "counters": {
-      "products": 1
+    "changeStock": {
+      "stockChange": {
+        "id": 4284
+      },
+      "userErrors": []
     }
   },
   "extensions": {
-    "complexity": 112,
+    "complexity": 121,
     "permissionsUsed": [
-      "Product:read",
-      "Product.InternalComment:read",
-      "Product.ProductVariant:read",
-      "ProductVariant.InternalName:read",
-      "ProductSize.Stock:read"
+      "StockChange:write",
+      "WarehouseDelivery:read"
     ]
   }
 }
 ```
+
+### Moving stock between warehouses
+
+Here we combine both `outFromWarehouse` and `intoWarehouse` to migrate the existing stock amounts between two warehouses.
+
+[notice-box=alert]
+You will be able to move the specified `deliveredQuantity` value only if it does not exceed the available `freeToAllocateQuantity` of the variant in the given warehouse.
+[/notice-box]
+
+#### Request
+
+```
+mutation moveStock {
+  changeStock(
+    input: {
+      outFromWarehouse: { id: 1 }
+      intoWarehouse: { id: 2 }
+      description: "Remove stock"
+      productVariants: [
+        {
+          productVariant: { id: 2459 }
+          unitCost: { value: 41, currencyIsoCode: "EUR" }
+          sizeChanges: {
+            size: { id: 2 } # One Size
+            deliveredQuantity: 1
+          }
+        }
+      ]
+    }
+  ) {
+    stockChange {
+      id
+    }
+    userErrors {
+      message
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "changeStock": {
+      "stockChange": {
+        "id": 4284
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 121,
+    "permissionsUsed": [
+      "StockChange:write",
+      "WarehouseDelivery:read"
+    ]
+  }
+}
+```
+
+### Set absolute stock values
+
+In case your integration doesn’t have a way of calculating differences for partial updates, you can set the absolute values: either a “free to allocate” (FTA) or physical ones. This scenario is less secure than the ones above (based on differences), because some allocations may happen in Centra before the external system knows about them. So, if this is the only option, you can update stock with the mutation below.
+
+#### Request
+
+```gql
+mutation absoluteStock {
+  setStock(input: {
+    warehouse: {id: 1}
+    description: "A typical stock update"
+    stockQuantityType: PHYSICAL
+    productVariants: [
+      {
+        productVariant: {id: 1445}
+        sizeStockLevels: [
+          {size: {name: "XL"}, quantity: 10},
+        ]
+      }
+    ]
+  }) {
+    userErrors {
+      message
+      path
+    }
+    stockChanges {
+      id
+    }
+  }
+}
+```
+
+[notice-box=alert]
+Caution: neither `stockOffset` from `ProductVariant`, nor `threshold` from `Warehouse` objects are included in FTA calculation, neither in queries nor mutations. If an integration needs to respect these values, for example to match FTA returned by Checkout API, it should subtract the threshold/offset itself.
+[/notice-box]
+
+After you're done, you can verify the stock levels in Centra AMS:
+
+![StockLevels](product-stock-ready.png)
 
 ## Custom Attributes - read and write
 
