@@ -1,4 +1,4 @@
-  ---
+---
 title: Integrating Centra with PIM systems using GraphQL Integration API
 altTitle: PIM integration with GQL
 excerpt: Centra can be configured to integrate with your Product Information Management systems using GraphQL API. As GQL is still in Beta, more functionality is still under development
@@ -1467,7 +1467,7 @@ mutation createMultipleSizes {
 
 Bundles consist of multiple sections, of which each can be selected from a pre-selected list of variants. It can have pre-defined price, or calculate the bundle price based on the selected variants' prices. In the more complex, flexible bundles, the amount of the products in each section can differ, too.
 
-Each bundle only has one Variant by design. It also needs to be activated on a Display, just like any other Variant. Stock of each Bundle is calculated based on the contained section variants' prices.
+Each bundle only has one Variant by design. It also needs to be activated on a Display, just like any other Variant. Stock of each Bundle is calculated based on the contained section variants' stock amounts.
 
 [TBD]
 
