@@ -997,6 +997,7 @@ If capturing an order or shipment failed, check what information you can find in
 The following payment providers are supported in the GraphQL Integration API:  
 * Adyen Drop-In (capture requests)  
 * Klarna Checkout V3 (capture requests)  
+* Klarna Payments (capture requests)
 * Qliro One  
 * PayPal Commerce  
 * Stripe Checkout  
