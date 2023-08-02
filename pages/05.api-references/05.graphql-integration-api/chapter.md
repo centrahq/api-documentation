@@ -3,12 +3,6 @@ title: Integration API (GraphQL)
 ---
 
 
-
-> **Note**
->
-> The GraphQL Integration API is still in Beta.
-
-
 Integration API uses GraphQL for querying and manipulating data.
 
 ## What is GraphQL?
