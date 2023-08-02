@@ -1,12 +1,16 @@
 ---
 title: Integrating Centra with an ERP system
 altTitle: ERP integration
-excerpt: Centra can be configured to integrate with your Enterprise Resource Planning system using SOAP API. Click here to see how to perform most common operations on Products, Markets, Warehouses, Stock, Orders, Shipments and Returns in both B2B and B2C sales.
+excerpt: Centra can be configured to integrate with your Enterprise Resource Planning system using SOAP API (deprecated). Click here to see how to perform most common operations on Products, Markets, Warehouses, Stock, Orders, Shipments and Returns in both B2B and B2C sales.
 taxonomy:
   category: docs
 ---
 
 # Introduction
+
+[notice-box=info]
+The SOAP API has been deprecated in favor of the GraphQL Integration API.
+[/notice-box]
 
 Centra is built to integrate with Enterprise Resource Planning systems. To facilitate this, Centra offers an API especially designed for the purpose, Centra's SOAP API. The API offers convenience functions to make it as easy as possible to integrate an ERP system. Unlike Centra's other JSON-based APIs this API uses an XML protocol, following the industry standard for ERP data exchange. 
 
