@@ -34,9 +34,8 @@ You can read and learn how to work with [ID Conversion here](https://docs.centra
 
 Integration GraphQL API exposes a stream of events to the interested parties. When anything in Centra is changed, there will be events you can listen to. This will allow you to:
 
-    know what changed since your last synchronization, so that you can fetch only changed data selectively,
-
-    avoid periodical polling for new data of each type.
+* know what changed since your last synchronization, so that you can fetch only changed data selectively,
+* avoid periodical polling for new data of each type.
 
 For example, when a new order is created by Checkout API or in any other place, there will be an event of “object type” Order and “change type” CREATED, and your integration will see it as soon as the events are fetched by the new query events.
 
@@ -1220,33 +1219,35 @@ Displays are connected to a specific Store and if a client has multiple stores i
 
 A Display has a lot of parameters, most of which are optional. Take a look at the full set below
 
+```gql
 input DisplayCreateInput {
-# basic required fields
-store: StoreInput!
-product: ProductInput!
-name: String!
-status: Status!
-
-# basic optional fields
-uri: String   (If not provided, it will be auto-generated based on the display name)
-minimumOrderQuantity: Int
-orderQuantityDenominator: Int
-description: String
-shortDescription: String
-metaTitle: String
-metaDescription: String
-metaKeywords: String
-comment: String
-tags: [String!]
-
-# relations to other types
-canonicalCategory: CategoryInput
-addCategories: [CategoryInput!]
-addMarkets: [MarketInput!]
-addProductMedia: [ProductMediaAddInput!]
-addProductVariants: [ProductVariantAddInput!]
-taxGroup: TaxGroupInput
+    # basic required fields
+    store: StoreInput!
+    product: ProductInput!
+    name: String!
+    status: Status!
+    
+    # basic optional fields
+    uri: String   (If not provided, it will be auto-generated based on the display name)
+    minimumOrderQuantity: Int
+    orderQuantityDenominator: Int
+    description: String
+    shortDescription: String
+    metaTitle: String
+    metaDescription: String
+    metaKeywords: String
+    comment: String
+    tags: [String!]
+    
+    # relations to other types
+    canonicalCategory: CategoryInput
+    addCategories: [CategoryInput!]
+    addMarkets: [MarketInput!]
+    addProductMedia: [ProductMediaAddInput!]
+    addProductVariants: [ProductVariantAddInput!]
+    taxGroup: TaxGroupInput
 }
+```
 
 Let’s take a look at how to create a basic Display with one Variant
 
