@@ -18,15 +18,11 @@ All mutations of the API are documented in [Integration API Docs](https://docs.c
 
 ### Communication
 
-Whether it’s stock updates, product updates or fetching orders. The integration is always initiating the communication. Centra APIs are passive and do not trigger any updates or send information to external systems. Centra, however, has the option to send webhook for Certain events. If that is of interest, more information is available here.
+Whether it’s stock updates, product updates or fetching orders. The integration is always initiating the communication. Centra APIs are passive and do not trigger any updates or send information to external systems. Centra, however, has the option to send webhook for Certain events. If that is of interest, more information is [available here](https://docs.centra.com/plugins/centra-webhook).
 
 ### Prerequisites
 
 An Integration API token with proper access rights. These are set up in Centra AMS.
-
-[notice-box=info]
-SOAP API uses its own user and password, which is not related to the AMS users and needs to be set up by Centra staff.
-[/notice-box]
 
 ### ID Conversion
 
@@ -64,7 +60,7 @@ A size chart contains a name, and sizes. Size charts can be named in any way and
 
 It’s also worth noting that you can choose to only activate some of the sizechart sizes for specific products. For example, if you have two products: one selling in sizes between XXS-XXL, and another product which only has sizes S/M/L, they can use the same sizechart - one with sizes XXS, XS, S, M, L, XL, XXL. Then you can configure the second product to only activate sizes S/M/L, and keep stock for those. Other sizes can remain unused, or can be activated at a later time, in case you would start selling different sizes in the future.
 
-Once the size charts are in place, products can be added to Centra. Let’s take a look at how a simple size chart with XS-XL sizes can be created. Remember to store the IDs that are returned upon creation, these are needed when selecting the size chart and its sizes to be used for a product. There are no limitations on how many size charts that can be used. However, there’s no need to create multiple size charts with the XS-XL range, one is enough. It doesn’t matter if it’s for men or women. Measurements are added on product level, with the help of Measurement charts.
+Once the size charts are in place, products can be added to Centra. Let’s take a look at how a simple size chart can be created. Remember to store the IDs that are returned upon creation, these are needed when selecting the size chart and its sizes to be used for a product. There are no limitations on how many size charts can be used. However, there’s no need to create multiple size charts with the XS-XL range, one is enough. It doesn’t matter if it’s for men or women. Measurements are added on product level, with the help of Measurement charts.
 
 ### Creating size charts
 
@@ -498,7 +494,7 @@ With size charts and their sizes in place, everything that is needed to create t
 
 ### Create the first product
 
-Centra’s light-weight PIM can contain a lot of product data with the help of “custom attributes”. In this example, only the basic attributes will be taken into account. Each product in Centra contain three different “sections”. First, there’s the general section where the basic attributes available are such as Product number, Product Name, Collection, Country of Origin, and more. This section needs to be created before the next subset of data can be created in Centra.
+Centra’s light-weight PIM can contain a lot of product data with the help of “custom attributes”. In this example, only the basic attributes will be taken into account. Each product in Centra contains three different “sections”. First, there’s the general section where the basic attributes available are such as Product number, Product Name, Collection, Country of Origin, and more. This section needs to be created before the next subset of data can be created in Centra.
 
 Here’s an example of how a query to create the first part (General) of a product can look like. Remember: the id you get back needs to be used in order to update the product at a later stage. Store it somewhere secure.
 
@@ -577,7 +573,7 @@ Here’s an example of how a query to create the first part (General) of a produ
 
 The first part of the product is now created, and it’s also possible to view it in Centra. It cannot be sold until we continue with the rest of its sections. This is also where a new concept will be introduced: Variants.
 
-Much like size charts and their sizes, variants are a core feature in Centra. Each product needs at least one variant. Just as with size charts and sizes, if the product setup doesn’t really have variants, one variant will still need to be created. It’s also at variant level where the size chart to be used is selected. A product can in theory have an unlimited number of variants, while in practice it’s mainly common to have around five variants or less.
+Much like size charts and their sizes, variants are a core feature in Centra. Each product needs at least one variant. Just as with size charts and sizes, if the product setup doesn’t really have variants, one variant will still need to be created. It’s also at variant level where the size chart to be used is selected. It's recommended to have no more than 10-20 variants per product. If there's need for more, please consult with Centra to find a good structure for the product data.
 
 A variant has basic attributes and custom attributes. Just as the product’s general section. The most used basic attributes of the variant are Variant number and Variant name. Variant names many times will be the color name of the product, or even material in cases where a product comes in multiple materials rather than colors.
 
@@ -636,11 +632,11 @@ Much like with the product, an ID for the variant will be returned. This is need
 
 For each variant that needs to be added, a new mutation needs to be executed.
 
-The last step to be made before the full core set of product data is ready, is to activate the sizes in the size chart select on each variant that was added to the product. To elaborate: when selecting a size chart for the variant, it doesn’t automatically get all sizes activated for the specific variant. The reason for this is that a size chart can contain more sizes than what the specific variant will be available in.
+The last step to be made before the full core set of product data is ready, is to activate the sizes in the size chart select on each variant that was added to the product. To elaborate: when selecting a size chart for the variant, it doesn’t automatically get all sizes activated. The reason for this is that a size chart can contain more sizes than what the specific variant will be available in.
 
 When activating the sizes for the variant, it’s also possible to add some data per size like GTIN and size number. Size number can be a part of the full SKU or the full SKU, depending on the needs for the integration. In the example you can see that the id of the variant will be used. It’s also a must to provide the id of the size, or its name along with the mutation. Each size needs to be activated in its own mutation.
 
-Much like with the product and variant data. An ID will be returned and remember to store this ID as well.
+Much like with the product and variant data. An ID will be returned and remember to store this ID as well. This will be needed if you need to update the GTIN, as an example.
 
 #### Request: Activating sizes
 
@@ -692,11 +688,11 @@ mutation createOneSize {
 
 ### Bundles
 
-Bundles consist of multiple sections, of which each can be selected from a pre-selected list of variants. The price of the bundle can be predefined, or calculated dynamically based on the prices of variants selected in the bundle. In the more complex, flexible bundles, the amount of the products in each section can differ as well.
+Bundles consist of multiple sections, of which each can be selected from a pre-selected list of variants. The price of the bundle can be predefined, or calculated dynamically based on the prices of variants selected in the bundle. In the more complex, flexible bundles, the number of the variants in each section can differ as well.
 
-A bundle is a virtual product, which only has one Variant by design. This variant also needs to be activated on a Display, just like any other Variant. Stock of each Bundle is calculated based on the contained section variants' stock amounts.
+A bundle is a virtual product, which only has one internal Variant by design. This variant also needs to be activated on a Display, just like any other Variant. Stock of each Bundle is calculated based on the contained section variants' stock amounts.
 
-It’s possible to create bundles, here’s an example of how that can be done. When creating the bundle you’ll need to use the id provided upon product and variant creation earlier.
+It’s possible to create bundles with the help of the Integration API. When creating the bundle, you’ll need to use the ID for each variant you want to include.
 
 The fixed bundle type will work straight away in a client’s storefront as it will appear as any other product. Where the flexible bundle type will require new functionality in the storefront in order to work due to its more complex structure.
 
@@ -714,7 +710,6 @@ mutation createFixedBundle {
         collection: {id: 1}
         countryOfOrigin: {id: 65}
         folder: {id: 1}
-        isSerializableProduct: true
         harmonizedCommodityCode: "code"
         harmonizedCommodityCodeDescription: "description"
       }
@@ -754,7 +749,7 @@ mutation createFixedBundle {
 
 All of the core data needed for a product has now been added. Inventory can now be added to the product, let’s take a look on how to handle that.
 
-Centra has an advanced way of allocating inventory to orders named “Allocation rules”, but before that warehouses needs to be created. That’s plural. It’s possible to create as many warehouses as needed in Centra. One common setup is to have a single, or multiple, warehouses for fulfillment of D2C online orders and a warehouse for each brick and mortar store available - in order to display what’s available in stores or even to fulfill the orders from a store.
+Centra has an advanced way of allocating inventory to orders named “Allocation rules”, but before that at least one warehouse needs to be created. It’s possible to create as many warehouses as needed in Centra. One common setup is to have a single, or multiple, warehouses for fulfillment of D2C online orders and a warehouse for each brick and mortar store available - in order to display what’s available in stores or even to fulfill the orders from a store.
 
 Warehouses might already be set up in Centra when the integration work starts, but it’s easy to create a warehouse if needed. See an example below. Just as with the product data, remember to store the ID you get back. This will be needed when inventory levels are sent to Centra.
 
@@ -979,7 +974,7 @@ With products and inventory in place, there’s some more data needed to be full
 Prices can be set on variant level, but not size. By default, all variants of the same product share the same price, but you can choose to enable individual variant prices for some or all variants. When creating a price list, there are multiple data points that can be added, but not all of them are mandatory during the creation phase, since some oftentimes are set by the client in Centra. Let’s take a look at what you must send in and an example after that.
 
 - Name: the name of the pricelist. Could be as simple as the currency of the pricelist or something with a longer description
-- Store: This is the id of the store that the price list should be added to
+- Store: This is the ID of the store that the price list should be added to
 - Currency: set with currencyIsoCode. Self-explanatory, the currency of the pricelist
 
 Other fields like Default shipping option, adding countries, can also be done upon creation or by updating the pricelist. But as stated earlier, these are oftentimes set by the client directly in the Centra admin, however the example contains them. Countries are only added for pricelists in a DTC store. In Wholesale, there’s also an option to add RRP prices to the pricelist.
@@ -1223,7 +1218,7 @@ There’s one last thing that needs to be done in order to get products that are
 
 Displays are connected to a specific Store and if a client has multiple stores in Centra and wants to sell the product in all stores, a display must be created for each store. Commonly a DTC and Wholesale store.
 
-A Display has a lot of parameters, with most optional. Take a look at the full set below
+A Display has a lot of parameters, most of which are optional. Take a look at the full set below
 
 input DisplayCreateInput {
 # basic required fields
@@ -1253,25 +1248,28 @@ addProductVariants: [ProductVariantAddInput!]
 taxGroup: TaxGroupInput
 }
 
-Let’s take a look at how to create a basic Display
+Let’s take a look at how to create a basic Display with one Variant
 
 #### Request: Create a basic display
 
 ```gql
 mutation create {
-  createDisplay(input: {
-      name: "New display!"
-      status: ACTIVE
-      store: {id: 1}
-      product: {id: 2}
-  }) {
-      userErrors {
-          message path
-      }
-      display {
-          id
-      }
-  }
+    createDisplay(input: {
+   	 name: "New display!"
+   	 status: ACTIVE
+   	 store: {id: 1}
+   	 product: {id: 2}
+   	addProductVariants: [
+    		{productVariant: {id: 1545}}
+  	]
+    }) {
+   	 userErrors {
+   		 message path
+   	 }
+   	 display {
+   		 id
+   	 }
+    }
 }
 ```
 
@@ -1298,9 +1296,9 @@ mutation create {
 }
 ```
 
-With this query, a display named “New Display!” will be created in the store with ID 1 for a product with ID 2. With the display in place, variant(s) can be added to the display. This is a requirement, as only variants activated on displays will be exposed in the front-end APIs.
+With this query, a display named “New Display!” will be created in the store with ID 1 for the product with ID 2. With the mutation we also added one of the product's variants to the display. You can only add variants from the same product to a Display.
 
-The ID which was returned when creating the Display must be used in the mutation along with the ID of the variant connected to the product. Just to make it clear: you can only add a variant to a display which exists on the main product level.
+The ID which was returned when creating the Display should be saved, if you need to update the Display at a later stage, like adding a second variant to the display. See an example of that below.
 
 
 #### Request: Add a variant to the display
@@ -1309,7 +1307,7 @@ The ID which was returned when creating the Display must be used in the mutation
 mutation addVariantsToDisplay {
   updateDisplay(
   id: 2276
-  input: { addProductVariants: { productVariant: { id: 1446 } } }
+  input: [ addProductVariants: { productVariant: { id: 1446 } } ]
   ) {
   userErrors {
     message
@@ -2230,7 +2228,7 @@ Now that our order looks as expected, let’s process it further. First step (po
 
 ## Shipment creation and capture
 
-After the order is confirmed, you can now create shipments and capture the money. You can read more about capture with the Integration API here LINK https://docs.centra.com/api-references/graphql-integration-api/examples/dtc#general-notes-on-payment-captures-in-gql
+After the order is confirmed, you can now create shipments and capture the money. You can read more about [capture with the Integration API here](https://docs.centra.com/api-references/graphql-integration-api/examples/dtc#general-notes-on-payment-captures-in-gql).
 
 I mentioned before that captures are most closely related to shipments, and in most cases you should only be capturing money for the items you are about to ship (+ shipping cost). Centra supports split payment captures, if the integration with the PSP allows for it, so you won’t have any problems with that, as long as you remember to only include the shipping cost on one of the shipments.
 
@@ -2724,7 +2722,7 @@ Examples of the date could be "yesterday", "21/10/2023", "-1 hour". It cannot be
 
 If products from an order get returned by a customer or packages are delivered back to the warehouse due to delivery issues etc, a return can be created. A return is connected to a specific shipment.
 
-Refunds are currently not supported with the Integration API, but can be handled with Order API (REST) until the mutation is available.
+Refunds are currently not supported with the Integration API, but can be handled with Order API (REST) until the mutation is available. [You can read about refunds in REST API here](https://docs.centra.com/api-references/order-api/api-reference/update-return).
 
 There are three specific options to consider when creating a Return:
 
