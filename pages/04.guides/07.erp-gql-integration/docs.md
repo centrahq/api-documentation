@@ -3,7 +3,7 @@ title: Integrating Centra with an ERP system
 altTitle: ERP integration (Integration API)
 excerpt: Centra can be configured to integrate with your Enterprise Resource Planning system using Integration API (GraphQL). Click here to see how to perform most common operations on Products, Warehouses, Stock, Orders, Shipments and Returns in both DTC and Wholesale.
 taxonomy:
-  category: docs
+category: docs
 ---
 
 # Introduction
@@ -28,7 +28,7 @@ An Integration API token with proper access rights. These are set up in Centra A
 
 To make an integration as easy as possible to build and maintain, the Integration API enables interactions with Centra based on IDs in any external integration. This means the integration only has to be aware of its own IDs and not of Centra's IDs. This is very similar to how ID conversion works in SOAP API and other modules, however, we extended it to be manageable through the Integration API directly as part of the Centra core. It also allows to support any custom integrations that are not Centra modules.
 
-You can read and learn how to work with ID Conversion here.
+You can read and learn how to work with [ID Conversion here](https://docs.centra.com/api-references/graphql-integration-api/id-conversion).
 
 ### Events system
 
@@ -67,65 +67,65 @@ Once the size charts are in place, products can be added to Centra. Let’s take
 #### Request: One-size chart
 
 ```gql
-mutation addSizeChart {
-    createSizeChart(
-      input: {
-        name: "One Size"
-        dividerSymbol: "x"  
-        horizontalLabels: ["One Size"]
-        verticalLabels: []
-        displayUnit: ""
-        displayDividedBy: 0
-      }
-    ) {
-      sizeChart {
-        id
-        name
-        sizes {id name}
-        horizontalLabels
-        verticalLabels
-        dividerSymbol
-      }
-      userErrors {
-        message
-        path
+  mutation addSizeChart {
+      createSizeChart(
+        input: {
+          name: "One Size"
+          dividerSymbol: "x"  
+          horizontalLabels: ["One Size"]
+          verticalLabels: []
+          displayUnit: ""
+          displayDividedBy: 0
+        }
+      ) {
+        sizeChart {
+          id
+          name
+          sizes {id name}
+          horizontalLabels
+          verticalLabels
+          dividerSymbol
+        }
+        userErrors {
+          message
+          path
+        }
       }
     }
-  }
 ```
 
 #### Response
 
 ```json
-{
-    "data": {
-      "createSizeChart": {
-        "userErrors": [],
-        "sizeChart": {
-          "id": 1,
-          "name": "One Size",
-          "sizes": [
-            {
-              "id": 1,
-              "name": "One Size"
-            }
-          ],
-          "horizontalLabels": [
-            "One Size"
-          ],
-          "verticalLabels": null,
-          "dividerSymbol": "x"
+  {
+      "data": {
+        "createSizeChart": {
+          "userErrors": [],
+          "sizeChart": {
+            "id": 1,
+            "name": "One Size",
+            "sizes": [
+              {
+                "id": 1,
+                "name": "One Size"
+              }
+            ],
+            "horizontalLabels": [
+              "One Size"
+            ],
+            "verticalLabels": null,
+            "dividerSymbol": "x"
+          }
         }
+      },
+      "extensions": {
+        "complexity": 121,
+        "permissionsUsed": [
+          "SizeChart:write",
+          "SizeChart:read"
+        ]
       }
-    },
-    "extensions": {
-      "complexity": 121,
-      "permissionsUsed": [
-        "SizeChart:write",
-        "SizeChart:read"
-      ]
     }
-  }
 ```
 
 And here’s another example, a size chart that we could use for pants.
@@ -133,361 +133,361 @@ And here’s another example, a size chart that we could use for pants.
 #### Request: Multi-dimensional size chart
 
 ```gql
-mutation addSizeChart {
- createSizeChart(input: {
-  name: "Pants sizes"
-  horizontalLabels: ["24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "36", "38"]
-  verticalLabels: ["26", "28", "30", "32", "34", "36"]
- }) {
-   sizeChart {
-    id
-    sizes {
+  mutation addSizeChart {
+   createSizeChart(input: {
+    name: "Pants sizes"
+    horizontalLabels: ["24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "36", "38"]
+    verticalLabels: ["26", "28", "30", "32", "34", "36"]
+   }) {
+     sizeChart {
       id
-      name }
+      sizes {
+        id
+        name }
+     }
+    userErrors {
+      message
+      path
+    } 
    }
-  userErrors {
-    message
-    path
-  } 
- }
-}
+  }
 ```
 
 #### Response
 
 ```json
-{
-  "data": {
-    "createSizeChart": {
-      "sizeChart": {
-        "id": 43,
-        "sizes": [
-          {
-            "id": 513,
-            "name": "24x26"
-          },
-          {
-            "id": 514,
-            "name": "24x28"
-          },
-          {
-            "id": 515,
-            "name": "24x30"
-          },
-          {
-            "id": 516,
-            "name": "24x32"
-          },
-          {
-            "id": 517,
-            "name": "24x34"
-          },
-          {
-            "id": 518,
-            "name": "24x36"
-          },
-          {
-            "id": 519,
-            "name": "25x26"
-          },
-          {
-            "id": 520,
-            "name": "25x28"
-          },
-          {
-            "id": 521,
-            "name": "25x30"
-          },
-          {
-            "id": 522,
-            "name": "25x32"
-          },
-          {
-            "id": 523,
-            "name": "25x34"
-          },
-          {
-            "id": 524,
-            "name": "25x36"
-          },
-          {
-            "id": 525,
-            "name": "26x26"
-          },
-          {
-            "id": 526,
-            "name": "26x28"
-          },
-          {
-            "id": 527,
-            "name": "26x30"
-          },
-          {
-            "id": 528,
-            "name": "26x32"
-          },
-          {
-            "id": 529,
-            "name": "26x34"
-          },
-          {
-            "id": 530,
-            "name": "26x36"
-          },
-          {
-            "id": 531,
-            "name": "27x26"
-          },
-          {
-            "id": 532,
-            "name": "27x28"
-          },
-          {
-            "id": 533,
-            "name": "27x30"
-          },
-          {
-            "id": 534,
-            "name": "27x32"
-          },
-          {
-            "id": 535,
-            "name": "27x34"
-          },
-          {
-            "id": 536,
-            "name": "27x36"
-          },
-          {
-            "id": 537,
-            "name": "28x26"
-          },
-          {
-            "id": 538,
-            "name": "28x28"
-          },
-          {
-            "id": 539,
-            "name": "28x30"
-          },
-          {
-            "id": 540,
-            "name": "28x32"
-          },
-          {
-            "id": 541,
-            "name": "28x34"
-          },
-          {
-            "id": 542,
-            "name": "28x36"
-          },
-          {
-            "id": 543,
-            "name": "29x26"
-          },
-          {
-            "id": 544,
-            "name": "29x28"
-          },
-          {
-            "id": 545,
-            "name": "29x30"
-          },
-          {
-            "id": 546,
-            "name": "29x32"
-          },
-          {
-            "id": 547,
-            "name": "29x34"
-          },
-          {
-            "id": 548,
-            "name": "29x36"
-          },
-          {
-            "id": 549,
-            "name": "30x26"
-          },
-          {
-            "id": 550,
-            "name": "30x28"
-          },
-          {
-            "id": 551,
-            "name": "30x30"
-          },
-          {
-            "id": 552,
-            "name": "30x32"
-          },
-          {
-            "id": 553,
-            "name": "30x34"
-          },
-          {
-            "id": 554,
-            "name": "30x36"
-          },
-          {
-            "id": 555,
-            "name": "31x26"
-          },
-          {
-            "id": 556,
-            "name": "31x28"
-          },
-          {
-            "id": 557,
-            "name": "31x30"
-          },
-          {
-            "id": 558,
-            "name": "31x32"
-          },
-          {
-            "id": 559,
-            "name": "31x34"
-          },
-          {
-            "id": 560,
-            "name": "31x36"
-          },
-          {
-            "id": 561,
-            "name": "32x26"
-          },
-          {
-            "id": 562,
-            "name": "32x28"
-          },
-          {
-            "id": 563,
-            "name": "32x30"
-          },
-          {
-            "id": 564,
-            "name": "32x32"
-          },
-          {
-            "id": 565,
-            "name": "32x34"
-          },
-          {
-            "id": 566,
-            "name": "32x36"
-          },
-          {
-            "id": 567,
-            "name": "33x26"
-          },
-          {
-            "id": 568,
-            "name": "33x28"
-          },
-          {
-            "id": 569,
-            "name": "33x30"
-          },
-          {
-            "id": 570,
-            "name": "33x32"
-          },
-          {
-            "id": 571,
-            "name": "33x34"
-          },
-          {
-            "id": 572,
-            "name": "33x36"
-          },
-          {
-            "id": 573,
-            "name": "34x26"
-          },
-          {
-            "id": 574,
-            "name": "34x28"
-          },
-          {
-            "id": 575,
-            "name": "34x30"
-          },
-          {
-            "id": 576,
-            "name": "34x32"
-          },
-          {
-            "id": 577,
-            "name": "34x34"
-          },
-          {
-            "id": 578,
-            "name": "34x36"
-          },
-          {
-            "id": 579,
-            "name": "36x26"
-          },
-          {
-            "id": 580,
-            "name": "36x28"
-          },
-          {
-            "id": 581,
-            "name": "36x30"
-          },
-          {
-            "id": 582,
-            "name": "36x32"
-          },
-          {
-            "id": 583,
-            "name": "36x34"
-          },
-          {
-            "id": 584,
-            "name": "36x36"
-          },
-          {
-            "id": 585,
-            "name": "38x26"
-          },
-          {
-            "id": 586,
-            "name": "38x28"
-          },
-          {
-            "id": 587,
-            "name": "38x30"
-          },
-          {
-            "id": 588,
-            "name": "38x32"
-          },
-          {
-            "id": 589,
-            "name": "38x34"
-          },
-          {
-            "id": 590,
-            "name": "38x36"
-          }
-        ]
-      },
-      "userErrors": []
+  {
+    "data": {
+      "createSizeChart": {
+        "sizeChart": {
+          "id": 43,
+          "sizes": [
+            {
+              "id": 513,
+              "name": "24x26"
+            },
+            {
+              "id": 514,
+              "name": "24x28"
+            },
+            {
+              "id": 515,
+              "name": "24x30"
+            },
+            {
+              "id": 516,
+              "name": "24x32"
+            },
+            {
+              "id": 517,
+              "name": "24x34"
+            },
+            {
+              "id": 518,
+              "name": "24x36"
+            },
+            {
+              "id": 519,
+              "name": "25x26"
+            },
+            {
+              "id": 520,
+              "name": "25x28"
+            },
+            {
+              "id": 521,
+              "name": "25x30"
+            },
+            {
+              "id": 522,
+              "name": "25x32"
+            },
+            {
+              "id": 523,
+              "name": "25x34"
+            },
+            {
+              "id": 524,
+              "name": "25x36"
+            },
+            {
+              "id": 525,
+              "name": "26x26"
+            },
+            {
+              "id": 526,
+              "name": "26x28"
+            },
+            {
+              "id": 527,
+              "name": "26x30"
+            },
+            {
+              "id": 528,
+              "name": "26x32"
+            },
+            {
+              "id": 529,
+              "name": "26x34"
+            },
+            {
+              "id": 530,
+              "name": "26x36"
+            },
+            {
+              "id": 531,
+              "name": "27x26"
+            },
+            {
+              "id": 532,
+              "name": "27x28"
+            },
+            {
+              "id": 533,
+              "name": "27x30"
+            },
+            {
+              "id": 534,
+              "name": "27x32"
+            },
+            {
+              "id": 535,
+              "name": "27x34"
+            },
+            {
+              "id": 536,
+              "name": "27x36"
+            },
+            {
+              "id": 537,
+              "name": "28x26"
+            },
+            {
+              "id": 538,
+              "name": "28x28"
+            },
+            {
+              "id": 539,
+              "name": "28x30"
+            },
+            {
+              "id": 540,
+              "name": "28x32"
+            },
+            {
+              "id": 541,
+              "name": "28x34"
+            },
+            {
+              "id": 542,
+              "name": "28x36"
+            },
+            {
+              "id": 543,
+              "name": "29x26"
+            },
+            {
+              "id": 544,
+              "name": "29x28"
+            },
+            {
+              "id": 545,
+              "name": "29x30"
+            },
+            {
+              "id": 546,
+              "name": "29x32"
+            },
+            {
+              "id": 547,
+              "name": "29x34"
+            },
+            {
+              "id": 548,
+              "name": "29x36"
+            },
+            {
+              "id": 549,
+              "name": "30x26"
+            },
+            {
+              "id": 550,
+              "name": "30x28"
+            },
+            {
+              "id": 551,
+              "name": "30x30"
+            },
+            {
+              "id": 552,
+              "name": "30x32"
+            },
+            {
+              "id": 553,
+              "name": "30x34"
+            },
+            {
+              "id": 554,
+              "name": "30x36"
+            },
+            {
+              "id": 555,
+              "name": "31x26"
+            },
+            {
+              "id": 556,
+              "name": "31x28"
+            },
+            {
+              "id": 557,
+              "name": "31x30"
+            },
+            {
+              "id": 558,
+              "name": "31x32"
+            },
+            {
+              "id": 559,
+              "name": "31x34"
+            },
+            {
+              "id": 560,
+              "name": "31x36"
+            },
+            {
+              "id": 561,
+              "name": "32x26"
+            },
+            {
+              "id": 562,
+              "name": "32x28"
+            },
+            {
+              "id": 563,
+              "name": "32x30"
+            },
+            {
+              "id": 564,
+              "name": "32x32"
+            },
+            {
+              "id": 565,
+              "name": "32x34"
+            },
+            {
+              "id": 566,
+              "name": "32x36"
+            },
+            {
+              "id": 567,
+              "name": "33x26"
+            },
+            {
+              "id": 568,
+              "name": "33x28"
+            },
+            {
+              "id": 569,
+              "name": "33x30"
+            },
+            {
+              "id": 570,
+              "name": "33x32"
+            },
+            {
+              "id": 571,
+              "name": "33x34"
+            },
+            {
+              "id": 572,
+              "name": "33x36"
+            },
+            {
+              "id": 573,
+              "name": "34x26"
+            },
+            {
+              "id": 574,
+              "name": "34x28"
+            },
+            {
+              "id": 575,
+              "name": "34x30"
+            },
+            {
+              "id": 576,
+              "name": "34x32"
+            },
+            {
+              "id": 577,
+              "name": "34x34"
+            },
+            {
+              "id": 578,
+              "name": "34x36"
+            },
+            {
+              "id": 579,
+              "name": "36x26"
+            },
+            {
+              "id": 580,
+              "name": "36x28"
+            },
+            {
+              "id": 581,
+              "name": "36x30"
+            },
+            {
+              "id": 582,
+              "name": "36x32"
+            },
+            {
+              "id": 583,
+              "name": "36x34"
+            },
+            {
+              "id": 584,
+              "name": "36x36"
+            },
+            {
+              "id": 585,
+              "name": "38x26"
+            },
+            {
+              "id": 586,
+              "name": "38x28"
+            },
+            {
+              "id": 587,
+              "name": "38x30"
+            },
+            {
+              "id": 588,
+              "name": "38x32"
+            },
+            {
+              "id": 589,
+              "name": "38x34"
+            },
+            {
+              "id": 590,
+              "name": "38x36"
+            }
+          ]
+        },
+        "userErrors": []
+      }
+    },
+    "extensions": {
+      "complexity": 122,
+      "permissionsUsed": [
+        "SizeChart:write",
+        "SizeChart:read"
+      ],
+      "appVersion": "v0.47.7"
     }
-  },
-  "extensions": {
-    "complexity": 122,
-    "permissionsUsed": [
-      "SizeChart:write",
-      "SizeChart:read"
-    ],
-    "appVersion": "v0.47.7"
   }
-}
 ```
 
 With size charts and their sizes in place, everything that is needed to create the first product is available.
@@ -535,40 +535,40 @@ Here’s an example of how a query to create the first part (General) of a produ
 #### Response
 
 ```json
-{
-    "data": {
-      "createProduct": {
-        "product": {
-          "id": 1,
-          "name": "First Product",
-          "status": "ACTIVE",
-          "productNumber": "Prod123",
-          "brand": {
-            "name": "Base Brand"
+  {
+      "data": {
+        "createProduct": {
+          "product": {
+            "id": 1,
+            "name": "First Product",
+            "status": "ACTIVE",
+            "productNumber": "Prod123",
+            "brand": {
+              "name": "Base Brand"
+            },
+            "collection": {
+              "name": "AW21"
+            },
+            "folder": {
+              "name": "Shop"
+            },
+            "harmonizedCommodityCode": "HCC123",
+            "harmonizedCommodityCodeDescription": "Harm Code Description"
           },
-          "collection": {
-            "name": "AW21"
-          },
-          "folder": {
-            "name": "Shop"
-          },
-          "harmonizedCommodityCode": "HCC123",
-          "harmonizedCommodityCodeDescription": "Harm Code Description"
-        },
-        "userErrors": []
+          "userErrors": []
+        }
+      },
+      "extensions": {
+        "complexity": 121,
+        "permissionsUsed": [
+          "Product:write",
+          "Product:read",
+          "Product.Brand:read",
+          "Product.Collection:read",
+          "Product.Folder:read"
+        ]
       }
-    },
-    "extensions": {
-      "complexity": 121,
-      "permissionsUsed": [
-        "Product:write",
-        "Product:read",
-        "Product.Brand:read",
-        "Product.Collection:read",
-        "Product.Folder:read"
-      ]
     }
-  }
   ```
 
 The first part of the product is now created, and it’s also possible to view it in Centra. It cannot be sold until we continue with the rest of its sections. This is also where a new concept will be introduced: Variants.
@@ -582,50 +582,50 @@ Let’s take a look at the example on how to create a variant. Notice that there
 #### Request: Adding a variant
 
 ```gql
-mutation createVariant {
-    createProductVariant(input: {
-      product: { id: 1 }
-      name: "First Product"
-      status: ACTIVE
-      variantNumber: "Var456"
-      internalName: "vrnt2"
-      unitCost: {   # MonetaryValueInput
-        value: 60
-        currencyIsoCode: "EUR"
-      }
-      sizeChart: { id: 2 }
-    }) {
-      productVariant {
-        id
-      }
-      userErrors {
-        message
-        path
+  mutation createVariant {
+      createProductVariant(input: {
+        product: { id: 1 }
+        name: "First Product"
+        status: ACTIVE
+        variantNumber: "Var456"
+        internalName: "vrnt2"
+        unitCost: {   # MonetaryValueInput
+          value: 60
+          currencyIsoCode: "EUR"
+        }
+        sizeChart: { id: 2 }
+      }) {
+        productVariant {
+          id
+        }
+        userErrors {
+          message
+          path
+        }
       }
     }
-  }
   ```
 
 #### Response
 
   ```json
-  {
-    "data": {
-      "createProductVariant": {
-        "productVariant": {
-          "id": 2
-        },
-        "userErrors": []
+    {
+      "data": {
+        "createProductVariant": {
+          "productVariant": {
+            "id": 2
+          },
+          "userErrors": []
+        }
+      },
+      "extensions": {
+        "complexity": 121,
+        "permissionsUsed": [
+          "ProductVariant:write",
+          "ProductVariant:read"
+        ]
       }
-    },
-    "extensions": {
-      "complexity": 121,
-      "permissionsUsed": [
-        "ProductVariant:write",
-        "ProductVariant:read"
-      ]
     }
-  }
   ```
 
 Much like with the product, an ID for the variant will be returned. This is needed to update the variant and activate the sizes. Remember to store it.
@@ -641,49 +641,49 @@ Much like with the product and variant data. An ID will be returned and remember
 #### Request: Activating sizes
 
 ```gql
-mutation createOneSize {
-    createProductSize(
-      input: {
-        productVariant: { id: 1 },
-        size: { id: 1 },
-        gtin: "EAN000111",
-        sizeNumber: "111"
-      }
-    ) {
-      productSize {
-        id
-        GTIN
-        sizeNumber
-      }
-      userErrors {
-        message
-        path
+  mutation createOneSize {
+      createProductSize(
+        input: {
+          productVariant: { id: 1 },
+          size: { id: 1 },
+          gtin: "EAN000111",
+          sizeNumber: "111"
+        }
+      ) {
+        productSize {
+          id
+          GTIN
+          sizeNumber
+        }
+        userErrors {
+          message
+          path
+        }
       }
     }
-  }
   ```
 #### Response
 
 ```json
-{
-    "data": {
-      "createProductSize": {
-        "productSize": {
-          "id": 279,
-          "GTIN": "EAN000111",
-          "sizeNumber": "111"
-        },
-        "userErrors": []
+  {
+      "data": {
+        "createProductSize": {
+          "productSize": {
+            "id": 279,
+            "GTIN": "EAN000111",
+            "sizeNumber": "111"
+          },
+          "userErrors": []
+        }
+      },
+      "extensions": {
+        "complexity": 121,
+        "permissionsUsed": [
+          "ProductVariant:write",
+          "ProductSize:read"
+        ]
       }
-    },
-    "extensions": {
-      "complexity": 121,
-      "permissionsUsed": [
-        "ProductVariant:write",
-        "ProductSize:read"
-      ]
     }
-  }
 ```
 
 ### Bundles
@@ -699,49 +699,49 @@ The fixed bundle type will work straight away in a client’s storefront as it w
 #### Request: Fixed bundle
 
 ```gql
-mutation createFixedBundle {
-  createBundle(
-    input: {
-      product: { 
-        name: "Test bundle product"
-        status: ACTIVE
-        productNumber: "123"
-        brand: {id: 1}
-        collection: {id: 1}
-        countryOfOrigin: {id: 65}
-        folder: {id: 1}
-        harmonizedCommodityCode: "code"
-        harmonizedCommodityCodeDescription: "description"
-      }
-      type: FIXED
-      priceType: STATIC
-      sizeChart: {id: 2}
-      sizes: [
-        {name: "S"},
-        {name: "M"}
-      ]
-      addBundleSections: [
-        {
-          quantity: 1
-          productVariants: [
-            {id: 1449}
-          ]
-        },
-        {
-          quantity: 2
-          productVariants: [
-            {id: 1450}
-          ]
+  mutation createFixedBundle {
+    createBundle(
+      input: {
+        product: { 
+          name: "Test bundle product"
+          status: ACTIVE
+          productNumber: "123"
+          brand: {id: 1}
+          collection: {id: 1}
+          countryOfOrigin: {id: 65}
+          folder: {id: 1}
+          harmonizedCommodityCode: "code"
+          harmonizedCommodityCodeDescription: "description"
         }
-      ]
-    }
-  ) {
-    userErrors {message path}
-    bundle {
-       ...bundleFields
+        type: FIXED
+        priceType: STATIC
+        sizeChart: {id: 2}
+        sizes: [
+          {name: "S"},
+          {name: "M"}
+        ]
+        addBundleSections: [
+          {
+            quantity: 1
+            productVariants: [
+              {id: 1449}
+            ]
+          },
+          {
+            quantity: 2
+            productVariants: [
+              {id: 1450}
+            ]
+          }
+        ]
+      }
+    ) {
+      userErrors {message path}
+      bundle {
+         ...bundleFields
+      }
     }
   }
-}
 ```
 
 
@@ -756,80 +756,80 @@ Warehouses might already be set up in Centra when the integration work starts, b
 #### Request: Create a warehouse
 
 ```gql
-mutation createWarehouse {
-  createWarehouse(
-    input: {
-      name: "Default warehouse"
-      beforeWarehouse: { id: 1 }
-      hideFromStockView: true
-      threshold: 1
-      stockMasterPolicy: EXTERNAL
-      stockOwnershipPolicy: THIRD_PARTY
-      allocationPolicy: CHECK_FIRST
-      warehouseLocation: { country: { id: 2 }, stateOrProvince: "nevada" }
-    }
-  ) {
-    userErrors {
-      message
-      path
-    }
-    warehouse {
-      id
-      name
-      isHiddenFromStockView
-      threshold
-      stockMaster
-      stockOwnership
-      allocationPolicy
-      isConsignation      
-      brickAndMortar {id name}
-      country {id name}
-      state {id name}  
-      zipCode
+  mutation createWarehouse {
+    createWarehouse(
+      input: {
+        name: "Default warehouse"
+        beforeWarehouse: { id: 1 }
+        hideFromStockView: true
+        threshold: 1
+        stockMasterPolicy: EXTERNAL
+        stockOwnershipPolicy: THIRD_PARTY
+        allocationPolicy: CHECK_FIRST
+        warehouseLocation: { country: { id: 2 }, stateOrProvince: "nevada" }
+      }
+    ) {
+      userErrors {
+        message
+        path
+      }
+      warehouse {
+        id
+        name
+        isHiddenFromStockView
+        threshold
+        stockMaster
+        stockOwnership
+        allocationPolicy
+        isConsignation      
+        brickAndMortar {id name}
+        country {id name}
+        state {id name}  
+        zipCode
+      }
     }
   }
-}
 ```
 
 #### Response
 
 ```json
-{
-  "data": {
-    "createWarehouse": {
-      "userErrors": [],
-      "warehouse": {
-        "id": 22,
-        "name": "Default warehouse",
-        "isHiddenFromStockView": true,
-        "threshold": 1,
-        "stockMaster": "EXTERNAL",
-        "stockOwnership": "THIRD_PARTY",
-        "allocationPolicy": "CHECK_FIRST",
-        "isConsignation": false,
-        "brickAndMortar": null,
-        "country": {
-          "id": 2,
-          "name": "United States"
-        },
-        "state": {
-          "id": 29,
-          "name": "Nevada"
-        },
-        "zipCode": null
+  {
+    "data": {
+      "createWarehouse": {
+        "userErrors": [],
+        "warehouse": {
+          "id": 22,
+          "name": "Default warehouse",
+          "isHiddenFromStockView": true,
+          "threshold": 1,
+          "stockMaster": "EXTERNAL",
+          "stockOwnership": "THIRD_PARTY",
+          "allocationPolicy": "CHECK_FIRST",
+          "isConsignation": false,
+          "brickAndMortar": null,
+          "country": {
+            "id": 2,
+            "name": "United States"
+          },
+          "state": {
+            "id": 29,
+            "name": "Nevada"
+          },
+          "zipCode": null
+        }
       }
+    },
+    "extensions": {
+      "complexity": 117,
+      "permissionsUsed": [
+        "Warehouse:write",
+        "Warehouse:read",
+        "BrickAndMortar:read"
+      ],
+      "appVersion": "v0.47.7"
     }
-  },
-  "extensions": {
-    "complexity": 117,
-    "permissionsUsed": [
-      "Warehouse:write",
-      "Warehouse:read",
-      "BrickAndMortar:read"
-    ],
-    "appVersion": "v0.47.7"
   }
-}
 ```
 
 With a warehouse in place, it’s easy to send inventory levels to Centra. Keep in mind that Centra keeps track of inventory, there’s no need to send stock updates when an order read from Centra has been fulfilled. It’s only necessary to sync the stock when there’s other types of stock movements made in the external system, like inbound deliveries, internal warehouse transfers etc.
@@ -868,102 +868,102 @@ There are two ways to set stock in Centra. You can either set the physical inven
 #### Response
 
 ```json
-{
-    "data": {
-      "changeStock": {
-        "stockChange": {
-          "id": 4284
-        },
-        "userErrors": []
+  {
+      "data": {
+        "changeStock": {
+          "stockChange": {
+            "id": 4284
+          },
+          "userErrors": []
+        }
+      },
+      "extensions": {
+        "complexity": 121,
+        "permissionsUsed": [
+          "StockChange:write",
+          "WarehouseDelivery:read"
+        ]
       }
-    },
-    "extensions": {
-      "complexity": 121,
-      "permissionsUsed": [
-        "StockChange:write",
-        "WarehouseDelivery:read"
-      ]
     }
-  }
 ```
 
 #### Request: Removing inventory
 
 ```gql
-mutation removeStock {
-    changeStock (
-      input: {
-        outFromWarehouse: { id: 1 }
-        description: "Remove stock"
-        productVariants: [
-          {
-            productVariant: {id: 1}
-            unitCost: {
-              value: 41
-              currencyIsoCode: "EUR"
+  mutation removeStock {
+      changeStock (
+        input: {
+          outFromWarehouse: { id: 1 }
+          description: "Remove stock"
+          productVariants: [
+            {
+              productVariant: {id: 1}
+              unitCost: {
+                value: 41
+                currencyIsoCode: "EUR"
+              }
+              sizeChanges: {
+                size: {id: 1}   # One Size
+                deliveredQuantity: 5
+              }
             }
-            sizeChanges: {
-              size: {id: 1}   # One Size
-              deliveredQuantity: 5
-            }
-          }
-        ]
+          ]
+        }
+      ) {
+        stockChange {id}
+        userErrors {message}
       }
-    ) {
-      stockChange {id}
-      userErrors {message}
     }
-  }
   ```
 
 #### Response
 
 ```json
-{
-    "data": {
-      "changeStock": {
-        "stockChange": {
-          "id": 4284
-        },
-        "userErrors": []
+  {
+      "data": {
+        "changeStock": {
+          "stockChange": {
+            "id": 4284
+          },
+          "userErrors": []
+        }
+      },
+      "extensions": {
+        "complexity": 121,
+        "permissionsUsed": [
+          "StockChange:write",
+          "WarehouseDelivery:read"
+        ]
       }
-    },
-    "extensions": {
-      "complexity": 121,
-      "permissionsUsed": [
-        "StockChange:write",
-        "WarehouseDelivery:read"
-      ]
     }
-  }
 ```
 
 #### Request: Set absolute values
 
 ```gql
-mutation absoluteStock {
-    setStock(input: {
-      warehouse: {id: 1}
-      description: "A typical stock update"
-      stockQuantityType: PHYSICAL
-      productVariants: [
-        {
-          productVariant: {id: 1445}
-          sizeStockLevels: [
-            {size: {name: "XL"}, quantity: 10},
-          ]
+  mutation absoluteStock {
+      setStock(input: {
+        warehouse: {id: 1}
+        description: "A typical stock update"
+        stockQuantityType: PHYSICAL
+        productVariants: [
+          {
+            productVariant: {id: 1445}
+            sizeStockLevels: [
+              {size: {name: "XL"}, quantity: 10},
+            ]
+          }
+        ]
+      }) {
+        userErrors {
+          message
+          path
         }
-      ]
-    }) {
-      userErrors {
-        message
-        path
-      }
-      stockChanges {
-        id
+        stockChanges {
+          id
+        }
       }
     }
-  }
 ```
 
 
@@ -982,81 +982,81 @@ Other fields like Default shipping option, adding countries, can also be done up
 #### Request: Pricelist creation
 
 ```gql
-mutation CreatePricelist {
-  createPricelist(input: {
-  name: "Test pricelist SEK"
-  status: INACTIVE
-  store: {
-      id: 1
-  }
-  currencyIsoCode: "SEK"
-  defaultShippingOption: {
-    id: 1
-  },
-  addCountries: [
-    {
-        code: "SE"
+  mutation CreatePricelist {
+    createPricelist(input: {
+    name: "Test pricelist SEK"
+    status: INACTIVE
+    store: {
+        id: 1
     }
-  ]
-  }) {
-  pricelist {
-    id
-    name
-    status
-    store { id name type }
-    currency { code }
-    assignedToCountries { id name }
-    defaultShippingOption { id name }
+    currencyIsoCode: "SEK"
+    defaultShippingOption: {
+      id: 1
+    },
+    addCountries: [
+      {
+          code: "SE"
+      }
+    ]
+    }) {
+    pricelist {
+      id
+      name
+      status
+      store { id name type }
+      currency { code }
+      assignedToCountries { id name }
+      defaultShippingOption { id name }
+    }
+    userErrors { message path }
+    }
   }
-  userErrors { message path }
-  }
-}
 ```
 
 #### Response
 
 ```json
-{
-  "data": {
-    "createPricelist": {
-      "pricelist": {
-        "id": 61,
-        "name": "Test pricelist SEK",
-        "status": "INACTIVE",
-        "store": {
-          "id": 1,
-          "name": "Retail",
-          "type": "DIRECT_TO_CONSUMER"
-        },
-        "currency": {
-          "code": "SEK"
-        },
-        "assignedToCountries": [
-          {
-            "id": 6,
-            "name": "Sweden"
+  {
+    "data": {
+      "createPricelist": {
+        "pricelist": {
+          "id": 61,
+          "name": "Test pricelist SEK",
+          "status": "INACTIVE",
+          "store": {
+            "id": 1,
+            "name": "Retail",
+            "type": "DIRECT_TO_CONSUMER"
+          },
+          "currency": {
+            "code": "SEK"
+          },
+          "assignedToCountries": [
+            {
+              "id": 6,
+              "name": "Sweden"
+            }
+          ],
+          "defaultShippingOption": {
+            "id": 1,
+            "name": "SEK"
           }
-        ],
-        "defaultShippingOption": {
-          "id": 1,
-          "name": "SEK"
-        }
-      },
-      "userErrors": []
+        },
+        "userErrors": []
+      }
+    },
+    "extensions": {
+      "complexity": 125,
+      "permissionsUsed": [
+        "Pricelist:write",
+        "Pricelist:read",
+        "Store:read",
+        "Country:read",
+        "ShippingOption:read"
+      ],
+      "appVersion": "v0.47.7"
     }
-  },
-  "extensions": {
-    "complexity": 125,
-    "permissionsUsed": [
-      "Pricelist:write",
-      "Pricelist:read",
-      "Store:read",
-      "Country:read",
-      "ShippingOption:read"
-    ],
-    "appVersion": "v0.47.7"
   }
-}
 ```
 
 When the price list is created, it’s now time to add the actual prices to the products. As always, use the id for the pricelist that was returned upon its creation. Here’s an example of how setting the prices work:
@@ -1064,48 +1064,48 @@ When the price list is created, it’s now time to add the actual prices to the 
 #### Request
 
 ```gql
-mutation {
-  setPrices(
-    input: {
-      pricelist: { id: 23 }
-      productPrices:[
-        {
-          product: {id: 2}
-          price: { value: 290, currencyIsoCode: "EUR" }
-        }
-      ]
+  mutation {
+    setPrices(
+      input: {
+        pricelist: { id: 23 }
+        productPrices:[
+          {
+            product: {id: 2}
+            price: { value: 290, currencyIsoCode: "EUR" }
+          }
+        ]
+      }
+    )  
+    {
+      pricelist {
+        id
+      }
+      userErrors { message path }
     }
-  )  
-  {
-    pricelist {
-      id
-    }
-    userErrors { message path }
   }
-}
 ```
 
 #### Response
 
 ```json
-{
-  "data": {
-    "setPrices": {
-      "pricelist": {
-        "id": 23
-      },
-      "userErrors": []
+  {
+    "data": {
+      "setPrices": {
+        "pricelist": {
+          "id": 23
+        },
+        "userErrors": []
+      }
+    },
+    "extensions": {
+      "complexity": 112,
+      "permissionsUsed": [
+        "Price:write",
+        "Pricelist:read"
+      ],
+      "appVersion": "v0.47.7"
     }
-  },
-  "extensions": {
-    "complexity": 112,
-    "permissionsUsed": [
-      "Price:write",
-      "Pricelist:read"
-    ],
-    "appVersion": "v0.47.7"
   }
-}
 ```
 
 ### Price Alterations
@@ -1115,60 +1115,60 @@ For Wholesale, Centra offers functionality called “Price alteration”. This i
 #### Request: Price Alteration
 
 ```gql
-mutation CreatePriceAlteration {
-  createPriceAlteration(
-  input: {
-    name: "First price alteration"
-    status: INACTIVE
-    store: {
-      id: 2
+  mutation CreatePriceAlteration {
+    createPriceAlteration(
+    input: {
+      name: "First price alteration"
+      status: INACTIVE
+      store: {
+        id: 2
+      }
+      startDate: "2024-02-01T00:00:00+0000"
     }
-    startDate: "2024-02-01T00:00:00+0000"
+    ) {
+    priceAlteration {
+      id
+      name
+      startDate
+      status
+      store { id }
+      deliveryWindows { id }
+    }
+    userErrors { message path }
+    }
   }
-  ) {
-  priceAlteration {
-    id
-    name
-    startDate
-    status
-    store { id }
-    deliveryWindows { id }
-  }
-  userErrors { message path }
-  }
-}
 ```
 
 #### Respone
 
 ```json
-{
-  "data": {
-    "createPriceAlteration": {
-      "priceAlteration": {
-        "id": 4,
-        "name": "First price alteration",
-        "startDate": "2024-02-01",
-        "status": "INACTIVE",
-        "store": {
-          "id": 2
+  {
+    "data": {
+      "createPriceAlteration": {
+        "priceAlteration": {
+          "id": 4,
+          "name": "First price alteration",
+          "startDate": "2024-02-01",
+          "status": "INACTIVE",
+          "store": {
+            "id": 2
+          },
+          "deliveryWindows": []
         },
-        "deliveryWindows": []
-      },
-      "userErrors": []
+        "userErrors": []
+      }
+    },
+    "extensions": {
+      "complexity": 133,
+      "permissionsUsed": [
+        "Price:write",
+        "Price:read",
+        "Store:read",
+        "DeliveryWindow:read"
+      ],
+      "appVersion": "v0.47.7"
     }
-  },
-  "extensions": {
-    "complexity": 133,
-    "permissionsUsed": [
-      "Price:write",
-      "Price:read",
-      "Store:read",
-      "DeliveryWindow:read"
-    ],
-    "appVersion": "v0.47.7"
   }
-}
 ```
 
 When the Price Alteration is created, the specific prices for the products can also be added. Take a look at the example below to get an understanding on how to handle that.
@@ -1176,40 +1176,40 @@ When the Price Alteration is created, the specific prices for the products can a
 #### Request
 
 ```gql
-mutation SetAlteredPrices {
-  setAlteredPrices(input: {
-  priceAlteration: {
-    id: 1
-  },
-  pricelist: {
-    id: 21
-  },
-  productPrices: [
-    {
-      product: {
-        id: 1
+  mutation SetAlteredPrices {
+    setAlteredPrices(input: {
+    priceAlteration: {
+      id: 1
+    },
+    pricelist: {
+      id: 21
+    },
+    productPrices: [
+      {
+        product: {
+          id: 1
+        }
+        price: {
+          value: 1000
+          currencyIsoCode: "SEK"
+        }
       }
-      price: {
-        value: 1000
-        currencyIsoCode: "SEK"
-      }
+    ]
+    }){
+    priceAlteration {
+      id
     }
-  ]
-  }){
-  priceAlteration {
-    id
+    pricelist {
+      id
+    }
+    products {
+      id name
+    }
+    userErrors {
+      message path
+    }
+    }
   }
-  pricelist {
-    id
-  }
-  products {
-    id name
-  }
-  userErrors {
-    message path
-  }
-  }
-}
 ```
 
 ### Product displays
@@ -1253,47 +1253,47 @@ Let’s take a look at how to create a basic Display with one Variant
 #### Request: Create a basic display
 
 ```gql
-mutation create {
-    createDisplay(input: {
-   	 name: "New display!"
-   	 status: ACTIVE
-   	 store: {id: 1}
-   	 product: {id: 2}
-   	addProductVariants: [
-    		{productVariant: {id: 1545}}
-  	]
-    }) {
-   	 userErrors {
-   		 message path
-   	 }
-   	 display {
-   		 id
-   	 }
-    }
-}
+  mutation create {
+      createDisplay(input: {
+     	 name: "New display!"
+     	 status: ACTIVE
+     	 store: {id: 1}
+     	 product: {id: 2}
+     	addProductVariants: [
+      		{productVariant: {id: 1545}}
+    	]
+      }) {
+     	 userErrors {
+     		 message path
+     	 }
+     	 display {
+     		 id
+     	 }
+      }
+  }
 ```
 
 #### Response
 
 ```json
-{
-  "data": {
-    "createDisplay": {
-      "userErrors": [],
-      "display": {
-        "id": 2276
+  {
+    "data": {
+      "createDisplay": {
+        "userErrors": [],
+        "display": {
+          "id": 2276
+        }
       }
+    },
+    "extensions": {
+      "complexity": 112,
+      "permissionsUsed": [
+        "Display:write",
+        "Display:read"
+      ],
+      "appVersion": "v0.47.7"
     }
-  },
-  "extensions": {
-    "complexity": 112,
-    "permissionsUsed": [
-      "Display:write",
-      "Display:read"
-    ],
-    "appVersion": "v0.47.7"
   }
-}
 ```
 
 With this query, a display named “New Display!” will be created in the store with ID 1 for the product with ID 2. With the mutation we also added one of the product's variants to the display. You can only add variants from the same product to a Display.
@@ -1304,43 +1304,43 @@ The ID which was returned when creating the Display should be saved, if you need
 #### Request: Add a variant to the display
 
 ```gql
-mutation addVariantsToDisplay {
-  updateDisplay(
-  id: 2276
-  input: [ addProductVariants: { productVariant: { id: 1446 } } ]
-  ) {
-  userErrors {
-    message
-    path
+  mutation addVariantsToDisplay {
+    updateDisplay(
+    id: 2276
+    input: [ addProductVariants: { productVariant: { id: 1446 } } ]
+    ) {
+    userErrors {
+      message
+      path
+    }
+    display {
+      id
+    }
+    }
   }
-  display {
-    id
-  }
-  }
-}
 ```
 
 #### Response
 
 ```json
-{
-  "data": {
-    "updateDisplay": {
-      "userErrors": [],
-      "display": {
-        "id": 2276
+  {
+    "data": {
+      "updateDisplay": {
+        "userErrors": [],
+        "display": {
+          "id": 2276
+        }
       }
+    },
+    "extensions": {
+      "complexity": 112,
+      "permissionsUsed": [
+        "Display:write",
+        "Display:read"
+      ],
+      "appVersion": "v0.47.7"
     }
-  },
-  "extensions": {
-    "complexity": 112,
-    "permissionsUsed": [
-      "Display:write",
-      "Display:read"
-    ],
-    "appVersion": "v0.47.7"
   }
-}
 ```
 
 ### Wholesale
@@ -1414,33 +1414,33 @@ billingAddress: Fields for the billing address (invoice address)
               }
           }
       }
-  }
+    }
   ```
 
 #### Response
 
   ```json
-  {
-  "data": {
-    "createAccount": {
-      "userErrors": [],
-      "account": {
-        "id": 132,
-        "discountPercent": 14.3,
-        "isDiscountVisible": true,
-        "deliveryWindowDiscounts": []
+    {
+    "data": {
+      "createAccount": {
+        "userErrors": [],
+        "account": {
+          "id": 132,
+          "discountPercent": 14.3,
+          "isDiscountVisible": true,
+          "deliveryWindowDiscounts": []
+        }
       }
+    },
+    "extensions": {
+      "complexity": 142,
+      "permissionsUsed": [
+        "Account:write",
+        "Account:read"
+      ],
+      "appVersion": "v0.47.7"
     }
-  },
-  "extensions": {
-    "complexity": 142,
-    "permissionsUsed": [
-      "Account:write",
-      "Account:read"
-    ],
-    "appVersion": "v0.47.7"
   }
-}
 ```
 
 #### Adding a buyer
@@ -1461,65 +1461,65 @@ billingAddress: Address fields for the buyer. Not commonly used.
 #### Request: Adding a Buyer to a Wholesale account
 
 ```gql
-mutation createBuyer {
-    createBuyer(input: {
-        store: {id: 2}
-        status: ACTIVE
-        account: {id: 5}
-        websiteUrl: "Example URL"
-        receiveAutoEmails: true
-        billingAddress: {
-            email: "jon.snow@centra.com"
-        }
-    }) {
-        userErrors { message path }
-        buyer {
-            id
-            status
-            account { id name }
-            receiveAutoEmails
-            websiteUrl
-            billingAddress {
-                email
-            }
-        }
-    }
-}
+  mutation createBuyer {
+      createBuyer(input: {
+          store: {id: 2}
+          status: ACTIVE
+          account: {id: 5}
+          websiteUrl: "Example URL"
+          receiveAutoEmails: true
+          billingAddress: {
+              email: "jon.snow@centra.com"
+          }
+      }) {
+          userErrors { message path }
+          buyer {
+              id
+              status
+              account { id name }
+              receiveAutoEmails
+              websiteUrl
+              billingAddress {
+                  email
+              }
+          }
+      }
+  }
   ```
 
 #### Response
 
 ```json
-{
-  "data": {
-    "createBuyer": {
-      "userErrors": [],
-      "buyer": {
-        "id": 1902,
-        "status": "ACTIVE",
-        "account": {
-          "id": 5,
-          "name": "Centra 5"
-        },
-        "receiveAutoEmails": true,
-        "websiteUrl": "Example URL",
-        "billingAddress": {
-          "email": "jon.snow@centra.com"
+  {
+    "data": {
+      "createBuyer": {
+        "userErrors": [],
+        "buyer": {
+          "id": 1902,
+          "status": "ACTIVE",
+          "account": {
+            "id": 5,
+            "name": "Centra 5"
+          },
+          "receiveAutoEmails": true,
+          "websiteUrl": "Example URL",
+          "billingAddress": {
+            "email": "jon.snow@centra.com"
+          }
         }
       }
+    },
+    "extensions": {
+      "complexity": 114,
+      "permissionsUsed": [
+        "Buyer:write",
+        "Buyer:read",
+        "Account:read",
+        "Buyer.billingAddress:read"
+      ],
+      "appVersion": "v0.47.7"
     }
-  },
-  "extensions": {
-    "complexity": 114,
-    "permissionsUsed": [
-      "Buyer:write",
-      "Buyer:read",
-      "Account:read",
-      "Buyer.billingAddress:read"
-    ],
-    "appVersion": "v0.47.7"
   }
-}
 ```
 
 #### Delivery windows
@@ -1571,7 +1571,7 @@ In below example a Preorder Delivery Window is created
 
 #### Response
 
-  ```json
+```json
   {
   "data": {
     "createDeliveryWindow": {
@@ -1589,7 +1589,7 @@ In below example a Preorder Delivery Window is created
     ],
     "appVersion": "v0.47.7"
   }
-}
+  }
 ```
 
 With a Delivery Window in place, it’s time to add products to it. When it comes to Delivery Windows, it’s a product’s variant(s) that will be added to the delivery window. Use the ID for the variant(s) which was returned during its creation.
@@ -1597,55 +1597,56 @@ With a Delivery Window in place, it’s time to add products to it. When it come
 #### Request - Adding products to a Delivery Window
 
 ```gql
-mutation setVariants {
-    setDeliveryWindowVariants(input: {
-      deliveryWindow: { id: 3 }
-      variants: [
-        {
-          productVariant: { id: 1844 }
-          type: STOCK
-        },
-        {
-          productVariant: { id: 1845 }
-          type: STOCK
+  mutation setVariants {
+      setDeliveryWindowVariants(input: {
+        deliveryWindow: { id: 3 }
+        variants: [
+          {
+            productVariant: { id: 1844 }
+            type: STOCK
+          },
+          {
+            productVariant: { id: 1845 }
+            type: STOCK
+          }
+          # Up to 100 variants can be specified in a single mutation
+        ]
+      }) {
+        userErrors {
+          message
+          path
         }
-        # Up to 100 variants can be specified in a single mutation
-      ]
-    }) {
-      userErrors {
-        message
-        path
+        deliveryWindow {
+          id
+        }
       }
-      deliveryWindow {
-        id
-      }
-    }
 ```
 
 #### Reponse
 
 ```json
-{
-    "data": {
-      "setDeliveryWindowVariants": {
-        "userErrors": [],
-        "deliveryWindow": {
-          "id": 3,
+  {
+      "data": {
+        "setDeliveryWindowVariants": {
+          "userErrors": [],
+          "deliveryWindow": {
+            "id": 3,
+        }
+      },
+      "extensions": {
+        "complexity": 193,
+        "permissionsUsed": [
+          "DeliveryWindow:write",
+          "DeliveryWindow:read",
+          "Market:read",
+          "Campaign:read",
+          "AllocationRule:read",
+          "Product:read"
+        ],
+        "appVersion": "v0.26.0"
       }
-    },
-    "extensions": {
-      "complexity": 193,
-      "permissionsUsed": [
-        "DeliveryWindow:write",
-        "DeliveryWindow:read",
-        "Market:read",
-        "Campaign:read",
-        "AllocationRule:read",
-        "Product:read"
-      ],
-      "appVersion": "v0.26.0"
     }
-  }
+```
 
 ### Order processing
 
@@ -1685,24 +1686,24 @@ First, if you implement Centra Webhooks plugin running in “Integration API” 
 #### Request: Fetching a specific order
 
 ```gql
-query getOrders {
-    orders(where: { number: 14 }) {
-      number
-      status
-      isOnHold
-      shippingAddress {
-        firstName
-        lastName
-        city
+  query getOrders {
+      orders(where: { number: 14 }) {
+        number
+        status
+        isOnHold
+        shippingAddress {
+          firstName
+          lastName
+          city
+        }
+        ...customerId
       }
-      ...customerId
     }
-  }
-  ```
+```
 
 #### Response
 
-  ```json
+```json
   {
     "data": {
       "orders": [
@@ -1732,7 +1733,7 @@ query getOrders {
       "appVersion": "v0.32.3"
     }
   }
-  ```
+```
 
 Depending on the fields you chose to return from the query, you can immediately access all the data relevant to your ERP, like name, address(es), list of ordered products, customer ID and email, order totals, tax breakdown, etc.
 
@@ -1742,7 +1743,7 @@ Depending on your design, there is one function that you might be very intereste
 
 #### Request
 
-  ```gql
+```gql
   mutation lockOrders {
     setOrdersLock(
       input: {
@@ -1764,48 +1765,48 @@ Depending on your design, there is one function that you might be very intereste
       }
     }
   }
-  ```
+```
 
 #### Response
 
 ```json
-{
-    "data": {
-      "setOrdersLock": {
-        "userErrors": [],
-        "orders": [
-          {
-            "number": 39514,
-            "status": "PROCESSING",
-            "isLocked": true,
-            "shippingAddress": {
-              "firstName": "Pio",
-              "lastName": "Sym"
+  {
+      "data": {
+        "setOrdersLock": {
+          "userErrors": [],
+          "orders": [
+            {
+              "number": 39514,
+              "status": "PROCESSING",
+              "isLocked": true,
+              "shippingAddress": {
+                "firstName": "Pio",
+                "lastName": "Sym"
+              }
+            },
+            {
+              "number": 39515,
+              "status": "PROCESSING",
+              "isLocked": true,
+              "shippingAddress": {
+                "firstName": "Pio",
+                "lastName": "Sym"
+              }
             }
-          },
-          {
-            "number": 39515,
-            "status": "PROCESSING",
-            "isLocked": true,
-            "shippingAddress": {
-              "firstName": "Pio",
-              "lastName": "Sym"
-            }
-          }
-        ]
+          ]
+        }
+      },
+      "extensions": {
+        "complexity": 131,
+        "permissionsUsed": [
+          "Order.isLocked:write",
+          "Order:read",
+          "Order.shippingAddress:read"
+        ],
+        "appVersion": "v0.30.0"
       }
-    },
-    "extensions": {
-      "complexity": 131,
-      "permissionsUsed": [
-        "Order.isLocked:write",
-        "Order:read",
-        "Order.shippingAddress:read"
-      ],
-      "appVersion": "v0.30.0"
     }
-  }
-  ```
+```
 
 ## Order updates
 
@@ -1813,7 +1814,7 @@ Now that we’ve read the order, we can choose what to do with it. First of all,
 
 #### Request
 
-  ```gql
+```gql
     mutation updateDtcBasicFields {
     updateDirectToConsumerOrder(
       order: {
@@ -1856,137 +1857,137 @@ Now that we’ve read the order, we can choose what to do with it. First of all,
       userErrors { message path }
     }
   }
-  ```
+```
 
 #### Response
 
   ```json
-  {
-    "data": {
-      "updateDirectToConsumerOrder": {
-        "order": {
-          "id": "1497ccf644db871e1e4026d101bde6f3",
-          "number": 14,
-          "isOnHold": false,
-          "lines": [
-            {
-              "id": 68,
-              "product": {
-                "name": "Basic Jacket"
-              },
-              "quantity": 10,
-              "taxPercent": 25,
-              "unitPrice": {
-                "value": 675,
-                "currency": {
-                  "id": 3,
-                  "code": "SEK"
+    {
+      "data": {
+        "updateDirectToConsumerOrder": {
+          "order": {
+            "id": "1497ccf644db871e1e4026d101bde6f3",
+            "number": 14,
+            "isOnHold": false,
+            "lines": [
+              {
+                "id": 68,
+                "product": {
+                  "name": "Basic Jacket"
                 },
-                "conversionRate": 1
-              },
-              "hasAnyDiscount": false,
-              "unitOriginalPrice": {
-                "value": 675,
-                "currency": {
-                  "id": 3,
-                  "code": "SEK"
+                "quantity": 10,
+                "taxPercent": 25,
+                "unitPrice": {
+                  "value": 675,
+                  "currency": {
+                    "id": 3,
+                    "code": "SEK"
+                  },
+                  "conversionRate": 1
                 },
-                "conversionRate": 1
-              },
-              "lineValue": {
-                "value": 6750,
-                "currency": {
-                  "id": 3,
-                  "code": "SEK"
+                "hasAnyDiscount": false,
+                "unitOriginalPrice": {
+                  "value": 675,
+                  "currency": {
+                    "id": 3,
+                    "code": "SEK"
+                  },
+                  "conversionRate": 1
                 },
-                "conversionRate": 1
+                "lineValue": {
+                  "value": 6750,
+                  "currency": {
+                    "id": 3,
+                    "code": "SEK"
+                  },
+                  "conversionRate": 1
+                }
               }
-            }
-          ],
-          "discountsApplied": [
-            {
-              "value": {
-                "value": 0,
-                "currency": {
-                  "id": 3,
-                  "code": "SEK"
+            ],
+            "discountsApplied": [
+              {
+                "value": {
+                  "value": 0,
+                  "currency": {
+                    "id": 3,
+                    "code": "SEK"
+                  },
+                  "conversionRate": 1
                 },
-                "conversionRate": 1
+                "date": "2022-11-09T13:15:11+01:00"
+              }
+            ],
+            "shippingAddress": {
+              "firstName": "Jon",
+              "lastName": "Snow",
+              "address1": "Teststr. 1",
+              "address2": "1b",
+              "city": "Stockholm",
+              "zipCode": "12345",
+              "stateOrProvince": null,
+              "cellPhoneNumber": null,
+              "phoneNumber": "+4684026100",
+              "faxNumber": null,
+              "email": "jon.snow@example.com",
+              "companyName": null,
+              "attention": null,
+              "vatNumber": null,
+              "country": {
+                "id": 6,
+                "name": "Sweden"
               },
-              "date": "2022-11-09T13:15:11+01:00"
+              "state": null
+            },
+            "billingAddress": {
+              "firstName": "Jon",
+              "lastName": "Snow",
+              "address1": "Teststr. 1",
+              "address2": "1b",
+              "city": "Stockholm",
+              "zipCode": "12345",
+              "stateOrProvince": null,
+              "cellPhoneNumber": null,
+              "phoneNumber": "+4684026100",
+              "faxNumber": null,
+              "email": "jon.snow@example.com",
+              "companyName": null,
+              "attention": null,
+              "vatNumber": null,
+              "country": {
+                "id": 6,
+                "name": "Sweden"
+              },
+              "state": null
+            },
+            "customer": {
+              "email": "jon.snow@example.com",
+              "firstName": "Jon",
+              "lastName": "Snow"
             }
-          ],
-          "shippingAddress": {
-            "firstName": "Jon",
-            "lastName": "Snow",
-            "address1": "Teststr. 1",
-            "address2": "1b",
-            "city": "Stockholm",
-            "zipCode": "12345",
-            "stateOrProvince": null,
-            "cellPhoneNumber": null,
-            "phoneNumber": "+4684026100",
-            "faxNumber": null,
-            "email": "jon.snow@example.com",
-            "companyName": null,
-            "attention": null,
-            "vatNumber": null,
-            "country": {
-              "id": 6,
-              "name": "Sweden"
-            },
-            "state": null
           },
-          "billingAddress": {
-            "firstName": "Jon",
-            "lastName": "Snow",
-            "address1": "Teststr. 1",
-            "address2": "1b",
-            "city": "Stockholm",
-            "zipCode": "12345",
-            "stateOrProvince": null,
-            "cellPhoneNumber": null,
-            "phoneNumber": "+4684026100",
-            "faxNumber": null,
-            "email": "jon.snow@example.com",
-            "companyName": null,
-            "attention": null,
-            "vatNumber": null,
-            "country": {
-              "id": 6,
-              "name": "Sweden"
-            },
-            "state": null
-          },
-          "customer": {
-            "email": "jon.snow@example.com",
-            "firstName": "Jon",
-            "lastName": "Snow"
-          }
-        },
-        "userErrors": []
+          "userErrors": []
+        }
+      },
+      "extensions": {
+        "complexity": 229,
+        "permissionsUsed": [
+          "Order:write",
+          "Order:read",
+          "Order.shippingAddress:read",
+          "Order.billingAddress:read",
+          "Purchaser:read",
+          "Product:read"
+        ],
+        "appVersion": "v0.32.3"
       }
-    },
-    "extensions": {
-      "complexity": 229,
-      "permissionsUsed": [
-        "Order:write",
-        "Order:read",
-        "Order.shippingAddress:read",
-        "Order.billingAddress:read",
-        "Purchaser:read",
-        "Product:read"
-      ],
-      "appVersion": "v0.32.3"
     }
-  }
-  ```
+```
 
 Next, let’s talk about modifying the order lines, which translates to adding or removing products to/from an order _after_ it has been placed in Centra. The most common use case is canceling an order item which was sold by mistake, when you realize you don’t have the stock to actually fulfill it. If that’s the case, you can cancel this order line, and later ship only available products, while capturing less money that was authorized, so that the customer pays the right total.
 
 #### Request
 
-  ```gql
+```gql
   mutation updateDtcCancel {
     updateDirectToConsumerOrder(
       order: {
@@ -2011,11 +2012,11 @@ Next, let’s talk about modifying the order lines, which translates to adding o
       userErrors { message path }
     }
   }
-  ```
+```
 
 #### Response
 
-  ```json
+```json
   {
     "data": {
       "updateDirectToConsumerOrder": {
@@ -2136,13 +2137,13 @@ Next, let’s talk about modifying the order lines, which translates to adding o
       "appVersion": "v0.32.3"
     }
   }
-  ```
+```
 
 When it comes to adding order lines, be very mindful about it. While it’s usually perfectly OK in Wholesale orders, where the order oftentimes will be paid by invoice and there is no payment authorization, please note that adding a product to a DTC order would _increase_ the order total, which would then be higher than the amount that was authorized during purchase. If you do that, you won’t be able to capture more money than was previously authorized.
 
 #### Request
 
-  ```gql
+```gql
     mutation updateWholesaleAddProducts {
     updateWholesaleOrder(
       order: {
@@ -2176,7 +2177,7 @@ When it comes to adding order lines, be very mindful about it. While it’s usua
       userErrors { message path }
     }
   }
-  ```
+```
 
 ## Confirming an order
 
@@ -2184,7 +2185,7 @@ Now that our order looks as expected, let’s process it further. First step (po
 
 #### Request
 
-  ```gql
+```gql
   mutation confirmOrder {
     confirmOrder(
       input: {
@@ -2200,11 +2201,11 @@ Now that our order looks as expected, let’s process it further. First step (po
       userErrors { message path }
     }
   }
-  ```
+```
 
 #### Response
 
-  ```json
+```json
     {
     "data": {
       "confirmOrder": {
@@ -2224,7 +2225,7 @@ Now that our order looks as expected, let’s process it further. First step (po
       "appVersion": "v0.32.3"
     }
   }
-  ```
+```
 
 ## Shipment creation and capture
 
@@ -2237,28 +2238,28 @@ There is another way, though, which can make things easier in some integrations.
 #### Request: Capture an order prior to shipment
 
 ```gql
-mutation captureOrder {
-    captureOrder(order: {id: "05ac658a8e815571fdba2984eb358932"
-                         # number: 10 }) {    
-      userErrors {
-        message 
-        path
-      }
-      paymentHistoryEntry {      
-        createdAt
-        status
-        entryType
-        externalReference
-        value {value}
-        paymentMethod
-        paramsJSON
-      }
-      order {
-        id
+  mutation captureOrder {
+      captureOrder(order: {id: "05ac658a8e815571fdba2984eb358932"
+                           # number: 10 }) {    
+        userErrors {
+          message 
+          path
+        }
+        paymentHistoryEntry {      
+          createdAt
+          status
+          entryType
+          externalReference
+          value {value}
+          paymentMethod
+          paramsJSON
+        }
+        order {
+          id
+        }
       }
     }
-  }
-  ```
+```
 
 If you choose to only capture the money for items that were actually shipped, you can split your shipment processing into 3 stages:
 
@@ -2358,252 +2359,252 @@ First, let’s create a shipment which is not paid for, only specifying which or
       name
     }
   }
-  ```
+```
 
 #### Response
 
   ```json
-  {
-    "data": {
-      "createShipment": {
-        "userErrors": [],
-        "shipment": {
-          "id": 345,
-          "number": "39790-1",
-          "createdAt": "2022-06-23T15:47:12+02:00",
-          "updatedAt": "2023-01-16T10:31:34+01:00",
-          "isGoodToGo": true,
-          "isShipped": false,
-          "isPaid": false,
-          "paidAt": null,
-          "additionalMessage": "Additional message",
-          "shippedAt": null,
-          "numberOfPackages": 0,
-          "trackingNumber": null,
-          "returnTrackingNumber": null,
-          "internalShippingCost": {
-            "value": 0
-          },
-          "grandTotal": {
-            "value": 900
-          },
-          "carrierInformation": null,
-          "adminUser": null,
-          "discountsApplied": [],
-          "lines": [
-            {
-              "id": 465,
-              "quantity": 2,
-              "lineValue": {
-                "formattedValue": "700.00 SEK"
-              }
-            }
-          ],
-          "shippingAddress": {
-            "firstName": "Pio",
-            "lastName": "Sym",
-            "country": {
-              "name": "Sweden",
-              "code": "SE"
+    {
+      "data": {
+        "createShipment": {
+          "userErrors": [],
+          "shipment": {
+            "id": 345,
+            "number": "39790-1",
+            "createdAt": "2022-06-23T15:47:12+02:00",
+            "updatedAt": "2023-01-16T10:31:34+01:00",
+            "isGoodToGo": true,
+            "isShipped": false,
+            "isPaid": false,
+            "paidAt": null,
+            "additionalMessage": "Additional message",
+            "shippedAt": null,
+            "numberOfPackages": 0,
+            "trackingNumber": null,
+            "returnTrackingNumber": null,
+            "internalShippingCost": {
+              "value": 0
             },
-            "state": null,
-            "address1": "Addr 1",
-            "address2": null,
-            "city": "City",
-            "zipCode": "12345",
-            "stateOrProvince": "State",
-            "cellPhoneNumber": "123456789",
-            "phoneNumber": null,
-            "faxNumber": null,
-            "email": "test@test.com"
-          },
-          "shipmentPlugin": null
+            "grandTotal": {
+              "value": 900
+            },
+            "carrierInformation": null,
+            "adminUser": null,
+            "discountsApplied": [],
+            "lines": [
+              {
+                "id": 465,
+                "quantity": 2,
+                "lineValue": {
+                  "formattedValue": "700.00 SEK"
+                }
+              }
+            ],
+            "shippingAddress": {
+              "firstName": "Pio",
+              "lastName": "Sym",
+              "country": {
+                "name": "Sweden",
+                "code": "SE"
+              },
+              "state": null,
+              "address1": "Addr 1",
+              "address2": null,
+              "city": "City",
+              "zipCode": "12345",
+              "stateOrProvince": "State",
+              "cellPhoneNumber": "123456789",
+              "phoneNumber": null,
+              "faxNumber": null,
+              "email": "test@test.com"
+            },
+            "shipmentPlugin": null
+          }
         }
+      },
+      "extensions": {
+        "complexity": 131,
+        "permissionsUsed": [
+          "Shipment:write",
+          "Shipment:read",
+          "AdminUser:read",
+          "Order:read",
+          "Shipment.shippingAddress:read",
+          "StorePlugin:read"
+        ],
+        "appVersion": "v0.34.6"
       }
-    },
-    "extensions": {
-      "complexity": 131,
-      "permissionsUsed": [
-        "Shipment:write",
-        "Shipment:read",
-        "AdminUser:read",
-        "Order:read",
-        "Shipment.shippingAddress:read",
-        "StorePlugin:read"
-      ],
-      "appVersion": "v0.34.6"
     }
-  }
-  ```
+```
 
 Such shipment can later be captured or marked as paid at any point.
 
 #### Request: Capturing a shipment
 
 ```gql
-mutation captureShipment {
-    captureShipment(id: 123) {
-      userErrors {
-        message 
-        path
-      }
-      paymentHistoryEntry {
-        createdAt
-        status
-        entryType
-        externalReference
-        value {value}
-        paymentMethod
-        paramsJSON
-      }
-      shipment {
-        id
-        number
-        isCaptured
-        capturedAt
-      }
-    }  
-  }
-  ```
+  mutation captureShipment {
+      captureShipment(id: 123) {
+        userErrors {
+          message 
+          path
+        }
+        paymentHistoryEntry {
+          createdAt
+          status
+          entryType
+          externalReference
+          value {value}
+          paymentMethod
+          paramsJSON
+        }
+        shipment {
+          id
+          number
+          isCaptured
+          capturedAt
+        }
+      }  
+    }
+```
 
 #### Request: Mark a shipment as paid
 
   ```gql
-  mutation updateShipmentMarkPaid {
-    updateShipment (
-      id: 345
-      input: {
-        isPaid: true
-      }
-    ) {
-      userErrors {
-        message
-        path
-      }
-      shipment {
-        ...shipmentDetails
+    mutation updateShipmentMarkPaid {
+      updateShipment (
+        id: 345
+        input: {
+          isPaid: true
+        }
+      ) {
+        userErrors {
+          message
+          path
+        }
+        shipment {
+          ...shipmentDetails
+        }
       }
     }
-  }
-  ```
+```
 
 #### Response
 
   ```json
-  {
-    "data": {
-      "updateShipment": {
-        "userErrors": [],
-        "shipment": {
-          "id": 345,
-          "number": "39790-1",
-          "createdAt": "2022-06-23T15:47:12+02:00",
-          "updatedAt": "2023-01-16T10:35:35+01:00",
-          "isGoodToGo": true,
-          "isShipped": false,
-          "isPaid": true,
-          "paidAt": "2023-01-16T10:35:35+01:00",
-          "additionalMessage": "Additional message",
-          "shippedAt": null,
-          "numberOfPackages": 0,
-          "trackingNumber": null,
-          "returnTrackingNumber": null,
-          "internalShippingCost": {
-            "value": 0
-          },
-          "grandTotal": {
-            "value": 900
-          },
-          "carrierInformation": null,
-          "adminUser": null,
-          "discountsApplied": [],
-          "lines": [
-            {
-              "id": 465,
-              "quantity": 2,
-              "lineValue": {
-                "formattedValue": "700.00 SEK"
-              }
-            }
-          ],
-          "shippingAddress": {
-            "firstName": "Pio",
-            "lastName": "Sym",
-            "country": {
-              "name": "Sweden",
-              "code": "SE"
+    {
+      "data": {
+        "updateShipment": {
+          "userErrors": [],
+          "shipment": {
+            "id": 345,
+            "number": "39790-1",
+            "createdAt": "2022-06-23T15:47:12+02:00",
+            "updatedAt": "2023-01-16T10:35:35+01:00",
+            "isGoodToGo": true,
+            "isShipped": false,
+            "isPaid": true,
+            "paidAt": "2023-01-16T10:35:35+01:00",
+            "additionalMessage": "Additional message",
+            "shippedAt": null,
+            "numberOfPackages": 0,
+            "trackingNumber": null,
+            "returnTrackingNumber": null,
+            "internalShippingCost": {
+              "value": 0
             },
-            "state": null,
-            "address1": "Addr 1",
-            "address2": null,
-            "city": "City",
-            "zipCode": "12345",
-            "stateOrProvince": "State",
-            "cellPhoneNumber": "123456789",
-            "phoneNumber": null,
-            "faxNumber": null,
-            "email": "test@test.com"
-          },
-          "shipmentPlugin": null
+            "grandTotal": {
+              "value": 900
+            },
+            "carrierInformation": null,
+            "adminUser": null,
+            "discountsApplied": [],
+            "lines": [
+              {
+                "id": 465,
+                "quantity": 2,
+                "lineValue": {
+                  "formattedValue": "700.00 SEK"
+                }
+              }
+            ],
+            "shippingAddress": {
+              "firstName": "Pio",
+              "lastName": "Sym",
+              "country": {
+                "name": "Sweden",
+                "code": "SE"
+              },
+              "state": null,
+              "address1": "Addr 1",
+              "address2": null,
+              "city": "City",
+              "zipCode": "12345",
+              "stateOrProvince": "State",
+              "cellPhoneNumber": "123456789",
+              "phoneNumber": null,
+              "faxNumber": null,
+              "email": "test@test.com"
+            },
+            "shipmentPlugin": null
+          }
         }
+      },
+      "extensions": {
+        "complexity": 131,
+        "permissionsUsed": [
+          "Shipment:write",
+          "Shipment:read",
+          "AdminUser:read",
+          "Order:read",
+          "Shipment.shippingAddress:read",
+          "StorePlugin:read"
+        ],
+        "appVersion": "v0.34.6"
       }
-    },
-    "extensions": {
-      "complexity": 131,
-      "permissionsUsed": [
-        "Shipment:write",
-        "Shipment:read",
-        "AdminUser:read",
-        "Order:read",
-        "Shipment.shippingAddress:read",
-        "StorePlugin:read"
-      ],
-      "appVersion": "v0.34.6"
     }
-  }
-  ```
+```
 
 You can combine the two steps above, and create shipments which should be captured immediately upon creation:
 
 #### Request: Creating and capturing a shipment
 
-  ```gql
-  mutation createShipmentWithCapturing {
-    createShipment(
-      input: {
-        order: {
-          id: "05ac658a8e815571fdba2984eb358932"
-          # number: 10
+```gql
+    mutation createShipmentWithCapturing {
+      createShipment(
+        input: {
+          order: {
+            id: "05ac658a8e815571fdba2984eb358932"
+            # number: 10
+          }
+          lines: [
+            { orderLine: { id: 10 }, quantity: 1 }
+          ]
+          capture: true   # this will enable capturing 
         }
-        lines: [
-          { orderLine: { id: 10 }, quantity: 1 }
-        ]
-        capture: true   # this will enable capturing 
-      }
-    ) {
-      userErrors {
-        message
-        path
-      }
-      shipment {
-        id
-        isCaptured
-        capturedAt
-        order {
-          paymentHistory(where: {entryType: [CAPTURE, CAPTURE_REQUEST]}) {
-            createdAt
-            status
-            entryType
-            externalReference
-            value {value}
-            paymentMethod
-            paramsJSON
+      ) {
+        userErrors {
+          message
+          path
+        }
+        shipment {
+          id
+          isCaptured
+          capturedAt
+          order {
+            paymentHistory(where: {entryType: [CAPTURE, CAPTURE_REQUEST]}) {
+              createdAt
+              status
+              entryType
+              externalReference
+              value {value}
+              paymentMethod
+              paramsJSON
+            }
           }
         }
       }
     }
-  }
-  ```
+```
 
 Once the shipment is Good-to-go and paid for, you can ship it out. This is done by completing the shipment, at which stage you can add the shipment info (like carrier, service and tracking number), set the shipped date and choose whether or not to send out the shipping confirmation email to your shopper. In GraphQL `shipped` parameter is not a boolean, but rather a timestamp of when this shipment was completed. Good news - this timestamp supports the same options as PHP date, so setting it can be as easy as sending `shippedAt: now`. Centra will save the right timestamp on the shipment for you.
 
@@ -2611,37 +2612,37 @@ Examples of the date could be "yesterday", "21/10/2023", "-1 hour". It cannot be
 
 #### Request
 
-  ```gql
-  mutation completeShipment {
-    completeShipment (
-      id: 345
-      input: {
-        shippedAt: "2023-01-09T15:18:33+01:00"
-        sendEmail: true
-        shipmentInfo: {
-          carrier: "Carrier name"
-          service: "Service name"
-          packagesNumber: 1
-          trackingNumber: "1234trackingcode"
-          returnTrackingNumber: "1234returncode"
-          internalShippingCost: { currencyIsoCode: "SEK", value: 12 }
+```gql
+    mutation completeShipment {
+      completeShipment (
+        id: 345
+        input: {
+          shippedAt: "2023-01-09T15:18:33+01:00"
+          sendEmail: true
+          shipmentInfo: {
+            carrier: "Carrier name"
+            service: "Service name"
+            packagesNumber: 1
+            trackingNumber: "1234trackingcode"
+            returnTrackingNumber: "1234returncode"
+            internalShippingCost: { currencyIsoCode: "SEK", value: 12 }
+          }
+        }
+      ) {
+        userErrors {
+          message
+          path
+        }
+        shipment {
+          ...shipmentDetails
         }
       }
-    ) {
-      userErrors {
-        message
-        path
-      }
-      shipment {
-        ...shipmentDetails
-      }
     }
-  }
-  ```
+ ```
 
 #### Response
 
-  ```json
+```json
     {
     "data": {
       "completeShipment": {
@@ -2716,7 +2717,7 @@ Examples of the date could be "yesterday", "21/10/2023", "-1 hour". It cannot be
       "appVersion": "v0.34.6"
     }
   }
-  ```
+```
 
 ## Returns
 
@@ -2735,33 +2736,33 @@ Additional costs, such as handling fees, shipping costs, or voucher value, can a
 #### Request: Creating a return
 
 ```gql
-mutation createreturn {
-      createReturn(
-      input: {
-        shipment: { id: 1338 }
-        lines: [
-          { shipmentLine: { id: 2943 }, quantity: 2 }
-          { shipmentLine: { id: 2944 }, quantity: 2 }
-        ]
-        returnStockActionPolicy: { releaseItemsBackToWarehouse: true }
-        shippingCost: { value: { currencyIsoCode: "SEK", value: 10.00 } }
-        voucherValue: { fromShipment: true }
-        handlingCost: { fromShipment: true }
-        comment: "new comment"
-      }
-      ) {
-      userErrors {
-        message
-        path
-      }
-      return {
-        id
-        lines {
+  mutation createreturn {
+        createReturn(
+        input: {
+          shipment: { id: 1338 }
+          lines: [
+            { shipmentLine: { id: 2943 }, quantity: 2 }
+            { shipmentLine: { id: 2944 }, quantity: 2 }
+          ]
+          returnStockActionPolicy: { releaseItemsBackToWarehouse: true }
+          shippingCost: { value: { currencyIsoCode: "SEK", value: 10.00 } }
+          voucherValue: { fromShipment: true }
+          handlingCost: { fromShipment: true }
+          comment: "new comment"
+        }
+        ) {
+        userErrors {
+          message
+          path
+        }
+        return {
           id
+          lines {
+            id
+          }
+        }
         }
       }
-      }
-    }
 ```
 
 If you would like to complete a return using the Integration API you can do it by running completeReturn mutation. First you can query the returns to find the needed id.
@@ -2769,17 +2770,17 @@ If you would like to complete a return using the Integration API you can do it b
 #### Request
 
 ```gql
-query returns {
-      returns {
-      id
-      status
-      lines {
-        shipmentLine {
-          id
+  query returns {
+        returns {
+        id
+        status
+        lines {
+          shipmentLine {
+            id
+          }
+        }
         }
       }
-      }
-    }
 ```
 
 In the completeReturn mutation you can also pass the information on whether an email with return confirmation should be sent to the customer. You can’t complete a return that already has a completed status.
@@ -2787,23 +2788,23 @@ In the completeReturn mutation you can also pass the information on whether an e
 #### Request
 
 ```gql
-mutation completereturn {
-      completeReturn(
-      id: 315
-      input: {
-        sendEmail:true
+  mutation completereturn {
+        completeReturn(
+        id: 315
+        input: {
+          sendEmail:true
+        }
+        ) {
+        userErrors {
+          message
+          path
+        }
+        return {
+          id
+          status
+        }
+        }
       }
-      ) {
-      userErrors {
-        message
-        path
-      }
-      return {
-        id
-        status
-      }
-      }
-    }
 ```
 
 You also have the option to un-complete a return if needed.
@@ -2811,18 +2812,18 @@ You also have the option to un-complete a return if needed.
 #### Request
 
 ```gql
-  mutation uncompletereturn {
-      uncompleteReturn(id: 315) {
-      userErrors {
-        message
-        path
+    mutation uncompletereturn {
+        uncompleteReturn(id: 315) {
+        userErrors {
+          message
+          path
+        }
+        return {
+          id
+          status
+        }
+        }
       }
-      return {
-        id
-        status
-      }
-      }
-    }
 ```
 
 If a return was created by mistake and needs to be deleted, you also have that possibility
@@ -2830,20 +2831,20 @@ If a return was created by mistake and needs to be deleted, you also have that p
 #### Request
 
 ```gql
-mutation deleteReturn {
-      deleteReturn(id: 436) {
-      userErrors {
-        message
-        path
-      }
-      return {
-        id
-        lines {
+  mutation deleteReturn {
+        deleteReturn(id: 436) {
+        userErrors {
+          message
+          path
+        }
+        return {
           id
+          lines {
+            id
+          }
+        }
         }
       }
-      }
-    }
 ```
 
 All you need to provide is the return ID. The stock will be re-allocated according to the policy that was selected when creating the return. If the return was created using the releaseItemsBackToWarehouse stock policy, the order and shipment lines will be re-allocated based on the allocation rule assigned to the order.
