@@ -6,8 +6,6 @@ taxonomy:
 category: docs
 ---
 
-# Introduction
-
 In this article you’ll get an understanding how an ERP system (or similar) could be integrated with Centra. Keep in mind that this guide is not the absolute truth, but a recommendation on how it could be handled in the specific scenario that product data and inventory is sent to Centra, and that orders are read from Centra and that they’re updated in Centra by the ERP upon fulfillment.
 
 This article goes through how to integrate to Centra step-by-step. If an integration of this kind is to be made for a client that has been running their e-commerce through Centra for some time, a different approach might need to be taken.
@@ -18,7 +16,7 @@ All mutations of the API are documented in [Integration API Docs](https://docs.c
 
 ### Communication
 
-Whether it’s stock updates, product updates or fetching orders. The integration is always initiating the communication. Centra APIs are passive and do not trigger any updates or send information to external systems. Centra, however, has the option to send webhook for Certain events. If that is of interest, more information is [available here](https://docs.centra.com/plugins/centra-webhook).
+Whether it’s stock updates, product updates or fetching orders. The integration is always initiating the communication. Centra APIs are passive and do not trigger any updates or send information to external systems. Centra, however, has the option to send webhook for Certain events. If that is of interest, more information is [available here](/plugins/centra-webhook). You might also be interested in using the [GraphQL API events system](/api-references/graphql-integration-api/events-system).
 
 ### Prerequisites
 
@@ -28,19 +26,17 @@ An Integration API token with proper access rights. These are set up in Centra A
 
 To make an integration as easy as possible to build and maintain, the Integration API enables interactions with Centra based on IDs in any external integration. This means the integration only has to be aware of its own IDs and not of Centra's IDs. This is very similar to how ID conversion works in SOAP API and other modules, however, we extended it to be manageable through the Integration API directly as part of the Centra core. It also allows to support any custom integrations that are not Centra modules.
 
-You can read and learn how to work with [ID Conversion here](https://docs.centra.com/api-references/graphql-integration-api/id-conversion).
+You can read and learn how to work with [ID Conversion here](/api-references/graphql-integration-api/id-conversion).
 
 ### Events system
 
-Integration GraphQL API exposes a stream of events to the interested parties. When anything in Centra is changed, there will be events you can listen to. This will allow you to:
+Integration GraphQL API exposes a stream of events to the interested parties. When anything in Centra is changed, there will be events you can listen to. This will allow you to:  
+* know what changed since your last synchronization, so that you can fetch only changed data selectively,  
+* avoid periodical polling for new data of each type.
 
-    know what changed since your last synchronization, so that you can fetch only changed data selectively,
+For example, when a new order is created by Checkout API or in any other place, there will be an event of “object type” `Order` and “change type” `CREATED`, and your integration will see it as soon as the events are fetched by the new query events.
 
-    avoid periodical polling for new data of each type.
-
-For example, when a new order is created by Checkout API or in any other place, there will be an event of “object type” Order and “change type” CREATED, and your integration will see it as soon as the events are fetched by the new query events.
-
-You can read all about the Events system at this page - INSERT LINK
+You can read [all about the Events system here](/api-references/graphql-integration-api/events-system).
 
 ### Special characters and checkout fields limitations
 
@@ -48,13 +44,11 @@ Depending on your ERP, there might be some limitations when it comes to the allo
 
 ***
 
-# Cookbook
-
 ## Product data
 
-The first step in this kind of integration, whether the product data is coming directly from the ERP or a PIM system, is to create the products. This needs to be done in order to run tests for orders, stock etc with the correct data.
+The first step in this kind of integration, whether the product data is coming directly from the ERP or a PIM system, is to create the products in Centra. This needs to be done in order to run tests for orders, stock etc with the correct data.
 
-Before products can be added, size charts must be created in Centra. Sizes for products is a core feature in Centra and must be used, whether the products that will be sold come in sizes or not. One reason for this is that stock is stored on size level. If the products sold only come in a single size, simply create a size chart with a single size that can be used for all products.
+Before products can be added, size charts must be created in Centra. Sizes for products is a core feature in Centra and must be used, whether the products that will be sold come in different sizes or not. One reason for this is that stock is stored on size level. If the products sold only come in a single size, simply create a size chart with a single size that can be used for all products.
 
 A size chart contains a name, and sizes. Size charts can be named in any way and the sizes within a size chart can also be named in any way. It could be a classic size chart named XS-XL which contains the sizes XS, S, M, L, and XL. It could also be a multi-dimensional size charts for pants that can hold both length and width.
 
@@ -496,7 +490,7 @@ With size charts and their sizes in place, everything that is needed to create t
 
 Centra’s light-weight PIM can contain a lot of product data with the help of “custom attributes”. In this example, only the basic attributes will be taken into account. Each product in Centra contains three different “sections”. First, there’s the general section where the basic attributes available are such as Product number, Product Name, Collection, Country of Origin, and more. This section needs to be created before the next subset of data can be created in Centra.
 
-Here’s an example of how a query to create the first part (General) of a product can look like. Remember: the id you get back needs to be used in order to update the product at a later stage. Store it somewhere secure.
+Here’s an example of how a query to create the first part (General) of a product can look like. Remember: the `id` you get back needs to be used in order to update the product at a later stage. Store it somewhere secure.
 
 #### Request: Product creation
 
@@ -571,13 +565,13 @@ Here’s an example of how a query to create the first part (General) of a produ
     }
   ```
 
-The first part of the product is now created, and it’s also possible to view it in Centra. It cannot be sold until we continue with the rest of its sections. This is also where a new concept will be introduced: Variants.
+The first part of the product is now created, and it’s also possible to view it in Centra. It cannot be sold until we configure the rest of its sections. This is also where a new concept will be introduced: Variants.
 
-Much like size charts and their sizes, variants are a core feature in Centra. Each product needs at least one variant. Just as with size charts and sizes, if the product setup doesn’t really have variants, one variant will still need to be created. It’s also at variant level where the size chart to be used is selected. It's recommended to have no more than 10-20 variants per product. If there's need for more, please consult with Centra to find a good structure for the product data.
+Much like size charts and their sizes, variants are a core feature in Centra. Each product has at least one variant. Just as with size charts and sizes, if the product setup doesn’t really have variants, one variant will still need to be created. It’s also at variant level where the size chart to be used is selected. It's recommended to have no more than 10-20 variants per product. If there's need for more, please consult with Centra to find a good structure for the product data.
 
 A variant has basic attributes and custom attributes. Just as the product’s general section. The most used basic attributes of the variant are Variant number and Variant name. Variant names many times will be the color name of the product, or even material in cases where a product comes in multiple materials rather than colors.
 
-Let’s take a look at the example on how to create a variant. Notice that there’s a product id that needs to be sent with the query. This is the id provided from the creation of the basic product data. A size chart id must also be provided in order to tell Centra which size chart should be assigned to this variant. Just as with the product, this id was returned when the size chart was created.
+Let’s take a look at the example on how to create a variant. Notice that there’s a product id that needs to be sent with the query. This is the `id` provided from the creation of the base product. A size chart id must also be provided in order to tell Centra which size chart should be assigned to this variant. Just as with the product, this id was returned when the size chart was created.
 
 #### Request: Adding a variant
 
@@ -628,15 +622,15 @@ Let’s take a look at the example on how to create a variant. Notice that there
     }
   ```
 
-Much like with the product, an ID for the variant will be returned. This is needed to update the variant and activate the sizes. Remember to store it.
+Much like with the product, an `ID` for the variant will be returned. This is needed to update the variant and activate the sizes. Remember to store it.
 
 For each variant that needs to be added, a new mutation needs to be executed.
 
-The last step to be made before the full core set of product data is ready, is to activate the sizes in the size chart select on each variant that was added to the product. To elaborate: when selecting a size chart for the variant, it doesn’t automatically get all sizes activated. The reason for this is that a size chart can contain more sizes than what the specific variant will be available in.
+The last step to be made before the full core set of product data is ready, is to activate the desired sizes in the size chart selected on each variant of the product. To elaborate: when selecting a size chart for the variant, it doesn’t automatically get all sizes activated. The reason for this is that a size chart can contain more sizes than what the specific variant will be available in.
 
-When activating the sizes for the variant, it’s also possible to add some data per size like GTIN and size number. Size number can be a part of the full SKU or the full SKU, depending on the needs for the integration. In the example you can see that the id of the variant will be used. It’s also a must to provide the id of the size, or its name along with the mutation. Each size needs to be activated in its own mutation.
+When activating the sizes for the variant, it’s also possible to add some data per size like GTIN and size number. Size number can be a part of the SKU (when combined with product and variant SKUs), or it can contain the full SKU (similar to an EAN), depending on the needs of the integration. In the example you can see that the id of the variant will be used. It’s also a must to provide the id of the size, or its name along with the mutation. Each size needs to be activated in its own mutation.
 
-Much like with the product and variant data. An ID will be returned and remember to store this ID as well. This will be needed if you need to update the GTIN, as an example.
+Much like with the product and variant data. An `ID` will be returned, which you should store as well. This will be needed if you need to update the GTIN, as an example.
 
 #### Request: Activating sizes
 
@@ -744,7 +738,6 @@ The fixed bundle type will work straight away in a client’s storefront as it w
   }
 ```
 
-
 ### Warehouses and inventory
 
 All of the core data needed for a product has now been added. Inventory can now be added to the product, let’s take a look on how to handle that.
@@ -834,7 +827,7 @@ Warehouses might already be set up in Centra when the integration work starts, b
 
 With a warehouse in place, it’s easy to send inventory levels to Centra. Keep in mind that Centra keeps track of inventory, there’s no need to send stock updates when an order read from Centra has been fulfilled. It’s only necessary to sync the stock when there’s other types of stock movements made in the external system, like inbound deliveries, internal warehouse transfers etc.
 
-There are two ways to set stock in Centra. You can either set the physical inventory balance (what’s actually sitting on the warehouse shelf, including inventory reserved by unfulfilled orders) or send in changes. Take a look at the examples below.
+There are two ways to set stock in Centra. You can either set the absolute physical inventory balance (what’s actually sitting on the warehouse shelf, including inventory reserved by unfulfilled orders) or send in stock changes. Take a look at the examples below.
 
 #### Request: Add inventory (one mutation per size)
 
@@ -966,16 +959,15 @@ There are two ways to set stock in Centra. You can either set the physical inven
     }
 ```
 
-
 ### Pricelists
 
-With products and inventory in place, there’s some more data needed to be fully able to start selling a product. One of these things are prices. Prices in Centra are set with a price list. A price list in Centra can be in any currency. Multiple price lists with the same currency are also supported.
+With products and inventory in place, there’s some more data needed to be fully able to start selling a product. One of these are prices. Prices in Centra are set with a price list. A price list in Centra can be in any currency. Multiple price lists with the same currency are also supported.
 
 Prices can be set on variant level, but not size. By default, all variants of the same product share the same price, but you can choose to enable individual variant prices for some or all variants. When creating a price list, there are multiple data points that can be added, but not all of them are mandatory during the creation phase, since some oftentimes are set by the client in Centra. Let’s take a look at what you must send in and an example after that.
 
-- Name: the name of the pricelist. Could be as simple as the currency of the pricelist or something with a longer description
-- Store: This is the ID of the store that the price list should be added to
-- Currency: set with currencyIsoCode. Self-explanatory, the currency of the pricelist
+* Name: the name of the pricelist. Could be as simple as the currency of the pricelist or something with a longer description.
+* Store: This is the ID of the store that the price list should be added to.
+* Currency: set with `currencyIsoCode`. Self-explanatory, the currency of the pricelist.
 
 Other fields like Default shipping option, adding countries, can also be done upon creation or by updating the pricelist. But as stated earlier, these are oftentimes set by the client directly in the Centra admin, however the example contains them. Countries are only added for pricelists in a DTC store. In Wholesale, there’s also an option to add RRP prices to the pricelist.
 
@@ -1059,7 +1051,7 @@ Other fields like Default shipping option, adding countries, can also be done up
   }
 ```
 
-When the price list is created, it’s now time to add the actual prices to the products. As always, use the id for the pricelist that was returned upon its creation. Here’s an example of how setting the prices work:
+When the price list is created, it’s now time to add the actual prices to the products. As usual, use the id for the pricelist that was returned upon its creation. Here’s an example of how setting the prices work:
 
 #### Request
 
@@ -1214,12 +1206,13 @@ When the Price Alteration is created, the specific prices for the products can a
 
 ### Product displays
 
-There’s one last thing that needs to be done in order to get products that are fully sellable. They’re called Displays and their function is to connect products to specific categories, assign product images, select for which Market they should be available for, and more. Depending on the project scope, Displays might be handled directly in Centra by the client and that’s why it’s saved for last. However, they can also be created directly through an integration. To make it less abstract, we can call the Display the product presentation layer. Just like in the real world you are not just sending your customers to browse your warehouse, but instead display your products in a way that will entice a sale, Displays in Centra can be used to control how your backend product(s) will look like in your Stores. The beauty of displays is that you can configure one Display per Store, which means you can sell the same products from different stores using different categories, media and metadata, depending on requirements.
+There’s one last thing that needs to be done in order to get products that are fully sellable. They’re called Displays and their function is to connect products to specific categories, assign product images, select for which Market they should be available for, and more. Depending on the project scope, Displays might be handled directly in Centra by the client and that’s why it’s saved for last. However, they can also be created directly through an integration. To make it less abstract, we can call the Display the product presentation layer. Just like in the real world you are not just sending your customers to browse your warehouse, but instead display your products in a way that will entice a sale, Displays in Centra can be used to control how your backend products will look like in your Stores. The beauty of displays is that you can configure one Display per Store, which means you can sell the same products from different stores using different categories, media and metadata, depending on requirements.
 
 Displays are connected to a specific Store and if a client has multiple stores in Centra and wants to sell the product in all stores, a display must be created for each store. Commonly a DTC and Wholesale store.
 
 A Display has a lot of parameters, most of which are optional. Take a look at the full set below
 
+```gql
 input DisplayCreateInput {
 # basic required fields
 store: StoreInput!
@@ -1247,8 +1240,9 @@ addProductMedia: [ProductMediaAddInput!]
 addProductVariants: [ProductVariantAddInput!]
 taxGroup: TaxGroupInput
 }
+```
 
-Let’s take a look at how to create a basic Display with one Variant
+Let’s take a look at how to create a basic Display with one activated Variant.
 
 #### Request: Create a basic display
 
@@ -1296,10 +1290,9 @@ Let’s take a look at how to create a basic Display with one Variant
   }
 ```
 
-With this query, a display named “New Display!” will be created in the store with ID 1 for the product with ID 2. With the mutation we also added one of the product's variants to the display. You can only add variants from the same product to a Display.
+With this query, a display named “New Display!” will be created in the store with ID 1 for the product with ID 2. With the mutation we also added one of the product's variants to the display. You can only add variants of the same product to a Display.
 
 The ID which was returned when creating the Display should be saved, if you need to update the Display at a later stage, like adding a second variant to the display. See an example of that below.
-
 
 #### Request: Add a variant to the display
 
@@ -1349,35 +1342,35 @@ With products and price lists in place, products can now be sold in a DTC store 
 
 #### Account creation
 
-With payment and shipping terms in place, it’s about time to create the first Wholesale Account in Centra. An Account in Centra will hold all of the necessary information like Invoice address, Shipping Address (multiple ship-to addresses available through “Address book”, discounts, and buyers. Note: in order for an Account to be fully functional, at least one Buyer needs to be added to the account. It is Buyers who can access Centra B2B Showroom and place orders for their parent Account.
+With payment and shipping terms in place, it’s about time to create the first Wholesale Account in Centra. An Account in Centra will hold all of the necessary information like Invoice address, Shipping Address (multiple ship-to addresses available through “Address book”), discounts, and buyers. Note: in order for an Account to be fully functional, at least one Buyer needs to be added to the account. It is the Buyers who can access Centra B2B Showroom and place orders for their parent Account.
 
 There’s quite a lot of data that can be added to an Account. Either during its creation or by updating it later. Please see a list below with a short explanation on what these different data sets are and if they’re mandatory or not.
 
-name: The name of the Account.
-status: Status, as in active, inactive or canceled.
-internalComment: An internal comment field for the Centra client. Optional.
-otherComment: Other comments will be visible for the Account. Optional.
-websiteUrl: A field for a URL. Optional.
-creditLimit: Limit on how much the Account can shop for before settling their outstanding invoices. Optional.
-discounts: Discount. General percentage based discount specific for this Account. Can also be set for specific delivery windows. Optional.
-applyCreditLimit: If credit limit should be enforced. Optional.
-blockIfUnpaidInvoices: Used to block new orders if there are unpaid invoices. Optional.
-hasBrandsRestriction: Use to set which brands the Account will be able to see. Optional.
-isInternal: Flag an account as an “Internal Account”. Optional. Oftentimes used to place internal orders.
-carrierInformation: Fields to store preferred carrier for fulfillment for the Account. Optional.
-market: Which market the Account should belong to.
-pricelist: The pricelist that the Account will use.
-allocationRule: Used to set another than the default Allocation rule. Optional.
-paymentTerms: Set the Payment term for the account.
-shippingTerms: Set the Shipping term for the account.
-salesRepresentative: Set the sales rep for the account. Optional.
-taxClass: Set tax class for account. Optional.
-documentTemplate: Used to set the Document template that will be used for the Account. Optional.
-addBrands: Add new brands that the Account will be able to access. Only used if brands are to be used as a restriction. Optional.
-addVisibleForAgents: Add which agents that should have access to the Account. Optional.
-accountAddress: Fields for Account address. The account address is the registered address of the company.
-shippingAddress: Fields for default Shipping address.
-billingAddress: Fields for the billing address (invoice address)
+* `name`: The name of the Account.
+* `status`: Status, as in active, inactive or canceled.
+* `internalComment`: An internal comment field for the Centra client. Optional.
+* `otherComment`: Other comments will be visible for the Account. Optional.
+* `websiteUrl`: A field for a URL. Optional.
+* `creditLimit`: Limit on how much the Account can shop for before settling their outstanding invoices. Optional.
+* `discounts`: Discount. General percentage based discount specific for this Account. Can also be set for specific delivery windows. Optional.
+* `applyCreditLimit`: If credit limit should be enforced. Optional.
+* `blockIfUnpaidInvoices`: Used to block new orders if there are unpaid invoices. Optional.
+* `hasBrandsRestriction`: Use to set which brands the Account will be able to see. Optional.
+* `isInternal`: Flag an account as an “Internal Account”. Optional. Oftentimes used to place internal orders.
+* `carrierInformation`: Fields to store preferred carrier for fulfillment for the Account. Optional.
+* `market`: Which market the Account should belong to.
+* `pricelist`: The pricelist that the Account will use.
+* `allocationRule`: Used to set another than the default Allocation rule. Optional.
+* `paymentTerms`: Set the Payment term for the account.
+* `shippingTerms`: Set the Shipping term for the account.
+* `salesRepresentative`: Set the sales rep for the account. Optional.
+* `taxClass`: Set tax class for account. Optional.
+* `documentTemplate`: Used to set the Document template that will be used for the Account. Optional.
+* `addBrands`: Add new brands that the Account will be able to access. Only used if brands are to be used as a restriction. Optional.
+* `addVisibleForAgents`: Add which agents that should have access to the Account. Optional.
+* `accountAddress`: Fields for Account address. The account address is the registered address of the company.
+* `shippingAddress`: Fields for default Shipping address.
+* `billingAddress`: Fields for the billing address (invoice address)
 
 #### Reqeust: Creating an account
 
@@ -1447,16 +1440,15 @@ billingAddress: Fields for the billing address (invoice address)
 
 With the Account created, a Buyer for the specific account can be added. As mentioned earlier, at least one Buyer needs to be created for each account.
 
-The mutation for creating a Buyer has below fields
+The mutation for creating a Buyer has below fields:
 
-account: This is the ID of the account where the buyer should be created
-store: The ID of the store used. It’s not common to run multiple Wholesale stores in one Centra instance, but it can happen.
-status: Status of the buyer.
-websiteUrl: Field to store a URL
-receiveAutoEmails: Boolean to define whether or not the Buyer should receive emails (order confirmation, shipping confirmation etc)
-receiveNewsletters: Boolean to define whether ot not the Buyer should be flagged to accept newsletters
-billingAddress: Address fields for the buyer. Not commonly used.
-
+* `account`: This is the ID of the account where the buyer should be created
+* `store`: The ID of the store used. It’s not common to run multiple Wholesale stores in one Centra instance, but it can happen.
+* `status`: Status of the buyer.
+* `websiteUrl`: Field to store a URL
+* `receiveAutoEmails`: Boolean to define whether or not the Buyer should receive emails (order confirmation, shipping confirmation etc)
+* `receiveNewsletters`: Boolean to define whether ot not the Buyer should be flagged to accept newsletters
+* `billingAddress`: Address fields for the buyer. Not commonly used.
 
 #### Request: Adding a Buyer to a Wholesale account
 
@@ -1526,12 +1518,12 @@ billingAddress: Address fields for the buyer. Not commonly used.
 
 Next up are Delivery Windows. Delivery Windows control how goods are sold in Centra Wholesale, and must be created in order to enable sales. Delivery Windows can be configured with different Variant Delivery Types which defines how goods availability is displayed for a Buyer. Let’s take a look at them to get an understanding which to use.
 
-Preorder - The preorder type is a common type used to enable pre orders before inventory is available. For fashion a common use case is to take orders for a new collection. The amount of units available can still be limited with this type.
-Stock - The stock type will only show what’s actually available to order right now, based on allocation rules for the Account used by a Buyer. In combination with allowing backorders, it’s still possible to place orders.
-Link - Not as commonly used as Preorder and Stock. Link works in conjunction with Centra’s Supplier module, allowing one to sell units still not reserved on incoming Supplier orders.
-Stock/Link - A combination of Stock and Link.
+* `Preorder`: The preorder type is a common type used to enable pre orders before inventory is available. For fashion a common use case is to take orders for a new collection. The amount of units available can still be limited with this type.
+* `Stock`: The stock type will only show what’s actually available to order right now, based on allocation rules for the Account used by a Buyer. In combination with allowing backorders, it’s still possible to place orders.
+* `Link`: Not as commonly used as Preorder and Stock. Link works in conjunction with Centra’s Supplier module, allowing one to sell units still not reserved on incoming Supplier orders.
+* `Stock/Link`: A combination of Stock and Link.
 
-When creating a Delivery Window, preorder and atOnce is also to be included, independently from the Variant Delivery Type. Use pre order for Delivery Windows with the Preorder Variant Delivery Type, with this a date range for accepting orders can be set. Use atOnce for Stock type, which is sold - at once.
+When creating a Delivery Window, `preorder` and `atOnce` is also to be included, independently from the Variant Delivery Type. Use `pre order` for Delivery Windows with the Preorder Variant Delivery Type, with this a date range for accepting orders can be set. Use `atOnce` for Stock type, which is sold - at once.
 
 At least one Market needs to be added to the Delivery Window, use the ID of a Market previously created or fetch Markets to find their IDs.
 
@@ -1592,7 +1584,7 @@ In below example a Preorder Delivery Window is created
   }
 ```
 
-With a Delivery Window in place, it’s time to add products to it. When it comes to Delivery Windows, it’s a product’s variant(s) that will be added to the delivery window. Use the ID for the variant(s) which was returned during its creation.
+With a Delivery Window in place, it’s time to add products to it. When it comes to Delivery Windows, it’s a product’s variant(s) that will be added to the delivery window. Use the ID for the variant(s) which was returned during its creation, or [find the desired variant(s) info based on their name or number](https://docs.centra.com/graphql/query.html#productVariants).
 
 #### Request - Adding products to a Delivery Window
 
@@ -1652,36 +1644,28 @@ With a Delivery Window in place, it’s time to add products to it. When it come
 
 With products in place, orders should start pouring in. Let’s go through how to read orders and how to work with fulfillment in Centra.
 
-Before we do that, let’s talk about the standard order flow in Centra. It’s described in detail here:
+Before we do that, let’s talk about the standard order flow in Centra. It’s described in detail here:  
 https://docs.centra.com/overview/orderflow#order-flow
-
 
 ## Order statuses
 
 There are 6 possible order statuses in Centra:
 
-Pending: This order has just been authorized and inserted into Centra. It needs to be confirmed before it can be processed further. You can skip this status by enabling the Store Setting `Autoconfirm orders`, which will automatically put all new orders in Confirmed status. In the past customers used Pending to manually review all new orders, which is only feasible if you have a relatively low number of them every day.
-
-Confirmed: This order has been confirmed, either via API, in AMS backend, or the store setting. Once confirmed, an order confirmation email can be sent to the shopper. Now you are ready to start creating shipments.
-
-Processing: This order has at least one shipment, and at least one of those shipments is not completed. You can also enable Store Setting `Direct to Shipment`, which will automatically create GTG shipments for you, one per order. Each shipment in Centra has 3 sub-statuses:
-
-Good-to-go: Set this boolean once your warehouse staff have collected the order. Good-to-go means all shipment items are packed in a parcel, with address labels attached, and any other documents that might be required. But we are not shipping this parcel just yet.
-Paid: This denotes that the shipment has been paid for - the sum of shipped order items and shipping cost have been captured. If you are capturing payments outside of Centra, instead of capturing you can simply mark the shipment as Paid, without triggering a capture. Remember, in some countries it's against regulations to capture money for an un-shipped package, so make sure you know exactly what you’re doing, and when.
-
-Shipped: Once the shipment is good-to-go and paid for, nothing stops you from shipping it - meaning handing it over to the delivery person and obtaining its tracking number. You can add the tracking information at the moment you complete your shipment. Remember, Centra doesn’t track parcel delivery, so from our perspective the shipment is completed as soon as the parcel is out the door and on its way to the shopper.
-
-Completed: All the order items have been shipped (in one or multiple shipments), and the money for order items + shipping cost has been captured (or marked as Paid). As soon as the final shipment is completed, the order will be completed as well. GraphQL calls this order status “SHIPPED”.
-
-Archived: Completed orders can be hidden from the default list view, and possibly from the API responses, when you choose to archive them. Archiving doesn’t trigger any special automations, but you may still be interested in marking an completed order as archived in your ERP, if you wish to.
-
-Canceled: This order will not be completed, it has been canceled either by manual intervention in the AMS, or via the API. Canceling the order also cancels the payment, so this process is irreversible, you won’t be able to capture the order total after you have canceled it. WARNING: It is highly incorrect to cancel the order after it’s been captured. Please only cancel orders before that happens. If payment has already been captured, you should create a Return and refund the money instead.
+* `Pending`: This order has just been authorized and inserted into Centra. It needs to be confirmed before it can be processed further. You can skip this status by enabling the Store Setting `Autoconfirm orders`, which will automatically put all new orders in Confirmed status. In the past customers used Pending to manually review all new orders, which is only feasible if you have a relatively low number of them every day.
+* `Confirmed`: This order has been confirmed, either via API, in AMS backend, or the store setting. Once confirmed, an order confirmation email can be sent to the shopper. Now you are ready to start creating shipments.
+* `Processing`: This order has at least one shipment, and at least one of those shipments is not completed. You can also enable Store Setting `Direct to Shipment`, which will automatically create GTG shipments for you, one per order. Each shipment in Centra has 3 sub-statuses:
+    * `Good-to-go`: Set this boolean once your warehouse staff have collected the order. Good-to-go means all shipment items are packed in a parcel, with address labels attached, and any other documents that might be required. But we are not shipping this parcel just yet.
+    * `Paid`: This denotes that the shipment has been paid for - the sum of shipped order items and shipping cost have been captured. If you are capturing payments outside of Centra, instead of capturing you can simply mark the shipment as Paid, without triggering a capture. Remember, in some countries it's against regulations to capture money for an un-shipped package, so make sure you know exactly what you’re doing, and when.
+    * `Shipped`: Once the shipment is good-to-go and paid for, nothing stops you from shipping it - meaning handing it over to the delivery person and obtaining its tracking number. You can add the tracking information at the moment you complete your shipment. Remember, Centra doesn’t track parcel delivery, so from our perspective the shipment is completed as soon as the parcel is out the door and on its way to the shopper.
+* `Completed`: All the order items have been shipped (in one or multiple shipments), and the money for order items + shipping cost has been captured (or marked as Paid). As soon as the final shipment is completed, the order will be completed as well. GraphQL calls this order status “SHIPPED”.
+* `Archived`: Completed orders can be hidden from the default list view, and possibly from the API responses, when you choose to archive them. Archiving doesn’t trigger any special automations, but you may still be interested in marking an completed order as archived in your ERP, if you wish to.
+* `Canceled`: This order will not be completed, it has been canceled either by manual intervention in the AMS, or via the API. Canceling the order also cancels the payment, so this process is irreversible, you won’t be able to capture the order total after you have canceled it. WARNING: It is highly incorrect to cancel the order after it’s been captured. Please only cancel orders before that happens. If payment has already been captured, you should create a Return and refund the money instead.
 
 ## Fetching orders
 
 Since the orders are created mostly in front ends (using webshop APIs or Showroom), likely the very first action your integration will take is to read that new order info. You have a number of ways to do it.
 
-First, if you implement Centra Webhooks plugin running in “Integration API” mode, you can configure it to be notified about the new orders and shipments as soon as they are created. The easiest scenario will be when you receive a webhook of “type: order”, “action: insert”, together with the order number. Right when that happens, you can use GraphQL API to fetch this one specific order and sync it with your ERP:
+First, if you implement Centra Webhooks plugin running in “Integration API” mode, you can configure it to be notified about the new orders and shipments as soon as they are created. The easiest scenario will be when you receive a webhook of `type: order`, `action: insert`, together with the order number. Right when that happens, you can use GraphQL API to fetch this one specific order and sync it with your ERP.
 
 #### Request: Fetching a specific order
 
@@ -1739,7 +1723,7 @@ Depending on the fields you chose to return from the query, you can immediately 
 
 #### Locking orders
 
-Depending on your design, there is one function that you might be very interested in: The ability to lock the orders using the API. The idea behind the locking mechanism is that you might want to prevent AMS backend users from editing or processing the orders which should be exclusively handled by the API. Therefore, locking ensures that only your integration will be able to add/cancel order items, create and complete shipments, etc.
+Depending on your design, there is one function that you might be very interested in: The ability to lock the orders using the API. The idea behind the locking mechanism is that you might want to prevent AMS backend users from editing or processing the orders which should be exclusively handled by the API. Therefore, locking ensures that only your API integration will be able to add/cancel order items, create and complete shipments, etc.
 
 #### Request
 
@@ -1983,7 +1967,7 @@ Now that we’ve read the order, we can choose what to do with it. First of all,
     }
 ```
 
-Next, let’s talk about modifying the order lines, which translates to adding or removing products to/from an order _after_ it has been placed in Centra. The most common use case is canceling an order item which was sold by mistake, when you realize you don’t have the stock to actually fulfill it. If that’s the case, you can cancel this order line, and later ship only available products, while capturing less money that was authorized, so that the customer pays the right total.
+Next, let’s talk about modifying the order lines, which translates to adding or removing products to/from an order _after_ it has been placed in Centra. The most common use case is canceling an order item which was sold by mistake, when you realize you don’t have the stock to actually fulfill it. If that’s the case, you can cancel this order line, and later ship only available products, while capturing less money that was authorized, so that the customer pays the right order total.
 
 #### Request
 
@@ -2235,7 +2219,7 @@ I mentioned before that captures are most closely related to shipments, and in m
 
 There is another way, though, which can make things easier in some integrations. In GraphQL we’ve added a mutation which allows you to capture the entire order amount, even before you have shipments created. This might be convenient in some cases, e.g. if you’re selling “virtual” goods, like gift cards, and need to capture the payment immediately to avoid fraud. This might also be a good idea if you expect that the goods will not be shipped for a while (e.g. you’re selling pre-order products), while you only have a specific time available to perform the capture, based on the payment method used (usually 14/30/60 days after auth).
 
-#### Request: Capture an order prior to shipment
+#### Request: Capture the order total prior to creating a shipment
 
 ```gql
   mutation captureOrder {
@@ -2608,7 +2592,7 @@ You can combine the two steps above, and create shipments which should be captur
 
 Once the shipment is Good-to-go and paid for, you can ship it out. This is done by completing the shipment, at which stage you can add the shipment info (like carrier, service and tracking number), set the shipped date and choose whether or not to send out the shipping confirmation email to your shopper. In GraphQL `shipped` parameter is not a boolean, but rather a timestamp of when this shipment was completed. Good news - this timestamp supports the same options as PHP date, so setting it can be as easy as sending `shippedAt: now`. Centra will save the right timestamp on the shipment for you.
 
-Examples of the date could be "yesterday", "21/10/2023", "-1 hour". It cannot be in the future. You can find more information about the PHP date here https://www.google.com/url?q=https://www.php.net/manual/en/datetime.formats.relative.php&sa=D&source=docs&ust=1690884374796624&usg=AOvVaw0ybeIjr3-b_BsSjNMVRzEp
+Examples of the date could be "yesterday", "21/10/2023", "-1 hour". It cannot be in the future. You can find more information about the [PHP date here](https://www.php.net/manual/en/datetime.formats.relative.php).
 
 #### Request
 
@@ -2726,10 +2710,9 @@ If products from an order get returned by a customer or packages are delivered b
 Refunds are currently not supported with the Integration API, but can be handled with Order API (REST) until the mutation is available. [You can read about refunds in REST API here](https://docs.centra.com/api-references/order-api/api-reference/update-return).
 
 There are three specific options to consider when creating a Return:
-
-releaseItemsBackToWarehouse → the items will be sent back to the warehouse they originally came from
-sendItemsToDifferentWarehouse → items will be sent to a warehouse specified by the user
-removeItemsFromStock → physical products will not be returned, there will be no increase in stock for any warehouse
+* `releaseItemsBackToWarehouse`: the items will be sent back to the warehouse they originally came from
+* `sendItemsToDifferentWarehouse`: items will be sent to a warehouse specified by the user
+* `removeItemsFromStock`: physical products will not be returned, there will be no increase in stock for any warehouse
 
 Additional costs, such as handling fees, shipping costs, or voucher value, can also be specified in this mutation. These values can not be greater the the remaining value of these costs on shipment.
 
@@ -2765,7 +2748,7 @@ Additional costs, such as handling fees, shipping costs, or voucher value, can a
       }
 ```
 
-If you would like to complete a return using the Integration API you can do it by running completeReturn mutation. First you can query the returns to find the needed id.
+If you would like to complete a return using the Integration API you can do it by running `completeReturn` mutation. First you can query the returns to find the needed id.
 
 #### Request
 
@@ -2783,7 +2766,7 @@ If you would like to complete a return using the Integration API you can do it b
       }
 ```
 
-In the completeReturn mutation you can also pass the information on whether an email with return confirmation should be sent to the customer. You can’t complete a return that already has a completed status.
+In the `completeReturn` mutation you can also pass the information on whether an email with return confirmation should be sent to the customer. You can’t complete a return that already has a completed status.
 
 #### Request
 
@@ -2826,7 +2809,7 @@ You also have the option to un-complete a return if needed.
       }
 ```
 
-If a return was created by mistake and needs to be deleted, you also have that possibility
+If a return was created by mistake and needs to be deleted, you also have that possibility.
 
 #### Request
 
@@ -2847,8 +2830,8 @@ If a return was created by mistake and needs to be deleted, you also have that p
       }
 ```
 
-All you need to provide is the return ID. The stock will be re-allocated according to the policy that was selected when creating the return. If the return was created using the releaseItemsBackToWarehouse stock policy, the order and shipment lines will be re-allocated based on the allocation rule assigned to the order.
+All you need to provide is the return ID. The stock will be re-allocated according to the policy that was selected when creating the return. If the return was created using the `releaseItemsBackToWarehouse` stock policy, the order and shipment lines will be re-allocated based on the allocation rule assigned to the order.
 
-sendItemsToDifferentWarehouse → the order and shipment lines will be re-allocated, the stock will be re-allocated from the warehouse specified by the user when creating the return.
+If you used `sendItemsToDifferentWarehouse`, the order and shipment lines will be re-allocated, the stock will be re-allocated from the warehouse specified by the user when creating the return.
 
-removeItemsFromStock → the shipment lines quantity will be updated to reflect the change but there will be no re-allocation. The idea is that the items were not added back to stock, the user can decide whether to re-allocate it again.
+In case you chose to `removeItemsFromStock`, the shipment lines quantity will be updated to reflect the change but there will be no re-allocation. The idea is that the items were not added back to stock, the user can decide whether to re-allocate it again.
