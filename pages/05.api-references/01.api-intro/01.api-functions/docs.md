@@ -27,15 +27,11 @@ Order API was originally built as a pick-and-pack service integration API, with 
 
 This is designed to be the last integration API we will ever need. It gives you granular access to almost all parts of Centra, including the parts previously available only from the backend UI. The only limit is your imagination.
 
-Anything you would do with SOAP or Order API, you can now do with GraphQL. To learn more, see [GraphQL Integration API](/api-references/graphql-integration-api).
+Currently, GraphQL works mostly in read-only mode, but we are adding new functionality (including write parts) with every Centra version. Once fully developed, it will deprecate Order API, and possibly SOAP API as well. To learn more, see [GraphQL Integration API](/api-references/graphql-integration-api).
 
 ### [SOAP] ERP system integrations
 
-[notice-box=info]
-SOAP API is deprecated and won't receive any new features. We recommend switching to the GraphQL Integration API.
-[/notice-box]
-
-Many customers use the ERP systems, like Navision, to store the master of the data for Products, Customers, Pricelists and so on. If you need to integrate to those systems, you may be interested in our [SOAP API (deprecated)](/api-references/soap-integration-api). In this case Centra works in a slave mode, and allows you to modify Centra Products, Pricelists, Shipping, Invoices, etc. For more information about using SOAP for ERP integration, see our [SOAP ERP integration guide](/guides/erp-integration).
+Many customers use the ERP systems, like Navision, to store the master of the data for Products, Customers, Pricelists and so on. If you need to integrate to those systems, you may be interested in our [SOAP API](/api-references/soap-integration-api). Since in this case Centra works in a slave mode, this is currently the only API that allows you to modify Centra Products, Pricelists, Shipping, Invoices, etc. We very rarely add new features to this API, but we also have comprehensive docs covering most of use cases required when working with an ERP system. They are all described in our [ERP integration guide](/guides/erp-integration).
 
 ### [REST] Subscription API (deprecated)
 
