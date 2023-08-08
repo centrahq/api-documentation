@@ -1,6 +1,6 @@
 ---
-title: Integrating Centra with an ERP system 
-altTitle: ERP integration (Integration API)
+title: Integrating Centra with an ERP system using GraphQL Integration API
+altTitle: ERP integration with GraphQL
 excerpt: Centra can be configured to integrate with your Enterprise Resource Planning system using Integration API (GraphQL). Click here to see how to perform most common operations on Products, Warehouses, Stock, Orders, Shipments and Returns in both DTC and Wholesale.
 taxonomy:
 category: docs
