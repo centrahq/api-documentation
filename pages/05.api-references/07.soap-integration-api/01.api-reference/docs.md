@@ -6,10 +6,6 @@ taxonomy:
   category: docs
 ---
 
-[notice-box=info]
-SOAP API is deprecated and won't receive any new features. We recommend switching to the GraphQL Integration API.
-[/notice-box]
-
 The following operations are supported. For more information, please see the [Web Service Definition](https://demo2.centra.com/amscentrademo1/system/service/module/soap/api?wsdl).
 
 Each operation contains a sample SOAP request and response. The `placeholders` shown need to be replaced with actual values.
