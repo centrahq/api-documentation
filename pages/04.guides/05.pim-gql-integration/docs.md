@@ -1,6 +1,6 @@
 ---
 title: Integrating Centra with PIM systems using GraphQL Integration API
-altTitle: PIM integration with GQL
+altTitle: PIM integration with GraphQL
 excerpt: Centra can be configured to integrate with your Product Information Management systems using GraphQL API.
 taxonomy:
   category: docs
