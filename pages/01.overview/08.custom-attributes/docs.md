@@ -10,7 +10,7 @@ taxonomy:
 
 Accounts, customers, displays, orders, products, variant, product medias and vouchers can all be expanded with additional information. Here's how you can do it.
 
-The following structure is used in the `config.php` to define custom attributes on previous objects. Attributes allow you to create arbitrary fields that will be available in the API and exports. There are different types of attributes.
+The following structure is used in the `config.php` to define custom attributes on objects listed above. Attributes allow you to create arbitrary fields that will be available in the API and exports. There are different types of attributes.
 
 The API-outputs defined below are using the Shop API, some differences might apply to other APIs, which will be defined in the corresponding API reference.
 
