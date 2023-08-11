@@ -130,7 +130,7 @@ The `group` on the attribute inside the `config.php` specifies where the attribu
 | `customer`      | Listed under each Customer.                                                                    |
 | `account`       | Listed under each Account (B2B).                                                               |
 | `sizechart`     | Listed under each size in a sizechart.                                                         |
-| `product_media` | Listed under each image. Exposed in Checkout & Shop API. Assignable through Integration API.   |
+| `product_media` | Listed under each image in AMS backend. Exposed in Checkout & Shop API. Assignable through Integration API.   |
 | `voucher`       | Listed under each Voucher. Exposed in Checkout & Shop API. Assignable through Integration API. |
 
 ### Attribute element types
