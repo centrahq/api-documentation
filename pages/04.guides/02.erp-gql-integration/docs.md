@@ -680,6 +680,42 @@ Much like with the product and variant data. An `ID` will be returned, which you
     }
 ```
 
+#### Request: Creating variants with activated sizes
+
+During initial configuration, it's likely you will need to activate multiple variant sizes. Using the `createProductVariant` mutation with `productSizes` input, you can do it with a single mutation:
+
+```gql
+mutation createVariantWithSizes {
+  createProductVariant(input: {
+    product: { id: 1 }
+    name: "Blue shirt"
+    status: INACTIVE
+    variantNumber: "876"
+    sizeChart: { id: 3 }
+    productSizes: [
+      {size: {name: "S"}, EAN: "5678902338761"},
+      {size: {name: "M"}, EAN: "5678902338762"},
+      {size: {name: "L"}, EAN: "5678902338763"},
+    ]
+  }) {
+    productVariant {
+      id
+      productSizes {
+	    ...basicProductSizeFields
+      }
+    }
+    userErrors {
+      message
+      path
+    }
+    userWarnings {
+      message
+      path
+    }
+  }
+}
+```
+
 ### Bundles
 
 Bundles consist of multiple sections, of which each can be selected from a pre-selected list of variants. The price of the bundle can be predefined, or calculated dynamically based on the prices of variants selected in the bundle. In the more complex, flexible bundles, the number of the variants in each section can differ as well.
