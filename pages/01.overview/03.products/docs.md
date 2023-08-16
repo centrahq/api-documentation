@@ -86,9 +86,9 @@ A discount logic that allows a customer to buy a number of products (with certai
 
 ### Categories and Folders
 
-Centra handles the similar concepts, Category and Folder, differently. A Display belongs to a Category. Categories are hierarchical in up to 3 levels. The expected behavior of a Centra store frontend is to allow the user to navigate the Category tree to discover products. The Category structure can be expected to change dynamically. It is safe to assume there will never be more than 3 category levels, but there are no limitations when it comes to the number of categories.
+Centra handles the similar concepts, Category and Folder, differently. A Display belongs to a Category. Categories are hierarchical in up to 6 levels. The expected behavior of a Centra store frontend is to allow the user to navigate the Category tree to discover products. The Category structure can be expected to change dynamically. It is safe to assume there will never be more than 6 category levels, but there are no limitations when it comes to the number of categories.
 
-A Product belongs to one and only one Folder. Folders are used for reporting and should not be exposed on the frontend site. As Categories, Folders are also hierarchical with up to 3 levels. Even though Folders are not expected to be exposed on the website, they are available through the Store API to facilitate development of custom applications.
+A Product belongs to one and only one Folder. Folders are used for reporting and should not be exposed on the frontend site. As Categories, Folders are also hierarchical with up to 6 levels. Even though Folders are not expected to be exposed on the website, they are available through the Store API to facilitate development of custom applications.
 
 ## How should I set up Product structure in my Centra?
 
