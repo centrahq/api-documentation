@@ -1676,14 +1676,14 @@ With a Delivery Window in place, it’s time to add products to it. When it come
     }
 ```
 
-### Order processing
+## Order processing
 
 With products in place, orders should start pouring in. Let’s go through how to read orders and how to work with fulfillment in Centra.
 
 Before we do that, let’s talk about the standard order flow in Centra. It’s described in detail here:  
 https://docs.centra.com/overview/orderflow#order-flow
 
-## Order statuses
+### Order statuses
 
 There are 6 possible order statuses in Centra:
 
