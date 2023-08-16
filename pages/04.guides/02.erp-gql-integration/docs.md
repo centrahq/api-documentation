@@ -2208,7 +2208,7 @@ If you wish for the `updateOrder` mutation to add quantity to an existing order 
 * Order line comment (if any)
 * Delivery window
 
-Changing any of these properties will result in Centra recognising this input as a new order line, instead of changing the existing one. If the properies of your product, like its name, have changed between when the order was placed and when you're modifying the order lines, this product will _always_ be added as a new order line, since the order holds the historical properties of the product, which will not match products in Centra any more.
+Changing any of these properties will result in Centra recognising this input as a new order line, instead of changing the existing one. If the name of the product has changed between when the order was placed and when you're modifying the order lines, this product will _always_ be added as a new order line, since the order holds the historical name of the product, which will not match products in Centra any more.
 
 If you instead wish to decrease the order line quantity, you can call `updateOrder` mutation with [cancelLines](https://docs.centra.com/graphql/wholesaleorderupdateinput.html#cancelLines) input, specifying the order line ID and quantity to be cancelled. Cancelling all quantities available will cancel the entire order line.
 
