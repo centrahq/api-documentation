@@ -2199,6 +2199,22 @@ When it comes to adding order lines, be very mindful about it. While it’s usua
   }
 ```
 
+### Special case - changing quantity of the existing order line
+
+If you wish for the `update*Order` mutation to add quantity to an existing order line, instead of creating a new order line, you can do that if you match the parameters of `addLines` input _precisely_ with the existing line. This means that you must specify exactly the same:  
+* Display ID
+* Product size ID
+* Unit price (both currency and amount)
+* Order line comment (if any)
+* Delivery window
+* Tax group
+* Product URL (if any)
+* Category (if any)
+
+Changing any of these properties will result in Centra recognising this input as a new order line, instead of changing the existing one.
+
+If you instead with to decrease the order line quantity, you can call `update*Order` mutation with [cancelLines](https://docs.centra.com/graphql/wholesaleorderupdateinput.html#cancelLines) input, specifying the order line ID and quantity to be cancelled. Cancelling all quantities available will cancel the entire order line.
+
 ## Confirming an order
 
 Now that our order looks as expected, let’s process it further. First step (possible to skip with Store Settings) is to confirm the order. Once done, an order confirmation email can be sent to the shopper, depending on your setup and mailer of choice.
