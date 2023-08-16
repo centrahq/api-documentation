@@ -1676,14 +1676,14 @@ With a Delivery Window in place, it’s time to add products to it. When it come
     }
 ```
 
-### Order processing
+## Order processing
 
 With products in place, orders should start pouring in. Let’s go through how to read orders and how to work with fulfillment in Centra.
 
 Before we do that, let’s talk about the standard order flow in Centra. It’s described in detail here:  
 https://docs.centra.com/overview/orderflow#order-flow
 
-## Order statuses
+### Order statuses
 
 There are 6 possible order statuses in Centra:
 
@@ -2198,6 +2198,19 @@ When it comes to adding order lines, be very mindful about it. While it’s usua
     }
   }
 ```
+
+### Special case - changing quantity of the existing order line
+
+If you wish for the `updateOrder` mutation to add quantity to an existing order line, instead of creating a new order line, you can do that if you match the parameters of `addLines` input _precisely_ with the existing line. This means that you must specify exactly the same:  
+* Display ID
+* Product size ID
+* Unit price (both currency and amount)
+* Order line comment (if any)
+* Delivery window
+
+Changing any of these properties will result in Centra recognising this input as a new order line, instead of changing the existing one. If the name of the product has changed between when the order was placed and when you're modifying the order lines, this product will _always_ be added as a new order line, since the order holds the historical name of the product, which will not match products in Centra any more.
+
+If you instead wish to decrease the order line quantity, you can call `updateOrder` mutation with [cancelLines](https://docs.centra.com/graphql/wholesaleorderupdateinput.html#cancelLines) input, specifying the order line ID and quantity to be cancelled. Cancelling all quantities available will cancel the entire order line.
 
 ## Confirming an order
 
