@@ -929,7 +929,7 @@ It is possible to cancel orders that haven't been completed by using an cancel m
 It's important to note that there's a difference between cancelling an entire order vs cancelling specific lines on the order. When you cancel the entire order, order line's quantity remain unchanged and you can still see original order's quantities.
 
 It is also possible to cancel authorization on PSP side, to do this the `cancelAuthorization` param has to be set to: true.
-For now cancel authorization is supported by this psp providers:
+For now, cancelling authorization is supported by following PSP integrations:
 * Adyen Drop-In
 * Klarna Checkout V3
 * Klarna Payments
