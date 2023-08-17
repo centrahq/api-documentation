@@ -934,7 +934,7 @@ For now cancel authorization is supported by this psp providers:
 * Klarna Payments
 
 [notice-box=readMore]
-Authorization cancel is available only for orders without any captures or fully refunded.
+You can only cancel authorization for orders that have not been captured or have not been fully refunded.
 [/notice-box]
 
 Authorization cancel won’t affect order cancellation in centra, in case of failure user will get warning in response and proper payment history entry will be added.
