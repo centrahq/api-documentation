@@ -928,7 +928,7 @@ mutation updateDtcCancel {
 It is possible to cancel orders that haven't been completed by using an cancel mutation. In this case DTC and wholesale flows are the same. Canceling the order will result in the order having a status `cancelled` set. 
 It's important to note that there's a difference between cancelling an entire order vs cancelling specific lines on the order. When you cancel the entire order, order line's quantity remain unchanged and you can still see original order's quantities.
 
-It is also possible to cancel authorization on payment provider side, to do this the `cancelAuthorization` param has to be set to: true.
+It is also possible to cancel authorization on PSP side, to do this the `cancelAuthorization` param has to be set to: true.
 For now cancel authorization is supported by this psp providers:
 * Adyen Drop-In
 * Klarna Checkout V3
