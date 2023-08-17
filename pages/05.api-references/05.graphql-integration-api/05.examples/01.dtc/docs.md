@@ -937,7 +937,7 @@ For now cancel authorization is supported by this psp providers:
 You can only cancel authorization for orders that have not been captured or have not been fully refunded.
 [/notice-box]
 
-Authorization cancel won’t affect order cancellation in centra, in case of failure user will get warning in response and proper payment history entry will be added.
+If you specify `cancelAuthorization:true` to request a cancellation with the PSP and the request to the PSP fails, the order cancellation in Centra will still proceed. In such a scenario, a warning will be returned to the user, and a corresponding entry will be made in the payment history.
 
 #### Request
 
