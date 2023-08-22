@@ -923,6 +923,76 @@ mutation updateDtcCancel {
 }
 ```
 
+### Cancelling an order
+
+It is possible to cancel orders that haven't been completed by using an cancel mutation. In this case DTC and wholesale flows are the same. Canceling the order will result in the order having a status `cancelled` set. 
+It's important to note that there's a difference between cancelling an entire order vs cancelling specific lines on the order. When you cancel the entire order, order line's quantity remain unchanged and you can still see original order's quantities.
+
+It is also possible to cancel authorization on PSP side, to do this the `cancelAuthorization` param has to be set to: true.
+For now, cancelling authorization is supported by following PSP integrations:
+* Adyen Drop-In
+* Klarna Checkout V3
+* Klarna Payments
+
+[notice-box=readMore]
+You can only cancel authorization for orders that have not been captured or have not been fully refunded.
+[/notice-box]
+
+If you specify `cancelAuthorization:true` to request a cancellation with the PSP and the request to the PSP fails, the order cancellation in Centra will still proceed. In such a scenario, a warning will be returned to the user, and a corresponding entry will be made in the payment history.
+
+#### Request
+
+```gql
+mutation cancelDTCOrder {
+  cancelDirectToConsumerOrder(
+    id: "c80521760fe108d56513234f97da4f4a"
+    input: {
+      comment: "new comment"
+      emailOptions: { sendEmail: false }
+      stockAction: { removeItemsFromStock: true }
+      cancelAuthorization: true
+    }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    order {
+      id
+      status
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "cancelDTCOrder": {
+      "order": {
+        "id": "1497ccf644db871e1e4026d101bde6f3",
+        "status": "CANCELLED",
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 229,
+    "permissionsUsed": [
+      "Order:write",
+      "Order:read",
+      "Order.shippingAddress:read",
+      "Order.billingAddress:read",
+      "Purchaser:read",
+      "Product:read"
+    ],
+    "appVersion": "v0.32.3"
+  }
+}
+```
+
 ### Confirming the order
 
 This is the only time in Centra when you set the order status directly. Once triggered, order confirmation e-mail will be sent. Next status change will be to Processing when you create the first shipment, and then to Completed, once the final shipment is completed and all order lines items have been either shipped or cancelled. [Click here if you need a refresher on the standard order flow in Centra](/overview/orderflow#order-flow).
