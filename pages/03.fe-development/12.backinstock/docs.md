@@ -69,7 +69,7 @@ If you have less stock Centra will not trigger stock update for your product. Mi
 
 #### How to use
 
-When a subscriber requests to be notified of an item the tag `Rule - Waiting For Product Alert` will be applied, and then when stock is updated and the subscriber should be notified the tag is replaced with `Rule - Product Alert Triggered`, theese tags can be used to setup automation for notifying your subscribers. Refer to Rule documentation for details. Centra syncronises stock with rule every 15 minutes and only if stock level of the product is above declared minimum.
+When a subscriber requests to be notified of an item the tag `Rule - Waiting For Product Alert` will be applied, and then when stock is updated and the subscriber should be notified the tag is replaced with `Rule - Product Alert Triggered`, theese tags can be used to setup automation for notifying your subscribers. Refer to Rule documentation for details. Centra syncronises stock with Rule every 15 minutes and only if stock level of the product is above declared minimum.
 
 Email templates used in the automation can use custom fields set for the notification. Fields are accessible in the template as `CustomField:Rule-ProductAlert.<field_name>`. Refer to the [list](#available-fields) below to see what data is available for back in stock email templates.
 
@@ -121,4 +121,3 @@ To gain a comprehensive understanding of how to integrate the Back in Stock feat
 [Back in stock flow configuration in Klaviyo](https://docs.centra.com/plugins/klaviyo#back-in-stock-example-flow-configuration)
 
 [Back in stock category of products](https://docs.centra.com/plugins/klaviyo#backinstock-category-of-products)
-
