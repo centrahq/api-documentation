@@ -940,6 +940,11 @@ You can only cancel authorization for orders that have not been captured or have
 
 If you specify `cancelAuthorization:true` to request a cancellation with the PSP and the request to the PSP fails, the order cancellation in Centra will still proceed. In such a scenario, a warning will be returned to the user, and a corresponding entry will be made in the payment history.
 
+[notice-box=readMore]
+In the case of asynchronous cancellation API (like Adyen Drop-in) cancel request will be followed by cancel webhook.
+In this case there would be 2 entries in the payment history: one of `entryType` `CANCEL_REQUEST` and final one for `CANCEL` after async webhook from PSP
+[/notice-box]
+
 #### Request
 
 ```gql
@@ -989,6 +994,117 @@ mutation cancelDTCOrder {
       "Product:read"
     ],
     "appVersion": "v0.32.3"
+  }
+}
+```
+
+### Releasing remaining order authorization
+
+Allows for releasing order authorization in cases when only part of the order is shipped and captured, such as when some items are out of stock.
+If you don't plan to perform more captures on the order, you can release the remaining authorization. 
+
+**Validation**
+
+Mutation is only allowed for orders that:
+- Are in the following statuses:
+  - `PENDING` 
+  - `CONFIRMED` 
+  - `PROCESSING`
+
+- Have been partially captured 
+
+
+**Process**
+
+Mutation calculates `remaining authorization amount` which is the difference between authorization amount and amount that has been already captured. 
+The remaining authorization amount is sent to PSP to release authorization. If the PSP request fails, the mutation will also fail, leaving the order unchanged.
+
+[notice-box=readMore]
+Although it's not mandatory to cancel unshipped lines, it's advised to do so. This ensures that the state of the order in Centra accurately mirrors reality.
+[/notice-box]
+
+It is possible to release order authorization with following PSP integrations:
+
+- Adyen Drop-In
+- Klarna Checkout V3
+- Klarna Payments
+
+[notice-box=readMore]
+In the case of asynchronous cancellation API (like Adyen Drop-in) cancel request will be followed by cancel webhook. 
+In this case there would be 2 entries in the payment history: one of `entryType` `CANCEL_REQUEST` and final one for `CANCEL` after async webhook from PSP
+[/notice-box]
+
+Example flow:
+
+1. Order with 2 order lines is placed and authorized for 1000 SEK
+2. One of the order lines is shipped and captured for 500 SEK
+3. Second order line cannot be shipped due to being out of stock
+4. [Optional] Second order line is cancelled
+5. `releaseRemainingOrderAuthorization` mutation is called with order id (remaining order authorization at this point is: 1000 - 500 = 500SEK)
+6. Remaining order authorization is released with PSP (500 SEK)
+
+#### Request
+
+```gql
+mutation {
+  releaseRemainingOrderAuthorization(order: {id: "2a01ef16e1dd02d78bcff6391dc3cd22"}) {
+    order {
+      id
+    }
+    paymentHistoryEntry {
+      status
+      value {
+        value
+        currency {
+          code
+        }
+      }
+      paramsJSON
+    }
+    userErrors {
+      message
+      path
+    }
+    userWarnings {
+      message
+      path
+    }
+  }
+}
+```
+
+#### Response
+
+```gql
+{
+  "data": {
+    "releaseRemainingOrderAuthorization": {
+      "order": {
+        "id": "c99c50d60f205eec6affab53480b079f"
+      },
+      "paymentHistoryEntry": {
+        "status": "SUCCESS",
+        "value": {
+          "value": -5,
+          "currency": {
+            "code": "SEK"
+          }
+        },
+        "paramsJSON": "{\"success\":true,\"isRequest\":false,\"raw\":null}"
+      },
+      "userErrors": [],
+      "userWarnings": []
+    }
+  },
+  "extensions": {
+    "complexity": 226,
+    "permissionsUsed": [
+      "Payment.cancel:write",
+      "Order:read",
+      "PaymentHistory:read"
+    ],
+    "appVersion": "v1.1.1",
+    "memory": "60.0 MB"
   }
 }
 ```
