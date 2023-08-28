@@ -8,11 +8,13 @@ excerpt: Explains and gives examples for how to work with Centras voucher data
 
 ## The responses from my centra instance does not have this data!
 
-This feature has not yet bee ndeployed everywhere, please contact partner support and we will look into having it enabled on your instance. 
+This feature has not yet been deployed everywhere, please contact partner support and we will look into having it enabled on your instance. 
 
 ## What data is available ?
 
-For discount type vouchers you can find on the item how they have been affected.
+### Item Level
+
+For discount type vouchers you can now find how each item has been affected. to match the order level discount from before we have split it per code voucher and auto voucher liek so:
 ```json
 "items": [
   {
@@ -29,7 +31,7 @@ For discount type vouchers you can find on the item how they have been affected.
       ],
       "automaticDiscounts": [
         {
-          "voucher": 506,
+          "automaticDiscount": 506,
           "priceOff": "-10.00 SEK",
           "priceOffAsNumber": -10,
           "hasAffectedItemPrice": false
@@ -40,14 +42,26 @@ For discount type vouchers you can find on the item how they have been affected.
 ]
 ```
 
+#### Code/URL Vouchers
+
 | Field | Type | Explanation |
 |---|---|---|
-| voucher | string/int | for objects under "vouchers" this is the code of the voucher, for objects udner "automaticDiscounts" this is the ID of teh voucher. use this for lookups in order level "discounts" object for detaield data |
+| voucher | string | this is the code or URL of the voucher, use this to lookup more details about the voucher from the order level data. |
 | priceoff | string | how much in total has this voucher discounted this line |
 | priceoffAsNumber | float | float version of "priceoff" |
-| hasAffectedItemPrice | boolean | has the priceOff shown here already been reduced on this items prices ?, always false for selections, true for voucehrs set as "order items" for orders (receipt and payment-result) |
+| hasAffectedItemPrice | boolean | has the priceOff shown here already been reduced on this items prices ?, always false for selections, true for vouchers set as "order items" for orders (receipt and payment-result endpoints) |
 
-You will also be able to see on teh order level how the order was affected
+#### Auto vouchers
+
+| Field | Type | Explanation |
+|---|---|---|
+| automaticDiscount | int | this is the ID of the voucher, use this to lookup more details about the automaticDiscount from the order level data. |
+| priceoff | string | how much in total has this voucher discounted this line |
+| priceoffAsNumber | float | float version of "priceoff" |
+| hasAffectedItemPrice | boolean | has the priceOff shown here already been reduced on this items prices ?, always false for selections, true for vouchers set as "order items" for orders (receipt and payment-result endpoints) |
+
+### Order level 
+As before you will also be able to see on the order level how the order was affected.
 ```json
 "discounts": {
   "anyDiscount": true,
@@ -86,23 +100,60 @@ You will also be able to see on teh order level how the order was affected
     }
 },
 ```
+#### Root Level data
 
-all typeds of vouchers will have some data in common:
+all types of vouchers will have some data in common:
 | Field | Type | Explanation |
 |---|---|---|
 | anyDiscount | boolean | Does the order have any order level discount |
 | discount | string | a sum of all the discount given by automaticDiscounts |
 | discountAsNumber | float | float version of "discount" |
-| voucher | string/int | voucher code for objects under "vouchers", ID for objects udner "automaticDiscounts" |
+
+#### Code /URL Vouchers
+
+| Field | Type | Explanation |
+|---|---|---|
+| voucher | string | For "vouchers" only, voucher code or url |
 | type | string | only for object under "vouchers", is eitehr "code" or "url" |
-| description / name | string | the name of the voucher |
+| description | string | the name of the voucher |
 | priceoff | string | how much in total has this voucher discounted the order |
 | priceoffAsNumber | float | float version of "priceoff" |
 | expiryDate | string | When does the voucher stop working |
 
+#### Auto Vouchers 
+
+| Field | Type | Explanation |
+|---|---|---|
+| automaticDiscount | int | for "automaticDiscounts" only, voucher's ID |
+| name | string | the name of the voucher |
+| priceoff | string | how much in total has this voucher discounted the order |
+| priceoffAsNumber | float | float version of "priceoff" |
+| expiryDate | string | When does the voucher stop working |
+
+### Additional order level data based on voucher type
+
 Some additional fields might be present depending on what the voucher discounts, a voucher can give many different benefits so some voucher might contain more than one set of special fields. 
 
-for vouchers discounting items we will see the following fields:
+#### Discount
+
+```json
+"priceoffexclcamp": {
+  "voucher": "priceoffexclcamp",
+  "type": "code",
+  "priceOff": "-629.25 SEK",
+  "priceOffAsNumber": -629.25,
+  "description": "75% off excluding campaign",
+  "lines": [
+    "a445a490763931115e547fee706cf159",
+    "37b9877c23b3f6d93a7d3462bfef8f3c",
+    "9fb8ffafaace556a359f048022e5a5de"
+  ],
+  "shippingDiscount": "0.00 SEK",
+  "shippingDiscountAsNumber": -0,
+  "expiryDate": "2099-10-21 16:25:00"
+}
+```
+
 
 | Field | Type | Explanation |
 |---|---|---|
@@ -110,29 +161,21 @@ for vouchers discounting items we will see the following fields:
 | shippingDiscount | string | how much has this voucher discounted shipping |
 | shippingDiscountAsNumber | float | float version of "shippingDiscount" |
 
-For vouchers giving a free product we will see:
+#### Free product
 
 ```json
-"discounts": {
-  "anyDiscount": false,
-  "discount": "0.00 SEK",
-  "discountAsNumber": 0,
-  "vouchers": {
-    "freeproductrevertnoremove": {
-      "voucher": "freeproductrevertnoremove",
-      "type": "code",
-      "priceOff": "0.00 SEK",
-      "priceOffAsNumber": -0,
-      "description": "freeproductrevert-no-remove",
-      "freeProductAdded": {
-        "line": "39f381e72d15a7126a34a9cdd9126352",
-        "allowRemove": true,
-        "allowAddMore": true
-      },
-      "expiryDate": "2099-10-22 09:47:00"
-    }
+"freeproductrevertnoremove": {
+  "voucher": "freeproductrevertnoremove",
+  "type": "code",
+  "priceOff": "0.00 SEK",
+  "priceOffAsNumber": -0,
+  "description": "freeproductrevert-no-remove",
+  "freeProductAdded": {
+    "line": "39f381e72d15a7126a34a9cdd9126352",
+    "allowRemove": true,
+    "allowAddMore": true
   },
-  "automaticDiscounts": []
+  "expiryDate": "2099-10-22 09:47:00"
 }
 ```
 
@@ -142,31 +185,23 @@ For vouchers giving a free product we will see:
 | freeProductAdded.allowRemove | boolean | Is the custoemr allowed to remove the added product |
 | freeProductAdded.allowAddMore | boolean | Is the custoemr allowed to add more (none free) quantity of the product |
 
-For a voucher giving free shippign we will see:
+#### Free Shipping
 
 ```json
-"discounts": {
-  "anyDiscount": false,
-  "discount": "0.00 SEK",
-  "discountAsNumber": 0,
-  "vouchers": {
-    "freeship": {
-      "voucher": "freeship",
-      "type": "code",
-      "priceOff": "0.00 SEK",
-      "priceOffAsNumber": -0,
-      "description": "Free Shipping",
-      "freeShippingFor": [
-        "sek",
-        "usd",
-        "jpy-std",
-        "sekalt",
-        "sek2"
-      ],
-      "expiryDate": "2099-10-21 16:25:00"
-    }
-  },
-  "automaticDiscounts": []
+"freeship": {
+  "voucher": "freeship",
+  "type": "code",
+  "priceOff": "0.00 SEK",
+  "priceOffAsNumber": -0,
+  "description": "Free Shipping",
+  "freeShippingFor": [
+    "sek",
+    "usd",
+    "jpy-std",
+    "sekalt",
+    "sek2"
+  ],
+  "expiryDate": "2099-10-21 16:25:00"
 }
 ```
 
@@ -174,13 +209,14 @@ For a voucher giving free shippign we will see:
 |---|---|---|
 | freeShippingFor | array | a list of which shipping methjods are allowed to get free shipping |
 
-For a credit voucher we will see:
-Credit vouchers only have the normal fields. 
+#### Credit
+
+Credit vouchers only have the base fields. 
 
 ## How to's
 
-### I wish to show how much discount an item in the custoemrs selection has received
+### I wish to show how much discount an item in the customers selection has received
 Summarise all `priceOffAsNumber` found for the wanted discounts on item. depending on how you wish to show the vouchers on order level you might wish to deduct item voucher values from this. 
 
 ### How can i get voucher on receipt to always show the same way as on checkout.
-This is a little tricky due to how vouchers have worked historicaly. but there is a way, and the trick lies in the `hasAffectedItemPrice` field in the item level voucher data. 
+This is a little tricky due to how vouchers have worked historicaly. but there is a way, and the trick lies in the `hasAffectedItemPrice` field in the item level voucher data. `priceOff` on the item data will remain the same, but just as before `priceOff` on order level will be reduced.
