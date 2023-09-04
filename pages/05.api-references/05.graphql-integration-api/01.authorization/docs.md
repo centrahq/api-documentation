@@ -412,3 +412,13 @@ These fields were deprecated before but now received a concrete date of removal:
 * `Size.productSizes` – this relation is also not supported anymore; one can filter `productSizes` by `sizeId`
 * `Store.totalPurchasers` – this can be achieved with `Query.counters.customers` filtered by `storeId`
 * `Store.totalOrders` – similarly, this is also available from `Query.counters.orders` filtered by `storeId`
+* `graphQLAccessTokenCount` - use `counters.graphQLAccess` instead
+* `removeSizeChart` - use deleteSizeChart instead
+* `removeMeasurementChart` - use `deleteMeasurementChart` instead
+* `removeCampaign` - use `deleteCampaign` instead
+* `ProductSizeUpdateInput` - `GTIN` has been renamed to `EAN`, `UPC` was added as a separate field
+* `ProductSizeCreateInput` - same as the above
+* `ProductSizeFilter` - same
+* `ProductSize.GTIN` - same
+* `Return.account`- moved from the `Return` interface to `WholesaleReturn`
+* `DirectToConsumerReturn.account` - moved from the `Return` interface to `WholesaleReturn`
