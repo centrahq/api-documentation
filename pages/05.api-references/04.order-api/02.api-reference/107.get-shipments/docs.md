@@ -13,6 +13,8 @@ Authentication: [API Key](/api-references/api-intro#authentication)
 
 Will list all Good to Go-shipments that are not sent. Oldest first.
 
+Price information returned by this endpoint depends on the [plugin settings](/api-references/order-api/api-plugin-settings). Refer to the documentation for details.
+
 ## Parameters
 
 [parameter data="limit" datatype="int" isRequired=false sublevel=1]
