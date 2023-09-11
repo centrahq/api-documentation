@@ -8,7 +8,7 @@ taxonomy:
 
 Below you will find detailed descriptions of often used Order API plugin settings.
 
-## Bundles in shipments / Bundles in orders
+### Bundles in shipments / Bundles in orders
 
 Decides how bundles will be returned in [GET Shipments](/api-references/order-api/api-reference/get-shipments) and [GET Orders](/api-references/order-api/api-reference/get-orders) endpoints respectively.
 
