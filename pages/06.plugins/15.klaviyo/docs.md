@@ -82,11 +82,6 @@ For this use case there are 2 ways of achieving this:
 - [CheckoutAPI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI&urls.primaryName=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_) 
 - [ShopAPI](https://docs.centra.com/swagger-ui/?api=ShopAPI&urls.primaryName=ShopAPI#/default/post_selections__selection__items__item_)
 
-[notice-box=info]
-With the 2nd solution you don't need to implement routing based on configured `Product page URL` in Klaviyo store plugin settings and Centra's display URI.
-We don't provide similar solution for back in stock emails for now.
-[/notice-box]
-
 ### Historical data export
 Our integration allow you to export your data to Klaviyo. This action base on customer account, and customer account is main entrance to data. What does it mean? By choosing date in Transfer historical date starting from, you are choosing the date in history when the customer account was created. For example, from the image below, customer accounts newer than (or exactly this date) 01-09-2022 00:00:00 will be transferred to Klaviyo.
 
