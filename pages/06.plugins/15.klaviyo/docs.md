@@ -64,8 +64,8 @@ If in the email communication you want to use product page URL, the ways of prov
 
 For this use case the workflow is the following:
 
-1. Go to your Klaviyo store plugin settings in Centra and fill in `Product page URL` setting. Example value https://demo-shop-test.centra.systems/product/{display_uri}
-2. Product page URLs will be sent when catalog products are synchronized to Klaviyo, formatted with following pattern: configured `Product page URL` + `display_uri` from Centra. For example where `display_uri` is `test-product-sv`, the final product url sent to Klaviyo would be https://demo-shop-test.centra.systems/product/test-product-sv
+1. Go to your Klaviyo store plugin settings in Centra and fill in `Product page URL` setting. Example value `https://demo-shop-test.centra.systems/product/{display_uri}`
+2. Product page URLs will be sent when catalog products are synchronized to Klaviyo, formatted with following pattern: configured `Product page URL` + `display_uri` from Centra. For example where `display_uri` is `test-product-sv`, the final product url sent to Klaviyo would be `https://demo-shop-test.centra.systems/product/test-product-sv`
 
 [notice-box=info]
 Note that base URL specified in `Product page URL` needs to be controlled by your Frontend. Frontend needs to be able to route to the proper product page based on formatted value including display uri from Centra. 
