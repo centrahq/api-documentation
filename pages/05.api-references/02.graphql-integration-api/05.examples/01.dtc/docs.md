@@ -933,6 +933,8 @@ For now, cancelling authorization is supported by following PSP integrations:
 * Adyen Drop-In
 * Klarna Checkout V3
 * Klarna Payments
+* Qliro One
+* Paypal Commerce
 
 [notice-box=readMore]
 You can only cancel authorization for orders that have not been captured or have not been fully refunded.
@@ -1183,6 +1185,7 @@ If capturing an order or shipment failed, check what information you can find in
 The following payment providers are supported in the GraphQL Integration API:  
 * Adyen Drop-In (capture requests)  
 * Klarna Checkout V3 (capture requests)  
+* Klarna Payments (capture requests)
 * Qliro One  
 * PayPal Commerce  
 * Stripe Checkout  
