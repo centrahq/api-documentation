@@ -933,6 +933,8 @@ For now, cancelling authorization is supported by following PSP integrations:
 * Adyen Drop-In
 * Klarna Checkout V3
 * Klarna Payments
+* Qliro One
+* Paypal Commerce
 
 [notice-box=readMore]
 You can only cancel authorization for orders that have not been captured or have not been fully refunded.
