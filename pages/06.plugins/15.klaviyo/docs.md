@@ -58,12 +58,33 @@ You can create/find existing lists in Klaviyo Dashboard, under Audience -> Lists
 
 ### Product page URL
 
-If you want to use URLs to the products, you can either provide the URL to the product when the product is added to the selection in the APIs ([CheckoutAPI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI&urls.primaryName=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_), [ShopAPI](https://docs.centra.com/swagger-ui/?api=ShopAPI&urls.primaryName=ShopAPI#/default/post_selections__selection__items__item_)), or you can define a `Product page URL` which will be combined with the display URI of the product from Centra. 
-For product page URL and bundle product, we will use bundle URI for all items connected with bundle. We will replace `{display_uri}` part with correct display URI.
-Example URL: https://example.com/product/{display_uri}.
+If in the email communication you want to use product page URL, the ways of providing it might depend on the use case.
+
+#### Product page URL in back in stock emails
+
+For this use case the workflow is the following:
+
+1. Go to your Klaviyo store plugin settings in Centra and fill in `Product page URL` setting. Example value https://demo-shop-test.centra.systems/product/{display_uri}
+2. Product page URLs will be sent when catalog products are synchronized to Klaviyo, formatted with following pattern: configured `Product page URL` + `display_uri` from Centra. For example where `display_uri` is `test-product-sv`, the final product url sent to Klaviyo would be https://demo-shop-test.centra.systems/product/test-product-sv
 
 [notice-box=info]
-Parameter productUrl has higher priority than product page URL.
+Note that base URL specified in `Product page URL` needs to be controlled by your Frontend. Frontend needs to be able to route to the proper product page based on formatted value including display uri from Centra. 
+[/notice-box]
+
+![product_url_store_setting.png](product_url_store_setting.png)
+
+#### Product page URL in transactional email events (like Placed Order, Confirmed Order, Shipping Update, etc.)
+
+For this use case there are 2 ways of achieving this:
+
+1. The same way as described in previous use case for back in stock emails.
+2. Pass the product page URL from the Frontend when the product is added to the selection using `productUrl` parameter in
+- [CheckoutAPI](https://docs.centra.com/swagger-ui/?api=CheckoutAPI&urls.primaryName=CheckoutAPI#/2.%20selection%20handling%2C%20cart/post_items__item_) 
+- [ShopAPI](https://docs.centra.com/swagger-ui/?api=ShopAPI&urls.primaryName=ShopAPI#/default/post_selections__selection__items__item_)
+
+[notice-box=info]
+With the 2nd solution you don't need to implement routing based on configured `Product page URL` in Klaviyo store plugin settings and Centra's display URI.
+We don't provide similar solution for back in stock emails for now.
 [/notice-box]
 
 ### Historical data export
