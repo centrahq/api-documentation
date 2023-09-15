@@ -45,7 +45,7 @@ Required permission is `ProductMedia:write`
 - Supported file formats are png, jpg and gif.
 - Successful response from S3 file upload request is indicated by 204 status code.
 
-### Code examples:
+#### Code examples:
 
 - JavaScript upload function using XHR request:
 
@@ -305,6 +305,57 @@ query lastMedia {
         mimeType
       }
       metaDataJSON
+    }
+  }
+}
+```
+
+### Add media to displays and arrange their order
+
+When creating or modifying displays, you can first add `addProductMedia.id` to your display:
+
+```gql
+mutation {
+  createDisplay(
+    input: {
+      name: "display-name"
+      status: ACTIVE
+      store: { id: 1 }
+      product: { id: 1 }
+      addProductMedia: [
+        {productMedia: {id: 467}}
+      ]
+    }
+  ) {
+    userErrors { message path }
+    display { 
+      id 
+      media {id}
+    }
+  }
+}
+```
+
+Later you can [manipulate and re-order](https://docs.centra.com/graphql/productmediaaddinput.html#before) these `productMedia` objects as necessary:
+
+```gql
+mutation {
+  updateDisplay(
+    id: 1234
+    input: {
+      addProductMedia: [{ productMedia: { id: 469 }, before: { id: 466 } }]
+      removeProductMedia: [{ id: 467 }]
+    }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    display {
+      id
+      media {
+        id
+      }
     }
   }
 }

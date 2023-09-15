@@ -8,9 +8,9 @@ taxonomy:
 
 ## Custom Attributes
 
-Products, variants, orders and customers can all be expanded with additional information. Here's how you can do it.
+Accounts, customers, displays, orders, products, variant, product medias and vouchers can all be expanded with additional information. Here's how you can do it.
 
-The following structure is used in the `config.php` to define custom attributes on products, variants, accounts and orders. Attributes allow you to create arbitrary fields that will be available in the API and exports. There are different types of attributes.
+The following structure is used in the `config.php` to define custom attributes on objects listed above. Attributes allow you to create arbitrary fields that will be available in the API and exports. There are different types of attributes.
 
 The API-outputs defined below are using the Shop API, some differences might apply to other APIs, which will be defined in the corresponding API reference.
 
@@ -121,16 +121,17 @@ Please note that when the option you've selected is `0/false` the property will 
 
 The `group` on the attribute inside the `config.php` specifies where the attribute should be placed. The following groups exist today:
 
-| **Group** | **Description** |
-| --- | --- |
-| `product` | Listed under General Attributes on all Products. |
-| `variation` | Listed under each Variant on all Products. |
-| `display` | Listed on each product display |
-| `order` | Listed on each Order. |
-| `customer` | Listed under each Customer. |
-| `account` | Listed under each Account (B2B). |
-| `sizechart` | Listed under each size in a sizechart. |
-| `product_media` | Listed under each image. Exposed in Checkout & Shop API. Assignable through Integration API. |
+| **Group**       | **Description**                                                                                |
+|-----------------|------------------------------------------------------------------------------------------------|
+| `product`       | Listed under General Attributes on all Products.                                               |
+| `variation`     | Listed under each Variant on all Products.                                                     |
+| `display`       | Listed on each product display                                                                 |
+| `order`         | Listed on each Order.                                                                          |
+| `customer`      | Listed under each Customer.                                                                    |
+| `account`       | Listed under each Account (B2B).                                                               |
+| `sizechart`     | Listed under each size in a sizechart.                                                         |
+| `product_media` | Listed under each image in AMS backend. Exposed in Checkout & Shop API. Assignable through Integration API.   |
+| `voucher`       | Listed under each Voucher. Exposed in Checkout & Shop API. Assignable through Integration API. |
 
 ### Attribute element types
 

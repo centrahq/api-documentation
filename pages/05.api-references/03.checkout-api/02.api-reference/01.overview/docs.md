@@ -80,6 +80,8 @@ The request you send can contain these fields, everything is optional:
 - uri: filter on a product or category with a specific URI
 - sortOrder: Sort returned products based on the specified field, ascending or descending. Currently you can filter on: `uri`, `categoryItemSort`, `collectionUri`, `priceAsNumber`, `createdAt` and `modifiedAt`, in either `asc` or `desc` order
 
+Remember that there is a special case for related products: If a product relation is a variant, it will appear regardless of the relatedProducts parameter. However, if the relation is standard, it will only appear if relatedProducts is set to true.
+
 If you select more "Product Filter Fields" in the Centra plugin settings, you can send them in the request and also get them back in the response in the "filter".
 
 

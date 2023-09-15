@@ -27,7 +27,9 @@ Order API was originally built as a pick-and-pack service integration API, with 
 
 This is designed to be the last integration API we will ever need. It gives you granular access to almost all parts of Centra, including the parts previously available only from the backend UI. The only limit is your imagination.
 
-Currently, GraphQL works mostly in read-only mode, but we are adding new functionality (including write parts) with every Centra version. Once fully developed, it will deprecate Order API, and possibly SOAP API as well. To learn more, see [GraphQL Integration API](/api-references/graphql-integration-api).
+GraphQL is now officially out of Beta, and it has more features than ever. A full [ERP integration guide using GraphQL](/guides/erp-gql-integration) is available for anyone looking to replace their old SOAP or REST integration. More on product setup can be found in the [PIM guide](/guides/pim-gql-integration). Besides that, GQL API references section offers lots of copy-pastable examples, both for [DtC](/api-references/graphql-integration-api/examples/dtc) as well as [Wholesale](/api-references/graphql-integration-api/examples/b2b) use cases. To learn more, see [GraphQL Integration API](/api-references/graphql-integration-api).
+
+Oh by the way, did we mention that GraphQL offers **100%** code coverage? Integral part of the API are the [automatically generated GraphQL API specifications for Centra Integration API](https://docs.centra.com/graphql/). This means that everyone who has the basic grasp of [GQL APIs in general](https://graphql.org), and knows the syntax used, is able to immediately use any and all of the available functions. Is there a use case you can think of how to implement? Now you no longer need documentation pages with instructions, now the available options are at your fingertips, with suggestion, immediate validation and basically self-writing code. You really have to try it to believe it. And once you do, you can use it to do anything with your Centra. Within reason, right?
 
 ### [SOAP] ERP system integrations
 

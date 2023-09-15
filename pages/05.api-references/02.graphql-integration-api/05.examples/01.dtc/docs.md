@@ -923,6 +923,192 @@ mutation updateDtcCancel {
 }
 ```
 
+### Cancelling an order
+
+It is possible to cancel orders that haven't been completed by using an cancel mutation. In this case DTC and wholesale flows are the same. Canceling the order will result in the order having a status `cancelled` set. 
+It's important to note that there's a difference between cancelling an entire order vs cancelling specific lines on the order. When you cancel the entire order, order line's quantity remain unchanged and you can still see original order's quantities.
+
+It is also possible to cancel authorization on PSP side, to do this the `cancelAuthorization` param has to be set to: true.
+For now, cancelling authorization is supported by following PSP integrations:
+* Adyen Drop-In
+* Klarna Checkout V3
+* Klarna Payments
+
+[notice-box=readMore]
+You can only cancel authorization for orders that have not been captured or have not been fully refunded.
+[/notice-box]
+
+If you specify `cancelAuthorization:true` to request a cancellation with the PSP and the request to the PSP fails, the order cancellation in Centra will still proceed. In such a scenario, a warning will be returned to the user, and a corresponding entry will be made in the payment history.
+
+[notice-box=readMore]
+In the case of asynchronous cancellation API (like Adyen Drop-in) cancel request will be followed by cancel webhook.
+In this case there would be 2 entries in the payment history: one of `entryType` `CANCEL_REQUEST` and final one for `CANCEL` after async webhook from PSP
+[/notice-box]
+
+#### Request
+
+```gql
+mutation cancelDTCOrder {
+  cancelDirectToConsumerOrder(
+    id: "c80521760fe108d56513234f97da4f4a"
+    input: {
+      comment: "new comment"
+      emailOptions: { sendEmail: false }
+      stockAction: { removeItemsFromStock: true }
+      cancelAuthorization: true
+    }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    order {
+      id
+      status
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "cancelDTCOrder": {
+      "order": {
+        "id": "1497ccf644db871e1e4026d101bde6f3",
+        "status": "CANCELLED",
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 229,
+    "permissionsUsed": [
+      "Order:write",
+      "Order:read",
+      "Order.shippingAddress:read",
+      "Order.billingAddress:read",
+      "Purchaser:read",
+      "Product:read"
+    ],
+    "appVersion": "v0.32.3"
+  }
+}
+```
+
+### Releasing remaining order authorization
+
+Allows for releasing order authorization in cases when only part of the order is shipped and captured, such as when some items are out of stock.
+If you don't plan to perform more captures on the order, you can release the remaining authorization. 
+
+**Validation**
+
+Mutation is only allowed for orders that:
+- Are in the following statuses:
+  - `PENDING` 
+  - `CONFIRMED` 
+  - `PROCESSING`
+
+- Have been partially captured 
+
+
+**Process**
+
+Mutation calculates `remaining authorization amount` which is the difference between authorization amount and amount that has been already captured. 
+The remaining authorization amount is sent to PSP to release authorization. If the PSP request fails, the mutation will also fail, leaving the order unchanged.
+
+[notice-box=readMore]
+Although it's not mandatory to cancel unshipped lines, it's advised to do so. This ensures that the state of the order in Centra accurately mirrors reality.
+[/notice-box]
+
+It is possible to release order authorization with following PSP integrations:
+
+- Adyen Drop-In
+- Klarna Checkout V3
+- Klarna Payments
+
+[notice-box=readMore]
+In the case of asynchronous cancellation API (like Adyen Drop-in) cancel request will be followed by cancel webhook. 
+In this case there would be 2 entries in the payment history: one of `entryType` `CANCEL_REQUEST` and final one for `CANCEL` after async webhook from PSP
+[/notice-box]
+
+Example flow:
+
+1. Order with 2 order lines is placed and authorized for 1000 SEK
+2. One of the order lines is shipped and captured for 500 SEK
+3. Second order line cannot be shipped due to being out of stock
+4. [Optional] Second order line is cancelled
+5. `releaseRemainingOrderAuthorization` mutation is called with order id (remaining order authorization at this point is: 1000 - 500 = 500SEK)
+6. Remaining order authorization is released with PSP (500 SEK)
+
+#### Request
+
+```gql
+mutation {
+  releaseRemainingOrderAuthorization(order: {id: "2a01ef16e1dd02d78bcff6391dc3cd22"}) {
+    order {
+      id
+    }
+    paymentHistoryEntry {
+      status
+      value {
+        value
+        currency {
+          code
+        }
+      }
+      paramsJSON
+    }
+    userErrors {
+      message
+      path
+    }
+    userWarnings {
+      message
+      path
+    }
+  }
+}
+```
+
+#### Response
+
+```gql
+{
+  "data": {
+    "releaseRemainingOrderAuthorization": {
+      "order": {
+        "id": "c99c50d60f205eec6affab53480b079f"
+      },
+      "paymentHistoryEntry": {
+        "status": "SUCCESS",
+        "value": {
+          "value": -5,
+          "currency": {
+            "code": "SEK"
+          }
+        },
+        "paramsJSON": "{\"success\":true,\"isRequest\":false,\"raw\":null}"
+      },
+      "userErrors": [],
+      "userWarnings": []
+    }
+  },
+  "extensions": {
+    "complexity": 226,
+    "permissionsUsed": [
+      "Payment.cancel:write",
+      "Order:read",
+      "PaymentHistory:read"
+    ],
+    "appVersion": "v1.1.1",
+    "memory": "60.0 MB"
+  }
+}
+```
+
 ### Confirming the order
 
 This is the only time in Centra when you set the order status directly. Once triggered, order confirmation e-mail will be sent. Next status change will be to Processing when you create the first shipment, and then to Completed, once the final shipment is completed and all order lines items have been either shipped or cancelled. [Click here if you need a refresher on the standard order flow in Centra](/overview/orderflow#order-flow).

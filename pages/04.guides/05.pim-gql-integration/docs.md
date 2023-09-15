@@ -1,7 +1,7 @@
 ---
 title: Integrating Centra with PIM systems using GraphQL Integration API
-altTitle: PIM integration with GQL
-excerpt: Centra can be configured to integrate with your Product Information Management systems using GraphQL API. As GQL is still in Beta, more functionality is still under development
+altTitle: PIM integration with GraphQL
+excerpt: Centra can be configured to integrate with your Product Information Management systems using GraphQL API.
 taxonomy:
   category: docs
 ---
@@ -9,7 +9,7 @@ taxonomy:
 In Centra, we strongly believe GraphQL is the future of the APIs, just like REST is the present and SOAP is the past. For that reason, we've been putting a lot of effort into building our GQL API into what we think one day will be the _last_ integration API you will ever need.
 
 [notice-box=info]
-Centra GraphQL API is currently in Beta, so not all the ERP-related functionality is available at the moment. For now you can get used to GQL in general, we also recommend you to sign up for our Newsletter to be notified about updates. Let us know if there's any specific functionality you need with priority and we will look into it. You can always see the latest additions in the [GraphQL API changelog](https://docs.centra.com/graphql/#changelog).
+Centra GraphQL API is stable and can be used in production environments. It is also actively developed, so more features are added constantly. We recommend you to sign up for our Newsletter to be notified about updates. Let us know if there's any specific functionality you need with priority and we will look into it. You can always see the latest additions in the [GraphQL API changelog](https://docs.centra.com/graphql/#changelog).
 [/notice-box]
 
 ## GraphQL API introduction

@@ -1,6 +1,6 @@
 ---
 title: Adyen checkout
-altTitle: Adyen checkout
+altTitle: Adyen checkout (deprecated)
 excerpt: Learn how to configure and test payments using Adyen Checkout plugin.
 taxonomy:
     category: docs

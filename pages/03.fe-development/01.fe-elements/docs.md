@@ -182,7 +182,7 @@ Another method is the [POST /products](https://docs.centra.com/swagger-ui/?api=C
 * `skipFirst` and `limit` can be used for paging.
 * `categories`, `collections` and `brands` returns products in specified categories, collections and brands.
 * `search` allows you to search for any text, e.g. product SKU.
-* `relatedProducts` controls whether you get the complete data for those releated products. When `false`, you will only get a small subset of the data back: the media and related product ID, which is useful to present FE elements like "You may also like these products" or "".
+* `relatedProducts` controls whether you get the complete data for those releated products. When `false`, you will only get a small subset of the data back: the media and related product ID, which is useful to present FE elements like "You may also like these products".
 * `swatch.desc` enables filtering based on the color swatch or any other custom attribute. The name of the attribute is a client specific.
 * `items.name` filters on specific item names.
 * `onlyAvailable`, when true, only returns products that are in stock or available for preorder. If you also specify `items.name`, those items must be available
@@ -190,6 +190,10 @@ Another method is the [POST /products](https://docs.centra.com/swagger-ui/?api=C
 * `sortOrder`: Sort returned products based on the specified field, ascending or descending. Currently you can filter on: `uri`, `categoryItemSort`, `collectionUri`, `priceAsNumber`, `createdAt` and `modifiedAt`, in either `asc` or `desc` order. As you can see, `sortOrder` is an array, so you can apply more than one sorting order, like sort by Collection first, and by Price then
 
 [notice-box=info]
+Remember that there is a special case for related products: If a product relation is a variant, it will appear regardless of the `relatedProducts` parameter. However, if the relation is standard, it will only appear if `relatedProducts` is set to true.
+[/notice-box]
+
+[notice-box=readMore]
 Remember that you can expand the Product model by defining [Custom Attributes](/overview/custom-attributes) for your Products and Variants. These attributes can then also be used as product filters in the API, as described in the [Search and filtering](#search-and-filtering) chapter.
 [/notice-box]
 

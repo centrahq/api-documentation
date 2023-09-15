@@ -13,6 +13,8 @@ Authentication: [API Key](/api-references/api-intro#authentication)
 
 This will fetch the orders allowed for the plugin being set up.
 
+Price information returned by this endpoint depends on the [plugin settings](/api-references/order-api/api-plugin-settings). Refer to the documentation for details.
+
 ## Parameters
 
 [parameter data="limit" datatype="int" isRequired=false sublevel=1]
