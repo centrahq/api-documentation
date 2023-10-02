@@ -173,7 +173,11 @@ The 3DS confirmation pages differ in Adyen's test environment compared to the li
 
 ### Apple Pay, Google Pay, Paypal
 
-These payment methods require additional configuration in Adyen. For more information visit following links in Adyen documentation:
+To enable these payment methods select `Yes` in Adyen store plugin settings.
+
+![wallet_payment_methods.png](wallet_payment_methods.png)
+
+ They also require additional configuration in Adyen. For more information visit following links in Adyen documentation:
 
 - Apple Pay: [docs](https://docs.adyen.com/payment-methods/apple-pay/web-drop-in/#set-up-apple-pay)
 - Google Pay: [docs](https://docs.adyen.com/payment-methods/google-pay/web-drop-in/#before-you-begin)
