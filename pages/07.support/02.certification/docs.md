@@ -20,7 +20,7 @@ If you're interested in learning GraphQL, start with out [PIM guide](/guides/pim
 
 | **Description** | **Certification level** | **What's required** | **What we offer** |
 | --- | --- | --- | --- |
-| Centra beginner | Complete introduction webinars || Slack support |
+| | Centra beginner | Complete introduction webinars | Slack support |
 | For anyone who wants to learn more about Centra's core functions. | ![](cert-lvl-1.png) | At least one common customer is live | Check-up meetings every 6 months + access to Centra community |
 | For developers or anyone who's interested in creating a Centra storefront, learn how to work with Centra to create a seamless user experience. | ![](cert-lvl-2.png) | At 2-3 common customers are live | Check-up meetings every 3 months + previews and beta access to new features |
 For developers. You'll learn how to use our GraphQL-based integration API.| ![](cert-lvl-3.png) | At 5 customers are live | Check-up meetings every 1 month + access to exclusive VIP events |
