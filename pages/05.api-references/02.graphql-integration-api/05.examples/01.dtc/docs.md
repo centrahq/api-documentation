@@ -1173,7 +1173,7 @@ Mutation is only allowed for orders that:
 **Cost Constraint**
 
 - The new shipping cost must be a positive number.
-- The proposed shipping price should be equal to or less than the current value.
+- The proposed shipping price should be equal to or less than the current value, or 0.
 
 **History Logging**
 
@@ -1186,7 +1186,7 @@ Upon successful update, the system logs an entry in the order's history detailin
 mutation updateDirectToConsumerOrder {
   updateDirectToConsumerOrder(
     order: {
-      id: "f8b90249400edc71f30ce1caa6f0b911"
+      number: "12345"
     },
     input: {
       shippingCost: {
@@ -1196,7 +1196,7 @@ mutation updateDirectToConsumerOrder {
     }
   ) {
     order {
-      id
+      number
       totals {
         quantity
         shipping {
@@ -1219,7 +1219,7 @@ mutation updateDirectToConsumerOrder {
   "data": {
     "updateDirectToConsumerOrder": {
       "order": {
-        "id": "f8b90249400edc71f30ce1caa6f0b911",
+        "number": "12345",
         "totals": {
           "quantity": 2,
           "shipping": {
