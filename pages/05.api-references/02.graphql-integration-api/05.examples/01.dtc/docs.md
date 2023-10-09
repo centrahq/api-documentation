@@ -1186,7 +1186,8 @@ Upon successful update, the system logs an entry in the order's history detailin
 mutation updateDirectToConsumerOrder {
   updateDirectToConsumerOrder(
     order: {
-      number: "12345"
+      id: "f8b90249400edc71f30ce1caa6f0b911"
+      # number: "12345"  # You can use either order number or ID to identify the order
     },
     input: {
       shippingCost: {
@@ -1196,6 +1197,7 @@ mutation updateDirectToConsumerOrder {
     }
   ) {
     order {
+      id
       number
       totals {
         quantity
