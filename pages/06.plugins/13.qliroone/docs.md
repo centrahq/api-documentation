@@ -47,7 +47,7 @@ The order will be placed and visible in AMS with Waiting for Payment flag and HO
 
 For debit/credit card payments Waiting for Payment flag and HOLD status are usually cleared within minutes after order placement.
 
-For other types of payments that allow to customer to pay later in the process e.g. INVOICE the notification with status="Completed" might take longer time to be sent which will keep Waiting for Payment flag for longer time.
+For other types of payments that allow the customer to pay later in the process e.g. INVOICE the notification with status="Completed" might take longer time to be sent which will keep Waiting for Payment flag for longer time.
 
 
 #### Require success validation
@@ -59,7 +59,7 @@ It validates following data:
 - Juridical type - whether the selected type is allowed by configuration
 - Items availability
 
-The result can be handled on frontend side, implementing callback `onPaymentDeclined()` which accepts decline reason as an argument. For more details please refer to Qliro documentation. 
+The result can be handled on frontend side, implementing callback `onPaymentDeclined()` which accepts decline reason as an argument. For more details please [refer to Qliro documentation](https://developers.qliro.com/docs/frontend-features/listeners). 
 
 #### Allow organizations to place orders
 
