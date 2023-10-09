@@ -1159,6 +1159,91 @@ mutation confirmOrder {
 }
 ```
 
+### Shipping Cost Update
+
+Allows for updating the shipping cost of DTC (Direct To Consumer) orders.
+
+**Validation**
+
+Mutation is only allowed for orders that:
+
+- Are of type DTC
+- Are in the `CONFIRMED` status
+
+**Cost Constraint**
+
+- The new shipping cost must be a positive number.
+- The proposed shipping price should be equal to or less than the current value.
+
+**History Logging**
+
+Upon successful update, the system logs an entry in the order's history detailing the change, such as:
+"Shipping cost changed from {previous value} {order currency} to {new value} {order currency}"
+
+#### Request
+
+```gql
+mutation updateDirectToConsumerOrder {
+  updateDirectToConsumerOrder(
+    order: {
+      id: "f8b90249400edc71f30ce1caa6f0b911"
+    },
+    input: {
+      shippingCost: {
+        value: 30.0,
+        currencyIsoCode: "SEK"
+      }
+    }
+  ) {
+    order {
+      id
+      totals {
+        quantity
+        shipping {
+          value
+          currency {
+            code
+          }
+        }
+      }
+    }
+    userErrors { message path }
+  }
+}
+```
+
+#### Response
+
+```gql
+{
+  "data": {
+    "updateDirectToConsumerOrder": {
+      "order": {
+        "id": "f8b90249400edc71f30ce1caa6f0b911",
+        "totals": {
+          "quantity": 2,
+          "shipping": {
+            "value": 30.0,
+            "currency": {
+              "code": "SEK"
+            }
+          }
+        }
+      },
+      "userErrors": []
+    }
+  },
+  "extensions": {
+    "complexity": 150,
+    "permissionsUsed": [
+      "Order:write",
+      "Order:read"
+    ],
+    "appVersion": "v0.32.3"
+  }
+}
+```
+
 ### General notes on payment captures in GQL
 
 Some providers (Adyen and Klarna) use capture requests. It means when any of these mutations capture money, the actual capturing doesn’t happen at that moment. The provider will process the request on its side and then send a webhook to Centra. This process can take time, even up to a few days. There is a chance the provider will reject the capture request and it will result in failed capture on the Centra side.
