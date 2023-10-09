@@ -76,4 +76,4 @@ Attribute type names are restricted to letters, digits, underscore `_` and minus
 
 ## Broke something?
 
-Just let us know, and we will restore all configs to the state defined in the client’s repository. Only remember that the synchronization is uni-directional.
+Just let us know, and we will restore all configs to the state defined in the client’s repository. Only remember that the synchronization is uni-directional. In short, we can still deploy the `config.php` configuration to AMS backend configuration, but that will overwrite any changes not present in the config file. Migration from backend config to `config.php` is not possible.
