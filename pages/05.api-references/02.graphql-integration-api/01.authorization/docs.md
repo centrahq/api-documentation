@@ -417,8 +417,8 @@ These fields were deprecated before but now received a concrete date of removal:
 * `removeMeasurementChart` - use `deleteMeasurementChart` instead
 * `removeCampaign` - use `deleteCampaign` instead
 * `ProductSizeUpdateInput` - `GTIN` has been renamed to `EAN`, `UPC` was added as a separate field
-* `ProductSizeCreateInput` - same as the above
-* `ProductSizeFilter` - same
-* `ProductSize.GTIN` - same
+* `ProductSizeCreateInput` - `GTIN` has been renamed to `EAN`, `UPC` was added as a separate field
+* `ProductSizeFilter` - `GTIN` has been renamed to `EAN`, `UPC` was added as a separate field
+* `ProductSize.GTIN` - `GTIN` has been renamed to `EAN`, `UPC` was added as a separate field
 * `Return.account`- moved from the `Return` interface to `WholesaleReturn`
 * `DirectToConsumerReturn.account` - moved from the `Return` interface to `WholesaleReturn`
