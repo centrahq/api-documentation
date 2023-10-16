@@ -573,6 +573,29 @@ You can also define custom attributes on a display level:
 This renders like this:  
 ![ProductDisplayAttribute](attribute-display.png)
 
+#### Product media attribute
+
+You can add text-based attributes to product media - uploaded in AMS -> Catalog -> Product -> Variants. These media-level attributes are currently not translatable.
+
+Let's take this example, where we would like to store the height (in cm) of the model posing in the picture:
+
+```php
+'img_model_size' => [
+    'desc' => 'Model Size (cm)',
+    'group' => 'product_media',
+    'readonly' => false,
+    'elements' => [
+        'value' => [
+            'desc' => 'Model size (cm)',
+            'type' => 'input'
+        ],
+    ],
+],
+```
+
+This renders under each `Image details`, when you click the image in AMS backend, as:  
+![ProductMediaAttribute](product-media-attribute.png)
+
 <!--
 #### [Template]
 
