@@ -58,7 +58,7 @@ To validate that you are able to use the Adyen Drop-In, go to Developers -> API 
 
 If they are not in the list, you need to contact Adyen to make them enable these roles for your Webservice user.
 
-Then, create the plugin inside Centra. Select `Adyen Drop-In` and set your own name for it. Also define a `uri`. This is the keyword used in the API to select it. You can have multiple plugins pointing to Adyen Drop-In with the same `uri` if they are market/pricelist/country/language restricted for example, you can make sure you always use the same `uri` anyway.
+Then, create the plugin inside Centra. Select `Adyen Drop-In` and set your own name for it. Also define a `uri`. This is the keyword used in the API to select it. The `uri` should be unique for each plugin you create. If you have multiple Adyen Drop-In plugins that are market/pricelist/country/language restricted, you should also make sure that the `uri` is unique for each of them.
 
 ![adyen-drop-in-setup.png](adyen-drop-in-setup.png)
 
@@ -185,7 +185,7 @@ To enable any of these payment methods select `Yes` in Adyen store plugin settin
 
 ### Market/Pricelist/Country/Language restrictions
 
-You can also restrict the Adyen Drop-In to only work for specified markets, pricelists, countries or languages. This is good if you want to use different Locales for the Adyen Drop-In. You can use the same `uri` for the Adyen Drop-In plugin using different restrictions.
+You can also restrict the Adyen Drop-In to only work for specified markets, pricelists, countries or languages. This is good if you want to use different Locales for the Adyen Drop-In. Make sure that `uri` for each plugin is unique and notifications are configured properly for each plugin in Adyen if you have multiple Adyen Drop-In plugins.
 
 ### Configuration of Adyen Drop-In
 
