@@ -340,7 +340,7 @@ You can use static lookup (like `|lookup:"SEK"`) or more dynamic, based on varia
             Static price in SEK: {{ catalog_item.metadata|lookup:"Price"|string_to_object|lookup:"SEK"}}
             Dynamic product name in customer language: {{ catalog_item.metadata|lookup:"ProductName"|string_to_object|lookup:customer_lang}}
             Dynamic price in customer currency: {{ catalog_item.metadata|lookup:"Price"|string_to_object|lookup:customer_currency}}
-            Dynamic product URL in customer language: {{ catalog_item.metadata|lookup:"ProductUrls"|string_to_object|lookup:customer_lang }}
+            Dynamic product URL in customer language: {{ catalog_item.metadata|lookup:"ProductUrl"|string_to_object|lookup:customer_lang }}
 
         {% endwith %}
     {% endwith %}
