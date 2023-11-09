@@ -2884,3 +2884,222 @@ All you need to provide is the return ID. The stock will be re-allocated accordi
 If you used `sendItemsToDifferentWarehouse`, the order and shipment lines will be re-allocated, the stock will be re-allocated from the warehouse specified by the user when creating the return.
 
 In case you chose to `removeItemsFromStock`, the shipment lines quantity will be updated to reflect the change but there will be no re-allocation. The idea is that the items were not added back to stock, the user can decide whether to re-allocate it again.
+
+## Customers - custom attributes
+
+When the order is placed in Centra, and the shopper was not registered and logged in, Centra will auto-create an un-registered customer to connect the order to. If the user was logged in, the order will be connected to their registered customer in Centra AMS backend.
+
+GraphQL API can be used to manipulate these customers after they are created. Let's take an example of a simple dynamic attribute with 2 `input` text elements - `External Customer ID` and `Customer shipping ID`:
+
+```php
+    'cus_extra' => [
+        'desc' => 'Customer',
+        'group' => 'customer',
+        'readonly' => false,
+        'elements' => [
+            'id' => [
+                'desc' => 'External Customer ID',
+                'type' => 'input'
+            ],
+            'ship_id' => [
+                'desc' => 'Customer shipping ID',
+                'type' => 'input'
+            ],
+        ],
+    ],
+```
+
+### Find the customer by email
+
+Remember, for each unique email Centra can be used on 2 customers - one registered and one not. There's no way to merge them or migrate the orders between these customers, but both should be available via GQL API. In my case I only have one user using such email address.
+
+#### Request
+
+We are re-using the `fragment attributes` on other calls as well.
+
+```gql
+query getCustomerWithAttributes {
+  customers(where: { email: { equals: "symek+333@centra.com" } }) {
+    id
+    lastName
+    email
+    ...attributes
+  }
+}
+
+fragment attributes on ObjectWithAttributes {
+  attributes {
+    type {
+      name
+      isMapped
+    }
+    description
+    objectType
+    elements {
+      key
+      description
+      kind
+      ... on AttributeStringElement {
+        value
+      }
+      ... on AttributeChoiceElement {
+        isMulti
+        selectedValue
+        selectedValueName
+      }
+      ... on AttributeFileElement {
+        url
+      }
+      ... on AttributeImageElement {
+        url
+        width
+        height
+        mimeType
+      }
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "customers": [
+      {
+        "id": 27,
+        "lastName": "Sym",
+        "email": "symek+333@centra.com",
+        "attributes": [
+          {
+            "type": {
+              "name": "cus_extra",
+              "isMapped": false
+            },
+            "description": "Customer",
+            "objectType": "Customer",
+            "elements": [
+              {
+                "key": "id",
+                "description": "External Customer ID",
+                "kind": "INPUT",
+                "value": "12345"
+              },
+              {
+                "key": "ship_id",
+                "description": "Customer shipping ID",
+                "kind": "INPUT",
+                "value": "9999"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "extensions": {
+    "complexity": 180,
+    "permissionsUsed": [
+      "Customer:read",
+      "Customer.attributes:read",
+      "Attribute:read"
+    ],
+    "appVersion": "v1.7.0"
+  }
+}
+```
+
+### Set the customer attributes
+
+Now that we know the customer ID and attribute keys, we can call mutation `setCustomerAttribute` in order to change their values.
+
+#### Request
+
+```gql
+mutation setCustomerAttribute {
+  assignAttributes(
+    input: {
+      objectType: Customer
+      objectId: 27
+      dynamicAttributes: [
+        {
+          attributeTypeName: "cus_extra"
+          attributeElementKey: "id"
+          attributeElementValue: "New value"
+        },
+        {
+          attributeTypeName: "cus_extra"
+          attributeElementKey: "ship_id"
+          attributeElementValue: "Completely new value"
+        }
+      ]
+    }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    object {
+      ... on Customer {
+        id
+        email
+        firstName
+        lastName
+      }
+      ...attributes
+    }
+  }
+}
+```
+
+#### Response
+
+```json
+{
+  "data": {
+    "assignAttributes": {
+      "userErrors": [],
+      "object": {
+        "id": 27,
+        "email": "symek+333@centra.com",
+        "firstName": "Pio",
+        "lastName": "Sym",
+        "attributes": [
+          {
+            "type": {
+              "name": "cus_extra",
+              "isMapped": false
+            },
+            "description": "Customer",
+            "objectType": "Customer",
+            "elements": [
+              {
+                "key": "id",
+                "description": "External Customer ID",
+                "kind": "INPUT",
+                "value": "New value"
+              },
+              {
+                "key": "ship_id",
+                "description": "Customer shipping ID",
+                "kind": "INPUT",
+                "value": "Completely new value"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "extensions": {
+    "complexity": 120,
+    "permissionsUsed": [
+      "Attribute:write",
+      "Customer.attributes:read",
+      "Attribute:read"
+    ],
+    "appVersion": "v1.7.0"
+  }
+}
+```
