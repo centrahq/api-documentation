@@ -423,6 +423,10 @@ If you prefer to register and sign up your customers on your website and in Cent
 
 Once the customer is registered, you can log them in using [POST /login/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_login__email_). Once logged in, you can call [PUT /customer/update](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/put_customer_update), [PUT /email](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/put_email), [PUT /address](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/put_address) or [PUT /password](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/put_password) to modify details of currently logged in user.
 
+[notice-box=info]
+When it comes to customer passwords, Centra allows any string between 4 and 128 characters. We strongly recommend that you add your own password complexity requirements in your front end, based on the project requirements.
+[/notice-box]
+
 When logged in, customer's selection is linked to their account. If they log in on a different computer, they will have the same items in their selection. They can also [read or update their wishlist](/fe-development/customer-wishlists).
 
 To fetch details of currently logged user, call [GET /customer](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/get_customer). You can also fetch their previous orders by calling [POST /orders](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_orders). When logged in, the selection contains a `loggedIn` object with the customer's address and e-mail. You can reset their password by calling [POST /password-reset-email/{email}](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_password_reset_email__email_). Once done, they can [POST /logout](https://docs.centra.com/swagger-ui/?api=CheckoutAPI#/6.%20customer%20handling/post_logout) from your website.
