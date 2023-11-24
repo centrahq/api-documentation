@@ -77,6 +77,11 @@ Retrying helps to ensure that important data is not lost and that the receiver c
 
 More on it [here](/plugins/centra-webhook).
 
+#### Restrictions
+
+Using IP filtering on the integration side isn't a reliable security measure because the IP address of the Centra webhook can change anytime.
+Our application scales according to its requirements, leading to dynamic IP addresses. This makes the traditional static IP filtering ineffective for security purposes.
+
 ### Mechanism for rebuilding the whole cache
 
 A mechanism to rebuild the whole cache may be necessary in scenarios where the cache becomes stale 
