@@ -31,7 +31,7 @@ For those who are familiar with our SOAP API queue, it might be important to kno
 
 ## How to enable the system
 
-For now, the system is enabled on servers on demand. Please contact your CSM/PSM to enable it.
+For now, the system is enabled on servers on demand. Please contact your CSM/PSM to enable it. The Integration API queries and AMS page are always available, but events are not generated until the system is enabled internally.
 
 After it’s enabled, you need to prepare your API token.
 
