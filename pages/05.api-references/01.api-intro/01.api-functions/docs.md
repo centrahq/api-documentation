@@ -31,11 +31,15 @@ GraphQL is now officially out of Beta, and it has more features than ever. A ful
 
 Oh by the way, did we mention that GraphQL offers **100%** code coverage? Integral part of the API are the [automatically generated GraphQL API specifications for Centra Integration API](https://docs.centra.com/graphql/). This means that everyone who has the basic grasp of [GQL APIs in general](https://graphql.org), and knows the syntax used, is able to immediately use any and all of the available functions. Is there a use case you can think of how to implement? Now you no longer need documentation pages with instructions, now the available options are at your fingertips, with suggestion, immediate validation and basically self-writing code. You really have to try it to believe it. And once you do, you can use it to do anything with your Centra. Within reason, right?
 
-### [SOAP] ERP system integrations
+#### [SOAP] ERP system integrations (deprecated)
 
 Many customers use the ERP systems, like Navision, to store the master of the data for Products, Customers, Pricelists and so on. If you need to integrate to those systems, you may be interested in our [SOAP API](/api-references/soap-integration-api). Since in this case Centra works in a slave mode, this is currently the only API that allows you to modify Centra Products, Pricelists, Shipping, Invoices, etc. We very rarely add new features to this API, but we also have comprehensive docs covering most of use cases required when working with an ERP system. They are all described in our [ERP integration guide](/guides/erp-integration).
 
-### [REST] Subscription API (deprecated)
+[notice-box=info]
+SOAP API is not recommended for new integrations. Please look into using GraphQL Integration API, or REST Order API instead.
+[/notice-box]
+
+#### [REST] Subscription API (deprecated)
 
 This API was replaced by the [new subscriptions functionality](/fe-development/subscriptions).
 
