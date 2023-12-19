@@ -6,7 +6,7 @@ taxonomy:
     category: docs
 ---
 
-URI (Uniform Resource Locator) provides a standard way to identify and locate resources on the Internet.  In Centra URIs are used to get access to such resources:
+URI (Uniform Resource Locator) provides a standard way to identify and locate resources on the Internet.  In Centra URIs are used to get access to the following resources:
 
 - Brands
 - Campaigns
@@ -20,11 +20,10 @@ URIs can be changed and used to improve SEO optimization.
 In Centra users can manipulate URIs using AMS or APIs.
 
 ### URIs in AMS
+
 - Creating (Editing) URI in Centra:
 
-
-
-In Centra, for creating(editing) a Brand user can go to:  `GENERAL / BRANDS`
+In Centra, for creating(editing) a Brand user can go to:  `GENERAL / BRANDS`  
 There user can fill Brands name, URI, and other fields.
 
 URI can contain Unicode characters(without smiles) light form of transformation will be applied.
@@ -47,18 +46,14 @@ Also, translations can be imported with generating URIs on the go, when a URI is
 
 ![TranslationImportOptions](translation-import-uri.png)
 
-- ‘Do not auto-generate URIs’ is selected — no URI is auto-generated for translated `displays/categories`
-- ‘Replace non-latin characters with latin’ is selected - the URI is generated with latin characters for translated displays and categories → generated based on names (translated display name, category)
+- ‘Do not auto-generate URIs’ is selected — no URI is auto-generated for translated `displays/categories`  
+- ‘Replace non-latin characters with latin’ is selected - the URI is generated with latin characters for translated displays and categories → generated based on names (translated display name, category)  
 - ‘Save the original unicode characters’ is selected - the URI is auto-generated with unicode characters for translated displays and categories → generated based on names (translated display name, category)
 
 ### URIs in API(GQL)
 
 [notice-box=info]
-GQL Integration API works in a bit different way: we will validate input.
-
-If a request contains no valid characters, validation will fail.
-
-For such reason in request, there should be
+GQL Integration API works in a bit different way: We validate input. If a request contains no valid characters, validation will fail. For such reason in request, there should be:
 ```
 userErrors { message path }
 userWarnings { message path }
@@ -66,7 +61,8 @@ userWarnings { message path }
 [/notice-box]
 
 Example GQL mutation for creating Product Display with URI:
-```
+
+```gql
 mutation createDisplay {
   createDisplay(input: {
     product: {id: 1}
