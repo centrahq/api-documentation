@@ -343,7 +343,7 @@ After this time, request can be accepted if there is sufficient stock.
 
 ###### Rejecting order
 
-If the store is unable to ship the order they should reject it as quickly as possible so it can move on as fast as possible. rejection is done by calling the [Order API update check first endpoint](/api-references/order-api/api-reference/update-allocation-request), no further action is needed and if all stores reject the order it will be shipped as a normal order.
+If the store is unable to ship the order they should reject it as quickly as possible so it can move on as fast as possible. rejection is done by calling the [Order API update Allocation request endpoint](/api-references/order-api/api-reference/update-allocation-request), no further action is needed and if all stores reject the order it will be shipped as a normal order.
 
 
 ###### Accepting the order
@@ -356,16 +356,16 @@ on success the order should be shipped and the appropriate actions to create and
 
 
 
-##### Check first flow
+##### Check first, then allocate flow
 ###### Warehouse
 
-The warehouse should be setup to be connected to your brick and mortar and as "Check First", which to centra means that the stock quantities are unreliable and need to be verified before the order is handled. It is also required that this warehouse is updated with the stores stock values. 
+The warehouse should be setup to be connected to your brick and mortar and as "Check first, then allocate", which to centra means that the stock quantities are unreliable and need to be verified before the order is handled. It is also required that this warehouse is updated with the stores stock values. 
 
 ![pos-check-first-warehouse.png](pos-check-first-warehouse.png)
 
 ###### Webhooks
 
-To get notified of new orders to ship from what stores the [Centra webhook API](/plugins/centra-webhook) needs to be setup. make sure to set it up with type Integration API and ensure that "check first" is ticked
+To get notified of new orders to ship from what stores the [Centra webhook API](/plugins/centra-webhook) needs to be setup. make sure to set it up with type Integration API and ensure that "Check first, then allocate" is ticked
 
 ![pos-integration-api.png](pos-integration-api.png) ![pos-check-first-webhook.png](pos-check-first-webhook.png) 
 
@@ -486,12 +486,12 @@ After this time it is no longer possible to accept the order using this warehous
 
 ###### Rejecting order
 
-If the store is unable to ship the order they should reject it as quickly as possible so it can move on as fast as possible. rejection is done by calling the [Order API update check first endpoint](/api-references/order-api/api-reference/update-check-first), no further action is needed and if all stores reject the order it will be shiped as a normal order.
+If the store is unable to ship the order they should reject it as quickly as possible so it can move on as fast as possible. rejection is done by calling the [Order API update Check first, then allocate endpoint](/api-references/order-api/api-reference/update-check-first), no further action is needed and if all stores reject the order it will be shiped as a normal order.
 
 
 ###### Accepting the order
 
-If the store is able to ship the order a call to [Order API update check first endpoint](/api-references/order-api/api-reference/update-check-first).
+If the store is able to ship the order a call to [Order API update Check first, then allocate endpoint](/api-references/order-api/api-reference/update-check-first).
 
 on error the order should not be shipped. errors can happen if the store was to slow and a timeout happend, or if anotehr store accepted first.
 
