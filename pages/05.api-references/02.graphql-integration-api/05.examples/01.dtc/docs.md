@@ -923,6 +923,48 @@ mutation updateDtcCancel {
 }
 ```
 
+### Un-allocating order lines
+
+Before the order is shipped, you have the option to unallocate specific order lines with `unallocateOrder` mutation. This mutation does the opposite to `allocateOrder` – it removes allocations, meaning the connections from specific warehouse items to order lines. It can be either a full unallocation, or a selective one: specific order lines with given quantities, and/or specific warehouses only.
+
+Same as when cancelling order lines, you must choose what to do with the stock that will not be allocated anymore. There are three options under `stockActionPolicy`, and exactly one of them must be provided: `removeItemsFromStock`, `releaseItemsBackToWarehouse`, or `sendItemsToDifferentWarehouse`, where you point to a specific warehouse.
+
+#### Request
+
+```gql
+mutation unallocate {
+  unallocateOrder(input: {
+    order: {number: 31351}
+    unallocate: [
+      {orderLine: {id: 53134}, quantity: 1}
+    ]
+    warehouses: [{id: 1}]
+    stockActionPolicy: {
+      releaseItemsBackToWarehouse: true
+    }
+  }) {
+    userErrors { message, path }
+    userWarnings { message, path }
+    order { ...orderData }
+  }
+}
+
+fragment orderData on Order {
+  id
+  number
+  lines {
+    id
+    quantity
+    allocations {
+      id
+      quantity
+      warehouse { id, name }
+      stockChangeLine { id, deliveredQuantity, freeToAllocateQuantity }
+    }
+  }
+}
+```
+
 ### Cancelling an order
 
 It is possible to cancel orders that haven't been completed by using an cancel mutation. In this case DTC and wholesale flows are the same. Canceling the order will result in the order having a status `cancelled` set. 
