@@ -177,7 +177,7 @@ Selectable mapped attributes can be configured so that multiple values can be se
     'elements' => [
         'value' => [
             'desc' => 'Label description',
-            'type' => 'text'
+            'type' => 'textarea'
         ],
     ],
 ],
