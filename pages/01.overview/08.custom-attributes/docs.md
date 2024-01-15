@@ -324,6 +324,11 @@ Response from the Checkout API:
 }
 ```
 
+[notice-box=info]
+Unlike other custom attributes, `product_media` attributes doesn't need publishing to show up in the Checkout API.
+[/notice-box]
+
+
 Response from the Shop API:
 
 ```JSON
