@@ -4107,6 +4107,183 @@ mutation addOrEditTranslations {
 
 To remove translations of any field, simply send in `{ field: "name", value: null }`.
 
+## Bonus example: Create everything product-related using a single API call with multiple mutations
+
+This is a new feature in Centra's GraphQL API. Normally, you need to create your resources one by one: You create a product, get back the product ID. Then for that product ID you can create a variant, and once it's created, you can connect it to a specific size chart and add stock to your activated sizes. However, since every follow-up mutation requires the output from the previous one, it used to be impossible to create, for instance, product+variant+size in a single API request.
+
+Things are different now that we have implemented the [GQL API conversions](/api-references/graphql-integration-api/id-conversion). With them, you can assign external IDs to resources created by Centra, so that you can call them by your own IDs, like the ones used in your PIM/ERP system. This also allows us to run multiple create mutations at once - since we can create a product _already with a conversion_, which we can later use when referencing this product ID in later mutations. Therefore, the internal Centra IDs are conveniently hidden from view while you use dynamic `externalId` identifiers to connect to a specific resource.
+
+Below is one such example - how to use `externalId` concept to create product, variant, sizechart, activate sizes, add a display and add stock.
+
+[notice-box=alert]
+Remember, sending these combined mutations in a single API call will still have the same complexity, meaning you will still use up `8` quota for `MUTATION_COUNT` rate limits. The big save in this case is the network time - instead of sending mutations and responses back and forth, multiplying the time to complete, all mutations will be executed in series, and the API will only respond once. You're saving on network time, not on query/mutation complexity.
+[/notice-box]
+
+#### Request
+
+```gql
+mutation allInOne {
+  createSizeChart: createSizeChart(
+    input: {
+      name: "Chart with two sizes"
+      horizontalLabels: ["50", "51"]
+      externalId: "My size chart with two sizes"
+      dividerSymbol: "-"
+      displayDividedBy: 1
+    }
+  ) {
+    userErrors {
+      message
+      path
+    }
+    sizeChart {
+      id
+      name
+      sizes {
+        id
+      }
+    }
+  }
+  createConversionForSize: setIdConversions(
+    input: [
+      {
+        objectType: Size
+        externalId: "My size chart with two sizes| my size"
+        internalId: 50
+      }
+    ]
+  ) {
+    userErrors {
+      message
+      path
+    }
+    userWarnings {
+      message
+      path
+    }
+    entries {
+      id
+      externalId
+      internalId
+      objectType
+      integrationName
+    }
+  }
+  createProduct(
+    input: {
+      name: "xyz"
+      status: ACTIVE
+      productNumber: "XYZ"
+      brand: { id: 1 }
+      externalId: "My product 1"
+    }
+  ) {
+    product {
+      id
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+
+  createV1: createProductVariant(
+    input: {
+      product: { externalId: "My product 1" }
+      name: "First"
+      status: ACTIVE
+      sizeChart: {externalId: "My size chart with two sizes" }
+      externalId: "My variant 1"
+    }
+  ) {
+    productVariant {
+      id
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+  createV2: createProductVariant(
+    input: {
+      product: { externalId: "My product 1" }
+      name: "Second"
+      status: ACTIVE
+      sizeChart: {externalId: "My size chart with two sizes" }
+      externalId: "My variant 2"
+    }
+  ) {
+    productVariant {
+      id
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+
+  createD1: createDisplay(
+    input: {
+      product: { externalId: "My product 1" }
+      store: { id: 1 }
+      name: "Display 1"
+      status: ACTIVE
+      uri: "some-unique-uri"
+      addProductVariants: [
+        { productVariant: { externalId: "My variant 1" } }
+        { productVariant: { externalId: "My variant 2" } }
+      ]
+    }
+  ) {
+    display {
+      id
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+
+  createPS1: createProductSize(
+    input: {
+      productVariant: { externalId: "My variant 1" }
+      size: { externalId: "My size chart with two sizes| my size" }
+    }
+  ) {
+    productSize {
+      id
+    }
+    userErrors {
+      message
+      path
+    }
+  }
+  createS1: changeStock(
+    input: {
+      intoWarehouse: { id: 1 }
+      description: "New stock"
+      productVariants: [
+        {
+          productVariant: { externalId: "My variant 1" }
+          unitCost: { value: 41, currencyIsoCode: "EUR" }
+          sizeChanges: {
+            size: { externalId: "My size chart with two sizes| my size" }
+            deliveredQuantity: 5
+          }
+        }
+      ]
+    }
+  ) {
+    stockChange {
+      id
+    }
+    userErrors {
+      message
+    }
+  }
+}
+```
+
 <!--
 #### Request
 
