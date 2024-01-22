@@ -4116,7 +4116,7 @@ Things are different now that we have implemented the [GQL API conversions](/api
 Below is one such example - how to use `externalId` concept to create product, variant, sizechart, activate sizes, add a display and add stock.
 
 [notice-box=alert]
-Remember, sending these combined mutations in a single API call will still have the same complexity, meaning you will still use up `8` quota for `MUTATION_COUNT` rate limits. The big save in this case is the network time - instead of sending mutations and responses back and forth, multiplying the time to complete, all mutations will be executed in series, and the API will only respond once. You're saving on network time, not on query/mutation complexity.
+Remember, sending these combined mutations in a single API call will still have the same complexity as if you sent them in 8 calls, meaning you will still use up `8` quota for `MUTATION_COUNT` rate limits. The big save in this case is the network time - instead of sending mutations and responses back and forth, multiplying the time to complete, all mutations will be executed in series, and the API will only respond once.
 [/notice-box]
 
 #### Request
