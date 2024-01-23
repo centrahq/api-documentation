@@ -32,7 +32,7 @@ To set up the External tax engine (ETE) plugin, you need to provide all the basi
 - `Tax engine type` - should be `Custom`
 - `API URL` - the endpoint Centra will send requests for tax calculation to.
 
-[notice-box=warning]
+[notice-box=alert]
 Please note that this endpoint should be able to handle multiple types of payloads depending on the request type
 (see [Request type concept](#request-type)).
 [/notice-box]
@@ -131,7 +131,7 @@ required fields) or fails to calculate the tax for any reason - it should respon
 the internal tax engine calculation.
 [/notice-box]
 
-[notice-box=warning]
+[notice-box=alert]
 You may receive the transaction with the committing type and same entity ID a few times. In this case, your tax engine 
 should handle it properly and update the transaction committed before instead of responding with an error.
 [/notice-box]
@@ -243,7 +243,7 @@ order/shipment/return lines list. Also, each cost type have its own tax code def
 the cost lines may appear only on some specific entities (e.g. return cost and return compensation cost may be applied 
 for return only).
 
-[notice-box=warning]
+[notice-box=alert]
 Additional cost lines will be presented on the payload only in case you define all additional cost tax codes on the
 plugin. In case some additional cost code is empty, that additional cost line will not be sent in the `lines` array.
 [/notice-box]
@@ -915,7 +915,7 @@ See [Request headers](#request-headers).
 | `taxationDate`                     | string, in `YYYY-MM-DD` format                                              | Taxation date (date when the shipment has been completed, required for proper tax value calculation for return)                                                  |
 | `lines`                            | array                                                                       | Return lines for calculation                                                                                                                                     |
 
-[notice-box=warning]
+[notice-box=alert]
 `taxationDate` should be used in tax calculation for items that are returned to make sure the same tax rules and rates 
 are applied, and that refund value will not be undertaxed or overtaxed. `transactionDate` here serves as the actual date
 when the return has been initiated. 
