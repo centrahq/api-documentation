@@ -1,11 +1,11 @@
 ---
-title: Order API - Update "Check first, then allocate" warehouse
-altTitle: Update "Check first, then allocate"
+title: Order API - Update check first
+altTitle: Update check first
 taxonomy:
   category: docs
 ---
 
-# Update Check first, then allocate
+# Update Check First
 
 Endpoint: `POST *base*/check-first`  
 Authentication: [API Key](/api-references/api-intro#authentication)
@@ -13,19 +13,19 @@ Authentication: [API Key](/api-references/api-intro#authentication)
 This will update the status of a check-first warehouse on an order.
 
 [notice-box=alert]
-Updating a Check first, then allocate for an order is irreversible. Once an order has been accepted or rejected, it can no longer be changed.
+Updating a check first for an order is irreversible. Once an order has been accepted or rejected, it can no longer be changed.
 [/notice-box]
 
 ## Parameters
 
 [parameter data="orderNumber" datatype="int" isRequired=true sublevel=1]
-Order ID to update the Check first, then allocate.
+Order ID to update the Check first.
 [/parameter]
 [parameter data="warehouseId" datatype="int" isRequired=true sublevel=1]
-Warehouse ID associated with the "Check first, then allocate order".
+Warehouse ID associated with the Check first order.
 [/parameter]
 [parameter data="accepted" datatype="bool" isRequired=true sublevel=1]
-Whether to accept or reject the Check first, then allocate warehouse. ``true`` to accept, ``false`` to reject.
+Whether to accept or reject the Check First warehouse. ``true`` to accept, ``false`` to reject.
 [/parameter]
 
 ## Request example
