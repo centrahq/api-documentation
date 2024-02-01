@@ -158,27 +158,218 @@ The Brick and Mortar entry contains information about the store.
 
 ![pos-brick-and-mortar.png](pos-brick-and-mortar.png)
 
-##### Warehouse
+##### Direct, then confirm flow
 
-The warehouse should be setup to be connected to your brick and mortar and as "Check First", which to centra means that the stock quantities are unreliable and need to be verified before the order is handled. It is also required that this warehouse is updated with the stores stock values. 
+###### Warehouse
+
+The warehouse should be setup to be connected to your brick and mortar and as "Direct, then confirm", which to Centra means that the stock quantities are potentially unreliable and need to be verified before the order is handled. It is also required that this warehouse is updated with the stores stock values.
+
+![pos-check-first-warehouse.png](pos-direct-then-confirm-warehouse.png)
+
+###### Webhooks
+
+To get notified of new orders to ship from what stores the [Centra webhook API](/plugins/centra-webhook) needs to be setup. Make sure to set it up with type `Integration API` and ensure that "Allocation request" is ticked
+
+![pos-direct-then-confirm-webhook.png](pos-direct-then-confirm-webhook.png)
+
+###### Getting information about buy online ship from store orders
+
+Webhooks is how you recive information about buy online ship from store orders, webhooks will be sent when orders are created, accepted, rejected or they time out. The same order can send the same action multiple times depending on setup.
+
+Example webhook payload:
+
+```json
+{
+  "events": [
+    {
+      "type": "allocation_request",
+      "action": "create",
+      "date": "2023-12-29 09:44:11.505407",
+      "id": 2131231241249,
+      "data": {
+        "status": "allocated",
+        "warehouseId": 9,
+        "expirationDate": {
+          "date": "2023-12-29 10:44:11.384563",
+          "timezone_type": 3,
+          "timezone": "Europe\/Stockholm"
+        },
+        "order": {
+          "id": "367482b8c68dd399db65637ce0208940",
+          "number": 67
+        },
+        "lines": {
+          "102": {
+            "lineId": 102,
+            "quantity": 1,
+            "stockItemId": 19
+          },
+          "103": {
+            "lineId": 103,
+            "quantity": 1,
+            "stockItemId": 19
+          }
+        }
+      }
+    }
+  ]
+}
+
+```
+`id` - Allocation request Id  
+`action` - The action for the allocation request. Can be:  
+- `create`  
+- `update`  
+`date` - The date for the allocation request  
+`data.warehouseId` - The warehouse id for the warehouse that is accepting allocation request  
+`data.status` - The status of the warehouse operation. Can be:  
+- `allocated` - items are allocated from this warehouse, request is accepted  
+- `timed-out` - items are reallocation, request still could be accepted  
+- `sent` - request was sent, but products are allocated from another warehouse. If this warehouse will accept request, re-allocaiton will be done.  
+
+`data.expirationDate` - Object, that contains date time for the allocation request expiration  
+`data.order.id` - Selection id for the order in Centra  
+`data.order.number` - Order number in Centra  
+`data.lines[].lineId` - Order id for the order line in Centra  
+`data.lines[].quantity` - Order item quantity  
+`data.lines[].stockItemId` - Order stock item id  
+
+###### Create
+
+Create events are emitted when we expect a store to pickup and ship an order.
+The webhook contains the Id for each check-first warehouse that is allowed to ship the order and the date at which it will time-out. in case of many warehouses whoever accepts first will get to send.
+
+```json
+{
+  "events": [
+    {
+      "type": "allocation_request",
+      "action": "create",
+      "date": "2023-12-29 09:44:11.505407",
+      "id": 2131231241249,
+      "data": {
+        "status": "allocated",
+        "warehouseId": 9,
+        "expirationDate": {
+          "date": "2023-12-29 10:44:11.384563",
+          "timezone_type": 3,
+          "timezone": "Europe\/Stockholm"
+        },
+        "order": {
+          "id": "367482b8c68dd399db65637ce0208940",
+          "number": 67
+        },
+        "lines": {
+          "102": {
+            "lineId": 102,
+            "quantity": 1,
+            "stockItemId": 19
+          },
+          "103": {
+            "lineId": 103,
+            "quantity": 1,
+            "stockItemId": 19
+          }
+        }
+      }
+    }
+  ]
+}
+
+```
+`id` - Allocation request Id  
+`action` - The action for the allocation request. Can be:  
+- `create`  
+- `update`  
+  `date` - The date for the allocation request  
+  `data.warehouseId` - The warehouse id for the warehouse that is accepting allocation request  
+  `data.status` - The status of the warehouse operation. Can be:  
+- `allocated` - items are allocated from this warehouse, request is accepted  
+- `timed-out` - items are reallocation, request still could be accepted  
+- `sent` - request was sent, but products are allocated from another warehouse. If this warehouse will accept request, re-allocaiton will be done.  
+
+`data.expirationDate` - Object, that contains date time for the allocation request expiration  
+`data.order.id` - Selection id for the order in Centra  
+`data.order.number` - Order number in Centra  
+`data.lines[].lineId` - Order id for the order line in Centra  
+`data.lines[].quantity` - Order item quantity  
+`data.lines[].stockItemId` - Order stock item id  
+
+###### Timeout
+
+Timeout events are emitted after a `Direct, then confirm` warehouse times out for an order, at the date specified in the [Create](#create) call. At this moment, allocated items will be released from the warehouse. After this time, request can be accepted if there is sufficient stock.
+
+```json
+{
+  "type": "allocation_request",
+  "action": "update",
+  "date": "2023-12-29 13:42:01.443787",
+  "id": 11,
+  "data": {
+    "status": "timed-out",
+    "warehouseId": 11,
+    "expirationDate": {
+      "date": "2023-12-29 11:45:01.000000",
+      "timezone_type": 3,
+      "timezone": "Europe\/Stockholm"
+    },
+    "order": {
+      "id": "367482b8c68dd399db65637ce0208940",
+      "number": 67
+    },
+    "lines": {
+      "102": {
+        "lineId": 102,
+        "quantity": 1,
+        "stockItemId": 19
+      },
+      "103": {
+        "lineId": 103,
+        "quantity": 1,
+        "stockItemId": 19
+      }
+    }
+  }
+}
+```
+
+##### Processing buy online ship from store orders
+
+###### Rejecting the order
+
+If the store is unable to ship the order they should reject it as quickly as possible so it can move on to default fulfilment process as fast as possible. Rejection is done by calling the [Order API update Allocation request endpoint](/api-references/order-api/api-reference/update-allocation-request). No further action is needed, and if all stores reject the order it will be shipped as a normal order.
+
+###### Accepting the order
+
+If the store is able to ship the order, it needs to make a call to [Order API update allocation request endpoint](/api-references/order-api/api-reference/update-allocation-request).
+
+Upon error, the order should not be shipped. Errors can happen if the store was too slow and a timeout happend, or if another store accepted the order first.
+
+Upon success, the order should be shipped, and the appropriate actions to create and mark the order as shipped in centra should be taken.
+
+##### Check first, then allocate flow
+
+###### Warehouse
+
+The warehouse should be setup to be connected to your brick and mortar and as `Check first, then allocate`, which to Centra means that the stock quantities are unreliable and need to be verified before the order is handled. It is also required that this warehouse is updated with the stores stock values. 
 
 ![pos-check-first-warehouse.png](pos-check-first-warehouse.png)
 
-##### Webhooks
+###### Webhooks
 
-To get notified of new orders to ship from what stores the [Centra webhook API](/plugins/centra-webhook) needs to be setup. make sure to set it up with type Integration API and ensure that "check first" is ticked
+To get notified of new orders to ship from what stores the [Centra webhook API](/plugins/centra-webhook) needs to be setup. Make sure to set it up with type Integration API and ensure that `Check first, then allocate` is ticked
 
 ![pos-integration-api.png](pos-integration-api.png) ![pos-check-first-webhook.png](pos-check-first-webhook.png) 
 
-### Getting information about buy online ship from store orders
+###### Getting information about buy online ship from store orders
 
-Webhooks is how you will recive information about buy online ship from store orders, webhooks will be sent when order are created, accepted ,rejected or times out. the same order can send the same action multiple times depending on setup.
+Webhooks is how you will recive information about buy online ship from store orders, webhooks will be sent when orders are created, accepted, rejected, or time out. The same order can send the same action multiple times depending on setup.
 
 In each of the payloads `id` refers to the order number which can be used in the Order API. `action` has information about what happened and `data` has more data depending on the `action`
 
-##### Create
-Create events are emitted when we expect a store to pickup and ship an order.
-The webhook contains the Id for each check-first warehouse that is allowed to ship the order and the date at which it will time-out. in case of many warehouses whoever accepts first will get to send.
+###### Create
+
+Create events are emitted when we expect a store to pickup and ship an order. The webhook contains the `id` for each check-first warehouse that is allowed to ship the order and the date at which it will time out. In case of many warehouses, the order will be allocated and sent by whichever warehouse accepts the order first.
 
 ```json
 {
@@ -209,7 +400,8 @@ The webhook contains the Id for each check-first warehouse that is allowed to sh
 }
 ```
 
-##### Rejected
+###### Rejected
+
 Rejected events are emitted whenever the Check-first warehouse has been cancelled on an order.
 
 This can happen either when an individual store rejects the order [by the Order Api](/api-references/order-api/api-reference/update-check-first) or when the "Resume" button is pressed on a check-first order from AMS.
@@ -241,10 +433,12 @@ If all are rejected the order will proceed to be processed as a regular order.
 }
 ```
 
-##### Accepted
+###### Accepted
+
 Accepted events are emitted when an order is accepted by a check-first [by the Order Api](/api-references/order-api/api-reference/update-check-first).
 
 After an order is accepted it can not be accepted by any other check-first, and they are automatically rejected.
+
 ```json
 {
   "events": [
@@ -261,7 +455,7 @@ After an order is accepted it can not be accepted by any other check-first, and 
 }
 ```
 
-##### Timeout
+###### Timeout
 
 Timeout events are emitted after a check-first warehouse times out for an order, at the date specified in the [Create](#create) call.
 
@@ -283,17 +477,16 @@ After this time it is no longer possible to accept the order using this warehous
 }
 ```
 
-### Processing buy online ship from store orders
+##### Processing buy online ship from store orders
 
-#### Rejecting order
+###### Rejecting order
 
-If the store is unable to ship the order they should reject it as quickly as possible so it can move on as fast as possible. rejection is done by calling the [Order API update check first endpoint](/api-references/order-api/api-reference/update-check-first), no further action is needed and if all stores reject the order it will be shiped as a normal order.
+If the store is unable to ship the order they should reject it as quickly as possible so it can move on to default fulfilment process as fast as possible. Rejection is done by calling the [Order API update Check first, then allocate endpoint](/api-references/order-api/api-reference/update-check-first). No further action is needed, and if all stores reject the order it will be shipped as a normal order.
 
+###### Accepting the order
 
-#### Accepting the order
+If the store is able to ship the order, it needs to make a call to [Order API update Check first, then allocate endpoint](/api-references/order-api/api-reference/update-check-first).
 
-If the store is able to ship the order a call to [Order API update check first endpoint](/api-references/order-api/api-reference/update-check-first).
+Upon error, the order should not be shipped. Errors can happen if the store was too slow and a timeout happend, or if another store accepted the order first.
 
-on error the order should not be shipped. errors can happen if the store was to slow and a timeout happend, or if anotehr store accepted first.
-
-on success the order should be shipped and the appropriate actions to create and mark the order as shipped in centra should be taken.  
+Upon success, the order should be shipped, and the appropriate actions to create and mark the order as shipped in centra should be taken.
