@@ -1544,7 +1544,9 @@ fragment shipmentDetails on Shipment {
 Useful if you are creating completed shipments. In this case you do not specify the `paid` parameter, but instead instruct GQL API to trigger the payment capture to the external PSP.
 
 [notice-box=alert]
-Please be warned, the main point of `createShipment` mutation is to create a shipment, the ability to capture at the same time is a convenience method. Therefore, a failed capture will not prevent the shipment from being created. You must ensure to always fetch `userWarnings`, where you will find out if your capture failed. If it did, you should re-try capture later.
+Please be warned, the main point of `createShipment` mutation is to create a shipment, the ability to capture at the same time is a convenience method. Therefore, a failed capture will not prevent the shipment from being created. Your capture may fail if the authorization was not completed, if it was already captured before, or if there's a problem with the payment plugin, to give some examples.
+
+You must ensure to always fetch `userWarnings`, where you will find out if and why your capture failed. If it did, you should re-try capture later using [captureShipment mutation](#capturing-a-shipment).
 [/notice-box]
 
 Please remember that there's a difference between shipment ID and number. The shipment "number" is the human-friendly name including order number and shipment prefix. The ID is a unique integer, and should be used to identify the shipment in the API:
