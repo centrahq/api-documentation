@@ -80,10 +80,8 @@ Once the size charts are in place, products can be added to Centra. Let’s take
           verticalLabels
           dividerSymbol
         }
-        userErrors {
-          message
-          path
-        }
+        userErrors { message path }
+        userWarnings { message path }
       }
     }
 ```
@@ -1239,6 +1237,75 @@ When the Price Alteration is created, the specific prices for the products can a
     }
   }
 ```
+
+#### How to use `overrideIndividualVariantPrices`
+
+A new field `overrideIndividualVariantPrices` was introduced on the `ProductPriceInput`. It is important to note that:
+
+1. If you never used individual variant prices, it doesn't do anything.
+2. If you set it to `true`, all variants of a given product will be set to the product price. Otherwise, only inherited prices will be affected.
+3. If you send individual variant prices, it still makes sense to have a "main" price of a product assigned to all variants, and then override it on the variant level. That's because some variants could be added right before the call, and they need some price as well. Also, this is the only way to turn an individual variant price back into an inherited one.
+
+To get more familiar with the concept let’s imagine a situation like this:  
+* Product price: 100 USD  
+* Variant 1: 120 USD (individual)  
+* Variant 2: 100 USD (inherited)  
+* Variant 3: no price set yet.
+
+Now you want to increase the product price to 110 USD. Depending on other inputs, you can achieve different outcomes.
+
+a. Only the product level:
+
+```gql
+       {
+          product: {id: 1}
+          price: {value: 110, currencyIsoCode: "USD"}
+          overrideIndividualVariantPrices: false # by default
+        }
+```
+
+Result: variants 2 and 3 got the new price 110 USD, while variant 1 still has the individual 120 USD.
+
+b. Override all variants:
+
+```gql
+       {
+          product: {id: 1}
+          price: {value: 110, currencyIsoCode: "USD"}
+          overrideIndividualVariantPrices: true
+        }
+```
+
+Result: all three variants got the new price 110 USD.
+
+c. Set only individual variant prices:
+
+```gql
+       {
+          product: {id: 1}
+          individualVariantPrices: [
+            {productVariant: {id: 1}, price: {value: 110, currencyIsoCode: "USD"}}
+            {productVariant: {id: 2}, price: {value: 110, currencyIsoCode: "USD"}}
+          ]
+        }
+```
+
+Result: The two variants got the new price 110 USD, but variant 3 still doesn't have any price set.
+
+d. Override and make variant 2 individual instead of variant 1:
+
+```gql
+        {
+          product: {id: 1}
+          price: {value: 110, currencyIsoCode: "USD"}
+          overrideIndividualVariantPrices: true
+          individualVariantPrices: [
+            {productVariant: {id: 2}, price: {value: 120, currencyIsoCode: "USD"}}
+          ]
+        }
+```
+
+Result: variant 1 and 3 now got the inherited product price 110 USD, and variant 2 has an individual one.
 
 ### Product displays
 
