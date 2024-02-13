@@ -387,7 +387,7 @@ Upon error, the order should not be shipped. Errors can happen if the store was 
 
 Upon success, the order should be shipped, and the appropriate actions to create and mark the order as shipped in Centra should be taken.
 
-#### Direct, then confirm
+#### Direct, then confirm allocation
 ##### Warehouse
 
 The warehouse should be set as "Direct, then confirm", which to Centra means that stock quantities are potentially unreliable and allocation needs to be confirmed before the order is handled. It is also required that this warehouse is updated in real time with the store's stock values. You may connect the “Direct, then confirm” warehouse to your brick and mortar store.
@@ -513,7 +513,7 @@ Create events are emitted when we expect a store to pick up and ship an order. T
 
 ##### Timeout
 
-Timeout events are emitted after a `Direct, then confirm warehouse` times out for an order (or part of the order), at the date specified in the [Create](#create) call. At this moment, allocated items will be released back to FTA (free to allocate) in this warehouse and allocation will move to the next warehouse in the rule that can fulfill the order demand (partially or fully). Timed out requests can still be accepted, if there is sufficient stock left in the warehouse, another warehouse has not yet confirmed the allocation and the entire flow has not reached the end.
+Timeout events are emitted after a `Direct, then confirm` warehouse times out for an order (or part of the order), at the date specified in the [Create](#create) call. At this moment, allocated items will be released back to FTA (free to allocate) in this warehouse and allocation will move to the next warehouse in the rule that can fulfill the order demand (partially or fully). Timed out requests can still be accepted, if there is sufficient stock left in the warehouse, another warehouse has not yet confirmed the allocation and the entire flow has not reached the end.
 
 
 ```json
