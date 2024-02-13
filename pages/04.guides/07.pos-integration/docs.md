@@ -39,11 +39,70 @@ More information: [Order API - Get products](https://docs.centra.com/reference/s
 
 #### Example response
 
-TBD
+```json
+{
+    "status": "ok",
+    "products": [
+        {
+            "sku": "123",
+            "variantId": 1475,
+            "variantSku": "999",
+            "sizeSku": "",
+            "brand": null,
+            "collection": null,
+            "product": "Test Product",
+            "productId": 1,
+            "variant": "White",
+            "size": "One Size",
+            "sizeComment": "",
+            "stockItemId": 116,
+            "ean": "1233421127",
+            "upc": null,
+            "weight": 0,
+            "weightUnit": "kg",
+            "countryOfOrigin": "",
+            "harmCode": "",
+            "harmDescription": "",
+            "active": 1,
+            "createdAt": "2023-11-28 09:24:15",
+            "name": "Test Product",
+            "description": "",
+            "shortDescription": "",
+            "comment": "",
+            "metaTitle": "",
+            "metaDescription": "",
+            "metaKeywords": "",
+            "folder": "",
+            "categories": [
+                "Shop"
+            ],
+            "categoryName": "Shop",
+            "images": [],
+            "prices": [
+                {
+                    "id": "19",
+                    "price": 100,
+                    "pricelist": "SEK",
+                    "currency": "SEK",
+                    "campaigns": []
+                },
+                {
+                    "id": "20",
+                    "price": 10,
+                    "pricelist": "USD",
+                    "currency": "USD",
+                    "campaigns": []
+                }
+            ],
+            "store": "Retail"
+        }
+    ]
+}
+```
 
 ### Fetching stock
 
-With the use of this endpoint you can fetch the amount of items available for purchase. You can search by productId, SKU or EAN, and in return you will get, among other details:
+With the use of [Order API - Get stock](https://docs.centra.com/reference/stable/order-api/get-stock) endpoint, you can fetch the amount of items available for purchase. You can search by productId, SKU or EAN, and in return you will get, among other details:
 
 ```json
 {
@@ -65,7 +124,40 @@ More information: [Order API - Get stock](https://docs.centra.com/reference/stab
 
 #### Example response
 
-TBD
+```json
+{
+  "status": "ok",
+  "products": [
+    {
+      "sku": "123",
+      "variantId": 1475,
+      "variantSku": "999",
+      "sizeSku": "",
+      "brand": null,
+      "collection": null,
+      "product": "Test Product",
+      "productId": 1,
+      "variant": "White",
+      "size": "One Size",
+      "sizeComment": "",
+      "stockItemId": 116,
+      "ean": "1233421127",
+      "upc": null,
+      "weight": 0,
+      "weightUnit": "kg",
+      "countryOfOrigin": "",
+      "harmCode": "",
+      "harmDescription": "",
+      "active": 1,
+      "createdAt": "2023-11-28 09:24:15",
+      "categoryName": null,
+      "physicalStock": 53,
+      "allocatedStock": 44,
+      "availableStock": 9
+    }
+  ]
+}
+```
 
 ### Updating stock
 
@@ -125,6 +217,49 @@ The warehouse should be connected to your brick and mortar and allocation policy
 To get notified of new orders to ship from what stores, the [Centra webhook API](/plugins/centra-webhook)  needs to be set up. Make sure to set it up with Integration API version and ensure that Check first is set to Yes.
 
 ![pos-integration-api.png](pos-integration-api.png) ![pos-check-first-webhook.png](pos-check-first-webhook.png) 
+
+##### Order API
+
+Information about allocation requests can be fetched using Order API. The endpoint [Get allocation requests of an order](/api-references/order-api/api-reference/get-allocation-requests) can be used to get information about the allocation requests for a specific order.
+
+`GET <base>/*base*/orders/*id*/allocation-requests HTTP/1.1`
+
+```json
+  { 
+    "status": "ok",
+    "allocation_requests": [
+        {
+            "id": 1141,
+            "status": "sent",
+            "warehouseId": 27,
+            "expirationDate": "2024-02-14T16:02:25+01:00",
+            "order": {
+                "id": "5cdb865329d982314aab6c5b84ac1201",
+                "number": 1103
+            },
+            "lines": [
+                {
+                    "lineId": 1484,
+                    "quantity": 1,
+                    "stockItemId": 121
+                },
+                {
+                    "lineId": 1485,
+                    "quantity": 1,
+                    "stockItemId": 120
+                },
+                {
+                    "lineId": 1486,
+                    "quantity": 2,
+                    "stockItemId": 116
+                }
+            ],
+            "createdAt": "2024-02-13T16:02:25+01:00",
+            "warehouseName": "Store 1"
+        }
+    ]
+}
+```
 
 ##### Getting information about "buy online, ship from store" orders
 
