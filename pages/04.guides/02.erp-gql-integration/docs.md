@@ -80,10 +80,8 @@ Once the size charts are in place, products can be added to Centra. Let’s take
           verticalLabels
           dividerSymbol
         }
-        userErrors {
-          message
-          path
-        }
+        userErrors { message path }
+        userWarnings { message path }
       }
     }
 ```
@@ -1240,6 +1238,75 @@ When the Price Alteration is created, the specific prices for the products can a
   }
 ```
 
+### How to use `overrideIndividualVariantPrices`
+
+A new field `overrideIndividualVariantPrices` was introduced on the `ProductPriceInput`. It is important to note that:
+
+1. If you never used individual variant prices, it doesn't do anything.
+2. If you set it to `true`, all variants of a given product will be set to the product price. Otherwise, only inherited prices will be affected.
+3. If you send individual variant prices, it still makes sense to have a "main" price of a product assigned to all variants, and then override it on the variant level. That's because some variants could be added right before the call, and they need some price as well. Also, this is the only way to turn an individual variant price back into an inherited one.
+
+To get more familiar with the concept let’s imagine a situation like this:  
+* Product price: 100 USD  
+* Variant 1: 120 USD (individual)  
+* Variant 2: 100 USD (inherited)  
+* Variant 3: no price set yet.
+
+Now you want to increase the product price to 110 USD. Depending on other inputs, you can achieve different outcomes.
+
+a. Only the product level:
+
+```gql
+       {
+          product: {id: 1}
+          price: {value: 110, currencyIsoCode: "USD"}
+          overrideIndividualVariantPrices: false # by default
+        }
+```
+
+Result: variants 2 and 3 got the new price 110 USD, while variant 1 still has the individual 120 USD.
+
+b. Override all variants:
+
+```gql
+       {
+          product: {id: 1}
+          price: {value: 110, currencyIsoCode: "USD"}
+          overrideIndividualVariantPrices: true
+        }
+```
+
+Result: all three variants got the new price 110 USD.
+
+c. Set only individual variant prices:
+
+```gql
+       {
+          product: {id: 1}
+          individualVariantPrices: [
+            {productVariant: {id: 1}, price: {value: 110, currencyIsoCode: "USD"}}
+            {productVariant: {id: 2}, price: {value: 110, currencyIsoCode: "USD"}}
+          ]
+        }
+```
+
+Result: The two variants got the new price 110 USD, but variant 3 still doesn't have any price set.
+
+d. Override and make variant 2 individual instead of variant 1:
+
+```gql
+        {
+          product: {id: 1}
+          price: {value: 110, currencyIsoCode: "USD"}
+          overrideIndividualVariantPrices: true
+          individualVariantPrices: [
+            {productVariant: {id: 2}, price: {value: 120, currencyIsoCode: "USD"}}
+          ]
+        }
+```
+
+Result: variant 1 and 3 now got the inherited product price 110 USD, and variant 2 has an individual one.
+
 ### Product displays
 
 There’s one last thing that needs to be done in order to get products that are fully sellable. They’re called Displays and their function is to connect products to specific categories, assign product images, select for which Market they should be available for, and more. Depending on the project scope, Displays might be handled directly in Centra by the client and that’s why it’s saved for last. However, they can also be created directly through an integration. To make it less abstract, we can call the Display the product presentation layer. Just like in the real world you are not just sending your customers to browse your warehouse, but instead display your products in a way that will entice a sale, Displays in Centra can be used to control how your backend products will look like in your Stores. The beauty of displays is that you can configure one Display per Store, which means you can sell the same products from different stores using different categories, media and metadata, depending on requirements.
@@ -2258,6 +2325,48 @@ Now that our order looks as expected, let’s process it further. First step (po
       "appVersion": "v0.32.3"
     }
   }
+```
+
+## Un-allocating order stock
+
+The `unallocateOrder` mutation does the opposite to `allocateOrder` – it removes allocations, meaning the connections from specific warehouse items to order lines. It can be either a full unallocation, or a selective one: specific order lines with given quantities, and/or specific warehouses only.
+
+Of course, once an item has been shipped, it’s impossible to unallocate it. Only quantities remaining to be shipped are eligible for unallocation. Requesting to unallocate more results in a warning (look at the `userWarnings` field in the response).
+
+Centra must know what to do with the stock that will not be allocated anymore. There are three options under `stockActionPolicy`, and exactly one of them must be provided: `removeItemsFromStock`, `releaseItemsBackToWarehouse`, or `sendItemsToDifferentWarehouse`, where you point to a specific warehouse.
+
+```gql
+mutation unallocate {
+  unallocateOrder(input: {
+    order: {number: 31351}
+    unallocate: [
+      {orderLine: {id: 53134}, quantity: 1}
+    ]
+    warehouses: [{id: 1}]
+    stockActionPolicy: {
+      releaseItemsBackToWarehouse: true
+    }
+  }) {
+    userErrors { message, path }
+    userWarnings { message, path }
+    order { ...orderData }
+  }
+}
+
+fragment orderData on Order {
+  id
+  number
+  lines {
+    id
+    quantity
+    allocations {
+      id
+      quantity
+      warehouse { id, name }
+      stockChangeLine { id, deliveredQuantity, freeToAllocateQuantity }
+    }
+  }
+}
 ```
 
 ## Shipment creation and capture

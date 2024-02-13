@@ -156,6 +156,9 @@ Currently, you can’t. An exception is `createSizeChart` , where conversions fo
 #### If I delete an object, will all corresponding ID conversion entries be deleted as well?
 Invalid references will be deleted on a regular basis, and in case of sizes – immediately. You can also delete them manually or re-assign the external ID to another object either through AMS or the Integration API mutations.
 
+#### I cannot find a product/display/etc. by an external ID
+You should check that the external ID conversion exists in AMS backend, and that your token is assigned to the same Integration for which the external ID is created.
+
 #### I use a valid external ID that is visible in the conversion table, but I still get the “Could not find … with ID …“ error. What should I do?
 Most likely, the internal ID points to a non-existing object, for example, it could have been deleted previously. Update your conversion entries and try again. Also, in case your token is restricted to a store, check if the entity belongs to it. If the issue persists, contact us.
 

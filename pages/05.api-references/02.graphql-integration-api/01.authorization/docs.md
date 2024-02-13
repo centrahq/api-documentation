@@ -422,3 +422,34 @@ These fields were deprecated before but now received a concrete date of removal:
 * `ProductSize.GTIN` - `GTIN` has been renamed to `EAN`, `UPC` was added as a separate field
 * `Return.account`- moved from the `Return` interface to `WholesaleReturn`
 * `DirectToConsumerReturn.account` - moved from the `Return` interface to `WholesaleReturn`
+
+## User warnings - not required, but important!
+
+GraphQL mutations return HTTP 200 response, and the way issues are communicated is through the `userErrors` field in payloads. However, not all issues are equal, and some non-critical ones actually don't prevent mutations from succeeding.
+
+This is especially important for batch actions like price updates (setPrices), where it is really important to save all other prices rather than failing because of one that is wrong for some trivial reason, e.g.:
+* "Duplicate product ID 123 skipped"  
+* "Duplicate variant ID 456 skipped"  
+* "Product variant with id 789 not assigned to product 123"  
+* "Product ID 345 is a bundle with dynamic price type, changing its prices has no effect, skipped"
+
+Sometimes warnings are purely informative, like "Weight unit has been changed from KILOGRAMS to POUNDS", or "Weight has been rounded to 3 decimal places".
+
+`userErrors` from now on contain only errors, and `userWarnings` - all other issues. They both have a message and a path.
+
+```gql
+mutation updateProductWeight {
+  updateProduct(id: 1, input: {
+    weight: {
+      value: 11
+      unit: POUNDS
+    }
+  }) {
+    product { id, weight { formattedValue } }
+    userErrors { message path }
+    userWarnings { message path } # NEW!
+  }
+}
+```
+
+It makes sense to add `userWarnings` to all mutations, even if you don’t expect anything like mentioned above. New warnings can be added in the future.

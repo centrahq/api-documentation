@@ -923,6 +923,48 @@ mutation updateDtcCancel {
 }
 ```
 
+### Un-allocating order lines
+
+Before the order is shipped, you have the option to unallocate specific order lines with `unallocateOrder` mutation. This mutation does the opposite to `allocateOrder` – it removes allocations, meaning the connections from specific warehouse items to order lines. It can be either a full unallocation, or a selective one: specific order lines with given quantities, and/or specific warehouses only.
+
+Same as when cancelling order lines, you must choose what to do with the stock that will not be allocated anymore. There are three options under `stockActionPolicy`, and exactly one of them must be provided: `removeItemsFromStock`, `releaseItemsBackToWarehouse`, or `sendItemsToDifferentWarehouse`, where you point to a specific warehouse.
+
+#### Request
+
+```gql
+mutation unallocate {
+  unallocateOrder(input: {
+    order: {number: 31351}
+    unallocate: [
+      {orderLine: {id: 53134}, quantity: 1}
+    ]
+    warehouses: [{id: 1}]
+    stockActionPolicy: {
+      releaseItemsBackToWarehouse: true
+    }
+  }) {
+    userErrors { message, path }
+    userWarnings { message, path }
+    order { ...orderData }
+  }
+}
+
+fragment orderData on Order {
+  id
+  number
+  lines {
+    id
+    quantity
+    allocations {
+      id
+      quantity
+      warehouse { id, name }
+      stockChangeLine { id, deliveredQuantity, freeToAllocateQuantity }
+    }
+  }
+}
+```
+
 ### Cancelling an order
 
 It is possible to cancel orders that haven't been completed by using an cancel mutation. In this case DTC and wholesale flows are the same. Canceling the order will result in the order having a status `cancelled` set. 
@@ -1155,6 +1197,48 @@ mutation confirmOrder {
       "Order:read"
     ],
     "appVersion": "v0.32.3"
+  }
+}
+```
+
+## Un-allocating order stock
+
+The `unallocateOrder` mutation does the opposite to `allocateOrder` – it removes allocations, meaning the connections from specific warehouse items to order lines. It can be either a full unallocation, or a selective one: specific order lines with given quantities, and/or specific warehouses only.
+
+Of course, once an item has been shipped, it’s impossible to unallocate it. Only quantities remaining to be shipped are eligible for unallocation. Requesting to unallocate more results in a warning (look at the `userWarnings` field in the response).
+
+Centra must know what to do with the stock that will not be allocated anymore. There are three options under `stockActionPolicy`, and exactly one of them must be provided: `removeItemsFromStock`, `releaseItemsBackToWarehouse`, or `sendItemsToDifferentWarehouse`, where you point to a specific warehouse.
+
+```gql
+mutation unallocate {
+  unallocateOrder(input: {
+    order: {number: 31351}
+    unallocate: [
+      {orderLine: {id: 53134}, quantity: 1}
+    ]
+    warehouses: [{id: 1}]
+    stockActionPolicy: {
+      releaseItemsBackToWarehouse: true
+    }
+  }) {
+    userErrors { message, path }
+    userWarnings { message, path }
+    order { ...orderData }
+  }
+}
+
+fragment orderData on Order {
+  id
+  number
+  lines {
+    id
+    quantity
+    allocations {
+      id
+      quantity
+      warehouse { id, name }
+      stockChangeLine { id, deliveredQuantity, freeToAllocateQuantity }
+    }
   }
 }
 ```
@@ -1501,6 +1585,12 @@ fragment shipmentDetails on Shipment {
 
 Useful if you are creating completed shipments. In this case you do not specify the `paid` parameter, but instead instruct GQL API to trigger the payment capture to the external PSP.
 
+[notice-box=alert]
+Please be warned, the main point of `createShipment` mutation is to create a shipment, the ability to capture at the same time is a convenience method. Therefore, a failed capture will not prevent the shipment from being created. Your capture may fail if the authorization was not completed, if it was already captured before, or if there's a problem with the payment plugin, to give some examples.
+
+You must ensure to always fetch `userWarnings`, where you will find out if and why your capture failed. If it did, you should re-try capture later using [captureShipment mutation](#capturing-a-shipment).
+[/notice-box]
+
 Please remember that there's a difference between shipment ID and number. The shipment "number" is the human-friendly name including order number and shipment prefix. The ID is a unique integer, and should be used to identify the shipment in the API:
 
 ```text
@@ -1525,6 +1615,10 @@ mutation createShipmentWithCapturing {
     }
   ) {
     userErrors {
+      message
+      path
+    }
+    userWarnings {
       message
       path
     }
@@ -1663,6 +1757,10 @@ Note the shipment is now `"isPaid": true`.
 
 Use it when a shipment can be created without capturing and needs to be captured later. Most commonly in DtC you would capture the shipment upon its completion in Centra - when the package is actually handled to the shipping company.
 
+[notice-box=alert]
+Remember to always check `userWarnings`, in case your capture request fails for some reason. In that case, you may want to re-try it later.
+[/notice-box]
+
 #### Request
 
 ```gql
@@ -1670,6 +1768,10 @@ mutation captureShipment {
   captureShipment(id: 123) {
     userErrors {
       message 
+      path
+    }
+    userWarnings {
+      message
       path
     }
     paymentHistoryEntry {

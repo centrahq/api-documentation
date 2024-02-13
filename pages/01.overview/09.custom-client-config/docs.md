@@ -74,6 +74,16 @@ Attribute type names are restricted to letters, digits, underscore `_` and minus
 
 ![](modify-attributes.png)
 
+## Before we deploy
+
+Remember, the config files are plain JSON, easy to read, modify and store for backup purposes. Try to make it a habit to always back up your current configuration before making significant changes. 
+
+Centra staff will always help you out when you need to deploy the configuration to Production. Still, make sure to backup your existing config beforehand:
+
+- Export configuration in Prod, save file as backup,  
+- Export new, tested config from QA,  
+- (Centra) Import the new config to Production  
+
 ## Broke something?
 
 Just let us know, and we will restore all configs to the state defined in the client’s repository. Only remember that the synchronization is uni-directional. In short, we can still deploy the `config.php` configuration to AMS backend configuration on demand, but that will overwrite any changes not present in the config file. Migration from backend config to `config.php` is not possible.
