@@ -423,7 +423,7 @@ These fields were deprecated before but now received a concrete date of removal:
 * `Return.account`- moved from the `Return` interface to `WholesaleReturn`
 * `DirectToConsumerReturn.account` - moved from the `Return` interface to `WholesaleReturn`
 
-### User warnings - not required, but important!
+## User warnings - not required, but important!
 
 GraphQL mutations return HTTP 200 response, and the way issues are communicated is through the `userErrors` field in payloads. However, not all issues are equal, and some non-critical ones actually don't prevent mutations from succeeding.
 
