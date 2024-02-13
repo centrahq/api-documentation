@@ -1201,6 +1201,48 @@ mutation confirmOrder {
 }
 ```
 
+## Un-allocating order stock
+
+The `unallocateOrder` mutation does the opposite to `allocateOrder` – it removes allocations, meaning the connections from specific warehouse items to order lines. It can be either a full unallocation, or a selective one: specific order lines with given quantities, and/or specific warehouses only.
+
+Of course, once an item has been shipped, it’s impossible to unallocate it. Only quantities remaining to be shipped are eligible for unallocation. Requesting to unallocate more results in a warning (look at the `userWarnings` field in the response).
+
+Centra must know what to do with the stock that will not be allocated anymore. There are three options under `stockActionPolicy`, and exactly one of them must be provided: `removeItemsFromStock`, `releaseItemsBackToWarehouse`, or `sendItemsToDifferentWarehouse`, where you point to a specific warehouse.
+
+```gql
+mutation unallocate {
+  unallocateOrder(input: {
+    order: {number: 31351}
+    unallocate: [
+      {orderLine: {id: 53134}, quantity: 1}
+    ]
+    warehouses: [{id: 1}]
+    stockActionPolicy: {
+      releaseItemsBackToWarehouse: true
+    }
+  }) {
+    userErrors { message, path }
+    userWarnings { message, path }
+    order { ...orderData }
+  }
+}
+
+fragment orderData on Order {
+  id
+  number
+  lines {
+    id
+    quantity
+    allocations {
+      id
+      quantity
+      warehouse { id, name }
+      stockChangeLine { id, deliveredQuantity, freeToAllocateQuantity }
+    }
+  }
+}
+```
+
 ### Shipping Cost Update
 
 Allows for updating the shipping cost of DTC (Direct To Consumer) orders.
