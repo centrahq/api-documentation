@@ -205,7 +205,7 @@ The Brick and Mortar entry contains information about the store.
 ![pos-brick-and-mortar.png](pos-brick-and-mortar.png)
 
 
-#### Check first, then allocate flow
+#### Check first, then allocate
 ##### Warehouse
 
 The warehouse should be connected to your brick and mortar and allocation policy needs to be set  as Check first, then allocate. Which to Centra means that the stock quantities are unreliable and need to be verified before the order is handled. It is also required that this warehouse is updated with the store's stock values.
@@ -387,7 +387,7 @@ Upon error, the order should not be shipped. Errors can happen if the store was 
 
 Upon success, the order should be shipped, and the appropriate actions to create and mark the order as shipped in Centra should be taken.
 
-#### Direct, then confirm flow
+#### Direct, then confirm
 ##### Warehouse
 
 The warehouse should be set as "Direct, then confirm", which to Centra means that stock quantities are potentially unreliable and allocation needs to be confirmed before the order is handled. It is also required that this warehouse is updated in real time with the store's stock values. You may connect the “Direct, then confirm” warehouse to your brick and mortar store.
