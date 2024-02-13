@@ -188,7 +188,25 @@ More information: [Order API - Update stock](https://docs.centra.com/reference/s
 
 #### Example response
 
-TBD
+```json
+{
+  "status":"ok"
+}
+```
+On error:
+
+```json
+{
+  "status": "no",
+  "msg": "Some of the products were not updated",
+  "errors": {
+    "productsNotFound": [
+      "9876543210123",
+      "5432167890123"
+    ]
+  }
+}
+```
 
 ## Buy online ship from store
 
