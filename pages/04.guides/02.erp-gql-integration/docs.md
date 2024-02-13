@@ -1238,7 +1238,7 @@ When the Price Alteration is created, the specific prices for the products can a
   }
 ```
 
-#### How to use `overrideIndividualVariantPrices`
+### How to use `overrideIndividualVariantPrices`
 
 A new field `overrideIndividualVariantPrices` was introduced on the `ProductPriceInput`. It is important to note that:
 
