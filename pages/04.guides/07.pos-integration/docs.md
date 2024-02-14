@@ -410,7 +410,7 @@ Upon success, the order should be shipped, and the appropriate actions to create
 
 The warehouse should be set as "Direct, then confirm", which to Centra means that stock quantities are potentially unreliable and allocation needs to be confirmed before the order is handled. It is also required that this warehouse is updated in real time with the store's stock values. You may connect the “Direct, then confirm” warehouse to your brick and mortar store.
 
-![pos-check-first-warehouse.png](pos-direct-then-confirm-warehouse.png)
+![pos-direct-then-confirm-warehouse.png](pos-direct-then-confirm-warehouse.png)
 
 ##### Webhooks
 
@@ -531,42 +531,7 @@ Create events are emitted when we expect a store to pick up and ship an order. T
 
 ##### Timeout
 
-Timeout events are emitted after a `Direct, then confirm` warehouse times out for an order (or part of the order), at the date specified in the [Create](#create) call. At this moment, allocated items will be released back to FTA (free to allocate) in this warehouse and allocation will move to the next warehouse in the rule that can fulfill the order demand (partially or fully). Timed out requests can still be accepted, if there is sufficient stock left in the warehouse, another warehouse has not yet confirmed the allocation and the entire flow has not reached the end.
-
-
-```json
-{
-  "type": "allocation_request",
-  "action": "update",
-  "date": "2023-12-29 13:42:01.443787",
-  "id": 11,
-  "data": {
-    "status": "timed-out",
-    "warehouseId": 11,
-    "expirationDate": {
-      "date": "2023-12-29 11:45:01.000000",
-      "timezone_type": 3,
-      "timezone": "Europe\/Stockholm"
-    },
-    "order": {
-      "id": "367482b8c68dd399db65637ce0208940",
-      "number": 67
-    },
-    "lines": {
-      "102": {
-        "lineId": 102,
-        "quantity": 1,
-        "stockItemId": 19
-      },
-      "103": {
-        "lineId": 103,
-        "quantity": 1,
-        "stockItemId": 19
-      }
-    }
-  }
-}
-```
+When `Direct, then confirm` warehouse times out for an order (or part of the order), at the date specified in the [Create](#create) call. At this moment, allocated items will be released back to FTA (free to allocate) in this warehouse and allocation will move to the next warehouse in the rule that can fulfill the order demand (partially or fully). Timed out requests can still be accepted, if there is sufficient stock left in the warehouse, another warehouse has not yet confirmed the allocation and the entire flow has not reached the end.
 
 ##### Processing "Buy online, ship from store" orders
 
