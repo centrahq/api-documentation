@@ -18,17 +18,20 @@ In Order API Plugin settings `Allow access to the following endpoints` Order API
 
 ## Parameters
 
-[parameter data="warehouse" datatype="string" isRequired=false sublevel=1]
-Show allocation requests for a specific warehouse name
+[parameter data="warehouseId" datatype="int" isRequired=false sublevel=1]
+Show allocation requests for a specific warehouse ID
 [/parameter]
 
-[parameter data="status" datatype="string" isRequired=true sublevel=1]
-Show allocation requests with a specific status
+[parameter data="status" datatype="string" isRequired=false sublevel=1]
+By default, allocation requests will be shown only with status ``sent``, ``allocated`` and ``failed``
+
+Show allocation requests with a specific status. Acceptable values are ``sent``, ``outdated``, ``timed-out``,``confirmed``, ``rejected``, ``failed`` and ``pending``.
+
 [/parameter]
 
 ## Request example
 
-`GET <base>/*base*/orders/*id*/allocation-requests HTTP/1.1`
+`GET <base>/*base*/orders/9993/allocation-requests HTTP/1.1`
 
 ## Response
 
@@ -36,9 +39,11 @@ Show allocation requests with a specific status
 [parameter data="status" datatype="string" isRequired=true sublevel=1]
 ``ok`` if success. ``no`` if failed.
 [/parameter]
+
 [parameter data="errorMessages" datatype="array" isRequired=false sublevel=1]
 If ``status`` returns ``no``, this value will be not empty with a message why it failed.
 [/parameter]
+
 [parameter data="allocation_requests" datatype="array" isRequired=false sublevel=1]
 Array with allocation requests json objects.
 [/parameter]
