@@ -210,11 +210,11 @@ On error:
 
 ## Buy online ship from store
 
-With "buy online, ship from store" we make it possible to place orders in the webshop which are packed and shipped by a store.
+With "Buy online, ship from store" we make it possible to place orders in the webshop which are packed and shipped by a store.
 
 ### Setup
 
-To set up "buy online, ship from store" in Centra it is required to set up a brick and mortar and a warehouse for each store that can accept orders. To get this data our [GraphQL API](/api-references/graphql-integration-api) can be used
+To set up "Buy online, ship from store" in Centra it is required to set up a brick and mortar and a warehouse for each store that can accept orders. To get this data our  [GraphQL API](/api-references/graphql-integration-api) can be used
 
 #### Brick and Mortar
 
@@ -236,52 +236,9 @@ To get notified of new orders to ship from what stores, the [Centra webhook API]
 
 ![pos-integration-api.png](pos-integration-api.png) ![pos-check-first-webhook.png](pos-check-first-webhook.png) 
 
-##### Fetching allocation requests with Order API
+##### Getting information about "Buy online, ship from store" orders
 
-Information about allocation requests can be fetched using Order API. The endpoint [Get allocation requests of an order](/api-references/order-api/api-reference/get-allocation-requests) can be used to get information about the allocation requests for a specific order.
-
-`GET <base>/*base*/orders/*id*/allocation-requests HTTP/1.1`
-
-```json
-  { 
-    "status": "ok",
-    "allocation_requests": [
-        {
-            "id": 1141,
-            "status": "sent",
-            "warehouseId": 27,
-            "expirationDate": "2024-02-14T16:02:25+01:00",
-            "order": {
-                "id": "5cdb865329d982314aab6c5b84ac1201",
-                "number": 1103
-            },
-            "lines": [
-                {
-                    "lineId": 1484,
-                    "quantity": 1,
-                    "stockItemId": 121
-                },
-                {
-                    "lineId": 1485,
-                    "quantity": 1,
-                    "stockItemId": 120
-                },
-                {
-                    "lineId": 1486,
-                    "quantity": 2,
-                    "stockItemId": 116
-                }
-            ],
-            "createdAt": "2024-02-13T16:02:25+01:00",
-            "warehouseName": "Store 1"
-        }
-    ]
-}
-```
-
-##### Getting information about "buy online, ship from store" orders
-
-Webhooks is how you will receive information about "buy online, ship from store" orders, webhooks will be sent when orders are created, accepted, rejected, or time out. The same order can send the same action multiple times depending on setup.
+Webhooks is how you will receive information about "Buy online, ship from store" orders, webhooks will be sent when orders are created, accepted, rejected, or time out. The same order can send the same action multiple times depending on setup.
 
 In each of the payloads `id` refers to the order number which can be used in the Order API. `action` has information about what happened and `data` has more data depending on the `action`
 
@@ -412,68 +369,60 @@ The warehouse should be set as "Direct, then confirm", which to Centra means tha
 
 ![pos-direct-then-confirm-warehouse.png](pos-direct-then-confirm-warehouse.png)
 
+##### Fetching allocation requests with Order API
+
+Information about allocation requests can be fetched using Order API. The endpoint [Get allocation requests of an order](/api-references/order-api/api-reference/get-allocation-requests) can be used to get information about the allocation requests for a specific order.
+
+`GET <base>/*base*/orders/*id*/allocation-requests HTTP/1.1`
+
+```json
+  { 
+    "status": "ok",
+    "allocation_requests": [
+        {
+            "id": 1141,
+            "status": "sent",
+            "warehouseId": 27,
+            "expirationDate": "2024-02-14T16:02:25+01:00",
+            "order": {
+                "id": "5cdb865329d982314aab6c5b84ac1201",
+                "number": 1103
+            },
+            "lines": [
+                {
+                    "lineId": 1484,
+                    "quantity": 1,
+                    "stockItemId": 121
+                },
+                {
+                    "lineId": 1485,
+                    "quantity": 1,
+                    "stockItemId": 120
+                },
+                {
+                    "lineId": 1486,
+                    "quantity": 2,
+                    "stockItemId": 116
+                }
+            ],
+            "createdAt": "2024-02-13T16:02:25+01:00",
+            "warehouseName": "Store 1"
+        }
+    ]
+}
+```
+
 ##### Webhooks
 
 To get notified of new orders to ship from stores the [Centra webhook API](/plugins/centra-webhook) needs to be set up. Make sure to set it up with type `Integration API` and ensure that "Allocation request" is set to “Yes”.
 
 ![pos-direct-then-confirm-webhook.png](pos-direct-then-confirm-webhook.png)
 
-##### Getting information about "buy online, ship from store" orders
+##### Getting information about "Buy online, ship from store" orders
 
-Webhooks is how you receive the information about "buy online, ship from store" orders. Webhooks will be sent when orders are created, accepted, rejected or time out. The same order can send the same action multiple times depending on setup.
+Webhooks is how you receive the information about "Buy online, ship from store" orders. 
 
-Example webhook payload:
-
-```json
-{
-  "events": [
-    {
-      "type": "allocation_request",
-      "action": "create",
-      "date": "2023-12-29 09:44:11.505407",
-      "id": 2131231241249,
-      "data": {
-        "status": "allocated",
-        "warehouseId": 9,
-        "expirationDate": {
-          "date": "2023-12-29 10:44:11.384563",
-          "timezone_type": 3,
-          "timezone": "Europe\/Stockholm"
-        },
-        "order": {
-          "id": "367482b8c68dd399db65637ce0208940",
-          "number": 67
-        },
-        "lines": {
-          "102": {
-            "lineId": 102,
-            "quantity": 1,
-            "stockItemId": 19
-          },
-          "103": {
-            "lineId": 103,
-            "quantity": 1,
-            "stockItemId": 19
-          }
-        }
-      }
-    }
-  ]
-}
-```
-
-`id` - Allocation request ID
-`action` - The action for the allocation request. Can be:`create`, `update`
-`date` - The date for the allocation request
-`data.warehouseId` - The id of the warehouse that is confirming the allocation request
-`data.status` - The status of the warehouse operation. Can be: `allocated` - items are allocated from this warehouse, request is confirmed, `timed-out` - items are re-allocated, request still can be confirmed (if the allocation flow has not yet reached the end), `sent` - request was sent, but products are allocated from another warehouse. If this warehouse will confirm the request, re-allocation will be done if there is sufficient stock at the moment of confirmation.
-`data.expirationDate` - Object, that contains date time for the allocation request expiration
-`data.order.id` - Selection ID for the order in Centra
-`data.order.number` - Order number in Centra
-`data.lines[].lineId` - Order line ID in Centra
-`data.lines[].quantity` - Order item quantity
-`data.lines[].stockItemId` - Order stock item ID
-
+Webhooks will be sent when orders are `created` or `outdated`. The same order can send the same action multiple times depending on setup.
 
 ##### Create
 Create events are emitted when we expect a store to pick up and ship an order. The webhook contains the Id for each ‘Direct, then confirm” warehouse that is allowed to ship the order and the date at which it will time-out.  In case of multiple warehouses sharing the priority the one confirming the allocation request first will get to send the order.
@@ -517,16 +466,25 @@ Create events are emitted when we expect a store to pick up and ship an order. T
 
 ```
 `id` - Allocation request ID
+
 `action` - The action for the allocation request. Can be:`create`, `update`
+
 `date` - The date for the allocation reques
+
 `data.warehouseId` - The id of the warehouse that is confirming allocation request
-`data.status` - The status of the warehouse operation. Can be: `allocated` - items are allocated from this warehouse, request is confirmed, `timed-out` - items are re-allocated, request still can be confirmed (if the allocation flow has not yet reached the end), `sent` - request was sent, but products are allocated from another warehouse. If this warehouse will confirm the request, re-allocation will be done if there is sufficient stock at the moment of confirmation.
+
+`data.status` - The status of the warehouse operation. Can be: `allocated` - items are allocated from this warehouse, request is sent, `timed-out` - allocation request reached expiration date, items are re-allocated, request still can be confirmed (if the allocation flow has not yet reached the end), `sent` - request was sent, but products are allocated from another warehouse. If this warehouse will confirm the request, re-allocation will be done if there is sufficient stock at the moment of confirmation. `outdated` - allocation request is outdated, please ignore it
 
 `data.expirationDate` - Object, that contains date time for the allocation request expiration
+
 `data.order.id` - Selection id for the order in Centra
+
 `data.order.number` - Order number in Centra
+
 `data.lines[].lineId` - Order line ID in Centra
+
 `data.lines[].quantity` - Order item quantity
+
 `data.lines[].stockItemId` - Order stock item ID
 
 ##### Timeout
