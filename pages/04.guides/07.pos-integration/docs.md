@@ -420,7 +420,9 @@ To get notified of new orders to ship from stores the [Centra webhook API](/plug
 
 ##### Getting information about "Buy online, ship from store" orders
 
-Webhooks is how you receive the information about "Buy online, ship from store" orders. Webhooks will be sent when orders are created, accepted, rejected or time out. The same order can send the same action multiple times depending on setup.
+Webhooks is how you receive the information about "Buy online, ship from store" orders. 
+
+Webhooks will be sent when orders are `created` or `outdated`. The same order can send the same action multiple times depending on setup.
 
 ##### Create
 Create events are emitted when we expect a store to pick up and ship an order. The webhook contains the Id for each ‘Direct, then confirm” warehouse that is allowed to ship the order and the date at which it will time-out.  In case of multiple warehouses sharing the priority the one confirming the allocation request first will get to send the order.
