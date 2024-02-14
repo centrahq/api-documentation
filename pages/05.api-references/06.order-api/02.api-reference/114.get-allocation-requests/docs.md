@@ -16,6 +16,16 @@ This will fetch all allocation requests for order.
 In Order API Plugin settings `Allow access to the following endpoints` Order API should have access to `Get allocation requests of an order (GET /orders/*id*/allocation-requests)` endpoint.
 [/notice-box]
 
+## Parameters
+
+[parameter data="warehouse" datatype="string" isRequired=false sublevel=1]
+Show allocation requests for a specific warehouse name
+[/parameter]
+
+[parameter data="status" datatype="string" isRequired=true sublevel=1]
+Show allocation requests with a specific status
+[/parameter]
+
 ## Request example
 
 `GET <base>/*base*/orders/*id*/allocation-requests HTTP/1.1`
