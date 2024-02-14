@@ -460,8 +460,8 @@ Example webhook payload:
     }
   ]
 }
-
 ```
+
 `id` - Allocation request ID
 `action` - The action for the allocation request. Can be:`create`, `update`
 `date` - The date for the allocation request
@@ -537,7 +537,7 @@ When `Direct, then confirm` warehouse times out for an order (or part of the ord
 
 ##### Rejecting the allocation
 
-If the store is unable to ship the order/ requested part of the order they should reject it as quickly as possible, so it can move on to the next warehouse set in allocation rule as fast as possible. Rejection is done by calling the [Order API update Allocation request endpoint](/api-references/order-api/api-reference/update-allocation-request), No further action is needed, and if all stores reject the order it may be fully or partially backordered and require an action from a Centra admin user in AMS (reallocate to another warehouse manually or cancel the order/ part of the order and notify the client).
+If the store is unable to ship the order/ requested part of the order they should reject it as quickly as possible, so it can move on to the next warehouse set in allocation rule as fast as possible. Rejection is done by calling the [Order API update Allocation request endpoint](/api-references/order-api/api-reference/update-allocation-request). No further action is needed, and if all stores reject the order it may be fully or partially backordered and require an action from a Centra admin user in AMS (reallocate to another warehouse manually or cancel the order/ part of the order and notify the client).
 
 Example PUT `/baseURL/allocation-request`
 
