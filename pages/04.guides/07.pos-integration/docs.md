@@ -475,15 +475,11 @@ Create events are emitted when we expect a store to pick up and ship an order. T
 
 `data.status` - The status of the warehouse operation. Can be: 
 
-    `allocated` - items are allocated from this warehouse, request is sent, 
+  `allocated` - items are allocated from this warehouse, request is sent,
 
-    `timed-out` - allocation request reached expiration date, items are re-allocated, request still can be confirmed (if the allocation flow has not yet reached the end), 
-
-    `sent` - request was sent, but products are allocated from another warehouse. If this warehouse will confirm the request, re-allocation will be done if there is sufficient stock at the moment of confirmation. 
+  `timed-out` - allocation request reached expiration date, items are re-allocated, request still can be confirmed (if the allocation flow has not yet reached the end),
     
-    `outdated` - allocation request is outdated, please ignore it
-
-    `failed` - allocation request wasn't sent in a webhook, but it can still be confiremd through Order API
+  `outdated` - allocation request is outdated, please ignore it
 
 `data.expirationDate` - Object, that contains date time for the allocation request expiration
 
