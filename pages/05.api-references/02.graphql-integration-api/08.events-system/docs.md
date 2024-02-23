@@ -8,6 +8,10 @@ taxonomy:
 
 ## What is the event system
 
+[notice-box=info]
+For now, the system is enabled on servers on demand, and only available in QA environments. Please contact your CSM/PSM to enable it and for further information. The Integration API queries and AMS page are always available, but events are not generated until the system is enabled internally.
+[/notice-box]
+
 Integration GraphQL API exposes a stream of events to the interested parties. When anything in Centra is changed, there will be events you can listen to. This will allow you to:  
 * know what changed since your last synchronization, so that you can fetch only changed data selectively,  
 * avoid periodical polling for new data of each type.
