@@ -84,6 +84,17 @@ Redirect URL after failed validation is appended with the error identifier as a 
 `https://www.example.com/payment-failed/checkout?error=country_mismatch`
 [/notice-box]
 
+##### Validation errors
+
+In case of a validation error, the customer flow is as follows:
+1. The customer submits the payment in KCO, validation callback is sent from Klarna to Centra
+2. Centra validates the order and sends back an error response to Klarna
+3. Klarna redirects the customer to the `Validation error redirect URL` if set, otherwise to the payment failed page with an error identifier as a query parameter
+4. The customer is informed about the validation error details based on error identifier and can try again
+5. Customer proceeds to checkout again, `POST /payment` call is sent to Centra from the Frontend
+6. Centra reloads selection and KCO session
+7. Customer proceeds to payment with KCO again and can successfully pay now that errors have been fixed
+
 ###### List of possible error identifiers
 - stock_mismatch
 - order_total_mismatch
