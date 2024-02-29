@@ -59,6 +59,39 @@ This is sometimes required when Centra reliably needs to get the full address fr
 - If you're using PayPal inside Klarna, especially when Override shipping address setting is enabled, Centra will need to be informed about address change coming from PayPal to Klarna
 - If you have any tax rules based on zip codes (city/county tax), Centra needs the full address from Klarna in order to apply the right tax rules
 
+#### Enable validation callback from Klarna
+
+![klarna-validation-callback-option.png](klarna-validation-callback-option.png)
+
+[Validation callback](https://docs.klarna.com/klarna-checkout/popular-use-cases/validate-order/) allows Centra to validate the order right before the payment is submitted by the shopper.
+It is recommended to enable this option to ensure that the order is valid before the payment is submitted.
+It can be enabled by checking the `Enable validation callback` checkbox.
+
+Following criteria are validated on the order using validation callback:
+- Stock for the purchased products is available
+- Order total in Centra matches the order total in Klarna
+- Shipping country in Centra matches the shipping country in Klarna
+- Voucher is not expired (When additional option `Require success voucher validation` is enabled. Defaults to `Yes`.)
+- Selection is not empty
+- Minimum customer age criteria is met (When additional option `Enable age restrict` is enabled and products are age-restricted. Defaults to `No`.)
+
+##### Customization options for the validation callback
+
+`Validation error redirect URL` - URL to redirect the customer to if the validation fails. If not set, the customer will be redirected to the payment failed page.
+
+[notice-box=info]
+Redirect URL after failed validation is appended with the error identifier as a query parameter. The error identifier can be used to customize messaging for the shopper e.g.
+`https://www.example.com/payment-failed/checkout?error=country_mismatch`
+[/notice-box]
+
+###### List of possible error identifiers
+- stock_mismatch
+- order_total_mismatch
+- country_mismatch
+- voucher_error
+- empty_selection
+
+`Redirect for underage buyers` - Required for age restriction functionality. URL to redirect customer to if the customer is underage.
 
 #### Send product images and URLs
 
