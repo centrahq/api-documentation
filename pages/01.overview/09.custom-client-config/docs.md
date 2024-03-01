@@ -12,18 +12,16 @@ Important parts of client configuration have been moved to the Centra backend pa
 
 ### How to access the new configs
 
-Go to System => Config.
+Go to System => Configuration.
 
 ![](system-config.png)
 
 If you can’t see it, it may be because:  
 * It hasn’t been enabled on this instance yet. This option is in beta and is controlled by a feature flag at this moment, so you can ask to turn it on for a given instance. We will do it on demand until further notice.  
-* You are not logged in as a full-access admin.  
-* This is not a QA instance.
+* You are not logged in as a full-access admin. 
 
 ### The new config update process
 
-0. (One time) Use a shared Slack channel to let us know you want to turn this feature on.  
 1. Make config changes in a QA instance.  
 2. Test the changes in the QA instance.  
 3. Notify us that the config should be copied to production.
@@ -73,6 +71,10 @@ You can update and delete existing attribute definitions, and add new ones.
 Attribute type names are restricted to letters, digits, underscore `_` and minus sign `-`. You cannot change the type name, but you can clone an existing attribute into a new one. Just click on the `Create attribute type` button and pick an existing attribute type to duplicate, then edit this copy.
 
 ![](modify-attributes.png)
+
+#### Custom sort order (experimental: available for some customers only)
+
+By default, we sort configurations alphabetically. If you want to change the order, you can edit `Sort order` field in the configuration definition. Configurations with sort order are treated with priority and displayed before Centra predefined attributes. For attributes coming from plugins or predefined by Centra, you are not able to change the sort order.
 
 ## Before we deploy
 
