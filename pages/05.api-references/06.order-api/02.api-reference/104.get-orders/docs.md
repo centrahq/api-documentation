@@ -95,6 +95,14 @@ ID of the specific product item in this order.
 Quantity of this specific product item.
 [/parameter]
 
+[parameter data="taxValue" datatype="float" sublevel=3]
+Approximated unit tax value for this specific product item.
+[/parameter]
+
+[parameter data="totalTaxValue" datatype="float" sublevel=3]
+Total tax value for this product item line.
+[/parameter]
+
 [parameter data="isBundle" datatype="boolean" sublevel=3]
 Flag showing if product is bundle
 [/parameter]
@@ -260,6 +268,7 @@ Content-type: application/json
           "priceDiscount": 50.0,
           "priceDiscountAsPercent": 0,
           "taxValue": 112.63,
+          "totalTaxValue": 112.63,
           "totalPrice": 450.5,
           "anyDiscount": false,
           "priceEachWithoutTax": 337.87,
@@ -296,6 +305,7 @@ Content-type: application/json
           "priceDiscount": 0,
           "priceDiscountAsPercent": 0,
           "taxValue": 90.25,
+          "totalTaxValue": 180.50,
           "totalPrice": 361,
           "anyDiscount": false,
           "priceEachWithoutTax": 270.75,
@@ -332,6 +342,7 @@ Content-type: application/json
               "priceDiscount": 50.0,
               "priceDiscountAsPercent": 0,
               "taxValue": 112.63,
+              "totalTaxValue": 112.63,
               "totalPrice": 450.5,
               "anyDiscount": false,
               "priceEachWithoutTax": 337.87,
