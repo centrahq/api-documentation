@@ -200,7 +200,19 @@ Remember, if you have `Capture Delay` in Adyen set to `immediate`, capture will 
 
 ### OFFER_CLOSED
 
-Webhook type relevant for Alternative Payment Methods like iDEAL, Klarna Pay Now, Klarna Buy Now Pay later, Affirm, Dotpay and other local payment methods/bank transfers that redirect customer to payment method page or mobile app. `OFFER_CLOSED` webhook from Adyen tells Centra to cancel orders that previously had Pending/Received status and have expired or have been cancelled. As a result Centra will cancel such orders and send cancellation email to the customer with information about the reason - cancelled payment. This flow does not concern credit/debit card payments.
+Enable `OFFER_CLOSED` webhook in Adyen [How to enable OFFER_CLOSED webhook](https://docs.adyen.com/development-resources/webhooks/webhook-types/#standard-webhook-page) if you have Alternative Payment Methods enabled such as iDEAL, Klarna Pay Now, Klarna Buy Now Pay later, Affirm, Dotpay, and other local payment methods/bank transfers that redirect the customer to the payment method page or mobile app.
+
+According to Adyen, an offer is an initial stage of payment that requires action from the customer to confirm and turn it into a payment:
+
+[notice-box=info]
+An [open offer](https://help.adyen.com/knowledge/payments/payment-basics/what-is-an-offer-and-how-do-i-search-for-one) is a payment pending authorization.
+[/notice-box]
+
+`OFFER_CLOSED` webhook from Adyen tells Centra to cancel an order that previously had Pending/Received status of the offer and have expired or have been cancelled because customer did not confirm the payment.
+
+When webhook is enabled, Centra will cancel such orders and send cancellation email to the customer with information about the reason - cancelled payment. This type of webhook does not concern credit/debit card payments.
+
+What happens and what can be done if OFFER_CLOSED is disabled:
 
 [notice-box=info]
 Orders that have expired or were cancelled in-app by customers will be stuck on `WaitingForPayment` status in AMS order listing.
@@ -212,18 +224,17 @@ In order to fix orders from the past stuck on `WaitingForPayment` follow steps:
 2. Check status of the offer in Adyen under `Transactions/Offers`.
 3. If the offer status is `OfferCancelled` or `OfferExpired` it means that this offer will not be promoted to authorized payment and order in Centra can be safely cancelled.
 
-[Here you can find more information about enabling OFFER_CLOSED webhook](https://docs.adyen.com/development-resources/webhooks/webhook-types/#standard-webhook-page).
+### Disable recurring flag
 
-### Disable tokenization
-
-Disable recurring toggle in Settings/Checkout settings. This feature attempts to tokenize transactions, by flagging them as `Subscription` and appending `storePaymentMethod:true` in authorization requests. The proper workflow of the integration is that Centra controls `recurringProcessingModel` through API requests to Adyen and that setting should be disabled.
+Disable recurring toggle in Settings/Checkout settings. This feature attempts to tokenize transactions, by flagging them as `Subscription` and appending `storePaymentMethod:true` in authorization requests. The proper workflow of the integration is that Centra controls `recurringProcessingModel` through API requests to Adyen and that setting should be disabled. For more information on how to choose recurring processing model, refer to [Adyen documentation](https://help.adyen.com/knowledge/ecommerce-integrations/tokenization/how-to-choose-recurring-processing-model).
 
 Adyen merchant panel setting - switch off Recurring toggle:
 
 ![adyen-drop-in-recurring-toggle.png](adyen-drop-in-recurring-toggle.png)
 
 [notice-box=info]
-Misconfiguration could cause legitimately initiated transactions to fail because of a discrepancy between SCA scope and would result in payment attempts rejected with error code Authentication required.
+Misconfiguration could cause 3DS2 payments to fail when Issuer grants frictionless flow for the transaction during authentication, but then during authorization, a recurring flag is appended which makes transaction fall into SCA scope causing a discrepancy.
+This would result in payment attempts rejected with error code Authentication required.
 [/notice-box]
 
 ## Implementation
