@@ -232,7 +232,7 @@ Adyen merchant panel setting - switch off Recurring toggle:
 
 ![adyen-drop-in-recurring-toggle.png](adyen-drop-in-recurring-toggle.png)
 
-[notice-box=info]
+[notice-box=alert]
 Misconfiguration could cause 3DS2 payments to fail when Issuer grants frictionless flow for the transaction during authentication, but then during authorization, a recurring flag is appended which makes transaction fall into SCA scope causing a discrepancy.
 This would result in payment attempts rejected with error code Authentication required.
 [/notice-box]
