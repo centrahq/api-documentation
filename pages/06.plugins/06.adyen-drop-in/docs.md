@@ -198,6 +198,34 @@ Whenever you capture using Adyen Drop-In, the Payment Transaction-list in Centra
 Remember, if you have `Capture Delay` in Adyen set to `immediate`, capture will ALWAYS fail in Centra. Our recommendation is that Centra should capture the payment instead. Please change the Capture Delay setting in Adyen by going to `Account` then select "Configure->Settings" and make sure you select the Merchant Account. In the settings page you will see `Capture Delay`. Set it to `Manual` or `7 days` to make sure Centra will control the capture event.
 [/notice-box]
 
+### OFFER_CLOSED
+
+Webhook type relevant for Alternative Payment Methods like iDEAL, Klarna Pay Now, Klarna Buy Now Pay later, Affirm, Dotpay and other local payment methods/bank transfers that redirect customer to payment method page or mobile app. `OFFER_CLOSED` webhook from Adyen tells Centra to cancel orders that previously had Pending/Received status and have expired or have been cancelled. As a result Centra will cancel such orders and send cancellation email to the customer with information about the reason - cancelled payment. This flow does not concern credit/debit card payments.
+
+[notice-box=info]
+Orders that have expired or were cancelled in-app by customers will be stuck on `WaitingForPayment` status in AMS order listing.
+[/notice-box]
+
+In order to fix orders from the past stuck on `WaitingForPayment` follow steps:
+
+1. Check `pspReference` value under authorization entry in Order Payment History section on order page in AMS.
+2. Check status of the offer in Adyen under `Transactions/Offers`.
+3. If the offer status is `OfferCancelled` or `OfferExpired` it means that this offer will not be promoted to authorized payment and order in Centra can be safely cancelled.
+
+[Here you can find more information about enabling OFFER_CLOSED webhook](https://docs.adyen.com/development-resources/webhooks/webhook-types/#standard-webhook-page).
+
+### Disable tokenization
+
+Disable recurring toggle in Settings/Checkout settings. This feature attempts to tokenize transactions, by flagging them as `Subscription` and appending `storePaymentMethod:true` in authorization requests. The proper workflow of the integration is that Centra controls `recurringProcessingModel` through API requests to Adyen and that setting should be disabled.
+
+Adyen merchant panel setting - switch off Recurring toggle:
+
+![adyen-drop-in-recurring-toggle.png](adyen-drop-in-recurring-toggle.png)
+
+[notice-box=info]
+Misconfiguration could cause legitimately initiated transactions to fail because of a discrepancy between SCA scope and would result in payment attempts rejected with error code Authentication required.
+[/notice-box]
+
 ## Implementation
 
 Depending on when you want to show the Adyen Drop-In you can initiate it in two different ways using the parameter `paymentInitiateOnly:true`. When this property is provided to `POST /payment`, no address is required to be submitted, only the country and the payment method. This allows you to render the Adyen Drop-In before the customer has provided their shipping address. This can never complete the payment fully since an address is always required in the second step to complete the checkout.
