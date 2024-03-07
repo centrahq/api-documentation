@@ -200,7 +200,7 @@ Remember, if you have `Capture Delay` in Adyen set to `immediate`, capture will 
 
 ### OFFER_CLOSED
 
-Enable `OFFER_CLOSED` webhook in Adyen [How to enable OFFER_CLOSED webhook](https://docs.adyen.com/development-resources/webhooks/webhook-types/#standard-webhook-page) if you have Alternative Payment Methods enabled such as iDEAL, Klarna Pay Now, Klarna Buy Now Pay later, Affirm, Dotpay, and other local payment methods/bank transfers that redirect the customer to the payment method page or mobile app.
+Enable `OFFER_CLOSED` webhook in Adyen if you have Alternative Payment Methods enabled such as iDEAL, Klarna Pay Now, Klarna Buy Now Pay later, Affirm, Dotpay, and other local payment methods/bank transfers that redirect the customer to the payment method page or mobile app. You can find instructions [here](https://docs.adyen.com/development-resources/webhooks/webhook-types/#standard-webhook-page) on how to enable `OFFER_CLOSED` webhook in Adyen.
 
 According to Adyen, an offer is an initial stage of payment that requires action from the customer to confirm and turn it into a payment:
 
@@ -212,7 +212,7 @@ An [open offer](https://help.adyen.com/knowledge/payments/payment-basics/what-is
 
 When webhook is enabled, Centra will cancel such orders and send cancellation email to the customer with information about the reason - cancelled payment. This type of webhook does not concern credit/debit card payments.
 
-What happens and what can be done if OFFER_CLOSED is disabled:
+What happens and what can be done if `OFFER_CLOSED` is disabled:
 
 [notice-box=info]
 Orders that have expired or were cancelled in-app by customers will be stuck on `WaitingForPayment` status in AMS order listing.
