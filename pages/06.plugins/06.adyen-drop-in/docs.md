@@ -198,7 +198,8 @@ Whenever you capture using Adyen Drop-In, the Payment Transaction-list in Centra
 Remember, if you have `Capture Delay` in Adyen set to `immediate`, capture will ALWAYS fail in Centra. Our recommendation is that Centra should capture the payment instead. Please change the Capture Delay setting in Adyen by going to `Account` then select "Configure->Settings" and make sure you select the Merchant Account. In the settings page you will see `Capture Delay`. Set it to `Manual` or `7 days` to make sure Centra will control the capture event.
 [/notice-box]
 
-### OFFER_CLOSED
+### Required configuration in Adyen Merchant account
+#### Enable OFFER_CLOSED webhook
 
 Enable `OFFER_CLOSED` webhook in Adyen if you have Alternative Payment Methods enabled such as iDEAL, Klarna Pay Now, Klarna Buy Now Pay later, Affirm, Dotpay, and other local payment methods/bank transfers that redirect the customer to the payment method page or mobile app. You can find instructions [here](https://docs.adyen.com/development-resources/webhooks/webhook-types/#standard-webhook-page) on how to enable `OFFER_CLOSED` webhook in Adyen.
 
@@ -224,7 +225,7 @@ In order to fix orders from the past stuck on `WaitingForPayment` follow steps:
 2. Check status of the offer in Adyen under `Transactions/Offers`.
 3. If the offer status is `OfferCancelled` or `OfferExpired` it means that this offer will not be promoted to authorized payment and order in Centra can be safely cancelled.
 
-### Disable recurring flag
+#### Disable recurring flag
 
 Disable recurring toggle in Settings/Checkout settings. This feature attempts to tokenize transactions, by flagging them as `Subscription` and appending `storePaymentMethod:true` in authorization requests. The proper workflow of the integration is that Centra controls `recurringProcessingModel` through API requests to Adyen and that setting should be disabled. For more information on how to choose recurring processing model, refer to [Adyen documentation](https://help.adyen.com/knowledge/ecommerce-integrations/tokenization/how-to-choose-recurring-processing-model).
 
