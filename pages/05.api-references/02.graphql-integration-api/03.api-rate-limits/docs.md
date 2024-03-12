@@ -17,10 +17,9 @@ And more tips on how to optimize your API usage:
 * Requests that result in user errors (ideally warnings too) should be handled appropriately in order to prevent spamming the API with erroneous requests that deplete the limit for nothing.
 * If there is some data that is accessed frequently but not changed often (for example, markets, stores, countries, pricelists, product catalog), cache it to save requests for managing frequently changing data (for example, orders).
 
-<details open>
-  <summary>A more complex example of reducing the query complexity</summary>
+A more complex example of reducing the query complexity:
 
-  Let’s say we have a query like this, which fetches orders for accounts
+Let’s say we have a query like this, which fetches orders for accounts
 
 ```gql
 query ordersForAccount {
@@ -52,7 +51,7 @@ query ordersForAccount {
 ```
 
 This requires additional in-memory grouping on the integration side, but makes the query much less complex (potentially more than 100 times so!).
-</details>
+
 
 ### I am following all guidelines and still hitting rate limits, what should I do?
 
