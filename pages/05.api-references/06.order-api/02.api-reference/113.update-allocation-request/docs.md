@@ -10,7 +10,7 @@ taxonomy:
 Endpoint: `PUT *base*/allocation-request`  
 Authentication: [API Key](/api-references/api-intro#authentication)
 
-This will update the status of a allocation request warehouse on an order.
+This will update the status of an allocation request, which is pending for approval or rejection.
 
 [notice-box=alert]
 In Order API Plugin settings `Allow access to the following endpoints` Order API should have access to `Update allocation request (PUT /allocation-request)` endpoint.
