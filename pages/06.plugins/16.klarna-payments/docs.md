@@ -70,8 +70,6 @@ For testing, set `Test mode` to `Yes`
 - Default locale - Default locale sent to Klarna when payment session is initiated when Centra cannot match any locale on customer/basket level.
 - Send product images to Klarna 
 - Product image size
-- Send product URLs to Klarna
-- Frontend prefix for product URLs 
 - Send product sizes to Klarna
 
 ## APIs used in the integration
@@ -84,7 +82,7 @@ API references:
 - [Centra Shop API](https://docs.centra.com/swagger-ui/?urls.primaryName=ShopAPI#/)
 - [Centra Checkout API](https://docs.centra.com/swagger-ui/?urls.primaryName=CheckoutAPI)
 
-## Authorisation flow
+## Authorization flow
 
 ### Checkout initialization
 
@@ -108,11 +106,11 @@ This includes:
 ![updates_in_the_checkout.png](updates_in_the_checkout.png)
 
 Once the session has been initiated with Klarna, on each selection response there will be an object at path `selection.pluginFields.klarnaPayments`
-including all the fields that are required to display or reload the payment widget and start the authorisation process:
+including all the fields that are required to display or reload the payment widget and start the authorization process:
 
 - `client_token` - Required to call `SDK.init(client_token)` that initiates SDK library
 - `replaceSnippet` - Indicates whether SDK needs to be reinitialized by calling `SDK.init(client_token)` again
-- `authorizePayload` - Payload required for the authorisation call [SDK.authorize(authorizePayload)](https://docs.klarna.com/klarna-payments/integrate-with-klarna-payments/step-2-check-out/22-get-authorization/#authorize-call). Authorization process itself will be described in details in the next section. 
+- `authorizePayload` - Payload required for the authorization call [SDK.authorize(authorizePayload)](https://docs.klarna.com/klarna-payments/integrate-with-klarna-payments/step-2-check-out/22-get-authorization/#authorize-call). Authorization process itself will be described in details in the next section. 
 
 Here's an example of `klarnaPayments` object on the selection response:
 
@@ -213,13 +211,13 @@ Following code snippet is an example of how to properly handle `klarnaReplaceSni
 
 ### Authorization and order placement
 
-![authorisation.png](authorisation.png)
+![authorization.png](authorization.png)
 
 1. Customer proceeds to payment
 2. Frontend calls `SDK.authorize(authorizePayload)` where `authorizePayload` is coming from the latest selection response `selection.pluginFields.klarnaPayments.authorizePayload`
 3. `SDK.authorize()` callback is fired with `authorization_token` as a parameter
 4. Shopper submits the payment in Klarna widget.
-5. Frontend calls `POST /payment-result` Centra endpoint with `authorization_token` to finalize authorisation and place an order in Centra
+5. Frontend calls `POST /payment-result` Centra endpoint with `authorization_token` to finalize authorization and place an order in Centra
    `POST payment-result`
 ```json
 {
