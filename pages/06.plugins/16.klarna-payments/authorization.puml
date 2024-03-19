@@ -5,8 +5,6 @@ participant Frontend
 participant Klarna
 participant Centra
 
-
-
 |||
 group Payment
 Shopper -> Frontend: proceed to payment
@@ -18,20 +16,17 @@ activate Klarna
 Klarna -> Frontend: success callback(authorization_token)
 deactivate Klarna
 |||
-Frontend -> Centra: POST /payment-result
+Frontend -> Centra: POST /payment-result (authorization_token)
+|||
 deactivate Frontend
 activate Centra
 Centra -> Klarna: createOrder(authorization_token)
 activate Klarna
-Klarna --> Centra: success
+Klarna -> Centra: Klarna order created
 deactivate Klarna
-Centra -> Klarna: getSession()
-activate Klarna
-Klarna -> Centra: sessionResponse()
-deactivate Klarna
-Centra -> Centra: finalizeOrder(addressFromKlarnaSession)
+Centra -> Centra: Place order\n(using address from Centra)
 
-Centra -> Frontend: POST /payment-result response - order placed
+Centra -> Frontend: POST /payment-result response : Order placed
 deactivate Centra
 Frontend -> Shopper: Redirect to paymentSuccessPage
 
