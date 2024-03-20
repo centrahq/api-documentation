@@ -225,19 +225,6 @@ In order to fix orders from the past stuck on `WaitingForPayment` follow steps:
 2. Check status of the offer in Adyen under `Transactions/Offers`.
 3. If the offer status is `OfferCancelled` or `OfferExpired` it means that this offer will not be promoted to authorized payment and order in Centra can be safely cancelled.
 
-#### Disable recurring flag
-
-Disable recurring toggle in Settings/Checkout settings. This feature attempts to tokenize transactions, by flagging them as `Subscription` and appending `storePaymentMethod:true` in authorization requests. The proper workflow of the integration is that Centra controls `recurringProcessingModel` through API requests to Adyen and that setting should be disabled. For more information on how to choose recurring processing model, refer to [Adyen documentation](https://help.adyen.com/knowledge/ecommerce-integrations/tokenization/how-to-choose-recurring-processing-model).
-
-Adyen merchant panel setting - switch off Recurring toggle:
-
-![adyen-drop-in-recurring-toggle.png](adyen-drop-in-recurring-toggle.png)
-
-[notice-box=alert]
-Misconfiguration could cause 3DS2 payments to fail when Issuer grants frictionless flow for the transaction during authentication, but then during authorization, a recurring flag is appended which makes transaction fall into SCA scope causing a discrepancy.
-This would result in payment attempts rejected with error code Authentication required.
-[/notice-box]
-
 ## Implementation
 
 Depending on when you want to show the Adyen Drop-In you can initiate it in two different ways using the parameter `paymentInitiateOnly:true`. When this property is provided to `POST /payment`, no address is required to be submitted, only the country and the payment method. This allows you to render the Adyen Drop-In before the customer has provided their shipping address. This can never complete the payment fully since an address is always required in the second step to complete the checkout.
