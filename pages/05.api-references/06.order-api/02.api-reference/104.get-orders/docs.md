@@ -103,6 +103,18 @@ Approximated unit tax value for this specific product item.
 Total tax value for this product item line.
 [/parameter]
 
+[parameter data="totalPrice" datatype="float" sublevel=3]
+Total price displayed before customer checkout
+[/parameter]
+
+[parameter data="totalPriceWithoutTax" datatype="float" sublevel=3]
+Total price without tax
+[/parameter]
+
+[parameter data="totalPriceWithTax" datatype="float" sublevel=3]
+Total price with tax
+[/parameter]
+
 [parameter data="isBundle" datatype="boolean" sublevel=3]
 Flag showing if product is bundle
 [/parameter]
@@ -270,6 +282,8 @@ Content-type: application/json
           "taxValue": 112.63,
           "totalTaxValue": 112.63,
           "totalPrice": 450.5,
+          "totalPriceWithoutTax": 337.87,
+          "totalPriceWithTax": 450.5,
           "anyDiscount": false,
           "priceEachWithoutTax": 337.87,
           "priceEachReduction": 0,
@@ -307,6 +321,8 @@ Content-type: application/json
           "taxValue": 90.25,
           "totalTaxValue": 180.50,
           "totalPrice": 361,
+          "totalPriceWithoutTax": 180.5,
+          "totalPriceWithTax": 361,
           "anyDiscount": false,
           "priceEachWithoutTax": 270.75,
           "priceEachReduction": 0,
@@ -344,6 +360,8 @@ Content-type: application/json
               "taxValue": 112.63,
               "totalTaxValue": 112.63,
               "totalPrice": 450.5,
+              "totalPriceWithoutTax": 337.87,
+              "totalPriceWithTax": 450.5,
               "anyDiscount": false,
               "priceEachWithoutTax": 337.87,
               "priceEachReduction": 0,
