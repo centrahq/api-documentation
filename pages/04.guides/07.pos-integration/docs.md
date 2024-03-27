@@ -373,7 +373,7 @@ The warehouse should be set as "Direct, then confirm", which to Centra means tha
 
 Information about allocation requests can be fetched using Order API. The endpoint [Get allocation requests of an order](/api-references/order-api/api-reference/get-allocation-requests) can be used to get information about the allocation requests for a specific order.
 
-`GET <base>/*base*/orders/*id*/allocation-requests HTTP/1.1`
+`GET <base>/*base*/allocation-requests HTTP/1.1`
 
 ```json
   { 
@@ -383,6 +383,7 @@ Information about allocation requests can be fetched using Order API. The endpoi
             "id": 1141,
             "status": "sent",
             "warehouseId": 27,
+            "warehouseName": "Store 1",
             "expirationDate": "2024-02-14T16:02:25+01:00",
             "order": {
                 "id": "5cdb865329d982314aab6c5b84ac1201",
@@ -405,8 +406,7 @@ Information about allocation requests can be fetched using Order API. The endpoi
                     "stockItemId": 116
                 }
             ],
-            "createdAt": "2024-02-13T16:02:25+01:00",
-            "warehouseName": "Store 1"
+            "createdAt": "2024-02-13T16:02:25+01:00"
         }
     ]
 }
@@ -467,9 +467,9 @@ Create events are emitted when we expect a store to pick up and ship an order. T
 ```
 `id` - Allocation request ID
 
-`action` - The action for the allocation request. Can be:`create`, `update`
+`action` - The action for the allocation request. Can be: `create`, `update`
 
-`date` - The date for the allocation reques
+`date` - The date for the allocation request
 
 `data.warehouseId` - The id of the warehouse that is confirming allocation request
 
@@ -495,13 +495,13 @@ Create events are emitted when we expect a store to pick up and ship an order. T
 
 ##### Timeout
 
-When `Direct, then confirm` warehouse times out for an order (or part of the order), at the date specified in the [Create](#create) call. At this moment, allocated items will be released back to FTA (free to allocate) in this warehouse and allocation will move to the next warehouse in the rule that can fulfill the order demand (partially or fully). Timed out requests can still be accepted, if there is sufficient stock left in the warehouse, another warehouse has not yet confirmed the allocation and the entire flow has not reached the end.
+When `Direct, then confirm` warehouse times out for an order (or part of an order), at the date specified in the [Create](#create) call. At this moment, allocated items will be released back to FTA (free to allocate) in this warehouse and allocation will move to the next warehouse in the rule that can fulfill the order demand (partially or fully). Timed out requests can still be accepted, if there is sufficient stock left in the warehouse, another warehouse has not yet confirmed the allocation and the entire flow has not reached the end.
 
 ##### Processing "Buy online, ship from store" orders
 
 ##### Rejecting the allocation
 
-If the store is unable to ship the order/ requested part of the order they should reject it as quickly as possible, so it can move on to the next warehouse set in allocation rule as fast as possible. Rejection is done by calling the [Order API update Allocation request endpoint](/api-references/order-api/api-reference/update-allocation-request). No further action is needed, and if all stores reject the order it may be fully or partially backordered and require an action from a Centra admin user in AMS (reallocate to another warehouse manually or cancel the order/ part of the order and notify the client).
+If the store is unable to ship the order (or a requested part of the order), they should reject it as quickly as possible, so it can move on to the next warehouse set in allocation rule. Rejection is done by calling the [Order API update Allocation request endpoint](/api-references/order-api/api-reference/update-allocation-request). No further action is needed, and if all stores reject the order it may be fully or partially backordered and require an action from a Centra admin user in AMS (reallocate to another warehouse manually or cancel the order, or a part of the order, and notify the client).
 
 ##### Confirming the allocation
 
