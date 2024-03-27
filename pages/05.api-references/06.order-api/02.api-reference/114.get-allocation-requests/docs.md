@@ -7,39 +7,49 @@ taxonomy:
 
 # Get allocation requests of an order
 
-Endpoint: `GET *base*/orders/*id*/allocation-requests`  
+Endpoint: `GET *base*/allocation-requests`  
 Authentication: [API Key](/api-references/api-intro#authentication)
 
-This will fetch all allocation requests for order.
+This will fetch allocation requests for orders. It only applies to the "Direct, then confirm" flow, where at least such 
+warehouse is used for the stock allocation.
 
 Allocation request can have the following statuses:
 
-`allocated` - items are allocated from this warehouse, request is sent,
-`timed-out` - allocation request reached expiration date, items are re-allocated, request still can be confirmed (if the allocation flow has not yet reached the end),
-`sent` - request was sent, but products are allocated from another warehouse. If this warehouse will confirm the request, re-allocation will be done if there is sufficient stock at the moment of confirmation.
-`outdated` - allocation request is outdated, please ignore it
-`failed` - allocation request wasn't sent in a webhook, but it can still be confirmed through Order API
+* `allocated` - items are allocated, but a webhook was not sent yet, should transition to `sent` right away,
+* `sent` - request webhook was sent, waiting for a response,
+* `failed` - could not deliver a webhook call, but the request can still be fetched and confirmed through Order API,
+* `confirmed` - Centra received a confirmation, the allocation is now final,
+* `rejected` - Centra received a rejection; if stock had been allocated from this warehouse, it has moved on to the next one,
+* `timed-out` - allocation request reached expiration date, items are re-allocated, but this request still can be confirmed as long as the allocation flow has not reached the end yet,
+* `outdated` - allocation request is outdated and cannot be accepted anymore, please ignore it.
 
 [notice-box=alert]
-In Order API Plugin settings `Allow access to the following endpoints` Order API should have access to `Get allocation requests of an order (GET /orders/*id*/allocation-requests)` endpoint.
+In Order API Plugin settings `Allow access to the following endpoints` Order API should have access to the `Get allocation requests (GET /allocation-requests)` endpoint.
 [/notice-box]
 
 ## Parameters
 
-[parameter data="warehouseId" datatype="int" isRequired=false sublevel=1]
-Show allocation requests for a specific warehouse ID
+[parameter data="status" datatype="string" isRequired=false sublevel=1]
+By default, only "pending" (actionable) allocation requests will be returned.
+
+Accepts one or multiple comma-separated statuses listed above, or ``all`` to include all possible statuses.
 [/parameter]
 
-[parameter data="status" datatype="string" isRequired=false sublevel=1]
-By default, allocation requests will be shown only with status ``sent``, ``allocated`` and ``failed``
+[parameter data="order" datatype="int" isRequired=false sublevel=1]
+Show allocation requests for a specific order number. Also accepts a comma-separated list of numbers.
+[/parameter]
 
-Show allocation requests with a specific status. Acceptable values are ``sent``, ``outdated``, ``timed-out``,``confirmed``, ``rejected``, ``failed`` and ``pending``.
+[parameter data="warehouse" datatype="int" isRequired=false sublevel=1]
+Show allocation requests for a specific warehouse ID. Also accepts a comma-separated list of IDs.
+[/parameter]
 
+[parameter data="page" datatype="int" isRequired=false sublevel=1]
+Page number, starting from ``1``. Each page contains up to ``100`` entries.
 [/parameter]
 
 ## Request example
 
-`GET <base>/*base*/orders/9993/allocation-requests HTTP/1.1`
+`GET <base>/*base*/allocation-requests HTTP/1.1`
 
 ## Response
 
@@ -66,62 +76,42 @@ Content-type: application/json
     "status": "ok",
     "allocation_requests": [
         {
-            "id": 1140,
+            "id": 1,
             "status": "outdated",
-            "warehouseId": 27,
-            "expirationDate": "2024-02-14T16:00:00+01:00",
+            "warehouseId": 3,
+            "warehouseName": "Amsterdam",
+            "expirationDate": "2024-03-18T09:04:48+01:00",
             "order": {
-                "id": "5cdb865329d982314aab6c5b84ac1201",
-                "number": 1103
+                "id": "486e13eaaa65d5ff1e87c997b5dce54e",
+                "number": 15
             },
             "lines": [
                 {
-                    "lineId": 1484,
-                    "quantity": 1,
-                    "stockItemId": 121
-                },
-                {
-                    "lineId": 1485,
-                    "quantity": 1,
-                    "stockItemId": 120
-                },
-                {
-                    "lineId": 1486,
-                    "quantity": 2,
-                    "stockItemId": 116
+                    "lineId": 73,
+                    "quantity": 5,
+                    "stockItemId": 1
                 }
             ],
-            "createdAt": "2024-02-13T16:00:00+01:00",
-            "warehouseName": "Store 1"
+            "createdAt": "2024-03-18T09:04:47+01:00"
         },
         {
-            "id": 1141,
-            "status": "sent",
-            "warehouseId": 27,
-            "expirationDate": "2024-02-14T16:02:25+01:00",
+            "id": 2,
+            "status": "outdated",
+            "warehouseId": 4,
+            "warehouseName": "Tokyo",
+            "expirationDate": "2024-03-18T09:04:47+01:00",
             "order": {
-                "id": "5cdb865329d982314aab6c5b84ac1201",
-                "number": 1103
+                "id": "486e13eaaa65d5ff1e87c997b5dce54e",
+                "number": 15
             },
             "lines": [
                 {
-                    "lineId": 1484,
-                    "quantity": 1,
-                    "stockItemId": 121
-                },
-                {
-                    "lineId": 1485,
-                    "quantity": 1,
-                    "stockItemId": 120
-                },
-                {
-                    "lineId": 1486,
-                    "quantity": 2,
-                    "stockItemId": 116
+                    "lineId": 73,
+                    "quantity": 5,
+                    "stockItemId": 1
                 }
             ],
-            "createdAt": "2024-02-13T16:02:25+01:00",
-            "warehouseName": "Store 1"
+            "createdAt": "2024-03-18T09:04:47+01:00"
         }
     ]
 }
@@ -129,7 +119,7 @@ Content-type: application/json
 
 ## Error examples
 
-Order isn't found:
+Unknown status:
 
 ```http
 HTTP/1.1 200 OK
@@ -137,7 +127,9 @@ Content-type: application/json
 
 {
     "status": "no",
-    "msg": "Unknown order id: 1095"
+    "errorMessages": {
+        "status": "Expected \"status\" to be a single or a comma-separated list of request statuses, or \"all\", got \"?\""
+    }
 }
 ```
 
