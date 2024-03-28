@@ -160,5 +160,6 @@ redirects:
   /silksoap: 'https://centra.dev/docs/apis/soap-integration-api/api-reference'
   /graphql-explorer: 'https://docs.centra.com/graphql-explorer'
   /graphql: 'https://centra.dev/graphql'
+  /swagger-ui: 'https://centra.dev/swagger'
   /swagger-ui/?urls.primaryName=ShopAPI: 'https://centra.dev/swagger?urls.primaryName=ShopAPI'
   /swagger-ui/?urls.primaryName=CheckoutAPI: 'https://centra.dev/swagger?urls.primaryName=CheckoutAPI'
