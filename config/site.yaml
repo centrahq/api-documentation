@@ -83,7 +83,7 @@ redirects:
   /plugins/mailchimp: 'https://centra.dev/docs/extend-with-plugins/automations/mailchimp'
   /plugins/centra-webhook: 'https://centra.dev/docs/extend-with-plugins/integrations/centra-webhooks'
   /plugins/cartabandonment: 'https://centra.dev/docs/extend-with-plugins/automations/rule'
-  /plugins/voyado-vouchers: 'https://centra.dev/docs/extend-with-plugins/discounts/voyado-vouchers'
+  /plugins/voyado-vouchers: 'https://centra.dev/docs/extend-with-plugins/promotions/voyado-vouchers'
   /plugins/external-payment-plugin: 'https://centra.dev/docs/extend-with-plugins/checkout/external-payment-plugin'
   /plugins/qliroone: 'https://centra.dev/docs/extend-with-plugins/checkout/qliro-one'
   /plugins/tripletex: 'https://centra.dev/docs/extend-with-plugins/back-office/tripletex'
