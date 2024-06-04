@@ -62,7 +62,7 @@ redirects:
   /fe-development/gift-certs: 'https://centra.dev/docs/crafting-frontends/payments/pay-with-gift-certificates'
   /fe-development/ingrid-implementation: 'https://centra.dev/docs/extend-with-plugins/shipping/ingrid-v1'
   /fe-development/ingridv2-implementation: 'https://centra.dev/docs/extend-with-plugins/shipping/ingrid'
-  /fe-development/subscriptions: 'https://centra.dev/docs/crafting-frontends/subscriptions'
+  /fe-development/subscriptions: 'https://centra.dev/docs/crafting-frontends/features/subscriptions'
   /fe-development/overselling-prevention: 'https://centra.dev/docs/crafting-frontends/overselling-prevention'
   /fe-development/backinstock: 'https://centra.dev/docs/crafting-frontends/back-in-stock'
   /fe-development/lowestprice: 'https://centra.dev/docs/crafting-frontends/compliance/lowest-price'
